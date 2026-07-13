@@ -1,66 +1,270 @@
 # Cortex
 
-Clinical workflow platform for Danish general practice.
+> **Clinical Workflow Platform for Danish General Practice**
 
-## Current scope
+> *From consultation to documentation — not the other way around.*
 
-The current release contains one reference workflow:
+---
 
-- Knee pain consultation
-- Live clinical journal output
-- Rule-based clinical review
-- X-ray draft
-- Orthopaedic referral draft
-- Structured assessment support
-- Sticky consultation cockpit
+## What is Cortex?
 
-The product is an early clinical prototype and is not validated medical software.
+Cortex is a clinical workflow platform designed to reduce administrative burden in Danish general practice.
 
-## Product mission
+Rather than replacing existing Electronic Health Record (EHR) systems, Cortex sits alongside them and helps clinicians conduct structured consultations that automatically generate high-quality clinical documentation.
 
-Reduce administrative friction in general practice while preserving clinical
-quality, transparency and patient safety.
+The consultation is the primary product.
 
-## Core principles
+Documentation is a consequence of the consultation—not its purpose.
 
-- Document once.
-- Workflow before features.
-- Simplicity over flexibility.
-- Clinical rules must be explainable.
-- Cortex supports clinical judgement; it does not replace it.
-- Patient data must not be entered into development builds.
+---
 
-## Local development
+## Mission
 
-Requirements:
+Cortex exists to help clinicians spend more time with patients and less time documenting.
 
-- Node.js LTS
-- npm
+Every feature should contribute to one or more of the following outcomes:
 
-Install and start:
+- Reduce administrative burden
+- Reduce documentation time
+- Reduce cognitive load
+- Improve clinical quality
+- Increase patient-facing time
+
+If a feature does not contribute to these outcomes, it should not be built.
+
+---
+
+## Product Philosophy
+
+Cortex follows a small set of fundamental principles.
+
+- Workflow before features
+- One structured consultation → many outputs
+- Documentation should happen automatically
+- Decision support should assist, never interrupt
+- Clinicians remain in control
+- Simplicity beats complexity
+
+For more details see:
+
+- `docs/PRODUCT_PRINCIPLES.md`
+- `CONSTITUTION.md`
+
+---
+
+# Current MVP
+
+The current development focus is a complete Knee Consultation workflow.
+
+Outputs generated from a single consultation include:
+
+- Structured Journal
+- Clinical Review
+- X-ray Referral
+- Physiotherapy Referral
+- Decision Support
+- Patient Information
+
+The Knee Consultation serves as the reference implementation for all future workflows.
+
+---
+
+# System Architecture
+
+Every consultation follows the same architecture.
+
+```text
+                     Consultation
+                           │
+                           ▼
+                 Structured Clinical Data
+                           │
+                           ▼
+                  Clinical Composer
+                           │
+                           ▼
+                   Encounter Engine
+                           │
+        ┌──────────────────┼──────────────────┐
+        ▼                  ▼                  ▼
+     Journal          Referrals       Decision Support
+                           │
+                           ▼
+                  Patient Information
+```
+
+The platform remains constant.
+
+Only the clinical workflow changes.
+
+---
+
+# Repository Structure
+
+```text
+app/                Next.js application
+
+components/         Reusable UI components
+
+clinical/           Clinical workflows
+                    Decision rules
+                    Evidence-based pathways
+
+encounter/          Clinical data models
+
+engine/             Encounter Engine
+                    Clinical Composer
+                    Output generation
+
+data/               Shared phrases
+                    Configuration
+
+docs/
+    AGENTS.md
+    ARCHITECTURE.md
+    CLINICAL_PRINCIPLES.md
+    PRODUCT_PRINCIPLES.md
+    PRODUCT_STRATEGY.md
+    ROADMAP.md
+```
+
+---
+
+# Technology
+
+Current stack
+
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+
+Planned integrations
+
+- FHIR
+- Electronic Health Records
+- Laboratory Systems
+- Imaging Systems
+- National Healthcare Infrastructure
+
+---
+
+# Development Workflow
+
+Every feature follows the same lifecycle.
+
+```text
+Clinical Problem
+        │
+        ▼
+Workflow Design (RFC)
+        │
+        ▼
+UX Design
+        │
+        ▼
+Implementation
+        │
+        ▼
+Testing
+        │
+        ▼
+Clinical Validation
+        │
+        ▼
+Release
+```
+
+No feature skips any stage.
+
+---
+
+# Documentation
+
+| Document | Purpose |
+|-----------|---------|
+| `CONSTITUTION.md` | Engineering principles and architectural rules |
+| `docs/PRODUCT_PRINCIPLES.md` | Product philosophy |
+| `docs/CLINICAL_PRINCIPLES.md` | Clinical design principles |
+| `docs/ARCHITECTURE.md` | Technical architecture |
+| `docs/PRODUCT_STRATEGY.md` | Long-term product strategy |
+| `docs/ROADMAP.md` | Development roadmap |
+| `docs/AGENTS.md` | Instructions for AI coding agents |
+
+---
+
+# Getting Started
+
+Clone the repository.
+
+```bash
+git clone https://github.com/<your-username>/Cortex.git
+```
+
+Install dependencies.
 
 ```bash
 npm install
+```
+
+Run the development server.
+
+```bash
 npm run dev
 ```
 
-Open:
+Open your browser.
 
-```text
+```
 http://localhost:3000
 ```
 
-## Build verification
+---
 
-```bash
-npm run check
-```
+# Guiding Principle
 
-This runs TypeScript validation followed by a production build.
+Every workflow should feel like a natural clinical consultation.
 
-## Repository status
+The software should disappear into the background.
 
-Current milestone: `v0.4.0-alpha`
+Clinicians should focus on patients.
 
-The architecture is frozen until the first pilot. Development should focus on
-small, testable improvements to the knee workflow.
+Cortex takes care of the documentation.
+
+---
+
+# Long-Term Vision
+
+Cortex is not another Electronic Health Record.
+
+It is a reusable clinical workflow platform.
+
+A clinician performs one structured consultation.
+
+Cortex generates everything else.
+
+One consultation.
+
+One structured clinical model.
+
+Many outputs.
+
+Minimal administration.
+
+Maximum patient care.
+
+---
+
+# Project Status
+
+🚧 Active Development
+
+Current milestone:
+
+**RFC-001 — Clinical Composer**
+
+---
+
+# License
+
+Not yet specified.
