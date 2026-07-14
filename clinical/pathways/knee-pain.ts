@@ -3,14 +3,14 @@ export const kneePainPathway: ClinicalPathway = {
   id: "knee-pain", title: "Knæsmerter", category: "Muskuloskeletal", version: "0.3.0",
   description: "Kort PSOAP-flow til vurdering og dokumentation af knæsmerter.",
   sections: [
-    { id: "problem", title: "Problem", kind: "problem", fields: [
+    { id: "problem", title: "Problem", kind: "problem", journalSection: "problem", fields: [
       { id: "side", label: "Side", type: "single-choice", defaultValue: "right", options: [
         { value: "right", label: "Højre", output: "Højresidige knæsmerter." },
         { value: "left", label: "Venstre", output: "Venstresidige knæsmerter." },
         { value: "both", label: "Begge", output: "Bilaterale knæsmerter." }
       ]}
     ]},
-    { id: "history", title: "Historie", kind: "history", fields: [
+    { id: "history", title: "Historie", kind: "history", journalSection: "subjective", fields: [
       { id: "onset", label: "Debut", type: "single-choice", defaultValue: "gradual", options: [
         { value: "acute", label: "Akut", output: "Akut debut." }, { value: "gradual", label: "Gradvis", output: "Gradvist indsættende." }, { value: "recurrent", label: "Recidiv", output: "Recidiverende gener." }
       ]},
@@ -39,7 +39,34 @@ export const kneePainPathway: ClinicalPathway = {
       ]},
       { id: "history-note", label: "Supplerende", type: "short-text", placeholder: "Kort supplerende anamnese", output: { suffix: "." } }
     ]},
-    { id: "objective", title: "Objektivt", kind: "objective", fields: [
+    {
+      id: "trauma-track",
+      title: "Traumespor",
+      kind: "history",
+      journalSection: "subjective",
+      visibleWhen: [{ fieldId: "trauma", operator: "equals", value: "yes" }],
+      fields: [
+        {
+          id: "trauma-immediate-swelling",
+          label: "Hævelse med det samme",
+          type: "single-choice",
+          options: [
+            { value: "yes", label: "Ja", output: "Hævelse opstod umiddelbart efter traumet." },
+            { value: "no", label: "Nej", output: "Ingen umiddelbar hævelse efter traumet." }
+          ]
+        },
+        {
+          id: "trauma-heard-pop",
+          label: "Hørt/følt knæk",
+          type: "single-choice",
+          options: [
+            { value: "yes", label: "Ja", output: "Hørt eller følt et knæk ved traumet." },
+            { value: "no", label: "Nej", output: "Ingen knæklyd eller -følelse ved traumet." }
+          ]
+        }
+      ]
+    },
+    { id: "objective", title: "Objektivt", kind: "objective", journalSection: "objective", fields: [
       { id: "swelling", label: "Hævelse", type: "single-choice", defaultValue: "none", options: [
         { value: "none", label: "Ingen", output: "Ingen hævelse." }, { value: "mild", label: "Let", output: "Let hævelse." }, { value: "moderate", label: "Moderat", output: "Moderat hævelse." }, { value: "marked", label: "Udtalt", output: "Udtalt hævelse." }
       ]},
@@ -49,7 +76,7 @@ export const kneePainPathway: ClinicalPathway = {
       { id: "rom", label: "Bevægelighed", type: "single-choice", defaultValue: "full", options: [ { value: "full", label: "Fuld", output: "Fuld bevægelighed." }, { value: "mild", label: "Let nedsat", output: "Let nedsat bevægelighed." }, { value: "marked", label: "Svært nedsat", output: "Svært nedsat bevægelighed." } ]},
       { id: "stability", label: "Stabilitet", type: "single-choice", defaultValue: "stable", options: [ { value: "stable", label: "Stabil", output: "Stabilt ved klinisk ligamenttest." }, { value: "unstable", label: "Instabilitet", output: "Klinisk mistanke om instabilitet." } ]}
     ]},
-    { id: "assessment", title: "Vurdering", kind: "assessment", fields: [
+    { id: "assessment", title: "Vurdering", kind: "assessment", journalSection: "assessment", fields: [
       { id: "assessment", label: "Arbejdsdiagnose", type: "single-choice", defaultValue: "uncertain", options: [
         { value: "oa", label: "Gonartrose", output: "Foreneligt med gonartrose." },
         { value: "meniscus", label: "Meniskrelateret", output: "Foreneligt med meniskrelaterede gener." },
@@ -81,7 +108,7 @@ export const kneePainPathway: ClinicalPathway = {
       ]},
       { id: "assessment-note", label: "Egen vurdering", type: "short-text", placeholder: "Kort klinisk ræsonnering eller nuancering", output: { prefix: "", suffix: "." } }
     ]},
-    { id: "plan", title: "Plan", kind: "plan", fields: [
+    { id: "plan", title: "Plan", kind: "plan", journalSection: "plan", fields: [
       { id: "plan-actions", label: "Tiltag", type: "multi-choice", defaultValue: ["information", "exercise", "follow-up"], options: [
         { value: "information", label: "Information", output: "Information om forventet forløb." }, { value: "exercise", label: "Øvelser", output: "Øvelsesvejledning." }, { value: "analgesia", label: "Smertestillende", output: "Smertestillende efter behov." }, { value: "physio", label: "Fysioterapi", output: "Henvisning til fysioterapi." }, { value: "xray", label: "Røntgen", output: "Røntgen bestilles." }, { value: "follow-up", label: "Kontrol", output: "Kontrol ved manglende bedring." }, { value: "referral", label: "Henvisning", output: "Henvisning overvejes ved vedvarende gener." }
       ]},

@@ -1,5 +1,27 @@
-import type { ClinicalField, ClinicalPathway, ClinicalSection, ConsultationAnswers } from "@/clinical/types";
-import { getVisibleFields } from "@/engine/visibility-engine";
+import type {
+  ClinicalField,
+  ClinicalPathway,
+  ClinicalSection,
+  ConsultationAnswers,
+  JournalSection
+} from "@/clinical/types";
+import { getVisibleFields, getVisibleSections } from "@/engine/visibility-engine";
+
+const JOURNAL_ORDER: JournalSection[] = [
+  "problem",
+  "subjective",
+  "objective",
+  "assessment",
+  "plan"
+];
+
+const JOURNAL_LABELS: Record<JournalSection, string> = {
+  problem: "P",
+  subjective: "S",
+  objective: "O",
+  assessment: "A",
+  plan: "P"
+};
 
 export function renderField(field: ClinicalField, value: string | string[]) {
   if (!value || (Array.isArray(value) && !value.length)) return "";
@@ -26,19 +48,25 @@ export function renderSection(section: ClinicalSection, answers: ConsultationAns
 }
 
 export function generatePSOAP(pathway: ClinicalPathway, answers: ConsultationAnswers) {
-  const labels: Record<ClinicalSection["kind"], string> = {
-    problem: "P",
-    history: "S",
-    objective: "O",
-    assessment: "A",
-    plan: "P"
-  };
+  const grouped = new Map<JournalSection, string[]>();
 
-  return pathway.sections
-    .map((section) => {
-      const body = renderSection(section, answers);
-      return body ? `${labels[section.kind]}: ${body}` : "";
-    })
+  for (const section of getVisibleSections(pathway, answers)) {
+    const body = renderSection(section, answers);
+    if (!body) continue;
+
+    const journalKey = section.journalSection;
+    const parts = grouped.get(journalKey) ?? [];
+    parts.push(body);
+    grouped.set(journalKey, parts);
+  }
+
+  return JOURNAL_ORDER.map((journalKey) => {
+    const parts = grouped.get(journalKey);
+    if (!parts?.length) return "";
+
+    const body = parts.join(" ").replace(/\s+/g, " ").trim();
+    return body ? `${JOURNAL_LABELS[journalKey]}: ${body}` : "";
+  })
     .filter(Boolean)
     .join("\n");
 }

@@ -5,6 +5,14 @@ export type SectionKind =
   | "assessment"
   | "plan";
 
+/** PSOAP output group — independent of UI section layout and `kind`. */
+export type JournalSection =
+  | "problem"
+  | "subjective"
+  | "objective"
+  | "assessment"
+  | "plan";
+
 export type FieldType = "single-choice" | "multi-choice" | "short-text";
 export type AlertSeverity = "info" | "warning" | "critical";
 
@@ -32,7 +40,9 @@ export interface ClinicalSection {
   id: string;
   title: string;
   kind: SectionKind;
+  journalSection: JournalSection;
   fields: ClinicalField[];
+  visibleWhen?: RuleCondition[];
 }
 
 export interface RuleCondition {

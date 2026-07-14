@@ -1,5 +1,5 @@
 import type { ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
-import { isFieldVisible } from "@/engine/visibility-engine";
+import { isFieldVisibleInSection } from "@/engine/visibility-engine";
 
 export function createInitialAnswers(pathway: ClinicalPathway): ConsultationAnswers {
   const answers: ConsultationAnswers = {};
@@ -20,7 +20,7 @@ export function pruneHiddenAnswers(
 
   for (const section of pathway.sections) {
     for (const field of section.fields) {
-      if (!isFieldVisible(field, answers) && field.id in next) {
+      if (!isFieldVisibleInSection(section, field, answers) && field.id in next) {
         delete next[field.id];
         changed = true;
       }

@@ -16,7 +16,7 @@ import {
 import type { ClinicalField, ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
 import { createInitialAnswers, setConsultationAnswer } from "@/engine/consultation-engine";
 import { evaluateRules } from "@/engine/rule-engine";
-import { getVisibleFields } from "@/engine/visibility-engine";
+import { getVisibleFields, getVisibleSections } from "@/engine/visibility-engine";
 import { createEncounter, generateAllOutputs } from "@/engine/encounter-engine";
 import { getPlanRecommendation, rankAssessmentSuggestions } from "@/engine/suggestion-engine";
 import type { OutputKind } from "@/encounter/types";
@@ -93,7 +93,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
 
 
         <div className="clinicalCanvas">
-          {pathway.sections.map((section) => {
+          {getVisibleSections(pathway, answers).map((section) => {
             const isOpen = openSections[section.id];
             const isAssessment = section.kind === "assessment";
 
