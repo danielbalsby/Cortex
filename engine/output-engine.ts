@@ -1,4 +1,5 @@
 import type { ClinicalField, ClinicalPathway, ClinicalSection, ConsultationAnswers } from "@/clinical/types";
+import { getVisibleFields } from "@/engine/visibility-engine";
 
 export function renderField(field: ClinicalField, value: string | string[]) {
   if (!value || (Array.isArray(value) && !value.length)) return "";
@@ -16,7 +17,7 @@ export function renderField(field: ClinicalField, value: string | string[]) {
 }
 
 export function renderSection(section: ClinicalSection, answers: ConsultationAnswers) {
-  return section.fields
+  return getVisibleFields(section, answers)
     .map((field) => renderField(field, answers[field.id]))
     .filter(Boolean)
     .join(" ")

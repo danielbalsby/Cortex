@@ -20,6 +20,14 @@ export const kneePainPathway: ClinicalPathway = {
       { id: "trauma", label: "Traume", type: "single-choice", defaultValue: "no", options: [
         { value: "no", label: "Nej", output: "Intet traume." }, { value: "yes", label: "Ja", output: "Forudgående traume." }
       ]},
+      { id: "trauma-mechanism", label: "Traumemekanisme", type: "single-choice", visibleWhen: [
+        { fieldId: "trauma", operator: "equals", value: "yes" }
+      ], options: [
+        { value: "twist", label: "Vrid", output: "Traume ved vrid." },
+        { value: "fall", label: "Fald", output: "Traume ved fald." },
+        { value: "direct", label: "Direkte slag", output: "Direkte traume mod knæ." },
+        { value: "other", label: "Andet", output: "Anden traumemekanisme." }
+      ]},
       { id: "weight-bearing", label: "Belastning", type: "single-choice", defaultValue: "normal", options: [
         { value: "normal", label: "Normal", output: "Kan belaste." }, { value: "reduced", label: "Reduceret", output: "Reduceret belastningsevne." }, { value: "none", label: "Kan ikke støtte", output: "Kan ikke støtte på benet." }
       ]},

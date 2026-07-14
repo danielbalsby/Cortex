@@ -21,6 +21,7 @@ export interface ClinicalField {
   defaultValue?: string | string[];
   options?: ClinicalOption[];
   placeholder?: string;
+  visibleWhen?: RuleCondition[];
   output?: {
     prefix?: string;
     suffix?: string;

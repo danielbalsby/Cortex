@@ -16,6 +16,7 @@ import {
 import type { ClinicalField, ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
 import { createInitialAnswers, setConsultationAnswer } from "@/engine/consultation-engine";
 import { evaluateRules } from "@/engine/rule-engine";
+import { getVisibleFields } from "@/engine/visibility-engine";
 import { createEncounter, generateAllOutputs } from "@/engine/encounter-engine";
 import { getPlanRecommendation, rankAssessmentSuggestions } from "@/engine/suggestion-engine";
 import type { OutputKind } from "@/encounter/types";
@@ -49,7 +50,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
   );
 
   function update(fieldId: string, value: string | string[]) {
-    setAnswers((current) => setConsultationAnswer(current, fieldId, value));
+    setAnswers((current) => setConsultationAnswer(current, fieldId, value, pathway));
   }
 
   async function copyOutput() {
@@ -59,13 +60,13 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
   }
 
   function applyAssessment(value: string) {
-    setAnswers((current) => setConsultationAnswer(current, "assessment", value));
+    setAnswers((current) => setConsultationAnswer(current, "assessment", value, pathway));
   }
 
   function applyRecommendedPlan() {
     if (!planRecommendation) return;
     setAnswers((current) =>
-      setConsultationAnswer(current, "plan-actions", planRecommendation.actions)
+      setConsultationAnswer(current, "plan-actions", planRecommendation.actions, pathway)
     );
   }
 
@@ -146,7 +147,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
                     )}
 
                     <div className="coreFields">
-                      {section.fields.map((field) => (
+                      {getVisibleFields(section, answers).map((field) => (
                         <FieldRenderer
                           key={field.id}
                           field={field}
