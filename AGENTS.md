@@ -16,9 +16,9 @@ Before changing the repository, read in this order:
 - Clinical safety takes precedence over convenience, speed and feature scope.
 - Never treat an unconfirmed default as a clinical fact.
 - Never invent clinical information, evidence, requirements or source references.
-- Generic behavior belongs in `engine/`.
+- Generic logic belongs in `engine/`.
 - Disease-specific logic belongs in pathway content or pathway-specific definitions under `clinical/`.
-- React components must not contain disease-specific clinical logic.
+- Disease-specific clinical logic must not be placed in generic React components.
 - Do not modify foundational documents under `docs/vision/` unless explicitly instructed.
 - Preserve clinician control: suggestions and drafts never become clinical decisions automatically.
 - Keep application, clinical and documentation claims aligned with current implementation.

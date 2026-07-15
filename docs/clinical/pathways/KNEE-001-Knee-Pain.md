@@ -156,6 +156,7 @@ Mangler rapporteres for side, ubesvaret eller `uncertain` henvisningsårsag, man
 
 - Cortex må aldrig opfinde eller udlede et ubesvaret klinisk faktum.
 - Værdier som “nej”, “normal”, “ingen” og “højre” kræver eksplicit bekræftelse.
+- Regler og henvisningskrav kræver dokumenteret kildegennemgang før klinisk evaluering.
 - Alerts viser kun konfigurerede regelmatches og udelukker ikke andre alvorlige tilstande.
 - Vurderingsforslag er sparring, ikke diagnoser eller sandsynligheder.
 - Planforslag må ikke anvendes uden lægens aktive valg.
@@ -210,7 +211,7 @@ Henvisningskrav og visitationspraksis kan variere mellem danske regioner og modt
 12. **Clipboard:** Kopiér hvert aktivt output og bekræft, at det kopierede indhold svarer til det viste udkast.
 13. **Nulstil:** Udfyld hele workflowet, nulstil og bekræft tom klinisk state, skjult traumespor og kun journaloutput.
 
-## Kriterier for klinisk review før reel brug
+## Krav før klinisk evaluering
 
 - Mindst én navngiven praktiserende læge har gennemgået hvert felt, tekstoutput, alert, forslag og planforslag.
 - Evidenskilder og regionale krav er dokumenteret, dateret og versionsstyret.

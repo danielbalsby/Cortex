@@ -10,7 +10,7 @@ This document describes the current prototype workspace. Universal consultation 
 
 The prototype uses one screen with a consultation input area and a persistent output area. The clinician records structured information once; visible summaries, feedback and active drafts update from that shared state.
 
-## Current implemented behavior
+## Current implementation
 
 ### Consultation input area
 
@@ -51,7 +51,7 @@ The prototype uses one screen with a consultation input area and a persistent ou
 - Cortex does not write directly to an EHR.
 - The clinician must review clinical content, recipient and local requirements before pasting or using a draft.
 
-## Intended near-term behavior
+## Near-term intended behaviour
 
 - More precise and clinically reviewed readiness requirements.
 - Reliable keyboard navigation and visible focus throughout the workspace.
@@ -78,4 +78,3 @@ Future possibilities are not commitments and must pass the product roadmap's exp
 - It does not prescribe, order, refer or send information automatically.
 - It does not determine that a consultation is clinically complete.
 - It must never convert an unanswered value into a clinical fact.
-

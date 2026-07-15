@@ -2,6 +2,10 @@
 
 This directory contains current, versioned specifications for implemented clinical pathways.
 
+## Purpose
+
+Pathway specifications make implemented clinical behavior reviewable, connect pathway content to its code, and record validation requirements and known limitations without presenting prototype behavior as clinical authority.
+
 ## Language
 
 Clinical pathway specifications are written in Danish. English may be used for metadata, technical identifiers and links where it improves precision.
