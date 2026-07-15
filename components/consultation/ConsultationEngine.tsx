@@ -11,7 +11,8 @@ export function ConsultationEngine({ pathway }: { pathway: ClinicalPathway }) {
   const [copied, setCopied] = useState(false);
   const note = useMemo(() => generatePSOAP(pathway, answers), [pathway, answers]);
   const alerts = useMemo(() => evaluateRules(pathway, answers), [pathway, answers]);
-  const update = (fieldId: string, value: string | string[]) => setAnswers(current => setConsultationAnswer(current, fieldId, value));
+  const update = (fieldId: string, value: string | string[]) =>
+    setAnswers((current) => setConsultationAnswer(current, fieldId, value, pathway).answers);
   async function copy() { await navigator.clipboard.writeText(note); setCopied(true); window.setTimeout(() => setCopied(false), 1200); }
 
   return <section className="coreGrid">

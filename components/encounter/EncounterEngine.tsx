@@ -54,7 +54,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
   );
 
   function update(fieldId: string, value: string | string[]) {
-    setAnswers((current) => setConsultationAnswer(current, fieldId, value, pathway));
+    setAnswers((current) => setConsultationAnswer(current, fieldId, value, pathway).answers);
   }
 
   async function copyOutput() {
@@ -65,13 +65,15 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
   }
 
   function applyAssessment(value: string) {
-    setAnswers((current) => setConsultationAnswer(current, "assessment", value, pathway));
+    setAnswers((current) =>
+      setConsultationAnswer(current, "assessment", value, pathway).answers
+    );
   }
 
   function applyRecommendedPlan() {
     if (!planRecommendation) return;
     setAnswers((current) =>
-      setConsultationAnswer(current, "plan-actions", planRecommendation.actions, pathway)
+      setConsultationAnswer(current, "plan-actions", planRecommendation.actions, pathway).answers
     );
   }
 

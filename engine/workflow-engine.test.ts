@@ -26,7 +26,9 @@ function update(
   fieldId: string,
   value: string | string[]
 ) {
-  return setConsultationAnswer(answers, fieldId, value, kneePainPathway);
+  const result = setConsultationAnswer(answers, fieldId, value, kneePainPathway);
+  if (!result.accepted) throw new Error(result.issue.message);
+  return result.answers;
 }
 
 function fixedEncounter(answers: ConsultationAnswers): EncounterState {

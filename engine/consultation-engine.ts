@@ -1,7 +1,24 @@
 import type { ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
+import type { ValidationIssue } from "@/engine/pathway-validation-engine";
+import {
+  validateAnswerUpdate,
+  validateClinicalPathway
+} from "@/engine/pathway-validation-engine";
 import { isFieldVisibleInSection } from "@/engine/visibility-engine";
 
+export type AnswerUpdateResult =
+  | { accepted: true; answers: ConsultationAnswers }
+  | { accepted: false; answers: ConsultationAnswers; issue: ValidationIssue };
+
 export function createInitialAnswers(pathway: ClinicalPathway): ConsultationAnswers {
+  const validation = validateClinicalPathway(pathway);
+  if (!validation.valid) {
+    const summary = validation.issues
+      .map((issue) => `${issue.code}${issue.path ? ` at ${issue.path}` : ""}`)
+      .join("; ");
+    throw new Error(`Invalid clinical pathway "${pathway.id}": ${summary}`);
+  }
+
   const answers: ConsultationAnswers = {};
   for (const section of pathway.sections) {
     for (const field of section.fields) {
@@ -33,9 +50,14 @@ export function pruneHiddenAnswers(
 export function setConsultationAnswer(
   current: ConsultationAnswers,
   fieldId: string,
-  value: string | string[],
-  pathway?: ClinicalPathway
-): ConsultationAnswers {
-  const updated = { ...current, [fieldId]: value };
-  return pathway ? pruneHiddenAnswers(pathway, updated) : updated;
+  value: unknown,
+  pathway: ClinicalPathway
+): AnswerUpdateResult {
+  const validation = validateAnswerUpdate(pathway, fieldId, value);
+  if (!validation.accepted) {
+    return { accepted: false, answers: current, issue: validation.issue };
+  }
+
+  const updated = { ...current, [fieldId]: validation.value };
+  return { accepted: true, answers: pruneHiddenAnswers(pathway, updated) };
 }
