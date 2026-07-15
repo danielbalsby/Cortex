@@ -26,7 +26,6 @@ export interface ClinicalField {
   id: string;
   label: string;
   type: FieldType;
-  defaultValue?: string | string[];
   options?: ClinicalOption[];
   placeholder?: string;
   visibleWhen?: RuleCondition[];

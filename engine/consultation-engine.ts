@@ -5,7 +5,7 @@ export function createInitialAnswers(pathway: ClinicalPathway): ConsultationAnsw
   const answers: ConsultationAnswers = {};
   for (const section of pathway.sections) {
     for (const field of section.fields) {
-      answers[field.id] = field.defaultValue ?? (field.type === "multi-choice" ? [] : "");
+      answers[field.id] = field.type === "multi-choice" ? [] : "";
     }
   }
   return pruneHiddenAnswers(pathway, answers);

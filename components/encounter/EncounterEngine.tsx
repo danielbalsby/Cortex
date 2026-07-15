@@ -144,7 +144,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
                                 <strong>{suggestion.label}</strong>
                                 <p>{suggestion.reason}</p>
                               </div>
-                              <span>{Math.round(suggestion.score * 100)}%</span>
+                              <span>{suggestion.matchedConditions} af {suggestion.conditions.length} støttende fund</span>
                             </button>
                           ))}
                         </div>

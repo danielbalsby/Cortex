@@ -22,13 +22,30 @@ function sentence(value: string) {
 }
 
 function generateJournal(encounter: EncounterState): EncounterOutput {
+  const text = generatePSOAP(encounter.pathway, encounter.answers);
+  const { answers } = encounter;
+  const missing: string[] = [];
+  const recordedAnswerCount = Object.values(answers).filter((answer) =>
+    Array.isArray(answer) ? answer.length > 0 : Boolean(answer.trim())
+  ).length;
+
+  const hasProblemDescription = Boolean(
+    answers.side && (answers.onset || answers.duration || answers["history-note"])
+  );
+
+  if (!hasProblemDescription) missing.push("klinisk problem, side og forløb");
+  if (!answers.assessment) missing.push("arbejdsdiagnose eller klinisk vurdering");
+  if (!text.trim() || recordedAnswerCount < 3) {
+    missing.push("tilstrækkeligt klinisk indhold");
+  }
+
   return {
     id: "",
     kind: "journal",
     title: "PSOAP-journal",
-    text: generatePSOAP(encounter.pathway, encounter.answers),
-    status: "ready",
-    missing: []
+    text,
+    status: missing.length ? "missing-data" : "ready",
+    missing
   };
 }
 
@@ -48,10 +65,10 @@ function generateXray(encounter: EncounterState): EncounterOutput {
   if (!duration) missing.push("varighed");
   if (!assessment || assessment === "uncertain") missing.push("klinisk spørgsmål/arbejdsdiagnose");
 
-  const sideLabel = optionLabel(pathway, "side", side).toLowerCase();
+  const sideLabel = side ? optionLabel(pathway, "side", side).toLowerCase() : "";
   const parts = [
-    `${optionLabel(pathway, "side", side)} knæ.`,
-    trauma === "yes" ? "Forudgående traume." : "Atraumatiske gener.",
+    side ? `${optionLabel(pathway, "side", side)} knæ.` : "",
+    trauma === "yes" ? "Forudgående traume." : trauma === "no" ? "Atraumatiske gener." : "",
     optionLabel(pathway, "duration", duration)
       ? `Varighed: ${optionLabel(pathway, "duration", duration).toLowerCase()}.`
       : "",
@@ -59,14 +76,16 @@ function generateXray(encounter: EncounterState): EncounterOutput {
       ? "Kan ikke støtte på benet."
       : bearing === "reduced"
         ? "Reduceret belastningsevne."
-        : "Kan belaste.",
-    swelling !== "none" ? `${optionLabel(pathway, "swelling", swelling)} hævelse.` : "Ingen hævelse.",
-    rom === "full" ? "Fuld bevægelighed." : `${optionLabel(pathway, "rom", rom)} bevægelighed.`,
+        : bearing === "normal" ? "Kan belaste." : "",
+    swelling ? (swelling === "none" ? "Ingen hævelse." : `${optionLabel(pathway, "swelling", swelling)} hævelse.`) : "",
+    rom ? (rom === "full" ? "Fuld bevægelighed." : `${optionLabel(pathway, "rom", rom)} bevægelighed.`) : "",
     extra ? sentence(extra) : "",
     assessment && assessment !== "uncertain"
       ? `Klinisk vurdering: ${optionLabel(pathway, "assessment", assessment).toLowerCase()}.`
       : "",
-    `Ønskes røntgen af ${sideLabel} knæ med henblik på relevant knogle-/ledpatologi og videre behandlingsplan.`
+    sideLabel
+      ? `Ønskes røntgen af ${sideLabel} knæ med henblik på relevant knogle-/ledpatologi og videre behandlingsplan.`
+      : "Ønskes røntgen af knæ med henblik på relevant knogle-/ledpatologi og videre behandlingsplan."
   ].filter(Boolean);
 
   return {
@@ -96,10 +115,12 @@ function generatePhysiotherapyReferral(encounter: EncounterState): EncounterOutp
   const actions = (value(answers, "plan-actions") as string[]) ?? [];
 
   const missing: string[] = [];
+  if (!side) missing.push("side");
+  if (!duration) missing.push("varighed");
   if (!assessment || assessment === "uncertain") {
     missing.push("arbejdsdiagnose eller klinisk vurdering");
   }
-  if (!extra && bearing === "normal") {
+  if (!extra && (!bearing || bearing === "normal")) {
     missing.push("relevante funktionsoplysninger");
   }
   if (!actions.includes("physio")) {
@@ -107,18 +128,18 @@ function generatePhysiotherapyReferral(encounter: EncounterState): EncounterOutp
   }
 
   const parts = [
-    `Henvises til fysioterapi vedr. ${optionLabel(pathway, "side", side).toLowerCase()} knæ.`,
+    side ? `Henvises til fysioterapi vedr. ${optionLabel(pathway, "side", side).toLowerCase()} knæ.` : "Henvises til fysioterapi vedr. knæ.",
     onset ? `${optionLabel(pathway, "onset", onset)}.` : "",
     duration ? `Varighed: ${optionLabel(pathway, "duration", duration).toLowerCase()}.` : "",
-    trauma === "yes" ? "Forudgående traume." : "Ingen traumatisk debut.",
+    trauma === "yes" ? "Forudgående traume." : trauma === "no" ? "Ingen traumatisk debut." : "",
     bearing === "none"
       ? "Kan ikke støtte på benet."
       : bearing === "reduced"
         ? "Reduceret belastningsevne."
-        : "Kan belaste.",
+        : bearing === "normal" ? "Kan belaste." : "",
     extra ? sentence(extra) : "",
-    swelling !== "none" ? `${optionLabel(pathway, "swelling", swelling)} hævelse.` : "",
-    rom !== "full" ? `${optionLabel(pathway, "rom", rom)} bevægelighed.` : "",
+    swelling && swelling !== "none" ? `${optionLabel(pathway, "swelling", swelling)} hævelse.` : "",
+    rom && rom !== "full" ? `${optionLabel(pathway, "rom", rom)} bevægelighed.` : "",
     stability === "unstable" ? "Klinisk mistanke om instabilitet." : "",
     assessment && assessment !== "uncertain"
       ? `Arbejdsdiagnose: ${optionLabel(pathway, "assessment", assessment).toLowerCase()}.`
@@ -140,11 +161,13 @@ function generatePhysiotherapyReferral(encounter: EncounterState): EncounterOutp
 
 function generateOrthopedicReferral(encounter: EncounterState): EncounterOutput {
   const { pathway, answers } = encounter;
+  const side = String(value(answers, "side") ?? "");
   const assessment = String(value(answers, "assessment") ?? "");
   const actions = (value(answers, "plan-actions") as string[]) ?? [];
   const extra = String(value(answers, "history-note") ?? "").trim();
   const missing: string[] = [];
 
+  if (!side) missing.push("side");
   if (!assessment || assessment === "uncertain") missing.push("klar vurdering/henvisningsårsag");
   if (!extra) missing.push("funktionspåvirkning eller supplerende anamnese");
   if (!actions.some((item) => ["exercise", "analgesia", "physio"].includes(item))) {
@@ -188,7 +211,10 @@ function generateOrthopedicReferral(encounter: EncounterState): EncounterOutput 
     .join(" ");
 
   const text = [
-    `Henvisningsårsag: ${assessment && assessment !== "uncertain" ? optionLabel(pathway, "assessment", assessment) : "Vedvarende knægener til videre vurdering"}.`,
+    side ? `Problem: ${optionLabel(pathway, "side", side)} knæ.` : "",
+    assessment && assessment !== "uncertain"
+      ? `Henvisningsårsag: ${optionLabel(pathway, "assessment", assessment)}.`
+      : "",
     `Anamnese: ${historyText}`,
     `Objektivt: ${objectiveText}`,
     treatment ? `Hidtidige tiltag: ${treatment}` : "Hidtidige tiltag: Ikke tilstrækkeligt beskrevet.",
