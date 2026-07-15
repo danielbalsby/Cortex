@@ -1,0 +1,377 @@
+# RFC-003 — Workflowfamilier
+
+**Status:** Draft  
+**Version:** 1.0  
+**Type:** Produktarkitektur  
+**Afhænger af:** `docs/vision/CX-001-The-Perfect-Consultation.md` og `docs/vision/WF-001-The-Consultation-Workflow.md`
+
+---
+
+# Resumé
+
+Cortex organiserer ikke konsultationer efter diagnoser.
+
+Cortex organiserer konsultationer efter kliniske arbejdsformer.
+
+Mange forskellige problemstillinger følger den samme kliniske tankegang.
+
+Ved at gruppere dem i workflowfamilier opnår Cortex:
+
+- ensartet brugeroplevelse
+- høj genbrugelighed
+- lavere kompleksitet
+- hurtigere udvikling
+- lettere vedligeholdelse
+
+Workflowfamilien er derfor den primære organisatoriske enhed i Cortex.
+
+---
+
+# Formål
+
+Workflowfamilier skal:
+
+- skabe ensartede arbejdsgange
+- reducere kognitiv belastning
+- genbruge kliniske byggesten
+- standardisere klinisk dokumentation
+- sikre ensartede henvisninger
+- gøre nye workflows hurtige at udvikle
+
+En workflowfamilie beskriver **hvordan** en konsultation foregår.
+
+Ikke **hvad** patienten fejler.
+
+---
+
+# Grundprincip
+
+> Samme kliniske arbejdsform skal give samme arbejdsoplevelse.
+
+Knæsmerter og skuldersmerter skal derfor opleves næsten ens.
+
+Hoste og ondt i halsen skal ligeledes opleves ens.
+
+Lægen skal lære Cortex én gang.
+
+Ikke én gang pr. sygdom.
+
+---
+
+# Workflowfamilier
+
+## 1. Akutte symptomer
+
+Patienten henvender sig med et symptom.
+
+Eksempler:
+
+- Mavesmerter
+- Brystsmerter
+- Hoste
+- Hovedpine
+- Svimmelhed
+- Dyspnø
+- Træthed
+
+Fokus:
+
+- Debut
+- Tidsforløb
+- Alvorlig sygdom
+- Røde flag
+- Objektiv undersøgelse
+- Arbejdsdiagnose
+- Safety-net
+
+---
+
+## 2. Akutte infektioner
+
+Patienten har mistanke om infektion.
+
+Eksempler:
+
+- Tonsillitis
+- Sinuitis
+- Otitis media
+- Pneumoni
+- Cystitis
+- Cellulitis
+
+Fokus:
+
+- Infektionsfokus
+- Varighed
+- Almen påvirkning
+- CRP og relevante tests
+- Antibiotikaindikation
+- Komplikationer
+- Opfølgning
+
+---
+
+## 3. Muskuloskeletale problemstillinger
+
+Patienten har smerter eller funktionsproblemer fra bevægeapparatet.
+
+Eksempler:
+
+- Knæ
+- Skulder
+- Hofte
+- Ryg
+- Albue
+- Ankel
+- Håndled
+
+Fokus:
+
+- Traume
+- Funktion
+- Inspektion
+- Palpation
+- Bevægelighed
+- Specialtests
+- Konservativ behandling
+- Henvisning
+
+---
+
+## 4. Kroniske sygdomme
+
+Planlagte kontroller.
+
+Eksempler:
+
+- Diabetes
+- Hypertension
+- KOL
+- Astma
+- Osteoporose
+
+Fokus:
+
+- Status
+- Behandlingsmål
+- Komplikationer
+- Medicin
+- Livsstil
+- Kontrolplan
+
+---
+
+## 5. Psykiatri
+
+Eksempler:
+
+- Depression
+- Angst
+- Stress
+- Søvnproblemer
+- ADHD-opfølgning
+
+Fokus:
+
+- Symptomer
+- Funktionsniveau
+- Psykosocial kontekst
+- Risikovurdering
+- Plan
+- Opfølgning
+
+---
+
+## 6. Hud
+
+Eksempler:
+
+- Eksem
+- Psoriasis
+- Hudtumorer
+- Infektioner
+- Udslæt
+
+Fokus:
+
+- Morfologi
+- Udbredelse
+- Debut
+- Symptomer
+- Risikofaktorer
+- Behandling
+
+---
+
+## 7. Børn og unge
+
+Eksempler:
+
+- Feber
+- Udviklingsundersøgelser
+- Mavesmerter
+- Luftvejsinfektioner
+
+Fokus:
+
+- Alder
+- Udvikling
+- Forældreanamnese
+- Almensymptomer
+- Safety-net
+
+---
+
+## 8. Kvindesygdomme
+
+Eksempler:
+
+- Abnorm blødning
+- Underlivssmerter
+- Prævention
+- Menopause
+- Graviditet
+
+---
+
+## 9. Mænds sygdomme
+
+Eksempler:
+
+- LUTS
+- PSA
+- Erektionsproblemer
+- Skrotale symptomer
+
+---
+
+## 10. Kliniske procedurer
+
+Eksempler:
+
+- Ledinjektion
+- Sutur
+- Spiral
+- Hudbiopsi
+- EKG
+- Spirometri
+
+Fokus:
+
+- Indikation
+- Kontraindikation
+- Samtykke
+- Procedure
+- Komplikationer
+- Efterbehandling
+
+---
+
+## 11. Attester og administration
+
+Eksempler:
+
+- Sygemelding
+- Attester
+- Kørekort
+- Kommunale erklæringer
+
+Fokus:
+
+- Funktion
+- Dokumentation
+- Lovgivning
+- Plan
+
+---
+
+# Workflowfamilier er ikke diagnoser
+
+En workflowfamilie beskriver en arbejdsform.
+
+Et workflow beskriver en konkret klinisk problemstilling.
+
+Eksempel:
+
+```
+Workflowfamilie
+
+↓
+
+Muskuloskeletale problemstillinger
+
+↓
+
+Workflow
+
+↓
+
+Knæsmerter
+```
+
+Et workflow arver arbejdsformen fra sin familie.
+
+---
+
+# Tværgående lag
+
+Nogle forhold gælder på tværs af alle workflowfamilier.
+
+Eksempler:
+
+- Graviditet
+- Børn
+- Ældre
+- Multimorbiditet
+- Antikoagulationsbehandling
+- Immunsuppression
+
+Disse udgør **kontekstlag**.
+
+De er ikke selvstændige workflowfamilier.
+
+---
+
+# Fordele
+
+Workflowfamilier giver:
+
+- ens navigation
+- ens dokumentation
+- ens beslutningsstøtte
+- ens brugeroplevelse
+- høj genbrugelighed
+- færre specialløsninger
+
+---
+
+# Ikke omfattet
+
+Denne RFC beskriver ikke:
+
+- Kliniske byggesten
+- Informationsmodellen
+- Clinical Composer
+- Datamodellen
+- Beslutningsstøtte
+- Outputmotor
+
+Disse beskrives i senere RFC'er.
+
+---
+
+# Acceptkriterier
+
+RFC-003 er opfyldt når:
+
+- Alle kliniske workflows tilhører én workflowfamilie.
+- Workflowfamilier beskriver arbejdsformer – ikke diagnoser.
+- Nye workflows kan oprettes ved at arve deres families struktur.
+- Tværgående kontekster kan påvirke et workflow uden at skabe nye workflowfamilier.
+- Lægen oplever ensartet navigation inden for samme familie.
+
+---
+
+# Afsluttende princip
+
+> Cortex organiserer konsultationer efter den måde, læger arbejder på – ikke efter den måde sygdomme klassificeres på.

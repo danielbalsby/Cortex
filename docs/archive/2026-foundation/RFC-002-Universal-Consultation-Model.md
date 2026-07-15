@@ -1,0 +1,360 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded by the canonical universal consultation workflow.  
+Replacement: `docs/vision/WF-001-The-Consultation-Workflow.md`
+
+---
+
+# RFC-002 — Den universelle konsultationsmodel
+
+**Status:** Draft  
+**Version:** 1.0  
+**Type:** Produktarkitektur  
+**Afhænger af:** RFC-001 – Cortex Clinical Philosophy
+
+---
+
+# Resumé
+
+Alle konsultationer i Cortex skal følge den samme grundlæggende model.
+
+Modellen beskriver ikke sygdomsspecifikke arbejdsgange.
+
+Den beskriver den struktur, som alle kliniske konsultationer deler.
+
+Målet er, at lægen kun skal lære Cortex én gang.
+
+Det kliniske indhold ændrer sig.
+
+Brugeroplevelsen gør ikke.
+
+---
+
+# Formål
+
+Den universelle konsultationsmodel skal:
+
+- skabe en ensartet brugeroplevelse
+- reducere kognitiv belastning
+- gøre nye workflows intuitive
+- sikre genbrug af komponenter
+- danne grundlag for automatisk dokumentation
+
+---
+
+# Konsultationens seks faser
+
+Alle konsultationer består af seks overordnede faser.
+
+```text
+Historie
+
+↓
+
+Objektivt
+
+↓
+
+Vurdering
+
+↓
+
+Plan
+
+↓
+
+Klinisk kvalitetstjek
+
+↓
+
+Outputs
+```
+
+Disse seks faser er faste.
+
+De ændrer sig aldrig.
+
+---
+
+# 1. Historie
+
+Historien beskriver patientens problem.
+
+Denne fase indeholder typisk:
+
+- hovedproblem
+- debut
+- udvikling
+- karakter
+- ledsagesymptomer
+- funktion
+- tidligere episoder
+- patientens bekymringer
+- patientens forventninger
+
+Historien skal danne grundlag for de første kliniske hypoteser.
+
+---
+
+# 2. Objektivt
+
+Objektivt indeholder de fund, der kan be- eller afkræfte hypoteserne.
+
+Eksempler:
+
+- inspektion
+- palpation
+- bevægelighed
+- stetoskopi
+- neurologi
+- hudforandringer
+- vitale værdier
+- relevante kliniske tests
+
+Kun relevante undersøgelser vises.
+
+---
+
+# 3. Vurdering
+
+Her samler lægen sine kliniske overvejelser.
+
+Vurderingen kan indeholde:
+
+- arbejdsdiagnose
+- differentialdiagnoser
+- diagnostisk usikkerhed
+- alvorlighed
+- begrundelse
+
+Vurderingen er lægens ansvar.
+
+Systemet kan støtte.
+
+Systemet beslutter ikke.
+
+---
+
+# 4. Plan
+
+Planen beskriver:
+
+- behandling
+- observation
+- undersøgelser
+- henvisninger
+- kontrol
+- safety-net
+- patientinformation
+
+Planen skal være handlingsorienteret.
+
+---
+
+# 5. Klinisk kvalitetstjek
+
+Inden konsultationen afsluttes, gennemgår Cortex konsultationen.
+
+Kvalitetstjekket kan:
+
+- identificere røde flag
+- minde om beslutningsregler
+- pege på manglende kritiske oplysninger
+- kontrollere henvisningskrav
+- sikre relevante safety-net
+
+Kvalitetstjekket må aldrig overtage lægens beslutning.
+
+---
+
+# 6. Outputs
+
+Alle outputs genereres fra den samme konsultation.
+
+Eksempler:
+
+- journal
+- røntgenhenvisning
+- fysioterapihenvisning
+- speciallægehenvisning
+- patientinformation
+- attest
+- recepttekst
+
+Lægen registrerer aldrig de samme oplysninger to gange.
+
+---
+
+# Konsultationen er dynamisk
+
+Selvom modellen beskriver seks faser, arbejder lægen ikke lineært.
+
+Eksempel:
+
+```text
+Historie
+
+↓
+
+Objektivt
+
+↓
+
+Tilbage til historien
+
+↓
+
+Ny hypotese
+
+↓
+
+Objektivt
+
+↓
+
+Plan
+```
+
+Cortex skal understøtte denne arbejdsform.
+
+---
+
+# Navigation
+
+Lægen skal kunne bevæge sig frit mellem alle faser.
+
+Ingen fase må låses.
+
+Ingen fase må kræve afslutning før næste åbnes.
+
+---
+
+# Progressiv visning
+
+Kun relevante oplysninger skal vises.
+
+Nye spørgsmål opstår, når de bliver klinisk relevante.
+
+Eksempel:
+
+```text
+Traume = Ja
+
+↓
+
+Vis traumemekanisme
+
+↓
+
+Vis Ottawa Knee Rules
+
+↓
+
+Vis ACL-spørgsmål
+```
+
+Hvis:
+
+```text
+Traume = Nej
+```
+
+skal disse elementer som udgangspunkt ikke fylde skærmen.
+
+---
+
+# Samme model — forskelligt indhold
+
+Eksempel:
+
+## Knæsmerter
+
+Historie:
+
+- traume
+- belastning
+- hævelse
+
+Objektivt:
+
+- ROM
+- Lachman
+- palpation
+
+Plan:
+
+- fysioterapi
+- røntgen
+
+---
+
+## Hoste
+
+Historie:
+
+- varighed
+- feber
+- ekspektorat
+
+Objektivt:
+
+- SAT
+- stetoskopi
+- RF
+
+Plan:
+
+- antibiotika
+- observation
+- røntgen
+
+Strukturen er identisk.
+
+Kun indholdet ændrer sig.
+
+---
+
+# Designprincipper
+
+Den universelle konsultationsmodel skal altid:
+
+- føles genkendelig
+- være hurtig
+- understøtte klinisk ræsonnering
+- minimere klik
+- minimere dobbeltregistrering
+- holde patienten i centrum
+
+---
+
+# Ikke omfattet
+
+Denne RFC beskriver ikke:
+
+- workflowfamilier
+- kliniske objekter
+- Clinical Cards
+- datamodellen
+- outputmotoren
+- AI
+
+Disse beskrives i senere RFC'er.
+
+---
+
+# Acceptkriterier
+
+Den universelle konsultationsmodel er opfyldt når:
+
+- Alle konsultationer følger samme seks faser.
+- Navigation er fri.
+- Progressiv visning understøttes.
+- Ét klinisk faktum registreres én gang.
+- Outputs genereres fra samme konsultation.
+- Modellen fungerer for både akutte symptomer, kroniske sygdomme og muskuloskeletale problemstillinger.
+
+---
+
+# Afsluttende princip
+
+> **Alle konsultationer skal føles ens at arbejde i – selv når de handler om vidt forskellige kliniske problemstillinger.**

@@ -1,0 +1,210 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Duplicate predecessor retained for history; the Markdown-named manifest is canonical.  
+Replacement: `docs/vision/MANIFEST.md`
+
+---
+
+# Cortex Manifest
+
+*"Lad lægen være lægen."*
+
+---
+
+# Why We Exist
+
+Modern general practice is limited less by medical knowledge than by cognitive and administrative burden.
+
+Physicians are expected to simultaneously:
+
+- understand complex clinical problems
+- remember thousands of recommendations
+- recognise rare but critical conditions
+- document every encounter
+- navigate multiple systems
+- complete increasing administrative work
+
+None of these demands exist in isolation.
+
+They compete for the same limited resource:
+
+**The physician's attention.**
+
+Cortex exists to protect that attention.
+
+---
+
+# What We Believe
+
+We believe that medicine should remain deeply human.
+
+The physician's greatest value is not the ability to remember guidelines.
+
+It is the ability to listen.
+
+To understand.
+
+To reason.
+
+To communicate.
+
+To comfort.
+
+Technology should protect these abilities—not compete with them.
+
+---
+
+# Our Mission
+
+Reduce cognitive load.
+
+Protect clinical reasoning.
+
+Return attention to the patient.
+
+Everything else is secondary.
+
+---
+
+# Our Philosophy
+
+Software should adapt to the consultation.
+
+The consultation should never adapt to the software.
+
+Technology should quietly support the physician.
+
+Never become the centre of attention.
+
+The best consultation is one where the physician forgets the software is even there.
+
+---
+
+# What We Build
+
+Cortex is a Clinical Operating System for General Practice.
+
+Not because it replaces existing systems.
+
+But because it supports the work that existing systems were never designed to support:
+
+Thinking.
+
+Reasoning.
+
+Decision making.
+
+Documentation.
+
+Clinical flow.
+
+---
+
+# What We Refuse To Build
+
+We will not build software that:
+
+- competes with clinical judgement
+- increases cognitive load
+- interrupts unnecessarily
+- rewards complexity over clarity
+- automates without improving care
+- values technology over people
+
+If a feature makes the consultation more stressful, it does not belong in Cortex.
+
+---
+
+# Our Design Principles
+
+Every decision should support one or more of these principles.
+
+## Protect attention.
+
+The physician's attention is the most valuable resource in the consultation.
+
+Protect it relentlessly.
+
+---
+
+## Reduce cognitive load.
+
+Remove things the physician should not have to remember.
+
+Leave clinical reasoning untouched.
+
+---
+
+## Calm over complexity.
+
+A calmer consultation is almost always a better consultation.
+
+Design for clarity.
+
+Design for confidence.
+
+Design for flow.
+
+---
+
+## Trust before intelligence.
+
+A predictable system is more valuable than a clever one.
+
+Every recommendation must be understandable.
+
+Every uncertainty must be acknowledged.
+
+Trust is earned—not assumed.
+
+---
+
+## The physician decides.
+
+Cortex assists.
+
+The physician remains responsible for every clinical decision.
+
+Always.
+
+---
+
+# Our Standard
+
+We do not measure success by:
+
+- features
+- algorithms
+- automation
+- downloads
+- demonstrations
+
+We measure success by one question:
+
+**Did the physician have more attention available for the patient?**
+
+If not, we have failed.
+
+---
+
+# The North Star
+
+Every consultation should leave the physician feeling calmer than when it began.
+
+Every feature should make clinical work feel simpler.
+
+Every improvement should create more space for human medicine.
+
+---
+
+# The Final Principle
+
+Technology should never become the focus of the consultation.
+
+The patient should.
+
+Everything Cortex does exists to make that possible.
+
+---
+
+**Lad lægen være lægen.**
