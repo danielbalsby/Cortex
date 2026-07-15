@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { kneePainPathway } from "@/clinical/pathways/knee-pain";
+import { cortexOutputGeneratorRegistry } from "@/clinical/output-generator-registry";
 import type {
   ClinicalField,
   ClinicalPathway,
@@ -64,7 +65,15 @@ function syntheticPathway(): ClinicalPathway {
         ]
       }
     ],
-    outputs: [{ id: "journal", label: "Journal", type: "journal", alwaysActive: true }],
+    outputs: [
+      {
+        id: "journal",
+        label: "Journal",
+        type: "journal",
+        generatorId: "test.journal",
+        alwaysActive: true
+      }
+    ],
     rules: [
       {
         id: "explicit-trigger",
@@ -100,7 +109,11 @@ function acceptedUpdate(
 
 describe("structural pathway validation", () => {
   it("accepts the current knee pathway", () => {
-    expect(validateClinicalPathway(kneePainPathway)).toEqual({ valid: true, issues: [] });
+    expect(
+      validateClinicalPathway(kneePainPathway, {
+        availableGeneratorIds: cortexOutputGeneratorRegistry.generatorIds
+      })
+    ).toEqual({ valid: true, issues: [] });
   });
 
   it("rejects a duplicate section ID", () => {
@@ -201,6 +214,31 @@ describe("structural pathway validation", () => {
 
     expect(issueCodes(contradictory)).toContain("output.contradictory-activation");
     expect(issueCodes(missing)).toContain("output.missing-activation");
+  });
+
+  it("rejects a missing output generator ID", () => {
+    const pathway = syntheticPathway();
+    pathway.outputs[0].generatorId = "";
+
+    expect(issueCodes(pathway)).toContain("output.missing-generator-id");
+  });
+
+  it("rejects an output generator ID that is absent from the supplied registry", () => {
+    const pathway = syntheticPathway();
+
+    expect(
+      validateClinicalPathway(pathway, { availableGeneratorIds: ["test.other"] }).issues.map(
+        (issue) => issue.code
+      )
+    ).toContain("output.unknown-generator-id");
+  });
+
+  it("accepts output generator IDs supplied by an explicit registry contract", () => {
+    const pathway = syntheticPathway();
+
+    expect(
+      validateClinicalPathway(pathway, { availableGeneratorIds: ["test.journal"] })
+    ).toEqual({ valid: true, issues: [] });
   });
 
   it("rejects a direct visibility cycle", () => {

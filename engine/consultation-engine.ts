@@ -1,5 +1,8 @@
 import type { ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
-import type { ValidationIssue } from "@/engine/pathway-validation-engine";
+import type {
+  PathwayValidationOptions,
+  ValidationIssue
+} from "@/engine/pathway-validation-engine";
 import {
   validateAnswerUpdate,
   validateClinicalPathway
@@ -19,8 +22,11 @@ export interface HiddenAnswerPruningOptions {
   maxIterations?: number;
 }
 
-export function createInitialAnswers(pathway: ClinicalPathway): ConsultationAnswers {
-  const validation = validateClinicalPathway(pathway);
+export function createInitialAnswers(
+  pathway: ClinicalPathway,
+  validationOptions: PathwayValidationOptions = {}
+): ConsultationAnswers {
+  const validation = validateClinicalPathway(pathway, validationOptions);
   if (!validation.valid) {
     const summary = validation.issues
       .map((issue) => `${issue.code}${issue.path ? ` at ${issue.path}` : ""}`)

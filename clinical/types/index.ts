@@ -83,6 +83,7 @@ export interface ClinicalOutputDefinition {
   id: string;
   label: string;
   type: ClinicalOutputType;
+  generatorId: string;
   alwaysActive?: boolean;
   activeWhen?: RuleCondition[];
 }

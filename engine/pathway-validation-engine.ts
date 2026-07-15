@@ -17,6 +17,10 @@ export interface PathwayValidationResult {
   issues: ValidationIssue[];
 }
 
+export interface PathwayValidationOptions {
+  availableGeneratorIds?: Iterable<string>;
+}
+
 export type AnswerValidationResult =
   | { accepted: true; value: string | string[] }
   | { accepted: false; issue: ValidationIssue };
@@ -339,8 +343,14 @@ function detectVisibilityCycle(
   return undefined;
 }
 
-export function validateClinicalPathway(pathway: ClinicalPathway): PathwayValidationResult {
+export function validateClinicalPathway(
+  pathway: ClinicalPathway,
+  options: PathwayValidationOptions = {}
+): PathwayValidationResult {
   const issues: ValidationIssue[] = [];
+  const availableGeneratorIds = options.availableGeneratorIds
+    ? new Set(options.availableGeneratorIds)
+    : undefined;
 
   if (!isNonEmptyId(pathway.id)) {
     addIssue(issues, "pathway.empty-id", "Pathway ID must be non-empty.", "id", pathway.id);
@@ -457,6 +467,23 @@ export function validateClinicalPathway(pathway: ClinicalPathway): PathwayValida
         `Output "${output.id}" uses unsupported type "${output.type}".`,
         `${outputPath}.type`,
         output.type
+      );
+    }
+    if (!isNonEmptyId(output.generatorId)) {
+      addIssue(
+        issues,
+        "output.missing-generator-id",
+        `Output "${output.id}" must declare a non-empty generator ID.`,
+        `${outputPath}.generatorId`,
+        output.generatorId
+      );
+    } else if (availableGeneratorIds && !availableGeneratorIds.has(output.generatorId)) {
+      addIssue(
+        issues,
+        "output.unknown-generator-id",
+        `Output "${output.id}" references unregistered generator "${output.generatorId}".`,
+        `${outputPath}.generatorId`,
+        output.generatorId
       );
     }
     if (output.alwaysActive && output.activeWhen?.length) {

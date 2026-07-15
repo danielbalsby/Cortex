@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import { kneePainPathway } from "@/clinical/pathways/knee-pain";
+import { cortexOutputGeneratorRegistry } from "@/clinical/output-generator-registry";
 import type {
   ClinicalField,
   ClinicalPathway,
@@ -67,11 +68,18 @@ function cascadingPathway(): ClinicalPathway {
       }
     ],
     outputs: [
-      { id: "journal", label: "Journal", type: "journal", alwaysActive: true },
+      {
+        id: "journal",
+        label: "Journal",
+        type: "journal",
+        generatorId: "core.psoap",
+        alwaysActive: true
+      },
       {
         id: "conditional-output",
         label: "Conditional output",
         type: "xray-referral",
+        generatorId: "knee.xray-referral",
         activeWhen: [{ fieldId: "third", operator: "equals", value: "yes" }]
       }
     ],
@@ -125,7 +133,7 @@ function derive(pathway: ClinicalPathway, answers: ConsultationAnswers) {
     suggestions: rankAssessmentSuggestions(pathway, answers),
     activeOutputs: getActiveOutputs(pathway, answers),
     psoap: generatePSOAP(pathway, answers),
-    outputs: generateAllOutputs(createEncounter(pathway, answers))
+    outputs: generateAllOutputs(createEncounter(pathway, answers), cortexOutputGeneratorRegistry)
   };
 }
 
@@ -248,7 +256,9 @@ describe("deterministic consultation derivation", () => {
     const secondEncounter = createEncounter(kneePainPathway, answers);
 
     expect(firstEncounter).toEqual(secondEncounter);
-    expect(generateAllOutputs(firstEncounter)).toEqual(generateAllOutputs(secondEncounter));
+    expect(generateAllOutputs(firstEncounter, cortexOutputGeneratorRegistry)).toEqual(
+      generateAllOutputs(secondEncounter, cortexOutputGeneratorRegistry)
+    );
   });
 
   it("changes only answer-dependent derivation when an answer changes", () => {
@@ -287,7 +297,7 @@ describe("deterministic consultation derivation", () => {
 
     generatePSOAP(kneePainPathway, answers);
     rankAssessmentSuggestions(kneePainPathway, answers);
-    generateAllOutputs(createEncounter(kneePainPathway, answers));
+    generateAllOutputs(createEncounter(kneePainPathway, answers), cortexOutputGeneratorRegistry);
     evaluateRules(kneePainPathway, answers);
     getVisibleSections(kneePainPathway, answers);
 

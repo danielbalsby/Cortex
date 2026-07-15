@@ -19,6 +19,7 @@ import { createInitialAnswers, setConsultationAnswer } from "@/engine/consultati
 import { evaluateRules } from "@/engine/rule-engine";
 import { getVisibleFields, getVisibleSections } from "@/engine/visibility-engine";
 import { createEncounter, generateAllOutputs } from "@/engine/encounter-engine";
+import type { OutputGeneratorRegistry } from "@/engine/output-generator-registry";
 import { getPlanRecommendation, rankAssessmentSuggestions } from "@/engine/suggestion-engine";
 
 const OUTPUT_ICONS: Record<ClinicalOutputType, typeof FileText> = {
@@ -28,8 +29,20 @@ const OUTPUT_ICONS: Record<ClinicalOutputType, typeof FileText> = {
   "orthopedic-referral": Stethoscope
 };
 
-export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
-  const [answers, setAnswers] = useState<ConsultationAnswers>(() => createInitialAnswers(pathway));
+export function EncounterEngine({
+  pathway,
+  outputGeneratorRegistry
+}: {
+  pathway: ClinicalPathway;
+  outputGeneratorRegistry: OutputGeneratorRegistry;
+}) {
+  const validationOptions = useMemo(
+    () => ({ availableGeneratorIds: outputGeneratorRegistry.generatorIds }),
+    [outputGeneratorRegistry]
+  );
+  const [answers, setAnswers] = useState<ConsultationAnswers>(() =>
+    createInitialAnswers(pathway, validationOptions)
+  );
   const [selectedOutputId, setSelectedOutputId] = useState("journal");
   const [copied, setCopied] = useState(false);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(() =>
@@ -37,7 +50,10 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
   );
 
   const encounter = useMemo(() => createEncounter(pathway, answers), [pathway, answers]);
-  const outputs = useMemo(() => generateAllOutputs(encounter), [encounter]);
+  const outputs = useMemo(
+    () => generateAllOutputs(encounter, outputGeneratorRegistry),
+    [encounter, outputGeneratorRegistry]
+  );
   const activeOutputId = outputs.some((item) => item.id === selectedOutputId)
     ? selectedOutputId
     : outputs[0]?.id ?? "journal";
@@ -93,7 +109,10 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
             <h1>{pathway.title}</h1>
             <p>Dokumentér én gang. Genbrug oplysningerne i alle relevante outputs.</p>
           </div>
-          <button className="secondaryButton" onClick={() => setAnswers(createInitialAnswers(pathway))}>
+          <button
+            className="secondaryButton"
+            onClick={() => setAnswers(createInitialAnswers(pathway, validationOptions))}
+          >
             <RotateCcw size={16} /> Nulstil
           </button>
         </div>

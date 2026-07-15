@@ -22,10 +22,10 @@ components/
   Generic consultation and encounter UI
 
 clinical/
-  Pathway definitions and domain types
+  Pathway definitions, domain types and pathway-specific output generators
 
 engine/
-  Consultation state, rule evaluation, suggestions and outputs
+  Consultation state, rule evaluation, suggestions and generic output orchestration
 
 encounter/
   Encounter and output contracts
@@ -39,9 +39,9 @@ docs/
 Disease-specific logic must live in `clinical/`, not inside generic React
 components.
 
-## Known prototype exception
+## Output generation boundary
 
-`engine/encounter-engine.ts` currently contains knee-specific referral generators and field identifiers. This limits pathway reuse and must be resolved before the architecture can be considered generic across acute and chronic pathways. The active limitation is documented in [`KNEE-001`](../clinical/pathways/KNEE-001-Knee-Pain.md).
+Output definitions declare an explicit `generatorId`. The generic encounter engine resolves that ID through an injected immutable registry. Generic generators live under `engine/output-generators/`; pathway-specific generators and the configured registry assembly live under `clinical/`.
 
 ## Data flow
 
@@ -53,6 +53,8 @@ ConsultationAnswers
 Rule and suggestion engines
       ↓
 Encounter output engine
+      ↓
+Registered generic or pathway-specific generator
       ↓
 Journal and referral drafts
 ```

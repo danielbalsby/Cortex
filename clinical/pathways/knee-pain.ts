@@ -122,24 +122,28 @@ export const kneePainPathway: ClinicalPathway = {
       id: "journal",
       label: "PSOAP-journal",
       type: "journal",
+      generatorId: "core.psoap",
       alwaysActive: true
     },
     {
       id: "physiotherapy-referral",
       label: "Fysioterapihenvisning",
       type: "physiotherapy-referral",
+      generatorId: "knee.physiotherapy-referral",
       activeWhen: [{ fieldId: "plan-actions", operator: "includes", value: "physio" }]
     },
     {
       id: "xray-referral",
       label: "Røntgenhenvisning – knæ",
       type: "xray-referral",
+      generatorId: "knee.xray-referral",
       activeWhen: [{ fieldId: "plan-actions", operator: "includes", value: "xray" }]
     },
     {
       id: "orthopedic-referral",
       label: "Ortopædkirurgisk henvisning",
       type: "orthopedic-referral",
+      generatorId: "knee.orthopedic-referral",
       activeWhen: [{ fieldId: "plan-actions", operator: "includes", value: "referral" }]
     }
   ],

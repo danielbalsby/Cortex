@@ -126,6 +126,8 @@ Aktiveres kun, når `plan-actions` indeholder `referral`. Udkastet samler side, 
 
 Alle outputs er udkast. De kopieres til clipboard og skal kontrolleres af lægen før brug i klinikkens eksisterende EPJ. Cortex sender eller bestiller ikke noget.
 
+Outputdefinitionerne angiver eksplicit en generator. PSOAP-generatoren er generisk, mens henvisningsgeneratorerne og deres knæspecifikke feltkoblinger ligger sammen med pathwayens kliniske implementering. Den generiske encounter engine vælger ikke output ud fra knæspecifikke felt-ID'er.
+
 ## Readiness og manglende oplysninger
 
 Readiness er et teknisk komplethedssignal og ikke en klinisk godkendelse.
@@ -169,9 +171,8 @@ Mangler rapporteres for side, ubesvaret eller `uncertain` henvisningsårsag, man
 - Pathwayen er ikke gennemgået eller godkendt af navngivne kliniske reviewere.
 - Ottawa-beskeden repræsenterer ikke en fuldt implementeret eller valideret Ottawa Knee Rule.
 - Forslag kan vises ved delvist match og er ikke testet for klinisk relevans eller alarmtræthed.
-- Henvisningsgeneratorerne bruger knæspecifikke felt-ID'er i den generiske encounter engine.
 - Ortopædkirurgisk anamnese samler kun den første history-sektion og medtager derfor ikke automatisk felter fra det separate traumespor.
-- Der er ingen automatiserede kliniske tests eller testframework i repository.
+- Automatiserede engine- og outputregressionstests kontrollerer teknisk adfærd, men udgør ikke klinisk validering.
 - Readiness-kravene er prototypeheuristikker og ikke validerede dokumentationskrav.
 - Der er ingen persistence, audit trail, brugeridentitet eller patientkontekst.
 - Clipboard-kopiering er den eneste integration med klinikkens EPJ.
