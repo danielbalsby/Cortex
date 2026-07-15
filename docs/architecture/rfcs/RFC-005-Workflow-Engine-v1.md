@@ -1,6 +1,6 @@
 # RFC-005 – Workflow Engine v1
 
-**Status:** Proposed  
+**Status:** Accepted  
 **Owner:** Cortex  
 **Type:** Technical Architecture RFC  
 **Last reviewed:** 2026-07-15  
