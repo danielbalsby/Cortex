@@ -43,6 +43,10 @@ components.
 
 Output definitions declare an explicit `generatorId`. The generic encounter engine resolves that ID through an injected immutable registry. Generic generators live under `engine/output-generators/`; pathway-specific generators and the configured registry assembly live under `clinical/`.
 
+## Decision-support boundary
+
+Rule evaluation returns structured matched and unmet condition evidence alongside the configured alert. Assessment suggestions declare their display policy in pathway content; the generic suggestion engine evaluates support counts, required conditions and suppressing conditions without producing diagnostic probability.
+
 ## Data flow
 
 ```text

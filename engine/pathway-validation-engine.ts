@@ -1,4 +1,5 @@
 import type {
+  AssessmentSuggestion,
   ClinicalField,
   ClinicalOutputType,
   ClinicalPathway,
@@ -278,6 +279,149 @@ function validateCondition(
   }
 }
 
+function conditionKey(condition: RuleCondition) {
+  return `${condition.fieldId}\u0000${condition.operator}\u0000${condition.value ?? ""}`;
+}
+
+function duplicateConditionKeys(conditions: readonly RuleCondition[]) {
+  const seen = new Set<string>();
+  const duplicates = new Set<string>();
+  for (const condition of conditions) {
+    const key = conditionKey(condition);
+    if (seen.has(key)) duplicates.add(key);
+    seen.add(key);
+  }
+  return duplicates;
+}
+
+function validateSuggestionDisplayPolicy(
+  suggestion: AssessmentSuggestion,
+  path: string,
+  issues: ValidationIssue[]
+) {
+  const runtimeSuggestion = suggestion as AssessmentSuggestion & {
+    displayPolicy?: AssessmentSuggestion["displayPolicy"];
+  };
+  const policy = runtimeSuggestion.displayPolicy;
+  const supportingConditionCount = suggestion.conditions.length;
+
+  if (!policy || typeof policy !== "object") {
+    addIssue(
+      issues,
+      "suggestion.missing-display-policy",
+      `Assessment suggestion "${suggestion.value}" must declare a display policy.`,
+      `${path}.displayPolicy`
+    );
+    return;
+  }
+
+  if (supportingConditionCount === 0) {
+    addIssue(
+      issues,
+      "suggestion.missing-supporting-conditions",
+      `Assessment suggestion "${suggestion.value}" must declare supporting conditions.`,
+      `${path}.conditions`
+    );
+  }
+
+  const minimum = policy.minimumMatchedConditions;
+  const hasMinimum = minimum !== undefined;
+  const requiresAll = policy.requireAll === true;
+
+  if (policy.requireAll !== undefined && typeof policy.requireAll !== "boolean") {
+    addIssue(
+      issues,
+      "suggestion.policy.invalid-require-all",
+      `Display policy for "${suggestion.value}" has an invalid requireAll value.`,
+      `${path}.displayPolicy.requireAll`,
+      policy.requireAll
+    );
+  }
+
+  if (!requiresAll && !hasMinimum) {
+    addIssue(
+      issues,
+      "suggestion.policy.missing-threshold",
+      `Display policy for "${suggestion.value}" must declare requireAll or minimumMatchedConditions.`,
+      `${path}.displayPolicy`
+    );
+  }
+
+  if (hasMinimum && (!Number.isInteger(minimum) || minimum < 1)) {
+    addIssue(
+      issues,
+      "suggestion.policy.invalid-minimum",
+      `minimumMatchedConditions for "${suggestion.value}" must be a positive integer.`,
+      `${path}.displayPolicy.minimumMatchedConditions`,
+      minimum
+    );
+  } else if (hasMinimum && minimum > supportingConditionCount) {
+    addIssue(
+      issues,
+      "suggestion.policy.minimum-exceeds-support",
+      `minimumMatchedConditions for "${suggestion.value}" exceeds its supporting-condition count.`,
+      `${path}.displayPolicy.minimumMatchedConditions`,
+      minimum
+    );
+  }
+
+  if (requiresAll && hasMinimum) {
+    addIssue(
+      issues,
+      minimum === supportingConditionCount
+        ? "suggestion.policy.duplicate-threshold"
+        : "suggestion.policy.conflicting-threshold",
+      minimum === supportingConditionCount
+        ? `Display policy for "${suggestion.value}" declares the same threshold twice.`
+        : `requireAll conflicts with minimumMatchedConditions for "${suggestion.value}".`,
+      `${path}.displayPolicy`
+    );
+  }
+
+  const policyLists = [
+    ["requiredConditions", policy.requiredConditions ?? []],
+    ["suppressWhen", policy.suppressWhen ?? []]
+  ] as const;
+  for (const [name, conditions] of policyLists) {
+    if (duplicateConditionKeys(conditions).size > 0) {
+      addIssue(
+        issues,
+        "suggestion.policy.duplicate-condition",
+        `Display policy for "${suggestion.value}" contains a duplicate ${name} condition.`,
+        `${path}.displayPolicy.${name}`
+      );
+    }
+  }
+
+  const requiredKeys = new Set((policy.requiredConditions ?? []).map(conditionKey));
+  const suppressingKeys = new Set((policy.suppressWhen ?? []).map(conditionKey));
+  if ([...requiredKeys].some((key) => suppressingKeys.has(key))) {
+    addIssue(
+      issues,
+      "suggestion.policy.contradictory-condition",
+      `Display policy for "${suggestion.value}" both requires and suppresses the same condition.`,
+      `${path}.displayPolicy`
+    );
+  }
+
+  const allSupportRequired =
+    requiresAll ||
+    (hasMinimum &&
+      Number.isInteger(minimum) &&
+      minimum === supportingConditionCount);
+  if (
+    allSupportRequired &&
+    suggestion.conditions.some((condition) => suppressingKeys.has(conditionKey(condition)))
+  ) {
+    addIssue(
+      issues,
+      "suggestion.policy.impossible-display",
+      `Display policy for "${suggestion.value}" suppresses a condition required for display.`,
+      `${path}.displayPolicy`
+    );
+  }
+}
+
 function detectVisibilityCycle(
   pathway: ClinicalPathway,
   fields: Map<string, ClinicalField>
@@ -393,7 +537,8 @@ export function validateClinicalPathway(
 
   const suggestionValues = new Set<string>();
   for (const [index, suggestion] of (pathway.assessmentSuggestions ?? []).entries()) {
-    const path = `assessmentSuggestions[${index}].value`;
+    const suggestionPath = `assessmentSuggestions[${index}]`;
+    const path = `${suggestionPath}.value`;
     if (!isNonEmptyId(suggestion.value)) {
       addIssue(
         issues,
@@ -413,6 +558,7 @@ export function validateClinicalPathway(
     } else {
       suggestionValues.add(suggestion.value);
     }
+    validateSuggestionDisplayPolicy(suggestion, suggestionPath, issues);
   }
 
   for (const [sectionIndex, section] of pathway.sections.entries()) {
@@ -452,6 +598,26 @@ export function validateClinicalPathway(
       validateCondition(
         condition,
         `assessmentSuggestions[${suggestionIndex}].conditions[${conditionIndex}]`,
+        fields,
+        issues
+      );
+    }
+    for (const [conditionIndex, condition] of (
+      suggestion.displayPolicy?.requiredConditions ?? []
+    ).entries()) {
+      validateCondition(
+        condition,
+        `assessmentSuggestions[${suggestionIndex}].displayPolicy.requiredConditions[${conditionIndex}]`,
+        fields,
+        issues
+      );
+    }
+    for (const [conditionIndex, condition] of (
+      suggestion.displayPolicy?.suppressWhen ?? []
+    ).entries()) {
+      validateCondition(
+        condition,
+        `assessmentSuggestions[${suggestionIndex}].displayPolicy.suppressWhen[${conditionIndex}]`,
         fields,
         issues
       );

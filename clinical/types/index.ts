@@ -50,14 +50,23 @@ export interface RuleCondition {
   value?: string;
 }
 
+export interface ClinicalAlert {
+  severity: AlertSeverity;
+  title: string;
+  message: string;
+}
+
 export interface ClinicalRule {
   id: string;
   all: RuleCondition[];
-  alert: {
-    severity: AlertSeverity;
-    title: string;
-    message: string;
-  };
+  alert: ClinicalAlert;
+}
+
+export interface SuggestionDisplayPolicy {
+  minimumMatchedConditions?: number;
+  requireAll?: boolean;
+  requiredConditions?: RuleCondition[];
+  suppressWhen?: RuleCondition[];
 }
 
 export interface AssessmentSuggestion {
@@ -65,6 +74,7 @@ export interface AssessmentSuggestion {
   label: string;
   reason: string;
   conditions: RuleCondition[];
+  displayPolicy: SuggestionDisplayPolicy;
 }
 
 export interface PlanRecommendation {

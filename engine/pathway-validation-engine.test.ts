@@ -86,7 +86,8 @@ function syntheticPathway(): ClinicalPathway {
         value: "fixture-suggestion",
         label: "Fixture suggestion",
         reason: "Non-clinical fixture.",
-        conditions: [{ fieldId: "trigger", operator: "equals", value: "yes" }]
+        conditions: [{ fieldId: "trigger", operator: "equals", value: "yes" }],
+        displayPolicy: { requireAll: true }
       }
     ]
   };
@@ -161,6 +162,103 @@ describe("structural pathway validation", () => {
     pathway.assessmentSuggestions!.push({ ...pathway.assessmentSuggestions![0] });
 
     expect(issueCodes(pathway)).toContain("suggestion.duplicate-value");
+  });
+
+  it("rejects an assessment suggestion without an explicit display policy", () => {
+    const pathway = syntheticPathway();
+    delete (pathway.assessmentSuggestions![0] as {
+      displayPolicy?: unknown;
+    }).displayPolicy;
+
+    expect(issueCodes(pathway)).toContain("suggestion.missing-display-policy");
+  });
+
+  it("rejects invalid minimum support counts", () => {
+    const zero = syntheticPathway();
+    zero.assessmentSuggestions![0].displayPolicy = { minimumMatchedConditions: 0 };
+    const fractional = syntheticPathway();
+    fractional.assessmentSuggestions![0].displayPolicy = {
+      minimumMatchedConditions: 1.5
+    };
+    const excessive = syntheticPathway();
+    excessive.assessmentSuggestions![0].displayPolicy = {
+      minimumMatchedConditions: 2
+    };
+
+    expect(issueCodes(zero)).toContain("suggestion.policy.invalid-minimum");
+    expect(issueCodes(fractional)).toContain("suggestion.policy.invalid-minimum");
+    expect(issueCodes(excessive)).toContain("suggestion.policy.minimum-exceeds-support");
+  });
+
+  it("rejects missing, duplicate, and conflicting support thresholds", () => {
+    const missing = syntheticPathway();
+    missing.assessmentSuggestions![0].displayPolicy = {};
+
+    const duplicate = syntheticPathway();
+    duplicate.assessmentSuggestions![0].displayPolicy = {
+      requireAll: true,
+      minimumMatchedConditions: 1
+    };
+
+    const conflicting = syntheticPathway();
+    conflicting.assessmentSuggestions![0].conditions.push({
+      fieldId: "dependent",
+      operator: "equals",
+      value: "yes"
+    });
+    conflicting.assessmentSuggestions![0].displayPolicy = {
+      requireAll: true,
+      minimumMatchedConditions: 1
+    };
+
+    expect(issueCodes(missing)).toContain("suggestion.policy.missing-threshold");
+    expect(issueCodes(duplicate)).toContain("suggestion.policy.duplicate-threshold");
+    expect(issueCodes(conflicting)).toContain("suggestion.policy.conflicting-threshold");
+  });
+
+  it("validates required and suppressing policy conditions through the shared condition model", () => {
+    const pathway = syntheticPathway();
+    pathway.assessmentSuggestions![0].displayPolicy = {
+      minimumMatchedConditions: 1,
+      requiredConditions: [
+        { fieldId: "missing", operator: "equals", value: "yes" }
+      ],
+      suppressWhen: [
+        { fieldId: "trigger", operator: "equals", value: "missing" }
+      ]
+    };
+
+    expect(issueCodes(pathway)).toEqual(
+      expect.arrayContaining(["condition.unknown-field", "condition.invalid-option-value"])
+    );
+  });
+
+  it("rejects duplicate, contradictory, and structurally impossible policy conditions", () => {
+    const condition = { fieldId: "trigger", operator: "equals" as const, value: "yes" };
+    const duplicate = syntheticPathway();
+    duplicate.assessmentSuggestions![0].displayPolicy = {
+      minimumMatchedConditions: 1,
+      requiredConditions: [condition, { ...condition }]
+    };
+
+    const contradictory = syntheticPathway();
+    contradictory.assessmentSuggestions![0].displayPolicy = {
+      minimumMatchedConditions: 1,
+      requiredConditions: [condition],
+      suppressWhen: [{ ...condition }]
+    };
+
+    const impossible = syntheticPathway();
+    impossible.assessmentSuggestions![0].displayPolicy = {
+      requireAll: true,
+      suppressWhen: [condition]
+    };
+
+    expect(issueCodes(duplicate)).toContain("suggestion.policy.duplicate-condition");
+    expect(issueCodes(contradictory)).toContain(
+      "suggestion.policy.contradictory-condition"
+    );
+    expect(issueCodes(impossible)).toContain("suggestion.policy.impossible-display");
   });
 
   it("rejects a condition that references an unknown field", () => {

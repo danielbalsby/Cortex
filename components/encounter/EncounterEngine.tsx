@@ -165,7 +165,7 @@ export function EncounterEngine({
                                 <strong>{suggestion.label}</strong>
                                 <p>{suggestion.reason}</p>
                               </div>
-                              <span>{suggestion.matchedConditions} af {suggestion.conditions.length} støttende fund</span>
+                              <span>{suggestion.supportCount} af {suggestion.totalSupportingConditions} støttende fund</span>
                             </button>
                           ))}
                         </div>
@@ -260,10 +260,13 @@ export function EncounterEngine({
 
             {alerts.length ? (
               <div className="reviewItems">
-                {alerts.map((alert) => (
-                  <div key={alert.title + alert.message} className={`reviewItem ${alert.severity}`}>
-                    <strong>{alert.title}</strong>
-                    <p>{alert.message}</p>
+                {alerts.map((evaluatedRule) => (
+                  <div
+                    key={evaluatedRule.ruleId}
+                    className={`reviewItem ${evaluatedRule.alert.severity}`}
+                  >
+                    <strong>{evaluatedRule.alert.title}</strong>
+                    <p>{evaluatedRule.alert.message}</p>
                   </div>
                 ))}
               </div>

@@ -161,7 +161,8 @@ export const kneePainPathway: ClinicalPathway = {
         { fieldId: "trauma", operator: "equals", value: "no" },
         { fieldId: "onset", operator: "equals", value: "gradual" },
         { fieldId: "duration", operator: "equals", value: "months" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "meniscus",
@@ -170,7 +171,8 @@ export const kneePainPathway: ClinicalPathway = {
       conditions: [
         { fieldId: "locking", operator: "equals", value: "yes" },
         { fieldId: "joint-line", operator: "equals", value: "medial" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "ligament",
@@ -179,7 +181,8 @@ export const kneePainPathway: ClinicalPathway = {
       conditions: [
         { fieldId: "trauma", operator: "equals", value: "yes" },
         { fieldId: "stability", operator: "equals", value: "unstable" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "septic",
@@ -189,7 +192,8 @@ export const kneePainPathway: ClinicalPathway = {
         { fieldId: "fever", operator: "equals", value: "yes" },
         { fieldId: "swelling", operator: "equals", value: "marked" },
         { fieldId: "rom", operator: "equals", value: "marked" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "fracture",
@@ -198,7 +202,8 @@ export const kneePainPathway: ClinicalPathway = {
       conditions: [
         { fieldId: "trauma", operator: "equals", value: "yes" },
         { fieldId: "weight-bearing", operator: "equals", value: "none" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "inflammatory",
@@ -208,7 +213,8 @@ export const kneePainPathway: ClinicalPathway = {
         { fieldId: "redness", operator: "equals", value: "yes" },
         { fieldId: "warmth", operator: "equals", value: "yes" },
         { fieldId: "swelling", operator: "equals", value: "moderate" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     }
   ],
   planRecommendations: [

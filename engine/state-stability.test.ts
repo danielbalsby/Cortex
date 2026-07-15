@@ -95,7 +95,8 @@ function cascadingPathway(): ClinicalPathway {
         value: "conditional-suggestion",
         label: "Conditional suggestion",
         reason: "Non-clinical fixture.",
-        conditions: [{ fieldId: "second", operator: "equals", value: "yes" }]
+        conditions: [{ fieldId: "second", operator: "equals", value: "yes" }],
+        displayPolicy: { requireAll: true }
       }
     ]
   };

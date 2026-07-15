@@ -152,8 +152,11 @@ describe("clinical rules", () => {
     expect(evaluateRules(kneePainPathway, traumaOnly)).toEqual([]);
     expect(evaluateRules(kneePainPathway, matched)).toContainEqual(
       expect.objectContaining({
-        severity: "warning",
-        title: "Billeddiagnostik"
+        ruleId: "ottawa-knee",
+        alert: expect.objectContaining({
+          severity: "warning",
+          title: "Billeddiagnostik"
+        })
       })
     );
     expect(evaluateRules(kneePainPathway, noLongerMatched)).toEqual([]);
@@ -187,18 +190,22 @@ describe("assessment suggestions", () => {
   });
 
   it("returns support-match information without modifying assessment", () => {
-    const answers = update(createInitialAnswers(kneePainPathway), "trauma", "no");
+    let answers = update(createInitialAnswers(kneePainPathway), "trauma", "no");
+    answers = update(answers, "onset", "gradual");
+    answers = update(answers, "duration", "months");
     const suggestions = rankAssessmentSuggestions(kneePainPathway, answers);
     const osteoarthritis = suggestions.find((suggestion) => suggestion.value === "oa");
 
     expect(answers.assessment).toBe("");
     expect(osteoarthritis).toEqual(
       expect.objectContaining({
-        matchedConditions: 1,
-        score: 1 / 3
+        supportCount: 3,
+        totalSupportingConditions: 3,
+        displayPolicyResult: expect.objectContaining({ displayed: true })
       })
     );
-    expect(osteoarthritis?.conditions).toHaveLength(3);
+    expect(osteoarthritis).not.toHaveProperty("score");
+    expect(osteoarthritis).not.toHaveProperty("probability");
   });
 });
 

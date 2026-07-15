@@ -70,18 +70,22 @@ Et alert vises kun, når alle dets betingelser er opfyldt.
 
 Disse regler er prototypeindhold. Kilder, versionsdatoer, inklusionskriterier og klinisk formulering er ikke dokumenteret i repository og skal gennemgås før klinisk anvendelse.
 
+Engine-resultatet bevarer regel-ID, alle konfigurerede betingelser samt matchede og ikke-matchede betingelser med den registrerede værdi. Det giver et struktureret grundlag for forklaring uden at ændre den aktuelle rolige alertvisning.
+
 ## Aktuelle vurderingsforslag
 
-Forslag rangeres efter antal matchede betingelser divideret med det samlede antal betingelser. Forslag med mindst ét match kan vises, og UI viser eksempelvis “2 af 3 støttende fund”. Dette er ikke en sandsynlighed eller diagnostisk sikkerhed. Højst fire forslag vises.
+Hvert forslag har en eksplicit display-policy i pathwayen. Som konservativ midlertidig prototypepolitik kræver alle aktuelle forslag, at samtlige konfigurerede støttende fund er registreret. Der er ikke dokumenteret et klinisk grundlag for svagere delmatchgrænser. UI viser eksempelvis “2 af 2 støttende fund”; optællingen er ikke en sandsynlighed eller diagnostisk sikkerhed. Højst fire forslag vises.
 
-| Forslag | Konfigurerede støttende fund |
-|---|---|
-| Gonartrose | Intet traume, gradvis debut, varighed måneder |
-| Meniskrelateret | Låsning, medial ledlinjeømhed |
-| Ligamentskade | Traume, klinisk instabilitet |
-| Septisk artrit | Feber, udtalt hævelse, svært nedsat bevægelighed |
-| Frakturmistanke | Traume, manglende belastningsevne |
-| Inflammatorisk | Rødme, varmeøgning, moderat hævelse |
+| Forslag | Konfigurerede støttende fund | Aktuel display-policy |
+|---|---|---|
+| Gonartrose | Intet traume, gradvis debut, varighed måneder | Alle 3 skal matche |
+| Meniskrelateret | Låsning, medial ledlinjeømhed | Begge skal matche |
+| Ligamentskade | Traume, klinisk instabilitet | Begge skal matche |
+| Septisk artrit | Feber, udtalt hævelse, svært nedsat bevægelighed | Alle 3 skal matche |
+| Frakturmistanke | Traume, manglende belastningsevne | Begge skal matche |
+| Inflammatorisk | Rødme, varmeøgning, moderat hævelse | Alle 3 skal matche |
+
+Frakturmistanke vises derfor ikke ved manglende belastningsevne alene. Både eksplicit traume og manglende belastningsevne skal være registreret. Denne prototypepolitik er ikke klinisk valideret.
 
 Et forslag vælges aldrig automatisk. Lægen skal aktivt vælge det, og lægen kan vælge enhver anden tilgængelig arbejdsdiagnose.
 
@@ -170,7 +174,7 @@ Mangler rapporteres for side, ubesvaret eller `uncertain` henvisningsårsag, man
 - Ingen regler, forslag, plananbefalinger eller henvisningskrav har dokumenterede evidenskilder i repository.
 - Pathwayen er ikke gennemgået eller godkendt af navngivne kliniske reviewere.
 - Ottawa-beskeden repræsenterer ikke en fuldt implementeret eller valideret Ottawa Knee Rule.
-- Forslag kan vises ved delvist match og er ikke testet for klinisk relevans eller alarmtræthed.
+- Forslagenes konservative `requireAll`-politikker er ikke klinisk valideret eller testet for klinisk relevans og alarmtræthed.
 - Ortopædkirurgisk anamnese samler kun den første history-sektion og medtager derfor ikke automatisk felter fra det separate traumespor.
 - Automatiserede engine- og outputregressionstests kontrollerer teknisk adfærd, men udgør ikke klinisk validering.
 - Readiness-kravene er prototypeheuristikker og ikke validerede dokumentationskrav.
@@ -204,7 +208,7 @@ Henvisningskrav og visitationspraksis kan variere mellem danske regioner og modt
 4. **Septisk alert:** Registrer feber, udtalt hævelse og svært nedsat bevægelighed; bekræft critical alert.
 5. **Ottawa-påmindelse:** Registrer traume og manglende belastningsevne; bekræft warning uden automatisk valg af røntgen.
 6. **Låsning:** Registrer låsning; bekræft info-alert.
-7. **Forslag:** Bekræft at forslag viser “x af y støttende fund”, ikke procent, og aldrig vælges automatisk.
+7. **Forslag:** Bekræft at ét delmatch ikke viser et forslag, at alle konfigurerede fund viser det med “x af y støttende fund” uden procent, og at det aldrig vælges automatisk. Bekræft særskilt, at manglende belastningsevne uden traume ikke viser frakturmistanke.
 8. **Planforslag:** Vælg en arbejdsdiagnose med planforslag; bekræft at planen først ændres efter aktiv anvendelse.
 9. **Journal-readiness:** Test tom journal, side alene, side plus forløb og derefter eksplicit vurdering; bekræft de viste mangler.
 10. **Dynamiske outputs:** Vælg og fjern fysioterapi, røntgen og ortopædkirurgisk henvisning; bekræft at de tilsvarende outputs vises og skjules.
