@@ -9,13 +9,25 @@ function value(answers: ConsultationAnswers, id: string) {
   return answers[id];
 }
 
+export class KneeOutputGeneratorContractError extends Error {
+  readonly code = "knee-output.invalid-option";
+
+  constructor(
+    readonly fieldId: string,
+    readonly optionValue: string
+  ) {
+    super(`Knee output generator received unknown option "${optionValue}" for field "${fieldId}".`);
+    this.name = "KneeOutputGeneratorContractError";
+  }
+}
+
 function optionLabel(pathway: ClinicalPathway, fieldId: string, selected: string) {
   for (const section of pathway.sections) {
     const field = section.fields.find((item) => item.id === fieldId);
     const option = field?.options?.find((item) => item.value === selected);
     if (option) return option.label;
   }
-  return selected;
+  throw new KneeOutputGeneratorContractError(fieldId, selected);
 }
 
 function sentence(value: string) {
@@ -71,7 +83,7 @@ function generateXray(
   const parts = [
     side ? `${optionLabel(pathway, "side", side)} knæ.` : "",
     trauma === "yes" ? "Forudgående traume." : trauma === "no" ? "Atraumatiske gener." : "",
-    optionLabel(pathway, "duration", duration)
+    duration
       ? `Varighed: ${optionLabel(pathway, "duration", duration).toLowerCase()}.`
       : "",
     bearing === "none"

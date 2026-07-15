@@ -4,7 +4,10 @@ import { cortexOutputGeneratorRegistry } from "@/clinical/output-generator-regis
 import { kneePainPathway } from "@/clinical/pathways/knee-pain";
 import type { ConsultationAnswers } from "@/clinical/types";
 import { createInitialAnswers, setConsultationAnswer } from "@/engine/consultation-engine";
-import { createEncounter, generateAllOutputs } from "@/engine/encounter-engine";
+import {
+  createEncounterFromValidatedAnswers,
+  generateAllOutputsFromValidatedEncounter
+} from "@/engine/encounter-engine";
 
 function update(
   answers: ConsultationAnswers,
@@ -25,8 +28,8 @@ function populatedAnswers(values: Record<string, string | string[]>) {
 }
 
 function outputFor(answers: ConsultationAnswers, outputId: string) {
-  const output = generateAllOutputs(
-    createEncounter(kneePainPathway, answers),
+  const output = generateAllOutputsFromValidatedEncounter(
+    createEncounterFromValidatedAnswers(kneePainPathway, answers),
     cortexOutputGeneratorRegistry
   ).find((item) => item.id === outputId);
   if (!output) throw new Error(`Expected active output "${outputId}".`);
@@ -166,8 +169,8 @@ describe("knee output extraction regressions", () => {
 
     expect(rejected.accepted).toBe(false);
     expect(rejected.answers).toBe(answers);
-    const generatedText = generateAllOutputs(
-      createEncounter(kneePainPathway, rejected.answers),
+    const generatedText = generateAllOutputsFromValidatedEncounter(
+      createEncounterFromValidatedAnswers(kneePainPathway, rejected.answers),
       cortexOutputGeneratorRegistry
     )
       .map((output) => output.text)

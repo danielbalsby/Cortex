@@ -283,9 +283,9 @@ interface ClinicalOutputDefinition {
   id: string;
   label: string;
   type: string;
+  generatorId: string;
   alwaysActive?: boolean;
   activeWhen?: readonly RuleCondition[];
-  generator?: string;
   requirements?: readonly OutputRequirement[];
 }
 ```
@@ -310,6 +310,10 @@ Responsible for:
 - resetting the consultation
 
 It must not assign clinically meaningful defaults.
+
+A complete `ConsultationAnswers` snapshot must also pass mandatory validation before any public runtime derivation. Unknown field IDs and invalid values reject the snapshot. Structurally valid stale answers belonging to hidden fields or sections are pruned to a stable fixed point without mutating the supplied record. Only the returned validated snapshot may reach visibility, rules, suggestions, output activation, generation or readiness evaluation.
+
+The runtime derivation boundary must validate the pathway against the actual injected output-generator registry before calculating active outputs. Generator-reference validation is mandatory at this boundary, including for outputs that are currently inactive.
 
 ---
 
@@ -612,16 +616,17 @@ Independently of technical engine acceptance, every pathway requires documented 
 
 ## 12. Migration from the current prototype
 
-Workflow Engine v1 requires the following known improvements:
+Workflow Engine v1 completed the following migration work:
 
-1. Add automated tests for state, visibility, rules, suggestions, outputs and readiness.
-2. Remove knee-specific referral composition from the generic encounter engine.
-3. Move pathway-specific output composition into pathway-owned definitions or registered pathway-specific generators.
-4. Stabilise encounter identity semantics or explicitly remove identity from the transient engine contract.
-5. Add structural pathway validation.
-6. Ensure all active clinical defaults have been removed.
-7. Improve journal readiness validation.
-8. Preserve the current dynamic field, section, PSOAP and output behaviour during refactoring.
+1. Added automated tests for state, visibility, rules, suggestions, outputs and readiness.
+2. Removed knee-specific referral composition from the generic encounter engine.
+3. Moved pathway-specific output composition into registered pathway-specific generators.
+4. Explicitly removed identity from the transient engine contract.
+5. Added structural pathway validation and mandatory registry-aware runtime validation.
+6. Removed active clinical defaults.
+7. Improved journal readiness validation.
+8. Preserved dynamic field, section, PSOAP and output behaviour during refactoring.
+9. Added mandatory complete-snapshot validation and stable hidden-answer pruning at the public runtime derivation boundary.
 
 These changes should be delivered incrementally through reviewable commits.
 
@@ -635,6 +640,7 @@ Workflow Engine v1 is accepted when:
 - the active knee pathway passes the agreed automated tests
 - generic engine code contains no knee-specific clinical field IDs
 - all clinical outputs derive only from explicitly recorded information
+- every public runtime derivation validates the complete answer snapshot and actual generator registry before calculating clinical behaviour
 - generated draft outputs are deterministic and copyable; in-product editing is not required
 - rule and visibility condition semantics are shared and tested
 - journal readiness is not unconditional

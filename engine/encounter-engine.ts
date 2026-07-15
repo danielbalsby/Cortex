@@ -7,7 +7,8 @@ import type { EncounterOutput, EncounterState } from "@/encounter/types";
 import type { OutputGeneratorRegistry } from "@/engine/output-generator-registry";
 import { getActiveOutputs } from "@/engine/output-visibility-engine";
 
-export function createEncounter(
+/** Low-level constructor. `answers` must already be fully validated and stabilised. */
+export function createEncounterFromValidatedAnswers(
   pathway: ClinicalPathway,
   answers: ConsultationAnswers
 ): EncounterState {
@@ -17,7 +18,8 @@ export function createEncounter(
   };
 }
 
-export function generateEncounterOutput(
+/** Low-level generator. The encounter and definition must already be runtime validated. */
+export function generateEncounterOutputFromValidatedEncounter(
   encounter: EncounterState,
   definition: ClinicalOutputDefinition,
   registry: OutputGeneratorRegistry
@@ -43,11 +45,12 @@ export function generateEncounterOutput(
   };
 }
 
-export function generateAllOutputs(
+/** Low-level generator. The encounter and registry references must already be validated. */
+export function generateAllOutputsFromValidatedEncounter(
   encounter: EncounterState,
   registry: OutputGeneratorRegistry
 ): EncounterOutput[] {
   return getActiveOutputs(encounter.pathway, encounter.answers).map((definition) =>
-    generateEncounterOutput(encounter, definition, registry)
+    generateEncounterOutputFromValidatedEncounter(encounter, definition, registry)
   );
 }

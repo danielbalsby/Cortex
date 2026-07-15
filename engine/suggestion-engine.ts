@@ -102,6 +102,7 @@ export function evaluateAssessmentSuggestions(
   );
 }
 
+/** Low-level pure evaluation. `answers` must already be fully validated and stabilised. */
 export function rankAssessmentSuggestions(
   pathway: ClinicalPathway,
   answers: ConsultationAnswers

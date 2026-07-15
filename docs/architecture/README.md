@@ -43,6 +43,12 @@ components.
 
 Output definitions declare an explicit `generatorId`. The generic encounter engine resolves that ID through an injected immutable registry. Generic generators live under `engine/output-generators/`; pathway-specific generators and the configured registry assembly live under `clinical/`.
 
+## Validated derivation boundary
+
+The active application derives workflow behaviour only through `deriveValidatedWorkflow()`. This boundary validates the pathway against the injected generator registry, validates and clones the complete consultation snapshot, and prunes stale hidden answers to a stable fixed point before calculating visibility, alerts, suggestions, active outputs, draft text or readiness.
+
+Invalid field IDs, answer values or generator references return structured validation issues and produce no derived clinical behaviour. Lower-level pure services remain available for composition and tests, but require already validated and stabilised answers.
+
 ## Decision-support boundary
 
 Rule evaluation returns structured matched and unmet condition evidence alongside the configured alert. Assessment suggestions declare their display policy in pathway content; the generic suggestion engine evaluates support counts, required conditions and suppressing conditions without producing diagnostic probability.
@@ -53,6 +59,10 @@ Rule evaluation returns structured matched and unmet condition evidence alongsid
 ClinicalPathway
       ↓
 ConsultationAnswers
+      ↓
+Mandatory pathway, registry and snapshot validation
+      ↓
+Stable hidden-answer pruning
       ↓
 Rule and suggestion engines
       ↓

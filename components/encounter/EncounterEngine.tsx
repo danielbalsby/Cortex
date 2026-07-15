@@ -16,11 +16,10 @@ import {
 } from "lucide-react";
 import type { ClinicalField, ClinicalOutputType, ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
 import { createInitialAnswers, setConsultationAnswer } from "@/engine/consultation-engine";
-import { evaluateRules } from "@/engine/rule-engine";
-import { getVisibleFields, getVisibleSections } from "@/engine/visibility-engine";
-import { createEncounter, generateAllOutputs } from "@/engine/encounter-engine";
+import { getVisibleFields } from "@/engine/visibility-engine";
 import type { OutputGeneratorRegistry } from "@/engine/output-generator-registry";
-import { getPlanRecommendation, rankAssessmentSuggestions } from "@/engine/suggestion-engine";
+import { getPlanRecommendation } from "@/engine/suggestion-engine";
+import { deriveValidatedWorkflow } from "@/engine/workflow-engine";
 
 const OUTPUT_ICONS: Record<ClinicalOutputType, typeof FileText> = {
   journal: FileText,
@@ -49,21 +48,25 @@ export function EncounterEngine({
     Object.fromEntries(pathway.sections.map((section) => [section.id, true]))
   );
 
-  const encounter = useMemo(() => createEncounter(pathway, answers), [pathway, answers]);
-  const outputs = useMemo(
-    () => generateAllOutputs(encounter, outputGeneratorRegistry),
-    [encounter, outputGeneratorRegistry]
-  );
+  const workflow = useMemo(() => {
+    const result = deriveValidatedWorkflow(pathway, answers, outputGeneratorRegistry);
+    if (!result.valid) {
+      const summary = result.issues
+        .map((issue) => `${issue.code}${issue.path ? ` at ${issue.path}` : ""}`)
+        .join("; ");
+      throw new Error(`Invalid clinical workflow state for "${pathway.id}": ${summary}`);
+    }
+    return result.workflow;
+  }, [pathway, answers, outputGeneratorRegistry]);
+  const validatedAnswers = workflow.encounter.answers;
+  const outputs = workflow.outputs;
   const activeOutputId = outputs.some((item) => item.id === selectedOutputId)
     ? selectedOutputId
     : outputs[0]?.id ?? "journal";
   const output = outputs.find((item) => item.id === activeOutputId) ?? outputs[0];
-  const alerts = useMemo(() => evaluateRules(pathway, answers), [pathway, answers]);
-  const assessmentSuggestions = useMemo(
-    () => rankAssessmentSuggestions(pathway, answers).slice(0, 4),
-    [pathway, answers]
-  );
-  const selectedAssessment = String(answers["assessment"] ?? "");
+  const alerts = workflow.alerts;
+  const assessmentSuggestions = workflow.suggestions.slice(0, 4);
+  const selectedAssessment = String(validatedAnswers["assessment"] ?? "");
   const planRecommendation = useMemo(
     () => getPlanRecommendation(pathway, selectedAssessment),
     [pathway, selectedAssessment]
@@ -119,7 +122,7 @@ export function EncounterEngine({
 
 
         <div className="clinicalCanvas">
-          {getVisibleSections(pathway, answers).map((section) => {
+          {workflow.visibleSections.map((section) => {
             const isOpen = openSections[section.id];
             const isAssessment = section.kind === "assessment";
 
@@ -173,11 +176,11 @@ export function EncounterEngine({
                     )}
 
                     <div className="coreFields">
-                      {getVisibleFields(section, answers).map((field) => (
+                      {getVisibleFields(section, validatedAnswers).map((field) => (
                         <FieldRenderer
                           key={field.id}
                           field={field}
-                          value={answers[field.id]}
+                          value={validatedAnswers[field.id]}
                           onChange={(value) => update(field.id, value)}
                         />
                       ))}

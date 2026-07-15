@@ -3,7 +3,10 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it, vi } from "vitest";
 
 import type { ClinicalOutputDefinition, ClinicalPathway } from "@/clinical/types";
-import { createEncounter, generateAllOutputs } from "@/engine/encounter-engine";
+import {
+  createEncounterFromValidatedAnswers,
+  generateAllOutputsFromValidatedEncounter
+} from "@/engine/encounter-engine";
 import {
   createOutputGeneratorRegistry,
   OutputGeneratorRegistryError,
@@ -113,9 +116,9 @@ describe("generic output orchestration", () => {
       registration("test.second", "second generator")
     ]);
 
-    const encounter = createEncounter(pathway, { selected: [] });
-    const first = generateAllOutputs(encounter, registry);
-    const second = generateAllOutputs(encounter, registry);
+    const encounter = createEncounterFromValidatedAnswers(pathway, { selected: [] });
+    const first = generateAllOutputsFromValidatedEncounter(encounter, registry);
+    const second = generateAllOutputsFromValidatedEncounter(encounter, registry);
 
     expect(first).toEqual([
       expect.objectContaining({ id: "first", kind: "journal", text: "first generator" }),
@@ -148,7 +151,12 @@ describe("generic output orchestration", () => {
       { id: "test.conditional", generate: conditional }
     ]);
 
-    expect(generateAllOutputs(createEncounter(pathway, { selected: [] }), registry)).toHaveLength(1);
+    expect(
+      generateAllOutputsFromValidatedEncounter(
+        createEncounterFromValidatedAnswers(pathway, { selected: [] }),
+        registry
+      )
+    ).toHaveLength(1);
     expect(always).toHaveBeenCalledOnce();
     expect(conditional).not.toHaveBeenCalled();
   });
@@ -168,7 +176,10 @@ describe("generic output orchestration", () => {
     ]);
 
     expect(() =>
-      generateAllOutputs(createEncounter(pathway, { selected: [] }), registry)
+      generateAllOutputsFromValidatedEncounter(
+        createEncounterFromValidatedAnswers(pathway, { selected: [] }),
+        registry
+      )
     ).toThrow(/empty output marked ready/);
   });
 
@@ -184,8 +195,8 @@ describe("generic output orchestration", () => {
     ]);
 
     expect(() =>
-      generateAllOutputs(
-        createEncounter(pathway, { selected: [] }),
+      generateAllOutputsFromValidatedEncounter(
+        createEncounterFromValidatedAnswers(pathway, { selected: [] }),
         createOutputGeneratorRegistry([])
       )
     ).toThrowError(

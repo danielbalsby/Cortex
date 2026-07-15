@@ -8,9 +8,9 @@ import {
   setConsultationAnswer
 } from "@/engine/consultation-engine";
 import {
-  createEncounter,
-  generateAllOutputs,
-  generateEncounterOutput
+  createEncounterFromValidatedAnswers,
+  generateAllOutputsFromValidatedEncounter,
+  generateEncounterOutputFromValidatedEncounter
 } from "@/engine/encounter-engine";
 import { generatePSOAP } from "@/engine/output-engine";
 import { getActiveOutputs } from "@/engine/output-visibility-engine";
@@ -33,7 +33,7 @@ function update(
 }
 
 function encounterFor(answers: ConsultationAnswers) {
-  return createEncounter(kneePainPathway, answers);
+  return createEncounterFromValidatedAnswers(kneePainPathway, answers);
 }
 
 function activeOutputIds(answers: ConsultationAnswers) {
@@ -61,7 +61,7 @@ describe("initial consultation state", () => {
     const answers = createInitialAnswers(kneePainPathway);
 
     expect(generatePSOAP(kneePainPathway, answers)).toBe("");
-    expect(generateAllOutputs(encounterFor(answers), cortexOutputGeneratorRegistry)).toEqual([
+    expect(generateAllOutputsFromValidatedEncounter(encounterFor(answers), cortexOutputGeneratorRegistry)).toEqual([
       expect.objectContaining({ id: "journal", text: "" })
     ]);
   });
@@ -125,7 +125,7 @@ describe("hidden-answer pruning", () => {
 
     const traumaNo = update(answers, "trauma", "no");
     const text = generatePSOAP(kneePainPathway, traumaNo);
-    const journal = generateAllOutputs(
+    const journal = generateAllOutputsFromValidatedEncounter(
       encounterFor(traumaNo),
       cortexOutputGeneratorRegistry
     )[0];
@@ -215,7 +215,7 @@ describe("dynamic outputs", () => {
 
     expect(activeOutputIds(answers)).toEqual(["journal"]);
     expect(
-      generateAllOutputs(encounterFor(answers), cortexOutputGeneratorRegistry).map(
+      generateAllOutputsFromValidatedEncounter(encounterFor(answers), cortexOutputGeneratorRegistry).map(
         (output) => output.id
       )
     ).toEqual([
@@ -233,7 +233,7 @@ describe("dynamic outputs", () => {
 
     expect(activeOutputIds(selected)).toEqual(["journal", outputId]);
     expect(
-      generateAllOutputs(encounterFor(selected), cortexOutputGeneratorRegistry).map(
+      generateAllOutputsFromValidatedEncounter(encounterFor(selected), cortexOutputGeneratorRegistry).map(
         (output) => output.id
       )
     ).toEqual([
@@ -242,7 +242,7 @@ describe("dynamic outputs", () => {
     ]);
     expect(activeOutputIds(removed)).toEqual(["journal"]);
     expect(
-      generateAllOutputs(encounterFor(removed), cortexOutputGeneratorRegistry).map(
+      generateAllOutputsFromValidatedEncounter(encounterFor(removed), cortexOutputGeneratorRegistry).map(
         (output) => output.id
       )
     ).toEqual([
@@ -293,12 +293,12 @@ describe("output readiness", () => {
 
   it("marks an empty journal as missing data with deterministic messages", () => {
     const answers = createInitialAnswers(kneePainPathway);
-    const first = generateEncounterOutput(
+    const first = generateEncounterOutputFromValidatedEncounter(
       encounterFor(answers),
       journalDefinition,
       cortexOutputGeneratorRegistry
     );
-    const second = generateEncounterOutput(
+    const second = generateEncounterOutputFromValidatedEncounter(
       encounterFor(answers),
       journalDefinition,
       cortexOutputGeneratorRegistry
@@ -316,7 +316,7 @@ describe("output readiness", () => {
 
   it("marks a substantively incomplete journal as missing data", () => {
     const sideOnly = update(createInitialAnswers(kneePainPathway), "side", "right");
-    const journal = generateEncounterOutput(
+    const journal = generateEncounterOutputFromValidatedEncounter(
       encounterFor(sideOnly),
       journalDefinition,
       cortexOutputGeneratorRegistry
@@ -333,7 +333,7 @@ describe("output readiness", () => {
     answers = update(answers, "onset", "acute");
     answers = update(answers, "assessment", "uncertain");
 
-    const journal = generateEncounterOutput(
+    const journal = generateEncounterOutputFromValidatedEncounter(
       encounterFor(answers),
       journalDefinition,
       cortexOutputGeneratorRegistry
@@ -364,7 +364,7 @@ describe("determinism of pure derived services", () => {
         suggestions: rankAssessmentSuggestions(kneePainPathway, answers),
         activeOutputs: getActiveOutputs(kneePainPathway, answers),
         clinicalText: generatePSOAP(kneePainPathway, answers),
-        generatedOutputs: generateAllOutputs(encounterFor(answers), cortexOutputGeneratorRegistry)
+        generatedOutputs: generateAllOutputsFromValidatedEncounter(encounterFor(answers), cortexOutputGeneratorRegistry)
       };
     }
 
@@ -373,8 +373,8 @@ describe("determinism of pure derived services", () => {
 
   it("keeps transient encounter derivation stable for identical inputs", () => {
     const answers = createInitialAnswers(kneePainPathway);
-    const first = createEncounter(kneePainPathway, answers);
-    const second = createEncounter(kneePainPathway, answers);
+    const first = createEncounterFromValidatedAnswers(kneePainPathway, answers);
+    const second = createEncounterFromValidatedAnswers(kneePainPathway, answers);
 
     expect(first).toEqual(second);
     expect(first).toEqual({ pathway: kneePainPathway, answers });

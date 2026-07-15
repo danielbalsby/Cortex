@@ -11,6 +11,7 @@ export function isSectionVisible(section: ClinicalSection, answers: Consultation
   return section.visibleWhen.every((condition) => matchesCondition(condition, answers));
 }
 
+/** Low-level pure evaluation. `answers` must already be fully validated and stabilised. */
 export function getVisibleSections(
   pathway: ClinicalPathway,
   answers: ConsultationAnswers

@@ -17,9 +17,49 @@ export type HiddenAnswerPruningResult =
   | { stable: true; answers: ConsultationAnswers }
   | { stable: false; answers: ConsultationAnswers; issue: ValidationIssue };
 
+export type ConsultationSnapshotValidationResult =
+  | { valid: true; answers: ConsultationAnswers }
+  | { valid: false; issues: ValidationIssue[] };
+
 export interface HiddenAnswerPruningOptions {
   fallbackAnswers?: ConsultationAnswers;
   maxIterations?: number;
+}
+
+/**
+ * Validates a complete answer snapshot independently of the incremental update path.
+ * Invalid keys or values reject the snapshot. Structurally valid stale hidden answers
+ * are pruned to the same stable fixed point used by normal consultation updates.
+ */
+export function validateConsultationSnapshot(
+  pathway: ClinicalPathway,
+  answers: ConsultationAnswers
+): ConsultationSnapshotValidationResult {
+  const pathwayValidation = validateClinicalPathway(pathway);
+  if (!pathwayValidation.valid) {
+    return { valid: false, issues: pathwayValidation.issues };
+  }
+
+  const issues: ValidationIssue[] = [];
+  const validatedAnswers: ConsultationAnswers = {};
+
+  for (const [fieldId, value] of Object.entries(answers)) {
+    const validation = validateAnswerUpdate(pathway, fieldId, value);
+    if (!validation.accepted) {
+      issues.push(validation.issue);
+      continue;
+    }
+    validatedAnswers[fieldId] = Array.isArray(validation.value)
+      ? [...validation.value]
+      : validation.value;
+  }
+
+  if (issues.length) return { valid: false, issues };
+
+  const pruning = stabilizeHiddenAnswers(pathway, validatedAnswers);
+  if (!pruning.stable) return { valid: false, issues: [pruning.issue] };
+
+  return { valid: true, answers: pruning.answers };
 }
 
 export function createInitialAnswers(

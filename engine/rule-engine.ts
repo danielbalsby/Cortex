@@ -65,6 +65,7 @@ export function evaluateRule(
   };
 }
 
+/** Low-level pure evaluation. `answers` must already be fully validated and stabilised. */
 export function evaluateRules(
   pathway: ClinicalPathway,
   answers: ConsultationAnswers

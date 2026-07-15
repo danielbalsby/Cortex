@@ -14,7 +14,10 @@ import {
   setConsultationAnswer,
   stabilizeHiddenAnswers
 } from "@/engine/consultation-engine";
-import { createEncounter, generateAllOutputs } from "@/engine/encounter-engine";
+import {
+  createEncounterFromValidatedAnswers,
+  generateAllOutputsFromValidatedEncounter
+} from "@/engine/encounter-engine";
 import { generatePSOAP } from "@/engine/output-engine";
 import { getActiveOutputs } from "@/engine/output-visibility-engine";
 import { validateClinicalPathway } from "@/engine/pathway-validation-engine";
@@ -134,7 +137,10 @@ function derive(pathway: ClinicalPathway, answers: ConsultationAnswers) {
     suggestions: rankAssessmentSuggestions(pathway, answers),
     activeOutputs: getActiveOutputs(pathway, answers),
     psoap: generatePSOAP(pathway, answers),
-    outputs: generateAllOutputs(createEncounter(pathway, answers), cortexOutputGeneratorRegistry)
+    outputs: generateAllOutputsFromValidatedEncounter(
+      createEncounterFromValidatedAnswers(pathway, answers),
+      cortexOutputGeneratorRegistry
+    )
   };
 }
 
@@ -253,12 +259,12 @@ describe("deterministic consultation derivation", () => {
     answers = accept(kneePainPathway, answers, "duration", "days");
     answers = accept(kneePainPathway, answers, "assessment", "uncertain");
 
-    const firstEncounter = createEncounter(kneePainPathway, answers);
-    const secondEncounter = createEncounter(kneePainPathway, answers);
+    const firstEncounter = createEncounterFromValidatedAnswers(kneePainPathway, answers);
+    const secondEncounter = createEncounterFromValidatedAnswers(kneePainPathway, answers);
 
     expect(firstEncounter).toEqual(secondEncounter);
-    expect(generateAllOutputs(firstEncounter, cortexOutputGeneratorRegistry)).toEqual(
-      generateAllOutputs(secondEncounter, cortexOutputGeneratorRegistry)
+    expect(generateAllOutputsFromValidatedEncounter(firstEncounter, cortexOutputGeneratorRegistry)).toEqual(
+      generateAllOutputsFromValidatedEncounter(secondEncounter, cortexOutputGeneratorRegistry)
     );
   });
 
@@ -298,7 +304,10 @@ describe("deterministic consultation derivation", () => {
 
     generatePSOAP(kneePainPathway, answers);
     rankAssessmentSuggestions(kneePainPathway, answers);
-    generateAllOutputs(createEncounter(kneePainPathway, answers), cortexOutputGeneratorRegistry);
+    generateAllOutputsFromValidatedEncounter(
+      createEncounterFromValidatedAnswers(kneePainPathway, answers),
+      cortexOutputGeneratorRegistry
+    );
     evaluateRules(kneePainPathway, answers);
     getVisibleSections(kneePainPathway, answers);
 

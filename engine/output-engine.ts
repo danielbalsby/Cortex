@@ -47,6 +47,7 @@ export function renderSection(section: ClinicalSection, answers: ConsultationAns
     .trim();
 }
 
+/** Low-level pure renderer. `answers` must already be fully validated and stabilised. */
 export function generatePSOAP(pathway: ClinicalPathway, answers: ConsultationAnswers) {
   const grouped = new Map<JournalSection, string[]>();
 

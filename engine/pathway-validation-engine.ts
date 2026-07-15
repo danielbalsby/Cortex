@@ -487,6 +487,11 @@ function detectVisibilityCycle(
   return undefined;
 }
 
+/**
+ * Structural pathway validation. Supplying `availableGeneratorIds` additionally
+ * validates generator references. Runtime derivation must use the mandatory
+ * registry-aware boundary in `workflow-engine.ts`.
+ */
 export function validateClinicalPathway(
   pathway: ClinicalPathway,
   options: PathwayValidationOptions = {}
