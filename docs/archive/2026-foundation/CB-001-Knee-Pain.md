@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: The prototype blueprint is obsolete and no longer matches the current knee workflow.  
+Replacement: None; a current clinical pathway specification is pending.
+
+---
+
 # CB-001 — Knæsmerter
 
 **Version:** 1.0  

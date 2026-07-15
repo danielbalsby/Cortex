@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded architecture snapshot retained for historical context.  
+Replacement: `docs/architecture/README.md`
+
+---
+
 # Cortex Core 0.1 Architecture
 
 Clinical content is data. Rendering and behavior are generic.

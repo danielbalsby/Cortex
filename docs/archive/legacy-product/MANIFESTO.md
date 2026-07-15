@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded by the canonical Cortex manifest.  
+Replacement: `docs/vision/MANIFEST.md`
+
+---
+
 # Cortex Manifesto
 
 We build software that gives clinicians more time with patients.

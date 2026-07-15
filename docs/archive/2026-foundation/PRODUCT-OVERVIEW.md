@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded repository and product overview with obsolete paths and status.  
+Replacement: `README.md` and `docs/vision/MVP-001-The-First-Clinical-Product.md`
+
+---
+
 # Cortex
 
 > **Clinical Workflow Platform for Danish General Practice**

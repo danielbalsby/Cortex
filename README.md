@@ -42,10 +42,13 @@ clinical/           Clinical pathways and medical knowledge
 engine/             Generic workflow engine
 
 docs/
-    vision/         Product philosophy
-    architecture/   Technical architecture
-    pathways/       Clinical blueprints
-    roadmap/        Product roadmap
+    vision/         Canonical product foundation
+    governance/     Engineering and clinical safety constraints
+    product/        Requirements and product proposals
+    architecture/   Current architecture, RFCs and decisions
+    clinical/       Clinical pathway documentation
+    design/         UX guidance and wireframes
+    archive/        Read-only historical records
 ```
 
 ---
@@ -60,4 +63,4 @@ The current objective is a clinically usable prototype for Danish General Practi
 
 ## License
 
-See `LICENSE`.
+Licensing has not yet been defined.

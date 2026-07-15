@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded by the canonical first clinical product definition.  
+Replacement: `docs/vision/MVP-001-The-First-Clinical-Product.md`
+
+---
+
 # MVP
 
 ## User

@@ -3,7 +3,7 @@
 **Status:** Draft  
 **Version:** 1.0  
 **Type:** Produktarkitektur  
-**Afhænger af:** RFC-001 og RFC-002
+**Afhænger af:** `docs/vision/CX-001-The-Perfect-Consultation.md` og `docs/vision/WF-001-The-Consultation-Workflow.md`
 
 ---
 

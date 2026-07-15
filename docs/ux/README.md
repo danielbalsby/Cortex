@@ -8,26 +8,22 @@ UX-dokumentationen beskriver **hvordan lægen arbejder** – ikke hvordan system
 
 ## Struktur
 
-- **CB (Consultation Blueprint)** beskriver konsultationens arbejdsgang.
 - **Wireframes** beskriver skærmopbygning.
 - **UX Principles** beskriver de generelle designprincipper.
+- Kliniske pathway-specifikationer placeres under `docs/clinical/pathways/`.
 
 ## Designhierarki
 
-Constitution
+Vision foundation
 ↓
-Product Principles
+Engineering and clinical governance
 ↓
-RFC
+Product requirement or proposal
 ↓
-PRD
-↓
-Consultation Blueprint
-↓
-Wireframes
+Architecture and design guidance
 ↓
 Prototype
 ↓
 Kode
 
-Alle nye kliniske workflows skal have et Consultation Blueprint, inden implementering påbegyndes.
+Den universelle konsultationsworkflow er defineret i `docs/vision/WF-001-The-Consultation-Workflow.md`.

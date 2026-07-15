@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded by the canonical universal consultation workflow.  
+Replacement: `docs/vision/WF-001-The-Consultation-Workflow.md`
+
+---
+
 # RFC-002 — Den universelle konsultationsmodel
 
 **Status:** Draft  

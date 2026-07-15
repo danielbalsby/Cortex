@@ -28,11 +28,15 @@ Every implementation should move Cortex closer to this goal.
 
 Before changing code, read:
 
-1. docs/PRODUCT_PRINCIPLES.md
-2. docs/CLINICAL_PRINCIPLES.md
-3. docs/ARCHITECTURE.md
+1. `docs/vision/README.md`
+2. `docs/vision/MANIFEST.md`
+3. `docs/vision/CX-001-The-Perfect-Consultation.md`
+4. `docs/vision/MVP-001-The-First-Clinical-Product.md`
+5. `docs/vision/WF-001-The-Consultation-Workflow.md`
+6. `docs/governance/CLINICAL-SAFETY-PRINCIPLES.md`
+7. `docs/architecture/README.md`
 
-These documents define the product philosophy, clinical philosophy and architecture.
+These documents define the canonical vision, clinical safety principles and current architecture.
 
 ---
 
@@ -440,7 +444,7 @@ Every Pull Request must describe:
 
 A feature is complete only when:
 
-✓ PRODUCT_PRINCIPLES remain satisfied
+✓ The canonical vision documents remain satisfied
 
 ✓ Architectural Invariants remain satisfied
 

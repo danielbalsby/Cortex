@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Clinical philosophy is now defined by the canonical vision and workflow documents.  
+Replacement: `docs/vision/CX-001-The-Perfect-Consultation.md` and `docs/vision/WF-001-The-Consultation-Workflow.md`
+
+---
+
 # RFC-001 — Konsultationsmodellen
 
 **Status:** Draft  

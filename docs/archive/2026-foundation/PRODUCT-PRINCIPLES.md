@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded by the canonical Cortex vision foundation.  
+Replacement: `docs/vision/MANIFEST.md` and `docs/vision/CX-001-The-Perfect-Consultation.md`
+
+---
+
 # Cortex Product Principles
 
 > **Build software that disappears, so clinicians can focus on patients.**

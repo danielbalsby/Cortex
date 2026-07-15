@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Historical phrase-bank product scope no longer represents Cortex.  
+Replacement: `README.md` and `docs/vision/MVP-001-The-First-Clinical-Product.md`
+
+---
+
 # Cortex v0.1
 
 ## Formål
