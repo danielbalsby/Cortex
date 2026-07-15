@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import {
   AlertTriangle,
+  Activity,
   Check,
   ChevronDown,
   Clipboard,
@@ -13,22 +14,23 @@ import {
   ShieldCheck,
   Stethoscope
 } from "lucide-react";
-import type { ClinicalField, ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
+import type { ClinicalField, ClinicalOutputType, ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
 import { createInitialAnswers, setConsultationAnswer } from "@/engine/consultation-engine";
 import { evaluateRules } from "@/engine/rule-engine";
+import { getVisibleFields, getVisibleSections } from "@/engine/visibility-engine";
 import { createEncounter, generateAllOutputs } from "@/engine/encounter-engine";
 import { getPlanRecommendation, rankAssessmentSuggestions } from "@/engine/suggestion-engine";
-import type { OutputKind } from "@/encounter/types";
 
-const OUTPUT_ICONS = {
+const OUTPUT_ICONS: Record<ClinicalOutputType, typeof FileText> = {
   journal: FileText,
-  xray: ScanLine,
+  "physiotherapy-referral": Activity,
+  "xray-referral": ScanLine,
   "orthopedic-referral": Stethoscope
 };
 
 export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
   const [answers, setAnswers] = useState<ConsultationAnswers>(() => createInitialAnswers(pathway));
-  const [activeOutput, setActiveOutput] = useState<OutputKind>("journal");
+  const [selectedOutputId, setSelectedOutputId] = useState("journal");
   const [copied, setCopied] = useState(false);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(pathway.sections.map((section) => [section.id, true]))
@@ -36,7 +38,10 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
 
   const encounter = useMemo(() => createEncounter(pathway, answers), [pathway, answers]);
   const outputs = useMemo(() => generateAllOutputs(encounter), [encounter]);
-  const output = outputs.find((item) => item.kind === activeOutput) ?? outputs[0];
+  const activeOutputId = outputs.some((item) => item.id === selectedOutputId)
+    ? selectedOutputId
+    : outputs[0]?.id ?? "journal";
+  const output = outputs.find((item) => item.id === activeOutputId) ?? outputs[0];
   const alerts = useMemo(() => evaluateRules(pathway, answers), [pathway, answers]);
   const assessmentSuggestions = useMemo(
     () => rankAssessmentSuggestions(pathway, answers).slice(0, 4),
@@ -49,23 +54,24 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
   );
 
   function update(fieldId: string, value: string | string[]) {
-    setAnswers((current) => setConsultationAnswer(current, fieldId, value));
+    setAnswers((current) => setConsultationAnswer(current, fieldId, value, pathway));
   }
 
   async function copyOutput() {
+    if (!output) return;
     await navigator.clipboard.writeText(output.text);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1200);
   }
 
   function applyAssessment(value: string) {
-    setAnswers((current) => setConsultationAnswer(current, "assessment", value));
+    setAnswers((current) => setConsultationAnswer(current, "assessment", value, pathway));
   }
 
   function applyRecommendedPlan() {
     if (!planRecommendation) return;
     setAnswers((current) =>
-      setConsultationAnswer(current, "plan-actions", planRecommendation.actions)
+      setConsultationAnswer(current, "plan-actions", planRecommendation.actions, pathway)
     );
   }
 
@@ -92,7 +98,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
 
 
         <div className="clinicalCanvas">
-          {pathway.sections.map((section) => {
+          {getVisibleSections(pathway, answers).map((section) => {
             const isOpen = openSections[section.id];
             const isAssessment = section.kind === "assessment";
 
@@ -138,7 +144,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
                                 <strong>{suggestion.label}</strong>
                                 <p>{suggestion.reason}</p>
                               </div>
-                              <span>{Math.round(suggestion.score * 100)}%</span>
+                              <span>{suggestion.matchedConditions} af {suggestion.conditions.length} støttende fund</span>
                             </button>
                           ))}
                         </div>
@@ -146,7 +152,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
                     )}
 
                     <div className="coreFields">
-                      {section.fields.map((field) => (
+                      {getVisibleFields(section, answers).map((field) => (
                         <FieldRenderer
                           key={field.id}
                           field={field}
@@ -181,18 +187,18 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
             <span>KONSULTATION</span>
             <h2>{pathway.title}</h2>
           </div>
-          <small>{output.text.split(/\s+/).filter(Boolean).length} ord</small>
+          <small>{output ? output.text.split(/\s+/).filter(Boolean).length : 0} ord</small>
         </div>
 
         <div className="outputsOverview">
           {outputs.map((item) => {
             const Icon = OUTPUT_ICONS[item.kind];
-            const active = item.kind === activeOutput;
+            const active = item.id === activeOutputId;
             return (
               <button
-                key={item.kind}
+                key={item.id}
                 className={`outputTask ${active ? "active" : ""}`}
-                onClick={() => setActiveOutput(item.kind)}
+                onClick={() => setSelectedOutputId(item.id)}
               >
                 <Icon size={18} />
                 <div>
@@ -206,6 +212,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
         </div>
 
         <div className="cockpitScroll">
+          {output && (
           <section className="cockpitSection">
             <div className="cockpitSectionHeader">
               <FileText size={17} />
@@ -222,6 +229,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
             <pre className="psoapPreview encounterPreview">{output.text}</pre>
             {output.rationale && <p className="outputRationale">{output.rationale}</p>}
           </section>
+          )}
 
           <section className={`clinicalReviewPanel ${alerts.length ? "hasAlerts" : "clear"}`}>
             <div className="cockpitSectionHeader">
@@ -253,9 +261,9 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
             <div className="administrativeList">
               {outputs.map((item) => (
                 <button
-                  key={item.kind}
-                  onClick={() => setActiveOutput(item.kind)}
-                  className={item.kind === activeOutput ? "active" : ""}
+                  key={item.id}
+                  onClick={() => setSelectedOutputId(item.id)}
+                  className={item.id === activeOutputId ? "active" : ""}
                 >
                   <span>{item.missing.length ? "○" : "✓"}</span>
                   <div>
@@ -269,9 +277,9 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
         </div>
 
         <div className="cockpitActionBar">
-          <button className="copyButton coreCopy" onClick={copyOutput}>
+          <button className="copyButton coreCopy" onClick={copyOutput} disabled={!output}>
             {copied ? <Check size={18} /> : <Clipboard size={18} />}
-            {copied ? "Kopieret" : `Kopiér ${output.title.toLowerCase()}`}
+            {copied ? "Kopieret" : output ? `Kopiér ${output.title.toLowerCase()}` : "Kopiér output"}
           </button>
           <p className="safetyNote">
             Kontrollér klinisk indhold, modtager og lokale krav før brug.

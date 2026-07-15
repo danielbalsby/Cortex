@@ -5,6 +5,14 @@ export type SectionKind =
   | "assessment"
   | "plan";
 
+/** PSOAP output group — independent of UI section layout and `kind`. */
+export type JournalSection =
+  | "problem"
+  | "subjective"
+  | "objective"
+  | "assessment"
+  | "plan";
+
 export type FieldType = "single-choice" | "multi-choice" | "short-text";
 export type AlertSeverity = "info" | "warning" | "critical";
 
@@ -18,9 +26,9 @@ export interface ClinicalField {
   id: string;
   label: string;
   type: FieldType;
-  defaultValue?: string | string[];
   options?: ClinicalOption[];
   placeholder?: string;
+  visibleWhen?: RuleCondition[];
   output?: {
     prefix?: string;
     suffix?: string;
@@ -31,7 +39,9 @@ export interface ClinicalSection {
   id: string;
   title: string;
   kind: SectionKind;
+  journalSection: JournalSection;
   fields: ClinicalField[];
+  visibleWhen?: RuleCondition[];
 }
 
 export interface RuleCondition {
@@ -63,6 +73,20 @@ export interface PlanRecommendation {
   rationale: string;
 }
 
+export type ClinicalOutputType =
+  | "journal"
+  | "physiotherapy-referral"
+  | "xray-referral"
+  | "orthopedic-referral";
+
+export interface ClinicalOutputDefinition {
+  id: string;
+  label: string;
+  type: ClinicalOutputType;
+  alwaysActive?: boolean;
+  activeWhen?: RuleCondition[];
+}
+
 export interface ClinicalPathway {
   id: string;
   title: string;
@@ -70,6 +94,7 @@ export interface ClinicalPathway {
   version: string;
   description: string;
   sections: ClinicalSection[];
+  outputs: ClinicalOutputDefinition[];
   rules: ClinicalRule[];
   assessmentSuggestions?: AssessmentSuggestion[];
   planRecommendations?: PlanRecommendation[];

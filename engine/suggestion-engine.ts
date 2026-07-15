@@ -1,29 +1,12 @@
 import type {
   AssessmentSuggestion,
   ClinicalPathway,
-  ConsultationAnswers,
-  RuleCondition
+  ConsultationAnswers
 } from "@/clinical/types";
-
-function conditionMatches(
-  condition: RuleCondition,
-  answers: ConsultationAnswers
-): boolean {
-  const actual = answers[condition.fieldId];
-
-  switch (condition.operator) {
-    case "equals":
-      return actual === condition.value;
-    case "includes":
-      return Array.isArray(actual) && actual.includes(String(condition.value));
-    case "truthy":
-      return Boolean(actual);
-    default:
-      return false;
-  }
-}
+import { matchesCondition } from "@/engine/rule-engine";
 
 export interface RankedAssessmentSuggestion extends AssessmentSuggestion {
+  matchedConditions: number;
   score: number;
 }
 
@@ -34,11 +17,12 @@ export function rankAssessmentSuggestions(
   return (pathway.assessmentSuggestions ?? [])
     .map((suggestion) => {
       const matches = suggestion.conditions.filter((condition) =>
-        conditionMatches(condition, answers)
+        matchesCondition(condition, answers)
       ).length;
 
       return {
         ...suggestion,
+        matchedConditions: matches,
         score: suggestion.conditions.length
           ? matches / suggestion.conditions.length
           : 0

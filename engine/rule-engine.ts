@@ -1,10 +1,16 @@
 import type { ClinicalPathway, ConsultationAnswers, RuleCondition } from "@/clinical/types";
-function matches(c: RuleCondition, a: ConsultationAnswers) {
-  const actual = a[c.fieldId];
-  if (c.operator === "equals") return actual === c.value;
-  if (c.operator === "includes") return Array.isArray(actual) && actual.includes(String(c.value));
+
+export function matchesCondition(condition: RuleCondition, answers: ConsultationAnswers): boolean {
+  const actual = answers[condition.fieldId];
+  if (condition.operator === "equals") return actual === condition.value;
+  if (condition.operator === "includes") {
+    return Array.isArray(actual) && actual.includes(String(condition.value));
+  }
   return Boolean(actual);
 }
+
 export function evaluateRules(pathway: ClinicalPathway, answers: ConsultationAnswers) {
-  return pathway.rules.filter(rule => rule.all.every(c => matches(c, answers))).map(rule => rule.alert);
+  return pathway.rules
+    .filter((rule) => rule.all.every((condition) => matchesCondition(condition, answers)))
+    .map((rule) => rule.alert);
 }
