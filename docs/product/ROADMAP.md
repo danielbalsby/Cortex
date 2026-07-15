@@ -19,7 +19,9 @@ Deliver a controlled, clinically reviewed prototype that demonstrates one reusab
 
 ## Goal before 1 November 2026
 
-Prepare a prototype suitable for supervised evaluation with practising clinicians. It must be technically stable, explicit about uncertainty, safe against invented clinical facts, and useful enough to test consultation flow and output quality. It is not a production release or approval for unsupervised clinical use.
+Target milestone: Prototype 0.1
+
+Prepare a prototype suitable for controlled evaluation by the founder and a small number of practising clinicians. It must be technically stable, explicit about uncertainty, safe against invented clinical facts, and useful enough to test consultation flow and output quality. It is not a production release or approval for unsupervised clinical use.
 
 ## Current validation goals
 
@@ -57,7 +59,9 @@ Completion here describes implementation only; it does not imply clinical valida
 - Add repeatable tests for state integrity, visibility, clinical rules, suggestions, outputs and readiness checks.
 - Resolve safety-critical known limitations in the knee specification.
 - Establish a clinical review and sign-off record for each included pathway.
+- Clinically review all generated journal and referral templates for accuracy, omission risk, tone and unsupported statements.
 - Complete privacy, data-handling and operational risk review for the intended evaluation setting.
+- Confirm that the workflow does not require CPR numbers or other direct patient identifiers.
 - Confirm typecheck and production build stability.
 - Run structured browser acceptance tests with no patient-identifiable data.
 
@@ -81,7 +85,7 @@ Completion here describes implementation only; it does not imply clinical valida
 
 ### Workflow Engine v1 stable
 
-State initialization, conditional visibility, rule evaluation, suggestions, dynamic outputs and readiness checks are deterministic and covered by repeatable tests.
+State initialization, conditional visibility, rule evaluation, suggestions, dynamic outputs and readiness checks are deterministic, reproducible and covered by repeatable tests.
 
 ### Knee pathway review complete
 
@@ -119,7 +123,7 @@ Included pathways, outputs, safety limitations, evaluation procedures and clinic
 
 - Replacing the electronic health record.
 - Patient database or longitudinal record ownership.
+- Storage of CPR numbers or other direct patient identifiers.
 - Scheduling, billing, prescribing or autonomous messaging.
 - Autonomous diagnosis, investigation, treatment or referral decisions.
 - Unsupervised real-world clinical deployment before validation and governance are complete.
-
