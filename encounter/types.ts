@@ -1,9 +1,10 @@
-import type { ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
+import type { ClinicalOutputType, ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
 
-export type OutputKind = "journal" | "xray" | "orthopedic-referral";
+export type OutputKind = ClinicalOutputType;
 export type OutputStatus = "ready" | "needs-review" | "missing-data";
 
 export interface EncounterOutput {
+  id: string;
   kind: OutputKind;
   title: string;
   text: string;

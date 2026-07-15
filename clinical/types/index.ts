@@ -74,6 +74,20 @@ export interface PlanRecommendation {
   rationale: string;
 }
 
+export type ClinicalOutputType =
+  | "journal"
+  | "physiotherapy-referral"
+  | "xray-referral"
+  | "orthopedic-referral";
+
+export interface ClinicalOutputDefinition {
+  id: string;
+  label: string;
+  type: ClinicalOutputType;
+  alwaysActive?: boolean;
+  activeWhen?: RuleCondition[];
+}
+
 export interface ClinicalPathway {
   id: string;
   title: string;
@@ -81,6 +95,7 @@ export interface ClinicalPathway {
   version: string;
   description: string;
   sections: ClinicalSection[];
+  outputs: ClinicalOutputDefinition[];
   rules: ClinicalRule[];
   assessmentSuggestions?: AssessmentSuggestion[];
   planRecommendations?: PlanRecommendation[];

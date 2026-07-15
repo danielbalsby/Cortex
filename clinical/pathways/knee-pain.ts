@@ -110,12 +110,38 @@ export const kneePainPathway: ClinicalPathway = {
     ]},
     { id: "plan", title: "Plan", kind: "plan", journalSection: "plan", fields: [
       { id: "plan-actions", label: "Tiltag", type: "multi-choice", defaultValue: ["information", "exercise", "follow-up"], options: [
-        { value: "information", label: "Information", output: "Information om forventet forløb." }, { value: "exercise", label: "Øvelser", output: "Øvelsesvejledning." }, { value: "analgesia", label: "Smertestillende", output: "Smertestillende efter behov." }, { value: "physio", label: "Fysioterapi", output: "Henvisning til fysioterapi." }, { value: "xray", label: "Røntgen", output: "Røntgen bestilles." }, { value: "follow-up", label: "Kontrol", output: "Kontrol ved manglende bedring." }, { value: "referral", label: "Henvisning", output: "Henvisning overvejes ved vedvarende gener." }
+        { value: "information", label: "Information", output: "Information om forventet forløb." }, { value: "exercise", label: "Øvelser", output: "Øvelsesvejledning." }, { value: "analgesia", label: "Smertestillende", output: "Smertestillende efter behov." }, { value: "physio", label: "Fysioterapi", output: "Henvisning til fysioterapi." }, { value: "xray", label: "Røntgen", output: "Røntgen bestilles." }, { value: "follow-up", label: "Kontrol", output: "Kontrol ved manglende bedring." }, { value: "referral", label: "Ortopædkirurgisk henvisning", output: "Henvisning til ortopædkirurgisk vurdering." }
       ]},
       { id: "safety-net", label: "Safety-net", type: "multi-choice", defaultValue: ["fever", "worsening", "no-weight-bearing"], options: [
         { value: "fever", label: "Feber", output: "Kontakt ved feber." }, { value: "worsening", label: "Tiltagende smerter", output: "Kontakt ved tiltagende smerter." }, { value: "no-weight-bearing", label: "Kan ikke støtte", output: "Kontakt ved manglende belastningsevne." }
       ]}
     ]}
+  ],
+  outputs: [
+    {
+      id: "journal",
+      label: "PSOAP-journal",
+      type: "journal",
+      alwaysActive: true
+    },
+    {
+      id: "physiotherapy-referral",
+      label: "Fysioterapihenvisning",
+      type: "physiotherapy-referral",
+      activeWhen: [{ fieldId: "plan-actions", operator: "includes", value: "physio" }]
+    },
+    {
+      id: "xray-referral",
+      label: "Røntgenhenvisning – knæ",
+      type: "xray-referral",
+      activeWhen: [{ fieldId: "plan-actions", operator: "includes", value: "xray" }]
+    },
+    {
+      id: "orthopedic-referral",
+      label: "Ortopædkirurgisk henvisning",
+      type: "orthopedic-referral",
+      activeWhen: [{ fieldId: "plan-actions", operator: "includes", value: "referral" }]
+    }
   ],
   rules: [
     { id: "possible-septic-arthritis", all: [ { fieldId: "fever", operator: "equals", value: "yes" }, { fieldId: "swelling", operator: "equals", value: "marked" }, { fieldId: "rom", operator: "equals", value: "marked" } ], alert: { severity: "critical", title: "Rødt flag", message: "Septisk artrit skal overvejes ved feber, udtalt hævelse og svært nedsat bevægelighed." } },
