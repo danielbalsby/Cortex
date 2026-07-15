@@ -1,0 +1,102 @@
+# Cortex
+
+> **Clinical Operating System for General Practice**
+
+Cortex is an intelligent clinical workflow engine designed to reduce cognitive and administrative burden in general practice.
+
+It supports physicians throughout the consultation by guiding clinical workflows, surfacing relevant decision support, and automatically generating high-quality clinical documentation and administrative outputs.
+
+Cortex is **not** an Electronic Health Record (EHR).
+
+It is designed to work alongside existing clinical systems such as XMO, Clinea and other Danish primary care platforms.
+
+---
+
+# Mission
+
+**Let physicians be physicians.**
+
+Cortex exists to protect the physician's attention by reducing cognitive load and administrative work, allowing more time and mental capacity for clinical reasoning and patient care.
+
+---
+
+# Vision
+
+The consultation is the product.
+
+Everything else—documentation, referrals, patient information and administrative work—is a consequence of a well-designed clinical workflow.
+
+---
+
+# Core Principles
+
+- Reduce cognitive load.
+- Protect clinical reasoning.
+- Support, never replace, physician judgement.
+- Generate documentation from the consultation—not alongside it.
+- Design for calm, clarity and trust.
+
+---
+
+# Documentation
+
+Start here:
+
+```
+docs/
+└── vision/
+    ├── MANIFEST.md
+    ├── CX-001-The-Perfect-Consultation.md
+    ├── MVP-001-The-First-Clinical-Product.md
+    └── WF-001-The-Consultation-Workflow.md
+```
+
+These four documents define the philosophy and product vision of Cortex.
+
+---
+
+# Repository Structure
+
+```
+app/                Next.js application
+components/         User interface
+clinical/           Clinical pathways and medical knowledge
+engine/             Generic workflow engine
+phrases/            Danish clinical phrases
+
+docs/
+    vision/         Product philosophy
+    architecture/   Technical architecture
+    pathways/       Clinical blueprints
+    roadmap/        Product roadmap
+```
+
+---
+
+# Current Status
+
+Cortex is currently under active development.
+
+The first milestone is a production-ready prototype for Danish General Practice.
+
+Initial focus areas include:
+
+- Musculoskeletal complaints
+- Acute symptoms
+- Chronic disease management
+
+---
+
+# Design Philosophy
+
+Technology should never become the focus of the consultation.
+
+The patient should.
+
+Every feature should make the consultation calmer, simpler and more clinically focused.
+
+---
+
+# License
+
+See `LICENSE`.
