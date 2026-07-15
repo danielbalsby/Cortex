@@ -39,6 +39,10 @@ docs/
 Disease-specific logic must live in `clinical/`, not inside generic React
 components.
 
+## Known prototype exception
+
+`engine/encounter-engine.ts` currently contains knee-specific referral generators and field identifiers. This limits pathway reuse and must be resolved before the architecture can be considered generic across acute and chronic pathways. The active limitation is documented in [`KNEE-001`](../clinical/pathways/KNEE-001-Knee-Pain.md).
+
 ## Data flow
 
 ```text
@@ -52,3 +56,9 @@ Encounter output engine
       ↓
 Journal and referral drafts
 ```
+
+## Related current documents
+
+- [`Product roadmap`](../product/ROADMAP.md)
+- [`UX guidelines`](../design/UX-GUIDELINES.md)
+- [`Clinical workspace`](../design/CLINICAL-WORKSPACE.md)

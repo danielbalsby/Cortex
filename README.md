@@ -57,7 +57,9 @@ docs/
 
 Cortex is under active development.
 
-The current objective is a clinically usable prototype for Danish General Practice.
+The current objective is a controlled prototype for supervised evaluation in Danish General Practice. The implemented knee pathway is not clinically validated.
+
+See the current [`product roadmap`](docs/product/ROADMAP.md) and [`knee pathway specification`](docs/clinical/pathways/KNEE-001-Knee-Pain.md).
 
 ---
 

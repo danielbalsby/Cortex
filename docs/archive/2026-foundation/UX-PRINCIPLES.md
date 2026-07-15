@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded by current actionable UX guidance.  
+Replacement: `docs/design/UX-GUIDELINES.md`
+
+---
+
 # UX Principles
 
 ## Formål

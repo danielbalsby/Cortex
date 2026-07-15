@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded by current UX and clinical workspace guidance.  
+Replacement: `docs/design/UX-GUIDELINES.md` and `docs/design/CLINICAL-WORKSPACE.md`
+
+---
+
 # RFC-005 — Den kliniske arbejdsflade og opmærksomhedsarkitektur
 
 **Status:** Draft  

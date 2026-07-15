@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded by the consolidated operational product roadmap.  
+Replacement: `docs/product/ROADMAP.md`
+
+---
+
 # Cortex Roadmap
 
 > *Build one consultation so well that clinicians choose Cortex because it makes their work simpler.*

@@ -1,3 +1,10 @@
+Archived: 2026-07-15  
+Status: Read-only historical record  
+Reason: Superseded by the current design navigation and guidance.  
+Replacement: `docs/design/UX-GUIDELINES.md` and `docs/design/CLINICAL-WORKSPACE.md`
+
+---
+
 # UX Documentation
 
 Denne mappe beskriver Cortex' brugeroplevelse.
