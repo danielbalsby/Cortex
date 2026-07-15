@@ -14,9 +14,6 @@ export interface EncounterOutput {
 }
 
 export interface EncounterState {
-  id: string;
   pathway: ClinicalPathway;
   answers: ConsultationAnswers;
-  startedAt: string;
-  updatedAt: string;
 }

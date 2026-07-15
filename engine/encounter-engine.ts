@@ -250,13 +250,9 @@ function generateOutputBody(
 }
 
 export function createEncounter(pathway: ClinicalPathway, answers: ConsultationAnswers): EncounterState {
-  const now = new Date().toISOString();
   return {
-    id: `encounter-${Date.now()}`,
     pathway,
-    answers,
-    startedAt: now,
-    updatedAt: now
+    answers
   };
 }
 

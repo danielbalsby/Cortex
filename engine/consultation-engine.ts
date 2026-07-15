@@ -10,6 +10,15 @@ export type AnswerUpdateResult =
   | { accepted: true; answers: ConsultationAnswers }
   | { accepted: false; answers: ConsultationAnswers; issue: ValidationIssue };
 
+export type HiddenAnswerPruningResult =
+  | { stable: true; answers: ConsultationAnswers }
+  | { stable: false; answers: ConsultationAnswers; issue: ValidationIssue };
+
+export interface HiddenAnswerPruningOptions {
+  fallbackAnswers?: ConsultationAnswers;
+  maxIterations?: number;
+}
+
 export function createInitialAnswers(pathway: ClinicalPathway): ConsultationAnswers {
   const validation = validateClinicalPathway(pathway);
   if (!validation.valid) {
@@ -32,19 +41,48 @@ export function pruneHiddenAnswers(
   pathway: ClinicalPathway,
   answers: ConsultationAnswers
 ): ConsultationAnswers {
-  let changed = false;
-  const next = { ...answers };
+  const result = stabilizeHiddenAnswers(pathway, answers);
+  if (!result.stable) throw new Error(result.issue.message);
+  return result.answers;
+}
 
-  for (const section of pathway.sections) {
-    for (const field of section.fields) {
-      if (!isFieldVisibleInSection(section, field, answers) && field.id in next) {
-        delete next[field.id];
-        changed = true;
+export function stabilizeHiddenAnswers(
+  pathway: ClinicalPathway,
+  answers: ConsultationAnswers,
+  options: HiddenAnswerPruningOptions = {}
+): HiddenAnswerPruningResult {
+  const fieldCount = pathway.sections.reduce((count, section) => count + section.fields.length, 0);
+  const maxIterations = options.maxIterations ?? fieldCount + 1;
+  const fallbackAnswers = options.fallbackAnswers ?? answers;
+  let current = answers;
+
+  for (let iteration = 0; iteration < maxIterations; iteration += 1) {
+    let next = current;
+    let changed = false;
+
+    for (const section of pathway.sections) {
+      for (const field of section.fields) {
+        if (!isFieldVisibleInSection(section, field, current) && field.id in current) {
+          if (!changed) next = { ...current };
+          delete next[field.id];
+          changed = true;
+        }
       }
     }
+
+    if (!changed) return { stable: true, answers: current };
+    current = next;
   }
 
-  return changed ? next : answers;
+  return {
+    stable: false,
+    answers: fallbackAnswers,
+    issue: {
+      code: "answers.pruning-did-not-converge",
+      message: `Hidden-answer pruning did not reach a stable fixed point within ${maxIterations} iterations.`,
+      path: "answers"
+    }
+  };
 }
 
 export function setConsultationAnswer(
@@ -59,5 +97,9 @@ export function setConsultationAnswer(
   }
 
   const updated = { ...current, [fieldId]: validation.value };
-  return { accepted: true, answers: pruneHiddenAnswers(pathway, updated) };
+  const pruning = stabilizeHiddenAnswers(pathway, updated, { fallbackAnswers: current });
+  if (!pruning.stable) {
+    return { accepted: false, answers: current, issue: pruning.issue };
+  }
+  return { accepted: true, answers: pruning.answers };
 }

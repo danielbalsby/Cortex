@@ -2,12 +2,12 @@ import { describe, expect, it } from "vitest";
 
 import { kneePainPathway } from "@/clinical/pathways/knee-pain";
 import type { ConsultationAnswers } from "@/clinical/types";
-import type { EncounterState } from "@/encounter/types";
 import {
   createInitialAnswers,
   setConsultationAnswer
 } from "@/engine/consultation-engine";
 import {
+  createEncounter,
   generateAllOutputs,
   generateEncounterOutput
 } from "@/engine/encounter-engine";
@@ -31,14 +31,8 @@ function update(
   return result.answers;
 }
 
-function fixedEncounter(answers: ConsultationAnswers): EncounterState {
-  return {
-    id: "characterization-encounter",
-    pathway: kneePainPathway,
-    answers,
-    startedAt: "2026-07-15T00:00:00.000Z",
-    updatedAt: "2026-07-15T00:00:00.000Z"
-  };
+function encounterFor(answers: ConsultationAnswers) {
+  return createEncounter(kneePainPathway, answers);
 }
 
 function activeOutputIds(answers: ConsultationAnswers) {
@@ -66,7 +60,7 @@ describe("initial consultation state", () => {
     const answers = createInitialAnswers(kneePainPathway);
 
     expect(generatePSOAP(kneePainPathway, answers)).toBe("");
-    expect(generateAllOutputs(fixedEncounter(answers))).toEqual([
+    expect(generateAllOutputs(encounterFor(answers))).toEqual([
       expect.objectContaining({ id: "journal", text: "" })
     ]);
   });
@@ -130,7 +124,7 @@ describe("hidden-answer pruning", () => {
 
     const traumaNo = update(answers, "trauma", "no");
     const text = generatePSOAP(kneePainPathway, traumaNo);
-    const journal = generateAllOutputs(fixedEncounter(traumaNo))[0];
+    const journal = generateAllOutputs(encounterFor(traumaNo))[0];
 
     expect(traumaNo).not.toHaveProperty("trauma-mechanism");
     expect(traumaNo).not.toHaveProperty("trauma-immediate-swelling");
@@ -209,7 +203,7 @@ describe("dynamic outputs", () => {
     const answers = createInitialAnswers(kneePainPathway);
 
     expect(activeOutputIds(answers)).toEqual(["journal"]);
-    expect(generateAllOutputs(fixedEncounter(answers)).map((output) => output.id)).toEqual([
+    expect(generateAllOutputs(encounterFor(answers)).map((output) => output.id)).toEqual([
       "journal"
     ]);
   });
@@ -223,12 +217,12 @@ describe("dynamic outputs", () => {
     const removed = update(selected, "plan-actions", []);
 
     expect(activeOutputIds(selected)).toEqual(["journal", outputId]);
-    expect(generateAllOutputs(fixedEncounter(selected)).map((output) => output.id)).toEqual([
+    expect(generateAllOutputs(encounterFor(selected)).map((output) => output.id)).toEqual([
       "journal",
       outputId
     ]);
     expect(activeOutputIds(removed)).toEqual(["journal"]);
-    expect(generateAllOutputs(fixedEncounter(removed)).map((output) => output.id)).toEqual([
+    expect(generateAllOutputs(encounterFor(removed)).map((output) => output.id)).toEqual([
       "journal"
     ]);
   });
@@ -276,8 +270,8 @@ describe("output readiness", () => {
 
   it("marks an empty journal as missing data with deterministic messages", () => {
     const answers = createInitialAnswers(kneePainPathway);
-    const first = generateEncounterOutput(fixedEncounter(answers), journalDefinition);
-    const second = generateEncounterOutput(fixedEncounter(answers), journalDefinition);
+    const first = generateEncounterOutput(encounterFor(answers), journalDefinition);
+    const second = generateEncounterOutput(encounterFor(answers), journalDefinition);
 
     expect(first.status).toBe("missing-data");
     expect(first.text).toBe("");
@@ -291,7 +285,7 @@ describe("output readiness", () => {
 
   it("marks a substantively incomplete journal as missing data", () => {
     const sideOnly = update(createInitialAnswers(kneePainPathway), "side", "right");
-    const journal = generateEncounterOutput(fixedEncounter(sideOnly), journalDefinition);
+    const journal = generateEncounterOutput(encounterFor(sideOnly), journalDefinition);
 
     expect(journal.status).toBe("missing-data");
     expect(journal.missing).toContain("klinisk problem, side og forløb");
@@ -304,7 +298,7 @@ describe("output readiness", () => {
     answers = update(answers, "onset", "acute");
     answers = update(answers, "assessment", "uncertain");
 
-    const journal = generateEncounterOutput(fixedEncounter(answers), journalDefinition);
+    const journal = generateEncounterOutput(encounterFor(answers), journalDefinition);
 
     expect(journal.status).toBe("ready");
     expect(journal.missing).toEqual([]);
@@ -331,18 +325,22 @@ describe("determinism of pure derived services", () => {
         suggestions: rankAssessmentSuggestions(kneePainPathway, answers),
         activeOutputs: getActiveOutputs(kneePainPathway, answers),
         clinicalText: generatePSOAP(kneePainPathway, answers),
-        generatedOutputs: generateAllOutputs(fixedEncounter(answers))
+        generatedOutputs: generateAllOutputs(encounterFor(answers))
       };
     }
 
     expect(derive()).toEqual(derive());
   });
 
-  it.todo(
-    "prunes cascading visibility dependencies to a stable fixed point (pending the excluded fixed-point refactor)"
-  );
+  it("keeps transient encounter derivation stable for identical inputs", () => {
+    const answers = createInitialAnswers(kneePainPathway);
+    const first = createEncounter(kneePainPathway, answers);
+    const second = createEncounter(kneePainPathway, answers);
 
-  it.todo(
-    "keeps transient encounter identity stable for identical inputs (pending the excluded identity refactor)"
-  );
+    expect(first).toEqual(second);
+    expect(first).toEqual({ pathway: kneePainPathway, answers });
+    expect(first).not.toHaveProperty("id");
+    expect(first).not.toHaveProperty("startedAt");
+    expect(first).not.toHaveProperty("updatedAt");
+  });
 });
