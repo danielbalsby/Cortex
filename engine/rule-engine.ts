@@ -6,7 +6,7 @@ export function matchesCondition(condition: RuleCondition, answers: Consultation
   if (condition.operator === "includes") {
     return Array.isArray(actual) && actual.includes(String(condition.value));
   }
-  return Boolean(actual);
+  return Array.isArray(actual) ? actual.length > 0 : Boolean(actual);
 }
 
 export function evaluateRules(pathway: ClinicalPathway, answers: ConsultationAnswers) {
