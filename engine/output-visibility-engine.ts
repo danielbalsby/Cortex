@@ -14,6 +14,7 @@ export function isOutputActive(
   return output.activeWhen.every((condition) => matchesCondition(condition, answers));
 }
 
+/** Low-level pure evaluation. `answers` must already be fully validated and stabilised. */
 export function getActiveOutputs(
   pathway: ClinicalPathway,
   answers: ConsultationAnswers

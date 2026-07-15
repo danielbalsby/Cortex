@@ -122,24 +122,28 @@ export const kneePainPathway: ClinicalPathway = {
       id: "journal",
       label: "PSOAP-journal",
       type: "journal",
+      generatorId: "core.psoap",
       alwaysActive: true
     },
     {
       id: "physiotherapy-referral",
       label: "Fysioterapihenvisning",
       type: "physiotherapy-referral",
+      generatorId: "knee.physiotherapy-referral",
       activeWhen: [{ fieldId: "plan-actions", operator: "includes", value: "physio" }]
     },
     {
       id: "xray-referral",
       label: "Røntgenhenvisning – knæ",
       type: "xray-referral",
+      generatorId: "knee.xray-referral",
       activeWhen: [{ fieldId: "plan-actions", operator: "includes", value: "xray" }]
     },
     {
       id: "orthopedic-referral",
       label: "Ortopædkirurgisk henvisning",
       type: "orthopedic-referral",
+      generatorId: "knee.orthopedic-referral",
       activeWhen: [{ fieldId: "plan-actions", operator: "includes", value: "referral" }]
     }
   ],
@@ -157,7 +161,8 @@ export const kneePainPathway: ClinicalPathway = {
         { fieldId: "trauma", operator: "equals", value: "no" },
         { fieldId: "onset", operator: "equals", value: "gradual" },
         { fieldId: "duration", operator: "equals", value: "months" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "meniscus",
@@ -166,7 +171,8 @@ export const kneePainPathway: ClinicalPathway = {
       conditions: [
         { fieldId: "locking", operator: "equals", value: "yes" },
         { fieldId: "joint-line", operator: "equals", value: "medial" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "ligament",
@@ -175,7 +181,8 @@ export const kneePainPathway: ClinicalPathway = {
       conditions: [
         { fieldId: "trauma", operator: "equals", value: "yes" },
         { fieldId: "stability", operator: "equals", value: "unstable" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "septic",
@@ -185,7 +192,8 @@ export const kneePainPathway: ClinicalPathway = {
         { fieldId: "fever", operator: "equals", value: "yes" },
         { fieldId: "swelling", operator: "equals", value: "marked" },
         { fieldId: "rom", operator: "equals", value: "marked" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "fracture",
@@ -194,7 +202,8 @@ export const kneePainPathway: ClinicalPathway = {
       conditions: [
         { fieldId: "trauma", operator: "equals", value: "yes" },
         { fieldId: "weight-bearing", operator: "equals", value: "none" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     },
     {
       value: "inflammatory",
@@ -204,7 +213,8 @@ export const kneePainPathway: ClinicalPathway = {
         { fieldId: "redness", operator: "equals", value: "yes" },
         { fieldId: "warmth", operator: "equals", value: "yes" },
         { fieldId: "swelling", operator: "equals", value: "moderate" }
-      ]
+      ],
+      displayPolicy: { requireAll: true }
     }
   ],
   planRecommendations: [

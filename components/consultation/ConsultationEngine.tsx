@@ -11,13 +11,14 @@ export function ConsultationEngine({ pathway }: { pathway: ClinicalPathway }) {
   const [copied, setCopied] = useState(false);
   const note = useMemo(() => generatePSOAP(pathway, answers), [pathway, answers]);
   const alerts = useMemo(() => evaluateRules(pathway, answers), [pathway, answers]);
-  const update = (fieldId: string, value: string | string[]) => setAnswers(current => setConsultationAnswer(current, fieldId, value));
+  const update = (fieldId: string, value: string | string[]) =>
+    setAnswers((current) => setConsultationAnswer(current, fieldId, value, pathway).answers);
   async function copy() { await navigator.clipboard.writeText(note); setCopied(true); window.setTimeout(() => setCopied(false), 1200); }
 
   return <section className="coreGrid">
     <div className="coreForm">
       <div className="coreIntro"><div><span>CLINICAL PATHWAY</span><h1>{pathway.title}</h1><p>{pathway.description}</p></div><button className="secondaryButton" onClick={() => setAnswers(createInitialAnswers(pathway))}><RotateCcw size={16}/>Nulstil</button></div>
-      {alerts.length > 0 && <div className="alertsStack">{alerts.map(alert => <div key={alert.title + alert.message} className={`clinicalAlert ${alert.severity}`}><AlertTriangle size={18}/><div><strong>{alert.title}</strong><p>{alert.message}</p></div></div>)}</div>}
+      {alerts.length > 0 && <div className="alertsStack">{alerts.map(evaluatedRule => <div key={evaluatedRule.ruleId} className={`clinicalAlert ${evaluatedRule.alert.severity}`}><AlertTriangle size={18}/><div><strong>{evaluatedRule.alert.title}</strong><p>{evaluatedRule.alert.message}</p></div></div>)}</div>}
       {pathway.sections.map(section => <section key={section.id} className="coreSection"><div className="coreSectionTitle"><span>{section.kind.toUpperCase()}</span><h2>{section.title}</h2></div><div className="coreFields">{section.fields.map(field => <FieldRenderer key={field.id} field={field} value={answers[field.id]} onChange={value => update(field.id, value)}/>)}</div></section>)}
     </div>
     <aside className="coreOutput"><div className="outputHeader"><div><span>LIVE PSOAP</span><h2>Journalnotat</h2></div><small>{note.split(/\s+/).filter(Boolean).length} ord</small></div><pre className="psoapPreview">{note}</pre><button className="copyButton coreCopy" onClick={copy}>{copied ? <Check size={18}/> : <Clipboard size={18}/>} {copied ? "Kopieret" : "Kopiér samlet journal"}</button><p className="safetyNote">Kontrollér altid notatet før indsættelse i journalen.</p></aside>

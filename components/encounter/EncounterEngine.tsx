@@ -16,10 +16,10 @@ import {
 } from "lucide-react";
 import type { ClinicalField, ClinicalOutputType, ClinicalPathway, ConsultationAnswers } from "@/clinical/types";
 import { createInitialAnswers, setConsultationAnswer } from "@/engine/consultation-engine";
-import { evaluateRules } from "@/engine/rule-engine";
-import { getVisibleFields, getVisibleSections } from "@/engine/visibility-engine";
-import { createEncounter, generateAllOutputs } from "@/engine/encounter-engine";
-import { getPlanRecommendation, rankAssessmentSuggestions } from "@/engine/suggestion-engine";
+import { getVisibleFields } from "@/engine/visibility-engine";
+import type { OutputGeneratorRegistry } from "@/engine/output-generator-registry";
+import { getPlanRecommendation } from "@/engine/suggestion-engine";
+import { deriveValidatedWorkflow } from "@/engine/workflow-engine";
 
 const OUTPUT_ICONS: Record<ClinicalOutputType, typeof FileText> = {
   journal: FileText,
@@ -28,33 +28,52 @@ const OUTPUT_ICONS: Record<ClinicalOutputType, typeof FileText> = {
   "orthopedic-referral": Stethoscope
 };
 
-export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
-  const [answers, setAnswers] = useState<ConsultationAnswers>(() => createInitialAnswers(pathway));
+export function EncounterEngine({
+  pathway,
+  outputGeneratorRegistry
+}: {
+  pathway: ClinicalPathway;
+  outputGeneratorRegistry: OutputGeneratorRegistry;
+}) {
+  const validationOptions = useMemo(
+    () => ({ availableGeneratorIds: outputGeneratorRegistry.generatorIds }),
+    [outputGeneratorRegistry]
+  );
+  const [answers, setAnswers] = useState<ConsultationAnswers>(() =>
+    createInitialAnswers(pathway, validationOptions)
+  );
   const [selectedOutputId, setSelectedOutputId] = useState("journal");
   const [copied, setCopied] = useState(false);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(pathway.sections.map((section) => [section.id, true]))
   );
 
-  const encounter = useMemo(() => createEncounter(pathway, answers), [pathway, answers]);
-  const outputs = useMemo(() => generateAllOutputs(encounter), [encounter]);
+  const workflow = useMemo(() => {
+    const result = deriveValidatedWorkflow(pathway, answers, outputGeneratorRegistry);
+    if (!result.valid) {
+      const summary = result.issues
+        .map((issue) => `${issue.code}${issue.path ? ` at ${issue.path}` : ""}`)
+        .join("; ");
+      throw new Error(`Invalid clinical workflow state for "${pathway.id}": ${summary}`);
+    }
+    return result.workflow;
+  }, [pathway, answers, outputGeneratorRegistry]);
+  const validatedAnswers = workflow.encounter.answers;
+  const outputs = workflow.outputs;
   const activeOutputId = outputs.some((item) => item.id === selectedOutputId)
     ? selectedOutputId
     : outputs[0]?.id ?? "journal";
   const output = outputs.find((item) => item.id === activeOutputId) ?? outputs[0];
-  const alerts = useMemo(() => evaluateRules(pathway, answers), [pathway, answers]);
-  const assessmentSuggestions = useMemo(
-    () => rankAssessmentSuggestions(pathway, answers).slice(0, 4),
-    [pathway, answers]
-  );
-  const selectedAssessment = String(answers["assessment"] ?? "");
+  const alerts = workflow.alerts;
+  const assessmentSuggestions = workflow.suggestions.slice(0, 4);
+  const selectedAssessment = String(validatedAnswers["assessment"] ?? "");
   const planRecommendation = useMemo(
     () => getPlanRecommendation(pathway, selectedAssessment),
     [pathway, selectedAssessment]
   );
 
   function update(fieldId: string, value: string | string[]) {
-    setAnswers((current) => setConsultationAnswer(current, fieldId, value, pathway));
+    setAnswers((current) => setConsultationAnswer(current, fieldId, value, pathway).answers);
   }
 
   async function copyOutput() {
@@ -65,13 +84,15 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
   }
 
   function applyAssessment(value: string) {
-    setAnswers((current) => setConsultationAnswer(current, "assessment", value, pathway));
+    setAnswers((current) =>
+      setConsultationAnswer(current, "assessment", value, pathway).answers
+    );
   }
 
   function applyRecommendedPlan() {
     if (!planRecommendation) return;
     setAnswers((current) =>
-      setConsultationAnswer(current, "plan-actions", planRecommendation.actions, pathway)
+      setConsultationAnswer(current, "plan-actions", planRecommendation.actions, pathway).answers
     );
   }
 
@@ -91,14 +112,17 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
             <h1>{pathway.title}</h1>
             <p>Dokumentér én gang. Genbrug oplysningerne i alle relevante outputs.</p>
           </div>
-          <button className="secondaryButton" onClick={() => setAnswers(createInitialAnswers(pathway))}>
+          <button
+            className="secondaryButton"
+            onClick={() => setAnswers(createInitialAnswers(pathway, validationOptions))}
+          >
             <RotateCcw size={16} /> Nulstil
           </button>
         </div>
 
 
         <div className="clinicalCanvas">
-          {getVisibleSections(pathway, answers).map((section) => {
+          {workflow.visibleSections.map((section) => {
             const isOpen = openSections[section.id];
             const isAssessment = section.kind === "assessment";
 
@@ -144,7 +168,7 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
                                 <strong>{suggestion.label}</strong>
                                 <p>{suggestion.reason}</p>
                               </div>
-                              <span>{suggestion.matchedConditions} af {suggestion.conditions.length} støttende fund</span>
+                              <span>{suggestion.supportCount} af {suggestion.totalSupportingConditions} støttende fund</span>
                             </button>
                           ))}
                         </div>
@@ -152,11 +176,11 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
                     )}
 
                     <div className="coreFields">
-                      {getVisibleFields(section, answers).map((field) => (
+                      {getVisibleFields(section, validatedAnswers).map((field) => (
                         <FieldRenderer
                           key={field.id}
                           field={field}
-                          value={answers[field.id]}
+                          value={validatedAnswers[field.id]}
                           onChange={(value) => update(field.id, value)}
                         />
                       ))}
@@ -239,10 +263,13 @@ export function EncounterEngine({ pathway }: { pathway: ClinicalPathway }) {
 
             {alerts.length ? (
               <div className="reviewItems">
-                {alerts.map((alert) => (
-                  <div key={alert.title + alert.message} className={`reviewItem ${alert.severity}`}>
-                    <strong>{alert.title}</strong>
-                    <p>{alert.message}</p>
+                {alerts.map((evaluatedRule) => (
+                  <div
+                    key={evaluatedRule.ruleId}
+                    className={`reviewItem ${evaluatedRule.alert.severity}`}
+                  >
+                    <strong>{evaluatedRule.alert.title}</strong>
+                    <p>{evaluatedRule.alert.message}</p>
                   </div>
                 ))}
               </div>
