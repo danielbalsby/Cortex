@@ -149,7 +149,7 @@ export function EncounterEngine({
                 {isOpen && (
                   <div className="clinicalCardBody">
                     {isAssessment && assessmentSuggestions.length > 0 && (
-                      <div className="inlineSuggestionPanel">
+                      <div className="inlineSuggestionPanel" role="region" aria-label="Klinisk sparring">
                         <div className="suggestionHeading">
                           <div>
                             <span>KLINISK SPARRING</span>
@@ -163,6 +163,7 @@ export function EncounterEngine({
                               key={suggestion.value}
                               className={`assessmentSuggestion ${selectedAssessment === suggestion.value ? "active" : ""}`}
                               onClick={() => applyAssessment(suggestion.value)}
+                              aria-pressed={selectedAssessment === suggestion.value}
                             >
                               <div>
                                 <strong>{suggestion.label}</strong>
@@ -214,7 +215,7 @@ export function EncounterEngine({
           <small>{output ? output.text.split(/\s+/).filter(Boolean).length : 0} ord</small>
         </div>
 
-        <div className="outputsOverview">
+        <nav className="outputsOverview" aria-label="Aktive outputs">
           {outputs.map((item) => {
             const Icon = OUTPUT_ICONS[item.kind];
             const active = item.id === activeOutputId;
@@ -223,6 +224,7 @@ export function EncounterEngine({
                 key={item.id}
                 className={`outputTask ${active ? "active" : ""}`}
                 onClick={() => setSelectedOutputId(item.id)}
+                aria-pressed={active}
               >
                 <Icon size={18} />
                 <div>
@@ -233,7 +235,7 @@ export function EncounterEngine({
               </button>
             );
           })}
-        </div>
+        </nav>
 
         <div className="cockpitScroll">
           {output && (
@@ -250,7 +252,7 @@ export function EncounterEngine({
               </div>
             )}
 
-            <pre className="psoapPreview encounterPreview">{output.text}</pre>
+            <pre className="psoapPreview encounterPreview" aria-label="Aktivt outputudkast">{output.text}</pre>
             {output.rationale && <p className="outputRationale">{output.rationale}</p>}
           </section>
           )}
@@ -318,11 +320,12 @@ export function EncounterEngine({
 }
 
 function FieldRenderer({ field, value, onChange }: { field: ClinicalField; value: string | string[]; onChange: (value: string | string[]) => void }) {
+  const labelId = `field-${field.id}-label`;
   if (field.type === "short-text") {
     const isAssessment = field.id === "assessment-note";
     return (
       <label className={`coreField textField ${isAssessment ? "assessmentTextField" : ""}`}>
-        <span>{field.label}</span>
+        <span id={labelId}>{field.label}</span>
         {isAssessment ? (
           <textarea
             value={String(value ?? "")}
@@ -344,10 +347,10 @@ function FieldRenderer({ field, value, onChange }: { field: ClinicalField; value
   }
   if (field.type === "multi-choice") {
     const selected = Array.isArray(value) ? value : [];
-    return <div className="coreField"><span>{field.label}</span><div className="chipGroup">{field.options?.map((option) => {
+    return <div className="coreField" role="group" aria-labelledby={labelId}><span id={labelId}>{field.label}</span><div className="chipGroup">{field.options?.map((option) => {
       const active = selected.includes(option.value);
-      return <button key={option.value} className={`clinicalChip ${active ? "selected" : ""}`} onClick={() => onChange(active ? selected.filter((item) => item !== option.value) : [...selected, option.value])}>{option.label}</button>;
+      return <button key={option.value} className={`clinicalChip ${active ? "selected" : ""}`} aria-pressed={active} onClick={() => onChange(active ? selected.filter((item) => item !== option.value) : [...selected, option.value])}>{option.label}</button>;
     })}</div></div>;
   }
-  return <div className="coreField"><span>{field.label}</span><div className="chipGroup">{field.options?.map((option) => <button key={option.value} className={`clinicalChip ${value === option.value ? "selected" : ""}`} onClick={() => onChange(option.value)}>{option.label}</button>)}</div></div>;
+  return <div className="coreField" role="group" aria-labelledby={labelId}><span id={labelId}>{field.label}</span><div className="chipGroup">{field.options?.map((option) => <button key={option.value} className={`clinicalChip ${value === option.value ? "selected" : ""}`} aria-pressed={value === option.value} onClick={() => onChange(option.value)}>{option.label}</button>)}</div></div>;
 }

@@ -6,6 +6,8 @@ export default defineConfig({
   },
   test: {
     environment: "node",
-    globals: false
+    globals: false,
+    include: ["engine/**/*.test.ts", "clinical/**/*.test.ts"],
+    exclude: ["e2e/**"]
   }
 });

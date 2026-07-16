@@ -163,6 +163,8 @@ Every implementation must pass:
 
 Additional tests are added whenever appropriate.
 
+The responsibilities of engine tests, browser regression tests, manual review and clinical validation are defined in the [Testing Strategy](./TESTING-STRATEGY.md).
+
 A feature is not complete because it works.
 
 It is complete when it is reproducibly verified.
