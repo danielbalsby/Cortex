@@ -1,3 +1,4 @@
+````md
 # Cortex Testing Strategy
 
 **Status:** Active  
@@ -226,3 +227,180 @@ For example:
 
 ```text
 docs/clinical/pathways/KNEE-001-Knee-Pain.md
+````
+
+These scenarios should cover:
+
+* empty consultation behavior
+* conditional branches
+* safety alerts
+* assessment suggestions
+* plan behavior
+* generated outputs
+* stale-data removal
+* missing-information feedback
+* known clinical limitations
+
+Generic engine tests should not replace pathway-specific scenarios.
+
+---
+
+## Test execution
+
+### Fast development verification
+
+Run during normal implementation:
+
+```bash
+npm run test
+npm run typecheck
+```
+
+### Standard code verification
+
+Run before completing a code slice:
+
+```bash
+npm run check
+```
+
+This should include:
+
+1. Type checking
+2. Vitest
+3. Production build
+
+### Browser verification
+
+Run when user-facing behavior changes:
+
+```bash
+npm run test:e2e
+```
+
+### Release-candidate verification
+
+Before merging a significant milestone into `main`, run:
+
+```bash
+npm run check:release
+```
+
+The release command should include:
+
+1. Type checking
+2. Vitest
+3. Production build
+4. Playwright browser tests
+
+The exact scripts are maintained in `package.json`.
+
+---
+
+## When tests are required
+
+Tests must be added or updated when a change affects:
+
+* engine contracts
+* visibility
+* consultation state
+* validation
+* rules
+* suggestions
+* outputs
+* readiness
+* pathway behavior
+* user-facing workflow
+* a previously corrected defect
+
+A bug fix is incomplete until a regression test demonstrates the previous failure and the corrected behavior.
+
+---
+
+## Test data policy
+
+All automated and manual test data must be synthetic.
+
+Tests must not contain:
+
+* CPR numbers
+* names of real patients
+* real contact information
+* identifiable clinical narratives
+* copied patient records
+
+Synthetic clinical content should remain realistic enough to exercise the workflow without representing a real individual.
+
+---
+
+## Test design principles
+
+Cortex tests should be:
+
+* deterministic
+* focused
+* readable
+* clinically explicit
+* independent
+* fast enough for their intended layer
+* resistant to irrelevant UI refactoring
+* sensitive to safety-relevant behavior changes
+
+Avoid:
+
+* broad snapshots with unclear meaning
+* tests that merely repeat implementation structure
+* sleeps and arbitrary timing assumptions
+* shared mutable test state
+* hidden test ordering dependencies
+* weakening production behavior to make tests pass
+
+---
+
+## Failure handling
+
+When a test fails:
+
+1. Determine whether the implementation or the expectation is wrong.
+2. Do not automatically change clinical behavior to satisfy the test.
+3. Compare the failure with the relevant:
+
+   * pathway specification
+   * RFC
+   * clinical-safety principles
+   * acceptance scenario
+4. Correct the implementation, test or governing document deliberately.
+5. Record safety-relevant defects with regression coverage.
+
+---
+
+## Definition of verified
+
+A significant Cortex change is verified only when:
+
+* relevant Vitest tests pass
+* relevant Playwright tests pass
+* typecheck passes
+* production build passes
+* architecture review is complete
+* manual Clinical Design Review is complete
+* documentation reflects current behavior
+
+Clinical content additionally requires evidence review and pathway-specific clinical sign-off before clinical evaluation.
+
+---
+
+## Relationship to the development workflow
+
+This strategy supports:
+
+```text
+docs/governance/DEVELOPMENT-WORKFLOW.md
+```
+
+The development workflow defines when verification occurs.
+
+This document defines what each verification layer is responsible for.
+
+```
+```
