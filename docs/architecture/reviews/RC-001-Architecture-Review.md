@@ -1,6 +1,6 @@
 # RC-001 – Architecture Review
 
-**Status:** In Review  
+**Status:** Approved with observations  
 **Release:** Foundation 1.0  
 **Owner:** Cortex  
 **Last reviewed:** 2026-07-16
@@ -156,10 +156,10 @@ TD-001, TD-002 and TD-003 were the narrowly scoped cleanup required before the n
 
 # Sign-off
 
-Architecture reviewer:
+Architecture reviewer: Cortex Architecture Review
 
-Date:
+Date: 2026-07-16
 
-Commit:
+Commit: 35e60e2
 
-Tag:
+Tag: foundation-1.0
