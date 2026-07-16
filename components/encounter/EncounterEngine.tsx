@@ -42,7 +42,9 @@ export function EncounterEngine({
   const [answers, setAnswers] = useState<ConsultationAnswers>(() =>
     createInitialAnswers(pathway, validationOptions)
   );
-  const [selectedOutputId, setSelectedOutputId] = useState("journal");
+  const [selectedOutputId, setSelectedOutputId] = useState(
+    pathway.workflowRoles.primaryOutputId
+  );
   const [copied, setCopied] = useState(false);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(pathway.sections.map((section) => [section.id, true]))
@@ -62,11 +64,15 @@ export function EncounterEngine({
   const outputs = workflow.outputs;
   const activeOutputId = outputs.some((item) => item.id === selectedOutputId)
     ? selectedOutputId
-    : outputs[0]?.id ?? "journal";
+    : outputs[0]?.id ?? pathway.workflowRoles.primaryOutputId;
   const output = outputs.find((item) => item.id === activeOutputId) ?? outputs[0];
   const alerts = workflow.alerts;
   const assessmentSuggestions = workflow.suggestions.slice(0, 4);
-  const selectedAssessment = String(validatedAnswers["assessment"] ?? "");
+  const assessmentFieldId = pathway.workflowRoles.assessmentFieldId;
+  const planActionsFieldId = pathway.workflowRoles.planActionsFieldId;
+  const selectedAssessment = assessmentFieldId
+    ? String(validatedAnswers[assessmentFieldId] ?? "")
+    : "";
   const planRecommendation = useMemo(
     () => getPlanRecommendation(pathway, selectedAssessment),
     [pathway, selectedAssessment]
@@ -84,15 +90,16 @@ export function EncounterEngine({
   }
 
   function applyAssessment(value: string) {
+    if (!assessmentFieldId) return;
     setAnswers((current) =>
-      setConsultationAnswer(current, "assessment", value, pathway).answers
+      setConsultationAnswer(current, assessmentFieldId, value, pathway).answers
     );
   }
 
   function applyRecommendedPlan() {
-    if (!planRecommendation) return;
+    if (!planRecommendation || !planActionsFieldId) return;
     setAnswers((current) =>
-      setConsultationAnswer(current, "plan-actions", planRecommendation.actions, pathway).answers
+      setConsultationAnswer(current, planActionsFieldId, planRecommendation.actions, pathway).answers
     );
   }
 
@@ -124,7 +131,9 @@ export function EncounterEngine({
         <div className="clinicalCanvas">
           {workflow.visibleSections.map((section) => {
             const isOpen = openSections[section.id];
-            const isAssessment = section.kind === "assessment";
+            const isAssessment = assessmentFieldId
+              ? section.fields.some((field) => field.id === assessmentFieldId)
+              : false;
 
             return (
               <section

@@ -130,7 +130,7 @@ Aktiveres kun, når `plan-actions` indeholder `referral`. Udkastet samler side, 
 
 Alle outputs er udkast. De kopieres til clipboard og skal kontrolleres af lægen før brug i klinikkens eksisterende EPJ. Cortex sender eller bestiller ikke noget.
 
-Outputdefinitionerne angiver eksplicit en generator. PSOAP-generatoren er generisk, mens henvisningsgeneratorerne og deres knæspecifikke feltkoblinger ligger sammen med pathwayens kliniske implementering. Den generiske encounter engine vælger ikke output ud fra knæspecifikke felt-ID'er.
+Outputdefinitionerne angiver eksplicit en generator. Den generiske PSOAP-rendering genbruges fra engine-laget, mens den registrerede `knee.psoap`-generator ejer pathwayens knæspecifikke readiness-krav. Henvisningsgeneratorerne og deres knæspecifikke feltkoblinger ligger også sammen med pathwayens kliniske implementering. Den generiske encounter engine vælger ikke output ud fra knæspecifikke felt-ID'er.
 
 ## Readiness og manglende oplysninger
 

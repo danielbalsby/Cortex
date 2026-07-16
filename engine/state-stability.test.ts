@@ -45,6 +45,10 @@ function cascadingPathway(): ClinicalPathway {
     category: "Test",
     version: "1.0.0",
     description: "Non-clinical fixed-point fixture.",
+    workflowRoles: {
+      assessmentFieldId: "controller",
+      primaryOutputId: "journal"
+    },
     sections: [
       {
         id: "main",
@@ -75,7 +79,7 @@ function cascadingPathway(): ClinicalPathway {
         id: "journal",
         label: "Journal",
         type: "journal",
-        generatorId: "core.psoap",
+        generatorId: "knee.psoap",
         alwaysActive: true
       },
       {

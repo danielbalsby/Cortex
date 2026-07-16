@@ -41,6 +41,10 @@ function syntheticPathway(): ClinicalPathway {
     category: "Test",
     version: "1.0.0",
     description: "Non-clinical validation fixture.",
+    workflowRoles: {
+      assessmentFieldId: "trigger",
+      primaryOutputId: "journal"
+    },
     sections: [
       {
         id: "main",
@@ -115,6 +119,75 @@ describe("structural pathway validation", () => {
         availableGeneratorIds: cortexOutputGeneratorRegistry.generatorIds
       })
     ).toEqual({ valid: true, issues: [] });
+  });
+
+  it("rejects workflow roles that reference unknown fields or outputs", () => {
+    const invalidAssessment = syntheticPathway();
+    invalidAssessment.workflowRoles.assessmentFieldId = "missing-assessment";
+    const invalidPlan = syntheticPathway();
+    invalidPlan.workflowRoles.planActionsFieldId = "missing-plan";
+    const invalidOutput = syntheticPathway();
+    invalidOutput.workflowRoles.primaryOutputId = "missing-output";
+
+    expect(issueCodes(invalidAssessment)).toContain(
+      "workflow-roles.unknown-assessment-field"
+    );
+    expect(issueCodes(invalidPlan)).toContain("workflow-roles.unknown-plan-actions-field");
+    expect(issueCodes(invalidOutput)).toContain("workflow-roles.unknown-primary-output");
+  });
+
+  it("requires the plan-actions role to reference a multi-choice field", () => {
+    const pathway = syntheticPathway();
+    pathway.workflowRoles.planActionsFieldId = "trigger";
+
+    expect(issueCodes(pathway)).toContain("workflow-roles.incompatible-plan-actions-field");
+  });
+
+  it("requires the assessment role to reference a single-choice field", () => {
+    const pathway = syntheticPathway();
+    pathway.workflowRoles.assessmentFieldId = "choices";
+
+    expect(issueCodes(pathway)).toContain(
+      "workflow-roles.incompatible-assessment-field"
+    );
+  });
+
+  it("rejects duplicate field-role assignment", () => {
+    const pathway = syntheticPathway();
+    pathway.workflowRoles.planActionsFieldId = "trigger";
+
+    expect(issueCodes(pathway)).toContain("workflow-roles.duplicate-field-role");
+  });
+
+  it("requires assessment role only when suggestions use it", () => {
+    const withSuggestions = syntheticPathway();
+    delete withSuggestions.workflowRoles.assessmentFieldId;
+    const withoutSuggestions = syntheticPathway();
+    withoutSuggestions.assessmentSuggestions = [];
+    delete withoutSuggestions.workflowRoles.assessmentFieldId;
+
+    expect(issueCodes(withSuggestions)).toContain(
+      "workflow-roles.assessment-required-for-suggestions"
+    );
+    expect(issueCodes(withoutSuggestions)).not.toContain(
+      "workflow-roles.assessment-required-for-suggestions"
+    );
+  });
+
+  it("requires both field roles for plan recommendations", () => {
+    const pathway = syntheticPathway();
+    pathway.assessmentSuggestions = [];
+    pathway.planRecommendations = [
+      { assessmentValue: "yes", actions: ["first"], rationale: "Fixture." }
+    ];
+    delete pathway.workflowRoles.assessmentFieldId;
+
+    expect(issueCodes(pathway)).toEqual(
+      expect.arrayContaining([
+        "workflow-roles.assessment-required-for-plan-recommendations",
+        "workflow-roles.plan-actions-required-for-plan-recommendations"
+      ])
+    );
   });
 
   it("rejects a duplicate section ID", () => {

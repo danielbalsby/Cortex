@@ -242,16 +242,10 @@ describe("pathway-defined suggestion display policy", () => {
       new URL("../components/encounter/EncounterEngine.tsx", import.meta.url),
       "utf8"
     );
-    const consultationSource = readFileSync(
-      new URL("../components/consultation/ConsultationEngine.tsx", import.meta.url),
-      "utf8"
-    );
 
-    for (const source of [encounterSource, consultationSource]) {
-      expect(source).not.toContain("requireAll");
-      expect(source).not.toContain("minimumMatchedConditions");
-      expect(source).not.toContain("suppressWhen");
-      expect(source).not.toContain("fracture");
-    }
+    expect(encounterSource).not.toContain("requireAll");
+    expect(encounterSource).not.toContain("minimumMatchedConditions");
+    expect(encounterSource).not.toContain("suppressWhen");
+    expect(encounterSource).not.toContain("fracture");
   });
 });

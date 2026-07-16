@@ -43,11 +43,19 @@ components.
 
 Output definitions declare an explicit `generatorId`. The generic encounter engine resolves that ID through an injected immutable registry. Generic generators live under `engine/output-generators/`; pathway-specific generators and the configured registry assembly live under `clinical/`.
 
+The generic PSOAP renderer remains in `engine/`. A pathway registers its own journal generator when readiness depends on pathway-specific fields; the knee pathway therefore owns `knee.psoap`.
+
+## Workflow roles
+
+Each pathway declares `workflowRoles` for the field and output identities used by the generic workspace. `primaryOutputId` is required. `assessmentFieldId` and `planActionsFieldId` are optional unless the pathway defines suggestions or plan recommendations that require them. Structural validation checks every configured role before runtime derivation.
+
 ## Validated derivation boundary
 
 The active application derives workflow behaviour only through `deriveValidatedWorkflow()`. This boundary validates the pathway against the injected generator registry, validates and clones the complete consultation snapshot, and prunes stale hidden answers to a stable fixed point before calculating visibility, alerts, suggestions, active outputs, draft text or readiness.
 
 Invalid field IDs, answer values or generator references return structured validation issues and produce no derived clinical behaviour. Lower-level pure services remain available for composition and tests, but require already validated and stabilised answers.
+
+`components/encounter/EncounterEngine.tsx` is the single active consultation renderer and consumes only the validated derivation boundary.
 
 ## Decision-support boundary
 
