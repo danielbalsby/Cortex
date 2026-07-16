@@ -36,7 +36,7 @@ function sentence(value: string) {
 }
 
 const psoapOutputGenerator = createPsoapOutputGenerator(
-  "core.psoap",
+  "knee.psoap",
   ({ answers, text }) => {
     const missing: string[] = [];
     const recordedAnswerCount = Object.values(answers).filter((answer) =>

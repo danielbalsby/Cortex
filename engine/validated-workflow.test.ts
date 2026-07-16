@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 
 import { cortexOutputGeneratorRegistry } from "@/clinical/output-generator-registry";
@@ -44,6 +44,7 @@ function cascadingPathway(): ClinicalPathway {
     category: "test",
     version: "1",
     description: "Synthetic visibility cascade without clinical defaults.",
+    workflowRoles: { primaryOutputId: "journal" },
     sections: [
       {
         id: "base",
@@ -85,7 +86,15 @@ function cascadingPathway(): ClinicalPathway {
         ]
       }
     ],
-    outputs: [],
+    outputs: [
+      {
+        id: "journal",
+        label: "Journal",
+        type: "journal",
+        generatorId: "test.journal",
+        alwaysActive: true
+      }
+    ],
     rules: []
   };
 }
@@ -267,6 +276,37 @@ describe("validated workflow derivation boundary", () => {
     expect(source).not.toContain("generateAllOutputsFromValidatedEncounter");
     expect(source).not.toContain("evaluateRules(");
     expect(source).not.toContain("rankAssessmentSuggestions(");
+  });
+
+  it("keeps workflow field and primary-output roles out of generic UI constants", () => {
+    const source = readFileSync(
+      new URL("../components/encounter/EncounterEngine.tsx", import.meta.url),
+      "utf8"
+    );
+
+    expect(source).not.toMatch(/["']assessment["']/);
+    expect(source).not.toMatch(/["']plan-actions["']/);
+    expect(source).not.toMatch(/useState\(["']journal["']\)/);
+    expect(source).toContain("pathway.workflowRoles.primaryOutputId");
+  });
+
+  it("has one active consultation renderer wired from the application", () => {
+    const appSource = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+
+    expect(appSource).toContain("components/encounter/EncounterEngine");
+    expect(appSource).not.toContain("components/consultation/ConsultationEngine");
+    expect(
+      existsSync(new URL("../components/consultation/ConsultationEngine.tsx", import.meta.url))
+    ).toBe(false);
+  });
+
+  it("registers the knee journal under pathway-owned generator identity", () => {
+    const journal = kneePainPathway.outputs.find((output) => output.id === "journal")!;
+
+    expect(journal.generatorId).toBe("knee.psoap");
+    expect(cortexOutputGeneratorRegistry.generatorIds).toContain("knee.psoap");
+    expect(cortexOutputGeneratorRegistry.generatorIds).not.toContain("core.psoap");
+    expect(() => cortexOutputGeneratorRegistry.resolve("knee.psoap")).not.toThrow();
   });
 });
 

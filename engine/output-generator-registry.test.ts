@@ -28,6 +28,7 @@ function pathwayWith(outputs: ClinicalOutputDefinition[]): ClinicalPathway {
     category: "Test",
     version: "1.0.0",
     description: "Non-clinical output registry fixture.",
+    workflowRoles: { primaryOutputId: outputs[0]?.id ?? "" },
     sections: [
       {
         id: "fixture",

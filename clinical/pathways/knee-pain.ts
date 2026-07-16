@@ -2,6 +2,11 @@ import type { ClinicalPathway } from "@/clinical/types";
 export const kneePainPathway: ClinicalPathway = {
   id: "knee-pain", title: "Knæsmerter", category: "Muskuloskeletal", version: "0.3.0",
   description: "Kort PSOAP-flow til vurdering og dokumentation af knæsmerter.",
+  workflowRoles: {
+    assessmentFieldId: "assessment",
+    planActionsFieldId: "plan-actions",
+    primaryOutputId: "journal"
+  },
   sections: [
     { id: "problem", title: "Problem", kind: "problem", journalSection: "problem", fields: [
       { id: "side", label: "Side", type: "single-choice", options: [
@@ -122,7 +127,7 @@ export const kneePainPathway: ClinicalPathway = {
       id: "journal",
       label: "PSOAP-journal",
       type: "journal",
-      generatorId: "core.psoap",
+      generatorId: "knee.psoap",
       alwaysActive: true
     },
     {

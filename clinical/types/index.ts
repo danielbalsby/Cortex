@@ -98,6 +98,12 @@ export interface ClinicalOutputDefinition {
   activeWhen?: RuleCondition[];
 }
 
+export interface ClinicalWorkflowRoles {
+  assessmentFieldId?: string;
+  planActionsFieldId?: string;
+  primaryOutputId: string;
+}
+
 export interface ClinicalPathway {
   id: string;
   title: string;
@@ -107,6 +113,7 @@ export interface ClinicalPathway {
   sections: ClinicalSection[];
   outputs: ClinicalOutputDefinition[];
   rules: ClinicalRule[];
+  workflowRoles: ClinicalWorkflowRoles;
   assessmentSuggestions?: AssessmentSuggestion[];
   planRecommendations?: PlanRecommendation[];
 }

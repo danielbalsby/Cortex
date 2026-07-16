@@ -13,8 +13,10 @@ test("empty consultation contains no implicit clinical facts", async ({ page }) 
 
   const outputs = activeOutputs(page);
   await expect(outputs.getByRole("button")).toHaveCount(1);
-  await expect(outputs.getByRole("button", { name: /^PSOAP-journal/ })).toContainText("3 mangler");
-  await expect(outputs.getByRole("button", { name: /^PSOAP-journal/ })).not.toContainText("Klar");
+  const journal = outputs.getByRole("button", { name: /^PSOAP-journal/ });
+  await expect(journal).toContainText("3 mangler");
+  await expect(journal).not.toContainText("Klar");
+  await expect(journal).toHaveAttribute("aria-pressed", "true");
   await expect(page.getByText("Manglende eller utilstrækkeligt beskrevet")).toBeVisible();
   await expect(outputDraft(page)).toHaveText("");
   await expect(page.getByText("Ingen regelbaserede akutte opmærksomhedspunkter udløst.")).toBeVisible();
@@ -122,6 +124,23 @@ test("dynamic outputs activate, deactivate, and coexist", async ({ page }) => {
   await expect(physioOutput).toBeVisible();
   await expect(xrayOutput).toBeVisible();
   await expect(orthopedicOutput).toBeVisible();
+});
+
+test("pathway workflow roles apply suggestions and plan recommendations", async ({ page }) => {
+  await choose(page, "Arbejdsdiagnose", "Gonartrose");
+  await expect(
+    field(page, "Arbejdsdiagnose").getByRole("button", { name: "Gonartrose" })
+  ).toHaveAttribute("aria-pressed", "true");
+
+  await page.getByRole("button", { name: "Anvend planforslag" }).click();
+  await expect(field(page, "Tiltag").getByRole("button", { name: "Information" })).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
+  await expect(field(page, "Tiltag").getByRole("button", { name: "Fysioterapi" })).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
 });
 
 test("PSOAP groups history and trauma track into one subjective group", async ({ page }) => {

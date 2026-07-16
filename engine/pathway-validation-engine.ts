@@ -683,6 +683,121 @@ export function validateClinicalPathway(
     }
   }
 
+  const roles = pathway.workflowRoles as ClinicalPathway["workflowRoles"] | undefined;
+  if (!roles || typeof roles !== "object") {
+    addIssue(
+      issues,
+      "workflow-roles.missing",
+      "Pathway must declare workflowRoles with a primary output.",
+      "workflowRoles"
+    );
+  } else {
+    const primaryOutputId = roles.primaryOutputId;
+    if (!isNonEmptyId(primaryOutputId)) {
+      addIssue(
+        issues,
+        "workflow-roles.missing-primary-output",
+        "workflowRoles.primaryOutputId must be a non-empty output ID.",
+        "workflowRoles.primaryOutputId",
+        primaryOutputId
+      );
+    } else if (!pathway.outputs.some((output) => output.id === primaryOutputId)) {
+      addIssue(
+        issues,
+        "workflow-roles.unknown-primary-output",
+        `Primary output role references unknown output "${primaryOutputId}".`,
+        "workflowRoles.primaryOutputId",
+        primaryOutputId
+      );
+    }
+
+    const assessmentFieldId = roles.assessmentFieldId;
+    const planActionsFieldId = roles.planActionsFieldId;
+    const assessmentField = assessmentFieldId ? fields.get(assessmentFieldId) : undefined;
+    const planActionsField = planActionsFieldId ? fields.get(planActionsFieldId) : undefined;
+
+    if (assessmentFieldId !== undefined) {
+      if (!isNonEmptyId(assessmentFieldId) || !assessmentField) {
+        addIssue(
+          issues,
+          "workflow-roles.unknown-assessment-field",
+          `Assessment role references unknown field "${assessmentFieldId}".`,
+          "workflowRoles.assessmentFieldId",
+          assessmentFieldId
+        );
+      } else if (assessmentField.type !== "single-choice") {
+        addIssue(
+          issues,
+          "workflow-roles.incompatible-assessment-field",
+          `Assessment role field "${assessmentFieldId}" must be single-choice.`,
+          "workflowRoles.assessmentFieldId",
+          assessmentFieldId
+        );
+      }
+    }
+
+    if (planActionsFieldId !== undefined) {
+      if (!isNonEmptyId(planActionsFieldId) || !planActionsField) {
+        addIssue(
+          issues,
+          "workflow-roles.unknown-plan-actions-field",
+          `Plan-actions role references unknown field "${planActionsFieldId}".`,
+          "workflowRoles.planActionsFieldId",
+          planActionsFieldId
+        );
+      } else if (planActionsField.type !== "multi-choice") {
+        addIssue(
+          issues,
+          "workflow-roles.incompatible-plan-actions-field",
+          `Plan-actions role field "${planActionsFieldId}" must be multi-choice.`,
+          "workflowRoles.planActionsFieldId",
+          planActionsFieldId
+        );
+      }
+    }
+
+    if (
+      isNonEmptyId(assessmentFieldId) &&
+      isNonEmptyId(planActionsFieldId) &&
+      assessmentFieldId === planActionsFieldId
+    ) {
+      addIssue(
+        issues,
+        "workflow-roles.duplicate-field-role",
+        `Field "${assessmentFieldId}" cannot serve as both assessment and plan-actions role.`,
+        "workflowRoles"
+      );
+    }
+
+    if ((pathway.assessmentSuggestions?.length ?? 0) > 0 && !isNonEmptyId(assessmentFieldId)) {
+      addIssue(
+        issues,
+        "workflow-roles.assessment-required-for-suggestions",
+        "Pathways with assessment suggestions must configure assessmentFieldId.",
+        "workflowRoles.assessmentFieldId"
+      );
+    }
+
+    if ((pathway.planRecommendations?.length ?? 0) > 0) {
+      if (!isNonEmptyId(assessmentFieldId)) {
+        addIssue(
+          issues,
+          "workflow-roles.assessment-required-for-plan-recommendations",
+          "Pathways with plan recommendations must configure assessmentFieldId.",
+          "workflowRoles.assessmentFieldId"
+        );
+      }
+      if (!isNonEmptyId(planActionsFieldId)) {
+        addIssue(
+          issues,
+          "workflow-roles.plan-actions-required-for-plan-recommendations",
+          "Pathways with plan recommendations must configure planActionsFieldId.",
+          "workflowRoles.planActionsFieldId"
+        );
+      }
+    }
+  }
+
   const cycle = detectVisibilityCycle(pathway, fields);
   if (cycle) {
     addIssue(
