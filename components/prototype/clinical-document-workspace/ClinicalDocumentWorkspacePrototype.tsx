@@ -5,7 +5,6 @@ import {
   AlertTriangle,
   Check,
   CheckCircle2,
-  ChevronRight,
   Clipboard,
   FileText,
   Image,
@@ -85,6 +84,9 @@ export function ClinicalDocumentWorkspacePrototype() {
 
   return (
     <main className={styles.shell}>
+      <div className={styles.reviewBanner} role="status">
+        Temporary synthetic-data prototype — not for clinical use
+      </div>
       <header className={styles.topbar}>
         <div className={styles.brandBlock}>
           <div className={styles.brandMark}>C</div>
@@ -93,9 +95,6 @@ export function ClinicalDocumentWorkspacePrototype() {
             <strong>Cortex Clinical Document Workspace</strong>
           </div>
         </div>
-        <a className={styles.productionLink} href="/">
-          Aktuel arbejdsgang <ChevronRight size={15} />
-        </a>
       </header>
 
       <section className={styles.scenarioBar} aria-label="Demonstrationsscenarier">
