@@ -1,1551 +1,901 @@
-# KNEE-001 – Knee Pain
+# KNEE-001 – Evidence Register
 
-**Status:** Proposed for clinical and product review  
+**Status:** Draft for formal clinical review  
 **Owner:** Cortex  
-**Document type:** Clinical pathway specification  
+**Pathway:** `KNEE-001-Knee-Pain.md`  
+**Document type:** Clinical evidence and governance register  
 **Population:** Adults presenting with knee pain in Danish general practice  
+**Evidence search date:** 2026-07-17  
 **Last reviewed:** 2026-07-17  
 **Clinical validation status:** Not clinically validated  
 **Implementation authorised:** No  
-**Evidence register required:** Yes  
-**RC-002 retest required:** Yes
+**Next scheduled evidence review:** Before implementation and no later than 2027-01-17  
+**Clinical reviewer:** Not assigned  
+**Regional scope:** Denmark; regional requirements unresolved  
 
 ---
 
 ## 1. Purpose
 
-This document defines the clinical content model and pathway requirements for adult knee pain in general practice.
+This register links clinically consequential content in `KNEE-001-Knee-Pain.md` to identifiable evidence sources, guidance status, implementation constraints and review decisions.
 
-It translates the product direction in `CLINICAL-DOCUMENT-WORKSPACE-v1.md` into a pathway-specific specification for:
+Its purposes are to:
 
-- clinical history
-- objective examination
-- assessment
-- management
-- clinical attention points
-- journal synthesis
-- physiotherapy referral
-- imaging referral
-- specialist referral
-- Quick and Standard workspace presentations
+- make the evidentiary basis of the pathway inspectable
+- prevent unsupported clinical rules from entering production
+- distinguish national guidance from international supplementary guidance
+- distinguish high-sensitivity safety rules from diagnostic suggestions
+- identify content that depends on regional Danish referral or imaging criteria
+- preserve uncertainty where evidence is limited, indirect or under revision
+- define what may be implemented, what requires qualification and what remains blocked
 
-This document is intended to support natural clinical documentation, structured decision support, reduction of duplicated administrative work, safe generation of outputs and later evidence review.
-
-It does not replace clinical judgement, local instructions, regional referral criteria or specialist assessment.
+This register is a governance artefact. It is not a substitute for clinical review.
 
 ---
 
-## 2. Relationship to other documents
+## 2. Governing rule
 
-This document is subordinate to:
+A clinically consequential pathway element may be implemented only when:
 
-- `docs/vision/MANIFEST.md`
-- `docs/vision/CX-001-The-Perfect-Consultation.md`
-- `docs/vision/MVP-001-The-First-Clinical-Product.md`
-- `docs/vision/WF-001-The-Consultation-Workflow.md`
-- `docs/governance/CLINICAL-SAFETY-PRINCIPLES.md`
-- `docs/governance/ENGINEERING-CONSTITUTION.md`
-- `docs/design/CLINICAL-DOCUMENT-WORKSPACE-v1.md`
+1. the intended clinical behaviour is stated precisely
+2. at least one appropriate source is identified
+3. source date, geography and status are recorded
+4. applicability to Danish general practice is assessed
+5. limitations and exceptions are documented
+6. a practising clinician approves the implementation wording
+7. regional requirements are resolved where they affect access, urgency or referral content
 
-It is informed by:
-
-- `docs/product/reviews/RC-002-Clinical-Workspace-Review.md`
-- current Danish guidance on meniscal pathology
-- current Danish guidance on acute monoarthritis and septic arthritis
-- applicable regional acute-knee and referral guidance
-- current international osteoarthritis guidance
-
-Where a clinical recommendation conflicts with current Danish or regional guidance, the applicable Danish or regional guidance takes precedence.
+Passing automated tests does not establish clinical validity.
 
 ---
 
-## 3. Scope
+## 3. Status vocabulary
 
-### Included
-
-Adults presenting in general practice with:
-
-- acute traumatic knee pain
-- gradual atraumatic knee pain
-- overuse-related knee pain
-- suspected knee osteoarthritis
-- suspected meniscal pathology
-- suspected cruciate or collateral ligament injury
-- patellofemoral pain
-- suspected patellar instability
-- tendinopathy
-- bursitis
-- Baker’s cyst
-- inflammatory or infectious concern
-- possible referred pain
-- non-specific knee pain
-
-### Excluded from primary pathway scope
-
-The following require separate or adapted pathways:
-
-- children and adolescents
-- postoperative follow-up
-- prosthetic knee complications
-- confirmed fracture management
-- established inflammatory arthritis follow-up
-- tumour follow-up
-- complex multisystem trauma
-- inpatient management
-
-The pathway may identify these presentations and direct the clinician toward appropriate escalation.
+| Status | Meaning |
+|---|---|
+| **Candidate – supported** | The proposed content is supported by a relevant source and may proceed to clinical wording review. |
+| **Candidate – conditional** | The content is broadly supported but requires qualification, contextual constraints or local adaptation. |
+| **Blocked – regional verification** | The content depends on current Danish regional rules that have not been verified for all intended users. |
+| **Blocked – clinical review** | Evidence exists, but a practising clinician must determine exact pathway wording or thresholds. |
+| **Unresolved – evidence gap** | No sufficiently authoritative or directly applicable source has yet been accepted. |
+| **Rejected** | The proposed content should not be implemented in its current form. |
+| **Approved** | Evidence, wording, regional applicability and clinical review are complete. No item in this draft has this status. |
 
 ---
 
-## 4. Core clinical design decision
+## 4. Evidence hierarchy
 
-KNEE-001 uses one shared clinical model with two workspace presentations:
+Cortex should prefer sources in this order:
 
-- **Quick**
-- **Standard**
+1. current Danish law, national recommendations and authoritative Danish clinical guidance
+2. current Danish regional referral and imaging guidance
+3. current national guidelines from comparable healthcare systems
+4. specialty-society clinical practice guidelines
+5. systematic reviews and validated clinical decision-rule studies
+6. individual diagnostic or therapeutic studies
+7. expert consensus, only when stronger evidence is unavailable and the limitation is explicit
 
-These are not separate pathways.
-
-They share the same clinical concepts, answer meanings, rules, safety constraints, output generators and evidence ownership.
-
-Switching presentation must not discard or reinterpret recorded information.
-
----
-
-## 5. Safety principles
-
-The pathway must preserve the following rules:
-
-1. No clinical fact is recorded without explicit clinician confirmation.
-2. Unanswered does not mean absent, normal, negative or not relevant.
-3. Not performed does not mean negative.
-4. Not indicated does not mean negative.
-5. Not assessable remains distinct from negative.
-6. Grouped normal findings require an explicit clinician action.
-7. Positive findings override contradictory grouped normal findings.
-8. Hidden or no-longer-relevant answers are pruned safely.
-9. Suggestions never become diagnoses or plans automatically.
-10. Generated outputs contain only recorded information.
-11. Technical completeness is not presented as clinical approval.
-12. Serious attention points remain visible across Quick and Standard.
-13. Regional referral and imaging requirements are versioned content.
-14. Clinical validation requires separate review and sign-off.
+International guidance may support clinical design, but it must not silently override Danish or regional practice.
 
 ---
 
-## 6. Clinical objectives
+## 5. Source register
 
-The pathway should help the clinician determine:
+### Danish and Nordic sources
 
-- whether the presentation is traumatic or atraumatic
-- whether urgent or time-sensitive pathology is possible
-- whether fracture screening is required
-- whether infection or inflammatory disease is possible
-- whether true locking or extensor mechanism injury is possible
-- whether objective instability is present
-- whether symptoms are mainly mechanical, degenerative, inflammatory or referred
-- whether management in general practice is appropriate
-- whether imaging is indicated
-- whether physiotherapy or specialist referral is indicated
-- what follow-up and safety-net are appropriate
+| ID | Source | Issuer | Version / date | Geography | Current status | Main use in KNEE-001 |
+|---|---|---|---|---|---|---|
+| **S1** | [NKR: Meniskpatologi i knæet](https://www.sst.dk/udgivelser/2016/NKR-Meniskpatologi-i-knaeet) | Sundhedsstyrelsen | Page published/updated 2025-11-28; guideline originally developed earlier | Denmark | **Recommendations under review** | Simple clinical meniscus test; no ultrasound for meniscal investigation; MRI only when management-relevant; standing radiograph when osteoarthritis may explain symptoms; non-operative/supervised exercise options. |
+| **S2** | [Artrit, bakteriel – Lægehåndbogen](https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/ortopaedi/tilstande-og-sygdomme/oevrige-sygdomme/artrit-bakteriel/) | sundhed.dk / Lægehåndbogen | Updated 2024-01-29 | Denmark | Current page; formal update cycle not stated | Acute monoarthritis, local inflammatory signs, risk factors, fever may be absent, acute hospital referral when suspected. |
+| **S3** | [Knæskade – Patienthåndbogen](https://www.sundhed.dk/borger/patienthaandbogen/akutte-sygdomme/foerstehjaelp/ben-led-muskler/knaeskade/) | sundhed.dk / Patienthåndbogen | Updated 2024-09-23 | Denmark | Current patient guidance | General acute warning features: fracture concern, ligament rupture and locked knee require prompt assessment. Not sufficient alone for pathway thresholds. |
 
-The pathway must not imply diagnostic certainty beyond the recorded findings.
+### International guidelines and decision rules
 
----
-
-## 7. High-value clinical information
-
-The pathway should prioritise:
-
-1. Side, onset, duration and development.
-2. Trauma or load change, mechanism and possible pop.
-3. Pain location and activity, start-up, rest or night pattern.
-4. Gait and weight-bearing ability, including four steps when clinically relevant.
-5. Swelling and timing.
-6. True locking and persistent extension deficit.
-7. Instability or giving-way symptoms.
-8. Infectious, inflammatory and malignant warning symptoms.
-9. Previous knee disease, injury, operation, prosthesis or injection.
-10. General condition, gait and inspection for deformity, redness, warmth and swelling.
-11. Active and passive movement and intact extensor mechanism.
-12. Effusion and focal tenderness.
-13. Targeted ligament examination.
-14. Targeted meniscal or patellar examination when indicated.
-15. Distal neurovascular status after relevant trauma.
-
-Pain scores, broad pain adjectives, crepitus, routine blood tests and complete mandatory test batteries should not dominate the core workflow unless they change management.
+| ID | Source | Issuer | Version / date | Geography | Current status | Main use in KNEE-001 |
+|---|---|---|---|---|---|---|
+| **S4** | [Osteoarthritis in over 16s: diagnosis and management, NG226](https://www.nice.org.uk/guidance/ng226/chapter/recommendations) | NICE | Published 2022-10-19 | England / Wales context | Current; reviewed when new evidence warrants | Clinical OA diagnosis, imaging restraint, information, therapeutic exercise, weight management, topical/oral NSAIDs, referral for joint replacement. |
+| **S5** | [Management of Acute Isolated Meniscal Pathology](https://www.aaos.org/quality/quality-programs/acute-isolated-meniscal-pathology/) | AAOS | Published 2024-06-10 | United States | Current specialty guideline | Joint-line tenderness, McMurray and Thessaly as components of acute meniscal examination; imaging and treatment context. Scope excludes chronic/degenerative and concomitant injuries. |
+| **S6** | [Validation of the Ottawa Knee Rules](https://pubmed.ncbi.nlm.nih.gov/11574791/) | Prospective multicentre validation study | 2001 | Spain; emergency departments | Historical but foundational validation | High-sensitivity fracture-screening rule after acute knee injury. |
+| **S7** | [Validation of the Ottawa knee rule in adults: a single-centre study](https://pmc.ncbi.nlm.nih.gov/articles/PMC7476189/) | Peer-reviewed validation study | 2020 | United Kingdom; emergency department | Supplementary validation | Restates five Ottawa criteria and supports high sensitivity. |
+| **S8** | [Suspected cancer: recognition and referral, NG12](https://www.nice.org.uk/guidance/ng12) | NICE | Published 2015; last updated 2026-04-15 | England / Wales context | Current | General cancer-recognition context. Does not validate isolated night pain as a knee-specific cancer rule. |
+| **S9** | [ACR Appropriateness Criteria – Acute Trauma to the Knee](https://acsearch.acr.org/list) | American College of Radiology | Current topic listing; exact narrative version must be captured before implementation | United States | Current source family; exact version unresolved | Imaging after acute knee trauma and use of validated decision rules. Requires exact topic/version verification. |
 
 ---
 
-# 8. Workspace entry
+## 6. Evidence map
 
-## 8.1 Heading
+### 6.1 Acute fracture screening
 
-The pathway heading should combine problem and side.
+| Field | Decision |
+|---|---|
+| **Clinical element** | Screen adults with acute knee trauma for fracture risk before deciding on radiography. |
+| **Proposed pathway behaviour** | Ask about age, isolated patellar tenderness, fibular-head tenderness, ability to flex to 90°, and ability to take four weight-bearing steps immediately after injury and during assessment when an Ottawa Knee Rule workflow is used. |
+| **Primary evidence** | S6 |
+| **Supporting evidence** | S7, S9 |
+| **Evidence strength** | Validated high-sensitivity clinical decision rule; implementation setting evidence is primarily emergency care. |
+| **Geography** | International; not a Danish national rule in the sources accepted here. |
+| **Status** | **Candidate – conditional** |
+| **Implementation constraint** | The UI must present this as a fracture-screening aid, not as an autonomous diagnosis or radiography order. Eligibility and exclusions must be verified before coding. |
+| **Required review** | Confirm intended adult population, acute-injury time window, applicability in Danish general practice, and whether all five Ottawa criteria should be implemented. |
+| **Do not implement as** | “No fracture” when the rule is negative. |
+| **Reviewer decision** | Pending |
+
+**Ottawa criteria recorded in the accepted validation literature:**
+
+- age 55 years or older
+- isolated tenderness of patella
+- tenderness at fibular head
+- inability to flex knee to 90°
+- inability to bear weight for four steps both immediately after injury and at assessment
+
+The rule is designed to help determine the need for radiography after acute trauma. It does not exclude non-fracture serious injury.
+
+---
+
+### 6.2 Inability to weight-bear and four steps
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Weight-bearing ability is a high-value functional and fracture-screening item. |
+| **Evidence** | S6, S7 |
+| **Status** | **Candidate – supported** |
+| **Implementation wording** | Distinguish ordinary reduced function from inability to take four weight-bearing steps in the Ottawa context. |
+| **Safety note** | Inability to weight-bear may have causes other than fracture and should remain clinically visible even when the complete Ottawa rule is not applicable. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.3 Swelling and timing
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Record absent, immediate, early, delayed, intermittent or persistent swelling. |
+| **Rationale** | Timing can help clinical pattern recognition and preserve an accurate trauma chronology. |
+| **Accepted direct source** | No sufficiently authoritative source has yet been accepted for a deterministic timing-to-diagnosis rule in Danish general practice. |
+| **Status** | **Blocked – clinical review** |
+| **Permitted implementation** | Documentation field and chronology synthesis. |
+| **Not yet permitted** | A rule that equates rapid swelling with a specific diagnosis or delayed swelling with meniscal injury. |
+| **Required evidence work** | Identify a current guideline or high-quality diagnostic synthesis on traumatic haemarthrosis and swelling chronology. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.4 Audible or felt pop
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Record audible or felt pop after relevant trauma. |
+| **Evidence basis** | Common component of acute ligament/meniscal history, but no accepted source in this register supports using it alone diagnostically. |
+| **Status** | **Candidate – conditional** |
+| **Permitted implementation** | History documentation and contextual support for a trauma pathway. |
+| **Not permitted** | Automatic diagnosis of ACL or meniscal injury from this finding alone. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.5 True locking and extension deficit
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Distinguish true locking and persistent extension deficit from clicking or transient catching. |
+| **Evidence** | S1, S3 |
+| **Evidence limitation** | S1 distinguishes locked and non-locked meniscal presentations, but exact Danish urgency thresholds require current regional verification. S3 is patient guidance, not a full clinical referral standard. |
+| **Status** | **Blocked – regional verification** |
+| **Permitted implementation** | Documentation; clinical attention point; suggestion to consider urgent or subacute assessment. |
+| **Not yet permitted** | Hard-coded “subacute within one week” threshold across Denmark. |
+| **Required evidence work** | Obtain current referral guidance for every supported Danish region and define “true locked knee” operationally. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.6 Extensor mechanism injury
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Assess active extension / straight-leg raise after relevant trauma or when tendon/patellar injury is suspected. |
+| **Clinical intent** | Detect possible quadriceps tendon, patellar tendon or major patellar injury. |
+| **Accepted direct source** | No pathway-grade Danish source has yet been accepted in this register. |
+| **Status** | **Unresolved – evidence gap** |
+| **Permitted implementation** | Record straight-leg raise as a targeted examination finding. |
+| **Not yet permitted** | A specific referral urgency rule based solely on this register. |
+| **Required evidence work** | Add current emergency/orthopaedic guidance on extensor mechanism disruption and imaging/referral. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.7 Septic arthritis
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Treat suspected bacterial arthritis as an acute hospital problem. |
+| **Primary evidence** | S2 |
+| **Supported triggers** | Acute monoarthritis with local signs such as swelling, warmth, redness, pain and restricted movement; relevant infection risk factors. |
+| **Important limitation** | Fever and chills are common but are not necessarily present. Absence of fever must not reassure the system sufficiently to dismiss infection. |
+| **Recommended pathway behaviour** | Display a high-priority clinical attention point and suggest acute referral when clinical suspicion is recorded. |
+| **Status** | **Candidate – supported** |
+| **Implementation constraint** | Cortex must not calculate away clinical suspicion based on normal temperature or a single normal laboratory result. |
+| **Required wording review** | Exact acute transport/referral wording must be adapted to current local organisation. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.8 Infection risk factors
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Record relevant risk factors such as older age, skin infection, destructive joint disease, prosthesis, recent surgery or joint injection, and immunosuppression where clinically relevant. |
+| **Evidence** | S2 |
+| **Status** | **Candidate – supported** |
+| **Implementation constraint** | Risk factors should raise attention but must not be scored as a validated probability model. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.9 Blood tests in possible infection
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | CRP and leukocytes may be obtained in general practice, but clinical suspicion still requires acute referral. |
+| **Evidence** | S2 |
+| **Status** | **Candidate – conditional** |
+| **Safety constraint** | Tests must not delay acute referral where bacterial arthritis is suspected, and normal inflammatory markers must not be presented as excluding infection. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.10 Inflammatory arthritis pattern
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Record prolonged morning stiffness, multiple swollen joints, recent infection and systemic features as possible inflammatory context. |
+| **Evidence** | S2 supports differential diagnoses around acute arthritis; a dedicated current inflammatory-arthritis source has not yet been accepted. |
+| **Status** | **Unresolved – evidence gap** |
+| **Permitted implementation** | History documentation and non-specific clinical attention point. |
+| **Not yet permitted** | Disease-specific referral thresholds or diagnostic scoring. |
+| **Required evidence work** | Add current Danish rheumatology guidance for suspected inflammatory arthritis. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.11 Malignancy and atypical symptoms
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Record progressive unexplained rest/night pain, weight loss, known malignancy or unexplained bony findings as atypical features. |
+| **Evidence** | S4 identifies rapid worsening, deformity, hot swollen joint, infection or malignancy concern as atypical in an OA context. S8 provides general cancer-recognition guidance. |
+| **Status** | **Candidate – conditional** |
+| **Safety constraint** | Isolated night pain must not be treated as a validated knee-cancer rule. The pathway should encourage broader assessment rather than suggest a specific malignancy diagnosis. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.12 Clinical diagnosis of knee osteoarthritis
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Typical osteoarthritis can often be diagnosed clinically without routine imaging. |
+| **Primary evidence** | S4 |
+| **Supported profile** | Age 45 or older, activity-related joint pain, and no morning stiffness or morning stiffness no longer than 30 minutes. |
+| **Status** | **Candidate – supported** |
+| **Implementation constraint** | This profile is supportive rather than an exclusive diagnostic definition. Atypical features require reconsideration of alternative or additional diagnoses. |
+| **Output wording** | “Clinically consistent with knee osteoarthritis” is preferred to an unqualified definitive diagnosis when uncertainty remains. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.13 Routine imaging in typical osteoarthritis
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Do not routinely use imaging to establish typical osteoarthritis or guide non-surgical management. |
+| **Primary evidence** | S4 |
+| **Status** | **Candidate – supported** |
+| **Exceptions** | Atypical features, alternative diagnosis, trauma, rapid progression, deformity, hot swollen joint, infection/malignancy concern, or imaging required for a specific management decision. |
+| **Danish caveat** | Regional orthopaedic referral requirements may require imaging before elective referral. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.14 Standing weight-bearing radiography
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Standing radiography may be relevant when osteoarthritis could explain symptoms in a meniscal presentation or when needed for a specific management/referral decision. |
+| **Evidence** | S1; S4 provides restraint on routine imaging. |
+| **Status** | **Blocked – regional verification** |
+| **Implementation constraint** | Do not make standing radiography a routine default for all suspected knee OA. The indication must be explicit. |
+| **Required evidence work** | Verify exact projection requirements and referral indications in every supported Danish region. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.15 Therapeutic exercise for osteoarthritis
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Offer therapeutic exercise tailored to the person; consider supervised exercise. |
+| **Primary evidence** | S4 |
+| **Status** | **Candidate – supported** |
+| **Implementation wording** | Exercise should include relevant local strengthening and/or general aerobic activity and be framed as a core treatment. |
+| **Patient-information point** | Initial discomfort may occur; regular adherence improves pain and function over time. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.16 Patient education and support for osteoarthritis
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Provide individualised information about diagnosis, course, self-management and treatment options. |
+| **Evidence** | S4 |
+| **Status** | **Candidate – supported** |
+| **Safety constraint** | “Information provided” may only enter the journal after explicit confirmation. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.17 Weight management
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Discuss and support weight management when the person has overweight or obesity and knee OA. |
+| **Evidence** | S4 |
+| **Status** | **Candidate – supported** |
+| **Implementation constraint** | Must be context-sensitive, respectful and not shown as universally relevant. |
+| **Evidence detail** | Any weight loss may help; NICE states that 10% body-weight loss is likely to provide greater benefit than 5%. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.18 Topical NSAID for knee osteoarthritis
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Consider/offer topical NSAID when pharmacological treatment is needed for knee OA. |
+| **Evidence** | S4 |
+| **Status** | **Candidate – conditional** |
+| **Danish caveat** | Exact prescribing language must align with Danish medicines guidance, product information and individual contraindications. |
+| **Implementation constraint** | Medication should support non-pharmacological treatment and be used at the lowest effective dose for the shortest appropriate period. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.19 Oral NSAID
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Oral NSAID may be considered if topical treatment is ineffective or unsuitable, after individual risk assessment. |
+| **Evidence** | S4 |
+| **Status** | **Candidate – conditional** |
+| **Required safety concepts** | Gastrointestinal, renal, hepatic and cardiovascular risk; age, pregnancy, current medication and comorbidity; gastroprotection where indicated. |
+| **Implementation constraint** | Cortex must not generate “contraindications assessed” unless the relevant assessment is explicitly recorded. |
+| **Danish caveat** | Exact medication advice requires Danish pharmacological review. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.20 Paracetamol
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Paracetamol should not be assumed to be a universal standard OA plan. |
+| **Evidence** | S4 recommends against routine paracetamol for OA except infrequent short-term use when other pharmacological options are contraindicated, not tolerated or ineffective. |
+| **Status** | **Rejected** as an automatically preselected universal OA plan |
+| **Permitted implementation** | Available as a clinician-selected option with context-appropriate wording. |
+| **Implication for KNEE-001** | The generic plan wording “paracetamol as needed” requires diagnosis-specific and evidence-specific review. |
+| **Reviewer decision** | Pending confirmation for Danish practice |
+
+---
+
+### 6.21 Meniscal clinical examination
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Use a targeted clinical examination rather than a mandatory full battery. |
+| **Evidence** | S1, S5 |
+| **Supported components** | Joint-line tenderness and a simple clinical test; AAOS includes McMurray and Thessaly and notes that combined findings may improve diagnostic performance in acute isolated tears. |
+| **Status** | **Candidate – supported** |
+| **Implementation constraint** | Test result must remain one component of a clinical assessment. A positive or negative test must not automatically establish or exclude a tear. |
+| **Scope caveat** | S5 applies to acute isolated meniscal pathology and excludes chronic/degenerative tears and concomitant injuries. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.22 Ultrasound for suspected meniscal pathology
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Do not use ultrasound as the routine investigation for suspected meniscal injury. |
+| **Evidence** | S1 |
+| **Status** | **Candidate – supported** |
+| **Constraint** | Ultrasound may still have a role for selected extra-articular questions; the UI must distinguish these indications. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.23 MRI for suspected meniscal pathology
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | MRI should be considered only when its result is expected to affect management, subject to regional access rules. |
+| **Evidence** | S1 |
+| **Status** | **Blocked – regional verification** |
+| **Implementation constraint** | No automatic MRI suggestion solely because meniscal symptoms are present. |
+| **Conflict note** | S5 regards MRI as the preferred modality for diagnosing acute isolated tears, but this does not override the more restrictive Danish pathway context or regional access criteria. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.24 Supervised rehabilitation for meniscal presentations
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Non-operative management and supervised training may be appropriate for selected meniscal presentations. |
+| **Evidence** | S1 |
+| **Status** | **Candidate – conditional** |
+| **Constraint** | Locked knee, displaced pathology, acute traumatic context, associated ligament injury and OA context require separate consideration. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.25 Lachman test
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Lachman may be offered as a targeted ACL examination. |
+| **Accepted source** | No current pathway-grade guideline source has yet been accepted in this register for exact diagnostic accuracy or primary-care implementation. |
+| **Status** | **Blocked – clinical review** |
+| **Permitted implementation** | Named examination result: negative, positive, not indicated, not performed or not assessable. |
+| **Not permitted** | Automatic ACL diagnosis or exclusion. |
+| **Required evidence work** | Add current ACL guideline or systematic diagnostic review. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.26 Valgus and varus stress testing
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Valgus and varus stress may be offered as targeted collateral-ligament examinations. |
+| **Accepted source** | No accepted source yet defines the exact angles, interpretation and urgency for this pathway. |
+| **Status** | **Blocked – clinical review** |
+| **Permitted implementation** | Named test and explicit result states. |
+| **Required evidence work** | Add current collateral-ligament guidance and determine whether 0° and 20–30° distinctions belong in the Quick or Standard view. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.27 Posterior drawer test
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Posterior drawer may be offered when PCL injury is clinically plausible. |
+| **Accepted source** | Not yet accepted. |
+| **Status** | **Unresolved – evidence gap** |
+| **Implementation implication** | Keep as optional Standard-mode content only after evidence and clinical review. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.28 Patellofemoral and patellar examination
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Provide targeted patellar examination when history suggests patellofemoral pain or instability. |
+| **Accepted source** | Not yet accepted. |
+| **Status** | **Unresolved – evidence gap** |
+| **Permitted implementation** | Generic documentation of tenderness, apprehension, provocation and instability after clinical content review. |
+| **Not permitted** | Automatic diagnosis from a single test. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.29 Distal neurovascular status
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Record distal neurovascular status after major trauma, deformity, dislocation or concerning symptoms. |
+| **Evidence basis** | Strong clinical safety rationale, but no accepted pathway-specific source is recorded yet. |
+| **Status** | **Blocked – clinical review** |
+| **Implementation intent** | Abnormal sensory, motor or perfusion findings should create a high-priority attention point. |
+| **Required evidence work** | Add current trauma/dislocation guidance with explicit urgency. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.30 Referred pain and hip examination
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Consider hip or spinal origin when symptoms are atypical or knee findings do not explain the complaint. |
+| **Accepted source** | No accepted adult primary-care source yet. |
+| **Status** | **Unresolved – evidence gap** |
+| **Permitted implementation** | Optional history/examination documentation. |
+| **Not permitted** | A rule-based diagnosis without additional evidence. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.31 Physiotherapy referral
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Physiotherapy or supervised exercise may be relevant for OA, selected meniscal presentations, overuse and rehabilitation. |
+| **Evidence** | S1, S4 |
+| **Status** | **Candidate – conditional** |
+| **Implementation constraint** | Referral must state the indication, functional limitation, relevant findings, prior treatment and explicit treatment/assessment objective. |
+| **Important distinction** | Evidence supporting therapeutic exercise does not automatically establish that every patient requires a formal physiotherapy referral. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.32 Elective orthopaedic referral for osteoarthritis
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Consider joint-replacement referral when symptoms substantially affect quality of life and non-surgical management is ineffective or unsuitable. |
+| **Evidence** | S4 |
+| **Status** | **Blocked – regional verification** |
+| **Constraint** | Use clinical assessment rather than a numerical severity score alone. Danish regional referral prerequisites must be added. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.33 Acute and subacute orthopaedic referral thresholds
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Define urgency for locked knee, major instability, extensor mechanism injury, fracture concern and other acute pathology. |
+| **Evidence** | Partial support from S1 and S3; exact thresholds unresolved. |
+| **Status** | **Blocked – regional verification** |
+| **Required evidence work** | Current regional referral and visitation guidance for all intended Danish regions. |
+| **Implementation prohibition** | Do not hard-code universal Danish deadlines such as “within one week” before verification. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.34 Safety-net content
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Provide context-sensitive advice for deterioration or new safety features. |
+| **Evidence basis** | Derived from the serious conditions mapped above, especially S2 and fracture/locking concepts in S3/S6. |
+| **Status** | **Blocked – clinical review** |
+| **Candidate reasons** | Fever/systemic illness; increasing redness, warmth or swelling; inability to weight-bear; loss of active extension; new true locking; distal neurovascular symptoms; unexpected deterioration or absent improvement. |
+| **Implementation constraint** | Do not display every warning in every case. Safety-net must be tailored to the recorded presentation and phrased as one coherent statement. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.35 Routine follow-up intervals
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Suggested intervals such as 1–2 weeks after acute injury or 4–6 weeks after conservative treatment. |
+| **Accepted direct evidence** | No accepted source currently supports these as universal thresholds. |
+| **Status** | **Unresolved – evidence gap** |
+| **Permitted implementation** | Clinician-selected interval and reassessment targets. |
+| **Not permitted** | Automatic universal interval presented as evidence-based. |
+| **Reviewer decision** | Pending |
+
+---
+
+### 6.36 Ice, compression and elevation
+
+| Field | Decision |
+|---|---|
+| **Clinical element** | Optional short-term symptom measures after selected acute injuries. |
+| **Accepted direct evidence** | Not yet reviewed. |
+| **Status** | **Unresolved – evidence gap** |
+| **Implementation implication** | Do not place in a universal default plan. May remain optional after clinical review. |
+| **Reviewer decision** | Pending |
+
+---
+
+## 7. Cross-cutting implementation decisions
+
+### 7.1 Findings that may be recorded before full evidence approval
+
+A field may sometimes be clinically reasonable to document even when its diagnostic meaning is unresolved.
 
 Examples:
 
-- `Right knee pain`
-- `Left knee injury`
-- `Bilateral knee pain`
-
-A separate large “Problem” card is not required.
-
-## 8.2 Side
-
-Options:
-
-- right
-- left
-- bilateral
-- not yet established
-
-Side must be available early and reused in all outputs.
-
----
-
-# 9. History
-
-## 9.1 Onset and course
-
-### Required concepts
-
-- onset
-- exact duration
-- development
-- precipitating factor
-
-### Onset
-
-Options:
-
-- acute
-- gradual
-- recurrent
-- unclear
-- other
-
-### Duration
-
-Support structured precision:
-
-- number
-- unit
-- optional clinically natural shortcut
-
-Units:
-
-- hours
-- days
-- weeks
-- months
-- years
-
-Shortcuts may include:
-
-- today
-- since yesterday
-- 2–3 days
-- one week
-- other
-
-Generated text should prefer natural wording such as:
-
-> Symptoms since yesterday.
-
-not:
-
-> Duration: days.
-
-### Development
-
-Options:
-
-- improving
-- unchanged
-- worsening
-- fluctuating
-- intermittent
-- recurrent
-- other
-
-### Precipitating factor
-
-Options:
-
-- none identified
-- increased or unusual load
-- sport
-- work-related activity
-- trauma
-- other
-
----
-
-## 9.2 Trauma history
-
-Shown when trauma is recorded or manually opened.
-
-### Mechanism
-
-Options may include:
-
-- twisting on planted foot
-- direct blow
-- fall
-- valgus force
-- varus force
-- hyperextension
-- forced flexion
-- patellar displacement
-- unclear
-- other
-
-### Additional trauma findings
-
-- audible or felt pop
-- able to continue activity immediately
-- able to weight-bear immediately
-- able to walk four weight-bearing steps
-- immediate swelling
-- swelling within hours
-- delayed swelling
-- patellar dislocation or transient displacement
-- subsequent giving way
-- inability to extend
-- visible deformity
-- open injury
-- distal sensory symptoms
-- distal circulatory symptoms
-
-Each item must retain an explicit state where relevant:
-
-- present
-- absent
-- not assessed
-- not applicable
-
----
-
-## 9.3 Pain
-
-Pain should be a dedicated clinical group.
-
-### Location
-
-Options:
-
-- anterior
-- medial
-- lateral
-- posterior
-- diffuse
-- peripatellar
-- focal bony
-- calf
-- other
-
-Multiple locations may be recorded.
-
-### Pattern
-
-Options may include:
-
-- load-related
-- start-up pain
-- stairs
-- prolonged walking
-- squatting
-- running
-- jumping
-- pivoting
-- sitting with flexed knee
-- rest pain
-- night pain
-- constant
-- intermittent
-- other
-
-### Provoking and relieving factors
-
-Structured common choices plus free text:
-
-- activity
-- stairs
-- walking
-- running
-- kneeling
-- squatting
-- rest
-- unloading
-- movement
-- analgesia
-- other
-
-### Previous self-management
-
-- no treatment tried
-- paracetamol
-- topical NSAID
-- oral NSAID
-- rest or load reduction
-- exercise
-- physiotherapy
-- brace or support
-- ice or compression
-- other
-
-### Effect
-
-- good effect
-- partial effect
-- no effect
-- adverse effect
-- unclear
-
-The system must not assume medication safety has been assessed merely because prior use is recorded.
-
----
-
-## 9.4 Function
-
-Options:
-
-- normal gait and function
-- slight limp
-- marked limp
-- cannot weight-bear
-- can walk four weight-bearing steps
-- cannot walk four weight-bearing steps
-- reduced walking distance
-- difficulty with stairs
-- difficulty rising from chair
-- reduced work function
-- reduced sports participation
-- reduced daily activities
-- other
-
-“Load” must not be used as an isolated ambiguous label.
-
-The UI should distinguish:
-
-- weight-bearing ability
-- symptom-provoking activity
-- temporary activity modification
-- graded reloading
-
----
-
-## 9.5 Swelling
-
-Options:
-
-- none
-- immediate
-- within a few hours
-- delayed
-- intermittent
-- persistent
-- uncertain
-
-The output generator must preserve chronology.
-
-Example:
-
-> No immediate swelling, but mild swelling developed later.
-
----
-
-## 9.6 Mechanical symptoms
-
-Options:
-
-- none
-- clicking
-- catching
-- true locking
-- persistent extension deficit
-- other
-
-The pathway must distinguish true locking from clicking or transient catching.
-
-A recorded true locking episode or persistent extension deficit should trigger a clinical attention point and possible Standard-mode recommendation.
-
----
-
-## 9.7 Instability
-
-Subjective instability belongs in History.
-
-Options:
-
-- none
-- giving way
-- rotational instability
-- patellar instability
-- uncertain
-- situation or trigger
-- other
-
-This must remain separate from objective ligament testing.
-
----
-
-## 9.8 Red flags and inflammatory features
-
-The pathway should support individual findings and an explicit grouped confirmation.
-
-### Possible findings
-
-- fever
-- systemic illness
-- acutely red, hot and swollen joint
-- severe atraumatic pain
-- rapidly progressive swelling
-- progressive rest pain
-- progressive night pain
-- unexplained weight loss
-- known malignancy
-- multiple swollen joints
-- prolonged morning stiffness
-- recent infection
-- skin infection
-- immunosuppression
-- recent joint injection
-- prosthetic joint
-- calf swelling
-- neurovascular symptoms
-- other
-
-### Grouped action
-
-Working label:
-
-> Confirm relevant warning symptoms absent
-
-The included findings must be visible before confirmation, pathway-defined, reversible and appropriate to the current context.
-
-The grouped action must not confirm findings that have not reasonably been assessed.
-
----
-
-## 9.9 Previous history
-
-Options:
-
-- no relevant previous knee history
-- previous similar symptoms
-- previous knee injury
-- known osteoarthritis
-- inflammatory arthritis
-- previous knee operation
-- prosthetic knee
-- recent joint injection
-- previous imaging
-- previous specialist assessment
-- previous physiotherapy
-- other
-
-Additional fields:
-
-- side
-- year or approximate timing
-- treatment
-- effect
-- relevant free text
-
----
-
-## 9.10 Supplementary history
-
-A free-text field must be available.
-
-It should be used for nuance, not to compensate for missing common structured concepts.
-
----
-
-# 10. Objective examination
-
-## 10.1 General condition
-
-Options:
-
-- unaffected
-- mildly affected
-- clearly affected
-- unable to assess
-
-A clearly affected patient with possible infection, major trauma or neurovascular concern should trigger a clinical attention point.
-
-## 10.2 Gait and weight-bearing
-
-Options:
-
-- normal
-- antalgic
-- limping
-- unable to weight-bear
-- not assessed
-
-Optional:
-
-- four weight-bearing steps possible
-- four weight-bearing steps not possible
-- not relevant
-- not assessed
-
-## 10.3 Inspection
-
-Options:
-
-- normal
-- swelling
-- redness
-- warmth
-- deformity
-- muscle wasting
-- bruising
-- wound
-- patella displaced
-- patella alta or baja suspected
-- other
-
-Redness and warmth should remain distinct findings.
-
-## 10.4 Range of motion
-
-### Structured summary
-
-- full
-- mildly reduced
-- markedly reduced
-- pain-limited
-- mechanically blocked
-- not assessed
-
-### Optional detail
-
-- active extension in degrees
-- passive extension in degrees
-- active flexion in degrees
-- passive flexion in degrees
-
-### Extensor mechanism
-
-- straight-leg raise intact
-- straight-leg raise not possible
-- not assessed
-- not relevant
-
-Inability to perform straight-leg raise after relevant trauma should trigger a clinical attention point.
-
-## 10.5 Effusion
-
-Options:
-
-- none
-- mild
-- moderate
-- large or tense
-- uncertain
-- not assessed
-
-The pathway should not use “swelling” and “effusion” interchangeably.
-
-## 10.6 Palpation
-
-Multiple sites may be selected:
-
-- no focal tenderness
-- medial joint line
-- lateral joint line
-- MCL
-- LCL
-- patella
-- patellar tendon
-- quadriceps tendon
-- tibial tuberosity
-- pes anserinus
-- prepatellar region
-- popliteal region
-- fibular head
-- focal bony tenderness
-- calf
-- other
-
-Free-text localisation must be available.
-
-## 10.7 Objective stability
-
-Objective stability must use named tests or clearly defined examination groups.
-
-### Lachman
-
-- negative
-- positive
-- not indicated
-- not performed
-- not assessable
-
-### Posterior drawer
-
-- negative
-- positive
-- not indicated
-- not performed
-- not assessable
-
-### Valgus stress
-
-- stable
-- lax
-- painful without laxity
-- not indicated
-- not performed
-- not assessable
-
-### Varus stress
-
-- stable
-- lax
-- painful without laxity
-- not indicated
-- not performed
-- not assessable
-
-The pathway must not generate “stable ligament examination” unless the relevant named examinations have been explicitly recorded.
-
-## 10.8 Meniscal examination
-
-Targeted tests may include:
-
-### Thessaly
-
-- negative
-- positive
-- not indicated
-- not performed
-- not possible
-- not assessable
-
-### McMurray
-
-- negative
-- positive
-- not indicated
-- not performed
-- not assessable
-
-The clinician should not be required to perform both tests.
-
-## 10.9 Patellar examination
-
-Options may include:
-
-- no relevant patellar findings
-- focal patellar tenderness
-- apprehension positive
-- apprehension negative
-- pain on patellofemoral provocation
-- instability
-- not indicated
-- not performed
-- not assessable
-- other
-
-## 10.10 Distal neurovascular status
-
-Shown when relevant after significant trauma, deformity, dislocation, marked swelling or concerning symptoms.
-
-Options:
-
-- normal
-- sensory deficit
-- motor deficit
-- impaired pulse or perfusion
-- not assessed
-- not assessable
-
-Abnormal findings should trigger an urgent clinical attention point.
-
-## 10.11 Hip and referred pain
-
-Shown when symptoms are atypical, the knee examination is not explanatory, pain may originate from hip or back, or the clinician opens the group manually.
-
-Options:
-
-- hip examination normal
-- reduced hip movement
-- hip-provoked pain
-- possible pain originating from hip
-- possible pain originating from back
-- not indicated
-- not performed
-- other
-
-Avoid the isolated label “referred pain” without clinically meaningful wording.
-
-## 10.12 Supplementary objective findings
-
-A free-text field must be available within Objective examination.
-
-## 10.13 Grouped basic examination confirmation
-
-Working action:
-
-> Confirm basic knee examination normal
-
-Potential included findings:
-
-- unaffected general condition
-- normal gait
-- no deformity
-- no redness
-- no warmth
-- no significant effusion
-- full extension
-- intact straight-leg raise
-
-The exact content must be visible and clinically reviewed.
-
-It must not automatically confirm named ligament, meniscal, patellar or neurovascular tests.
-
----
-
-# 11. Assessment
-
-## 11.1 Primary working diagnosis
-
-The interface should display no more than three primary relevant suggestions by default.
-
-Possible diagnoses include:
-
-- knee sprain
-- overuse-related knee pain
-- knee osteoarthritis
-- suspected meniscal pathology
-- ACL injury
-- PCL injury
-- MCL injury
-- LCL injury
-- patellofemoral pain
-- patellar instability
-- patellar tendinopathy
-- quadriceps tendinopathy
-- pes anserine pain or bursitis
-- prepatellar bursitis
-- Baker’s cyst
-- inflammatory arthritis
-- septic arthritis
-- fracture concern
-- extensor mechanism injury
-- pain originating from hip or back
-- non-specific knee pain
-- other
-
-The full diagnosis list must not be shown with equal visual weight.
-
-## 11.2 Differential diagnoses
-
-Differential diagnoses should be added separately from the primary working diagnosis.
-
-Suggested interaction:
-
-> Add differential diagnosis
-
-The generator should preserve uncertainty.
-
-## 11.3 Serious clinical threats
-
-The assessment must support explicit consideration of:
-
-- fracture
-- infection
-- true locking
-- extensor mechanism injury
-- major ligament injury
-- patellar dislocation
-- neurovascular compromise
-- inflammatory arthritis
-- malignancy or other atypical pathology
-
-These belong primarily in Clinical attention points, not as ordinary equal-weight diagnosis chips.
-
-## 11.4 Management level
-
-Options:
-
-- can be managed in general practice
-- acute referral required
-- subacute specialist assessment required
-- elective referral appropriate
-- reassessment required before decision
-- unclear
-
-Urgency must be tied to recorded findings and current applicable guidance.
-
-## 11.5 Diagnostic uncertainty
-
-The main workflow should not require a generic high, medium or low “certainty” field.
-
-Uncertainty should instead be represented through:
-
-- provisional wording
-- differential diagnoses
-- missing or non-assessable findings
-- need for follow-up
-- need for investigation
-- free-text qualification
-
-## 11.6 Own assessment
-
-A free-text field must be available.
-
----
-
-# 12. Clinical attention points
-
-Working title:
-
-> Clinical attention points
-
-This region must not imply complete clinical quality approval.
-
-Potential attention points include:
-
-- possible septic arthritis or acute monoarthritis
-- red, hot and swollen knee
-- systemic illness
-- possible fracture
-- inability to weight-bear
-- true locking
-- persistent extension deficit
-- extensor mechanism concern
-- large acute effusion
-- objective instability
-- neurovascular abnormality
-- atypical progressive night or rest pain
-- malignancy concern
-- inflammatory pattern
-- insufficient information before imaging or referral
-- contradiction between grouped normal and positive findings
-
-Each item should state:
-
-1. Trigger
-2. Clinical relevance
-3. Suggested consideration
-4. Evidence or rule identifier
-5. Whether the issue remains unresolved
-
-Attention points remain advisory unless a separately approved design defines blocking behaviour.
-
----
-
-# 13. Plan
-
-## 13.1 Information and shared decision-making
-
-Options:
-
-- assessment explained
-- expected course explained
-- treatment options discussed
-- self-management discussed
-- patient agrees with plan
-- patient preference recorded
-- written information provided
-- other
-
-These must not be preselected automatically.
-
-## 13.2 Activity and load
-
-Options:
-
-- activity as tolerated
-- temporary reduction of provoking activity
-- graded return to activity
-- mobilisation as tolerated
-- crutches as needed
-- work modification
-- sports restriction
-- other
-
-## 13.3 Acute symptom measures
-
-When relevant:
-
-- ice as needed
-- compression
-- elevation
-- other
-
-These should not appear as universal mandatory measures.
-
-## 13.4 Analgesia
-
-Options:
-
-- no analgesic plan
-- paracetamol as needed
-- topical NSAID
-- short course oral NSAID after contraindication assessment
-- other
-
-The pathway must distinguish medication discussed, medication recommended, contraindications assessed and medication already used.
-
-No generated statement may imply a contraindication review unless explicitly recorded.
-
-## 13.5 Exercise and rehabilitation
-
-Options:
-
-- home exercises
-- therapeutic exercise
-- supervised therapeutic exercise
-- physiotherapy referral
-- patient education
-- graded strengthening
-- aerobic activity
-- weight-management support when relevant
-- other
-
-## 13.6 Investigation
-
-Options:
-
-- no investigation currently indicated
-- acute X-ray
-- standing weight-bearing X-ray
-- blood tests for inflammatory or infectious concern
-- ultrasound for selected extra-articular question
-- MRI only when result is expected to change management
-- other
-
-Every investigation must have an indication.
-
-The pathway must support, but not automatically decide:
-
-- fracture screening after acute trauma
-- standing weight-bearing radiographs when clinically relevant
-- avoidance of routine imaging for typical uncomplicated osteoarthritis
-- MRI only where the result has a meaningful management consequence
-- regional variation in access and referral requirements
-
-No imaging rule is clinically final until reviewed against the evidence register and applicable regional guidance.
-
-## 13.7 Referral
-
-Potential destinations:
-
-- physiotherapy
-- emergency department or acute service
-- orthopaedic surgery
-- rheumatology
-- other
-
-Required referral concepts:
-
-- recipient
-- urgency
-- indication
-- clinical question
-- functional impact
-- relevant examination
-- prior treatment and effect
-- imaging status
-- unresolved concern
-
-## 13.8 Follow-up
-
-Options:
-
-- as needed
-- within 1–2 weeks
-- within 4–6 weeks
-- after exercise or physiotherapy course
-- after imaging
-- other interval
-
-Reassessment targets may include:
-
-- pain pattern
-- gait
-- weight-bearing
-- range of motion
-- extension
-- effusion
-- stability
-- function
-- response to treatment
-
-## 13.9 Safety-net
-
-Structured reasons may include:
-
-- fever or systemic illness
-- increasing redness or warmth
-- rapidly increasing swelling
-- inability to weight-bear
-- inability to perform straight-leg raise
-- new true locking
-- progressive extension deficit
-- cold, pale, numb or weak foot
-- worsening pain
-- no expected improvement
-- other
-
-The generator must combine selected reasons into one coherent sentence.
-
-## 13.10 Standard conservative plan bundle
-
-Working action:
-
-> Apply standard conservative plan
-
-The exact content must be visible before or immediately after application.
-
-Possible elements:
-
-- assessment and expected course discussed
-- activity according to symptoms
-- temporary reduction of provoking activity
-- exercise guidance
-- analgesia discussion
-- follow-up
-- safety-net
-
-The bundle must require explicit acceptance, be reversible, permit exceptions and never imply medication safety assessment or patient information unless confirmed.
-
----
-
-# 14. Quick presentation
-
-## 14.1 Intended use
-
-Quick is intended for uncomplicated, coherent presentations without major trauma, serious warning signs or substantial diagnostic uncertainty.
-
-## 14.2 Core Quick content
-
-### History
-
-- side
-- onset and precise duration
-- precipitating factor
-- pain location and pattern
-- function
-- swelling
-- true locking
-- instability
-- key warning symptoms
-- relevant previous history
-
-### Objective
-
-- general condition
-- gait
-- inspection
-- movement and extension
-- straight-leg raise
-- effusion
-- focal tenderness
-- one or more targeted tests where indicated
-
-### Assessment
-
-- primary working diagnosis
-- relevant differential
-- serious concern absent or unresolved
-- general-practice management appropriate or not
-
-### Plan
-
-- information
-- activity
-- analgesia
-- exercise or physiotherapy
-- investigation
-- follow-up
-- safety-net
-
-## 14.3 Quick exclusion signals
-
-The system should recommend Standard when recorded information includes:
-
-- significant trauma
-- possible fracture
-- inability to weight-bear
-- immediate large effusion
-- red-hot swollen knee
-- fever or systemic illness
-- true locking
-- persistent extension deficit
-- extensor mechanism concern
-- objective instability
-- neurovascular concern
-- diagnostic uncertainty
-- detailed imaging or specialist referral need
-
-The clinician retains control and should see why Standard is suggested.
-
----
-
-# 15. Standard presentation
-
-Standard should expose additional detail progressively.
-
-It should support:
-
-- detailed pain history
-- precise trauma mechanism
-- swelling chronology
-- previous disease and treatment
-- infection and inflammatory risk
-- named targeted tests
-- detailed differential diagnoses
-- explicit management level
-- imaging rationale
-- referral urgency
-- recipient-specific outputs
-
-Standard must not become a mandatory complete examination battery.
-
----
-
-# 16. Journal synthesis
-
-## 16.1 Default structure
-
-The default note should use clinically natural sections:
-
-- Problem
-- History
-- Objective
-- Assessment
-- Plan
-
-The visible output label should be `Note` or `Journal note`, not `PSOAP journal`.
-
-## 16.2 Synthesis requirements
-
-The generator must:
-
-- use coherent Danish prose
-- preserve chronology
-- combine related findings
-- avoid raw label concatenation
-- avoid unnecessary repetition
-- distinguish subjective and objective findings
-- preserve uncertainty
-- include only confirmed findings
-- avoid broad normal conclusions unsupported by named examinations
-- combine safety-net items grammatically
-- avoid technical internal terminology
-
-## 16.3 Example: acute trauma
-
-Preferred:
-
-> Right-sided knee pain after a twisting injury during football yesterday. The patient could continue briefly, but subsequently developed mild swelling, a limp and reduced weight-bearing ability. No fever or true locking.
-
-Avoid:
-
-> Acute. Duration days. Trauma. Twisting. Reduced load. Mild swelling. No fever. No locking.
-
-## 16.4 Example: gradual degenerative presentation
-
-Preferred:
-
-> Gradually increasing medial right-knee pain over six months, mainly during stairs and prolonged walking, with brief stiffness after rest. No trauma, fever or true locking. Paracetamol has had limited effect.
-
-Avoid:
-
-> Gradual. Duration months. No trauma. Reduced load. Stairs. Walking. Paracetamol limited effect.
-
----
-
-# 17. Physiotherapy referral synthesis
-
-The referral should include:
-
-1. reason for referral
-2. onset and relevant course
-3. trauma mechanism where relevant
-4. functional limitation
-5. key positive findings
-6. relevant negative findings
-7. working diagnosis and uncertainty
-8. previous treatment and effect
-9. imaging status
-10. requested assessment or treatment objective
-
-The output must not claim that a test, treatment or imaging result exists unless recorded.
-
----
-
-# 18. Imaging referral synthesis
-
-The imaging referral should include:
-
-1. requested examination
-2. side
-3. clinical indication
-4. relevant duration and course
-5. trauma context
-6. key objective findings
-7. working diagnosis
-8. clinical question
-9. expected management consequence
-10. prior imaging where known
-
-The exact imaging request must comply with current regional requirements.
-
----
-
-# 19. Specialist referral synthesis
-
-The specialist referral should include:
-
-- reason for referral
-- urgency
-- duration and course
-- functional impact
-- trauma mechanism where relevant
-- objective findings
-- serious concerns
-- investigations
-- treatment already attempted
-- response to treatment
-- working diagnosis and differentials
-- specific specialist question
-
----
-
-# 20. Output status
-
-Preferred technical statuses:
-
-- Missing information
-- Draft ready for review
-
-Avoid an unqualified `Ready`.
-
-Every output must visibly state that the clinician must review clinical accuracy, wording, recipient, urgency, local requirements and patient-specific relevance.
-
----
-
-# 21. Keyboard requirements
-
-The pathway must support:
-
-- `Tab` between clinical groups
-- `Shift + Tab` backwards
-- arrow keys within choice groups
-- `Space` to select
-- `Enter` to confirm and continue
-- `Escape` to close expanded controls
-- keyboard access to Quick and Standard
-- keyboard access to grouped confirmations
-- keyboard access to suggestions
-- keyboard access to outputs
-- keyboard access to free text
-
-Potential shortcuts require usability testing and must not interfere with ordinary typing.
-
----
-
-# 22. Visual requirements
-
-The pathway should:
-
-- show more clinically relevant information per screen
-- use smaller section headings than the current prototype
-- reduce vertical padding
-- reduce unnecessary card boundaries
-- integrate controls with the document
-- limit equal-weight diagnosis chips
-- keep serious attention points visually distinct
-- preserve a calm and trustworthy appearance
-- support rapid scanning
-- reduce scrolling
-- allow the output region to remain useful without dominating the workspace
-
----
-
-# 23. Evidence ownership
-
-Every clinically consequential element must be represented in:
-
-`docs/clinical/pathways/evidence/KNEE-001-Evidence-Register.md`
-
-The register should include:
-
-| Clinical element | Source | Version/date | Geography | Status | Reviewer | Notes |
-|---|---|---|---|---|---|---|
-
-Required evidence topics include:
-
-- acute fracture screening
-- inability to weight-bear
 - swelling timing
-- true locking
-- extension deficit
-- extensor mechanism injury
-- septic arthritis
-- inflammatory arthritis
-- meniscal examination
-- ligament examination
-- osteoarthritis diagnosis
-- therapeutic exercise
-- weight management
-- analgesia
-- standing radiographs
-- MRI indications
-- physiotherapy referral
-- orthopaedic referral
-- urgent and subacute referral thresholds
-- regional imaging and referral requirements
-- safety-net content
+- audible pop
+- Lachman result
+- patellar apprehension
+- distal sensation
 
-A clinical rule without an approved evidence record must not be treated as clinically validated.
+This does not authorise:
 
----
+- diagnostic scoring
+- automatic diagnosis
+- automatic referral urgency
+- claims of exclusion
+- mandatory examination
 
-# 24. Source status notes
+Field availability and clinical decision rules must therefore be reviewed separately.
 
-At the time of drafting:
+### 7.2 Negative findings
 
-- Danish national guidance on meniscal pathology supports a simple clinical test, discourages ultrasound for meniscal investigation, limits MRI to situations where the result changes management, and supports standing radiography when osteoarthritis may explain symptoms
-- that Danish meniscal guidance is currently marked as under review and must therefore be versioned carefully
-- current osteoarthritis guidance supports clinical diagnosis in typical presentations, therapeutic exercise, relevant weight management and avoidance of routine imaging in uncomplicated cases
-- suspected bacterial arthritis requires urgent clinical handling, and absence of fever alone must not be used to exclude it
-- regional imaging and referral criteria may vary and must be reviewed before implementation
+A negative finding may appear in output only when:
 
-These statements remain subject to the evidence register and clinical sign-off.
+- explicitly selected by the clinician, or
+- included in a clearly defined grouped confirmation that the clinician explicitly applies
 
----
+The absence of a positive selection is not a negative finding.
 
-# 25. Acceptance criteria
+### 7.3 “No red flags”
 
-KNEE-001 is ready for implementation planning only when:
+The phrase “no red flags” should not be generated as a global conclusion unless:
 
-- [ ] Clinical Document Workspace v1 is approved
-- [ ] the clinical concept model is reviewed
-- [ ] Quick and Standard presentations are approved
-- [ ] grouped confirmations are clinically reviewed
-- [ ] serious attention points are clinically reviewed
-- [ ] journal synthesis examples are approved
-- [ ] physiotherapy referral synthesis is approved
-- [ ] imaging referral synthesis is approved
-- [ ] regional requirements are identified
-- [ ] the evidence register is complete
-- [ ] architecture impact is assessed
-- [ ] an RFC is written if shared engine changes are required
-- [ ] an isolated prototype has been tested
-- [ ] RC-002 scenarios have been repeated on the prototype
+- the relevant warning-feature set is defined for the presentation
+- each included item has been explicitly confirmed
+- the phrase does not conceal unassessed items
 
----
+Preferred output is often more specific:
 
-# 26. Prototype test scenarios
+> No fever, systemic illness, red-hot joint or true locking reported.
 
-The prototype must be tested against at least:
+### 7.4 Diagnostic suggestions
 
-1. Acute twisting trauma
-2. Gradual degenerative knee pain
-3. Acute red-hot swollen knee
-4. Possible true locking
-5. Uncomplicated overuse-related pain
-6. Significant trauma with inability to weight-bear
-7. Possible extensor mechanism injury
-8. Suspected ligament instability
-9. Atypical pain with possible hip referral
+Suggestions should be based on transparent recorded findings and should not use unvalidated probability percentages.
 
-Measures should include clicks, keystrokes, scrolling, completion time, missing information, compensatory free text, journal edits, referral edits, perceived cognitive load and willingness to use in routine practice.
+A suggestion may be shown when:
+
+- supporting features are present
+- critical contradictions are absent or visibly unresolved
+- the suggestion is within the validated scope of the rule
+
+Serious diagnoses should appear as attention points rather than ordinary equal-weight diagnosis options.
+
+### 7.5 Output synthesis
+
+Evidence supports clinical behaviours, not staccato wording.
+
+The generator must preserve:
+
+- chronology
+- uncertainty
+- subjective/objective distinction
+- test identity
+- whether a test was not performed or not assessable
+- indication and clinical question in referrals
 
 ---
 
-# 27. Non-goals
+## 8. Regional evidence work required
 
-KNEE-001 does not attempt to:
+The following cannot be considered implementation-ready until current requirements are collected for every region Cortex intends to support:
 
-- replace clinical judgement
-- establish a final diagnosis automatically
-- provide autonomous triage
-- replace emergency assessment
-- create a complete orthopaedic examination textbook
-- require every named test in every patient
-- solve paediatric knee pain
-- implement postoperative or prosthetic-knee care
-- define medication prescribing without contraindication assessment
-- override regional referral requirements
-- establish clinical validation through automated tests
+- acute knee referral destination
+- definition and urgency of locked knee
+- suspected extensor mechanism injury pathway
+- suspected major ligament injury pathway
+- acute fracture imaging access
+- standing weight-bearing knee radiograph requirements
+- required radiographic projections
+- MRI access and prerequisites
+- orthopaedic referral prerequisites
+- physiotherapy referral arrangements
+- septic arthritis acute routing and transport wording
+- direct-access imaging rules
+- required referral fields
 
----
+### Regional matrix to complete
 
-# 28. Implementation sequence
+| Topic | Capital Region | Region Zealand | Region of Southern Denmark | Central Denmark Region | North Denmark Region |
+|---|---|---|---|---|---|
+| Acute fracture pathway | Unresolved | Unresolved | Unresolved | Unresolved | Unresolved |
+| Locked knee | Unresolved | Unresolved | Unresolved | Unresolved | Unresolved |
+| Extensor mechanism injury | Unresolved | Unresolved | Unresolved | Unresolved | Unresolved |
+| Acute ligament injury | Unresolved | Unresolved | Unresolved | Unresolved | Unresolved |
+| Weight-bearing knee X-ray | Unresolved | Unresolved | Unresolved | Unresolved | Unresolved |
+| MRI access | Unresolved | Unresolved | Unresolved | Unresolved | Unresolved |
+| Elective orthopaedic referral | Unresolved | Unresolved | Unresolved | Unresolved | Unresolved |
+| Acute septic joint routing | Unresolved | Unresolved | Unresolved | Unresolved | Unresolved |
 
-Recommended pathway-specific slices:
-
-1. Shared knee concept model
-2. Quick and Standard presentation metadata
-3. Explicit grouped confirmations
-4. Revised history
-5. Revised objective examination
-6. Targeted test groups
-7. Assessment prioritisation
-8. Plan categories
-9. Clinical attention points
-10. Journal synthesis
-11. Physiotherapy referral synthesis
-12. Imaging referral synthesis
-13. Keyboard workflow
-14. Vitest coverage
-15. Playwright coverage
-16. Architecture review
-17. Clinical review
-18. RC-002 retest
-
-No single implementation task should attempt all slices at once.
+A single region’s guidance must not be presented as a national Danish rule.
 
 ---
 
-# 29. Review decision
+## 9. Conflicts and cautions
 
-Current state:
+### 9.1 Meniscal MRI
+
+- S1: MRI only when the result affects further management.
+- S5: MRI is the preferred imaging modality for diagnosing acute isolated meniscal tears.
+
+**Cortex decision:** Follow the Danish pathway context and regional access rules. Do not expose “MRI for suspected meniscus” as a routine default. Retain S5 as supplementary diagnostic evidence, not as the governing access rule.
+
+### 9.2 Osteoarthritis radiography
+
+- S1 supports standing radiography when OA may explain symptoms in a meniscal context.
+- S4 advises against routine imaging for typical OA diagnosis and non-surgical management.
+
+**Cortex decision:** Imaging must be indication-specific. Typical uncomplicated OA should not automatically produce an X-ray referral. Standing radiography may be appropriate for atypical features, unresolved diagnosis, pre-referral requirements or another management consequence after local verification.
+
+### 9.3 Paracetamol
+
+The draft clinical template previously treated paracetamol as a common default option. S4 advises against routine paracetamol for OA because strong benefit is lacking.
+
+**Cortex decision:** Paracetamol must not be automatically selected as a universal knee-pain plan. Diagnosis-specific Danish pharmacological review is required.
+
+### 9.4 “No fever” and septic arthritis
+
+S2 explicitly states that fever may be absent.
+
+**Cortex decision:** Absence of fever must never suppress an infection attention point when local findings or clinical suspicion remain concerning.
+
+---
+
+## 10. Evidence gaps that block final clinical approval
+
+The following topics remain insufficiently resolved:
+
+1. Current regional acute-knee guidance for all five Danish regions.
+2. Exact urgency for true locked knee.
+3. Extensor mechanism injury assessment and referral.
+4. ACL, PCL, MCL and LCL examination evidence for general-practice use.
+5. Patellofemoral and patellar-instability examination.
+6. Distal neurovascular assessment and escalation after knee trauma.
+7. Current Danish inflammatory-arthritis referral guidance.
+8. Adult referred-pain and hip-screening guidance.
+9. Universal or diagnosis-specific follow-up intervals.
+10. Evidence and wording for acute symptom measures.
+11. Danish medication guidance for topical NSAID, oral NSAID and paracetamol.
+12. Exact eligibility and exclusions for Ottawa Knee Rule use in Cortex.
+13. Regional radiographic projections and referral content.
+14. Pathway-specific safety-net validation.
+
+---
+
+## 11. Evidence review checklist
+
+### Source integrity
+
+- [x] Each currently used source has an identifiable issuer.
+- [x] Publication or update dates have been recorded where available.
+- [x] Danish guidance has been prioritised.
+- [x] International guidance has been labelled as supplementary.
+- [ ] All regional sources have been identified.
+- [ ] Exact ACR acute-knee topic version has been captured.
+- [ ] Superseded sources have been formally excluded.
+
+### Clinical mapping
+
+- [x] Osteoarthritis diagnosis and first-line management are mapped.
+- [x] Septic arthritis is mapped.
+- [x] Meniscal assessment and imaging restraint are mapped.
+- [x] Ottawa fracture screening is mapped conditionally.
+- [ ] Ligament examination is fully mapped.
+- [ ] Extensor mechanism injury is fully mapped.
+- [ ] Patellar disorders are fully mapped.
+- [ ] Inflammatory arthritis is fully mapped.
+- [ ] Regional referral urgency is fully mapped.
+- [ ] Safety-net content is clinically approved.
+
+### Governance
+
+- [x] Unsupported rules are labelled unresolved or blocked.
+- [x] Conflicting guidance has been documented.
+- [x] No item has been marked clinically approved prematurely.
+- [ ] Practising GP review completed.
+- [ ] Relevant specialist review completed.
+- [ ] Regional applicability approved.
+- [ ] Implementation wording approved.
+- [ ] Review date and owner assigned.
+
+---
+
+## 12. Minimum approval team
+
+Final approval should include:
+
+- one practising specialist in general medicine
+- one clinician with relevant orthopaedic or musculoskeletal expertise
+- one reviewer responsible for regional referral/imaging applicability
+- product owner
+- architecture reviewer for rule representation and safety invariants
+
+The same person may hold more than one role only when conflicts of interest and review independence are explicitly accepted.
+
+---
+
+## 13. Change control
+
+Every evidence-backed rule should have a stable identifier in implementation.
+
+Suggested format:
+
+- `KNEE-EV-FRACTURE-001`
+- `KNEE-EV-INFECTION-001`
+- `KNEE-EV-OA-001`
+- `KNEE-EV-MENISCUS-001`
+- `KNEE-EV-REFERRAL-001`
+
+When a source changes:
+
+1. mark the affected evidence item for review
+2. identify dependent fields, rules, suggestions and generators
+3. block release if a safety-critical rule may have changed
+4. update this register
+5. repeat clinical review
+6. add regression tests for the approved behaviour
+
+---
+
+## 14. Monitoring plan
+
+Before each release containing KNEE-001 clinical changes:
+
+- check the status of S1
+- check the update date of S2
+- check the current version of S4
+- check relevant regional referral and imaging guidance
+- review changes in medicine guidance
+- confirm no source has been withdrawn or superseded
+
+Routine evidence surveillance should occur at least every six months while the pathway is active, and immediately when a relevant authority publishes a material update.
+
+---
+
+## 15. Current decision
 
 - [ ] Approved
 - [ ] Approved with observations
-- [ ] Changes required
-- [x] Proposed for review
+- [x] Changes required before implementation
+- [ ] Rejected
 
-No production implementation is authorised by this document alone.
+### Rationale
+
+The register supports several important pathway components:
+
+- clinical diagnosis and core management of typical knee osteoarthritis
+- targeted therapeutic exercise and relevant weight management
+- restraint in routine OA imaging
+- acute handling of suspected bacterial arthritis
+- targeted meniscal examination
+- management-dependent use of MRI in the Danish meniscal context
+- conditional use of a validated fracture-screening rule
+
+However, the pathway is not ready for clinical implementation because major safety and localisation topics remain unresolved, especially:
+
+- regional acute and subacute referral thresholds
+- extensor mechanism injury
+- ligament examination and escalation
+- patellar disorders
+- distal neurovascular assessment
+- inflammatory arthritis
+- medication wording
+- context-specific safety-net
+- regional imaging requirements
 
 ---
 
-# 30. Required next steps
+## 16. Required next steps
 
-1. Review and revise this document.
-2. Create `KNEE-001-Evidence-Register.md`.
-3. Resolve the remaining clinical content questions.
-4. Assess shared architecture impact.
-5. Write an RFC if engine contracts must change.
-6. Create an isolated interactive prototype.
-7. Test the prototype using the defined scenarios.
-8. Approve the implementation plan.
-9. Implement in small slices.
-10. Repeat RC-002.
+1. Assign named clinical reviewers.
+2. Complete the five-region guidance matrix.
+3. Add accepted sources for ligament, extensor mechanism, patellar and neurovascular assessment.
+4. Add current Danish inflammatory-arthritis guidance.
+5. Complete Danish pharmacological review.
+6. Decide the exact scope and eligibility of Ottawa Knee Rule implementation.
+7. Review every grouped normal/negative confirmation against this register.
+8. Convert approved clinical behaviours into stable evidence identifiers.
+9. Perform architecture review before encoding rules.
+10. Repeat clinical review after the interactive prototype is available.
 
 ---
 
-# 31. Sign-off
+## 17. Sign-off
 
 **Product owner:**  
-**Clinical reviewer:**  
+**General-practice reviewer:**  
+**Musculoskeletal / orthopaedic reviewer:**  
+**Regional applicability reviewer:**  
 **Architecture reviewer:**  
-**Evidence review completed:** No  
-**Decision:** Proposed  
+**Decision:** Changes required before implementation  
 **Date:** 2026-07-17  
-**Implementation authorised:** No  
-**Prototype required:** Yes  
-**RC-002 retest required:** Yes
+**Next evidence review due:** 2027-01-17 or before implementation, whichever comes first  
+**Implementation authorised:** No 
