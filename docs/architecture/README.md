@@ -85,4 +85,4 @@ Journal and referral drafts
 
 - [`Product roadmap`](../product/ROADMAP.md)
 - [`UX guidelines`](../design/UX-GUIDELINES.md)
-- [`Clinical workspace`](../design/CLINICAL-WORKSPACE.md)
+- [`Clinical document workspace v1`](../design/CLINICAL-DOCUMENT-WORKSPACE-v1.md)

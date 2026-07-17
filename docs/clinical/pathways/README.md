@@ -1,6 +1,6 @@
 # Clinical pathway documentation
 
-This directory contains current, versioned specifications for implemented clinical pathways.
+This directory contains current, versioned specifications for implemented and proposed clinical pathways.
 
 ## Purpose
 
@@ -26,4 +26,5 @@ All pathways must follow [`WF-001`](../../vision/WF-001-The-Consultation-Workflo
 
 ## Current specifications
 
-- [`KNEE-001 – Knæsmerter`](KNEE-001-Knee-Pain.md) — prototype, not clinically validated.
+- [`KNEE-001 – Knee Pain`](KNEE-001-Knee-Pain.md) — proposed for review, not clinically validated and not authorised for implementation.
+- [`KNEE-001 evidence register`](evidence/KNEE-001-Evidence-Register.md) — evidence-review record for the pathway.

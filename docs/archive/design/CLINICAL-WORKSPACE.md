@@ -1,10 +1,13 @@
+> **Archived:** This document has been superseded by
+> `docs/design/CLINICAL-DOCUMENT-WORKSPACE-v1.md`.
+
 # Clinical Workspace
 
 **Status:** Active prototype guidance  
 **Owner:** Cortex  
 **Last reviewed:** 2026-07-15
 
-This document describes the current prototype workspace. Universal consultation behavior remains defined by [`WF-001`](../vision/WF-001-The-Consultation-Workflow.md).
+This document describes the current prototype workspace. Universal consultation behavior remains defined by [`WF-001`](../../vision/WF-001-The-Consultation-Workflow.md).
 
 ## Workspace model
 

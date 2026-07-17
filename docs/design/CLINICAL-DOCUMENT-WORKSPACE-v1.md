@@ -1491,9 +1491,8 @@ This document is subordinate to:
 
 It is informed by:
 
-* `docs/product/reviews/RC-002-Clinical-Workspace-Review.md`
+* `docs/architecture/reviews/RC-002-Clinical-Workspace-Review.md`
 * `docs/clinical/pathways/KNEE-001-Knee-Pain.md`
-* `docs/design/CLINICAL-WORKSPACE.md`
 * `docs/design/UX-GUIDELINES.md`
 
 Where conflicts exist, the higher-authority document prevails.

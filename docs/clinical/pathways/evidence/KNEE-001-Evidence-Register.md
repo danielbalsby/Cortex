@@ -2,7 +2,7 @@
 
 **Status:** Draft for formal clinical review  
 **Owner:** Cortex  
-**Pathway:** `KNEE-001-Knee-Pain.md`  
+**Pathway:** `docs/clinical/pathways/KNEE-001-Knee-Pain.md`  
 **Document type:** Clinical evidence and governance register  
 **Population:** Adults presenting with knee pain in Danish general practice  
 **Evidence search date:** 2026-07-17  
@@ -17,7 +17,7 @@
 
 ## 1. Purpose
 
-This register links clinically consequential content in `KNEE-001-Knee-Pain.md` to identifiable evidence sources, guidance status, implementation constraints and review decisions.
+This register links clinically consequential content in `docs/clinical/pathways/KNEE-001-Knee-Pain.md` to identifiable evidence sources, guidance status, implementation constraints and review decisions.
 
 Its purposes are to:
 

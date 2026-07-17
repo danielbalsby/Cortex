@@ -25,4 +25,4 @@ These rules translate the canonical consultation experience and workflow into co
 17. **Do not hide recorded consequences.** If changing an answer removes dependent information, the resulting state and outputs must update predictably.
 18. **Test with clinical tasks.** Evaluate designs using complete consultation scenarios, including uncertainty, red flags and incomplete outputs.
 
-See [`CLINICAL-WORKSPACE.md`](CLINICAL-WORKSPACE.md) for the prototype workspace model.
+See [`CLINICAL-DOCUMENT-WORKSPACE-v1.md`](CLINICAL-DOCUMENT-WORKSPACE-v1.md) for the current workspace model.
