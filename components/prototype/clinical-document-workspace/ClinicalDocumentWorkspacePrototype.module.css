@@ -1,0 +1,770 @@
+.shell {
+  min-height: 100vh;
+  max-width: 1680px;
+  margin: 0 auto;
+  padding: 14px 18px 22px;
+  color: var(--ink);
+}
+
+.topbar {
+  min-height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.brandBlock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brandBlock > div:last-child {
+  display: grid;
+  gap: 1px;
+}
+
+.brandBlock strong {
+  font: 500 18px/1.2 Georgia, serif;
+}
+
+.brandMark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-strong);
+  font: 500 18px/1 Georgia, serif;
+}
+
+.prototypeLabel,
+.scenarioIntro > span,
+.documentHeader > div > span,
+.documentSection > header > span,
+.groupConfirmationHeader > div > span,
+.suggestionHeader span,
+.panelHeading span,
+.noteHeader span {
+  color: var(--sage);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.productionLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.productionLink:hover {
+  color: var(--ink);
+}
+
+.scenarioBar {
+  display: grid;
+  grid-template-columns: minmax(220px, .7fr) minmax(440px, 1.5fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,253,248,.72);
+}
+
+.scenarioIntro {
+  display: grid;
+  gap: 2px;
+}
+
+.scenarioIntro strong {
+  font-size: 12px;
+}
+
+.scenarioIntro small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.scenarioChoices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.scenarioChoices button,
+.resetButton {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-strong);
+  cursor: pointer;
+}
+
+.scenarioChoices button {
+  display: grid;
+  gap: 2px;
+  padding: 7px 10px;
+  text-align: left;
+}
+
+.scenarioChoices button strong {
+  font-size: 11px;
+}
+
+.scenarioChoices button span {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.scenarioChoices .scenarioActive {
+  border-color: var(--sage);
+  background: #f0f4ed;
+  box-shadow: inset 3px 0 0 var(--sage);
+}
+
+.resetButton {
+  min-width: 88px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 10px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(650px, 1.18fr) minmax(410px, .82fr);
+  align-items: start;
+  gap: 10px;
+}
+
+.documentPane,
+.outputPane {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(248,245,238,.86);
+  box-shadow: 0 14px 40px rgba(73,62,45,.06);
+}
+
+.documentPane {
+  overflow: hidden;
+}
+
+.documentHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 18px 13px;
+  background: rgba(255,253,248,.62);
+  border-bottom: 1px solid var(--line);
+}
+
+.documentHeader h1 {
+  margin: 3px 0 2px;
+  font: 500 25px/1.1 Georgia, serif;
+  letter-spacing: -.015em;
+}
+
+.documentHeader p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.modeSwitch {
+  display: inline-grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ebe6dc;
+}
+
+.modeSwitch button {
+  min-width: 76px;
+  height: 31px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.modeSwitch button[aria-pressed="true"] {
+  color: var(--ink);
+  background: var(--surface-strong);
+  box-shadow: 0 3px 9px rgba(65,56,43,.08);
+}
+
+.preservedNotice {
+  margin: 0;
+  padding: 7px 18px;
+  border-bottom: 1px solid #d6dcca;
+  background: #f1f5ee;
+  color: #5e6b56;
+  font-size: 10px;
+}
+
+.documentSection {
+  display: grid;
+  grid-template-columns: 108px 1fr;
+  border-bottom: 1px solid var(--line);
+}
+
+.documentSection:last-child {
+  border-bottom: 0;
+}
+
+.documentSection > header {
+  padding: 14px 12px 12px 17px;
+  border-right: 1px solid rgba(220,212,198,.75);
+  background: rgba(239,235,225,.52);
+}
+
+.documentSection > header h2 {
+  margin: 3px 0 0;
+  font: 500 18px/1.2 Georgia, serif;
+}
+
+.sectionContent {
+  display: grid;
+  gap: 9px;
+  padding: 12px 15px 14px;
+  min-width: 0;
+}
+
+.inlinePair {
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, .7fr);
+  gap: 10px;
+  align-items: end;
+}
+
+.choiceGroup {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  align-items: center;
+  gap: 9px;
+}
+
+.choiceGroup legend {
+  float: left;
+  width: 128px;
+  padding: 0;
+  color: #4d524b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.choiceGroup > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.choiceGroup button {
+  min-height: 29px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-strong);
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.choiceGroup button:hover {
+  border-color: #aaa697;
+}
+
+.choiceGroup button[aria-pressed="true"] {
+  border-color: var(--sage);
+  background: var(--sage);
+  color: #fff;
+}
+
+.textControl {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  align-items: center;
+  gap: 9px;
+}
+
+.textControl > span {
+  color: #4d524b;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.textControl input,
+.textControl textarea {
+  width: 100%;
+  min-height: 32px;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  outline: none;
+  background: var(--surface-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 11px;
+}
+
+.textControl textarea {
+  min-height: 50px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+.detailBlock {
+  display: grid;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #d6d0c3;
+  border-radius: 11px;
+  background: rgba(255,253,248,.54);
+}
+
+.groupConfirmation {
+  padding: 10px;
+  border: 1px solid #bec8b8;
+  border-radius: 12px;
+  background: #f2f6ef;
+}
+
+.groupConfirmationHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.groupConfirmationHeader h3 {
+  margin: 3px 0 1px;
+  font: 500 16px/1.2 Georgia, serif;
+}
+
+.groupConfirmationHeader p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.confirmButton,
+.confirmedButton {
+  min-height: 31px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 10px;
+  border: 1px solid var(--sage);
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.confirmButton {
+  background: var(--sage);
+  color: white;
+}
+
+.confirmedButton {
+  background: var(--surface-strong);
+  color: var(--sage);
+}
+
+.findingList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px 12px;
+  margin: 9px 0 0;
+  padding: 8px 0 0;
+  border-top: 1px solid #d4dccf;
+  list-style: none;
+}
+
+.findingList li {
+  min-width: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.findingList li[data-status="confirmed"] span {
+  color: #53634d;
+  font-weight: 700;
+}
+
+.findingList li[data-status="overridden"] {
+  color: #9a5946;
+}
+
+.findingList small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.exceptionGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px 12px;
+}
+
+.exceptionGrid .choiceGroup {
+  grid-template-columns: 76px 1fr;
+}
+
+.exceptionGrid .choiceGroup legend {
+  width: 76px;
+}
+
+.suggestionHeader,
+.noteHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.suggestionHeader p {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.textButton {
+  padding: 3px 0;
+  border: 0;
+  background: transparent;
+  color: var(--sage);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 750;
+}
+
+.suggestionList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.suggestion,
+.suggestionSelected {
+  min-width: 0;
+  min-height: 58px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface-strong);
+  text-align: left;
+  cursor: pointer;
+}
+
+.suggestionSelected {
+  border-color: var(--sage);
+  background: #f1f5ee;
+}
+
+.suggestion > span:first-child,
+.suggestionSelected > span:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.suggestion strong,
+.suggestionSelected strong {
+  font-size: 10px;
+}
+
+.suggestion small,
+.suggestionSelected small {
+  color: var(--muted);
+  font-size: 8px;
+  line-height: 1.3;
+}
+
+.suggestion > span:last-child,
+.suggestionSelected > span:last-child {
+  color: var(--sage);
+  font-size: 9px;
+  font-weight: 750;
+}
+
+.emptyHint {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.outputPane {
+  position: sticky;
+  top: 10px;
+  max-height: calc(100vh - 20px);
+  overflow: auto;
+  padding: 11px;
+  display: grid;
+  gap: 9px;
+  background: rgba(255,253,248,.9);
+}
+
+.attentionArea,
+.notePanel,
+.outputPlaceholders {
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(248,245,238,.72);
+}
+
+.attentionArea {
+  border-color: #d7c4a6;
+  background: #faf5e9;
+}
+
+.panelHeading {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.panelHeading svg {
+  color: #8f6b35;
+}
+
+.panelHeading > div {
+  display: grid;
+  gap: 2px;
+}
+
+.panelHeading small {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.attentionList {
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.attentionList article {
+  padding: 8px;
+  border-radius: 9px;
+  background: rgba(255,255,255,.55);
+}
+
+.attentionList strong {
+  font-size: 10px;
+}
+
+.attentionList p,
+.clearAttention {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+.clearAttention {
+  margin-top: 8px;
+}
+
+.notePanel {
+  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-strong);
+}
+
+.noteHeader h2 {
+  margin: 3px 0 0;
+  font: 500 19px/1.2 Georgia, serif;
+}
+
+.noteHeader small {
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.notePreview {
+  flex: 1;
+  min-height: 220px;
+  margin: 10px 0;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--ink);
+  white-space: pre-wrap;
+  font: 14px/1.48 Georgia, serif;
+}
+
+.copyButton {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--sage);
+  color: white;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.copyButton:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.reviewReminder {
+  margin: 7px 0 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 9px;
+}
+
+.outputPlaceholders {
+  display: grid;
+  gap: 6px;
+}
+
+.outputPlaceholders article {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px dashed #ccc5b8;
+  border-radius: 9px;
+  color: var(--muted);
+}
+
+.outputPlaceholders .placeholderActive {
+  border-style: solid;
+  border-color: #b8c4b1;
+  background: #f0f5ed;
+  color: var(--sage);
+}
+
+.outputPlaceholders article > div {
+  display: grid;
+  gap: 1px;
+}
+
+.outputPlaceholders strong {
+  color: var(--ink);
+  font-size: 10px;
+}
+
+.outputPlaceholders span {
+  font-size: 9px;
+}
+
+.shell button,
+.shell a,
+.shell input,
+.shell textarea {
+  transition: border-color .12s ease, background-color .12s ease, box-shadow .12s ease;
+}
+
+.shell button:focus-visible,
+.shell a:focus-visible,
+.shell input:focus-visible,
+.shell textarea:focus-visible {
+  outline: 3px solid rgba(77,103,66,.32);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1120px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .outputPane {
+    position: static;
+    max-height: none;
+    grid-template-columns: minmax(250px, .75fr) minmax(380px, 1.25fr);
+  }
+
+  .outputPlaceholders {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .shell {
+    padding: 9px;
+  }
+
+  .topbar,
+  .documentHeader,
+  .groupConfirmationHeader {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .scenarioBar {
+    grid-template-columns: 1fr;
+  }
+
+  .scenarioChoices,
+  .outputPane,
+  .findingList,
+  .exceptionGrid,
+  .suggestionList,
+  .inlinePair {
+    grid-template-columns: 1fr;
+  }
+
+  .documentSection {
+    grid-template-columns: 1fr;
+  }
+
+  .documentSection > header {
+    padding: 10px 13px 6px;
+    border-right: 0;
+  }
+
+  .choiceGroup,
+  .textControl,
+  .exceptionGrid .choiceGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .choiceGroup legend,
+  .exceptionGrid .choiceGroup legend {
+    float: none;
+    width: auto;
+    margin-bottom: 5px;
+  }
+}
