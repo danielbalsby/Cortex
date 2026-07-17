@@ -2,6 +2,22 @@ import { expect, test } from "@playwright/test";
 
 const route = "/prototype/clinical-document-workspace";
 
+test("review preview exposes only the prototype and required assets", async ({ page, request }) => {
+  const prototype = await request.get(route);
+  expect(prototype.status()).toBe(200);
+
+  for (const deniedRoute of ["/", "/unrelated", "/api/test", "/_next/webpack-hmr"]) {
+    const response = await request.get(deniedRoute);
+    expect(response.status(), deniedRoute).toBe(404);
+  }
+
+  await page.goto(route);
+  await expect(
+    page.getByText("Temporary synthetic-data prototype — not for clinical use", { exact: true })
+  ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Knækonsultation" })).toBeVisible();
+});
+
 test("Quick and Standard share one preserved prototype state", async ({ page }) => {
   await page.goto(route);
 

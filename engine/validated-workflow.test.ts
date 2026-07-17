@@ -290,11 +290,14 @@ describe("validated workflow derivation boundary", () => {
     expect(source).toContain("pathway.workflowRoles.primaryOutputId");
   });
 
-  it("has one active consultation renderer wired from the application", () => {
+  it("keeps the production consultation renderer out of the temporary preview entry point", () => {
     const appSource = readFileSync(new URL("../app/page.tsx", import.meta.url), "utf8");
+    const middlewareSource = readFileSync(new URL("../middleware.ts", import.meta.url), "utf8");
 
-    expect(appSource).toContain("components/encounter/EncounterEngine");
+    expect(appSource).toContain('notFound();');
+    expect(appSource).not.toContain("components/encounter/EncounterEngine");
     expect(appSource).not.toContain("components/consultation/ConsultationEngine");
+    expect(middlewareSource).toContain('const PROTOTYPE_PATH = "/prototype/clinical-document-workspace"');
     expect(
       existsSync(new URL("../components/consultation/ConsultationEngine.tsx", import.meta.url))
     ).toBe(false);
