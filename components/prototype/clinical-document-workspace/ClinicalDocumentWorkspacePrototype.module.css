@@ -104,6 +104,18 @@
   text-decoration: none;
 }
 
+.resetButton {
+  min-height: 40px;
+  padding: 0 13px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
 .sectionNavigator {
   display: flex;
   align-items: stretch;
@@ -235,10 +247,6 @@
 
 .sectionNarrative {
   min-height: 104px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
   padding: 14px 20px 16px;
 }
 
@@ -251,6 +259,292 @@
   color: var(--muted);
   font-size: 12px;
   line-height: 1.45;
+}
+
+.clinicalControls {
+  display: grid;
+  gap: 14px;
+}
+
+.sectionLead,
+.emptySupport,
+.preservedNotice {
+  margin: 0;
+  color: var(--muted);
+  font: 16px/1.5 Georgia, "Times New Roman", serif;
+}
+
+.preservedNotice {
+  padding: 9px 11px;
+  border-left: 3px solid var(--sage);
+  background: #f0f4ed;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.controlGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+
+.choiceGroup {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.choiceGroup legend,
+.textField > span,
+.inlineForm label > span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.choiceGroup > p {
+  margin: -2px 0 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.choiceRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.choiceRow button,
+.suggestionArea button,
+.inlineActions button,
+.inlineForm button,
+.clinicalDisclosure summary,
+.normalGroup summary {
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: rgba(255, 253, 248, .72);
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.choiceRow button {
+  padding: 0 11px;
+}
+
+.choiceRow button[aria-pressed="true"] {
+  border-color: #788b70;
+  background: #e5ecdf;
+  box-shadow: inset 0 0 0 1px rgba(77, 103, 66, .16);
+}
+
+.textField {
+  display: block;
+  min-width: 0;
+}
+
+.textField input,
+.textField textarea,
+.textField select,
+.inlineForm input {
+  width: 100%;
+  min-height: 40px;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.textField textarea {
+  min-height: 70px;
+  resize: vertical;
+}
+
+.contextBlock,
+.normalGroup,
+.suggestionArea,
+.diagnosisList {
+  display: grid;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid #d4dacd;
+  border-radius: 12px;
+  background: rgba(240, 244, 237, .58);
+}
+
+.contextBlock > header,
+.suggestionArea > header,
+.normalGroup {
+  align-items: start;
+}
+
+.contextBlock > header,
+.suggestionArea > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.contextBlock p,
+.normalGroup p,
+.suggestionArea p,
+.diagnosisList p,
+.attentionArea p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.primaryAction {
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid #718168;
+  border-radius: 10px;
+  background: #e3ebdf;
+  color: #394733;
+  font-size: 14px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.normalGroup details ul {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.normalGroup details li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+}
+
+.normalGroup details li span {
+  color: var(--muted);
+  text-align: right;
+}
+
+.normalGroup details li span[data-status="overridden"] {
+  color: #8a4d31;
+  font-weight: 750;
+}
+
+.clinicalDisclosure {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+.clinicalDisclosure summary,
+.normalGroup summary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 11px;
+  list-style-position: inside;
+}
+
+.clinicalDisclosure[open] summary {
+  margin-bottom: 12px;
+}
+
+.suggestionArea ul,
+.diagnosisList ol {
+  display: grid;
+  gap: 7px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.suggestionArea li,
+.diagnosisList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(220, 212, 198, .8);
+}
+
+.suggestionArea li span,
+.diagnosisList li span {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.suggestionArea button,
+.inlineActions button,
+.inlineForm button {
+  padding: 0 11px;
+}
+
+.suggestionArea button:disabled,
+.inlineActions button:disabled {
+  cursor: default;
+  opacity: .55;
+}
+
+.diagnosisList h3 {
+  margin: 0;
+  font: 500 17px/1.3 Georgia, "Times New Roman", serif;
+}
+
+.inlineActions {
+  display: flex;
+  gap: 5px;
+}
+
+.inlineForm {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 8px;
+}
+
+.missingBadge {
+  padding: 4px 8px;
+  border: 1px solid #c9a889;
+  border-radius: 999px;
+  background: #fff2e3;
+  color: #77472f;
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.missingText {
+  color: #77472f !important;
+}
+
+.attentionArea {
+  display: grid;
+  gap: 8px;
+  margin: 12px 18px 0;
+  padding: 11px 12px;
+  border: 1px solid #c9a889;
+  border-radius: 10px;
+  background: #fff7ec;
+}
+
+.attentionArea > div {
+  padding-top: 7px;
+  border-top: 1px solid rgba(201, 168, 137, .6);
 }
 
 .companionPane {
@@ -368,7 +662,11 @@
 }
 
 .shell button:focus-visible,
-.shell a:focus-visible {
+.shell a:focus-visible,
+.shell input:focus-visible,
+.shell textarea:focus-visible,
+.shell select:focus-visible,
+.shell summary:focus-visible {
   outline: 3px solid rgba(77, 103, 66, .42);
   outline-offset: 2px;
 }
@@ -404,6 +702,7 @@
   }
 
   .modeSwitch button,
+  .resetButton,
   .productionLink,
   .sectionNavigator a {
     min-height: 44px;
@@ -435,6 +734,30 @@
   .sectionNarrative {
     min-height: 88px;
     padding: 6px 16px 15px;
+  }
+
+  .controlGrid,
+  .inlineForm {
+    grid-template-columns: 1fr;
+  }
+
+  .choiceRow button,
+  .primaryAction,
+  .suggestionArea button,
+  .inlineActions button,
+  .inlineForm button,
+  .textField input,
+  .textField textarea,
+  .textField select {
+    min-height: 44px;
+  }
+
+  .suggestionArea li,
+  .diagnosisList li,
+  .contextBlock > header,
+  .suggestionArea > header {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .companionPane {
