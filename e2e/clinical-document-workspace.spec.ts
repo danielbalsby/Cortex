@@ -311,12 +311,24 @@ test("manual journal editing stays separate from facts and can restore generated
     "Manuelt bevaret journaludkast"
   );
 
+  await page
+    .getByRole("group", { name: "Debut" })
+    .getByRole("button", { name: "Akut", exact: true })
+    .click();
+  await expect(
+    page.getByText("Journaludkast opdateret fra registrerede oplysninger.", { exact: true })
+  ).toBeVisible();
   await page.getByRole("button", { name: "Gendan genereret" }).click();
+  await expect(
+    page.getByText("Det genererede udkast er gendannet.", { exact: true })
+  ).toBeVisible();
   await expect(page.getByLabel("Live journalnotat")).toContainText("Venstresidige knæsmerter");
   await expect(page.getByLabel("Live journalnotat")).not.toContainText("Manuelt bevaret");
 });
 
-test("physiotherapy plan exposes only a referral draft foundation", async ({ page }) => {
+test("generic physiotherapy planning stays neutral and does not infer referral intent", async ({
+  page
+}) => {
   await page.goto(route);
 
   await page
@@ -324,12 +336,11 @@ test("physiotherapy plan exposes only a referral draft foundation", async ({ pag
     .getByRole("button", { name: "Fysioterapi" })
     .click();
 
-  const referralFoundations = page.getByRole("region", { name: "Henvisningsudkast" });
-  await expect(referralFoundations).toContainText("Fysioterapihenvisning");
-  await expect(referralFoundations).toContainText("Grundlag registreret");
+  await expect(page.getByRole("region", { name: "Henvisningsudkast" })).toHaveCount(0);
   await expect(page.getByLabel("Live journalnotat")).toContainText(
-    "Henvisning til fysioterapi er planlagt."
+    "Fysioterapi indgår i planen."
   );
+  await expect(page.getByLabel("Live journalnotat")).not.toContainText(/henvisning/i);
 });
 
 test("production workflow remains available at the root route", async ({ page }) => {

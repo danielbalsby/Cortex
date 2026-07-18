@@ -164,7 +164,7 @@ describe("Clinical Document Workspace v2 Phase 3 journal", () => {
       "Primær arbejdshypotese: Knæartrose. Samtidige arbejdshypoteser: Meniskrelaterede gener."
     );
     expect(journal).toContain(
-      "Information er givet. Gradueret træning er planlagt. Billeddiagnostik er ikke planlagt aktuelt. Opfølgning om 4–6 uger."
+      "Information indgår i planen. Gradueret træning indgår i planen. Billeddiagnostik er ikke planlagt aktuelt. Opfølgning om 4–6 uger."
     );
     expect(journal).not.toMatch(/ingen betydende effusion|tredje diagnose|medicin|henvisning/i);
   });
@@ -178,6 +178,21 @@ describe("Clinical Document Workspace v2 Phase 3 journal", () => {
 
     expect(generatePrototypeJournal(incomplete)).toBe("Problem: Knæsmerte");
     expect(generatePrototypeJournal(incomplete)).not.toMatch(/planlægges|henvisning/i);
+  });
+
+  it("keeps generic plan selections neutral about completion and referral intent", () => {
+    const state = reduce([
+      { type: "toggle-plan-action", action: "information" },
+      { type: "toggle-plan-action", action: "activity" },
+      { type: "toggle-plan-action", action: "exercise" },
+      { type: "toggle-plan-action", action: "physiotherapy" }
+    ]);
+    const journal = generatePrototypeJournal(state);
+
+    expect(journal).toContain(
+      "Information indgår i planen. Aktivitetstilpasning indgår i planen. Gradueret træning indgår i planen. Fysioterapi indgår i planen."
+    );
+    expect(journal).not.toMatch(/er givet|er aftalt|fysioterapihenvisning|henvisning til fysioterapi/i);
   });
 
   it("preserves explicit diagnostic uncertainty and order", () => {

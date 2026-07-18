@@ -142,9 +142,17 @@ describe("Clinical Document Workspace v2 Phase 2 selectors", () => {
     ).toEqual(["Indikation", "Klinisk spørgsmål"]);
   });
 
-  it("exposes referral foundations without claiming that a referral draft exists", () => {
+  it("does not infer referral intent from generic physiotherapy planning", () => {
+    const state = workspaceReducer(createEmptyClinicalDocumentState(), {
+      type: "toggle-plan-action",
+      action: "physiotherapy"
+    });
+
+    expect(getReferralDraftFoundations(state)).toEqual([]);
+  });
+
+  it("exposes an incomplete imaging foundation only after explicit referral intent", () => {
     const actions: WorkspaceAction[] = [
-      { type: "toggle-plan-action", action: "physiotherapy" },
       { type: "toggle-plan-action", action: "imaging" },
       { type: "set-imaging-field", key: "status", value: "planned" },
       { type: "set-imaging-field", key: "plannedAction", value: "prepare-referral" }
@@ -152,12 +160,36 @@ describe("Clinical Document Workspace v2 Phase 2 selectors", () => {
     const state = actions.reduce(workspaceReducer, createEmptyClinicalDocumentState());
     const foundations = getReferralDraftFoundations(state);
 
-    expect(foundations.map((foundation) => foundation.id)).toEqual([
-      "physiotherapy-referral",
-      "imaging-referral"
+    expect(foundations).toEqual([
+      {
+        id: "imaging-referral",
+        label: "Billeddiagnostisk henvisning",
+        status: "missing-information",
+        detail: "Mangler struktureret grundlag: Modalitet, Side, Indikation, Klinisk spørgsmål."
+      }
     ]);
-    expect(foundations[0]?.status).toBe("foundation-recorded");
-    expect(foundations[1]?.status).toBe("missing-information");
-    expect(foundations.every((foundation) => foundation.detail.includes("ikke implementeret") || foundation.detail.includes("Mangler"))).toBe(true);
+  });
+
+  it("marks the imaging foundation recorded only when its minimum inputs are present", () => {
+    const actions: WorkspaceAction[] = [
+      { type: "toggle-plan-action", action: "imaging" },
+      { type: "set-imaging-field", key: "status", value: "planned" },
+      { type: "set-imaging-field", key: "plannedAction", value: "prepare-referral" },
+      { type: "set-imaging-field", key: "modality", value: "acute-x-ray" },
+      { type: "set-imaging-field", key: "side", value: "right" },
+      { type: "set-imaging-field", key: "indication", value: "Registreret indikation" },
+      { type: "set-imaging-field", key: "clinicalQuestion", value: "Registreret spørgsmål" }
+    ];
+    const state = actions.reduce(workspaceReducer, createEmptyClinicalDocumentState());
+
+    expect(getReferralDraftFoundations(state)).toEqual([
+      {
+        id: "imaging-referral",
+        label: "Billeddiagnostisk henvisning",
+        status: "foundation-recorded",
+        detail:
+          "Struktureret grundlag er registreret. Endelig regional henvisningstekst er ikke implementeret i prototypen."
+      }
+    ]);
   });
 });

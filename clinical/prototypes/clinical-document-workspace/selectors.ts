@@ -25,7 +25,7 @@ export interface PrototypeAttentionPoint {
 }
 
 export interface ReferralDraftFoundation {
-  readonly id: "physiotherapy-referral" | "imaging-referral";
+  readonly id: "imaging-referral";
   readonly label: string;
   readonly status: "foundation-recorded" | "missing-information";
   readonly detail: string;
@@ -284,16 +284,6 @@ export function getReferralDraftFoundations(
   state: ClinicalDocumentPrototypeState
 ): readonly ReferralDraftFoundation[] {
   const foundations: ReferralDraftFoundation[] = [];
-  if (state.planActions.includes("physiotherapy")) {
-    foundations.push({
-      id: "physiotherapy-referral",
-      label: "Fysioterapihenvisning",
-      status: "foundation-recorded",
-      detail:
-        "Planhandlingen er registreret. Endelig henvisningstekst og modtagerkrav er ikke implementeret i prototypen."
-    });
-  }
-
   if (
     state.planActions.includes("imaging") &&
     state.imaging?.plannedAction === "prepare-referral"

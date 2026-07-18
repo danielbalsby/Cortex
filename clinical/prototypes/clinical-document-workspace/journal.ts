@@ -318,10 +318,10 @@ function buildPlan(state: ClinicalDocumentPrototypeState): JournalSection | unde
   const sentences: string[] = [];
   for (const action of PLAN_OUTPUT_ORDER) {
     if (!state.planActions.includes(action)) continue;
-    if (action === "information") sentences.push("Information er givet.");
-    if (action === "activity") sentences.push("Aktivitetstilpasning er aftalt.");
-    if (action === "exercise") sentences.push("Gradueret træning er planlagt.");
-    if (action === "physiotherapy") sentences.push("Henvisning til fysioterapi er planlagt.");
+    if (action === "information") sentences.push("Information indgår i planen.");
+    if (action === "activity") sentences.push("Aktivitetstilpasning indgår i planen.");
+    if (action === "exercise") sentences.push("Gradueret træning indgår i planen.");
+    if (action === "physiotherapy") sentences.push("Fysioterapi indgår i planen.");
     if (action === "imaging") {
       const imagingSentence = buildImagingSentence(state.imaging);
       if (imagingSentence) sentences.push(imagingSentence);

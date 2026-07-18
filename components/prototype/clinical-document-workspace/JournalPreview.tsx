@@ -52,6 +52,7 @@ export function JournalPreview({
   function restoreGeneratedDraft() {
     onDraftOverrideChange(undefined);
     setIsEditing(false);
+    setUpdateStatus("");
     setCopyStatus("Det genererede udkast er gendannet.");
   }
 
@@ -125,7 +126,7 @@ export function JournalPreview({
         oplysninger.
       </p>
       <p className={styles.journalStatus} role="status" aria-live="polite" aria-atomic="true">
-        {updateStatus || copyStatus}
+        {copyStatus || updateStatus}
       </p>
     </section>
   );
