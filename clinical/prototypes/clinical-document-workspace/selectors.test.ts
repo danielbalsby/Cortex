@@ -10,7 +10,8 @@ import {
   getObjectiveContext,
   getPlanContext,
   getPrototypeAttentionPoints,
-  getPrototypeSuggestions
+  getPrototypeSuggestions,
+  getReferralDraftFoundations
 } from "./selectors";
 
 describe("Clinical Document Workspace v2 Phase 1 overview", () => {
@@ -139,5 +140,24 @@ describe("Clinical Document Workspace v2 Phase 2 selectors", () => {
         clinicalQuestion: "   "
       })
     ).toEqual(["Indikation", "Klinisk spørgsmål"]);
+  });
+
+  it("exposes referral foundations without claiming that a referral draft exists", () => {
+    const actions: WorkspaceAction[] = [
+      { type: "toggle-plan-action", action: "physiotherapy" },
+      { type: "toggle-plan-action", action: "imaging" },
+      { type: "set-imaging-field", key: "status", value: "planned" },
+      { type: "set-imaging-field", key: "plannedAction", value: "prepare-referral" }
+    ];
+    const state = actions.reduce(workspaceReducer, createEmptyClinicalDocumentState());
+    const foundations = getReferralDraftFoundations(state);
+
+    expect(foundations.map((foundation) => foundation.id)).toEqual([
+      "physiotherapy-referral",
+      "imaging-referral"
+    ]);
+    expect(foundations[0]?.status).toBe("foundation-recorded");
+    expect(foundations[1]?.status).toBe("missing-information");
+    expect(foundations.every((foundation) => foundation.detail.includes("ikke implementeret") || foundation.detail.includes("Mangler"))).toBe(true);
   });
 });

@@ -2,7 +2,7 @@ import { expect, test } from "@playwright/test";
 
 const route = "/prototype/clinical-document-workspace";
 
-test("Phase 2 renders an isolated document workspace with fixed problem context", async ({
+test("Phase 3 renders an isolated document workspace with fixed problem context", async ({
   page
 }) => {
   await page.goto(route);
@@ -21,7 +21,7 @@ test("Phase 2 renders an isolated document workspace with fixed problem context"
   await expect(page.getByRole("button", { name: /Problem|Knæskade/ })).toHaveCount(0);
 });
 
-test("Phase 2 section navigation and companion regions are structurally complete", async ({
+test("Phase 3 section navigation and companion regions are structurally complete", async ({
   page
 }) => {
   await page.goto(route);
@@ -62,7 +62,7 @@ test("Quick and Standard are presentation modes over the same empty journal stat
   await expect(page.getByLabel("Live journalnotat")).toHaveText("Problem: Knæsmerte");
 });
 
-test("history interactions preserve shared state without premature journal claims", async ({
+test("history interactions produce only current recorded facts and prune stale trauma detail", async ({
   page
 }) => {
   await page.goto(route);
@@ -113,7 +113,13 @@ test("history interactions preserve shared state without premature journal claim
   await page.getByRole("button", { name: "Standard", exact: true }).click();
   await expect(page.getByLabel("Supplerende anamnese")).toHaveValue("Tidligere lignende gener");
 
-  await expect(page.getByLabel("Live journalnotat")).toHaveText("Problem: Knæsmerte");
+  const journal = page.getByLabel("Live journalnotat");
+  await expect(journal).toContainText("Højresidige knæsmerter med gradvis debut gennem seks måneder.");
+  await expect(journal).toContainText("Traume registreret.");
+  await expect(journal).toContainText("Smertemønstret er intermitterende.");
+  await expect(journal).toContainText("Tidligere lignende gener.");
+  await expect(journal).not.toContainText("vrid på fikseret fod");
+  await expect(journal).not.toContainText("Vrid under sport");
 });
 
 test("grouped examination confirmation is explicit and a positive exception survives clearing", async ({
@@ -134,12 +140,18 @@ test("grouped examination confirmation is explicit and a positive exception surv
   );
   await expect(page.getByRole("region", { name: "Klinisk overblik" })).toContainText("Effusion");
   await expect(page.getByText("Erstattet af registreret fund")).toHaveCount(1);
+  await expect(page.getByLabel("Live journalnotat")).toContainText("let effusion");
+  await expect(page.getByLabel("Live journalnotat")).not.toContainText(
+    "ingen betydende effusion"
+  );
 
   await page.getByRole("button", { name: "Fjern grupperet bekræftelse" }).click();
   await expect(effusion.getByRole("button", { name: "Let", exact: true })).toHaveAttribute(
     "aria-pressed",
     "true"
   );
+  await expect(page.getByLabel("Live journalnotat")).toContainText("Let effusion.");
+  await expect(page.getByLabel("Live journalnotat")).not.toContainText("normal gang");
 });
 
 test("suggestions remain separate until accepted and multiple diagnoses can be ordered", async ({
@@ -176,6 +188,9 @@ test("suggestions remain separate until accepted and multiple diagnoses can be o
   const suggestions = page.getByLabel("Diagnostiske forslag");
   await expect(suggestions.getByRole("listitem")).toHaveCount(3);
   await expect(page.getByText("Ingen valgt.")).toBeVisible();
+  await expect(page.getByLabel("Live journalnotat")).not.toContainText(
+    /Meniskrelaterede gener|Knæforstuvning|Ligamentskade/
+  );
 
   const meniscus = suggestions.getByRole("listitem").filter({ hasText: "Meniskrelaterede gener" });
   const sprain = suggestions.getByRole("listitem").filter({ hasText: "Knæforstuvning" });
@@ -183,6 +198,9 @@ test("suggestions remain separate until accepted and multiple diagnoses can be o
   await sprain.getByRole("button", { name: "Tilføj", exact: true }).click();
   await expect(page.getByRole("region", { name: "Klinisk overblik" })).toContainText(
     "Meniskrelaterede gener · Knæforstuvning"
+  );
+  await expect(page.getByLabel("Live journalnotat")).toContainText(
+    "Primær arbejdshypotese: Meniskrelaterede gener."
   );
 
   await page.getByRole("button", { name: "Flyt Knæforstuvning op" }).click();
@@ -225,12 +243,21 @@ test("imaging requires explicit compatible detail and clears when deactivated", 
     .fill("Traume og manglende evne til fire skridt");
   await imaging.getByLabel("Klinisk spørgsmål", { exact: true }).fill("Fraktur?");
   await expect(imaging.getByText("Mangler oplysninger")).toHaveCount(0);
+  await expect(page.getByLabel("Live journalnotat")).toContainText(
+    "Akut røntgen af højre knæ planlægges"
+  );
+  await expect(page.getByLabel("Live journalnotat")).toContainText("Henvisning forberedes.");
+  const referralFoundations = page.getByRole("region", { name: "Henvisningsudkast" });
+  await expect(referralFoundations).toContainText("Grundlag registreret");
+  await expect(referralFoundations).toContainText("Ingen henvisning genereres eller sendes.");
 
   await page
     .getByRole("group", { name: "Planhandlinger" })
     .getByRole("button", { name: "Billeddiagnostik" })
     .click();
   await expect(imaging).toHaveCount(0);
+  await expect(page.getByLabel("Live journalnotat")).not.toContainText("Akut røntgen");
+  await expect(page.getByRole("region", { name: "Henvisningsudkast" })).toHaveCount(0);
 
   await page
     .getByRole("group", { name: "Planhandlinger" })
@@ -238,6 +265,70 @@ test("imaging requires explicit compatible detail and clears when deactivated", 
     .click();
   await expect(page.getByLabel("Billeddiagnostisk plan")).toContainText(
     "Mangler: Status, Planlagt handling."
+  );
+  await expect(page.getByRole("region", { name: "Henvisningsudkast" })).toHaveCount(0);
+  await page
+    .getByLabel("Billeddiagnostisk plan")
+    .getByRole("combobox", { name: "Status", exact: true })
+    .selectOption("planned");
+  await page
+    .getByLabel("Billeddiagnostisk plan")
+    .getByRole("combobox", { name: "Planlagt handling", exact: true })
+    .selectOption("prepare-referral");
+  await expect(page.getByRole("region", { name: "Henvisningsudkast" })).toContainText(
+    "Mangler oplysninger"
+  );
+});
+
+test("manual journal editing stays separate from facts and can restore generated output", async ({
+  page,
+  context
+}) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto(route);
+
+  await page
+    .getByRole("group", { name: "Side" })
+    .getByRole("button", { name: "Højre" })
+    .click();
+  await page.getByRole("button", { name: "Redigér udkast" }).click();
+  const editor = page.getByLabel("Redigerbart journaludkast");
+  await editor.fill("Manuelt bevaret journaludkast");
+  await page.getByRole("button", { name: "Afslut redigering" }).click();
+
+  await page
+    .getByRole("group", { name: "Side" })
+    .getByRole("button", { name: "Venstre" })
+    .click();
+  await expect(page.getByLabel("Live journalnotat")).toHaveText(
+    "Manuelt bevaret journaludkast"
+  );
+  await expect(page.getByText(/Det manuelle udkast er bevaret/)).toBeVisible();
+
+  await page.getByRole("button", { name: "Kopiér udkast" }).click();
+  await expect(page.getByText("Udkast kopieret.", { exact: true })).toBeVisible();
+  await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toBe(
+    "Manuelt bevaret journaludkast"
+  );
+
+  await page.getByRole("button", { name: "Gendan genereret" }).click();
+  await expect(page.getByLabel("Live journalnotat")).toContainText("Venstresidige knæsmerter");
+  await expect(page.getByLabel("Live journalnotat")).not.toContainText("Manuelt bevaret");
+});
+
+test("physiotherapy plan exposes only a referral draft foundation", async ({ page }) => {
+  await page.goto(route);
+
+  await page
+    .getByRole("group", { name: "Planhandlinger" })
+    .getByRole("button", { name: "Fysioterapi" })
+    .click();
+
+  const referralFoundations = page.getByRole("region", { name: "Henvisningsudkast" });
+  await expect(referralFoundations).toContainText("Fysioterapihenvisning");
+  await expect(referralFoundations).toContainText("Grundlag registreret");
+  await expect(page.getByLabel("Live journalnotat")).toContainText(
+    "Henvisning til fysioterapi er planlagt."
   );
 });
 

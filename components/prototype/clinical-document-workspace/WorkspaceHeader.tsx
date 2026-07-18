@@ -22,7 +22,7 @@ export function WorkspaceHeader({
         <div>
           <p className={styles.eyebrow}>ISOLERET · SYNTETISK PROTOTYPE</p>
           <strong>Clinical Document Workspace v2</strong>
-          <span>Phase 2 · Klinisk interaktionsmodel</span>
+          <span>Phase 3 · Journal og output</span>
         </div>
       </div>
 
