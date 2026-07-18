@@ -4,8 +4,14 @@ import {
   NORMAL_BASIC_FINDINGS,
   type ClinicalDocumentPrototypeState
 } from "@/clinical/prototypes/clinical-document-workspace/model";
-import type { WorkspaceAction } from "@/clinical/prototypes/clinical-document-workspace/reducer";
-import { getNormalFindingStatus } from "@/clinical/prototypes/clinical-document-workspace/selectors";
+import {
+  setFactAction,
+  type WorkspaceAction
+} from "@/clinical/prototypes/clinical-document-workspace/reducer";
+import {
+  getNormalFindingStatus,
+  getObjectiveContext
+} from "@/clinical/prototypes/clinical-document-workspace/selectors";
 
 import { ChoiceGroup } from "./ChoiceGroup";
 import styles from "./ClinicalDocumentWorkspacePrototype.module.css";
@@ -18,16 +24,10 @@ export function ObjectiveSection({
   dispatch: Dispatch<WorkspaceAction>;
 }) {
   const { facts, normalGroup } = state;
-  const setFact = (key: keyof typeof facts, value: unknown) =>
-    dispatch({ type: "set-fact", key, value });
 
   return (
     <div className={styles.clinicalControls}>
-      <p className={styles.sectionLead}>
-        {normalGroup.confirmed || normalGroup.appliedKeys.length
-          ? "Basisundersøgelsen er eksplicit håndteret; registrerede undtagelser har forrang."
-          : "Ingen objektive fund registreret."}
-      </p>
+      <p className={styles.sectionLead}>{getObjectiveContext(state)}</p>
 
       <div className={styles.normalGroup}>
         <div>
@@ -79,7 +79,7 @@ export function ObjectiveSection({
               { value: "mildly-affected", label: "Let påvirket" },
               { value: "clearly-affected", label: "Tydeligt påvirket" }
             ]}
-            onChange={(value) => setFact("generalCondition", value)}
+            onChange={(value) => dispatch(setFactAction("generalCondition", value))}
           />
           <ChoiceGroup<"normal" | "limp" | "unable">
             label="Gang"
@@ -89,7 +89,7 @@ export function ObjectiveSection({
               { value: "limp", label: "Haltende" },
               { value: "unable", label: "Kan ikke støtte" }
             ]}
-            onChange={(value) => setFact("gait", value)}
+            onChange={(value) => dispatch(setFactAction("gait", value))}
           />
           <ChoiceGroup<"none" | "present">
             label="Deformitet"
@@ -98,7 +98,7 @@ export function ObjectiveSection({
               { value: "none", label: "Ingen" },
               { value: "present", label: "Tilstede" }
             ]}
-            onChange={(value) => setFact("deformity", value)}
+            onChange={(value) => dispatch(setFactAction("deformity", value))}
           />
           <ChoiceGroup<"none" | "present">
             label="Rødme"
@@ -107,7 +107,7 @@ export function ObjectiveSection({
               { value: "none", label: "Ingen" },
               { value: "present", label: "Tilstede" }
             ]}
-            onChange={(value) => setFact("redness", value)}
+            onChange={(value) => dispatch(setFactAction("redness", value))}
           />
           <ChoiceGroup<"none" | "present">
             label="Varme"
@@ -116,7 +116,7 @@ export function ObjectiveSection({
               { value: "none", label: "Ingen" },
               { value: "present", label: "Tilstede" }
             ]}
-            onChange={(value) => setFact("warmth", value)}
+            onChange={(value) => dispatch(setFactAction("warmth", value))}
           />
           <ChoiceGroup<"none-significant" | "mild" | "moderate" | "large">
             label="Effusion"
@@ -127,7 +127,7 @@ export function ObjectiveSection({
               { value: "moderate", label: "Moderat" },
               { value: "large", label: "Stor/spændt" }
             ]}
-            onChange={(value) => setFact("effusion", value)}
+            onChange={(value) => dispatch(setFactAction("effusion", value))}
           />
           <ChoiceGroup<"full" | "reduced" | "blocked">
             label="Ekstension"
@@ -137,7 +137,7 @@ export function ObjectiveSection({
               { value: "reduced", label: "Reduceret" },
               { value: "blocked", label: "Mekanisk blokeret" }
             ]}
-            onChange={(value) => setFact("extension", value)}
+            onChange={(value) => dispatch(setFactAction("extension", value))}
           />
           <ChoiceGroup<"intact" | "not-intact">
             label="Straight-leg raise"
@@ -146,7 +146,7 @@ export function ObjectiveSection({
               { value: "intact", label: "Intakt" },
               { value: "not-intact", label: "Ikke mulig" }
             ]}
-            onChange={(value) => setFact("straightLegRaise", value)}
+            onChange={(value) => dispatch(setFactAction("straightLegRaise", value))}
           />
           <ChoiceGroup<"none-focal" | "medial-joint-line" | "lateral-joint-line">
             label="Ledlinjeømhed"
@@ -156,7 +156,7 @@ export function ObjectiveSection({
               { value: "medial-joint-line", label: "Medial" },
               { value: "lateral-joint-line", label: "Lateral" }
             ]}
-            onChange={(value) => setFact("tenderness", value)}
+            onChange={(value) => dispatch(setFactAction("tenderness", value))}
           />
         </div>
       </details>
@@ -166,7 +166,7 @@ export function ObjectiveSection({
           <span>Supplerende objektive fund</span>
           <textarea
             value={facts.objectiveNote ?? ""}
-            onChange={(event) => setFact("objectiveNote", event.target.value)}
+            onChange={(event) => dispatch(setFactAction("objectiveNote", event.target.value))}
             rows={2}
           />
         </label>

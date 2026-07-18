@@ -11,7 +11,12 @@ import type {
   Swelling,
   TraumaMechanism
 } from "@/clinical/prototypes/clinical-document-workspace/model";
-import type { WorkspaceAction } from "@/clinical/prototypes/clinical-document-workspace/reducer";
+import {
+  setFactAction,
+  toggleListFactAction,
+  type WorkspaceAction
+} from "@/clinical/prototypes/clinical-document-workspace/reducer";
+import { getHistoryContext } from "@/clinical/prototypes/clinical-document-workspace/selectors";
 
 import { ChoiceGroup, MultiChoiceGroup } from "./ChoiceGroup";
 import styles from "./ClinicalDocumentWorkspacePrototype.module.css";
@@ -73,35 +78,29 @@ export function HistorySection({
   dispatch: Dispatch<WorkspaceAction>;
 }) {
   const { facts } = state;
-  const setFact = (key: keyof typeof facts, value: unknown) =>
-    dispatch({ type: "set-fact", key, value });
 
   return (
     <div className={styles.clinicalControls}>
-      <p className={styles.sectionLead}>
-        {Object.keys(facts).length
-          ? "Registrér og korrigér anamnesen i den rækkefølge, konsultationen kræver."
-          : "Ingen anamnestiske oplysninger registreret."}
-      </p>
+      <p className={styles.sectionLead}>{getHistoryContext(state)}</p>
       <div className={styles.controlGrid}>
         <ChoiceGroup<Side>
           label="Side"
           value={facts.side}
           options={SIDE_OPTIONS}
-          onChange={(value) => setFact("side", value)}
+          onChange={(value) => dispatch(setFactAction("side", value))}
         />
         <ChoiceGroup<Onset>
           label="Debut"
           value={facts.onset}
           options={ONSET_OPTIONS}
-          onChange={(value) => setFact("onset", value)}
+          onChange={(value) => dispatch(setFactAction("onset", value))}
           description="Akut: pludselig eller tydeligt tidsafgrænset. Gradvis: tiltagende uden én klar starthændelse."
         />
         <label className={styles.textField}>
           <span>Varighed</span>
           <input
             value={facts.duration ?? ""}
-            onChange={(event) => setFact("duration", event.target.value)}
+            onChange={(event) => dispatch(setFactAction("duration", event.target.value))}
             placeholder="Fx siden i går eller seks måneder"
           />
         </label>
@@ -109,7 +108,7 @@ export function HistorySection({
           label="Udløsende faktor"
           value={facts.precipitatingFactor}
           options={FACTOR_OPTIONS}
-          onChange={(value) => setFact("precipitatingFactor", value)}
+          onChange={(value) => dispatch(setFactAction("precipitatingFactor", value))}
         />
       </div>
 
@@ -120,14 +119,16 @@ export function HistorySection({
             values={facts.traumaMechanisms ?? []}
             options={TRAUMA_OPTIONS}
             onToggle={(value) =>
-              dispatch({ type: "toggle-list-fact", key: "traumaMechanisms", value })
+              dispatch(toggleListFactAction("traumaMechanisms", value))
             }
           />
           <label className={styles.textField}>
             <span>Anden mekanisme eller beskrivelse</span>
             <input
               value={facts.traumaMechanismNote ?? ""}
-              onChange={(event) => setFact("traumaMechanismNote", event.target.value)}
+              onChange={(event) =>
+                dispatch(setFactAction("traumaMechanismNote", event.target.value))
+              }
             />
           </label>
         </div>
@@ -139,7 +140,7 @@ export function HistorySection({
           values={facts.painLocations ?? []}
           options={LOCATION_OPTIONS}
           onToggle={(value) =>
-            dispatch({ type: "toggle-list-fact", key: "painLocations", value })
+            dispatch(toggleListFactAction("painLocations", value))
           }
         />
         <MultiChoiceGroup<PainPattern>
@@ -147,7 +148,7 @@ export function HistorySection({
           values={facts.painPatterns ?? []}
           options={PATTERN_OPTIONS}
           onToggle={(value) =>
-            dispatch({ type: "toggle-list-fact", key: "painPatterns", value })
+            dispatch(toggleListFactAction("painPatterns", value))
           }
         />
         <ChoiceGroup<FunctionStatus>
@@ -158,7 +159,7 @@ export function HistorySection({
             { value: "limp", label: "Halten" },
             { value: "cannot-four-steps", label: "Kan ikke tage fire skridt" }
           ]}
-          onChange={(value) => setFact("function", value)}
+          onChange={(value) => dispatch(setFactAction("function", value))}
         />
         <ChoiceGroup<Swelling>
           label="Hævelse"
@@ -169,7 +170,7 @@ export function HistorySection({
             { value: "persistent-mild", label: "Let, vedvarende" },
             { value: "marked", label: "Udtalt" }
           ]}
-          onChange={(value) => setFact("swelling", value)}
+          onChange={(value) => dispatch(setFactAction("swelling", value))}
         />
         {(["locking", "instability", "fever"] as const).map((key) => (
           <ChoiceGroup<"yes" | "no">
@@ -180,7 +181,7 @@ export function HistorySection({
               { value: "yes", label: "Ja" },
               { value: "no", label: "Nej" }
             ]}
-            onChange={(value) => setFact(key, value)}
+            onChange={(value) => dispatch(setFactAction(key, value))}
           />
         ))}
       </div>
@@ -190,7 +191,7 @@ export function HistorySection({
           <span>Supplerende anamnese</span>
           <textarea
             value={facts.historyNote ?? ""}
-            onChange={(event) => setFact("historyNote", event.target.value)}
+            onChange={(event) => dispatch(setFactAction("historyNote", event.target.value))}
             rows={2}
           />
         </label>

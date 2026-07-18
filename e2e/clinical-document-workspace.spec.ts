@@ -69,7 +69,9 @@ test("history interactions preserve shared state without premature journal claim
 
   await page.getByRole("group", { name: "Side" }).getByRole("button", { name: "Højre" }).click();
   await page.getByRole("group", { name: "Debut" }).getByRole("button", { name: "Gradvis" }).click();
-  await page.getByLabel("Varighed").fill("seks måneder");
+  const duration = page.getByLabel("Varighed");
+  await duration.pressSequentially("seks måneder");
+  await expect(duration).toHaveValue("seks måneder");
   await page
     .getByRole("group", { name: "Udløsende faktor" })
     .getByRole("button", { name: "Traume", exact: true })
@@ -148,6 +150,28 @@ test("suggestions remain separate until accepted and multiple diagnoses can be o
     .getByRole("group", { name: "Udløsende faktor" })
     .getByRole("button", { name: "Traume", exact: true })
     .click();
+  await expect(page.getByLabel("Diagnostiske forslag")).toHaveCount(0);
+  await page
+    .getByRole("group", { name: "Debut" })
+    .getByRole("button", { name: "Akut", exact: true })
+    .click();
+  await page.getByLabel("Varighed").pressSequentially("to dage");
+  await page
+    .getByRole("group", { name: "Side" })
+    .getByRole("button", { name: "Højre", exact: true })
+    .click();
+  await page
+    .getByRole("group", { name: "Traumemekanisme" })
+    .getByRole("button", { name: "Vrid på fikseret fod" })
+    .click();
+  await page
+    .getByRole("group", { name: "Smertelokalisation" })
+    .getByRole("button", { name: "Medialt" })
+    .click();
+  await page
+    .getByRole("group", { name: "Instabilitet" })
+    .getByRole("button", { name: "Ja" })
+    .click();
 
   const suggestions = page.getByLabel("Diagnostiske forslag");
   await expect(suggestions.getByRole("listitem")).toHaveCount(3);
@@ -177,11 +201,25 @@ test("imaging requires explicit compatible detail and clears when deactivated", 
     .click();
 
   const imaging = page.getByLabel("Billeddiagnostisk plan");
+  const imagingStatus = imaging.getByRole("combobox", { name: "Status", exact: true });
+  const imagingAction = imaging.getByRole("combobox", {
+    name: "Planlagt handling",
+    exact: true
+  });
   await expect(imaging).toContainText("Mangler: Status, Planlagt handling.");
-  await imaging.getByLabel("Status", { exact: true }).selectOption("planned");
-  await imaging.getByLabel("Planlagt handling", { exact: true }).selectOption("prepare-referral");
-  await imaging.getByLabel("Modalitet", { exact: true }).selectOption("acute-x-ray");
-  await imaging.getByLabel("Side", { exact: true }).selectOption("right");
+  await expect(imagingAction).toBeDisabled();
+  await expect(imaging).toContainText("Vælg status før planlagt handling.");
+  await imagingStatus.selectOption("planned");
+  await expect(imagingAction).toBeEnabled();
+  await imagingAction.selectOption("prepare-referral");
+  await expect(
+    imagingStatus.getByRole("option", { name: "Ikke indiceret aktuelt" })
+  ).toHaveAttribute("disabled", "");
+  await expect(imaging).toContainText(
+    "Ryd planlagt handling før skift til en inkompatibel status."
+  );
+  await imaging.getByRole("combobox", { name: "Modalitet", exact: true }).selectOption("acute-x-ray");
+  await imaging.getByRole("combobox", { name: "Side", exact: true }).selectOption("right");
   await imaging
     .getByLabel("Indikation", { exact: true })
     .fill("Traume og manglende evne til fire skridt");

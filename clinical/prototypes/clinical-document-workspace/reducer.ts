@@ -14,42 +14,107 @@ import {
   type WorkingDiagnosis
 } from "./model";
 
+type SetFactAction = {
+  [K in PrototypeFactKey]-?: {
+    readonly type: "set-fact";
+    readonly key: K;
+    readonly value: PrototypeFacts[K] | undefined;
+  };
+}[PrototypeFactKey];
+
+type ListFactItem<K extends ListFactKey> = NonNullable<PrototypeFacts[K]>[number];
+
+type ToggleListFactAction = {
+  [K in ListFactKey]: {
+    readonly type: "toggle-list-fact";
+    readonly key: K;
+    readonly value: ListFactItem<K>;
+  };
+}[ListFactKey];
+
+type SetImagingFieldAction = {
+  [K in keyof ImagingPlan]-?: {
+    readonly type: "set-imaging-field";
+    readonly key: K;
+    readonly value: ImagingPlan[K] | undefined;
+  };
+}[keyof ImagingPlan];
+
+export function setFactAction<K extends PrototypeFactKey>(
+  key: K,
+  value: PrototypeFacts[K] | undefined
+): SetFactAction {
+  return { type: "set-fact", key, value } as SetFactAction;
+}
+
+export function toggleListFactAction<K extends ListFactKey>(
+  key: K,
+  value: ListFactItem<K>
+): ToggleListFactAction {
+  return { type: "toggle-list-fact", key, value } as ToggleListFactAction;
+}
+
+export function setImagingFieldAction<K extends keyof ImagingPlan>(
+  key: K,
+  value: ImagingPlan[K] | undefined
+): SetImagingFieldAction {
+  return { type: "set-imaging-field", key, value } as SetImagingFieldAction;
+}
+
 export type WorkspaceAction =
   | { readonly type: "set-mode"; readonly mode: PrototypeMode }
-  | { readonly type: "set-fact"; readonly key: PrototypeFactKey; readonly value: unknown }
-  | { readonly type: "toggle-list-fact"; readonly key: ListFactKey; readonly value: string }
+  | SetFactAction
+  | ToggleListFactAction
   | { readonly type: "confirm-normal-group" }
   | { readonly type: "clear-normal-group" }
   | { readonly type: "add-diagnosis"; readonly diagnosis: WorkingDiagnosis }
   | { readonly type: "remove-diagnosis"; readonly id: string }
   | { readonly type: "move-diagnosis"; readonly id: string; readonly direction: -1 | 1 }
   | { readonly type: "toggle-plan-action"; readonly action: PlanAction }
-  | { readonly type: "set-imaging-field"; readonly key: keyof ImagingPlan; readonly value: unknown }
+  | SetImagingFieldAction
   | { readonly type: "clear-imaging" }
   | { readonly type: "reset" };
+
+type MutableFacts = { -readonly [K in keyof PrototypeFacts]: PrototypeFacts[K] };
+type MutableImagingPlan = { -readonly [K in keyof ImagingPlan]: ImagingPlan[K] };
+
+function assignFact<K extends PrototypeFactKey>(
+  facts: MutableFacts,
+  key: K,
+  value: PrototypeFacts[K] | undefined
+) {
+  facts[key] = value;
+}
+
+function assignImagingField<K extends keyof ImagingPlan>(
+  imaging: MutableImagingPlan,
+  key: K,
+  value: ImagingPlan[K] | undefined
+) {
+  imaging[key] = value;
+}
 
 const NORMAL_KEYS = new Set<NormalFindingKey>(
   NORMAL_BASIC_FINDINGS.map((finding) => finding.key)
 );
 
-function normalizeValue(value: unknown): unknown {
+function normalizeValue<T>(value: T): T | undefined {
   if (typeof value === "string") {
-    const trimmed = value.trim();
-    return trimmed === "" ? undefined : trimmed;
+    return (value === "" ? undefined : value) as T | undefined;
   }
-  if (Array.isArray(value)) return value.length === 0 ? undefined : value;
+  if (Array.isArray(value)) return (value.length === 0 ? undefined : value) as T | undefined;
   return value;
 }
 
-function setFact(
+function setFact<K extends PrototypeFactKey>(
   state: ClinicalDocumentPrototypeState,
-  key: PrototypeFactKey,
-  rawValue: unknown
+  key: K,
+  rawValue: PrototypeFacts[K] | undefined
 ): ClinicalDocumentPrototypeState {
   const value = normalizeValue(rawValue);
-  const facts = { ...state.facts } as Record<string, unknown>;
+  const facts: MutableFacts = { ...state.facts };
   if (value === undefined) delete facts[key];
-  else facts[key] = value;
+  else assignFact(facts, key, value);
 
   if (key === "precipitatingFactor" && value !== "trauma") {
     delete facts.traumaMechanisms;
@@ -62,17 +127,17 @@ function setFact(
 
   return {
     ...state,
-    facts: facts as PrototypeFacts,
+    facts,
     normalGroup: { ...state.normalGroup, appliedKeys }
   };
 }
 
-function toggleListFact(
+function toggleListFact<K extends ListFactKey>(
   state: ClinicalDocumentPrototypeState,
-  key: ListFactKey,
-  value: string
+  key: K,
+  value: ListFactItem<K>
 ): ClinicalDocumentPrototypeState {
-  const current = (state.facts[key] ?? []) as readonly string[];
+  const current: readonly ListFactItem<ListFactKey>[] = state.facts[key] ?? [];
   let next = current.includes(value)
     ? current.filter((item) => item !== value)
     : [...current, value];
@@ -83,23 +148,23 @@ function toggleListFact(
   if (key === "painPatterns" && value === "intermittent" && next.includes("intermittent")) {
     next = next.filter((item) => item !== "constant");
   }
-  return setFact(state, key, next);
+  return setFact(state, key, next as PrototypeFacts[K]);
 }
 
 function confirmNormalGroup(
   state: ClinicalDocumentPrototypeState
 ): ClinicalDocumentPrototypeState {
-  const facts = { ...state.facts } as Record<string, unknown>;
+  const facts: MutableFacts = { ...state.facts };
   const appliedKeys = [...state.normalGroup.appliedKeys];
   for (const finding of NORMAL_BASIC_FINDINGS) {
     if (facts[finding.key] === undefined) {
-      facts[finding.key] = finding.normalValue;
+      assignFact(facts, finding.key, finding.normalValue);
       if (!appliedKeys.includes(finding.key)) appliedKeys.push(finding.key);
     }
   }
   return {
     ...state,
-    facts: facts as PrototypeFacts,
+    facts,
     normalGroup: { confirmed: true, appliedKeys }
   };
 }
@@ -107,14 +172,14 @@ function confirmNormalGroup(
 function clearNormalGroup(
   state: ClinicalDocumentPrototypeState
 ): ClinicalDocumentPrototypeState {
-  const facts = { ...state.facts } as Record<string, unknown>;
+  const facts: MutableFacts = { ...state.facts };
   for (const key of state.normalGroup.appliedKeys) {
     const definition = NORMAL_BASIC_FINDINGS.find((finding) => finding.key === key);
     if (definition && facts[key] === definition.normalValue) delete facts[key];
   }
   return {
     ...state,
-    facts: facts as PrototypeFacts,
+    facts,
     normalGroup: { confirmed: false, appliedKeys: [] }
   };
 }
@@ -135,25 +200,25 @@ export function isImagingCombinationCompatible(
   return allowed[status].includes(action);
 }
 
-function setImagingField(
+function setImagingField<K extends keyof ImagingPlan>(
   state: ClinicalDocumentPrototypeState,
-  key: keyof ImagingPlan,
-  rawValue: unknown
+  key: K,
+  rawValue: ImagingPlan[K] | undefined
 ): ClinicalDocumentPrototypeState {
   const value = normalizeValue(rawValue);
-  const imaging = { ...state.imaging } as Record<string, unknown>;
+  const imaging: MutableImagingPlan = { ...state.imaging };
   if (value === undefined) delete imaging[key];
-  else imaging[key] = value;
+  else assignImagingField(imaging, key, value);
 
   if (
     !isImagingCombinationCompatible(
-      imaging.status as ImagingStatus | undefined,
-      imaging.plannedAction as ImagingAction | undefined
+      imaging.status,
+      imaging.plannedAction
     )
   ) {
     return state;
   }
-  return { ...state, imaging: imaging as ImagingPlan };
+  return { ...state, imaging };
 }
 
 export function workspaceReducer(
@@ -196,12 +261,12 @@ export function workspaceReducer(
       const planActions = active
         ? state.planActions.filter((item) => item !== action.action)
         : [...state.planActions, action.action];
-      const facts = { ...state.facts } as Record<string, unknown>;
+      const facts: MutableFacts = { ...state.facts };
       if (active && action.action === "follow-up") delete facts.followUp;
       if (active && action.action === "safety-net") delete facts.safetyNet;
       return {
         ...state,
-        facts: facts as PrototypeFacts,
+        facts,
         planActions,
         imaging: action.action === "imaging" && active ? undefined : state.imaging
       };

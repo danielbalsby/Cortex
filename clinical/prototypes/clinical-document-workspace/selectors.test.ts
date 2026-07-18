@@ -1,10 +1,14 @@
 import { describe, expect, it } from "vitest";
 
 import { createEmptyClinicalDocumentState } from "./model";
-import { workspaceReducer } from "./reducer";
+import { workspaceReducer, type WorkspaceAction } from "./reducer";
 import {
   getClinicalOverview,
+  getAssessmentContext,
+  getHistoryContext,
   getImagingMissingInformation,
+  getObjectiveContext,
+  getPlanContext,
   getPrototypeAttentionPoints,
   getPrototypeSuggestions
 } from "./selectors";
@@ -29,17 +33,73 @@ describe("Clinical Document Workspace v2 Phase 2 selectors", () => {
     });
   });
 
-  it("limits trauma suggestions to three primary items without selecting diagnoses", () => {
+  it("does not show a suggestion from trauma or gradual onset alone", () => {
     const state = workspaceReducer(createEmptyClinicalDocumentState(), {
       type: "set-fact",
       key: "precipitatingFactor",
       value: "trauma"
     });
+    const gradual = workspaceReducer(createEmptyClinicalDocumentState(), {
+      type: "set-fact",
+      key: "onset",
+      value: "gradual"
+    });
+
+    expect(getPrototypeSuggestions(state)).toEqual({ primary: [], additional: [] });
+    expect(getPrototypeSuggestions(gradual)).toEqual({ primary: [], additional: [] });
+    expect(state.workingDiagnoses).toEqual([]);
+  });
+
+  it("shows supported possibilities only after their explicit minimum support is met", () => {
+    const actions: WorkspaceAction[] = [
+      { type: "set-fact", key: "side", value: "right" },
+      { type: "set-fact", key: "onset", value: "acute" },
+      { type: "set-fact", key: "duration", value: "to dage" },
+      { type: "set-fact", key: "precipitatingFactor", value: "trauma" },
+      { type: "toggle-list-fact", key: "traumaMechanisms", value: "twisting-planted-foot" },
+      { type: "toggle-list-fact", key: "painLocations", value: "medial" },
+      { type: "set-fact", key: "instability", value: "yes" }
+    ];
+    const state = actions.reduce(workspaceReducer, createEmptyClinicalDocumentState());
     const suggestions = getPrototypeSuggestions(state);
 
-    expect(suggestions.primary).toHaveLength(3);
-    expect(suggestions.additional).toHaveLength(1);
+    expect(suggestions.primary.map((item) => item.id)).toEqual([
+      "sprain",
+      "meniscus",
+      "ligament"
+    ]);
+    expect(suggestions.additional.map((item) => item.id)).toEqual(["nonspecific"]);
+    expect(suggestions.primary.every((item) => item.reason.includes("ikke konklusion"))).toBe(
+      true
+    );
     expect(state.workingDiagnoses).toEqual([]);
+  });
+
+  it("derives document context from explicit facts without leaking facts between sections", () => {
+    const history = workspaceReducer(createEmptyClinicalDocumentState(), {
+      type: "set-fact",
+      key: "duration",
+      value: "  seks måneder  "
+    });
+    const objective = workspaceReducer(history, {
+      type: "set-fact",
+      key: "effusion",
+      value: "mild"
+    });
+    const assessed = workspaceReducer(objective, {
+      type: "add-diagnosis",
+      diagnosis: { id: "manual", label: "Manuel hypotese", source: "free-text" }
+    });
+    const planned = workspaceReducer(assessed, {
+      type: "toggle-plan-action",
+      action: "activity"
+    });
+
+    expect(getHistoryContext(objective)).toBe("varighed: seks måneder.");
+    expect(getHistoryContext(objective)).not.toContain("Effusion");
+    expect(getObjectiveContext(objective)).toBe("Registrerede fund: Effusion.");
+    expect(getAssessmentContext(assessed)).toBe("Valgte arbejdshypoteser: Manuel hypotese.");
+    expect(getPlanContext(planned)).toBe("Registreret plan: Aktivitetstilpasning.");
   });
 
   it("derives attention without turning it into a fact", () => {
@@ -69,5 +129,15 @@ describe("Clinical Document Workspace v2 Phase 2 selectors", () => {
       "Indikation",
       "Klinisk spørgsmål"
     ]);
+    expect(
+      getImagingMissingInformation({
+        status: "planned",
+        plannedAction: "prepare-referral",
+        modality: "acute-x-ray",
+        side: "right",
+        indication: "   ",
+        clinicalQuestion: "   "
+      })
+    ).toEqual(["Indikation", "Klinisk spørgsmål"]);
   });
 });

@@ -2,7 +2,10 @@ import { useState, type Dispatch, type FormEvent } from "react";
 
 import type { ClinicalDocumentPrototypeState } from "@/clinical/prototypes/clinical-document-workspace/model";
 import type { WorkspaceAction } from "@/clinical/prototypes/clinical-document-workspace/reducer";
-import { getPrototypeSuggestions } from "@/clinical/prototypes/clinical-document-workspace/selectors";
+import {
+  getAssessmentContext,
+  getPrototypeSuggestions
+} from "@/clinical/prototypes/clinical-document-workspace/selectors";
 
 import styles from "./ClinicalDocumentWorkspacePrototype.module.css";
 
@@ -37,11 +40,7 @@ export function AssessmentSection({
 
   return (
     <div className={styles.clinicalControls}>
-      <p className={styles.sectionLead}>
-        {state.workingDiagnoses.length
-          ? "Arbejdshypoteser er klinikerens eksplicit valgte vurderinger."
-          : "Ingen arbejdshypoteser registreret."}
-      </p>
+      <p className={styles.sectionLead}>{getAssessmentContext(state)}</p>
 
       {visible.length ? (
         <div className={styles.suggestionArea} aria-label="Diagnostiske forslag">

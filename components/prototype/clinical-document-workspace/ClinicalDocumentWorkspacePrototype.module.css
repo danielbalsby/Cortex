@@ -532,6 +532,13 @@
   color: #77472f !important;
 }
 
+.constraintText {
+  margin: -4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
 .attentionArea {
   display: grid;
   gap: 8px;

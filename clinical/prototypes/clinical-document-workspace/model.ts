@@ -69,11 +69,13 @@ export type NormalFindingKey =
   | "extension"
   | "straightLegRaise";
 
-export interface NormalFindingDefinition {
-  readonly key: NormalFindingKey;
-  readonly label: string;
-  readonly normalValue: string;
-}
+export type NormalFindingDefinition = {
+  [K in NormalFindingKey]: {
+    readonly key: K;
+    readonly label: string;
+    readonly normalValue: NonNullable<PrototypeFacts[K]>;
+  };
+}[NormalFindingKey];
 
 export const NORMAL_BASIC_FINDINGS: readonly NormalFindingDefinition[] = [
   { key: "generalCondition", label: "Upåvirket almentilstand", normalValue: "unaffected" },

@@ -8,14 +8,31 @@ function reduce(...actions: Parameters<typeof workspaceReducer>[1][]) {
 }
 
 describe("Clinical Document Workspace v2 Phase 2 reducer", () => {
-  it("normalizes blank text and keeps mode changes presentation-only", () => {
+  it("preserves natural text entry, clears empty text and keeps mode changes presentation-only", () => {
     const withText = reduce({ type: "set-fact", key: "duration", value: "  seks måneder  " });
     const standard = workspaceReducer(withText, { type: "set-mode", mode: "standard" });
-    const cleared = workspaceReducer(standard, { type: "set-fact", key: "duration", value: "  " });
+    const spaces = workspaceReducer(standard, { type: "set-fact", key: "duration", value: "  " });
+    const cleared = workspaceReducer(spaces, { type: "set-fact", key: "duration", value: "" });
 
-    expect(withText.facts.duration).toBe("seks måneder");
+    expect(withText.facts.duration).toBe("  seks måneder  ");
     expect(standard.facts).toEqual(withText.facts);
+    expect(spaces.facts.duration).toBe("  ");
     expect(cleared.facts.duration).toBeUndefined();
+  });
+
+  it("preserves every character while a controlled text value is entered sequentially", () => {
+    const value = "seks måneder";
+    const state = [...value].reduce(
+      (current, character) =>
+        workspaceReducer(current, {
+          type: "set-fact",
+          key: "duration",
+          value: `${current.facts.duration ?? ""}${character}`
+        }),
+      createEmptyClinicalDocumentState()
+    );
+
+    expect(state.facts.duration).toBe(value);
   });
 
   it("toggles trauma mechanisms independently and keeps constant/intermittent exclusive", () => {
