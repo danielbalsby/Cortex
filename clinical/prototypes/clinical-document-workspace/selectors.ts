@@ -24,6 +24,13 @@ export interface PrototypeAttentionPoint {
   readonly detail: string;
 }
 
+export interface ReferralDraftFoundation {
+  readonly id: "imaging-referral";
+  readonly label: string;
+  readonly status: "foundation-recorded" | "missing-information";
+  readonly detail: string;
+}
+
 const PLAN_LABELS: Record<PlanAction, string> = {
   information: "Information",
   activity: "Aktivitetstilpasning",
@@ -271,4 +278,26 @@ export function getClinicalOverview(
       value: plans.length ? plans.join(", ") : "Ikke registreret"
     }
   ];
+}
+
+export function getReferralDraftFoundations(
+  state: ClinicalDocumentPrototypeState
+): readonly ReferralDraftFoundation[] {
+  const foundations: ReferralDraftFoundation[] = [];
+  if (
+    state.planActions.includes("imaging") &&
+    state.imaging?.plannedAction === "prepare-referral"
+  ) {
+    const missing = getImagingMissingInformation(state.imaging);
+    foundations.push({
+      id: "imaging-referral",
+      label: "Billeddiagnostisk henvisning",
+      status: missing.length ? "missing-information" : "foundation-recorded",
+      detail: missing.length
+        ? `Mangler struktureret grundlag: ${missing.join(", ")}.`
+        : "Struktureret grundlag er registreret. Endelig regional henvisningstekst er ikke implementeret i prototypen."
+    });
+  }
+
+  return foundations;
 }
