@@ -6,10 +6,12 @@ import styles from "./ClinicalDocumentWorkspacePrototype.module.css";
 
 export function WorkspaceHeader({
   mode,
-  onModeChange
+  onModeChange,
+  onReset
 }: {
   mode: PrototypeMode;
   onModeChange: (mode: PrototypeMode) => void;
+  onReset: () => void;
 }) {
   return (
     <header className={styles.workspaceHeader}>
@@ -20,7 +22,7 @@ export function WorkspaceHeader({
         <div>
           <p className={styles.eyebrow}>ISOLERET · SYNTETISK PROTOTYPE</p>
           <strong>Clinical Document Workspace v2</strong>
-          <span>Phase 1 · Grundlag og layout</span>
+          <span>Phase 2 · Klinisk interaktionsmodel</span>
         </div>
       </div>
 
@@ -37,6 +39,9 @@ export function WorkspaceHeader({
             </button>
           ))}
         </div>
+        <button className={styles.resetButton} type="button" onClick={onReset}>
+          Nulstil
+        </button>
         <Link className={styles.productionLink} href="/">
           Til produktionsarbejdsgangen
         </Link>

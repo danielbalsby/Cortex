@@ -1,19 +1,25 @@
+import type { Dispatch } from "react";
+
 import {
   CLINICAL_DOCUMENT_CONTEXT,
   CLINICAL_DOCUMENT_SECTIONS,
-  type PrototypeMode
+  type ClinicalDocumentPrototypeState
 } from "@/clinical/prototypes/clinical-document-workspace/model";
+import type { WorkspaceAction } from "@/clinical/prototypes/clinical-document-workspace/reducer";
 
+import { AssessmentSection } from "./AssessmentSection";
+import { HistorySection } from "./HistorySection";
+import { ObjectiveSection } from "./ObjectiveSection";
+import { PlanSection } from "./PlanSection";
 import styles from "./ClinicalDocumentWorkspacePrototype.module.css";
 
-const SECTION_GUIDANCE = {
-  history: "Kliniske historikfelter tilføjes i Phase 2.",
-  objective: "Grupperede normalfund og positive undtagelser tilføjes i Phase 2.",
-  assessment: "Forslag og samtidige arbejdshypoteser tilføjes i Phase 2.",
-  plan: "Planhandlinger og eksplicit billeddiagnostisk status tilføjes i Phase 2."
-} as const;
-
-export function ClinicalDocument({ mode }: { mode: PrototypeMode }) {
+export function ClinicalDocument({
+  state,
+  dispatch
+}: {
+  state: ClinicalDocumentPrototypeState;
+  dispatch: Dispatch<WorkspaceAction>;
+}) {
   return (
     <article className={styles.documentSurface} aria-labelledby="prototype-document-title">
       <header className={styles.documentHeader}>
@@ -26,12 +32,12 @@ export function ClinicalDocument({ mode }: { mode: PrototypeMode }) {
         </div>
         <p className={styles.modeSummary}>
           <span>Aktiv visning</span>
-          <strong>{mode === "quick" ? "Quick" : "Standard"}</strong>
+          <strong>{state.mode === "quick" ? "Quick" : "Standard"}</strong>
         </p>
       </header>
 
       <p className={styles.foundationNotice}>
-        Tomt prototypegrundlag. Urørte kliniske felter er ikke dokumenteret eller vurderet.
+        Urørte kliniske felter er ikke dokumenteret eller vurderet. Alle registreringer kræver eksplicit handling.
       </p>
 
       {CLINICAL_DOCUMENT_SECTIONS.map((section) => (
@@ -46,8 +52,10 @@ export function ClinicalDocument({ mode }: { mode: PrototypeMode }) {
             <h2 id={`prototype-${section.id}-title`}>{section.label}</h2>
           </header>
           <div className={styles.sectionNarrative}>
-            <p>{section.placeholder}</p>
-            <small>{SECTION_GUIDANCE[section.id]}</small>
+            {section.id === "history" ? <HistorySection state={state} dispatch={dispatch} /> : null}
+            {section.id === "objective" ? <ObjectiveSection state={state} dispatch={dispatch} /> : null}
+            {section.id === "assessment" ? <AssessmentSection state={state} dispatch={dispatch} /> : null}
+            {section.id === "plan" ? <PlanSection state={state} dispatch={dispatch} /> : null}
           </div>
         </section>
       ))}

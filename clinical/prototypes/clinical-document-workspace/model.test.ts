@@ -6,11 +6,17 @@ import {
   setPrototypeMode
 } from "./model";
 
-describe("Clinical Document Workspace v2 Phase 1 state", () => {
+describe("Clinical Document Workspace v2 Phase 2 state", () => {
   it("starts in empty Quick mode with fixed knee-pain context", () => {
     const state = createEmptyClinicalDocumentState();
 
-    expect(state).toEqual({ mode: "quick", facts: {} });
+    expect(state).toEqual({
+      mode: "quick",
+      facts: {},
+      normalGroup: { confirmed: false, appliedKeys: [] },
+      workingDiagnoses: [],
+      planActions: []
+    });
     expect(CLINICAL_DOCUMENT_CONTEXT).toEqual({
       problemCode: "knee-pain",
       problemLabel: "Knæsmerte"
@@ -21,7 +27,8 @@ describe("Clinical Document Workspace v2 Phase 1 state", () => {
     const quick = createEmptyClinicalDocumentState();
     const standard = setPrototypeMode(quick, "standard");
 
-    expect(standard).toEqual({ mode: "standard", facts: {} });
-    expect(quick).toEqual({ mode: "quick", facts: {} });
+    expect(standard).toEqual({ ...quick, mode: "standard" });
+    expect(quick.mode).toBe("quick");
+    expect(quick.facts).toEqual({});
   });
 });

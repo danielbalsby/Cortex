@@ -20,7 +20,7 @@ export function JournalPreview({ journal }: { journal: string }) {
       </pre>
 
       <p className={styles.reviewReminder}>
-        Udkast – kræver klinisk gennemgang. Phase 1 genererer kun den faste problemkontekst.
+        Udkast – kræver klinisk gennemgang. Phase 2 registrerer interaktioner, mens den fulde kliniske tekst først implementeres i Phase 3.
       </p>
     </section>
   );
