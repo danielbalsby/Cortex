@@ -92,6 +92,6 @@ test("epistemic lanes keep assessment visually distinct from suggestions until a
   await page.getByRole("button", { name: "Tilføj", exact: true }).first().click();
 
   await expect(page.getByText("Klinikerens vurdering").first()).toBeVisible();
-  await expect(page.getByText(/Primær/)).toBeVisible();
+  await expect(page.getByText("Primær", { exact: true })).toBeVisible();
   await expect(page.getByLabel("Live journalnotat")).toContainText("Primær arbejdshypotese");
 });
