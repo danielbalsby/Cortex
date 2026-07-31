@@ -1,0 +1,496 @@
+.shell {
+  min-height: 100vh;
+  max-width: 1480px;
+  margin: 0 auto;
+  padding: 16px 20px 28px;
+  color: var(--ink);
+}
+
+.workspaceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brandMark {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--surface-strong);
+  font: 500 18px/1 Georgia, "Times New Roman", serif;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--sage);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+}
+
+.headerActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.modeSwitch {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(70px, 1fr));
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #e8e2d7;
+}
+
+.modeSwitch button,
+.resetButton,
+.linkButton {
+  min-height: 36px;
+  padding: 0 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.modeSwitch button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+}
+
+.modeSwitch button[aria-pressed="true"] {
+  background: var(--surface-strong);
+  color: var(--ink);
+}
+
+.resetButton,
+.linkButton {
+  border: 1px solid var(--line);
+  background: rgba(255, 253, 248, 0.72);
+  color: var(--muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.activeStep {
+  margin: 8px 0 0;
+  padding: 4px 10px;
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  background: rgba(255, 253, 248, 0.7);
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(300px, 0.6fr);
+  gap: 12px;
+  margin-top: 10px;
+  align-items: start;
+}
+
+.documentColumn {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.clinicalSectionsWrapper {
+  display: contents;
+}
+
+.problemSearch {
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.85);
+}
+
+.problemSearch label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 750;
+  color: var(--sage);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.problemSearch input {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fffdf8;
+  font: inherit;
+}
+
+.problemResults {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.problemResults button {
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-strong);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.problemResults button[aria-pressed="true"] {
+  border-color: var(--sage);
+  background: #eef2ea;
+}
+
+.problemResultsEmpty {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.problemProfileNote {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.documentSection {
+  padding: 12px 16px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.82);
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.sectionLabel span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background: #eef2ea;
+  color: var(--sage);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.sectionLabel h2 {
+  margin: 0;
+  font: 500 17px/1.25 Georgia, "Times New Roman", serif;
+}
+
+.linearGroups {
+  display: grid;
+  gap: 10px;
+}
+
+.choiceGroup {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.choiceGroup legend {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.choiceDescription {
+  margin: -2px 0 6px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.chipRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chipRow button {
+  min-height: 34px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #f7f3ea;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.chipRow button[aria-pressed="true"] {
+  border-color: #6f7f64;
+  background: #dfe8d8;
+}
+
+.bundleButton {
+  border-style: dashed !important;
+}
+
+.textField {
+  display: grid;
+  gap: 5px;
+}
+
+.textField span {
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.textField input,
+.textField textarea {
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fffdf8;
+  color: var(--ink);
+  font: inherit;
+}
+
+.subordinate {
+  margin-left: 16px;
+  padding: 10px 12px;
+  border-left: 3px solid var(--sage);
+  border-radius: 0 10px 10px 0;
+  background: #f0f4ed;
+  display: grid;
+  gap: 8px;
+}
+
+.rollingGroup {
+  display: grid;
+  gap: 6px;
+}
+
+.rollingGroupLabel {
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.diagnosisList h3 {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.diagnosisList ul {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.diagnosisList li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-strong);
+  font-size: 13px;
+}
+
+.diagnosisList li button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.mutedLine {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.inlineForm {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: end;
+}
+
+.inlineForm label {
+  display: grid;
+  gap: 4px;
+}
+
+.inlineForm span {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.inlineForm input {
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fffdf8;
+}
+
+.inlineForm button {
+  min-height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--sage);
+  border-radius: 8px;
+  background: #e7efe3;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.attentionPlaceholder {
+  padding: 10px 12px;
+  border: 1px dashed var(--line);
+  border-radius: 10px;
+  background: #f6f4ee;
+}
+
+.attentionPlaceholder strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.attentionPlaceholder p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.companionPane {
+  position: sticky;
+  top: 10px;
+  min-width: 0;
+}
+
+.psoapPanel {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.92);
+}
+
+.psoapPanel > header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px 8px;
+}
+
+.psoapPanel h2 {
+  margin: 2px 0 0;
+  font: 500 17px/1.25 Georgia, "Times New Roman", serif;
+}
+
+.psoapPanel > header button {
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--sage);
+  border-radius: 9px;
+  background: #e7efe3;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.psoapText {
+  margin: 0 14px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 14.5px/1.5 "SF Mono", Menlo, Consolas, monospace;
+  min-height: 110px;
+}
+
+.reviewReminder {
+  margin: 0;
+  padding: 10px 14px 14px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.shell button:focus-visible,
+.shell a:focus-visible,
+.shell input:focus-visible,
+.shell textarea:focus-visible {
+  outline: 3px solid rgba(77, 103, 66, 0.42);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1199px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .companionPane {
+    position: static;
+  }
+}
+
+@media (max-width: 767px) {
+  .shell {
+    padding: 12px;
+  }
+
+  .workspaceHeader,
+  .headerActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .inlineForm {
+    grid-template-columns: 1fr;
+  }
+}
