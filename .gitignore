@@ -8,6 +8,8 @@ out/
 # Build and test output
 dist/
 build/
+!docs/build/
+!docs/build/*.md
 coverage/
 .nyc_output/
 playwright-report/
