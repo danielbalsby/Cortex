@@ -4,7 +4,7 @@ Lille statisk side (`template.html` + `build.py` → `dist/index.html`). Hold de
 
 ## Ufravigelige regler
 - Ingen backend, ingen tracking, ingen localStorage af feltindhold, ingen eksterne scripts/fonte. Intet patientindhold må forlade fanen.
-- Urørte felter skal komme ud som "Ikke vurderet" – aldrig udelades stiltiende og aldrig blive "normal"/"negativ".
+- Urørte felter må aldrig blive "normal"/"negativ". De kommer ikke med i notatet, men skal vises som tjekliste før kopiering (røde flag fremhævet).
 - Ingen AI-kald og ingen patientspecifik klinisk logik (forslag, røde flag ud fra input). Kortene er emnevalgt opslag.
 - Klinisk indhold ændres kun i Obsidian-kortene, aldrig i koden.
 

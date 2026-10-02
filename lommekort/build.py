@@ -18,6 +18,12 @@ DEFAULT_SRC = Path.home() / "Obsidian/Knowledge/01 Almen Praksis/Konsultationsko
 HERE = Path(__file__).resolve().parent
 SKIP = {"Konsultationskort – Oversigt og format.md", "Konsultationskort – Brugslog.md"}
 
+KEYLINKS = {
+    "PROMED": "https://pro.medicin.dk",
+    "ABV-RH": "https://www.sundhed.dk/sundhedsfaglig/information-til-praksis/hovedstaden/almen-praksis/patientbehandling/laegemidler/antibiotikavejledning/",
+    "DCS NBV": "https://nbv.cardio.dk",
+}
+
 # ---------------------------------------------------------------- markdown -> html (bevidst minimal)
 
 def inline(text: str) -> str:
@@ -30,6 +36,9 @@ def inline(text: str) -> str:
     t = re.sub(r"\[(Kilde|Kort|Generel viden|Antagelse|Tjek live)([^\]]*)\]",
                lambda m: f'<span class="tag tag-{m.group(1).split()[0].lower()}">[{m.group(1)}{m.group(2)}]</span>', t)
     t = re.sub(r"Tjek live:", r'<span class="tag tag-tjek">Tjek live:</span>', t)
+    t = t.replace("*(afventer DB)*", '<span class="tag tag-afventer">afventer DB</span>')
+    for word, url in KEYLINKS.items():
+        t = re.sub(rf"(?<![\w/>\"]){re.escape(word)}(?![\w<])", f'<a class="kl" href="{url}" target="_blank" rel="noopener">{word}</a>', t)
     return t
 
 
@@ -137,6 +146,9 @@ def parse_journal(md):
         if not m:
             continue
         key, tpl = m.group(1), m.group(2)
+        if key.lower() == "røde flag":
+            lines.append({"key": key, "redflags": [x.strip() for x in tpl.split(";") if x.strip()], "fields": []})
+            continue
         fields, pos = [], 0
         tokens = list(PH.finditer(tpl))
         for idx, ph in enumerate(tokens):
@@ -174,11 +186,24 @@ def parse_journal(md):
 
 
 def extract_safety_net(sections):
+    """-> (patienttekst, journaltekst)"""
     for s in sections:
         if s["heading"].startswith("5"):
             q = [ln[1:].strip() for ln in s["md"].splitlines() if ln.startswith(">")]
-            return " ".join(q).strip().strip('"“”')
-    return ""
+            patient = " ".join(q).strip().strip('"“”')
+            m = re.search(r"\*\*Journal:\*\*\s*(.+)", s["md"])
+            journal = m.group(1).replace("*(afventer DB)*", "").strip() if m else ""
+            return patient, journal
+    return "", ""
+
+
+def parse_links(v):
+    out = []
+    for part in (v or "").split("; "):
+        if "|" in part:
+            label, url = part.split("|", 1)
+            out.append({"label": label.strip(), "url": url.strip()})
+    return out
 
 
 def load_cards(src: Path):
@@ -197,10 +222,13 @@ def load_cards(src: Path):
             "status": meta.get("status", "DRAFT"),
             "checked": meta.get("kontrolleret", "–"),
             "intro": md_to_html(intro.split("\n", 1)[1] if intro.startswith("#") else intro),
-            "sections": [{"heading": s["heading"], "html": md_to_html(s["md"])} for s in view_secs],
+            "sections": [{"heading": s["heading"], "html": md_to_html(s["md"]), "open": s["heading"][:1] in "035"} for s in view_secs],
             "footer": md_to_html(footer),
             "journal": parse_journal(journal_sec["md"]) if journal_sec else [],
-            "safetyNet": extract_safety_net(sections),
+            "safetyNet": extract_safety_net(sections)[0],
+            "safetyJournal": extract_safety_net(sections)[1],
+            "links": parse_links(meta.get("links")),
+            "pending": meta.get("afventer", ""),
             "search": (short + " " + " ".join(s["md"] for s in sections[:2])).lower(),
         })
     return cards
@@ -219,6 +247,12 @@ def main():
     page = tpl.replace("/*__DATA__*/[]", data).replace("__BUILD__", date.today().isoformat())
     a.out.parent.mkdir(parents=True, exist_ok=True)
     a.out.write_text(page, encoding="utf-8")
+    # Artifact-variant (claude.ai pakker selv siden ind i doctype/head/body)
+    m_title = re.search(r"<title>.*?</title>", page, re.S).group(0)
+    m_style = re.search(r"<style>.*?</style>", page, re.S).group(0)
+    m_body = re.search(r"<body>(.*)</body>", page, re.S).group(1)
+    art = f"{m_title}\n<meta name=\"robots\" content=\"noindex, nofollow\">\n{m_style}\n{m_body}"
+    (a.out.parent / "artifact.html").write_text(art, encoding="utf-8")
     n_fields = sum(len(l["fields"]) for c in cards for l in c["journal"])
     print(f"Bygget {a.out} – {len(cards)} kort, {n_fields} journalfelter")
 
