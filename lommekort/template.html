@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lommekort</title>
+<style>
+:root{
+  --bg:#f7f6f3;--panel:#fff;--ink:#1d1d1b;--muted:#6b6a66;--line:#e4e2dc;--accent:#2f5d50;
+  --warn-bg:#fff4e5;--warn-ink:#8a4b00;--danger-bg:#fdecec;--danger-ink:#9b1c1c;--note-bg:#eaf3ef;--note-ink:#2f5d50;
+  --field:#fbfaf8;--focus:#2f5d50;--filled:#eef5f1;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141413;--panel:#1d1d1b;--ink:#ecebe7;--muted:#9c9a94;--line:#33322f;--accent:#7fb8a4;
+  --warn-bg:#3a2a12;--warn-ink:#f2c27a;--danger-bg:#3d1717;--danger-ink:#f4a3a3;--note-bg:#1e2e28;--note-ink:#9fd1bf;
+  --field:#232320;--focus:#7fb8a4;--filled:#22302a;
+}}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:14px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+header{display:flex;gap:12px;align-items:center;padding:10px 16px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:5}
+header .brand{font-weight:600;letter-spacing:.2px}
+#q{flex:1;max-width:420px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--field);color:var(--ink);font-size:15px}
+#q:focus,input:focus,textarea:focus{outline:2px solid var(--focus);outline-offset:0;border-color:transparent}
+.keys{color:var(--muted);font-size:12px;margin-left:auto;white-space:nowrap}
+kbd{font:11px ui-monospace,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 4px;background:var(--field)}
+main{display:grid;grid-template-columns:220px minmax(0,1fr) minmax(360px,440px);gap:0;height:calc(100% - 53px)}
+nav{border-right:1px solid var(--line);overflow:auto;padding:8px}
+nav button{display:flex;justify-content:space-between;align-items:center;width:100%;text-align:left;padding:7px 9px;border:0;border-radius:6px;background:none;color:var(--ink);font:inherit;cursor:pointer}
+nav button:hover{background:var(--field)}
+nav button.active{background:var(--note-bg);color:var(--note-ink);font-weight:600}
+nav button.kb{outline:2px solid var(--focus)}
+.badge{font-size:10px;font-weight:600;padding:1px 5px;border-radius:4px}
+.badge.DRAFT{background:var(--warn-bg);color:var(--warn-ink)}
+.badge.APPROVED{background:var(--note-bg);color:var(--note-ink)}
+#card{overflow:auto;padding:16px 24px 48px}
+#card h1{font-size:20px;margin:0 0 4px}
+#card .meta{color:var(--muted);font-size:12px;margin-bottom:12px}
+#card h2{font-size:15px;margin:22px 0 6px;padding-bottom:3px;border-bottom:1px solid var(--line)}
+#card h2:first-of-type{margin-top:8px}
+#card ul{margin:4px 0;padding-left:20px}
+#card li{margin:2px 0}
+#card table{border-collapse:collapse;width:100%;margin:6px 0;font-size:13px}
+#card th,#card td{border:1px solid var(--line);padding:4px 6px;text-align:left;vertical-align:top}
+#card th{background:var(--field)}
+#card blockquote{margin:6px 0;padding:8px 12px;border-left:3px solid var(--accent);background:var(--field)}
+.callout{padding:8px 12px;border-radius:6px;margin:6px 0;font-size:13px}
+.callout-title{font-weight:600}
+.callout-warning{background:var(--warn-bg);color:var(--warn-ink)}
+.callout-danger{background:var(--danger-bg);color:var(--danger-ink)}
+.callout-note{background:var(--note-bg);color:var(--note-ink)}
+.tag{font-size:11px;color:var(--muted);white-space:nowrap}
+.tag-tjek{color:var(--warn-ink);font-weight:600}
+.wl{font-style:italic;color:var(--muted)}
+.foot{color:var(--muted);font-size:12px;margin-top:24px}
+section.sec-0{background:var(--danger-bg);padding:2px 12px 8px;border-radius:8px}
+section.sec-0 h2{border:0;color:var(--danger-ink)}
+aside{border-left:1px solid var(--line);overflow:auto;padding:12px 14px 24px;background:var(--panel)}
+aside h3{margin:2px 0 8px;font-size:14px;display:flex;justify-content:space-between;align-items:center}
+.jline{margin:0 0 10px}
+.jkey{font-weight:600;font-size:12px;color:var(--muted);margin:8px 0 4px}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:4px 8px}
+.f{display:flex;flex-direction:column}
+.f.wide{grid-column:1 / -1}
+.f label{font-size:11px;color:var(--muted);margin:0 0 1px}
+.f input,.f textarea{padding:5px 7px;border:1px solid var(--line);border-radius:6px;background:var(--field);color:var(--ink);font:inherit;font-size:13px}
+.f textarea{resize:vertical;min-height:34px}
+.f.has input,.f.has textarea{background:var(--filled)}
+.f .row{display:flex;gap:4px}
+.f .row input{flex:1}
+.mini{align-self:flex-start;border:1px solid var(--line);background:var(--field);color:var(--ink);border-radius:6px;font-size:11px;padding:2px 6px;cursor:pointer}
+.actions{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 8px}
+.btn{border:0;border-radius:7px;padding:7px 10px;font:inherit;font-size:13px;cursor:pointer;background:var(--accent);color:#fff}
+.btn kbd{background:transparent;color:inherit;border-color:rgba(255,255,255,.5)}
+.btn.sec{background:var(--field);color:var(--ink);border:1px solid var(--line)}
+#preview{white-space:pre-wrap;font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;background:var(--field);border:1px solid var(--line);border-radius:6px;padding:8px;min-height:60px}
+#untouchedNote{font-size:12px;color:var(--warn-ink);margin:6px 0 0}
+#toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
+#toast.show{opacity:.95}
+.privacy{font-size:11px;color:var(--muted);margin-top:10px}
+.empty{color:var(--muted);padding:40px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:1000px){
+  main{grid-template-columns:1fr;height:auto}
+  nav{border-right:0;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:4px}
+  nav button{width:auto}
+  aside{border-left:0;border-top:1px solid var(--line)}
+  .keys{display:none}
+}
+</style>
+</head>
+<body>
+<header>
+  <span class="brand">Lommekort</span>
+  <input id="q" type="search" placeholder="Søg kontaktårsag …  ( / )" autocomplete="off" aria-label="Søg kort">
+  <span class="keys"><kbd>/</kbd> søg · <kbd>↵</kbd> åbn · <kbd>Tab</kbd> felter · <kbd>Ctrl</kbd>+<kbd>↵</kbd> kopiér notat · <kbd>Ctrl</kbd>+<kbd>⇧</kbd>+<kbd>↵</kbd> kopiér sikkerhedsnet · <kbd>Alt</kbd>+<kbd>N</kbd> ny patient</span>
+</header>
+<main>
+  <nav id="list" aria-label="Kort"></nav>
+  <div id="card"><div class="empty">Søg efter en kontaktårsag, eller vælg et kort til venstre.</div></div>
+  <aside id="journal" aria-label="Journalbygger"></aside>
+</main>
+<div id="toast" role="status"></div>
+<script>
+const CARDS = /*__DATA__*/[];
+const BUILD = "__BUILD__";
+const $ = s => document.querySelector(s);
+let current = null, kbIndex = 0, filtered = CARDS.slice();
+
+function norm(s){return (s||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");}
+function score(c,q){
+  if(!q) return 1;
+  const t = norm(c.title), s = norm(c.search), qq = norm(q);
+  if (t.startsWith(qq)) return 100;
+  if (t.split(/[\s/()]+/).some(w=>w.startsWith(qq))) return 80;
+  if (t.includes(qq)) return 60;
+  if (s.includes(qq)) return 20;
+  return 0;
+}
+function renderList(){
+  const q = $("#q").value.trim();
+  filtered = CARDS.map(c=>[score(c,q),c]).filter(x=>x[0]>0).sort((a,b)=>b[0]-a[0]||a[1].title.localeCompare(b[1].title,"da")).map(x=>x[1]);
+  if (kbIndex >= filtered.length) kbIndex = 0;
+  $("#list").innerHTML = filtered.map((c,i)=>`<button data-i="${CARDS.indexOf(c)}" class="${current===c?'active':''} ${q&&i===kbIndex?'kb':''}"><span>${esc(c.title)}</span><span class="badge ${c.status}">${c.status==="APPROVED"?"✓":"DRAFT"}</span></button>`).join("") || `<div class="empty">Intet kort matcher.</div>`;
+  $("#list").querySelectorAll("button").forEach(b=>b.onclick=()=>openCard(CARDS[+b.dataset.i],true));
+}
+function esc(s){return String(s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));}
+
+function openCard(c, focusJournal){
+  current = c;
+  const statusTxt = c.status==="APPROVED" ? `APPROVED · kontrolleret ${esc(c.checked)}` : "DRAFT – ikke verificeret af DB";
+  $("#card").innerHTML = `<h1>${esc(c.title)}</h1><div class="meta"><span class="badge ${c.status}">${statusTxt}</span> · ${esc(c.id)}</div>`
+    + c.sections.map(s=>`<section class="sec-${s.heading[0]}"><h2>${esc(s.heading)}</h2>${s.html}</section>`).join("")
+    + `<div class="foot">${c.footer}</div>`;
+  $("#card").scrollTop = 0;
+  renderJournal(c);
+  renderList();
+  if (focusJournal) { const f = $("#journal input, #journal textarea"); f && f.focus(); }
+}
+
+function renderJournal(c){
+  let n = 0;
+  const lines = c.journal.map((l,li)=>{
+    const fs = l.fields.map((f,fi)=>{
+      const id = `f_${li}_${fi}`; n++;
+      const dl = f.options.length ? `<datalist id="dl_${id}">${f.options.map(o=>`<option value="${esc(o)}">`).join("")}</datalist>` : "";
+      const ph = f.hint && f.hint!==f.label ? f.hint : (f.options.join(" / "));
+      const input = f.wide
+        ? `<textarea id="${id}" rows="1" data-li="${li}" data-fi="${fi}" placeholder="${esc(ph)}"></textarea>`
+        : `<input id="${id}" data-li="${li}" data-fi="${fi}" ${f.options.length?`list="dl_${id}"`:""} placeholder="${esc(ph)}" autocomplete="off">`;
+      const extra = f.safety ? `<div class="row">${input}<button class="mini" type="button" data-safety="${id}" title="Indsæt kortets sikkerhedsnet (Alt+S)">Kort</button></div>` : input;
+      const lab = f.label || l.key;
+      const showLab = !(lab===l.key && l.fields.length===1);
+      return `<div class="f ${f.wide?'wide':''}"><label for="${id}" ${showLab?"":'class="sr"'}>${esc(lab)}${f.suffix?` <span>(${esc(f.suffix.trim())})</span>`:""}</label>${extra}${dl}</div>`;
+    }).join("");
+    return `<div class="jline"><div class="jkey">${esc(l.key)}</div><div class="fgrid">${fs}</div></div>`;
+  }).join("");
+  $("#journal").innerHTML = `<h3><span>Journal</span><button class="mini" id="clearBtn" type="button" title="Alt+N">Ny patient</button></h3>
+    ${lines}
+    <div class="actions">
+      <button class="btn" id="copyNote" type="button">Kopiér notat <kbd>Ctrl ↵</kbd></button>
+      <button class="btn sec" id="copySafety" type="button">Kopiér sikkerhedsnet</button>
+    </div>
+    <div id="preview" aria-live="polite"></div>
+    <div id="untouchedNote"></div>
+    <div class="privacy">Intet gemmes. Skriv ikke navn eller CPR. Felterne ryddes, når du skifter kort eller trykker "Ny patient". Bygget ${BUILD}.</div>`;
+  $("#journal").querySelectorAll("input,textarea").forEach(el=>{
+    el.addEventListener("input", ()=>{ el.closest(".f").classList.toggle("has", !!el.value.trim()); autosize(el); updatePreview(); });
+  });
+  $("#journal").querySelectorAll("[data-safety]").forEach(b=>b.onclick=()=>fillSafety(b.dataset.safety));
+  $("#clearBtn").onclick = clearFields;
+  $("#copyNote").onclick = copyNote;
+  $("#copySafety").onclick = copySafety;
+  updatePreview();
+}
+function autosize(el){ if(el.tagName==="TEXTAREA"){ el.style.height="auto"; el.style.height=Math.min(el.scrollHeight,160)+"px"; } }
+function fillSafety(id){
+  const el = document.getElementById(id); if(!el||!current) return;
+  el.value = current.safetyNet; el.dispatchEvent(new Event("input")); el.focus();
+}
+function val(li,fi){ const el = document.getElementById(`f_${li}_${fi}`); return el ? el.value.trim() : ""; }
+
+function buildNote(){
+  if(!current) return {text:"",untouched:[]};
+  const out = [], untouched = []; let filled = 0;
+  current.journal.forEach((l,li)=>{
+    const parts = [];
+    l.fields.forEach((f,fi)=>{
+      const v = val(li,fi);
+      if (v) {
+        const lab = f.label && f.label!==f.hint ? f.label : "";
+        filled++;
+        const sep = /:$/.test(lab) ? " " : (f.wide || f.safety ? ": " : " ");
+        parts.push(lab ? `${lab}${sep}${v}${f.suffix}` : `${v}${f.suffix}`);
+      } else if (!f.noUntouched) {
+        untouched.push(prettyLabel(f.label || f.hint, l.key));
+      }
+    });
+    if (parts.length) out.push(`${l.key}: ${parts.join(". ")}.`.replace(/\.\.$/,"."));
+  });
+  if (!filled) return {text:"", untouched};
+  if (untouched.length) out.push(`Ikke vurderet: ${untouched.join(", ")}.`);
+  return {text: out.join("\n"), untouched};
+}
+const SHORT = {P:"puls", T:"temp", RF:"RF", AT:"almentilstand"};
+function prettyLabel(lab, key){
+  if (key==="O" && SHORT[lab]) return SHORT[lab];
+  return lab.replace(/\s+(siden|i|i max)$/i, m => m.trim()==="siden" ? " (debut)" : " (varighed)");
+}
+function updatePreview(){
+  const {text, untouched} = buildNote();
+  $("#preview").textContent = text || "(Notatet bygges, mens du udfylder felterne.)";
+  const missingAP = current && ["A","P"].filter(k=>{ const li=current.journal.findIndex(l=>l.key===k); return li>=0 && !val(li,0); });
+  $("#untouchedNote").textContent = (missingAP&&missingAP.length?`Mangler: ${missingAP.join(" og ")}. `:"") + (untouched.length?`${untouched.length} felter kopieres som "Ikke vurderet".`:"");
+}
+async function copyText(t, msg){
+  if(!t){ toast("Intet at kopiere"); return; }
+  try { await navigator.clipboard.writeText(t); }
+  catch(e){ const ta=document.createElement("textarea"); ta.value=t; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); }
+  toast(msg);
+}
+function copyNote(){ copyText(buildNote().text, "Notat kopieret – sæt ind i journalen"); }
+function copySafety(){ copyText(current ? current.safetyNet : "", "Sikkerhedsnet kopieret"); }
+function clearFields(){
+  if(!current) return;
+  $("#journal").querySelectorAll("input,textarea").forEach(el=>{ el.value=""; el.closest(".f").classList.remove("has"); autosize(el); });
+  updatePreview(); toast("Felter ryddet"); const f=$("#journal input, #journal textarea"); f&&f.focus();
+}
+let tt; function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("show"); clearTimeout(tt); tt=setTimeout(()=>t.classList.remove("show"),1600); }
+
+$("#q").addEventListener("input", ()=>{ kbIndex=0; renderList(); });
+$("#q").addEventListener("keydown", e=>{
+  if (e.key==="ArrowDown"){ kbIndex=Math.min(kbIndex+1, filtered.length-1); renderList(); e.preventDefault(); }
+  else if (e.key==="ArrowUp"){ kbIndex=Math.max(kbIndex-1,0); renderList(); e.preventDefault(); }
+  else if (e.key==="Enter" && filtered[kbIndex]){ openCard(filtered[kbIndex], true); e.preventDefault(); }
+  else if (e.key==="Escape"){ $("#q").value=""; renderList(); }
+});
+document.addEventListener("keydown", e=>{
+  const typing = /INPUT|TEXTAREA/.test(document.activeElement.tagName);
+  if (e.key==="/" && !typing){ e.preventDefault(); $("#q").focus(); $("#q").select(); }
+  else if ((e.ctrlKey||e.metaKey) && e.key==="k"){ e.preventDefault(); $("#q").focus(); $("#q").select(); }
+  else if ((e.ctrlKey||e.metaKey) && e.key==="Enter"){ e.preventDefault(); e.shiftKey ? copySafety() : copyNote(); }
+  else if (e.altKey && (e.code==="KeyN")){ e.preventDefault(); clearFields(); }
+  else if (e.altKey && (e.code==="KeyS")){ e.preventDefault(); const b=$("#journal [data-safety]"); b && fillSafety(b.dataset.safety); }
+});
+renderList();
+$("#q").focus();
+</script>
+</body>
+</html>
