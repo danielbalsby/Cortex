@@ -16,7 +16,8 @@ from pathlib import Path
 
 DEFAULT_SRC = Path.home() / "Obsidian/Knowledge/01 Almen Praksis/Konsultationskort"
 HERE = Path(__file__).resolve().parent
-SKIP = {"Konsultationskort – Oversigt og format.md", "Konsultationskort – Brugslog.md"}
+SKIP = {"Konsultationskort – Oversigt og format.md", "Konsultationskort – Brugslog.md",
+        "Konsultationskort – Rollespilstest.md", "Konsultationskort – Rollespil facit og patientmanus.md"}
 
 KEYLINKS = {
     "PROMED": "https://pro.medicin.dk",
