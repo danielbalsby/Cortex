@@ -9,16 +9,18 @@ import { optael } from "../lib/status";
 import { naboFelt, udfyldNormale, vaelgMedTal } from "../lib/tastatur";
 import { Beslutningsstoette } from "./Beslutningsstoette";
 import { Felter } from "./Felter";
+import { Gennemgang } from "./Gennemgang";
 import { Notat, type KopiStatus } from "./Notat";
 import { REGIONER, regionFraTast, type RegionId } from "./regioner";
 
 const NULSTIL_VINDUE_MS = 1000;
 
 // "eksempel" er ikke en klinisk region. Den viser kun, hvordan panelet ser ud (tast 0).
-type Aaben = RegionId | "eksempel";
+type Aaben = RegionId | "eksempel" | "gennemgang";
 
 function hentIndhold(id: Aaben | undefined) {
   if (!id) return undefined;
+  if (id === "gennemgang") return undefined;
   return id === "eksempel" ? eksempel : INDHOLD[id];
 }
 
@@ -85,7 +87,13 @@ export function App() {
 
       if (!indhold) {
         // Ingen region åben: tal vælger region.
-        const valgt = iTekstfelt ? undefined : event.key === "0" ? "eksempel" : regionFraTast(event.key);
+        if (region === "gennemgang" || iTekstfelt) return;
+        const valgt =
+          event.key === "0"
+            ? "eksempel"
+            : event.key === "g" || event.key === "G"
+              ? "gennemgang"
+              : regionFraTast(event.key);
         if (valgt) {
           event.preventDefault();
           vaelgRegion(valgt);
@@ -167,6 +175,8 @@ export function App() {
             <Beslutningsstoette region={indhold} svar={svar} valgte={valgte} onVaelg={vaelgPunkt} />
           </section>
         </main>
+      ) : region === "gennemgang" ? (
+        <Gennemgang />
       ) : aktiv ? (
         <main className="start">
           <h1>{aktiv.navn}</h1>
@@ -177,7 +187,8 @@ export function App() {
           <h1>Vælg region</h1>
           <p>Tryk 1–5, eller klik på en region ovenfor.</p>
           <p className="lille">
-            <kbd>0</kbd> viser et eksempel på beslutningsstøtten (ikke klinisk indhold).
+            <kbd>G</kbd> gennemgang af røde flag og konflikter · <kbd>0</kbd> eksempel på beslutningsstøtten (ikke
+            klinisk indhold)
           </p>
         </main>
       )}

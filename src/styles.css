@@ -206,6 +206,22 @@ kbd {
 .konflikt summary { cursor: pointer; color: var(--advarsel); font-weight: 600; }
 .konflikt p { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 
+.gennemgang { flex: 1; max-width: 960px; margin: 0 auto; padding: 16px; }
+.gennemgang h1 { margin: 4px 0 6px; font-size: 1.4rem; }
+.gennemgang .lille { margin: 0 0 6px; color: var(--daempet); font-size: 0.9rem; }
+.gennemgangRegion { margin-top: 22px; padding: 14px 16px; background: var(--flade); border: 1px solid var(--kant); border-radius: 8px; }
+.gennemgangRegion h2 { margin: 0; font-size: 1.15rem; }
+.gennemgangRegion h3 { margin: 14px 0 6px; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--daempet); }
+.gennemgangListe { margin: 0; padding-left: 22px; display: grid; gap: 10px; }
+.gennemgangListe p { margin: 3px 0 0; }
+.gennemgangId { padding: 0 5px; border-radius: 4px; background: var(--bg); font-size: 0.85rem; }
+
+@media print {
+  .top, .bund { display: none; }
+  .gennemgangRegion { break-inside: auto; border: none; padding: 0; }
+  .gennemgangListe li { break-inside: avoid; }
+}
+
 @media (max-width: 800px) {
   .arbejdsflade { grid-template-columns: 1fr; }
   .panel + .panel { position: static; max-height: none; }
