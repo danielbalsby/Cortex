@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { ankel } from "../indhold/ankel";
 import { knae } from "../indhold/knae";
+import { skulder } from "../indhold/skulder";
 import type { Svar } from "../indhold/typer";
 import { bygNotat, saetSvar } from "./notat";
 
@@ -95,5 +96,23 @@ describe("bygNotat (ankel)", () => {
     expect(bygNotat(ankel, svar)).toBe(
       "S: Venstresidige ankelsmerter. Indadvridningstraume (inversion). Kunne gå fire vægtbærende skridt umiddelbart efter skaden.\nO: Ingen knogleømhed over malleolerne."
     );
+  });
+});
+
+describe("bygNotat (skulder)", () => {
+  it("giver tomt notat, når intet er valgt", () => {
+    expect(bygNotat(skulder, {})).toBe("");
+  });
+
+  it("viser og rydder traumefelter afhængigt af debut", () => {
+    let svar: Svar = {};
+    svar = saetSvar(skulder, svar, "debut", "traume");
+    svar = saetSvar(skulder, svar, "traumetype", "luksation");
+    svar = saetSvar(skulder, svar, "axillaris", "normal");
+    expect(bygNotat(skulder, svar)).toBe(
+      "S: Opstået efter traume. Skulderen var ude af led.\nO: Normal sensibilitet lateralt på skulderen."
+    );
+    svar = saetSvar(skulder, svar, "debut", "spontan");
+    expect(svar).toEqual({ debut: "spontan" });
   });
 });
