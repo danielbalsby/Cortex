@@ -7,7 +7,10 @@ import { fremhaevTekst, konflikter } from "./gennemgang";
 describe("gennemgang", () => {
   it("skriver fremhævningsbetingelser i klartekst", () => {
     const flag = knae.roedeFlag.find((item) => item.id === "flag-fraktur");
-    expect(fremhaevTekst(knae, flag?.fremhaevHvis)).toBe("Traume = Ja og Belastning = Kan ikke støtte");
+    const tekst = fremhaevTekst(knae, flag?.fremhaevHvis);
+    expect(tekst.startsWith("Traume = Ja og Belastning = Kan ikke støtte  ELLER  ")).toBe(true);
+    expect(tekst).toContain("Fleksion til 90° = Kan ikke");
+    expect(tekst).toContain("Alder = Over 55");
   });
 
   it("siger det tydeligt, når et flag aldrig fremhæves", () => {

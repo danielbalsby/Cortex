@@ -103,6 +103,20 @@ export const knae: Region = {
           ]
         },
         {
+          // Aldersgrupper valgt, så både Ottawa (over 55 år) og Pittsburgh (under 12 eller
+          // over 50 år) kan aflæses. Grænsen ved præcis 55 år er en navngiven konflikt.
+          id: "alder",
+          label: "Alder",
+          type: "enkelt",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "under12", label: "Under 12", notat: "Alder under 12 år." },
+            { id: "12til50", label: "12–50", notat: "Alder 12–50 år." },
+            { id: "51til55", label: "51–55", notat: "Alder 51–55 år." },
+            { id: "over55", label: "Over 55", notat: "Alder over 55 år." }
+          ]
+        },
+        {
           id: "belastning",
           label: "Belastning",
           type: "enkelt",
@@ -201,6 +215,46 @@ export const knae: Region = {
           ]
         },
         {
+          id: "patellaoemhed",
+          label: "Ømhed patella",
+          type: "enkelt",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "nej", label: "Ingen", notat: "Ingen direkte ømhed på patella.", normal: true },
+            { id: "ja", label: "Øm", notat: "Direkte ømhed på patella." }
+          ]
+        },
+        {
+          id: "fibulaoemhed",
+          label: "Ømhed caput fibulae",
+          type: "enkelt",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "nej", label: "Ingen", notat: "Ingen ømhed på caput fibulae.", normal: true },
+            { id: "ja", label: "Øm", notat: "Ømhed på caput fibulae." }
+          ]
+        },
+        {
+          id: "fleksion90",
+          label: "Fleksion til 90°",
+          type: "enkelt",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "ja", label: "Kan", notat: "Kan flektere knæet til 90 grader.", normal: true },
+            { id: "nej", label: "Kan ikke", notat: "Kan ikke flektere knæet til 90 grader." }
+          ]
+        },
+        {
+          id: "skridt",
+          label: "4 skridt nu",
+          type: "enkelt",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "ja", label: "Går", notat: "Går fire vægtbærende skridt ved undersøgelsen.", normal: true },
+            { id: "nej", label: "Kan ikke", notat: "Kan ikke gå fire vægtbærende skridt ved undersøgelsen." }
+          ]
+        },
+        {
           id: "objektivt-tekst",
           label: "Supplerende",
           type: "tekst",
@@ -221,6 +275,7 @@ export const knae: Region = {
         "traumemekanisme",
         "haevelse-straks",
         "knaek",
+        "alder",
         "belastning",
         "laasning",
         "feber",
@@ -229,7 +284,19 @@ export const knae: Region = {
     },
     {
       overskrift: "O",
-      felter: ["haevelse", "roedme", "varme", "ledlinje", "bevaegelighed", "stabilitet", "objektivt-tekst"]
+      felter: [
+        "haevelse",
+        "roedme",
+        "varme",
+        "ledlinje",
+        "bevaegelighed",
+        "stabilitet",
+        "patellaoemhed",
+        "fibulaoemhed",
+        "fleksion90",
+        "skridt",
+        "objektivt-tekst"
+      ]
     }
   ],
 
@@ -382,11 +449,20 @@ export const knae: Region = {
       tekst:
         "Akut knæskade: udeluk fraktur, før stabiliteten testes. Følgende skal udløse røntgen af knæet: direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader.",
       handling: "Røntgen af knæ. Akut henvisning til ortopædkirurg ved mistanke om brud.",
+      // Fremhæves, hvis blot ét kriterie fra Ottawa (Lægehåndbogen) ELLER Pittsburgh
+      // (Region Hovedstaden) er registreret. Det afgør ikke konflikten mellem reglerne.
       fremhaevHvis: [
         [
           { felt: "traume", er: "ja" },
           { felt: "belastning", er: "ingen" }
-        ]
+        ],
+        [{ felt: "skridt", er: "nej" }],
+        [{ felt: "patellaoemhed", er: "ja" }],
+        [{ felt: "fibulaoemhed", er: "ja" }],
+        [{ felt: "fleksion90", er: "nej" }],
+        [{ felt: "alder", er: "under12" }],
+        [{ felt: "alder", er: "51til55" }],
+        [{ felt: "alder", er: "over55" }]
       ],
       kilder: ["lh-knaesmerter"],
       status: "UDKAST",
