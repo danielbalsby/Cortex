@@ -11,7 +11,8 @@ import { Beslutningsstoette } from "./Beslutningsstoette";
 import { Felter } from "./Felter";
 import { Gennemgang } from "./Gennemgang";
 import { Notat, type KopiStatus } from "./Notat";
-import { REGIONER, regionFraTast, type RegionId } from "./regioner";
+import { REGIONER, type RegionId } from "./regioner";
+import { tolkTast, type Fokus, type Skaerm } from "./tast";
 
 const NULSTIL_VINDUE_MS = 1000;
 
@@ -64,73 +65,55 @@ export function App() {
 
   useEffect(() => {
     function vedTast(event: KeyboardEvent) {
-      const iTekstfelt = event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement;
-
-      if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
-        event.preventDefault();
-        void kopierNotat();
-        return;
-      }
-      if (event.ctrlKey || event.metaKey || event.altKey) return;
-
-      if (event.key === "Escape") {
-        const nu = Date.now();
-        if (nu - sidsteEsc.current < NULSTIL_VINDUE_MS) {
-          vaelgRegion(undefined);
-          if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
-          sidsteEsc.current = 0;
-        } else {
-          sidsteEsc.current = nu;
-        }
-        return;
-      }
-
-      if (!indhold) {
-        // Ingen region åben: tal vælger region.
-        if (region === "gennemgang" || iTekstfelt) return;
-        const valgt =
-          event.key === "0"
-            ? "eksempel"
-            : event.key === "g" || event.key === "G"
-              ? "gennemgang"
-              : regionFraTast(event.key);
-        if (valgt) {
-          event.preventDefault();
-          vaelgRegion(valgt);
-        }
-        return;
-      }
-
-      // Knapper, links og fold-ud-felter (fx "Kilderne er uenige") beholder deres egen
-      // Enter og piletaster, og i beslutningsstøtten må tasterne aldrig ændre felterne.
       const maal = event.target instanceof Element ? event.target : null;
-      const egenBetjening =
-        maal instanceof HTMLButtonElement || maal instanceof HTMLAnchorElement || maal?.tagName === "SUMMARY";
-      if (egenBetjening || maal?.closest(".stoette")) return;
+      const fokus: Fokus =
+        maal instanceof HTMLInputElement || maal instanceof HTMLTextAreaElement
+          ? "tekst"
+          : maal instanceof HTMLButtonElement || maal instanceof HTMLAnchorElement || maal?.tagName === "SUMMARY"
+            ? "egen"
+            : maal?.closest(".stoette")
+              ? "panel"
+              : "felt";
+      const skaerm: Skaerm = region === "gennemgang" ? "gennemgang" : indhold ? "region" : "start";
+      const handling = tolkTast(
+        { key: event.key, ctrl: event.ctrlKey, meta: event.metaKey, alt: event.altKey },
+        fokus,
+        skaerm
+      );
+      if (handling.type === "ingen") return;
+      if (handling.type !== "esc") event.preventDefault();
 
-      if (event.key === "ArrowDown" || event.key === "Enter") {
-        event.preventDefault();
-        setAktivFelt(naboFelt(indhold, svar, aktivFelt, 1));
-        return;
-      }
-      if (event.key === "ArrowUp") {
-        event.preventDefault();
-        setAktivFelt(naboFelt(indhold, svar, aktivFelt, -1));
-        return;
-      }
-
-      if (iTekstfelt) return; // resten er almindelig skrivning
-
-      if (/^[1-9]$/.test(event.key) && aktivFelt) {
-        event.preventDefault();
-        const resultat = vaelgMedTal(indhold, svar, aktivFelt, Number(event.key));
-        opdaterSvar(resultat.svar);
-        if (resultat.rykFrem) setAktivFelt(naboFelt(indhold, resultat.svar, aktivFelt, 1));
-        return;
-      }
-      if (event.key === "n" || event.key === "N") {
-        event.preventDefault();
-        opdaterSvar(udfyldNormale(indhold, svar));
+      switch (handling.type) {
+        case "kopier":
+          void kopierNotat();
+          return;
+        case "esc": {
+          const nu = Date.now();
+          if (nu - sidsteEsc.current < NULSTIL_VINDUE_MS) {
+            vaelgRegion(undefined);
+            if (document.activeElement instanceof HTMLElement) document.activeElement.blur();
+            sidsteEsc.current = 0;
+          } else {
+            sidsteEsc.current = nu;
+          }
+          return;
+        }
+        case "aabn":
+          vaelgRegion(handling.maal as Aaben);
+          return;
+        case "flyt":
+          if (indhold) setAktivFelt(naboFelt(indhold, svar, aktivFelt, handling.retning));
+          return;
+        case "tal": {
+          if (!indhold || !aktivFelt) return;
+          const resultat = vaelgMedTal(indhold, svar, aktivFelt, handling.tal);
+          opdaterSvar(resultat.svar);
+          if (resultat.rykFrem) setAktivFelt(naboFelt(indhold, resultat.svar, aktivFelt, 1));
+          return;
+        }
+        case "normal":
+          if (indhold) opdaterSvar(udfyldNormale(indhold, svar));
+          return;
       }
     }
 

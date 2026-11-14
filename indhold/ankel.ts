@@ -1,3 +1,4 @@
+import { RH_MONOARTRIT } from "./faelles";
 import type { Region } from "./typer";
 
 // ANKEL
@@ -282,15 +283,7 @@ export const ankel: Region = {
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/ortopaedi/tilstande-og-sygdomme/laeg-ankel-og-fod/ankel-bruskskader/",
       sidstTjekket: "2026-11-14"
     },
-    {
-      id: "rh-monoartrit",
-      udgiver: "Region Hovedstaden",
-      dansk: true,
-      titel: "Forløbsbeskrivelse: Akut monoartritis",
-      aar: 2025,
-      url: "https://www.sundhed.dk/sundhedsfaglig/information-til-praksis/hovedstaden/almen-praksis/patientbehandling/patientforloeb/forloebsbeskrivelser-icpc/l-muskel-skelet-system/akut-monoartritis/",
-      sidstTjekket: "2026-11-14"
-    }
+    RH_MONOARTRIT
   ],
 
   roedeFlag: [

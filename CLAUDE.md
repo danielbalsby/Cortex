@@ -32,6 +32,8 @@ For den valgte region, i ét flow:
 ## Teknik
 - React + TypeScript, bygget med Vite til **én selvstændig HTML-fil** (`cortex.html` i roden), som åbnes med dobbeltklik på klinikkens pc. Ingen installation, intet netværk.
 - `src/` = app, `lib/` = små hjælpefunktioner med tests, `indhold/` = klinisk indhold, `docs/` = plan og gennemgang.
+- Kilder, der bruges i flere regioner, står i `indhold/faelles.ts` (en test fanger, hvis samme kilde-id har forskellige oplysninger).
+- Tastaturbetjeningen afgøres i `src/tast.ts` (ren funktion med tests); ændringer i tasterne skal have en test dér.
 - Efter kodeændringer: `npm run check` (typecheck, tests, build). Buildet opdaterer `cortex.html`, som committes sammen med ændringen.
 
 ## Arbejdsgang
