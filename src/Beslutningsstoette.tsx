@@ -180,7 +180,7 @@ function Punkt({
   );
 }
 
-function KildeLink({ kilde, id }: { kilde: Kilde | undefined; id: string }) {
+export function KildeLink({ kilde, id }: { kilde: Kilde | undefined; id: string }) {
   if (!kilde) return <span className="maerke mangler">UKENDT KILDE: {id}</span>;
   return (
     <a

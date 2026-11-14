@@ -1,6 +1,6 @@
 # Cortex MSK – plan
 
-Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Alle fem regioner er bygget (trin 1–6 og 8–15). Trin 7, 9, 11, 13 og 15 afventer din gennemgang af indholdet: intet klinisk punkt er GODKENDT endnu.
+Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Alle fem regioner er bygget (trin 1–6 og 8–15). Trin 7, 9, 11, 13 og 15 afventer din gennemgang af indholdet: intet klinisk punkt er GODKENDT endnu. Tast G på startskærmen viser alle røde flag og konflikter samlet til gennemgang.
 
 ## 1. Målbillede
 
