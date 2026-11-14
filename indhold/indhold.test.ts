@@ -1,12 +1,13 @@
 import { describe, expect, it } from "vitest";
 
+import { eksempel } from "./eksempel";
 import { INDHOLD } from "./index";
 import type { Betingelse, Kildebelagt, Region } from "./typer";
 
 // Kontrollerer, at indholdsfilerne hænger sammen. Fejler denne test efter en
 // rettelse i en indholdsfil, fortæller fejlteksten hvilket id der er galt.
 
-const regioner = Object.values(INDHOLD).filter((region): region is Region => Boolean(region));
+const regioner = [...Object.values(INDHOLD), eksempel].filter((region): region is Region => Boolean(region));
 const DATO = /^\d{4}-\d{2}-\d{2}$/;
 
 function unikke(ider: string[], hvad: string) {

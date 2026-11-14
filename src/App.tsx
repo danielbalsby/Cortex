@@ -1,30 +1,42 @@
 import { useEffect, useRef, useState } from "react";
 
 import { INDHOLD } from "../indhold";
+import { eksempel } from "../indhold/eksempel";
 import type { Svar } from "../indhold/typer";
 import { kopier } from "../lib/kopier";
 import { bygNotat, saetSvar } from "../lib/notat";
+import { optael } from "../lib/status";
 import { naboFelt, udfyldNormale, vaelgMedTal } from "../lib/tastatur";
+import { Beslutningsstoette } from "./Beslutningsstoette";
 import { Felter } from "./Felter";
 import { Notat, type KopiStatus } from "./Notat";
 import { REGIONER, regionFraTast, type RegionId } from "./regioner";
 
 const NULSTIL_VINDUE_MS = 1000;
 
+// "eksempel" er ikke en klinisk region. Den viser kun, hvordan panelet ser ud (tast 0).
+type Aaben = RegionId | "eksempel";
+
+function hentIndhold(id: Aaben | undefined) {
+  if (!id) return undefined;
+  return id === "eksempel" ? eksempel : INDHOLD[id];
+}
+
 export function App() {
-  const [region, setRegion] = useState<RegionId>();
+  const [region, setRegion] = useState<Aaben>();
   const [svar, setSvar] = useState<Svar>({});
   const [aktivFelt, setAktivFelt] = useState<string>();
   const [kopiStatus, setKopiStatus] = useState<KopiStatus>("");
   const sidsteEsc = useRef(0);
 
-  const aktiv = REGIONER.find((item) => item.id === region);
-  const indhold = region ? INDHOLD[region] : undefined;
+  const indhold = hentIndhold(region);
+  const aktiv = region === "eksempel" ? eksempel : REGIONER.find((item) => item.id === region);
+  const status = indhold ? optael(indhold) : undefined;
   const notat = indhold ? bygNotat(indhold, svar) : "";
 
   // Skift af region rydder altid svarene: et notat hører til én region.
-  function vaelgRegion(id: RegionId | undefined) {
-    const nyt = id ? INDHOLD[id] : undefined;
+  function vaelgRegion(id: Aaben | undefined) {
+    const nyt = hentIndhold(id);
     setRegion(id);
     setSvar({});
     setKopiStatus("");
@@ -66,7 +78,7 @@ export function App() {
 
       if (!indhold) {
         // Ingen region åben: tal vælger region.
-        const valgt = iTekstfelt ? undefined : regionFraTast(event.key);
+        const valgt = iTekstfelt ? undefined : event.key === "0" ? "eksempel" : regionFraTast(event.key);
         if (valgt) {
           event.preventDefault();
           vaelgRegion(valgt);
@@ -141,8 +153,7 @@ export function App() {
           </section>
           <section className="panel" aria-label="Notat og beslutningsstøtte">
             <Notat tekst={notat} status={kopiStatus} onKopier={kopierNotat} />
-            <h2>Beslutningsstøtte</h2>
-            <p className="tom">Røde flag, differentialdiagnoser, behandling og henvisning kommer i trin 4–6.</p>
+            <Beslutningsstoette region={indhold} svar={svar} />
           </section>
         </main>
       ) : aktiv ? (
@@ -154,11 +165,22 @@ export function App() {
         <main className="start">
           <h1>Vælg region</h1>
           <p>Tryk 1–5, eller klik på en region ovenfor.</p>
+          <p className="lille">
+            <kbd>0</kbd> viser et eksempel på beslutningsstøtten (ikke klinisk indhold).
+          </p>
         </main>
       )}
 
       <footer className="bund">
-        <span>Ingen patientdata gemmes eller sendes. Genindlæsning rydder alt.</span>
+        {indhold && status ? (
+          <span>
+            {indhold.navn}: {status.punkter} punkter · {status.udkast} UDKAST · {status.kildeMangler} kilde mangler
+            {status.konflikter > 0 && ` · ${status.konflikter} konflikt`}
+            {status.aeldsteTjek && ` · ældste kildetjek ${status.aeldsteTjek}`}
+          </span>
+        ) : (
+          <span>Ingen patientdata gemmes eller sendes. Genindlæsning rydder alt.</span>
+        )}
         {indhold && (
           <span className="genveje">
             <kbd>1</kbd>–<kbd>9</kbd> vælg · <kbd>↑</kbd>
