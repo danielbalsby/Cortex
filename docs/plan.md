@@ -1,6 +1,6 @@
 # Cortex MSK – plan
 
-Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **afventer godkendelse**. Ingen kode ændres før. Opdateret 2026-11-14 med dine svar (afsnit 5).
+Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1 er udført; næste er trin 2.
 
 ## 1. Målbillede
 
@@ -139,12 +139,12 @@ Regler for mig, skrevet ind i `CLAUDE.md`:
 
 ### Mappestruktur efter omlægning
 ```
-app/            layout, én side, CSS
-components/     Regionsvaelger, Felter, Notat, Beslutningsstoette
+src/            appen: App, regioner, komponenter, CSS
 indhold/        typer.ts, knae.ts, skulder.ts, albue.ts, ryg.ts, ankel.ts
-lib/            notat.ts (felter → tekst), betingelser.ts, + tests
+lib/            små hjælpefunktioner (notat, betingelser, kopiér) + tests
 docs/           review.md, plan.md
 arkiv/          alt det gamle (se trin 1)
+cortex.html     den byggede app – den fil, du åbner på klinik-pc'en
 CLAUDE.md
 ```
 
@@ -178,7 +178,7 @@ Alt flyttes til `arkiv/2026-11-foer-msk/` med uændret understruktur:
 - Dokumenter: `docs/vision/`, `docs/governance/`, `docs/architecture/`, `docs/design/`, `docs/design-review/`, `docs/product/`, `docs/clinical/`, `docs/archive/`, `docs/README.md`
 - Rodfiler: `FIX-NOTE.md`, `FIRST-COMMIT.md`, `CHANGELOG.md`, `CONTRIBUTING.md`, samt en kopi af den nuværende `AGENTS.md` og `README.md`
 
-Bliver, men omskrives: `app/page.tsx`, `app/layout.tsx`, `app/globals.css` (beskæres), `README.md` (kort), `AGENTS.md` (én linje, der peger på `CLAUDE.md`), `package.json` (Playwright-scripts og `lucide-react` ud, hvis de ikke længere bruges).
+Udført som beskrevet, med én afvigelse: også `app/`, `next-env.d.ts` og `vitest.config.mts` er arkiveret, fordi skiftet til Vite gjorde dem overflødige. `README.md`, `AGENTS.md`, `package.json` og `tsconfig.json` er skrevet om; de gamle udgaver ligger som kopier i arkivet.
 
 `arkiv/` udelukkes fra typecheck, tests og build, så det ikke koster noget at have liggende.
 
@@ -205,14 +205,12 @@ Bliver, men omskrives: `app/page.tsx`, `app/layout.tsx`, `app/globals.css` (besk
 3. **Notatformat:** `S: / O: / V: / P:`.
 4. **Driftssted:** klinikkens arbejdscomputer. Se nedenfor.
 
-### Konsekvens af punkt 4: appen skal kunne køre uden installation
-En klinik-pc er sandsynligvis låst, så Node/npm kan ikke forudsættes [GÆT]. Appen bør derfor bygges til **én selvstændig HTML-fil**, der åbnes med dobbeltklik, virker uden netværk og ikke kræver installation. Det afgøres og afprøves i trin 1:
+### Konsekvens af punkt 4: én HTML-fil (besluttet og udført i trin 1)
+Appen bygges med Vite til én selvstændig fil, `cortex.html`, der åbnes med dobbeltklik, virker uden netværk og ikke kræver installation. Next.js er arkiveret. React, TypeScript og Vitest er uændrede. Filen ligger i repoets rod og opdateres ved hvert trin.
 
-- Next.js kan ikke uden videre levere en fil, der virker ved dobbeltklik (dens statiske eksport forudsætter en webserver). Da app-koden alligevel skrives ny, anbefaler jeg at skifte byggeværktøjet til Vite med enkeltfil-output. React, TypeScript og Vitest er uændrede. Det er det eneste sted, jeg foreslår et nyt værktøj, og det løser et konkret problem: ingen installation på klinik-pc'en. Samtidig forsvinder den sårbare Next-version.
-- Kopiér-funktionen skal afprøves fra en lokalt åbnet fil i klinikkens browser; der bygges en reserve-metode ind.
-- Den byggede fil lægges i repoet (fx `dist/cortex.html`), så du kan hente den uden at bygge selv.
+Afprøvet i trin 1 i Chromium fra en lokalt åbnet fil: regionsvalg med tastatur, nulstilling og kopiering virker, og siden foretager ingen netværkskald. Ikke afprøvet: klinikkens egen browser – det er din 1-minuts-test.
 
-**Ét åbent spørgsmål:** Hvordan får du en fil over på klinik-pc'en – kan du hente den fra GitHub i browseren, eller skal den med på mail/USB? Og hvilken browser bruger I? (Antagelse: du kan hente filen fra GitHub i Edge eller Chrome.)
+Vercel-koblingen på repoet har fejlet siden juli og bruges ikke af denne løsning.
 
 ## 6. Hvad jeg ved, udleder og gætter i denne plan
 

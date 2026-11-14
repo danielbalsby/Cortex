@@ -1,0 +1,96 @@
+:root {
+  --bg: #f4f5f3;
+  --flade: #ffffff;
+  --tekst: #1c2321;
+  --daempet: #5d6a66;
+  --kant: #d9dedb;
+  --accent: #1f6f5c;
+  --accent-svag: #e2f0ec;
+  --advarsel: #a3341f;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--tekst);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+kbd {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0 0.35em;
+  border: 1px solid var(--kant);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--flade);
+  font: 600 0.8em ui-monospace, Consolas, monospace;
+  text-align: center;
+  color: var(--daempet);
+}
+
+.skal { display: flex; flex-direction: column; min-height: 100vh; }
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background: var(--flade);
+  border-bottom: 1px solid var(--kant);
+}
+.logo { font-size: 1.05rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.regioner { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+.region {
+  padding: 6px 12px;
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  background: var(--flade);
+}
+.region:hover { border-color: var(--accent); }
+.region.aktiv { background: var(--accent); border-color: var(--accent); color: #fff; }
+.region.aktiv kbd { background: transparent; border-color: rgba(255, 255, 255, 0.5); color: #fff; }
+.hint { color: var(--daempet); font-size: 0.85rem; white-space: nowrap; }
+
+.start { flex: 1; display: grid; place-content: center; text-align: center; color: var(--daempet); }
+.start h1 { margin: 0 0 4px; color: var(--tekst); font-size: 1.6rem; }
+.start p { margin: 0; }
+
+.arbejdsflade {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px 16px;
+}
+.panel { padding: 14px 16px; background: var(--flade); border: 1px solid var(--kant); border-radius: 8px; }
+.panel h2 {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--daempet);
+}
+.panel h2:not(:first-child) { margin-top: 20px; }
+.tom { margin: 0; color: var(--daempet); }
+
+.bund {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--kant);
+  background: var(--flade);
+  color: var(--daempet);
+  font-size: 0.85rem;
+}
+.kopitest { display: flex; align-items: center; gap: 10px; }
+.kopitest button { padding: 3px 10px; border: 1px solid var(--kant); border-radius: 6px; background: var(--flade); }
+.fejl { color: var(--advarsel); }
+
+@media (max-width: 800px) {
+  .arbejdsflade { grid-template-columns: 1fr; }
+}
