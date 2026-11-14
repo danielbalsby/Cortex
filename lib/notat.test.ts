@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { ankel } from "../indhold/ankel";
 import { knae } from "../indhold/knae";
 import type { Svar } from "../indhold/typer";
 import { bygNotat, saetSvar } from "./notat";
@@ -77,5 +78,22 @@ describe("saetSvar (knæ)", () => {
     const foer: Svar = { side: "hoejre" };
     vaelg(foer, "side", "venstre");
     expect(foer).toEqual({ side: "hoejre" });
+  });
+});
+
+describe("bygNotat (ankel)", () => {
+  it("giver tomt notat, når intet er valgt", () => {
+    expect(bygNotat(ankel, {})).toBe("");
+  });
+
+  it("skriver Ottawa-relevante fund i notatet", () => {
+    let svar: Svar = {};
+    svar = saetSvar(ankel, svar, "side", "venstre");
+    svar = saetSvar(ankel, svar, "mekanisme", "inversion");
+    svar = saetSvar(ankel, svar, "skridt-straks", "ja");
+    svar = saetSvar(ankel, svar, "malleol", "ingen");
+    expect(bygNotat(ankel, svar)).toBe(
+      "S: Venstresidige ankelsmerter. Indadvridningstraume (inversion). Kunne gå fire vægtbærende skridt umiddelbart efter skaden.\nO: Ingen knogleømhed over malleolerne."
+    );
   });
 });
