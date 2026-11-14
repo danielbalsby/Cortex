@@ -1,6 +1,6 @@
 # Cortex MSK – plan
 
-Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1–6 og 8–11 er udført (knæ og ankel flettet i main 2026-11-14). Trin 7, 9 og 11 afventer din gennemgang af knæ-, ankel- og skulderindholdet. Næste: lænderyg (trin 12–13).
+Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1–6 og 8–12 er udført (knæ, ankel og skulder flettet i main 2026-11-14). Trin 7, 9 og 11 afventer din gennemgang af knæ-, ankel- og skulderindholdet; trin 13 (lænderyg-indhold) er i gang.
 
 ## 1. Målbillede
 

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 
 import { ankel } from "../indhold/ankel";
 import { knae } from "../indhold/knae";
+import { ryg } from "../indhold/ryg";
 import { skulder } from "../indhold/skulder";
 import type { Svar } from "../indhold/typer";
 import { bygNotat, saetSvar } from "./notat";
@@ -114,5 +115,27 @@ describe("bygNotat (skulder)", () => {
     );
     svar = saetSvar(skulder, svar, "debut", "spontan");
     expect(svar).toEqual({ debut: "spontan" });
+  });
+});
+
+describe("bygNotat (lænderyg)", () => {
+  it("giver tomt notat, når intet er valgt", () => {
+    expect(bygNotat(ryg, {})).toBe("");
+  });
+
+  it("N udfylder ikke rektaleksploration", async () => {
+    const { udfyldNormale } = await import("./tastatur");
+    const svar = udfyldNormale(ryg, saetSvar(ryg, {}, "cauda", "ja"));
+    expect(svar.rektal).toBeUndefined();
+    expect(svar.lasegue).toBe("neg");
+  });
+
+  it("rydder udstrålingsfelter, når udbredningen ændres", () => {
+    let svar: Svar = {};
+    svar = saetSvar(ryg, svar, "udbredning", "underknae");
+    svar = saetSvar(ryg, svar, "udstraalingsside", "venstre");
+    expect(bygNotat(ryg, svar)).toBe("S: Udstrålende smerter distalt for knæet. Udstråling i venstre ben.");
+    svar = saetSvar(ryg, svar, "udbredning", "laend");
+    expect(svar).toEqual({ udbredning: "laend" });
   });
 });
