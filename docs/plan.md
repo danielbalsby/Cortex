@@ -1,6 +1,6 @@
 # Cortex MSK – plan
 
-Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1–6 og 8–14 er udført (knæ, ankel, skulder og lænderyg flettet i main 2026-11-14). Trin 7, 9, 11 og 13 afventer din gennemgang af indholdet; trin 15 (albue-indhold) er i gang.
+Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Alle fem regioner er bygget (trin 1–6 og 8–15). Trin 7, 9, 11, 13 og 15 afventer din gennemgang af indholdet: intet klinisk punkt er GODKENDT endnu.
 
 ## 1. Målbillede
 
