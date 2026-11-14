@@ -93,10 +93,14 @@ export function App() {
         return;
       }
 
-      // Knapper uden for felterne (regioner, Kopiér) beholder deres egen Enter/mellemrum.
-      const paaKnap = event.target instanceof HTMLButtonElement;
+      // Knapper, links og fold-ud-felter (fx "Kilderne er uenige") beholder deres egen
+      // Enter og piletaster, og i beslutningsstøtten må tasterne aldrig ændre felterne.
+      const maal = event.target instanceof Element ? event.target : null;
+      const egenBetjening =
+        maal instanceof HTMLButtonElement || maal instanceof HTMLAnchorElement || maal?.tagName === "SUMMARY";
+      if (egenBetjening || maal?.closest(".stoette")) return;
 
-      if (event.key === "ArrowDown" || (event.key === "Enter" && !paaKnap)) {
+      if (event.key === "ArrowDown" || event.key === "Enter") {
         event.preventDefault();
         setAktivFelt(naboFelt(indhold, svar, aktivFelt, 1));
         return;
@@ -108,8 +112,6 @@ export function App() {
       }
 
       if (iTekstfelt) return; // resten er almindelig skrivning
-      // Står fokus i beslutningsstøtten, må tal og N ikke ændre felterne i skjul.
-      if (event.target instanceof Element && event.target.closest(".stoette")) return;
 
       if (/^[1-9]$/.test(event.key) && aktivFelt) {
         event.preventDefault();
@@ -168,7 +170,7 @@ export function App() {
       ) : aktiv ? (
         <main className="start">
           <h1>{aktiv.navn}</h1>
-          <p>Denne region har ikke indhold endnu. Knæ bygges færdig først.</p>
+          <p>Denne region har ikke indhold endnu.</p>
         </main>
       ) : (
         <main className="start">
