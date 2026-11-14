@@ -55,6 +55,18 @@ describe("bygNotat med valgte punkter (knæ)", () => {
   });
 });
 
+describe("knæ-reglerne for akut røntgen", () => {
+  it("viser og rydder alder og Ottawa/Pittsburgh-fund efter traume", () => {
+    let svar: Svar = {};
+    svar = vaelg(svar, "traume", "ja");
+    svar = vaelg(svar, "alder", "over55");
+    svar = vaelg(svar, "fibulaoemhed", "ja");
+    expect(bygNotat(knae, svar)).toBe("S: Forudgående traume. Alder over 55 år.\nO: Ømhed på caput fibulae.");
+    svar = vaelg(svar, "traume", "nej");
+    expect(svar).toEqual({ traume: "nej" });
+  });
+});
+
 describe("saetSvar (knæ)", () => {
   it("fjerner svar i traumefelter, når traume ændres til nej", () => {
     let svar: Svar = {};
