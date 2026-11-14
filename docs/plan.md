@@ -1,6 +1,6 @@
 # Cortex MSK – plan
 
-Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1–6 og 8–9 er udført (knæ flettet i main 2026-11-14). Trin 7 og 9 afventer din gennemgang af knæ- og ankelindholdet.
+Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1–6 og 8–10 er udført (knæ og ankel flettet i main 2026-11-14). Trin 7 og 9 afventer din gennemgang af knæ- og ankelindholdet; trin 11 (skulder-indhold) er i gang.
 
 ## 1. Målbillede
 
