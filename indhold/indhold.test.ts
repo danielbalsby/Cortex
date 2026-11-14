@@ -102,3 +102,17 @@ describe.each(regioner)("indhold: $navn", (region) => {
     }
   });
 });
+
+describe("kilder på tværs af regioner", () => {
+  it("har samme oplysninger, når samme kilde-id bruges i flere regioner", () => {
+    const set = new Map<string, string>();
+    for (const region of regioner) {
+      for (const kilde of region.kilder) {
+        const tekst = JSON.stringify(kilde);
+        const tidligere = set.get(kilde.id);
+        if (tidligere) expect(tekst, `kilden "${kilde.id}" er forskellig i ${region.navn} – flyt den til faelles.ts`).toBe(tidligere);
+        else set.set(kilde.id, tekst);
+      }
+    }
+  });
+});

@@ -1,3 +1,4 @@
+import { RH_MONOARTRIT } from "./faelles";
 import type { Region } from "./typer";
 
 // SKULDER
@@ -297,15 +298,7 @@ export const skulder: Region = {
       url: "https://www.sundhed.dk/sundhedsfaglig/information-til-praksis/hovedstaden/almen-praksis/patientbehandling/patientforloeb/forloebsbeskrivelser-icpc/a-alment-og-uspecificeret/skanning-billeddiagnostik/skulder-billeddiagnostik-af/",
       sidstTjekket: "2026-11-14"
     },
-    {
-      id: "rh-monoartrit",
-      udgiver: "Region Hovedstaden",
-      dansk: true,
-      titel: "Forløbsbeskrivelse: Akut monoartritis",
-      aar: 2025,
-      url: "https://www.sundhed.dk/sundhedsfaglig/information-til-praksis/hovedstaden/almen-praksis/patientbehandling/patientforloeb/forloebsbeskrivelser-icpc/l-muskel-skelet-system/akut-monoartritis/",
-      sidstTjekket: "2026-11-14"
-    }
+    RH_MONOARTRIT
   ],
 
   roedeFlag: [
