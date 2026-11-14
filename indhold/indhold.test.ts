@@ -88,7 +88,9 @@ describe.each(regioner)("indhold: $navn", (region) => {
       }
     }
 
-    for (const flag of region.roedeFlag) tjekBetingelser(flag.fremhaevHvis, `fremhaevHvis i "${flag.id}"`);
+    for (const flag of region.roedeFlag) {
+      for (const gruppe of flag.fremhaevHvis ?? []) tjekBetingelser(gruppe, `fremhaevHvis i "${flag.id}"`);
+    }
     const diffIder = region.differentialdiagnoser.map((diff) => diff.id);
     for (const behandling of region.behandling) {
       for (const id of behandling.gaelderFor ?? []) {

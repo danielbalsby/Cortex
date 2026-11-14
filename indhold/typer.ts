@@ -48,7 +48,9 @@ export type RoedtFlag = Kildebelagt & {
   id: string;
   tekst: string;
   handling: string;
-  fremhaevHvis?: Betingelse[]; // må kun fremhæve, aldrig skjule eller afkræfte
+  // Flaget fremhæves, hvis mindst én af grupperne passer (alle betingelser i gruppen
+  // skal passe). Må kun fremhæve, aldrig skjule eller afkræfte.
+  fremhaevHvis?: Betingelse[][];
 };
 
 export type Differentialdiagnose = Kildebelagt & {

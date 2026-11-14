@@ -15,10 +15,10 @@ export function Beslutningsstoette({ region, svar }: { region: Region; svar: Sva
       <Sektion titel="Røde flag" tom={region.roedeFlag.length === 0}>
         {region.roedeFlag.map((flag) => {
           // En betingelse må kun fremhæve. Uden match vises flaget uændret.
-          const fremhaevet = Boolean(flag.fremhaevHvis?.length) && passer(flag.fremhaevHvis, svar);
+          const fremhaevet = (flag.fremhaevHvis ?? []).some((gruppe) => gruppe.length > 0 && passer(gruppe, svar));
           return (
             <Punkt key={flag.id} punkt={flag} kilder={kilder} klasse={fremhaevet ? "flag fremhaevet" : "flag"}>
-              <strong>{flag.tekst}</strong>
+              <FlagTekst tekst={flag.tekst} />
               <span className="handling">→ {flag.handling}</span>
               {fremhaevet && <span className="match">Matcher dine valg</span>}
             </Punkt>
@@ -61,6 +61,18 @@ export function Beslutningsstoette({ region, svar }: { region: Region; svar: Sva
         ))}
       </Sektion>
     </div>
+  );
+}
+
+/** Fremhæver flagets overskrift (teksten før første kolon), så listen kan skimmes. */
+function FlagTekst({ tekst }: { tekst: string }) {
+  const kolon = tekst.indexOf(": ");
+  if (kolon === -1) return <strong>{tekst}</strong>;
+  return (
+    <span>
+      <strong>{tekst.slice(0, kolon + 1)}</strong>
+      {tekst.slice(kolon + 1)}
+    </span>
   );
 }
 

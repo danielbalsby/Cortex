@@ -54,7 +54,7 @@ export const eksempel: Region = {
       id: "eks-flag-fremhaevet",
       tekst: "EKSEMPEL: flag, der fremhæves, når 'Udløs flag' er Ja",
       handling: "EKSEMPEL: her står, hvad man gør",
-      fremhaevHvis: [{ felt: "eksempelfelt", er: "ja" }],
+      fremhaevHvis: [[{ felt: "eksempelfelt", er: "ja" }]],
       kilder: ["eks-dansk"],
       status: "UDKAST"
     },
