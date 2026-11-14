@@ -1,17 +1,8 @@
-import { useEffect, useState } from "react";
+export type KopiStatus = "" | "ok" | "fejl";
 
-import { kopier } from "../lib/kopier";
+type Props = { tekst: string; status: KopiStatus; onKopier: () => void };
 
-export function Notat({ tekst }: { tekst: string }) {
-  const [status, setStatus] = useState<"" | "ok" | "fejl">("");
-
-  // Kvitteringen forsvinder, så snart notatet ændres.
-  useEffect(() => setStatus(""), [tekst]);
-
-  async function kopierNotat() {
-    setStatus((await kopier(tekst)) ? "ok" : "fejl");
-  }
-
+export function Notat({ tekst, status, onKopier }: Props) {
   return (
     <div className="notat">
       <div className="notatTop">
@@ -23,8 +14,9 @@ export function Notat({ tekst }: { tekst: string }) {
               Kopiering afvist af browseren – markér teksten og kopiér manuelt
             </span>
           )}
-          <button className="kopier" onClick={kopierNotat} disabled={!tekst}>
-            Kopiér
+          <button className="kopier" onClick={onKopier} disabled={!tekst}>
+            Kopiér <kbd>Ctrl</kbd>
+            <kbd>⏎</kbd>
           </button>
         </span>
       </div>

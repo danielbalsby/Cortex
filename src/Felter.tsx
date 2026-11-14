@@ -1,22 +1,40 @@
+import { useEffect, useRef } from "react";
+
 import type { Felt, Region, Svar } from "../indhold/typer";
 import { erSynligt } from "../lib/notat";
 
 type Props = {
   region: Region;
   svar: Svar;
+  aktivFelt: string | undefined;
+  onAktiv: (feltId: string) => void;
   onSvar: (feltId: string, vaerdi: string | string[]) => void;
 };
 
-export function Felter({ region, svar, onSvar }: Props) {
+export function Felter({ region, svar, aktivFelt, onAktiv, onSvar }: Props) {
   return (
     <>
       {region.grupper.map((gruppe) => (
         <div key={gruppe.id} className="gruppe">
-          <h2>{gruppe.titel}</h2>
+          <h2>
+            {gruppe.titel}
+            {gruppe.felter.some((felt) => felt.valg?.some((valg) => valg.normal)) && (
+              <span className="gruppeHint">
+                <kbd>N</kbd> = normalfund i ubesvarede
+              </span>
+            )}
+          </h2>
           {gruppe.felter
             .filter((felt) => erSynligt(felt, svar))
             .map((felt) => (
-              <FeltRaekke key={felt.id} felt={felt} vaerdi={svar[felt.id]} onSvar={onSvar} />
+              <FeltRaekke
+                key={felt.id}
+                felt={felt}
+                vaerdi={svar[felt.id]}
+                aktiv={felt.id === aktivFelt}
+                onAktiv={onAktiv}
+                onSvar={onSvar}
+              />
             ))}
         </div>
       ))}
@@ -27,24 +45,40 @@ export function Felter({ region, svar, onSvar }: Props) {
 function FeltRaekke({
   felt,
   vaerdi,
+  aktiv,
+  onAktiv,
   onSvar
 }: {
   felt: Felt;
   vaerdi: string | string[] | undefined;
+  aktiv: boolean;
+  onAktiv: Props["onAktiv"];
   onSvar: Props["onSvar"];
 }) {
+  const raekke = useRef<HTMLDivElement>(null);
+  const input = useRef<HTMLInputElement>(null);
   const labelId = `felt-${felt.id}`;
+
+  // Flyt fokus til det aktive felt, så tastaturet altid virker på det, der er fremhævet.
+  useEffect(() => {
+    if (!aktiv) return;
+    const maal = felt.type === "tekst" ? input.current : raekke.current;
+    if (maal && document.activeElement !== maal) maal.focus({ preventScroll: true });
+    maal?.scrollIntoView({ block: "nearest" });
+  }, [aktiv, felt.type]);
 
   if (felt.type === "tekst") {
     return (
-      <label className="felt">
+      <label className={aktiv ? "felt aktiv" : "felt"}>
         <span className="feltLabel">{felt.label}</span>
         <input
+          ref={input}
           type="text"
           value={typeof vaerdi === "string" ? vaerdi : ""}
           placeholder={felt.pladsholder}
           maxLength={200}
           autoComplete="off"
+          onFocus={() => onAktiv(felt.id)}
           onChange={(event) => onSvar(felt.id, event.target.value)}
         />
       </label>
@@ -54,28 +88,40 @@ function FeltRaekke({
   const valgte = Array.isArray(vaerdi) ? vaerdi : vaerdi ? [vaerdi] : [];
 
   function klik(valgId: string) {
-    const aktiv = valgte.includes(valgId);
+    onAktiv(felt.id);
+    const valgt = valgte.includes(valgId);
     if (felt.type === "flere") {
-      onSvar(felt.id, aktiv ? valgte.filter((id) => id !== valgId) : [...valgte, valgId]);
+      onSvar(felt.id, valgt ? valgte.filter((id) => id !== valgId) : [...valgte, valgId]);
     } else {
       // Klik på det valgte igen fravælger det.
-      onSvar(felt.id, aktiv ? "" : valgId);
+      onSvar(felt.id, valgt ? "" : valgId);
     }
   }
 
   return (
-    <div className="felt" role="group" aria-labelledby={labelId}>
+    <div
+      ref={raekke}
+      className={aktiv ? "felt aktiv" : "felt"}
+      role="group"
+      aria-labelledby={labelId}
+      tabIndex={0}
+      onFocus={() => onAktiv(felt.id)}
+    >
       <span className="feltLabel" id={labelId}>
         {felt.label}
       </span>
       <span className="valg">
-        {(felt.valg ?? []).map((valg) => (
+        {(felt.valg ?? []).map((valg, index) => (
           <button
             key={valg.id}
             className={valgte.includes(valg.id) ? "chip valgt" : "chip"}
             aria-pressed={valgte.includes(valg.id)}
+            tabIndex={-1}
+            // Fokus bliver på rækken, så tal og piletaster virker efter et museklik.
+            onMouseDown={(event) => event.preventDefault()}
             onClick={() => klik(valg.id)}
           >
+            {aktiv && index < 9 && <kbd>{index + 1}</kbd>}
             {valg.label}
           </button>
         ))}

@@ -66,6 +66,8 @@ kbd {
   padding: 12px 16px;
 }
 .panel { padding: 14px 16px; background: var(--flade); border: 1px solid var(--kant); border-radius: 8px; }
+/* Notat og beslutningsstøtte bliver stående, når felterne ruller. */
+.panel + .panel { position: sticky; top: 12px; align-self: start; max-height: calc(100vh - 24px); overflow-y: auto; }
 .panel h2 {
   margin: 0 0 6px;
   font-size: 0.8rem;
@@ -90,7 +92,23 @@ kbd {
 .fejl { color: var(--advarsel); }
 
 .gruppe + .gruppe { margin-top: 18px; }
-.felt { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
+.felt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 -8px;
+  padding: 3px 8px;
+  border-left: 3px solid transparent;
+  border-radius: 4px;
+  outline: none;
+}
+.felt.aktiv { background: var(--accent-svag); border-left-color: var(--accent); }
+.felt.aktiv .feltLabel { color: var(--tekst); font-weight: 600; }
+.chip kbd { margin-right: 6px; }
+.gruppeHint { margin-left: 12px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.kopier kbd { margin-left: 4px; background: transparent; border-color: rgba(255, 255, 255, 0.5); color: inherit; }
+.kopier:disabled kbd { border-color: var(--kant); }
+.genveje { white-space: nowrap; }
 .feltLabel { flex: 0 0 118px; color: var(--daempet); font-size: 0.9rem; }
 .valg { display: flex; flex-wrap: wrap; gap: 5px; }
 .chip {
@@ -100,6 +118,7 @@ kbd {
   background: var(--flade);
 }
 .chip:hover { border-color: var(--accent); }
+.felt.aktiv .chip.valgt { background: var(--flade); }
 .chip.valgt { background: var(--accent-svag); border-color: var(--accent); color: var(--accent); font-weight: 600; }
 .felt input {
   flex: 1;
@@ -137,4 +156,5 @@ kbd {
 
 @media (max-width: 800px) {
   .arbejdsflade { grid-template-columns: 1fr; }
+  .panel + .panel { position: static; max-height: none; }
 }
