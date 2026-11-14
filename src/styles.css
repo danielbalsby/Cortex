@@ -87,9 +87,53 @@ kbd {
   color: var(--daempet);
   font-size: 0.85rem;
 }
-.kopitest { display: flex; align-items: center; gap: 10px; }
-.kopitest button { padding: 3px 10px; border: 1px solid var(--kant); border-radius: 6px; background: var(--flade); }
 .fejl { color: var(--advarsel); }
+
+.gruppe + .gruppe { margin-top: 18px; }
+.felt { display: flex; align-items: center; gap: 10px; padding: 3px 0; }
+.feltLabel { flex: 0 0 118px; color: var(--daempet); font-size: 0.9rem; }
+.valg { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  padding: 4px 11px;
+  border: 1px solid var(--kant);
+  border-radius: 999px;
+  background: var(--flade);
+}
+.chip:hover { border-color: var(--accent); }
+.chip.valgt { background: var(--accent-svag); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.felt input {
+  flex: 1;
+  min-width: 0;
+  padding: 5px 9px;
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  font: inherit;
+  color: inherit;
+}
+.felt input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.notatTop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.notatTop h2 { margin: 0; }
+.notatHandling { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--accent); }
+.kopier {
+  padding: 5px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+.kopier:disabled { background: var(--flade); border-color: var(--kant); color: var(--daempet); cursor: default; }
+.notatTekst {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  background: var(--bg);
+  font: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
 
 @media (max-width: 800px) {
   .arbejdsflade { grid-template-columns: 1fr; }

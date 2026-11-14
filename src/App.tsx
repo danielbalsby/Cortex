@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 
-import { kopier } from "../lib/kopier";
+import { INDHOLD } from "../indhold";
+import type { Svar } from "../indhold/typer";
+import { bygNotat, saetSvar } from "../lib/notat";
+import { Felter } from "./Felter";
+import { Notat } from "./Notat";
 import { REGIONER, regionFraTast, type RegionId } from "./regioner";
 
 const NULSTIL_VINDUE_MS = 1000;
@@ -11,7 +15,7 @@ function skriverITekstfelt(target: EventTarget | null): boolean {
 
 export function App() {
   const [region, setRegion] = useState<RegionId>();
-  const [kopiStatus, setKopiStatus] = useState<"" | "ok" | "fejl">("");
+  const [svar, setSvar] = useState<Svar>({});
   const sidsteEsc = useRef(0);
 
   useEffect(() => {
@@ -22,7 +26,7 @@ export function App() {
         const nu = Date.now();
         if (nu - sidsteEsc.current < NULSTIL_VINDUE_MS) {
           setRegion(undefined);
-          setKopiStatus("");
+          setSvar({});
           sidsteEsc.current = 0;
         } else {
           sidsteEsc.current = nu;
@@ -36,7 +40,7 @@ export function App() {
       const valgt = regionFraTast(event.key);
       if (valgt) {
         event.preventDefault();
-        setRegion(valgt);
+        vaelgRegion(valgt);
       }
     }
 
@@ -44,11 +48,14 @@ export function App() {
     return () => window.removeEventListener("keydown", vedTast);
   }, [region]);
 
-  async function testKopiering() {
-    setKopiStatus((await kopier("Cortex: kopiering virker.")) ? "ok" : "fejl");
+  // Skift af region rydder altid svarene: et notat hører til én region.
+  function vaelgRegion(id: RegionId) {
+    setRegion(id);
+    setSvar({});
   }
 
   const aktiv = REGIONER.find((item) => item.id === region);
+  const indhold = region ? INDHOLD[region] : undefined;
 
   return (
     <div className="skal">
@@ -60,7 +67,7 @@ export function App() {
               key={item.id}
               className={item.id === region ? "region aktiv" : "region"}
               aria-pressed={item.id === region}
-              onClick={() => setRegion(item.id)}
+              onClick={() => vaelgRegion(item.id)}
             >
               <kbd>{index + 1}</kbd> {item.navn}
             </button>
@@ -71,18 +78,25 @@ export function App() {
         </span>
       </header>
 
-      {aktiv ? (
+      {aktiv && indhold ? (
         <main className="arbejdsflade">
           <section className="panel" aria-label="Indtastning">
-            <h2>{aktiv.navn}</h2>
-            <p className="tom">Felter til anamnese og objektive fund kommer i trin 2.</p>
+            <Felter
+              region={indhold}
+              svar={svar}
+              onSvar={(feltId, vaerdi) => setSvar((nu) => saetSvar(indhold, nu, feltId, vaerdi))}
+            />
           </section>
           <section className="panel" aria-label="Notat og beslutningsstøtte">
-            <h2>Notat</h2>
-            <p className="tom">Tomt. Notatet indeholder kun det, du aktivt vælger.</p>
+            <Notat tekst={bygNotat(indhold, svar)} />
             <h2>Beslutningsstøtte</h2>
             <p className="tom">Røde flag, differentialdiagnoser, behandling og henvisning kommer i trin 4–6.</p>
           </section>
+        </main>
+      ) : aktiv ? (
+        <main className="start">
+          <h1>{aktiv.navn}</h1>
+          <p>Denne region har ikke indhold endnu. Knæ bygges færdig først.</p>
         </main>
       ) : (
         <main className="start">
@@ -93,11 +107,6 @@ export function App() {
 
       <footer className="bund">
         <span>Ingen patientdata gemmes eller sendes. Genindlæsning rydder alt.</span>
-        <span className="kopitest">
-          <button onClick={testKopiering}>Test kopiering</button>
-          {kopiStatus === "ok" && <span role="status">Kopieret – indsæt et sted for at kontrollere.</span>}
-          {kopiStatus === "fejl" && <span role="status" className="fejl">Kopiering blev afvist af browseren.</span>}
-        </span>
       </footer>
     </div>
   );

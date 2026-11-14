@@ -1,0 +1,98 @@
+import { describe, expect, it } from "vitest";
+
+import { INDHOLD } from "./index";
+import type { Betingelse, Kildebelagt, Region } from "./typer";
+
+// Kontrollerer, at indholdsfilerne hænger sammen. Fejler denne test efter en
+// rettelse i en indholdsfil, fortæller fejlteksten hvilket id der er galt.
+
+const regioner = Object.values(INDHOLD).filter((region): region is Region => Boolean(region));
+const DATO = /^\d{4}-\d{2}-\d{2}$/;
+
+function unikke(ider: string[], hvad: string) {
+  const dubletter = ider.filter((id, index) => ider.indexOf(id) !== index);
+  expect(dubletter, `dubletter i ${hvad}`).toEqual([]);
+}
+
+describe.each(regioner)("indhold: $navn", (region) => {
+  const felter = region.grupper.flatMap((gruppe) => gruppe.felter);
+  const feltIder = felter.map((felt) => felt.id);
+
+  function tjekBetingelser(betingelser: Betingelse[] | undefined, hvor: string) {
+    for (const betingelse of betingelser ?? []) {
+      const felt = felter.find((item) => item.id === betingelse.felt);
+      expect(felt, `${hvor}: ukendt felt "${betingelse.felt}"`).toBeDefined();
+      expect(
+        felt?.valg?.some((valg) => valg.id === betingelse.er),
+        `${hvor}: feltet "${betingelse.felt}" har ikke valget "${betingelse.er}"`
+      ).toBe(true);
+    }
+  }
+
+  it("har unikke felt-id'er og unikke valg i hvert felt", () => {
+    unikke(feltIder, "felt-id'er");
+    for (const felt of felter) unikke((felt.valg ?? []).map((valg) => valg.id), `valg i "${felt.id}"`);
+  });
+
+  it("har valg med notattekst i alle valgfelter og højst ét normalfund", () => {
+    for (const felt of felter) {
+      if (felt.type === "tekst") continue;
+      expect(felt.valg?.length, `"${felt.id}" mangler valg`).toBeGreaterThan(0);
+      for (const valg of felt.valg ?? []) {
+        expect(valg.notat.trim(), `"${felt.id}/${valg.id}" mangler notattekst`).not.toBe("");
+      }
+      const normale = (felt.valg ?? []).filter((valg) => valg.normal);
+      expect(normale.length, `"${felt.id}" har flere normalfund`).toBeLessThanOrEqual(1);
+    }
+  });
+
+  it("har visHvis-betingelser, der peger på eksisterende felter og valg", () => {
+    for (const felt of felter) tjekBetingelser(felt.visHvis, `visHvis i "${felt.id}"`);
+  });
+
+  it("har en notatskabelon, hvor hvert felt indgår præcis én gang", () => {
+    const iNotat = region.notat.flatMap((afsnit) => afsnit.felter);
+    unikke(iNotat, "notatskabelonen");
+    expect([...iNotat].sort()).toEqual([...feltIder].sort());
+  });
+
+  it("har kilder med årstal, adresse og tjekdato", () => {
+    unikke(region.kilder.map((kilde) => kilde.id), "kilde-id'er");
+    for (const kilde of region.kilder) {
+      expect(kilde.url, `kilde "${kilde.id}"`).toMatch(/^https:\/\//);
+      expect(kilde.sidstTjekket, `kilde "${kilde.id}"`).toMatch(DATO);
+      expect(kilde.aar, `kilde "${kilde.id}"`).toBeGreaterThan(1990);
+    }
+  });
+
+  it("har kliniske punkter med gyldige kilder og korrekt status", () => {
+    const kildeIder = region.kilder.map((kilde) => kilde.id);
+    const punkter: (Kildebelagt & { id: string })[] = [
+      ...region.roedeFlag,
+      ...region.differentialdiagnoser,
+      ...region.behandling,
+      ...region.henvisning
+    ];
+    unikke(punkter.map((punkt) => punkt.id), "kliniske punkter");
+
+    for (const punkt of punkter) {
+      for (const id of [...punkt.kilder, ...(punkt.konflikt?.kilder ?? [])]) {
+        expect(kildeIder, `"${punkt.id}" henviser til ukendt kilde "${id}"`).toContain(id);
+      }
+      if (punkt.status === "GODKENDT") {
+        expect(punkt.kilder.length, `"${punkt.id}" er GODKENDT uden kilde`).toBeGreaterThan(0);
+        expect(punkt.godkendtDato ?? "", `"${punkt.id}" er GODKENDT uden dato`).toMatch(DATO);
+      } else {
+        expect(punkt.godkendtDato, `"${punkt.id}" er UDKAST, men har godkendtDato`).toBeUndefined();
+      }
+    }
+
+    for (const flag of region.roedeFlag) tjekBetingelser(flag.fremhaevHvis, `fremhaevHvis i "${flag.id}"`);
+    const diffIder = region.differentialdiagnoser.map((diff) => diff.id);
+    for (const behandling of region.behandling) {
+      for (const id of behandling.gaelderFor ?? []) {
+        expect(diffIder, `"${behandling.id}" gælder for ukendt diagnose "${id}"`).toContain(id);
+      }
+    }
+  });
+});
