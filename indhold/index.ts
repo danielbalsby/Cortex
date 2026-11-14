@@ -1,3 +1,4 @@
+import { albue } from "./albue";
 import { ankel } from "./ankel";
 import { knae } from "./knae";
 import { ryg } from "./ryg";
@@ -7,6 +8,7 @@ import type { Region } from "./typer";
 // Regioner med indhold. Tilføj en region her, når dens fil er oprettet.
 export const INDHOLD: Record<string, Region | undefined> = {
   skulder,
+  albue,
   ryg,
   knae,
   ankel

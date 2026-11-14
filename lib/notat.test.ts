@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { albue } from "../indhold/albue";
 import { ankel } from "../indhold/ankel";
 import { knae } from "../indhold/knae";
 import { ryg } from "../indhold/ryg";
@@ -137,5 +138,20 @@ describe("bygNotat (lænderyg)", () => {
     expect(bygNotat(ryg, svar)).toBe("S: Udstrålende smerter distalt for knæet. Udstråling i venstre ben.");
     svar = saetSvar(ryg, svar, "udbredning", "laend");
     expect(svar).toEqual({ udbredning: "laend" });
+  });
+});
+
+describe("bygNotat (albue)", () => {
+  it("giver tomt notat, når intet er valgt", () => {
+    expect(bygNotat(albue, {})).toBe("");
+  });
+
+  it("viser traumefelter kun ved traume og rydder dem ved skift", () => {
+    let svar: Svar = {};
+    svar = saetSvar(albue, svar, "debut", "traume");
+    svar = saetSvar(albue, svar, "ekstensionstest", "nedsat");
+    expect(bygNotat(albue, svar)).toBe("S: Opstået efter traume.\nO: Albue-ekstensionstest: nedsat ekstension.");
+    svar = saetSvar(albue, svar, "debut", "overbelastning");
+    expect(svar).toEqual({ debut: "overbelastning" });
   });
 });

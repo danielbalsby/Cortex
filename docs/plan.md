@@ -1,6 +1,6 @@
 # Cortex MSK – plan
 
-Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1–6 og 8–13 er udført (knæ, ankel og skulder flettet i main 2026-11-14). Trin 7, 9, 11 og 13 afventer din gennemgang af indholdet. Næste: albue (trin 14–15).
+Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1–6 og 8–14 er udført (knæ, ankel, skulder og lænderyg flettet i main 2026-11-14). Trin 7, 9, 11 og 13 afventer din gennemgang af indholdet; trin 15 (albue-indhold) er i gang.
 
 ## 1. Målbillede
 
