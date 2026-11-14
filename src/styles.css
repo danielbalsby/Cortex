@@ -1,0 +1,212 @@
+:root {
+  --bg: #f4f5f3;
+  --flade: #ffffff;
+  --tekst: #1c2321;
+  --daempet: #5d6a66;
+  --kant: #d9dedb;
+  --accent: #1f6f5c;
+  --accent-svag: #e2f0ec;
+  --advarsel: #a3341f;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--tekst);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+kbd {
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0 0.35em;
+  border: 1px solid var(--kant);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--flade);
+  font: 600 0.8em ui-monospace, Consolas, monospace;
+  text-align: center;
+  color: var(--daempet);
+}
+
+.skal { display: flex; flex-direction: column; min-height: 100vh; }
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background: var(--flade);
+  border-bottom: 1px solid var(--kant);
+}
+.logo { font-size: 1.05rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.regioner { display: flex; flex-wrap: wrap; gap: 6px; flex: 1; }
+.region {
+  padding: 6px 12px;
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  background: var(--flade);
+}
+.region:hover { border-color: var(--accent); }
+.region.aktiv { background: var(--accent); border-color: var(--accent); color: #fff; }
+.region.aktiv kbd { background: transparent; border-color: rgba(255, 255, 255, 0.5); color: #fff; }
+.hint { color: var(--daempet); font-size: 0.85rem; white-space: nowrap; }
+
+.start { flex: 1; display: grid; place-content: center; text-align: center; color: var(--daempet); }
+.start h1 { margin: 0 0 4px; color: var(--tekst); font-size: 1.6rem; }
+.start p { margin: 0; }
+
+.arbejdsflade {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  padding: 12px 16px;
+}
+.panel { padding: 14px 16px; background: var(--flade); border: 1px solid var(--kant); border-radius: 8px; }
+/* Notat og beslutningsstøtte bliver stående, når felterne ruller. */
+.panel + .panel { position: sticky; top: 12px; align-self: start; max-height: calc(100vh - 24px); overflow-y: auto; }
+.panel h2 {
+  margin: 0 0 6px;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--daempet);
+}
+.panel h2:not(:first-child) { margin-top: 20px; }
+.tom { margin: 0; color: var(--daempet); }
+
+.bund {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 16px;
+  border-top: 1px solid var(--kant);
+  background: var(--flade);
+  color: var(--daempet);
+  font-size: 0.85rem;
+}
+.fejl { color: var(--advarsel); }
+
+.gruppe + .gruppe { margin-top: 18px; }
+.felt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 -8px;
+  padding: 3px 8px;
+  border-left: 3px solid transparent;
+  border-radius: 4px;
+  outline: none;
+}
+.felt.aktiv { background: var(--accent-svag); border-left-color: var(--accent); }
+.felt.aktiv .feltLabel { color: var(--tekst); font-weight: 600; }
+.chip kbd { margin-right: 6px; }
+.gruppeHint { margin-left: 12px; font-weight: 400; letter-spacing: 0; text-transform: none; }
+.kopier kbd { margin-left: 4px; background: transparent; border-color: rgba(255, 255, 255, 0.5); color: inherit; }
+.kopier:disabled kbd { border-color: var(--kant); }
+.genveje { white-space: nowrap; }
+.feltLabel { flex: 0 0 118px; color: var(--daempet); font-size: 0.9rem; }
+.valg { display: flex; flex-wrap: wrap; gap: 5px; }
+.chip {
+  padding: 4px 11px;
+  border: 1px solid var(--kant);
+  border-radius: 999px;
+  background: var(--flade);
+}
+.chip:hover { border-color: var(--accent); }
+.felt.aktiv .chip.valgt { background: var(--flade); }
+.chip.valgt { background: var(--accent-svag); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+.felt input {
+  flex: 1;
+  min-width: 0;
+  padding: 5px 9px;
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  font: inherit;
+  color: inherit;
+}
+.felt input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* Notatet bliver stående øverst, mens beslutningsstøtten under det ruller. */
+.notat {
+  position: sticky;
+  top: -14px;
+  z-index: 1;
+  margin: -14px -16px 0;
+  padding: 14px 16px 10px;
+  background: var(--flade);
+  border-bottom: 1px solid var(--kant);
+}
+.notatTekst { max-height: 40vh; overflow-y: auto; }
+.notatTop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.notatTop h2 { margin: 0; }
+.notatHandling { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--accent); }
+.kopier {
+  padding: 5px 16px;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+}
+.kopier:disabled { background: var(--flade); border-color: var(--kant); color: var(--daempet); cursor: default; }
+.notatTekst {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  background: var(--bg);
+  font: inherit;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.start .lille { margin-top: 18px; font-size: 0.85rem; }
+
+.stoette section { margin-top: 18px; }
+.punkter { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.punkt { padding: 6px 10px; border: 1px solid var(--kant); border-left-width: 3px; border-radius: 6px; }
+.punkt.udkast { border-style: dashed; border-left-style: solid; border-left-color: #9aa5a1; }
+.punkt.godkendt { border-left-color: var(--accent); }
+.punkt.flag { border-left-color: var(--advarsel); }
+.punkt.fremhaevet { background: #fbeae6; border-color: var(--advarsel); border-style: solid; }
+.punktRaekke { display: flex; align-items: flex-start; gap: 10px; }
+.punktTekst { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.tilNotat {
+  flex: 0 0 auto;
+  padding: 2px 9px;
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  background: var(--flade);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--daempet);
+}
+.tilNotat:hover { border-color: var(--accent); color: var(--accent); }
+.tilNotat.valgt { background: var(--accent); border-color: var(--accent); color: #fff; }
+.punkt.valgtPunkt { box-shadow: inset 0 0 0 1px var(--accent); }
+.oevrige { list-style: none; }
+.oevrige summary { cursor: pointer; color: var(--daempet); font-size: 0.9rem; padding: 4px 0; }
+.oevrige .punkter { margin-top: 6px; }
+.handling { color: var(--tekst); }
+.kendetegn, .hast { color: var(--daempet); font-size: 0.9rem; font-weight: 400; }
+.match { color: var(--advarsel); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.punktMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 4px; font-size: 0.8rem; }
+.kilde { color: var(--accent); }
+.ikkeDansk { color: var(--daempet); }
+.maerke { padding: 0 6px; border-radius: 4px; font-weight: 700; letter-spacing: 0.04em; }
+.maerke.kladde { border: 1px dashed #9aa5a1; color: var(--daempet); }
+.maerke.ok { background: var(--accent-svag); color: var(--accent); }
+.maerke.mangler { background: var(--advarsel); color: #fff; }
+.konflikt { margin-top: 4px; font-size: 0.85rem; }
+.konflikt summary { cursor: pointer; color: var(--advarsel); font-weight: 600; }
+.konflikt p { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+
+@media (max-width: 800px) {
+  .arbejdsflade { grid-template-columns: 1fr; }
+  .panel + .panel { position: static; max-height: none; }
+}
