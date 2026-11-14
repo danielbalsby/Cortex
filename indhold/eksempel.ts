@@ -106,6 +106,7 @@ export const eksempel: Region = {
       kriterier: "EKSEMPEL: kriterier for henvisning",
       hast: "subakut",
       gyldighed: "Region Hovedstaden",
+      notat: "Eksempel på henvisning.",
       kilder: ["eks-dansk"],
       status: "UDKAST"
     }

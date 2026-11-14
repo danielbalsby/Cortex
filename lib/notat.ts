@@ -56,10 +56,21 @@ function feltTekst(felt: Felt, svar: Svar): string {
 /**
  * Bygger notatet ud fra lægens valg. Kun det, der aktivt er valgt eller
  * skrevet, kommer med. Tomme afsnit udelades; ingen valg giver tom tekst.
+ *
+ * `valgte` er id'er på differentialdiagnoser (→ V) og behandling/henvisning
+ * (→ P), som lægen selv har krydset af. Rækkefølgen følger indholdsfilen.
  */
-export function bygNotat(region: Region, svar: Svar): string {
+export function bygNotat(region: Region, svar: Svar, valgte: readonly string[] = []): string {
   const felter = new Map(alleFelter(region).map((felt) => [felt.id, felt]));
-  return region.notat
+  const valgt = (punkt: { id: string }) => valgte.includes(punkt.id);
+  const vurdering = region.differentialdiagnoser.filter(valgt).map((diff) => diff.notat);
+  const plan = [...region.behandling.filter(valgt), ...region.henvisning.filter(valgt)].map((punkt) => punkt.notat);
+  const beslutninger = [
+    vurdering.length ? `V: ${vurdering.join(" ")}` : "",
+    plan.length ? `P: ${plan.join(" ")}` : ""
+  ];
+
+  const fund = region.notat
     .map((afsnit) => {
       const tekst = afsnit.felter
         .map((id) => {
@@ -69,7 +80,7 @@ export function bygNotat(region: Region, svar: Svar): string {
         .filter(Boolean)
         .join(" ");
       return tekst ? `${afsnit.overskrift}: ${tekst}` : "";
-    })
-    .filter(Boolean)
-    .join("\n");
+    });
+
+  return [...fund, ...beslutninger].filter(Boolean).join("\n");
 }

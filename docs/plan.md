@@ -1,6 +1,6 @@
 # Cortex MSK – plan
 
-Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1–5 er udført; næste er trin 6.
+Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Trin 1–6 er udført; næste er trin 7 (din gennemgang af knæ).
 
 ## 1. Målbillede
 

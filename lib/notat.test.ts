@@ -36,6 +36,21 @@ describe("bygNotat (knæ)", () => {
   });
 });
 
+describe("bygNotat med valgte punkter (knæ)", () => {
+  it("skriver valgte diagnoser under V og behandling/henvisning under P i indholdsfilens rækkefølge", () => {
+    const svar = vaelg({}, "side", "hoejre");
+    const notat = bygNotat(knae, svar, ["hen-menisk", "diff-menisk", "beh-menisk-fys"]);
+    expect(notat).toBe(
+      "S: Højresidige knæsmerter.\nV: Foreneligt med meniskrelaterede gener.\nP: Henvist til fysioterapi som initial behandling. Henvist til ortopædkirurgisk vurdering mhp. menisklæsion."
+    );
+  });
+
+  it("skriver intet, når kun ukendte eller ingen punkter er valgt", () => {
+    expect(bygNotat(knae, {}, [])).toBe("");
+    expect(bygNotat(knae, {}, ["findes-ikke"])).toBe("");
+  });
+});
+
 describe("saetSvar (knæ)", () => {
   it("fjerner svar i traumefelter, når traume ændres til nej", () => {
     let svar: Svar = {};

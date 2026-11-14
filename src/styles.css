@@ -131,6 +131,17 @@ kbd {
 }
 .felt input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
+/* Notatet bliver stående øverst, mens beslutningsstøtten under det ruller. */
+.notat {
+  position: sticky;
+  top: -14px;
+  z-index: 1;
+  margin: -14px -16px 0;
+  padding: 14px 16px 10px;
+  background: var(--flade);
+  border-bottom: 1px solid var(--kant);
+}
+.notatTekst { max-height: 40vh; overflow-y: auto; }
 .notatTop { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
 .notatTop h2 { margin: 0; }
 .notatHandling { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--accent); }
@@ -163,7 +174,24 @@ kbd {
 .punkt.godkendt { border-left-color: var(--accent); }
 .punkt.flag { border-left-color: var(--advarsel); }
 .punkt.fremhaevet { background: #fbeae6; border-color: var(--advarsel); border-style: solid; }
-.punktTekst { display: flex; flex-direction: column; gap: 1px; }
+.punktRaekke { display: flex; align-items: flex-start; gap: 10px; }
+.punktTekst { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.tilNotat {
+  flex: 0 0 auto;
+  padding: 2px 9px;
+  border: 1px solid var(--kant);
+  border-radius: 6px;
+  background: var(--flade);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--daempet);
+}
+.tilNotat:hover { border-color: var(--accent); color: var(--accent); }
+.tilNotat.valgt { background: var(--accent); border-color: var(--accent); color: #fff; }
+.punkt.valgtPunkt { box-shadow: inset 0 0 0 1px var(--accent); }
+.oevrige { list-style: none; }
+.oevrige summary { cursor: pointer; color: var(--daempet); font-size: 0.9rem; padding: 4px 0; }
+.oevrige .punkter { margin-top: 6px; }
 .handling { color: var(--tekst); }
 .kendetegn, .hast { color: var(--daempet); font-size: 0.9rem; font-weight: 400; }
 .match { color: var(--advarsel); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }

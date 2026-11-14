@@ -25,6 +25,7 @@ function hentIndhold(id: Aaben | undefined) {
 export function App() {
   const [region, setRegion] = useState<Aaben>();
   const [svar, setSvar] = useState<Svar>({});
+  const [valgte, setValgte] = useState<string[]>([]); // diagnoser → V, behandling/henvisning → P
   const [aktivFelt, setAktivFelt] = useState<string>();
   const [kopiStatus, setKopiStatus] = useState<KopiStatus>("");
   const sidsteEsc = useRef(0);
@@ -32,13 +33,14 @@ export function App() {
   const indhold = hentIndhold(region);
   const aktiv = region === "eksempel" ? eksempel : REGIONER.find((item) => item.id === region);
   const status = indhold ? optael(indhold) : undefined;
-  const notat = indhold ? bygNotat(indhold, svar) : "";
+  const notat = indhold ? bygNotat(indhold, svar, valgte) : "";
 
   // Skift af region rydder altid svarene: et notat hører til én region.
   function vaelgRegion(id: Aaben | undefined) {
     const nyt = hentIndhold(id);
     setRegion(id);
     setSvar({});
+    setValgte([]);
     setKopiStatus("");
     setAktivFelt(nyt ? naboFelt(nyt, {}, undefined, 1) : undefined);
   }
@@ -46,6 +48,11 @@ export function App() {
   function opdaterSvar(naeste: Svar) {
     setSvar(naeste);
     setKopiStatus(""); // kvitteringen gælder kun det notat, der blev kopieret
+  }
+
+  function vaelgPunkt(id: string) {
+    setValgte((nu) => (nu.includes(id) ? nu.filter((item) => item !== id) : [...nu, id]));
+    setKopiStatus("");
   }
 
   async function kopierNotat() {
@@ -101,6 +108,8 @@ export function App() {
       }
 
       if (iTekstfelt) return; // resten er almindelig skrivning
+      // Står fokus i beslutningsstøtten, må tal og N ikke ændre felterne i skjul.
+      if (event.target instanceof Element && event.target.closest(".stoette")) return;
 
       if (/^[1-9]$/.test(event.key) && aktivFelt) {
         event.preventDefault();
@@ -153,7 +162,7 @@ export function App() {
           </section>
           <section className="panel" aria-label="Notat og beslutningsstøtte">
             <Notat tekst={notat} status={kopiStatus} onKopier={kopierNotat} />
-            <Beslutningsstoette region={indhold} svar={svar} />
+            <Beslutningsstoette region={indhold} svar={svar} valgte={valgte} onVaelg={vaelgPunkt} />
           </section>
         </main>
       ) : aktiv ? (

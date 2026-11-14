@@ -88,6 +88,9 @@ describe.each(regioner)("indhold: $navn", (region) => {
       }
     }
 
+    for (const punkt of [...region.differentialdiagnoser, ...region.behandling, ...region.henvisning]) {
+      expect(punkt.notat.trim(), `"${punkt.id}" mangler notattekst`).not.toBe("");
+    }
     for (const flag of region.roedeFlag) {
       for (const gruppe of flag.fremhaevHvis ?? []) tjekBetingelser(gruppe, `fremhaevHvis i "${flag.id}"`);
     }

@@ -73,6 +73,7 @@ export type Henvisning = Kildebelagt & {
   kriterier: string;
   hast?: "akut" | "subakut" | "elektiv";
   gyldighed: "national" | "Region Hovedstaden";
+  notat: string; // sætning til P, hvis lægen krydser den af
 };
 
 export type Region = {
