@@ -160,7 +160,7 @@ export const ryg: Region = {
           label: "Almentilstand",
           type: "enkelt",
           valg: [
-            { id: "upaavirket", label: "Upåvirket", notat: "Upåvirket almentilstand.", normal: true },
+            { id: "upaavirket", label: "Upåvirket", notat: "Upåvirket almentilstand." },
             { id: "paavirket", label: "Påvirket", notat: "Påvirket almentilstand." }
           ]
         },
@@ -169,7 +169,7 @@ export const ryg: Region = {
           label: "Gang/holdning",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal gang og holdning.", normal: true },
+            { id: "normal", label: "Normal", notat: "Normal gang og holdning." },
             { id: "skoliose", label: "Aflastningsskoliose", notat: "Aflastningsskoliose og smertepræget gang." },
             { id: "deformitet", label: "Deformitet", notat: "Deformitet i rygsøjlen." }
           ]
@@ -179,7 +179,7 @@ export const ryg: Region = {
           label: "Bevægelighed",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal bevægelighed i lænderyggen.", normal: true },
+            { id: "normal", label: "Normal", notat: "Normal bevægelighed i lænderyggen." },
             { id: "nedsat", label: "Nedsat", notat: "Nedsat bevægelighed i lænderyggen." }
           ]
         },
@@ -188,7 +188,7 @@ export const ryg: Region = {
           label: "Lasègue",
           type: "enkelt",
           valg: [
-            { id: "neg", label: "Negativ", notat: "Negativ Lasègue bilateralt.", normal: true },
+            { id: "neg", label: "Negativ", notat: "Negativ Lasègue bilateralt." },
             { id: "hoejre", label: "Positiv højre", notat: "Positiv Lasègue højre (radikulære smerter distalt for knæet)." },
             { id: "venstre", label: "Positiv venstre", notat: "Positiv Lasègue venstre (radikulære smerter distalt for knæet)." },
             { id: "krydset", label: "Krydset positiv", notat: "Positiv krydset Lasègue." }
@@ -199,7 +199,7 @@ export const ryg: Region = {
           label: "Kraft",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal kraft i underekstremiteterne.", normal: true },
+            { id: "normal", label: "Normal", notat: "Normal kraft i underekstremiteterne." },
             { id: "l4", label: "↓ L4", notat: "Nedsat kraft ved knæekstension (L4)." },
             { id: "l5", label: "↓ L5", notat: "Nedsat kraft ved dorsalfleksion af fod og storetå / hælgang (L5)." },
             { id: "s1", label: "↓ S1", notat: "Nedsat kraft ved plantarfleksion / tågang (S1)." },
@@ -211,7 +211,7 @@ export const ryg: Region = {
           label: "Reflekser",
           type: "enkelt",
           valg: [
-            { id: "normale", label: "Normale", notat: "Normale og symmetriske patellar- og achillesreflekser.", normal: true },
+            { id: "normale", label: "Normale", notat: "Normale og symmetriske patellar- og achillesreflekser." },
             { id: "patellar", label: "↓ patellar", notat: "Afsvækket patellarrefleks." },
             { id: "achilles", label: "↓ achilles", notat: "Afsvækket achillesrefleks." }
           ]
@@ -221,7 +221,7 @@ export const ryg: Region = {
           label: "Sensibilitet",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal sensibilitet i underekstremiteterne.", normal: true },
+            { id: "normal", label: "Normal", notat: "Normal sensibilitet i underekstremiteterne." },
             { id: "dermatom", label: "↓ dermatomalt", notat: "Nedsat sensibilitet svarende til et dermatom." },
             { id: "ridebukse", label: "↓ ridebukseområdet", notat: "Nedsat sensibilitet i ridebukseområdet." }
           ]

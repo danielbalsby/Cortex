@@ -123,7 +123,7 @@ export const albue: Region = {
           label: "Fejlstilling",
           type: "enkelt",
           valg: [
-            { id: "nej", label: "Ingen", notat: "Ingen fejlstilling.", normal: true },
+            { id: "nej", label: "Ingen", notat: "Ingen fejlstilling." },
             { id: "ja", label: "Ja", notat: "Fejlstilling af albuen." }
           ]
         },
@@ -132,7 +132,7 @@ export const albue: Region = {
           label: "Hævelse",
           type: "enkelt",
           valg: [
-            { id: "ingen", label: "Ingen", notat: "Ingen hævelse.", normal: true },
+            { id: "ingen", label: "Ingen", notat: "Ingen hævelse." },
             { id: "bursa", label: "Over olecranon", notat: "Væskefyldt hævelse over olecranon." },
             { id: "led", label: "Leddet/hæmatom", notat: "Hævelse af leddet eller hæmatom." }
           ]
@@ -142,7 +142,7 @@ export const albue: Region = {
           label: "Rødme/varme",
           type: "enkelt",
           valg: [
-            { id: "nej", label: "Ingen", notat: "Ingen rødme eller varmeøgning.", normal: true },
+            { id: "nej", label: "Ingen", notat: "Ingen rødme eller varmeøgning." },
             { id: "ja", label: "Ja", notat: "Rødme og varmeøgning." }
           ]
         },
@@ -152,7 +152,7 @@ export const albue: Region = {
           type: "enkelt",
           visHvis: [{ felt: "debut", er: "traume" }],
           valg: [
-            { id: "fuld", label: "Fuld bilateralt", notat: "Albue-ekstensionstest: fuld ekstension bilateralt.", normal: true },
+            { id: "fuld", label: "Fuld bilateralt", notat: "Albue-ekstensionstest: fuld ekstension bilateralt." },
             { id: "nedsat", label: "Nedsat", notat: "Albue-ekstensionstest: nedsat ekstension." }
           ]
         },
@@ -161,7 +161,7 @@ export const albue: Region = {
           label: "Bevægelighed",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal bevægelighed i albuen.", normal: true },
+            { id: "normal", label: "Normal", notat: "Normal bevægelighed i albuen." },
             { id: "nedsat", label: "Nedsat", notat: "Nedsat bevægelighed i albuen." },
             { id: "rotation", label: "Nedsat rotation", notat: "Nedsat og smertefuld pronation og supination." }
           ]
@@ -181,7 +181,7 @@ export const albue: Region = {
           label: "Isometrisk håndled",
           type: "enkelt",
           valg: [
-            { id: "neg", label: "Smertefri", notat: "Smertefri isometrisk ekstension og fleksion af håndleddet.", normal: true },
+            { id: "neg", label: "Smertefri", notat: "Smertefri isometrisk ekstension og fleksion af håndleddet." },
             {
               id: "ekstension",
               label: "Smerte ved ekstension",
@@ -196,7 +196,7 @@ export const albue: Region = {
           type: "enkelt",
           visHvis: [{ felt: "debut", er: "traume" }],
           valg: [
-            { id: "uoem", label: "Uøm", notat: "Caput radii uøm.", normal: true },
+            { id: "uoem", label: "Uøm", notat: "Caput radii uøm." },
             { id: "oem", label: "Øm", notat: "Palpationsømhed over caput radii." }
           ]
         },
@@ -209,8 +209,7 @@ export const albue: Region = {
             {
               id: "normal",
               label: "Normal",
-              notat: "Palpabel radialispuls; normal sensibilitet og motorik svarende til n. ulnaris, medianus og radialis.",
-              normal: true
+              notat: "Palpabel radialispuls; normal sensibilitet og motorik svarende til n. ulnaris, medianus og radialis."
             },
             { id: "paavirket", label: "Påvirket", notat: "Påvirket distal cirkulation eller nervefunktion." }
           ]
@@ -220,7 +219,7 @@ export const albue: Region = {
           label: "N. ulnaris",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal sensibilitet i 4.–5. finger og normal kraft i ulnarisinnerverede muskler.", normal: true },
+            { id: "normal", label: "Normal", notat: "Normal sensibilitet i 4.–5. finger og normal kraft i ulnarisinnerverede muskler." },
             { id: "sens", label: "↓ sensibilitet", notat: "Nedsat sensibilitet i 4.–5. finger." },
             { id: "kraft", label: "↓ kraft", notat: "Nedsat kraft ved adduktion af 1. finger og abduktion af 5. finger." }
           ]

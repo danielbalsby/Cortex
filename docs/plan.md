@@ -210,7 +210,7 @@ Appen bygges med Vite til én selvstændig fil, `cortex.html`, der åbnes med do
 
 Afprøvet i trin 1 i Chromium fra en lokalt åbnet fil: regionsvalg med tastatur, nulstilling og kopiering virker, og siden foretager ingen netværkskald. Ikke afprøvet: klinikkens egen browser – det er din 1-minuts-test.
 
-Vercel-koblingen på repoet har fejlet siden juli og bruges ikke af denne løsning.
+Vercel-koblingen på repoet er live og offentlig: den bygger fra `vercel.json` (`npm run build`, `dist`) og udstiller appen på en offentlig adresse (med `noindex`-header). Appen indeholder ingen patientdata og foretager ingen netværkskald, men det er en offentlig adresse – ikke en lukket løsning. Driftsstedet er stadig klinikkens lokale `cortex.html`.
 
 ## 6. Hvad jeg ved, udleder og gætter i denne plan
 

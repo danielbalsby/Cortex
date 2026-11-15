@@ -104,7 +104,7 @@ export const ankel: Region = {
           label: "4 skridt nu",
           type: "enkelt",
           valg: [
-            { id: "ja", label: "Går", notat: "Går fire vægtbærende skridt ved undersøgelsen.", normal: true },
+            { id: "ja", label: "Går", notat: "Går fire vægtbærende skridt ved undersøgelsen." },
             { id: "nej", label: "Kan ikke", notat: "Kan ikke gå fire vægtbærende skridt ved undersøgelsen." }
           ]
         },
@@ -113,7 +113,7 @@ export const ankel: Region = {
           label: "Fejlstilling",
           type: "enkelt",
           valg: [
-            { id: "nej", label: "Ingen", notat: "Ingen fejlstilling.", normal: true },
+            { id: "nej", label: "Ingen", notat: "Ingen fejlstilling." },
             { id: "ja", label: "Ja", notat: "Fejlstilling." }
           ]
         },
@@ -122,7 +122,7 @@ export const ankel: Region = {
           label: "Cirk./sens. distalt",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal distal cirkulation og sensibilitet.", normal: true },
+            { id: "normal", label: "Normal", notat: "Normal distal cirkulation og sensibilitet." },
             { id: "paavirket", label: "Påvirket", notat: "Påvirket distal cirkulation eller sensibilitet." }
           ]
         },
@@ -142,7 +142,7 @@ export const ankel: Region = {
           label: "Knogleømhed malleol",
           type: "enkelt",
           valg: [
-            { id: "ingen", label: "Ingen", notat: "Ingen knogleømhed over malleolerne.", normal: true },
+            { id: "ingen", label: "Ingen", notat: "Ingen knogleømhed over malleolerne." },
             { id: "lateral", label: "Lateral", notat: "Knogleømhed over laterale malleol (bagkant/spids, nederste 6 cm)." },
             { id: "medial", label: "Medial", notat: "Knogleømhed over mediale malleol (bagkant/spids, nederste 6 cm)." },
             { id: "begge", label: "Begge", notat: "Knogleømhed over begge malleoler (bagkant/spids, nederste 6 cm)." }
@@ -153,7 +153,7 @@ export const ankel: Region = {
           label: "Knogleømhed fod",
           type: "enkelt",
           valg: [
-            { id: "ingen", label: "Ingen", notat: "Ingen knogleømhed over os naviculare eller basis af 5. metatars.", normal: true },
+            { id: "ingen", label: "Ingen", notat: "Ingen knogleømhed over os naviculare eller basis af 5. metatars." },
             { id: "naviculare", label: "Naviculare", notat: "Knogleømhed over os naviculare." },
             { id: "mt5", label: "Basis 5. mt.", notat: "Knogleømhed over basis af 5. metatars." },
             { id: "begge", label: "Begge", notat: "Knogleømhed over os naviculare og basis af 5. metatars." }
@@ -164,7 +164,7 @@ export const ankel: Region = {
           label: "Proksimal fibula",
           type: "enkelt",
           valg: [
-            { id: "uoem", label: "Uøm", notat: "Proksimale fibula uøm.", normal: true },
+            { id: "uoem", label: "Uøm", notat: "Proksimale fibula uøm." },
             { id: "oem", label: "Øm", notat: "Ømhed over proksimale fibula." }
           ]
         },
@@ -182,7 +182,7 @@ export const ankel: Region = {
           label: "Syndesmose",
           type: "enkelt",
           valg: [
-            { id: "uoem", label: "Uøm", notat: "Syndesmosen uøm ved palpation og squeeze-test.", normal: true },
+            { id: "uoem", label: "Uøm", notat: "Syndesmosen uøm ved palpation og squeeze-test." },
             { id: "oem", label: "Øm/squeeze +", notat: "Ømhed over syndesmosen eller positiv squeeze-test." }
           ]
         },
@@ -191,7 +191,7 @@ export const ankel: Region = {
           label: "Akillessene",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Akillessenen uden defekt; negativ Simmonds-Thompson-test.", normal: true },
+            { id: "normal", label: "Normal", notat: "Akillessenen uden defekt; negativ Simmonds-Thompson-test." },
             { id: "positiv", label: "Thompson +/defekt", notat: "Positiv Simmonds-Thompson-test eller palpabel defekt i akillessenen." }
           ]
         },
