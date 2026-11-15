@@ -217,3 +217,14 @@ Vercel-koblingen på repoet har fejlet siden juli og bruges ikke af denne løsni
 - **Ved (fra koden):** stack, at build og tests er grønne, at intet gemmes eller sendes, indholdet af den gamle knæ-fil og evidensregistrets kildeliste.
 - **Udleder:** at en ny lille kerne er billigere end ombygning; kodestørrelsen 600–900 linjer; antal tastetryk pr. notat.
 - **Gætter:** regionsrækkefølgen, at klinik-pc'en ikke tillader installation, og hvor meget dansk kildemateriale der findes pr. region. Jeg har ikke åbnet nogen kliniske kilder i dag og nævner derfor ingen konkrete retningslinjer ud over dem, der allerede står i repoets evidensregister. Det sker først i trin 5.
+
+## 7. Beslutninger truffet af Claude efter lægens anmodning (2026-11-15)
+
+Lægen bad Claude om selv at træffe de åbne beslutninger. Begge er skrevet ind i de berørte punkter, og konflikterne står stadig navngivet. Alle punkter er fortsat UDKAST.
+
+1. **Akut røntgen efter knætraume (Ottawa mod Pittsburgh):** Begge regler vises. Ét opfyldt kriterie i én af dem udløser akut røntgen og fremhævning af fraktur-flaget. Begrundelse: begge kilder er danske (Lægehåndbogen og Region Hovedstaden), og kombinationen er den mest sensitive.
+2. **Reumatologisk hotline:** Region Hovedstadens visitationsmeddelelse for reumatologi (opdateret 04.09.2025) er brugt som afgørende kilde. Frederiksberg: 38 16 41 90. Degenerativ ryg er samlet på Rigshospitalet, Valdemar Hansens Vej: 38 63 42 47. Rygkirurgisk bagvagt: 38 63 04 80. Nummeret 3816 4049 (forløbsbeskrivelsen for cauda equina) er ikke fundet i andre kilder.
+
+Ikke truffet: godkendelse af kliniske punkter. Princippet "kun lægen sætter GODKENDT" er uændret.
+
+Tjek 2026-11-15: alle 199 tal i det kliniske indhold er fundet i de kilder, punkterne henviser til (maskinel sammenligning med de læste kildetekster).
