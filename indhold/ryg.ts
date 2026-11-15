@@ -289,6 +289,15 @@ export const ryg: Region = {
       sidstTjekket: "2026-11-14"
     },
     {
+      id: "lh-rygsmerter",
+      udgiver: "Lægehåndbogen",
+      dansk: true,
+      titel: "Rygsmerter",
+      aar: 2025,
+      url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/fysmed-og-rehab/symptomer-og-tegn/rygsmerter/",
+      sidstTjekket: "2026-11-15"
+    },
+    {
       id: "lh-rodaffektion",
       udgiver: "Lægehåndbogen",
       dansk: true,
@@ -410,6 +419,31 @@ export const ryg: Region = {
       handling: "Hurtig henvisning til hospital ved røde flag; akut indlæggelse ved progredierende pareser.",
       fremhaevHvis: [[{ felt: "holdning", er: "deformitet" }], [{ felt: "kraft", er: "betydende" }]],
       kilder: ["lh-laendesmerter"],
+      status: "UDKAST"
+    },
+    {
+      id: "flag-inflammatorisk",
+      tekst: "Mulig inflammatorisk rygsygdom: udtalt morgenstivhed over en time, høj SR.",
+      handling:
+        "Henvisning til reumatolog ved mistanke om Bechterews sygdom eller anden inflammatorisk ryglidelse. Region Hovedstaden: rygsmerter i over 3 måneder debuteret før 45-årsalderen med ét eller flere SpA-kendetegn kan henvises til reumatologisk hospitalsafdeling eller speciallægepraksis – se spondylartrit under differentialdiagnoser.",
+      fremhaevHvis: [[{ felt: "roedeflag", er: "morgenstivhed" }]],
+      kilder: ["lh-laendesmerter", "lh-rygsmerter", "rh-spondylartrit"],
+      status: "UDKAST"
+    },
+    {
+      id: "flag-indre-organer",
+      tekst:
+        "Smerter fra indre organer: aortaaneurisme (også dissekerende), pankreatit, ulcus perforans, pyelonefrit, prostatit, nyresten, herpes zoster, endometriose. Torakale smerter er et alarmsymptom.",
+      handling: "Patienten udredes med tanke på mulig underliggende sygdom. Hurtig henvisning til hospital ved røde flag.",
+      kilder: ["lh-laendesmerter", "lh-rygsmerter", "lh-rodaffektion"],
+      status: "UDKAST"
+    },
+    {
+      id: "flag-oevrige-alarm",
+      tekst:
+        "Øvrige forhold i anamnesen ved akutte rygsmerter: alder under 20 eller over 55 år, nylig spinalpunktur, nyopståede vandladningsproblemer.",
+      handling: "Indgår i vurderingen af, om der er underliggende sygdom. Ved urinretention: se cauda equina.",
+      kilder: ["lh-rygsmerter"],
       status: "UDKAST"
     }
   ],
