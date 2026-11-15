@@ -94,6 +94,15 @@ describe.each(regioner)("indhold: $navn", (region) => {
     for (const flag of region.roedeFlag) {
       for (const gruppe of flag.fremhaevHvis ?? []) tjekBetingelser(gruppe, `fremhaevHvis i "${flag.id}"`);
     }
+    // Et valg i et felt med røde flag skal kunne fremhæve mindst ét rødt flag.
+    const fremhaevende = new Set(
+      region.roedeFlag.flatMap((flag) => (flag.fremhaevHvis ?? []).flat().map((b) => `${b.felt}=${b.er}`))
+    );
+    for (const felt of felter.filter((item) => item.id === "roedeflag")) {
+      for (const valg of felt.valg ?? []) {
+        expect(fremhaevende.has(`${felt.id}=${valg.id}`), `"${valg.label}" fremhæver intet rødt flag`).toBe(true);
+      }
+    }
     const diffIder = region.differentialdiagnoser.map((diff) => diff.id);
     for (const behandling of region.behandling) {
       for (const id of behandling.gaelderFor ?? []) {

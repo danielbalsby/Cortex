@@ -255,6 +255,16 @@ export const knae: Region = {
           ]
         },
         {
+          id: "benloeft",
+          label: "Strakt benløft",
+          type: "enkelt",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "ja", label: "Kan", notat: "Kan løfte strakt ben mod tyngdekraften.", normal: true },
+            { id: "nej", label: "Kan ikke", notat: "Kan ikke løfte strakt ben mod tyngdekraften." }
+          ]
+        },
+        {
           id: "objektivt-tekst",
           label: "Supplerende",
           type: "tekst",
@@ -295,6 +305,7 @@ export const knae: Region = {
         "fibulaoemhed",
         "fleksion90",
         "skridt",
+        "benloeft",
         "objektivt-tekst"
       ]
     }
@@ -448,7 +459,7 @@ export const knae: Region = {
     {
       id: "flag-fraktur",
       tekst:
-        "Akut knæskade: udeluk fraktur, før stabiliteten testes. Lægehåndbogen (Ottawa): røntgen ved direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Region Hovedstaden (Pittsburgh): akut røntgen ved alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.",
+        "Akut knæskade: udeluk fraktur, før stabiliteten testes. Lægehåndbogen (knee rules): røntgen ved direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Region Hovedstaden (Pittsburgh): akut røntgen ved alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.",
       handling:
         "Akut røntgen af knæ, hvis blot ét kriterie i én af reglerne er opfyldt. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).",
       // Fremhæves, hvis blot ét kriterie fra Ottawa (Lægehåndbogen) ELLER Pittsburgh
@@ -470,7 +481,7 @@ export const knae: Region = {
       status: "UDKAST",
       konflikt: {
         beskrivelse:
-          "Lægehåndbogen bruger Ottawa-kriterierne; Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder. Beslutning (truffet af Claude 2026-11-15 efter lægens anmodning): begge regler vises, og ét opfyldt kriterie i én af dem udløser akut røntgen og fremhævning. Det er den mest sensitive kombination og følger både den nationale og den regionale kilde. Originalstudierne bag reglerne er ikke læst.",
+          "Lægehåndbogen bruger \"Knee-rules\" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder. Beslutning (truffet af Claude 2026-11-15 efter lægens anmodning): begge regler vises, og ét opfyldt kriterie i én af dem udløser akut røntgen og fremhævning. Det er den mest sensitive kombination og følger både den nationale og den regionale kilde. Originalstudierne bag reglerne er ikke læst.",
         kilder: ["lh-knaesmerter", "rh-traumatisk"]
       }
     },
@@ -509,6 +520,10 @@ export const knae: Region = {
         ],
         [
           { felt: "traume", er: "ja" },
+          { felt: "haevelse", er: "udtalt" }
+        ],
+        [
+          { felt: "traume", er: "ja" },
           { felt: "stabilitet", er: "instabil" }
         ]
       ],
@@ -520,6 +535,7 @@ export const knae: Region = {
       tekst:
         "Strækkeapparat: efter traume kan benet ikke løftes mod tyngdekraften (strakt benløft) – mistanke om ruptur af strækkeapparatet.",
       handling: "Akut henvisning til CVI.",
+      fremhaevHvis: [[{ felt: "benloeft", er: "nej" }]],
       kilder: ["rh-traumatisk"],
       status: "UDKAST"
     },
@@ -533,8 +549,8 @@ export const knae: Region = {
     },
     {
       id: "flag-stor-akut-skade",
-      tekst: "Stor akut knæskade.",
-      handling: "Neurologisk og vaskulær status skal indgå i vurderingen.",
+      tekst: "Store og akutte knæskader: neurologisk og vaskulær status skal indgå i vurderingen.",
+      handling: "Undersøg og notér neurologisk og vaskulær status. Ved den akutte vurdering kan smerter og hævelse vanskeliggøre undersøgelsen; revurdering efter ca. 2 uger.",
       kilder: ["lh-meniskskade"],
       status: "UDKAST"
     },
@@ -939,7 +955,7 @@ export const knae: Region = {
       status: "UDKAST",
       konflikt: {
         beskrivelse:
-          "Lægehåndbogen bruger i stedet Ottawa-kriterierne: direkte patellaømhed, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Beslutning (Claude 2026-11-15 efter lægens anmodning): et opfyldt kriterie i én af reglerne udløser akut røntgen – se rødt flag om fraktur.",
+          "Lægehåndbogen bruger i stedet \"Knee-rules\" (svarer til Ottawa Knee Rule): direkte patellaømhed, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Beslutning (Claude 2026-11-15 efter lægens anmodning): et opfyldt kriterie i én af reglerne udløser akut røntgen – se rødt flag om fraktur.",
         kilder: ["rh-traumatisk", "lh-knaesmerter"]
       }
     },

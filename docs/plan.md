@@ -228,3 +228,13 @@ Lægen bad Claude om selv at træffe de åbne beslutninger. Begge er skrevet ind
 Ikke truffet: godkendelse af kliniske punkter. Princippet "kun lægen sætter GODKENDT" er uændret.
 
 Tjek 2026-11-15: alle 199 tal i det kliniske indhold er fundet i de kilder, punkterne henviser til (maskinel sammenligning med de læste kildetekster).
+
+### Gennemgang af røde flag (Claude, 2026-11-15, efter lægens anmodning)
+
+Alle 34 flag er sammenholdt med kildeteksterne, og det er tjekket, hvilke valg der fremhæver hvilke flag. Rettet:
+
+- **Ryg:** "Morgenstivhed > 1 t" kunne afkrydses under røde flag uden at fremhæve noget. Nyt flag: mulig inflammatorisk rygsygdom. To nye flag fra Lægehåndbogen, Rygsmerter (2025): smerter fra indre organer (bl.a. aortaaneurisme) og øvrige alarmforhold (alder under 20 eller over 55 år, nylig spinalpunktur, nyopståede vandladningsproblemer). En test fanger nu, hvis et valg i et felt med røde flag ikke fremhæver noget.
+- **Knæ:** nyt felt "Strakt benløft" (vises ved traume), som fremhæver flaget om strækkeapparatet. Udtalt hævelse efter traume fremhæver flaget om ligamentskade og stor ledansamling. Lægehåndbogen kalder sin regel "Knee-rules"; betegnelsen Ottawa er fjernet fra Lægehåndbogens del. Flaget om store akutte skader har fået fuld tekst fra kilden.
+- **Uændret:** skulder, albue og ankel. Formuleringer og tal stemmer med kilderne (204 tal tjekket maskinelt, 0 ikke fundet).
+
+Status: 37 røde flag, alle UDKAST. Gennemgangen er Claudes, ikke en lægefaglig godkendelse.
