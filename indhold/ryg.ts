@@ -1,3 +1,4 @@
+import { RH_VISITATION_REUMATOLOGI } from "./faelles";
 import type { Region } from "./typer";
 
 // LÆNDERYG
@@ -340,7 +341,8 @@ export const ryg: Region = {
       aar: 2025,
       url: "https://www.sundhed.dk/sundhedsfaglig/information-til-praksis/hovedstaden/almen-praksis/patientbehandling/patientforloeb/forloebsbeskrivelser-icpc/a-alment-og-uspecificeret/skanning-billeddiagnostik/columna-lumbalis-thoracalis-billeddiagnostik-af/",
       sidstTjekket: "2026-11-14"
-    }
+    },
+    RH_VISITATION_REUMATOLOGI
   ],
 
   roedeFlag: [
@@ -644,18 +646,18 @@ export const ryg: Region = {
     },
     {
       id: "hen-hotline",
-      til: "Lokal reumatologisk funktion (hotline)",
+      til: "Reumatologisk hotline",
       kriterier:
-        "Tvivlstilfælde ved mulig cauda equina eller parese, og meget svære smerter i kort tid: drøft i dagtid (hverdage 8–15) med den lokale reumatologiske funktion. Frederiksberg (Midt, Byen, Bornholm) og Glostrup 3863 4247 (Syd, Nord). Uden for dagtid: vagthavende VRR, Rigshospitalet Glostrup, 3863 3863.",
+        "Tvivlstilfælde ved mulig cauda equina eller parese, og meget svære smerter i kort tid: drøft i dagtid med reumatologisk funktion. Ryg (degenerativ, hele regionen): Rigshospitalet, Valdemar Hansens Vej, hotline kl. 08–15: 38 63 42 47. Rygkirurgisk bagvagt (Rigshospitalet, Valdemar Hansens Vej): 38 63 04 80.",
       hast: "subakut",
       gyldighed: "Region Hovedstaden",
       notat: "Drøftet med reumatologisk hotline.",
-      kilder: ["rh-cauda", "rh-uden-udstraaling"],
+      kilder: ["rh-visitation-reumatologi", "rh-cauda"],
       status: "UDKAST",
       konflikt: {
         beskrivelse:
-          "Hotlinenummeret for Frederiksberg (Midt) er forskelligt: forløbsbeskrivelsen for cauda equina angiver 3816 4049, mens forløbsbeskrivelserne for lænderygsmerter, spondylartrit og akut monoartrit angiver 3816 4190.",
-        kilder: ["rh-cauda", "rh-uden-udstraaling", "rh-spondylartrit"]
+          "Forløbsbeskrivelsen for cauda equina (februar 2025) angiver de lokale reumatologiske funktioner med Frederiksberg 3816 4049 for Midt og vagthavende VRR 3863 3863 uden for dagtid. Visitationsmeddelelsen for reumatologi (september 2025, nyest) angiver, at degenerativ ryg er samlet på Rigshospitalet, Valdemar Hansens Vej (38 63 42 47), og Frederiksberg-hotlinen som 38 16 41 90. Nummeret 3816 4049 er ikke fundet i andre kilder. Teksten følger visitationsmeddelelsen (beslutning truffet af Claude 2026-11-15 efter lægens anmodning).",
+        kilder: ["rh-cauda", "rh-visitation-reumatologi"]
       }
     },
     {
@@ -723,13 +725,13 @@ export const ryg: Region = {
     },
     {
       id: "hen-reumatologi",
-      til: "Lokal reumatologisk funktion (RLB), elektiv",
+      til: "Reumatologisk rygfunktion, Rigshospitalet, Valdemar Hansens Vej (elektiv)",
       kriterier:
-        "Svære uspecifikke lænderygsmerter i mere end 8 uger og under 6 måneder uden tilfredsstillende fremgang. Over 60 år: røntgen af columna lumbalis skal foreligge. Kroniske symptomer (over 6 måneder): kun hvis operation skønnes relevant og ønskes, og der foreligger MR efter symptomdebut og inden for det sidste år.",
+        "Siden 1.1.2025 sendes alle elektive henvisninger med degenerativ rygsygdom fra hele regionen til visitationen på Rigshospitalet, Valdemar Hansens Vej. Svære uspecifikke lænderygsmerter i mere end 8 uger og under 6 måneder uden tilfredsstillende fremgang. Over 60 år: røntgen af columna lumbalis skal foreligge. Kroniske symptomer (over 6 måneder): kun hvis operation skønnes relevant og ønskes, og der foreligger MR efter symptomdebut og inden for det sidste år.",
       hast: "elektiv",
       gyldighed: "Region Hovedstaden",
-      notat: "Henvist elektivt til lokal reumatologisk funktion.",
-      kilder: ["rh-uden-udstraaling"],
+      notat: "Henvist elektivt til reumatologisk rygfunktion, Rigshospitalet.",
+      kilder: ["rh-uden-udstraaling", "rh-visitation-reumatologi"],
       status: "UDKAST"
     },
     {
@@ -746,11 +748,11 @@ export const ryg: Region = {
       id: "hen-spa",
       til: "Reumatolog (hospital eller speciallægepraksis)",
       kriterier:
-        "Rygsmerter i mere end 3 måneder, debut før 45 år, og ét eller flere spondylartrit-kendetegn. Henvisningen bør omfatte ryganamnese, familieanamnese, fund, parakliniske fund og NSAID-behandlingsforsøg.",
+        "Rygsmerter i mere end 3 måneder, debut før 45 år, og ét eller flere spondylartrit-kendetegn. Henvisningen bør omfatte ryganamnese, familieanamnese, fund, parakliniske fund og NSAID-behandlingsforsøg. Planområde Midt, Byen og Bornholm: Frederiksberg Hospital; Nord og Syd: Rigshospitalet, Valdemar Hansens Vej.",
       hast: "elektiv",
       gyldighed: "Region Hovedstaden",
       notat: "Henvist til reumatolog mhp. spondylartrit.",
-      kilder: ["rh-spondylartrit"],
+      kilder: ["rh-spondylartrit", "rh-visitation-reumatologi"],
       status: "UDKAST"
     },
     {

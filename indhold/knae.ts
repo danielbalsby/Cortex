@@ -1,4 +1,4 @@
-import { RH_MONOARTRIT } from "./faelles";
+import { RH_MONOARTRIT, RH_VISITATION_REUMATOLOGI } from "./faelles";
 import type { Region } from "./typer";
 
 // KNÆ
@@ -419,6 +419,7 @@ export const knae: Region = {
       sidstTjekket: "2026-11-14"
     },
     RH_MONOARTRIT,
+    RH_VISITATION_REUMATOLOGI,
     {
       id: "lh-baker",
       udgiver: "Lægehåndbogen",
@@ -447,8 +448,9 @@ export const knae: Region = {
     {
       id: "flag-fraktur",
       tekst:
-        "Akut knæskade: udeluk fraktur, før stabiliteten testes. Følgende skal udløse røntgen af knæet: direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader.",
-      handling: "Røntgen af knæ. Akut henvisning til ortopædkirurg ved mistanke om brud.",
+        "Akut knæskade: udeluk fraktur, før stabiliteten testes. Lægehåndbogen (Ottawa): røntgen ved direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Region Hovedstaden (Pittsburgh): akut røntgen ved alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.",
+      handling:
+        "Akut røntgen af knæ, hvis blot ét kriterie i én af reglerne er opfyldt. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).",
       // Fremhæves, hvis blot ét kriterie fra Ottawa (Lægehåndbogen) ELLER Pittsburgh
       // (Region Hovedstaden) er registreret. Det afgør ikke konflikten mellem reglerne.
       fremhaevHvis: [
@@ -468,7 +470,7 @@ export const knae: Region = {
       status: "UDKAST",
       konflikt: {
         beskrivelse:
-          "Lægehåndbogen bruger Ottawa-kriterierne (bl.a. alder over 55 år og fem kriterier). Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader angiver i stedet Pittsburgh Knee Rules som indikation for akut røntgen: alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt. Originalstudierne bag reglerne er ikke læst ved dette tjek.",
+          "Lægehåndbogen bruger Ottawa-kriterierne; Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder. Beslutning (truffet af Claude 2026-11-15 efter lægens anmodning): begge regler vises, og ét opfyldt kriterie i én af dem udløser akut røntgen og fremhævning. Det er den mest sensitive kombination og følger både den nationale og den regionale kilde. Originalstudierne bag reglerne er ikke læst.",
         kilder: ["lh-knaesmerter", "rh-traumatisk"]
       }
     },
@@ -937,7 +939,7 @@ export const knae: Region = {
       status: "UDKAST",
       konflikt: {
         beskrivelse:
-          "Lægehåndbogen bruger i stedet Ottawa-kriterierne: direkte patellaømhed, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader.",
+          "Lægehåndbogen bruger i stedet Ottawa-kriterierne: direkte patellaømhed, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Beslutning (Claude 2026-11-15 efter lægens anmodning): et opfyldt kriterie i én af reglerne udløser akut røntgen – se rødt flag om fraktur.",
         kilder: ["rh-traumatisk", "lh-knaesmerter"]
       }
     },
@@ -1041,11 +1043,11 @@ export const knae: Region = {
       id: "hen-reumatolog",
       til: "Reumatologisk hotline / reumatolog",
       kriterier:
-        "Akut monoartrit (ikke septisk mistanke) med betydelige smerter eller funktionsbegrænsning: konference mhp. akut/subakut vurdering, ledpunktur og krystalmikroskopi, evt. glukokortikoidinjektion. Hotline Frederiksberg 3816 4190 (Midt, Byen, Bornholm); Glostrup 3863 4247 (Syd og Nord).",
+        "Akut monoartrit (ikke septisk mistanke) med betydelige smerter eller funktionsbegrænsning: konference mhp. akut/subakut vurdering, ledpunktur og krystalmikroskopi, evt. glukokortikoidinjektion. Hotline kl. 08–15: Bispebjerg/Frederiksberg Hospital 38 16 41 90 (planområde Midt, Byen, Bornholm); Rigshospitalet, Valdemar Hansens Vej 38 63 42 47 (Nord og Syd).",
       hast: "subakut",
       gyldighed: "Region Hovedstaden",
       notat: "Konfereret med reumatologisk hotline.",
-      kilder: ["rh-monoartrit"],
+      kilder: ["rh-monoartrit", "rh-visitation-reumatologi"],
       status: "UDKAST"
     }
   ]
