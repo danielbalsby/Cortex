@@ -8,6 +8,16 @@ import type { Betingelse, Kildebelagt, Region } from "./typer";
 // rettelse i en indholdsfil, fortæller fejlteksten hvilket id der er galt.
 
 const regioner = [...Object.values(INDHOLD), eksempel].filter((region): region is Region => Boolean(region));
+// Låser hvilke fund N-genvejen må sætte pr. region. Kun fund, der normalt afgøres ved
+// inspektion/palpation, og som ikke indgår i en flagbetingelse eller beslutningsregel.
+// Ændring kræver bevidst rettelse her OG klinisk vurdering (se docs/ux-review/rapport.md).
+const N_FUND: Record<string, string[]> = {
+  knae: ["ledlinje"],
+  skulder: [],
+  albue: ["epikondyl"],
+  ryg: [],
+  ankel: ["haevelse", "ledbaand"],
+};
 const DATO = /^\d{4}-\d{2}-\d{2}$/;
 
 function unikke(ider: string[], hvad: string) {
@@ -45,6 +55,12 @@ describe.each(regioner)("indhold: $navn", (region) => {
       const normale = (felt.valg ?? []).filter((valg) => valg.normal);
       expect(normale.length, `"${felt.id}" har flere normalfund`).toBeLessThanOrEqual(1);
     }
+  });
+
+  it("N-genvejen sætter kun de fund, der er låst for regionen", () => {
+    const nFund = felter.filter((felt) => (felt.valg ?? []).some((valg) => valg.normal)).map((felt) => felt.id);
+    if (region.id in N_FUND) expect(nFund.sort()).toEqual([...N_FUND[region.id]].sort());
+    else expect(nFund, "ny region uden låst N-liste").toEqual([]);
   });
 
   it("har visHvis-betingelser, der peger på eksisterende felter og valg", () => {

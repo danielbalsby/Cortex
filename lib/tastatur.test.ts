@@ -40,18 +40,17 @@ describe("naboFelt (knæ)", () => {
 
 describe("udfyldNormale (knæ)", () => {
   it("udfylder kun ubesvarede felter med normalfund og rører ikke anamnesen", () => {
-    const svar = udfyldNormale(knae, { side: "hoejre", ledlinje: "medial" });
-    expect(svar.ledlinje).toBe("medial");
+    const svar = udfyldNormale(knae, { side: "hoejre", haevelse: "moderat" });
+    expect(svar.haevelse).toBe("moderat");
     expect(svar.side).toBe("hoejre");
     expect(svar.debut).toBeUndefined();
-    expect(bygNotat(knae, svar)).toBe(
-      "S: Højresidige knæsmerter.\nO: Ingen hævelse. Ingen rødme. Ingen varmeøgning. Medial ledlinjeømhed. Fuld bevægelighed. Stabilt ved klinisk ligamenttest."
-    );
+    expect(svar.ledlinje).toBe("ingen");
+    expect(bygNotat(knae, svar)).toBe("S: Højresidige knæsmerter.\nO: Moderat hævelse. Ingen ledlinjeømhed.");
   });
 
-  it("skriver de konkrete normalfund ud – aldrig en samlet 'normal'-frase", () => {
-    const notat = bygNotat(knae, udfyldNormale(knae, {}));
-    expect(notat.startsWith("O: Ingen hævelse.")).toBe(true);
-    expect(notat).not.toMatch(/i\.a\.|intet abnormt|normale forhold/i);
+  it("sætter kun ledlinjeømhed i knæ – aldrig funktionsfund, flagfund eller samlet 'normal'-frase", () => {
+    const svar = udfyldNormale(knae, {});
+    expect(svar).toEqual({ ledlinje: "ingen" });
+    expect(bygNotat(knae, svar)).not.toMatch(/i\.a\.|intet abnormt|normale forhold/i);
   });
 });

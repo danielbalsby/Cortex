@@ -132,7 +132,7 @@ export const skulder: Region = {
           label: "Fejlstilling",
           type: "enkelt",
           valg: [
-            { id: "nej", label: "Ingen", notat: "Ingen fejlstilling.", normal: true },
+            { id: "nej", label: "Ingen", notat: "Ingen fejlstilling." },
             { id: "ja", label: "Ja", notat: "Fejlstilling eller epauletskulder." }
           ]
         },
@@ -142,7 +142,7 @@ export const skulder: Region = {
           type: "enkelt",
           visHvis: [{ felt: "debut", er: "traume" }],
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal sensibilitet lateralt på skulderen.", normal: true },
+            { id: "normal", label: "Normal", notat: "Normal sensibilitet lateralt på skulderen." },
             { id: "nedsat", label: "Nedsat", notat: "Nedsat sensibilitet lateralt på skulderen." }
           ]
         },
@@ -151,7 +151,7 @@ export const skulder: Region = {
           label: "Aktiv bevægelighed",
           type: "enkelt",
           valg: [
-            { id: "fuld", label: "Fuld", notat: "Fuld aktiv bevægelighed.", normal: true },
+            { id: "fuld", label: "Fuld", notat: "Fuld aktiv bevægelighed." },
             { id: "nedsat", label: "Nedsat", notat: "Nedsat aktiv bevægelighed." }
           ]
         },
@@ -160,7 +160,7 @@ export const skulder: Region = {
           label: "Passiv bevægelighed",
           type: "enkelt",
           valg: [
-            { id: "fuld", label: "Fuld", notat: "Fuld passiv bevægelighed.", normal: true },
+            { id: "fuld", label: "Fuld", notat: "Fuld passiv bevægelighed." },
             { id: "kapsulaer", label: "Nedsat, især udadrot.", notat: "Nedsat passiv bevægelighed, især udadrotation." },
             { id: "nedsat", label: "Nedsat, andet", notat: "Nedsat passiv bevægelighed." }
           ]
@@ -170,7 +170,7 @@ export const skulder: Region = {
           label: "Smertebue",
           type: "enkelt",
           valg: [
-            { id: "neg", label: "Negativ", notat: "Ingen smertebue.", normal: true },
+            { id: "neg", label: "Negativ", notat: "Ingen smertebue." },
             { id: "pos", label: "Positiv", notat: "Positiv smertebue." }
           ]
         },
@@ -179,7 +179,7 @@ export const skulder: Region = {
           label: "Hawkins/Neer",
           type: "enkelt",
           valg: [
-            { id: "neg", label: "Negative", notat: "Negativ Hawkins' og Neer's test.", normal: true },
+            { id: "neg", label: "Negative", notat: "Negativ Hawkins' og Neer's test." },
             { id: "pos", label: "Positive", notat: "Positiv Hawkins' og/eller Neer's test." }
           ]
         },
@@ -188,7 +188,7 @@ export const skulder: Region = {
           label: "Kraft rotator cuff",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal kraft i rotator cuffen.", normal: true },
+            { id: "normal", label: "Normal", notat: "Normal kraft i rotator cuffen." },
             { id: "abd", label: "↓ abduktion", notat: "Nedsat kraft ved isometrisk abduktion (supraspinatus)." },
             { id: "udad", label: "↓ udadrot.", notat: "Nedsat kraft ved isometrisk udadrotation (infraspinatus)." },
             { id: "indad", label: "↓ indadrot.", notat: "Nedsat kraft ved isometrisk indadrotation (subscapularis)." },
@@ -200,7 +200,7 @@ export const skulder: Region = {
           label: "AC-led",
           type: "enkelt",
           valg: [
-            { id: "uoemt", label: "Uømt", notat: "AC-leddet uømt, negativ crossover-test.", normal: true },
+            { id: "uoemt", label: "Uømt", notat: "AC-leddet uømt, negativ crossover-test." },
             { id: "oemt", label: "Ømt/crossover +", notat: "Ømhed over AC-leddet og/eller positiv crossover-test." }
           ]
         },
