@@ -167,18 +167,41 @@ kbd {
 
 .start .lille { margin-top: 18px; font-size: 0.85rem; }
 
-.stoette section { margin-top: 18px; }
-.punkter { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
-.punkt { padding: 6px 10px; border: 1px solid var(--kant); border-left-width: 3px; border-radius: 6px; }
-.punkt.udkast { border-style: dashed; border-left-style: solid; border-left-color: #9aa5a1; }
-.punkt.godkendt { border-left-color: var(--accent); }
+.stoette section { margin-top: 10px; }
+.stoette h2 { margin: 0 0 6px; }
+.antal { font-weight: 400; letter-spacing: 0; }
+.punkter { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+
+/* Sektioner uden røde flag er sammenfoldet; overskrift og antal er altid synlige. */
+.sektion > summary { cursor: pointer; list-style: none; display: block; padding: 3px 0; border-bottom: 1px solid var(--kant); }
+.sektion > summary::-webkit-details-marker { display: none; }
+.sektion > summary h2 { margin: 0; }
+.sektion > summary h2::before { content: "▸ "; }
+.sektion[open] > summary h2::before { content: "▾ "; }
+.sektion[open] > summary { margin-bottom: 6px; }
+.sektion > summary:focus-visible, .punktDetaljer > summary:focus-visible, .oevrige summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* Ét punkt = én linje (titel); resten vises ved udfoldning. Neutral ramme; rød kun til røde flag. */
+.punkt { padding: 0 8px; line-height: 1.3; border: 1px solid var(--kant); border-left-width: 3px; border-radius: 6px; }
 .punkt.flag { border-left-color: var(--advarsel); }
-.punkt.fremhaevet { background: #fbeae6; border-color: var(--advarsel); border-style: solid; }
-.punktRaekke { display: flex; align-items: flex-start; gap: 10px; }
-.punktTekst { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+.punkt.fremhaevet { background: #fbeae6; border-color: var(--advarsel); }
+.punktRaekke { display: flex; align-items: flex-start; gap: 8px; }
+.punktDetaljer { flex: 1; min-width: 0; }
+.punktDetaljer > summary {
+  display: flex; align-items: baseline; gap: 8px; cursor: pointer; list-style: none; padding: 3px 0;
+}
+.punktDetaljer > summary::-webkit-details-marker { display: none; }
+.punktDetaljer > summary::before { content: "▸"; color: var(--daempet); flex: 0 0 auto; }
+.punktDetaljer[open] > summary::before { content: "▾"; }
+.titelLinje { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.punktDetaljer[open] .titelLinje { white-space: normal; overflow: visible; }
+.flag .titelLinje { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.flag .punktDetaljer[open] .titelLinje { display: block; }
+.punktTekst { display: flex; flex-direction: column; gap: 3px; padding: 2px 0 2px 16px; }
 .tilNotat {
   flex: 0 0 auto;
-  padding: 2px 9px;
+  margin-top: 2px;
+  padding: 1px 9px;
   border: 1px solid var(--kant);
   border-radius: 6px;
   background: var(--flade);
@@ -192,18 +215,23 @@ kbd {
 .oevrige { list-style: none; }
 .oevrige summary { cursor: pointer; color: var(--daempet); font-size: 0.9rem; padding: 4px 0; }
 .oevrige .punkter { margin-top: 6px; }
+.gruppeTitel { margin: 4px 0 0; line-height: 1.2; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--daempet); }
+.gruppeTitel.fremhaevetTitel { color: var(--advarsel); font-weight: 700; }
 .handling { color: var(--tekst); }
 .kendetegn, .hast { color: var(--daempet); font-size: 0.9rem; font-weight: 400; }
-.match { color: var(--advarsel); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-.punktMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 4px; font-size: 0.8rem; }
+.match { flex: 0 0 auto; color: var(--advarsel); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.ikkeVurderet { flex: 0 0 auto; color: var(--daempet); font-size: 0.75rem; font-style: italic; }
+.flagStatus { color: var(--daempet); font-size: 0.85rem; }
+.flagStatus:empty { display: none; }
+.punktMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 4px 0 2px 16px; font-size: 0.8rem; }
 .kilde { color: var(--accent); }
 .ikkeDansk { color: var(--daempet); }
 .maerke { padding: 0 6px; border-radius: 4px; font-weight: 700; letter-spacing: 0.04em; }
 .maerke.kladde { border: 1px dashed #9aa5a1; color: var(--daempet); }
 .maerke.ok { background: var(--accent-svag); color: var(--accent); }
-.maerke.mangler { background: var(--advarsel); color: #fff; }
-.konflikt { margin-top: 4px; font-size: 0.85rem; }
-.konflikt summary { cursor: pointer; color: var(--advarsel); font-weight: 600; }
+.maerke.mangler { border: 1px solid var(--tekst); color: var(--tekst); }
+.konflikt { margin: 4px 0 2px 16px; font-size: 0.85rem; }
+.konflikt strong { color: var(--tekst); }
 .konflikt p { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
 
 .gennemgang { flex: 1; max-width: 960px; margin: 0 auto; padding: 16px; }
