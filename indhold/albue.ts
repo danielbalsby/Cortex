@@ -329,7 +329,8 @@ export const albue: Region = {
         [{ felt: "caputradii", er: "oem" }]
       ],
       kilder: ["lh-albueskader", "lh-caput-radii"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-neurovaskulaer",
@@ -338,7 +339,8 @@ export const albue: Region = {
       handling: "Akut henvisning til akutmodtagelsen.",
       fremhaevHvis: [[{ felt: "neurovaskulaer", er: "paavirket" }]],
       kilder: ["lh-albueskader"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-muskelsene",
@@ -347,7 +349,8 @@ export const albue: Region = {
       handling: "Akutmodtagelsen (akut del); ved sen diagnose ortopædkirurgisk ambulatorium.",
       fremhaevHvis: [[{ felt: "mekanisme", er: "hyper" }]],
       kilder: ["lh-albueskader"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-septisk",
@@ -357,7 +360,8 @@ export const albue: Region = {
         "Hurtig henvisning til sygehus (Region Hovedstaden: ved mistanke om septisk artrit akut indlæggelse i ortopædkirurgisk regi via CVI). Ved mistanke om bakteriel infektion sendes bursa- eller ledvæske til dyrkning.",
       fremhaevHvis: [[{ felt: "roedme", er: "ja" }, { felt: "haevelse", er: "led" }]],
       kilder: ["lh-albuesmerter", "rh-monoartrit"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-septisk-bursit",
@@ -370,7 +374,8 @@ export const albue: Region = {
         [{ felt: "roedme", er: "ja" }, { felt: "haevelse", er: "bursa" }]
       ],
       kilder: ["lh-bursitis-olecrani"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-faldgruber",
@@ -378,7 +383,8 @@ export const albue: Region = {
         "Diagnostiske faldgruber: fraktur og brusklæsion efter traume; skader i nakke, skulder og håndled kan vise sig som albuesmerter; tumor kan give irritation af nerver.",
       handling: "Undersøg også cervikalcolumna og resten af overekstremiteten; overvej røntgen efter traume.",
       kilder: ["lh-albuesmerter", "lh-epikondylit"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     }
   ],
 

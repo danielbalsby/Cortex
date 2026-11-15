@@ -1,6 +1,6 @@
 # Cortex MSK – plan
 
-Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Alle fem regioner er bygget (trin 1–6 og 8–15). Trin 7, 9, 11, 13 og 15 afventer din gennemgang af indholdet: intet klinisk punkt er GODKENDT endnu. Tast G på startskærmen viser alle røde flag og konflikter samlet til gennemgang.
+Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Alle fem regioner er bygget (trin 1–6 og 8–15). Alle 37 røde flag er GODKENDT af lægen 2026-11-15. Differentialdiagnoser, behandling og henvisning er fortsat UDKAST og afventer din gennemgang (trin 7, 9, 11, 13 og 15). Tast G på startskærmen viser alle røde flag og konflikter samlet til gennemgang.
 
 ## 1. Målbillede
 
@@ -237,4 +237,4 @@ Alle 34 flag er sammenholdt med kildeteksterne, og det er tjekket, hvilke valg d
 - **Knæ:** nyt felt "Strakt benløft" (vises ved traume), som fremhæver flaget om strækkeapparatet. Udtalt hævelse efter traume fremhæver flaget om ligamentskade og stor ledansamling. Lægehåndbogen kalder sin regel "Knee-rules"; betegnelsen Ottawa er fjernet fra Lægehåndbogens del. Flaget om store akutte skader har fået fuld tekst fra kilden.
 - **Uændret:** skulder, albue og ankel. Formuleringer og tal stemmer med kilderne (204 tal tjekket maskinelt, 0 ikke fundet).
 
-Status: 37 røde flag, alle UDKAST. Gennemgangen er Claudes, ikke en lægefaglig godkendelse.
+Status: 37 røde flag. Lægen godkendte alle 37 på grundlag af denne gennemgang 2026-11-15 ("godkend alle 37 røde flag").
