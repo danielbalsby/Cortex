@@ -20,6 +20,12 @@ describe("tolkTast – region åben", () => {
     expect(tolkTast({ key: "Enter" }, "felt", "region")).toEqual({ type: "flyt", retning: 1 });
   });
 
+  it("holdt N-tast (repeat) gentager ikke", () => {
+    expect(tolkTast({ key: "n", repeat: true }, "felt", "region")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "N", repeat: true }, "felt", "region")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "n", repeat: false }, "felt", "region")).toEqual({ type: "normal" });
+  });
+
   it("tal skifter ikke region, når en region er åben", () => {
     expect(tolkTast({ key: "4" }, "felt", "region")).toEqual({ type: "tal", tal: 4 });
   });

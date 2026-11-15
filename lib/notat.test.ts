@@ -140,7 +140,7 @@ describe("bygNotat (lænderyg)", () => {
     const { udfyldNormale } = await import("./tastatur");
     const svar = udfyldNormale(ryg, saetSvar(ryg, {}, "cauda", "ja"));
     expect(svar.rektal).toBeUndefined();
-    expect(svar.lasegue).toBe("neg");
+    expect(svar).toEqual({ cauda: "ja" }); // ryg har ingen N-fund (låst i indhold.test.ts)
   });
 
   it("rydder udstrålingsfelter, når udbredningen ændres", () => {

@@ -76,7 +76,7 @@ export function App() {
               : "felt";
       const skaerm: Skaerm = region === "gennemgang" ? "gennemgang" : indhold ? "region" : "start";
       const handling = tolkTast(
-        { key: event.key, ctrl: event.ctrlKey, meta: event.metaKey, alt: event.altKey },
+        { key: event.key, ctrl: event.ctrlKey, meta: event.metaKey, alt: event.altKey, repeat: event.repeat },
         fokus,
         skaerm
       );
@@ -131,7 +131,10 @@ export function App() {
               key={item.id}
               className={item.id === region ? "region aktiv" : "region"}
               aria-pressed={item.id === region}
-              onClick={() => vaelgRegion(item.id)}
+              onClick={() => {
+                // Klik på den allerede åbne region rydder ikke notatet.
+                if (item.id !== region) vaelgRegion(item.id);
+              }}
             >
               {!region && <kbd>{index + 1}</kbd>} {item.navn}
             </button>

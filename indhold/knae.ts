@@ -7,7 +7,7 @@ import type { Region } from "./typer";
 // - "label" er teksten på knappen. "notat" er sætningen, der havner i notatet.
 // - Rækkefølgen af felter her er rækkefølgen på skærmen.
 // - "notat" nederst bestemmer rækkefølgen i selve notatet.
-// - normal: true markerer normalfundet (bruges af N-genvejen fra trin 3).
+// - normal: true markerer et fund, N-genvejen må sætte; kun inspektions-/palpationsfund uden for flagbetingelser (se indhold.test.ts).
 //
 // Felter og fraser er overført fra den tidligere knæ-formular og er ikke
 // gennemgået af dig endnu.
@@ -161,7 +161,7 @@ export const knae: Region = {
           label: "Hævelse",
           type: "enkelt",
           valg: [
-            { id: "ingen", label: "Ingen", notat: "Ingen hævelse.", normal: true },
+            { id: "ingen", label: "Ingen", notat: "Ingen hævelse." },
             { id: "let", label: "Let", notat: "Let hævelse." },
             { id: "moderat", label: "Moderat", notat: "Moderat hævelse." },
             { id: "udtalt", label: "Udtalt", notat: "Udtalt hævelse." }
@@ -172,7 +172,7 @@ export const knae: Region = {
           label: "Rødme",
           type: "enkelt",
           valg: [
-            { id: "ingen", label: "Ingen", notat: "Ingen rødme.", normal: true },
+            { id: "ingen", label: "Ingen", notat: "Ingen rødme." },
             { id: "ja", label: "Ja", notat: "Rødme." }
           ]
         },
@@ -181,7 +181,7 @@ export const knae: Region = {
           label: "Varme",
           type: "enkelt",
           valg: [
-            { id: "ingen", label: "Ingen", notat: "Ingen varmeøgning.", normal: true },
+            { id: "ingen", label: "Ingen", notat: "Ingen varmeøgning." },
             { id: "ja", label: "Ja", notat: "Varmeøgning." }
           ]
         },
@@ -200,7 +200,7 @@ export const knae: Region = {
           label: "Bevægelighed",
           type: "enkelt",
           valg: [
-            { id: "fuld", label: "Fuld", notat: "Fuld bevægelighed.", normal: true },
+            { id: "fuld", label: "Fuld", notat: "Fuld bevægelighed." },
             { id: "let", label: "Let nedsat", notat: "Let nedsat bevægelighed." },
             { id: "svaert", label: "Svært nedsat", notat: "Svært nedsat bevægelighed." }
           ]
@@ -210,7 +210,7 @@ export const knae: Region = {
           label: "Stabilitet",
           type: "enkelt",
           valg: [
-            { id: "stabil", label: "Stabil", notat: "Stabilt ved klinisk ligamenttest.", normal: true },
+            { id: "stabil", label: "Stabil", notat: "Stabilt ved klinisk ligamenttest." },
             { id: "instabil", label: "Instabilitet", notat: "Klinisk mistanke om instabilitet." }
           ]
         },
@@ -220,7 +220,7 @@ export const knae: Region = {
           type: "enkelt",
           visHvis: [{ felt: "traume", er: "ja" }],
           valg: [
-            { id: "nej", label: "Ingen", notat: "Ingen direkte ømhed på patella.", normal: true },
+            { id: "nej", label: "Ingen", notat: "Ingen direkte ømhed på patella." },
             { id: "ja", label: "Øm", notat: "Direkte ømhed på patella." }
           ]
         },
@@ -230,7 +230,7 @@ export const knae: Region = {
           type: "enkelt",
           visHvis: [{ felt: "traume", er: "ja" }],
           valg: [
-            { id: "nej", label: "Ingen", notat: "Ingen ømhed på caput fibulae.", normal: true },
+            { id: "nej", label: "Ingen", notat: "Ingen ømhed på caput fibulae." },
             { id: "ja", label: "Øm", notat: "Ømhed på caput fibulae." }
           ]
         },
@@ -240,7 +240,7 @@ export const knae: Region = {
           type: "enkelt",
           visHvis: [{ felt: "traume", er: "ja" }],
           valg: [
-            { id: "ja", label: "Kan", notat: "Kan flektere knæet til 90 grader.", normal: true },
+            { id: "ja", label: "Kan", notat: "Kan flektere knæet til 90 grader." },
             { id: "nej", label: "Kan ikke", notat: "Kan ikke flektere knæet til 90 grader." }
           ]
         },
@@ -250,7 +250,7 @@ export const knae: Region = {
           type: "enkelt",
           visHvis: [{ felt: "traume", er: "ja" }],
           valg: [
-            { id: "ja", label: "Går", notat: "Går fire vægtbærende skridt ved undersøgelsen.", normal: true },
+            { id: "ja", label: "Går", notat: "Går fire vægtbærende skridt ved undersøgelsen." },
             { id: "nej", label: "Kan ikke", notat: "Kan ikke gå fire vægtbærende skridt ved undersøgelsen." }
           ]
         },
@@ -260,7 +260,7 @@ export const knae: Region = {
           type: "enkelt",
           visHvis: [{ felt: "traume", er: "ja" }],
           valg: [
-            { id: "ja", label: "Kan", notat: "Kan løfte strakt ben mod tyngdekraften.", normal: true },
+            { id: "ja", label: "Kan", notat: "Kan løfte strakt ben mod tyngdekraften." },
             { id: "nej", label: "Kan ikke", notat: "Kan ikke løfte strakt ben mod tyngdekraften." }
           ]
         },

@@ -10,7 +10,7 @@ export type Fokus = "felt" | "tekst" | "egen" | "panel";
 /** Hvad der vises: startskærm (eller region uden indhold), en region med felter, eller gennemgangssiden. */
 export type Skaerm = "start" | "region" | "gennemgang";
 
-export type Tast = { key: string; ctrl?: boolean; meta?: boolean; alt?: boolean };
+export type Tast = { key: string; ctrl?: boolean; meta?: boolean; alt?: boolean; repeat?: boolean };
 
 export type Handling =
   | { type: "ingen" }
@@ -47,6 +47,7 @@ export function tolkTast(tast: Tast, fokus: Fokus, skaerm: Skaerm): Handling {
 
   if (fokus === "tekst") return INGEN; // almindelig skrivning
   if (/^[1-9]$/.test(tast.key)) return { type: "tal", tal: Number(tast.key) };
-  if (tast.key === "n" || tast.key === "N") return { type: "normal" };
+  // Holdt N-tast må ikke gentage: ét tryk = én handling.
+  if (tast.key === "n" || tast.key === "N") return tast.repeat ? INGEN : { type: "normal" };
   return INGEN;
 }
