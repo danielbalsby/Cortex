@@ -295,7 +295,8 @@ export const ankel: Region = {
         "Straks til akut vurdering. Ved åbent brud dækkes såret sterilt, og patienten indlægges akut. Røntgen må ikke forsinke reponering, hvis hud eller kredsløb er truet.",
       fremhaevHvis: [[{ felt: "fejlstilling", er: "ja" }], [{ felt: "neurovaskulaer", er: "paavirket" }]],
       kilder: ["lh-ankelsmerter", "lh-ankelfraktur"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-fraktur",
@@ -316,7 +317,8 @@ export const ankel: Region = {
         ]
       ],
       kilder: ["lh-ankelsmerter", "lh-ankelfraktur"],
-      status: "UDKAST",
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15",
       konflikt: {
         beskrivelse:
           "Ordlyden af Ottawa-reglerne er forskellig i to sider i Lægehåndbogen. \"Ankelsmerter\" (2026): knogleømhed over de nederste 6 cm af bagkanten eller spidsen af malleolen, og manglende evne til at gå fire vægtbærende skridt både umiddelbart og ved undersøgelsen. \"Ankelskade, akut\" (2025): knogleømhed ved palpation af malleol, og patienten kan ikke støtte på foden hverken umiddelbart eller ved senere undersøgelse. Teksten her følger den nyeste side.",
@@ -331,7 +333,8 @@ export const ankel: Region = {
         "Samme dag til skadestue/ortopædkirurgisk afdeling. Anklen holdes plantarflekteret i en egnet skinne; undgå dorsalfleksion og belastning indtil vurderingen. Ultralyd må ikke forsinke henvisning.",
       fremhaevHvis: [[{ felt: "mekanisme", er: "smaeld" }], [{ felt: "akilles", er: "positiv" }]],
       kilder: ["lh-ankelsmerter", "lh-akillesseneruptur"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-syndesmose",
@@ -345,7 +348,8 @@ export const ankel: Region = {
         [{ felt: "mekanisme", er: "udadrotation" }]
       ],
       kilder: ["lh-ankelsmerter", "lh-ankelskade-akut"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-artrit",
@@ -353,7 +357,8 @@ export const ankel: Region = {
         "Akut artrit, herunder infektion: rødme, varme og udtalt bevægeømhed uden en passende skademekanisme.",
       handling: "Samme dag ved mistanke om ledinfektion (Region Hovedstaden: akut indlæggelse i ortopædkirurgisk regi via CVI).",
       kilder: ["lh-ankelsmerter", "rh-monoartrit"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-neuropati",
@@ -362,7 +367,8 @@ export const ankel: Region = {
       handling: "Vurder røntgen på klinisk mistanke uanset Ottawa-reglerne.",
       fremhaevHvis: [[{ felt: "disposition", er: "diabetes" }], [{ felt: "disposition", er: "foelesans" }]],
       kilder: ["lh-ankelsmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-stressfraktur",
@@ -372,7 +378,8 @@ export const ankel: Region = {
         "Aflast; røntgen som første undersøgelse. Hurtig videre vurdering ved fortsat mistanke trods normal røntgen. Ved mistanke om stressfraktur i os naviculare må afklaringen ikke udskydes til et senere kontrolrøntgen.",
       fremhaevHvis: [[{ felt: "mekanisme", er: "overbelastning" }]],
       kilder: ["lh-ankelsmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     }
   ],
 

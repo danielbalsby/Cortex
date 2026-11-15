@@ -314,7 +314,8 @@ export const skulder: Region = {
         [{ felt: "axillaris", er: "nedsat" }]
       ],
       kilder: ["lh-skulderluksation"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-fraktur",
@@ -323,7 +324,8 @@ export const skulder: Region = {
       handling: "Røntgen af skulder ved traume med mistanke om fraktur eller luksation.",
       fremhaevHvis: [[{ felt: "debut", er: "traume" }, { felt: "fejlstilling", er: "ja" }]],
       kilder: ["lh-skuldersmerter", "rh-skulder-billed"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-traumatisk-cuff",
@@ -338,7 +340,8 @@ export const skulder: Region = {
         [{ felt: "debut", er: "traume" }, { felt: "kraft", er: "flere" }]
       ],
       kilder: ["rh-rotatorcuff", "lh-rotatorcuff", "lh-skuldersmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-cuff-efter-luksation",
@@ -350,7 +353,8 @@ export const skulder: Region = {
         [{ felt: "traumetype", er: "luksation" }, { felt: "alder", er: "over75" }]
       ],
       kilder: ["lh-skulderluksation"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-faldgruber",
@@ -360,7 +364,8 @@ export const skulder: Region = {
         "Nakkesmerter med udstråling udredes for cervikal patologi. Røntgen af skulder ved mistanke om tumor eller metastase.",
       fremhaevHvis: [[{ felt: "nakke", er: "ja" }]],
       kilder: ["lh-skuldersmerter", "rh-skulder-billed"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-septisk",
@@ -368,7 +373,8 @@ export const skulder: Region = {
         "Septisk artrit: varmt, rødt, betydeligt hævet led, feber eller medtaget almentilstand. Disponerende: diabetes, alkohol- eller i.v.-misbrug, immunsuppression, nylig ledinjektion, alloplastik.",
       handling: "Indlægges akut i ortopædkirurgisk regi via CVI.",
       kilder: ["rh-monoartrit", "lh-skuldersmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     }
   ],
 

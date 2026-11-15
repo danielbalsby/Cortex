@@ -454,7 +454,8 @@ export const knae: Region = {
         [{ felt: "feber", er: "ja" }]
       ],
       kilder: ["lh-artrit-bakteriel", "rh-monoartrit"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-fraktur",
@@ -478,7 +479,8 @@ export const knae: Region = {
         [{ felt: "alder", er: "over55" }]
       ],
       kilder: ["lh-knaesmerter"],
-      status: "UDKAST",
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15",
       konflikt: {
         beskrivelse:
           "Lægehåndbogen bruger \"Knee-rules\" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder. Beslutning (truffet af Claude 2026-11-15 efter lægens anmodning): begge regler vises, og ét opfyldt kriterie i én af dem udløser akut røntgen og fremhævning. Det er den mest sensitive kombination og følger både den nationale og den regionale kilde. Originalstudierne bag reglerne er ikke læst.",
@@ -497,7 +499,8 @@ export const knae: Region = {
         ]
       ],
       kilder: ["lh-meniskskade", "lh-knaesmerter", "rh-traumatisk"],
-      status: "UDKAST",
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15",
       konflikt: {
         beskrivelse:
           "Lægehåndbogens side om meniskskade skriver \"henvises til akut ortopædkirurgisk vurdering\" ved aflåst knæ. Lægehåndbogens side om knæsmerter skriver \"subakut henvisning ... ved aflåsning\". Region Hovedstaden angiver \"subakut henvisning til CVI snarest muligt < 1 uge\" ved aflåst knæ med strækkemangel.",
@@ -528,7 +531,8 @@ export const knae: Region = {
         ]
       ],
       kilder: ["lh-korsbaand-forreste", "lh-mcl", "rh-traumatisk"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-straekkeapparat",
@@ -537,7 +541,8 @@ export const knae: Region = {
       handling: "Akut henvisning til CVI.",
       fremhaevHvis: [[{ felt: "benloeft", er: "nej" }]],
       kilder: ["rh-traumatisk"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-patellaluksation",
@@ -545,14 +550,16 @@ export const knae: Region = {
         "Akut patellaluksation: knæet \"gik af led\", ofte efter rotation på let flekteret knæ. Patella er som regel reponeret, når patienten ses; da ømhed medialt for patella og oftest hæmartron.",
       handling: "Henvises akut mhp. røntgen og bandagering (Lægehåndbogen: skadestue; Region Hovedstaden: CVI ved førstegangsluksation).",
       kilder: ["lh-patellaluksation", "rh-traumatisk"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-stor-akut-skade",
       tekst: "Store og akutte knæskader: neurologisk og vaskulær status skal indgå i vurderingen.",
       handling: "Undersøg og notér neurologisk og vaskulær status. Ved den akutte vurdering kan smerter og hævelse vanskeliggøre undersøgelsen; revurdering efter ca. 2 uger.",
       kilder: ["lh-meniskskade"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-septisk-bursit",
@@ -562,7 +569,8 @@ export const knae: Region = {
         "Henvises ved mistanke om septisk bursit. Akut henvisning ved tegn på involvering af hele knæleddet.",
       fremhaevHvis: [[{ felt: "feber", er: "ja" }]],
       kilder: ["lh-bursit", "lh-knaesmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-laeg-haevelse",
@@ -570,7 +578,8 @@ export const knae: Region = {
         "Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet Bakers cyste. Er cysten ikke tidligere erkendt, omfatter differentialdiagnoserne DVT og infektion.",
       handling: "Ultralyd kan i tvivlstilfælde stille diagnosen og afkræfte differentialdiagnoser.",
       kilder: ["lh-baker"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-boern",
@@ -579,7 +588,8 @@ export const knae: Region = {
       handling:
         "Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.",
       kilder: ["lh-knaesmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     }
   ],
 

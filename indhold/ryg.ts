@@ -368,7 +368,8 @@ export const ryg: Region = {
         [{ felt: "kraft", er: "betydende" }]
       ],
       kilder: ["rh-cauda", "lh-rodaffektion", "lh-laendesmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-malignitet",
@@ -382,7 +383,8 @@ export const ryg: Region = {
         [{ felt: "tidligere", er: "anderledes" }]
       ],
       kilder: ["lh-laendesmerter", "rh-uden-udstraaling"],
-      status: "UDKAST",
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15",
       konflikt: {
         beskrivelse:
           "Lægehåndbogen (lændesmerter, 2024): ved mistanke om malignitet henvises i pakkeforløb. Region Hovedstaden (lænderygsmerter uden radikulære symptomer, 2025): infektion eller malignitet indlægges på lokal akutmodtagelse. Region Hovedstadens billeddiagnostiske vejledning (2025): ved mistanke om cancer/metastaser bør udredning foregå i pakkeforløb.",
@@ -396,7 +398,8 @@ export const ryg: Region = {
       handling: "Udredes via specialafdeling – se konflikt om henvisningsvej.",
       fremhaevHvis: [[{ felt: "roedeflag", er: "feber" }], [{ felt: "roedeflag", er: "immun" }], [{ felt: "almen", er: "paavirket" }]],
       kilder: ["lh-laendesmerter", "rh-uden-udstraaling", "rh-billed"],
-      status: "UDKAST",
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15",
       konflikt: {
         beskrivelse:
           "Lægehåndbogen (2024): ved mistanke om infektion henvises til medicinsk eller rygkirurgisk afdeling. Region Hovedstaden (2025): infektion eller malignitet indlægges på lokal akutmodtagelse.",
@@ -411,7 +414,8 @@ export const ryg: Region = {
         "Røntgen ved traume med mistanke om fraktur. Osteoporotiske og traumatiske sammenfald behandles konservativt i primærsektoren; ved akutte svære smerter evt. indlæggelse. Ved mistanke om instabil fraktur konfereres med vagthavende på Rygsektionen, Rigshospitalet.",
       fremhaevHvis: [[{ felt: "roedeflag", er: "traume" }], [{ felt: "roedeflag", er: "osteoporose" }], [{ felt: "holdning", er: "deformitet" }]],
       kilder: ["lh-laendesmerter", "rh-uden-udstraaling", "rh-billed", "rh-spondylartrit"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-udbredte-udfald",
@@ -419,7 +423,8 @@ export const ryg: Region = {
       handling: "Hurtig henvisning til hospital ved røde flag; akut indlæggelse ved progredierende pareser.",
       fremhaevHvis: [[{ felt: "holdning", er: "deformitet" }], [{ felt: "kraft", er: "betydende" }]],
       kilder: ["lh-laendesmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-inflammatorisk",
@@ -428,7 +433,8 @@ export const ryg: Region = {
         "Henvisning til reumatolog ved mistanke om Bechterews sygdom eller anden inflammatorisk ryglidelse. Region Hovedstaden: rygsmerter i over 3 måneder debuteret før 45-årsalderen med ét eller flere SpA-kendetegn kan henvises til reumatologisk hospitalsafdeling eller speciallægepraksis – se spondylartrit under differentialdiagnoser.",
       fremhaevHvis: [[{ felt: "roedeflag", er: "morgenstivhed" }]],
       kilder: ["lh-laendesmerter", "lh-rygsmerter", "rh-spondylartrit"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-indre-organer",
@@ -436,7 +442,8 @@ export const ryg: Region = {
         "Smerter fra indre organer: aortaaneurisme (også dissekerende), pankreatit, ulcus perforans, pyelonefrit, prostatit, nyresten, herpes zoster, endometriose. Torakale smerter er et alarmsymptom.",
       handling: "Patienten udredes med tanke på mulig underliggende sygdom. Hurtig henvisning til hospital ved røde flag.",
       kilder: ["lh-laendesmerter", "lh-rygsmerter", "lh-rodaffektion"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     },
     {
       id: "flag-oevrige-alarm",
@@ -444,7 +451,8 @@ export const ryg: Region = {
         "Øvrige forhold i anamnesen ved akutte rygsmerter: alder under 20 eller over 55 år, nylig spinalpunktur, nyopståede vandladningsproblemer.",
       handling: "Indgår i vurderingen af, om der er underliggende sygdom. Ved urinretention: se cauda equina.",
       kilder: ["lh-rygsmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-15"
     }
   ],
 
