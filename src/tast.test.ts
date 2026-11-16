@@ -20,6 +20,14 @@ describe("tolkTast – region åben", () => {
     expect(tolkTast({ key: "Enter" }, "felt", "region")).toEqual({ type: "flyt", retning: 1 });
   });
 
+  it("holdt Esc, tal og Ctrl+Z gentager ikke; piletaster må gentage", () => {
+    expect(tolkTast({ key: "Escape", repeat: true }, "felt", "region")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "3", repeat: true }, "felt", "region")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "4", repeat: true }, "felt", "start")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "z", ctrl: true, repeat: true }, "felt", "region")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "ArrowDown", repeat: true }, "felt", "region")).toEqual({ type: "flyt", retning: 1 });
+  });
+
   it("holdt N-tast (repeat) gentager ikke", () => {
     expect(tolkTast({ key: "n", repeat: true }, "felt", "region")).toEqual({ type: "ingen" });
     expect(tolkTast({ key: "N", repeat: true }, "felt", "region")).toEqual({ type: "ingen" });
