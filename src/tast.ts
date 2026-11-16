@@ -19,12 +19,17 @@ export type Handling =
   | { type: "aabn"; maal: string }
   | { type: "flyt"; retning: 1 | -1 }
   | { type: "tal"; tal: number }
-  | { type: "normal" };
+  | { type: "normal" }
+  | { type: "fortryd" };
 
 const INGEN: Handling = { type: "ingen" };
 
 export function tolkTast(tast: Tast, fokus: Fokus, skaerm: Skaerm): Handling {
   if ((tast.ctrl || tast.meta) && tast.key === "Enter") return { type: "kopier" };
+  // Ctrl/⌘+Z fortryder sidste ændring – også en nulstilling (Esc Esc) eller et regionsskift –
+  // men ikke i tekstfelter, hvor browseren selv fortryder.
+  if ((tast.ctrl || tast.meta) && (tast.key === "z" || tast.key === "Z") && skaerm !== "gennemgang" && fokus !== "tekst")
+    return { type: "fortryd" };
   if (tast.ctrl || tast.meta || tast.alt) return INGEN;
   if (tast.key === "Escape") return { type: "esc" };
 

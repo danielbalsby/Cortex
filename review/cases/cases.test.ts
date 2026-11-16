@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { INDHOLD } from "../../indhold";
 import type { Region, Svar } from "../../indhold/typer";
 import { flagStatus } from "../../lib/flag";
-import { alleFelter, bygNotat, erSynligt, saetSvar } from "../../lib/notat";
+import { alleFelter, bygNotat, erSynligt, saetSvar, synligeSvar } from "../../lib/notat";
 import { CASES, type Case } from "./cases";
 
 // Regressionstest: kører hver fiktiv konsultation gennem den samme logik som appen
@@ -18,7 +18,7 @@ function koer(c: Case, region: Region): Svar {
   for (const [feltId, vaerdi] of c.trin) {
     const felt = felter.get(feltId);
     if (!felt) throw new Error(`${c.id}: ukendt felt ${feltId}`);
-    if (!erSynligt(felt, svar)) throw new Error(`${c.id}: felt ${feltId} er ikke synligt, når det klikkes`);
+    if (!erSynligt(felt, synligeSvar(region, svar))) throw new Error(`${c.id}: felt ${feltId} er ikke synligt, når det klikkes`);
     for (const v of Array.isArray(vaerdi) ? vaerdi : felt.type === "tekst" ? [] : [vaerdi])
       if (!felt.valg?.some((valg) => valg.id === v)) throw new Error(`${c.id}: ukendt valg ${feltId}=${v}`);
     svar = saetSvar(region, svar, feltId, vaerdi);
@@ -32,7 +32,7 @@ function rapport(c: Case, region: Region): string {
   for (const id of valgte)
     if (![...region.differentialdiagnoser, ...region.behandling, ...region.henvisning].some((p) => p.id === id))
       throw new Error(`${c.id}: ukendt punkt ${id}`);
-  const flag = region.roedeFlag.map((f) => ({ f, s: flagStatus(f, svar) }));
+  const flag = region.roedeFlag.map((f) => ({ f, s: flagStatus(f, synligeSvar(region, svar)) }));
   const titel = (t: string) => (t.indexOf(": ") > 0 ? t.slice(0, t.indexOf(": ")) : t.slice(0, 70));
   return [
     `# ${c.id}`,

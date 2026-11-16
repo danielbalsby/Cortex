@@ -16,14 +16,21 @@ export function erSynligt(felt: Felt, svar: Svar): boolean {
 }
 
 /**
- * Sætter ét svar og fjerner derefter svar i felter, der ikke længere vises
- * (fx traumemekanisme, når traume ændres til nej). Tom værdi fjerner svaret.
+ * Sætter ét svar. Tom værdi fjerner svaret. Svar i felter, der skjules af
+ * ændringen (fx traumemekanisme, når traume ændres til nej), slettes ikke –
+ * de bevares, så en rettelse kan fortrydes, men indgår ikke i notat og flag
+ * (se synligeSvar).
  */
-export function saetSvar(region: Region, svar: Svar, feltId: string, vaerdi: string | string[]): Svar {
-  let naeste: Svar = { ...svar };
+export function saetSvar(_region: Region, svar: Svar, feltId: string, vaerdi: string | string[]): Svar {
+  const naeste: Svar = { ...svar };
   if (vaerdi.length === 0) delete naeste[feltId];
   else naeste[feltId] = vaerdi;
+  return naeste;
+}
 
+/** Kun svar i felter, der vises. Det er dem, notat og røde flag bygger på. */
+export function synligeSvar(region: Region, svar: Svar): Svar {
+  let naeste: Svar = svar;
   const felter = alleFelter(region);
   for (let runde = 0; runde <= felter.length; runde += 1) {
     const skjulte = felter.filter((felt) => felt.id in naeste && !erSynligt(felt, naeste));
@@ -32,6 +39,19 @@ export function saetSvar(region: Region, svar: Svar, feltId: string, vaerdi: str
     for (const felt of skjulte) delete naeste[felt.id];
   }
   return naeste;
+}
+
+/** Felter med et bevaret svar, som ikke vises lige nu (til beskeden i appen). */
+export function skjulteSvar(region: Region, svar: Svar): { felt: Felt; tekst: string }[] {
+  const synlige = synligeSvar(region, svar);
+  return alleFelter(region)
+    .filter((felt) => felt.id in svar && !(felt.id in synlige))
+    .map((felt) => {
+      const v = svar[felt.id];
+      const ider = Array.isArray(v) ? v : [v];
+      const tekst = felt.type === "tekst" ? String(v) : (felt.valg ?? []).filter((valg) => ider.includes(valg.id)).map((valg) => valg.label).join(", ");
+      return { felt, tekst };
+    });
 }
 
 function medPunktum(tekst: string): string {
@@ -60,7 +80,8 @@ function feltTekst(felt: Felt, svar: Svar): string {
  * `valgte` er id'er på differentialdiagnoser (→ V) og behandling/henvisning
  * (→ P), som lægen selv har krydset af. Rækkefølgen følger indholdsfilen.
  */
-export function bygNotat(region: Region, svar: Svar, valgte: readonly string[] = []): string {
+export function bygNotat(region: Region, alleSvar: Svar, valgte: readonly string[] = []): string {
+  const svar = synligeSvar(region, alleSvar);
   const felter = new Map(alleFelter(region).map((felt) => [felt.id, felt]));
   const valgt = (punkt: { id: string }) => valgte.includes(punkt.id);
   const vurdering = region.differentialdiagnoser.filter(valgt).map((diff) => diff.notat);

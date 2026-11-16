@@ -26,6 +26,14 @@ describe("tolkTast – region åben", () => {
     expect(tolkTast({ key: "n", repeat: false }, "felt", "region")).toEqual({ type: "normal" });
   });
 
+  it("Ctrl/⌘+Z fortryder – også på startskærmen efter nulstilling, men ikke i tekstfelter eller gennemgang", () => {
+    expect(tolkTast({ key: "z", ctrl: true }, "felt", "region")).toEqual({ type: "fortryd" });
+    expect(tolkTast({ key: "z", meta: true }, "panel", "region")).toEqual({ type: "fortryd" });
+    expect(tolkTast({ key: "z", ctrl: true }, "tekst", "region")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "z", ctrl: true }, "felt", "start")).toEqual({ type: "fortryd" });
+    expect(tolkTast({ key: "z", ctrl: true }, "felt", "gennemgang")).toEqual({ type: "ingen" });
+  });
+
   it("tal skifter ikke region, når en region er åben", () => {
     expect(tolkTast({ key: "4" }, "felt", "region")).toEqual({ type: "tal", tal: 4 });
   });
