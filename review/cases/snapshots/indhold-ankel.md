@@ -1,0 +1,245 @@
+# Indhold: Ankel
+
+## Felter og notatsætninger
+
+- **Side** (side, enkelt)
+  - Højre → "Højresidige ankelsmerter."
+  - Venstre → "Venstresidige ankelsmerter."
+  - Begge → "Bilaterale ankelsmerter."
+- **Mekanisme** (mekanisme, enkelt)
+  - Indadvrid → "Indadvridningstraume (inversion)."
+  - Udadrotation → "Udadrotations- eller eversionstraume."
+  - Fald på hæl → "Fald med landing på hælen."
+  - Smæld i læg → "Smæld eller følelse af spark bag på læggen ved afsæt."
+  - Overbelastning → "Gener efter øget eller gentagen belastning uden enkeltstående traume."
+  - Andet → "Anden skademekanisme."
+- **Varighed** (varighed, enkelt)
+  - Timer → "Varighed timer."
+  - Dage → "Varighed få dage."
+  - Uger → "Varighed flere uger."
+  - Måneder → "Varighed flere måneder."
+- **4 skridt straks** (skridt-straks, enkelt)
+  - Kunne → "Kunne gå fire vægtbærende skridt umiddelbart efter skaden."
+  - Kunne ikke → "Kunne ikke gå fire vægtbærende skridt umiddelbart efter skaden."
+- **Tidligere vrid** (tidligere, enkelt)
+  - Nej → "Ingen tidligere ankelskader."
+  - Ja → "Tidligere ankelforstuvning."
+  - Gentagne/giv-way → "Gentagne forstuvninger og giv-way-episoder."
+- **Disposition** (disposition, flere)
+  - Diabetes → "Diabetes."
+  - Nedsat følesans → "Nedsat følesans i foden."
+  - Osteoporose → "Osteoporose."
+- **Feber** (feber, enkelt)
+  - Nej → "Ingen feber."
+  - Ja → "Feber."
+- **Supplerende** (anamnese-tekst, tekst)
+- **4 skridt nu** (skridt-nu, enkelt)
+  - Går → "Går fire vægtbærende skridt ved undersøgelsen."
+  - Kan ikke → "Kan ikke gå fire vægtbærende skridt ved undersøgelsen."
+- **Fejlstilling** (fejlstilling, enkelt)
+  - Ingen → "Ingen fejlstilling."
+  - Ja → "Fejlstilling."
+- **Rødme** (roedme, enkelt)
+  - Ingen → "Ingen rødme."
+  - Ja → "Rødme."
+- **Varme** (varme, enkelt)
+  - Ingen → "Ingen varmeøgning."
+  - Ja → "Varmeøgning."
+- **Cirk./sens. distalt** (neurovaskulaer, enkelt)
+  - Normal cirk. + sens. → "Normal distal cirkulation og sensibilitet."
+  - Påvirket → "Påvirket distal cirkulation eller sensibilitet."
+- **Hævelse** (haevelse, enkelt)
+  - Ingen [N] → "Ingen hævelse."
+  - Lateral → "Hævelse lateralt."
+  - Medial → "Hævelse medialt."
+  - Udtalt → "Udtalt hævelse."
+- **Knogleømhed malleol** (malleol, enkelt)
+  - Ingen → "Ingen knogleømhed over malleolerne."
+  - Lateral → "Knogleømhed over laterale malleol (bagkant/spids, nederste 6 cm)."
+  - Medial → "Knogleømhed over mediale malleol (bagkant/spids, nederste 6 cm)."
+  - Begge → "Knogleømhed over begge malleoler (bagkant/spids, nederste 6 cm)."
+- **Knogleømhed fod** (mellemfod, enkelt)
+  - Ingen (navic. + 5. mt.) → "Ingen knogleømhed over os naviculare eller basis af 5. metatars."
+  - Naviculare → "Knogleømhed over os naviculare."
+  - Basis 5. mt. → "Knogleømhed over basis af 5. metatars."
+  - Begge → "Knogleømhed over os naviculare og basis af 5. metatars."
+- **Proksimal fibula** (fibula, enkelt)
+  - Uøm → "Proksimale fibula uøm."
+  - Øm → "Ømhed over proksimale fibula."
+- **Laterale ledbånd** (ledbaand, enkelt)
+  - Uømme [N] → "Laterale ledbånd uømme."
+  - Ømme → "Ømhed over laterale ledbånd."
+- **Syndesmose** (syndesmose, enkelt)
+  - Uøm, squeeze neg. → "Syndesmosen uøm ved palpation og squeeze-test."
+  - Øm/squeeze + → "Ømhed over syndesmosen eller positiv squeeze-test."
+- **Akillessene** (akilles, enkelt)
+  - Intakt, Thompson neg. → "Akillessenen uden defekt; negativ Simmonds-Thompson-test."
+  - Thompson +/defekt → "Positiv Simmonds-Thompson-test eller palpabel defekt i akillessenen."
+- **Supplerende** (objektivt-tekst, tekst)
+
+## Røde flag
+
+- **flag-straks** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter, lh-ankelfraktur
+  - Tekst: Truet ben: åben skade med mistanke om dyb skade, fejlstilling med truet hud, kredsløbs- eller nervepåvirkning, eller hurtigt tiltagende, uforholdsmæssigt stærke smerter (mistanke om kompartmentsyndrom).
+  - Handling: Straks til akut vurdering. Ved åbent brud dækkes såret sterilt, og patienten indlægges akut. Røntgen må ikke forsinke reponering, hvis hud eller kredsløb er truet.
+  - Fremhæves hvis: fejlstilling=ja ELLER neurovaskulaer=paavirket
+- **flag-fraktur** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter, lh-ankelfraktur
+  - Konflikt: Ordlyden af Ottawa-reglerne er forskellig i to sider i Lægehåndbogen. "Ankelsmerter" (2026): knogleømhed over de nederste 6 cm af bagkanten eller spidsen af malleolen, og manglende evne til at gå fire vægtbærende skridt både umiddelbart og ved undersøgelsen. "Ankelskade, akut" (2025): knogleømhed ved palpation af malleol, og patienten kan ikke støtte på foden hverken umiddelbart eller ved senere undersøgelse. Teksten her følger den nyeste side.
+  - Tekst: Fraktur (Ottawa-reglerne): røntgen af anklen ved smerter i malleolområdet og knogleømhed over de nederste 6 cm af bagkanten eller spidsen af en malleol, eller manglende evne til at gå fire vægtbærende skridt både umiddelbart efter skaden og ved undersøgelsen. Røntgen af foden ved smerter i mellemfoden og knogleømhed over os naviculare eller basis af 5. metatars, eller samme manglende gangevne. Reglerne gælder voksne og børn fra 5 år, som var normalt gående før skaden og kan undersøges pålideligt.
+  - Handling: Samme dag til røntgen eller akutmodtagelse. Ved anden klinisk frakturmistanke målrettet røntgen uanset Ottawa-reglerne. Reglerne udelukker ikke alle bagfodsfrakturer, syndesmose- eller seneskader.
+  - Fremhæves hvis: malleol=lateral ELLER malleol=medial ELLER malleol=begge ELLER mellemfod=naviculare ELLER mellemfod=mt5 ELLER mellemfod=begge ELLER skridt-straks=nej og skridt-nu=nej
+- **flag-akilles** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter, lh-akillesseneruptur
+  - Tekst: Akillesseneruptur: smæld eller følelse af spark bag på læggen ved afsæt, svækket afsæt, ofte palpabel defekt; positiv Simmonds-Thompson-test. Smerterne kan hurtigt aftage trods komplet ruptur, og bevaret aktiv plantarfleksion eller gangevne udelukker ikke ruptur.
+  - Handling: Samme dag til skadestue/ortopædkirurgisk afdeling. Anklen holdes plantarflekteret i en egnet skinne; undgå dorsalfleksion og belastning indtil vurderingen. Ultralyd må ikke forsinke henvisning.
+  - Fremhæves hvis: mekanisme=smaeld ELLER akilles=positiv
+- **flag-syndesmose** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter, lh-ankelskade-akut
+  - Tekst: Syndesmose- eller Maisonneuve-skade: smerter mellem distale tibia og fibula, ofte efter udadrotation. Samtidig medial ankelømhed eller ømhed over proksimale fibula skærper mistanken om en ustabil skade. Negative tests udelukker ikke skaden.
+  - Handling: Samme dag ved mistanke om Maisonneuve-skade eller syndesmoseskade med udtalte belastningsproblemer eller samtidig medial skade. Ved mistanke om Maisonneuve-skade røntgen af hele underbenet.
+  - Fremhæves hvis: syndesmose=oem ELLER fibula=oem ELLER mekanisme=udadrotation
+- **flag-artrit** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter, rh-monoartrit
+  - Tekst: Akut artrit, herunder infektion: rødme, varme og udtalt bevægeømhed uden en passende skademekanisme.
+  - Handling: Samme dag ved mistanke om ledinfektion (Region Hovedstaden: akut indlæggelse i ortopædkirurgisk regi via CVI).
+  - Fremhæves hvis: roedme=ja ELLER varme=ja
+- **flag-neuropati** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter
+  - Tekst: Diabetes eller nedsat følesans: Ottawa-reglerne gælder ikke ved upålidelig undersøgelse, fx ved neuropati. Vær tilbageholdende med kulde og kompression ved nedsat cirkulation eller sensibilitet.
+  - Handling: Vurder røntgen på klinisk mistanke uanset Ottawa-reglerne.
+  - Fremhæves hvis: disposition=diabetes ELLER disposition=foelesans
+- **flag-stressfraktur** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter
+  - Tekst: Stressfraktur: belastningssmerter og fokal knogleømhed, ofte efter øget aktivitet; kan opleves som akut opstået. Tidlige røntgenoptagelser kan være normale. Ottawa-reglerne gælder ikke ved overbelastningsskader.
+  - Handling: Aflast; røntgen som første undersøgelse. Hurtig videre vurdering ved fortsat mistanke trods normal røntgen. Ved mistanke om stressfraktur i os naviculare må afklaringen ikke udskydes til et senere kontrolrøntgen.
+  - Fremhæves hvis: mekanisme=overbelastning
+
+## Differentialdiagnoser
+
+- **Lateral ankeldistorsion** (diff-distorsion) [UDKAST] kilder: lh-ankelsmerter, lh-ankelskade-akut
+  - Typisk inversionstraume; ømhed foran og under laterale malleol
+  - Lig. talofibulare anterius rumperer oftest først, derefter lig. calcaneofibulare
+  - Grad I: partiel ruptur · Grad II: total ruptur af ATFL · Grad III: total ruptur af ATFL og CFL
+  - Hævelsens størrelse afgør ikke sværhedsgraden; skuffetest og talar tilt har begrænset værdi akut
+  - Ny undersøgelse efter 3–5 dage giver mere korrekt vurdering
+  - V: "Foreneligt med lateral ankeldistorsion."
+- **Fraktur (malleol, fod eller bagfod)** (diff-fraktur) [UDKAST] kilder: lh-ankelsmerter, lh-ankelfraktur, lh-ankelskade-akut
+  - Fokal knogleømhed og belastningsbesvær
+  - Tænk ud over malleolerne: talus og calcaneus ved bagfodssmerter, basis af 5. metatars, proksimale fibula
+  - Fald på hælen giver mistanke om fraktur i calcaneus eller talus
+  - Frakturer er hyppigere hos ældre; nogle kan ligne en distorsion og være svære at se på første røntgen
+  - V: "Fraktur mistænkes."
+- **Syndesmoseskade / Maisonneuve-skade** (diff-syndesmose) [UDKAST] kilder: lh-ankelsmerter, lh-ankelskade-akut
+  - Ofte udadrotation (evt. kombineret med dorsalfleksion)
+  - Smerter mellem distale tibia og fibula; positiv squeeze-test eller smerter ved udadrotation
+  - Maisonneuve: proksimal fibulafraktur og skade på syndesmosen
+  - V: "Syndesmoseskade mistænkes."
+- **Medial ligamentskade (lig. deltoideum)** (diff-medial) [UDKAST] kilder: lh-ankelskade-akut
+  - Eversionstraume, ofte med samtidig syndesmoseskade eller fraktur
+  - Isolerede mediale ligamentskader er sjældne (1–2 % af ligamentskaderne i anklen)
+  - V: "Medial ligamentskade overvejes."
+- **Akillesseneruptur** (diff-akilles) [UDKAST] kilder: lh-akillesseneruptur, lh-ankelsmerter
+  - Pludselige smerter og nedsat kraft ved forceret belastning; smæld
+  - Kan ikke stå på tæer; positiv Thompsons test; ofte palpabel defekt
+  - Aktiv plantarfleksion kan være mulig liggende uden modstand trods ruptur
+  - V: "Akillesseneruptur mistænkes."
+- **Anden seneskade / peroneusluksation** (diff-sene) [UDKAST] kilder: lh-ankelsmerter, lh-ankelskade-akut
+  - Smerter og hævelse langs en sene
+  - Smerter bag laterale malleol med klik eller sene, der springer frem over malleolen: peroneal seneluksation
+  - Mekanisme: supination i dorsalfleksion mod kontraheret peroneusmuskulatur
+  - V: "Seneskade overvejes."
+- **Stressfraktur** (diff-stressfraktur) [UDKAST] kilder: lh-ankelsmerter
+  - Belastningssmerter og fokal knogleømhed efter øget aktivitet
+  - Tidlige røntgenoptagelser kan være normale
+  - V: "Stressfraktur mistænkes."
+- **Osteokondral skade (bruskskade i anklen)** (diff-brusk) [UDKAST] kilder: lh-ankel-brusk, lh-ankelsmerter
+  - Efter ankeltraume: vedvarende dybe ledsmerter, stivhed, hævelse eller aflåsning
+  - Røntgen viser ofte et lille knoglefragment; ellers MR ved fortsat mistanke
+  - V: "Osteokondral skade overvejes."
+- **Kronisk lateral ankelinstabilitet** (diff-instabilitet) [UDKAST] kilder: lh-ankel-ustabil
+  - Tidligere distorsion; gentagne giv-way-episoder og usikkerhed på ujævnt underlag
+  - Omkring 20 % med lateral forstuvning udvikler kronisk instabilitet
+  - Mekanisk: positiv anterior drawer eller talar tilt (sideforskel > 5° eller tilt > 10°)
+  - Funktionel (proprioceptiv): negativ løshedsundersøgelse
+  - V: "Foreneligt med kronisk lateral ankelinstabilitet."
+- **Akut artrit, herunder septisk** (diff-artrit) [UDKAST] kilder: lh-ankelsmerter, rh-monoartrit
+  - Rødme, varme og udtalt bevægeømhed uden passende skademekanisme
+  - Region Hovedstaden: hyppige differentialdiagnoser er urinsyregigt, pyrofosfatartrit, reaktiv artrit og sarkoidose (ofte ankelled og erythema nodosum)
+  - V: "Akut artrit overvejes."
+
+## Behandling
+
+- **beh-initial** [UDKAST] kilder: lh-ankelsmerter
+  - Første smertefulde fase: ro, aflastning, beskyttelse og elevation. RICE kan anvendes: kulde 10–15 minutter ad gangen med klæde mellem hud og kuldepakning, elastisk bind ved hævelse (må ikke kompromittere cirkulation eller følesans), elevation over hjertehøjde. Paracetamol efter behov. RICE må ikke forsinke akut henvisning.
+  - Gælder: generelt
+  - P: "Rådgivet om ro, aflastning, elevation og kulde. Paracetamol efter behov."
+- **beh-fraktur-mistanke** [UDKAST] kilder: lh-ankelsmerter, lh-ankelfraktur
+  - Ved mistanke om fraktur eller ustabil skade: aflast og immobiliser indtil akut vurdering; undgå unødig belastning, indtil røntgen og behandlingsplan foreligger.
+  - Gælder: diff-fraktur, diff-syndesmose
+  - P: "Aflastet og immobiliseret indtil akut vurdering."
+- **beh-akilles-skinne** [UDKAST] kilder: lh-ankelsmerter
+  - Ved mistanke om akillesseneruptur: anklen plantarflekteret i egnet skinne; undgå dorsalfleksion og belastning indtil vurderingen.
+  - Gælder: diff-akilles
+  - P: "Anklen plantarflekteret i skinne indtil vurdering."
+- **beh-distorsion** [UDKAST] kilder: lh-ankelsmerter
+  - Ukompliceret lateral distorsion: behovet for ro er størst de første 1–2 døgn; derefter gradvis beskyttet belastning og bevægelse. Ved svær distorsion kan kortvarig immobilisering være nødvendig, typisk op til 10 dage. En stabiliserende ankelortose begrænser ny inversion; et elastisk bind giver ikke samme beskyttelse. Rutinemæssig tidlig henvisning til fysioterapeut anbefales ikke.
+  - Gælder: diff-distorsion
+  - P: "Gradvis beskyttet belastning og bevægelse. Stabiliserende ankelortose."
+- **beh-distorsion-medicin** [UDKAST] kilder: lh-ankelskade-akut
+  - Konflikt: "Ankelskade, akut" (2025) anbefaler NSAID evt. suppleret med paracetamol de første dage. Den nyere "Ankelsmerter" (2026) nævner kun paracetamol efter behov i den initiale behandling.
+  - Akut ankelskade: NSAID, evt. suppleret med paracetamol, de første dage – fx paracetamol 0,5 g 2 tabletter × 4 i 2–4 dage og NSAID i 5–7 dage.
+  - Gælder: diff-distorsion
+  - P: "NSAID og paracetamol de første dage."
+- **beh-proprioceptiv** [UDKAST] kilder: lh-ankelskade-akut
+  - Efter den akutte fase: mobilisering, ankeløvelser og proprioceptiv træning. Tape eller ortose anbefales i 6–12 måneder efter akut ankelskade som sekundær profylakse. Ultralydsbehandling anbefales ikke.
+  - Gælder: diff-distorsion, diff-instabilitet
+  - P: "Instrueret i ankeløvelser og balancetræning. Tape eller ortose ved sport i 6–12 måneder."
+- **beh-instabilitet** [UDKAST] kilder: lh-ankel-ustabil
+  - Kronisk lateral instabilitet: balance-, proprioceptions- og styrketræning af peronealmuskulaturen; velstøttende fodtøj eller ankelstøtte; undgå aktiviteter, der udløser nye distorsioner. Kirurgi ved mekanisk instabilitet trods 3–6 måneders struktureret fysioterapi.
+  - Gælder: diff-instabilitet
+  - P: "Henvist til struktureret balance- og peronealtræning."
+- **beh-overbelastning** [UDKAST] kilder: lh-ankelsmerter
+  - Overbelastning: den udløsende aktivitet standses eller reduceres. Ved mistanke om stressfraktur aflastes, og diagnosen afklares, før belastningen øges. Smerter efter overbelastning skal ikke automatisk behandles som en forstuvning.
+  - Gælder: diff-stressfraktur, diff-sene
+  - P: "Udløsende aktivitet reduceret; aflastning indtil afklaring."
+- **beh-brusk** [UDKAST] kilder: lh-ankel-brusk
+  - Mistanke om bruskskade: undgå kraftig belastning, indtil diagnosen er afklaret.
+  - Gælder: diff-brusk
+  - P: "Rådgivet om at undgå kraftig belastning indtil afklaring."
+- **beh-vte** [UDKAST] kilder: lh-ankelfraktur
+  - Voksne med immobiliserende bandage eller markant nedsat mobilitet bør have en individuel vurdering af risikoen for venøs tromboemboli og blødning; farmakologisk profylakse efter lokal behandlingsplan.
+  - Gælder: diff-fraktur, diff-akilles
+  - P: "VTE-risiko vurderet."
+- **beh-opfoelgning** [UDKAST] kilder: lh-ankelsmerter, lh-ankelskade-akut
+  - Ny klinisk vurdering efter 3–5 dage ved usikker diagnose eller smertebegrænset første undersøgelse. Genvurder ved manglende tydelig bedring inden for 5–7 dage, fortsat manglende evne til at støtte, fokal knogleømhed, dybe ledsmerter eller aflåsning. Et normalt første røntgenbillede afslutter ikke udredningen ved fortsat klinisk mistanke.
+  - Gælder: generelt
+  - P: "Kontrol om 3–5 dage; tidligere ved forværring."
+
+## Henvisning
+
+- **Akut vurdering / indlæggelse straks** (hen-straks, akut, national) [UDKAST] kilder: lh-ankelsmerter, lh-ankelfraktur
+  - Åben skade med mistanke om dyb skade, fejlstilling med truet hud, kredsløbs- eller nervepåvirkning, mistanke om kompartmentsyndrom.
+  - P: "Henvist straks til akut vurdering."
+- **Røntgen eller akutmodtagelse samme dag** (hen-samme-dag, akut, national) [UDKAST] kilder: lh-ankelsmerter, lh-ankelfraktur, lh-akillesseneruptur
+  - Mistanke om akut fraktur (Ottawa-reglerne eller anden klinisk mistanke), luksation, akillesseneruptur eller ledinfektion; mistanke om Maisonneuve-skade eller syndesmoseskade med udtalte belastningsproblemer eller samtidig medial skade.
+  - P: "Henvist samme dag til akut vurdering."
+- **Billeddiagnostik eller ortopædkirurgisk vurdering (hurtigt)** (hen-hurtig, subakut, national) [UDKAST] kilder: lh-ankelsmerter
+  - Fortsat mistanke om syndesmoseskade, seneluksation eller stressfraktur trods normal røntgen. Aflast og beskyt skaden imens. CT eller MR kan være relevant ved fortsat mistanke om strukturel skade.
+  - P: "Henvist til hurtig videre vurdering trods normal røntgen."
+- **Ortopædkirurg** (hen-langvarig, elektiv, national) [UDKAST] kilder: lh-ankelskade-akut, lh-ankel-brusk
+  - Ankelskade, hvor patienten ikke er symptomfri efter 3 måneder (revurder om fraktur er overset), eller længerevarende ankelsmerter uden sikker årsag. Røntgen bør gentages efter 1 måned, hvis der fortsat er smerter ved almindelig gang.
+  - P: "Henvist til ortopædkirurg pga. vedvarende gener efter ankelskade."
+- **Ortopædkirurg (bruskskade)** (hen-brusk, elektiv, national) [UDKAST] kilder: lh-ankel-brusk
+  - Klinisk mistanke om bruskskade og knogleavulsion, eller røntgenfund med mistanke om osteokondral fraktur.
+  - P: "Henvist til ortopædkirurg mhp. osteokondral skade."
+- **Ortopædkirurg (instabilitet)** (hen-instabilitet, elektiv, national) [UDKAST] kilder: lh-ankel-ustabil
+  - Manglende bedring efter målrettet konservativ behandling; klinisk eller radiologisk påvist mekanisk løshed; ledsagende deformitet, bruskskade eller seneskade.
+  - P: "Henvist til ortopædkirurg mhp. kronisk ankelinstabilitet."
+- **Akut indlæggelse (ortopædkirurgi via CVI)** (hen-septisk, akut, Region Hovedstaden) [UDKAST] kilder: rh-monoartrit
+  - Mistanke om septisk artrit.
+  - P: "Henvist akut til CVI mhp. septisk artrit."
+
+## Kilder
+
+- lh-ankelsmerter: Lægehåndbogen 2026, Ankelsmerter (symptomer og tegn), tjekket 2026-11-14
+- lh-ankelskade-akut: Lægehåndbogen 2025, Ankelskade, akut, tjekket 2026-11-14
+- lh-ankelfraktur: Lægehåndbogen 2026, Ankel, frakturer, tjekket 2026-11-14
+- lh-akillesseneruptur: Lægehåndbogen 2025, Akillesseneruptur, tjekket 2026-11-14
+- lh-ankel-ustabil: Lægehåndbogen 2025, Kronisk lateral ankelinstabilitet, tjekket 2026-11-14
+- lh-ankel-brusk: Lægehåndbogen 2024, Ankel, bruskskader, tjekket 2026-11-14
+- rh-monoartrit: Region Hovedstaden 2025, Forløbsbeskrivelse: Akut monoartritis, tjekket 2026-11-14

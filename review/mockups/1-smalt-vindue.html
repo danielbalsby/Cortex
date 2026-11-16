@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup: smalt vindue</title>
+<style>
+:root{--bg:#f4f5f3;--flade:#fff;--tekst:#1c2321;--daempet:#5d6a66;--kant:#d9dedb;--accent:#1f6f5c;--accent-svag:#e2f0ec;--advarsel:#a3341f;font:15px/1.45 system-ui,"Segoe UI",sans-serif;color:var(--tekst)}
+body{margin:0;background:#cfd4d2;display:flex;gap:24px;padding:16px;align-items:flex-start;flex-wrap:wrap}
+.ramme{width:680px;height:768px;background:var(--bg);border:1px solid #999;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.ramme h3{position:absolute;top:-28px;left:0;margin:0;font-size:13px;color:#333}
+.top{display:flex;gap:6px;padding:8px 12px;background:var(--flade);border-bottom:1px solid var(--kant);align-items:center}
+.top b{margin-right:8px;letter-spacing:.04em}.reg{padding:4px 10px;border:1px solid var(--kant);border-radius:6px}.reg.a{background:var(--accent);color:#fff;border-color:var(--accent)}
+.flagbar{background:var(--flade);border-bottom:1px solid var(--kant);padding:6px 12px;font-size:.9rem}
+.flagbar .t{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--daempet)}
+.m{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}.m span{border:1px solid var(--advarsel);border-left-width:3px;background:#fbeae6;border-radius:6px;padding:1px 8px;font-weight:600}
+.m span::before{content:"! ";color:var(--advarsel)}
+.rest{color:var(--daempet);font-size:.85rem;margin-top:3px}
+.felter{flex:1;overflow:auto;padding:8px 12px}
+.felt{display:flex;gap:8px;align-items:center;padding:3px 6px;border-left:3px solid transparent}.felt.akt{background:var(--accent-svag);border-left-color:var(--accent)}
+.lbl{flex:0 0 110px;color:var(--daempet);font-size:.9rem}.chip{padding:2px 10px;border:1px solid var(--kant);border-radius:999px;background:var(--flade);font-size:.9rem}.chip.v{background:var(--accent-svag);border-color:var(--accent);color:var(--accent);font-weight:600}
+h4{margin:10px 0 4px;font-size:.75rem;letter-spacing:.08em;color:var(--daempet)}
+.notat{background:var(--flade);border-top:2px solid var(--accent);padding:8px 12px;max-height:180px}
+.notat .hd{display:flex;justify-content:space-between;align-items:center}.k{background:var(--accent);color:#fff;border-radius:6px;padding:3px 12px;font-weight:600}
+pre{margin:6px 0 0;font:inherit;font-size:.9rem;white-space:pre-wrap;max-height:110px;overflow:auto;background:var(--bg);padding:6px 8px;border-radius:6px}
+.note{max-width:420px;font-size:14px;background:#fff;padding:12px 16px;border-radius:8px}
+.note li{margin-bottom:6px}
+</style></head><body>
+<div class="ramme" style="margin-top:28px"><h3>FORSLAG – knæ, scenarie C, vindue 680 × 768 (halv skærm ved siden af journalen)</h3>
+  <div class="top"><b>CORTEX</b><span class="reg">Skulder</span><span class="reg">Albue</span><span class="reg">Lænderyg</span><span class="reg a">Knæ</span><span class="reg">Ankel</span></div>
+  <div class="flagbar"><div class="t">Røde flag (10) · 2 matcher dine valg · <u>vis alle</u></div>
+    <div class="m"><span>Bakteriel artrit</span><span>Bursit med stærke smerter, varme, rødme …</span></div>
+    <div class="rest">Øvrige 8: Akut knæskade · Aflåst knæ · Akut ligamentskade … (titler, én linje, klik for alle)</div></div>
+  <div class="felter">
+    <h4>ANAMNESE</h4>
+    <div class="felt"><span class="lbl">Side</span><span class="chip v">Højre</span><span class="chip">Venstre</span><span class="chip">Begge</span></div>
+    <div class="felt"><span class="lbl">Debut</span><span class="chip v">Akut</span><span class="chip">Gradvis</span><span class="chip">Recidiv</span></div>
+    <div class="felt"><span class="lbl">Varighed</span><span class="chip">Timer</span><span class="chip v">Dage</span><span class="chip">Uger</span><span class="chip">Måneder</span></div>
+    <div class="felt"><span class="lbl">Traume</span><span class="chip v">Nej</span><span class="chip">Ja</span></div>
+    <div class="felt"><span class="lbl">Feber</span><span class="chip">Nej</span><span class="chip v">Ja</span></div>
+    <h4>OBJEKTIVT</h4>
+    <div class="felt"><span class="lbl">Hævelse</span><span class="chip">Ingen</span><span class="chip">Let</span><span class="chip v">Moderat</span><span class="chip">Udtalt</span></div>
+    <div class="felt"><span class="lbl">Rødme</span><span class="chip">Ingen</span><span class="chip v">Ja</span></div>
+    <div class="felt akt"><span class="lbl">Varme</span><span class="chip">1 Ingen</span><span class="chip v">2 Ja</span></div>
+    <div class="felt"><span class="lbl">Bevægelighed</span><span class="chip">Fuld</span><span class="chip v">Let nedsat</span><span class="chip">Svært nedsat</span></div>
+  </div>
+  <div class="notat"><div class="hd"><b style="font-size:.75rem;letter-spacing:.08em;color:var(--daempet)">NOTAT</b><span class="k">Kopiér Ctrl ⏎</span></div>
+  <pre>S: Højresidige knæsmerter. Akut debut. Varighed få dage. Intet traume. Feber.
+O: Moderat hævelse. Rødme. Varmeøgning. Let nedsat bevægelighed.</pre></div>
+</div>
+<div class="note"><b>Hvad mockuppen viser</b>
+<ul>
+<li><b>I dag (≤ 800 px):</b> én kolonne. Notatet starter 747 px nede og første røde flag 863 px nede – begge under skærmkanten i et vindue på 768 px. Se <code>foer-smal-683.png</code>.</li>
+<li><b>Forslag:</b> under 800 px bliver rækkefølgen: røde flag som smal stribe øverst (matchende flag med titel, øvrige som én linje), felterne i midten, notatet fast nederst med Kopiér.</li>
+<li>Differentialdiagnoser, behandling og henvisning flyttes under felterne (sammenfoldet), som i dag.</li>
+<li>Ingen ny tekst: titler og notatsætninger er de eksisterende. Rødt signal har altid også tegn (!) og tekst ("matcher").</li>
+<li>Kun CSS + én ny lille komponent (flagstribe), som genbruger <code>sorterFlag</code>.</li>
+</ul></div>
+</body></html>

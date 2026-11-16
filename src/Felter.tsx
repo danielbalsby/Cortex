@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 
 import type { Felt, Region, Svar } from "../indhold/typer";
+import { lignerCpr } from "../lib/cpr";
 import { erSynligt } from "../lib/notat";
 
 type Props = {
@@ -78,9 +79,19 @@ function FeltRaekke({
           placeholder={felt.pladsholder}
           maxLength={200}
           autoComplete="off"
+          // Browserens udvidede stavekontrol og stavekontrol-udvidelser kan sende tekst ud.
+          spellCheck={false}
+          autoCorrect="off"
+          data-gramm="false"
+          data-enable-grammarly="false"
           onFocus={() => onAktiv(felt.id)}
           onChange={(event) => onSvar(felt.id, event.target.value)}
         />
+        {typeof vaerdi === "string" && lignerCpr(vaerdi) && (
+          <span className="cprAdvarsel" role="status">
+            Ligner et CPR-nummer – skriv ingen personhenførbare data i Cortex.
+          </span>
+        )}
       </label>
     );
   }
@@ -109,6 +120,7 @@ function FeltRaekke({
     >
       <span className="feltLabel" id={labelId}>
         {felt.label}
+        {felt.kunTilFlag && <span className="kunFlag">ikke i notat</span>}
       </span>
       <span className="valg">
         {(felt.valg ?? []).map((valg, index) => (

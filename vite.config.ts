@@ -7,6 +7,6 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   plugins: [react(), viteSingleFile()],
   test: {
-    include: ["src/**/*.test.ts", "lib/**/*.test.ts", "indhold/**/*.test.ts"]
+    include: ["src/**/*.test.ts", "lib/**/*.test.ts", "indhold/**/*.test.ts", "review/cases/**/*.test.ts"]
   }
 });

@@ -27,7 +27,8 @@ describe("vaelgMedTal (knæ)", () => {
 
 describe("naboFelt (knæ)", () => {
   it("springer skjulte traumefelter over", () => {
-    expect(naboFelt(knae, {}, "traume", 1)).toBe("belastning");
+    expect(naboFelt(knae, {}, "traume", 1)).toBe("alder"); // alder vises altid (C3)
+    expect(naboFelt(knae, {}, "alder", 1)).toBe("belastning");
     expect(naboFelt(knae, { traume: "ja" }, "traume", 1)).toBe("traumemekanisme");
   });
 

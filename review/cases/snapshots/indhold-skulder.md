@@ -1,0 +1,255 @@
+# Indhold: Skulder
+
+## Felter og notatsætninger
+
+- **Side** (side, enkelt)
+  - Højre → "Højresidige skuldersmerter."
+  - Venstre → "Venstresidige skuldersmerter."
+  - Begge → "Bilaterale skuldersmerter."
+- **Alder** (alder, enkelt)
+  - Under 40 → "Alder under 40 år."
+  - 40–75 → "Alder 40–75 år."
+  - Over 75 → "Alder over 75 år."
+- **Debut** (debut, enkelt)
+  - Spontant → "Spontant opståede gener."
+  - Overbelastning → "Opstået efter overbelastning."
+  - Traume → "Opstået efter traume."
+- **Traume** (traumetype, enkelt, vises hvis debut=traume)
+  - Fald på arm/skulder → "Fald på arm eller skulder."
+  - Tungt løft → "Tungt løft."
+  - Ude af led → "Skulderen var ude af led."
+  - Andet → "Anden skademekanisme."
+- **Varighed** (varighed, enkelt)
+  - Dage → "Varighed få dage."
+  - Uger → "Varighed flere uger."
+  - Måneder → "Varighed flere måneder."
+  - Over 6 mdr. → "Varighed over 6 måneder."
+- **Natlige smerter** (nat, enkelt)
+  - Nej → "Ingen natlige smerter."
+  - Ved liggen på skulderen → "Natlige smerter ved liggen på skulderen."
+  - Også i hvile → "Hvilesmerter og natlige smerter."
+- **Tidl. luksation** (luksationer, enkelt)
+  - Nej → "Ingen tidligere skulderluksation."
+  - Én → "Én tidligere skulderluksation."
+  - Flere → "Flere tidligere skulderluksationer."
+- **Nakke/udstråling** (nakke, enkelt)
+  - Nej → "Ingen nakkesmerter eller udstråling."
+  - Ja → "Smerter også i nakke eller skulderbue, evt. med udstråling."
+- **Arbejde over skulderhøjde** (arbejde, enkelt)
+  - Nej → "Intet skulderbelastende arbejde."
+  - Ja → "Skulderbelastende arbejde eller idræt over skulderhøjde."
+- **Feber** (feber, enkelt)
+  - Nej → "Ingen feber."
+  - Ja → "Feber."
+- **Supplerende** (anamnese-tekst, tekst)
+- **Fejlstilling** (fejlstilling, enkelt)
+  - Ingen → "Ingen fejlstilling."
+  - Ja → "Fejlstilling eller epauletskulder."
+- **Rødme** (roedme, enkelt)
+  - Ingen → "Ingen rødme."
+  - Ja → "Rødme."
+- **Varme** (varme, enkelt)
+  - Ingen → "Ingen varmeøgning."
+  - Ja → "Varmeøgning."
+- **Sens. lateralt (n. ax.)** (axillaris, enkelt, vises hvis debut=traume)
+  - Normal → "Normal sensibilitet lateralt på skulderen."
+  - Nedsat → "Nedsat sensibilitet lateralt på skulderen."
+- **Aktiv bevægelighed** (aktiv, enkelt)
+  - Fuld → "Fuld aktiv bevægelighed."
+  - Nedsat → "Nedsat aktiv bevægelighed."
+- **Passiv bevægelighed** (passiv, enkelt)
+  - Fuld → "Fuld passiv bevægelighed."
+  - Nedsat, især udadrot. → "Nedsat passiv bevægelighed, især udadrotation."
+  - Nedsat, andet → "Nedsat passiv bevægelighed."
+- **Smertebue** (smertebue, enkelt)
+  - Negativ → "Ingen smertebue."
+  - Positiv → "Positiv smertebue."
+- **Hawkins/Neer** (impingement, enkelt)
+  - Negative → "Negativ Hawkins' og Neer's test."
+  - Positive → "Positiv Hawkins' og/eller Neer's test."
+- **Kraft rotator cuff** (kraft, enkelt)
+  - Normal → "Normal kraft i rotator cuffen."
+  - ↓ abduktion → "Nedsat kraft ved isometrisk abduktion (supraspinatus)."
+  - ↓ udadrot. → "Nedsat kraft ved isometrisk udadrotation (infraspinatus)."
+  - ↓ indadrot. → "Nedsat kraft ved isometrisk indadrotation (subscapularis)."
+  - ↓ flere planer → "Nedsat kraft i flere planer."
+- **AC-led** (acled, enkelt)
+  - Uømt, crossover neg. → "AC-leddet uømt, negativ crossover-test."
+  - Ømt/crossover + → "Ømhed over AC-leddet og/eller positiv crossover-test."
+- **Supplerende** (objektivt-tekst, tekst)
+
+## Røde flag
+
+- **flag-luksation** [GODKENDT 2026-11-15] kilder: lh-skulderluksation
+  - Tekst: Akut skulderluksation: armen immobiliseres, skulderen kan hverken bevæges aktivt eller passivt. Anterior: indhug i skulderbuen (epauletskulder), caput palpabelt fortil. Posterior: let at overse, armen ofte låst i indadrotation. N. axillaris undersøges (sensibilitet lateralt på skulderen).
+  - Handling: Henvises til hospital. Reponer ikke i almen praksis før røntgen, som stiller diagnosen og udelukker fraktur (især hos ældre: proksimal humerusfraktur).
+  - Fremhæves hvis: traumetype=luksation ELLER fejlstilling=ja ELLER axillaris=nedsat
+- **flag-fraktur** [GODKENDT 2026-11-15] kilder: lh-skuldersmerter, rh-skulder-billed
+  - Tekst: Brud eller seneruptur efter kraftigt traume eller overbelastning: bevægeindskrænkning, fejlstilling, hævelse, misfarvning, eller betydelig kraftnedsættelse med kun lette til moderate smerter ved isometrisk test.
+  - Handling: Røntgen af skulder ved traume med mistanke om fraktur eller luksation.
+  - Fremhæves hvis: debut=traume og fejlstilling=ja
+- **flag-traumatisk-cuff** [GODKENDT 2026-11-15] kilder: rh-rotatorcuff, lh-rotatorcuff, lh-skuldersmerter
+  - Tekst: Traumatisk rotator cuff-ruptur (tidskritisk): relevant traume og nedsat kraft i et eller flere planer, ofte nedsat aktiv bevægelighed. Hos patienter over 40 år giver traume oftere rifter i rotator cuffen. Operation bør ske inden 3 måneder fra traumet.
+  - Handling: Røntgen (fraktur udelukkes), hurtig ultralyd og henvisning til ortopædkirurgisk afdeling ved påvist gennemgående eller total læsion – se henvisning.
+  - Fremhæves hvis: debut=traume og kraft=abd ELLER debut=traume og kraft=udad ELLER debut=traume og kraft=indad ELLER debut=traume og kraft=flere
+- **flag-cuff-efter-luksation** [GODKENDT 2026-11-15] kilder: lh-skulderluksation
+  - Tekst: Over 40 år efter skulderluksation: øget risiko for rotator cuff-skade. Nedsat styrke i rotator cuffen 2–4 uger efter luksationen.
+  - Handling: Udredes med ultralyd eller hos ortopædkirurg.
+  - Fremhæves hvis: traumetype=luksation og alder=40til75 ELLER traumetype=luksation og alder=over75
+- **flag-faldgruber** [GODKENDT 2026-11-15] kilder: lh-skuldersmerter, rh-skulder-billed
+  - Tekst: Diagnostiske faldgruber: thoracic outlet syndrom, radikulopati, leukæmi, sarkom, lungetumor (Pancoast). Smerter også i nakke eller skulderbue skal primært give mistanke om cervikal lidelse.
+  - Handling: Nakkesmerter med udstråling udredes for cervikal patologi. Røntgen af skulder ved mistanke om tumor eller metastase.
+  - Fremhæves hvis: nakke=ja
+- **flag-septisk** [GODKENDT 2026-11-15] kilder: rh-monoartrit, lh-skuldersmerter
+  - Tekst: Septisk artrit: varmt, rødt, betydeligt hævet led, feber eller medtaget almentilstand. Disponerende: diabetes, alkohol- eller i.v.-misbrug, immunsuppression, nylig ledinjektion, alloplastik.
+  - Handling: Indlægges akut i ortopædkirurgisk regi via CVI.
+  - Fremhæves hvis: feber=ja ELLER roedme=ja ELLER varme=ja
+
+## Differentialdiagnoser
+
+- **Subacromielt smertesyndrom / rotator cuff-tendinopati (impingement)** (diff-impingement) [UDKAST] kilder: lh-subacromielt, lh-skuldersmerter, rh-rotatorcuff
+  - Hyppigste årsag; oftest supraspinatus
+  - Positiv smertebue (hovedkriterium); positiv Hawkins/Neer
+  - Oftest normal passiv bevægelighed og normal kraft, evt. efter smertelindring
+  - Natlige smerter ved liggen på skulderen; udstråling til C5-dermatomet
+  - Arbejde og idræt over skulderhøjde disponerer
+  - V: "Foreneligt med subacromielt smertesyndrom."
+- **Akut bursit (evt. bursitis calcarea)** (diff-bursit) [UDKAST] kilder: lh-skuldersmerter
+  - Meget akut indsættende smerter, der hindrer nattesøvn
+  - Stærke smerter ved aktiv og passiv elevation og passiv abduktion; ikke-kapsulært mønster
+  - Kalk kan ses på røntgen; akut bursit helbredes spontant inden 6 uger
+  - V: "Foreneligt med akut subacromiel bursit."
+- **Kapsulit (frossen skulder)** (diff-kapsulit) [UDKAST] kilder: lh-kapsulit, lh-skuldersmerter
+  - Svære smerter dag og nat uden udløsende årsag; efter et par måneder stivhed
+  - Nedsat aktiv og passiv bevægelighed, særligt udadrotation (kapsulært mønster)
+  - Normal kraft inden for bevægeudslaget; isometrisk test giver ikke væsentlig smerteforværring
+  - Selvlimiterende over 1–2 år; let at overdiagnosticere
+  - V: "Foreneligt med kapsulit (frossen skulder)."
+- **Traumatisk rotator cuff-ruptur** (diff-traumatisk-cuff) [UDKAST] kilder: rh-rotatorcuff, lh-rotatorcuff
+  - Relevant traume (fx fald på skulderen); oftere over 40 år
+  - Nedsat kraft svarende til den skadede sene; aktiv bevægelighed nedsat, passiv normal
+  - Smerter kan give falsk kraftnedsættelse: se an ca. 1 uge og gentag kraftundersøgelsen
+  - V: "Traumatisk rotator cuff-ruptur mistænkes."
+- **Degenerativ (ikke-traumatisk) rotator cuff-skade** (diff-degenerativ-cuff) [UDKAST] kilder: lh-rotatorcuff, rh-rotatorcuff, lh-skuldersmerter
+  - Gradvis debut, ofte over 40 år, gentagne belastninger eller tidligere injektioner
+  - Smerter med udstråling til overarmen ved abduktion og fleksion; positive impingementtests
+  - Evt. nedsat kraft og atrofi af supra-/infraspinatus (prominerende spina scapulae)
+  - V: "Foreneligt med degenerativ rotator cuff-lidelse."
+- **Skulderluksation / posttraumatisk instabilitet** (diff-instabilitet) [UDKAST] kilder: lh-skuldersmerter, lh-skulderluksation
+  - Under 40 år giver traume oftere luksation
+  - Tidligere luksation; øget forreste skuffe, positiv apprehension- og relokationstest
+  - Afrivning af labrum og glenohumerale ligamenter i over 80 % af tilfældene
+  - V: "Foreneligt med glenohumeral instabilitet."
+- **AC-ledslidelse (artrose, artrit, ledbåndsskade)** (diff-ac) [UDKAST] kilder: lh-ac-artrose, lh-skuldersmerter
+  - Smerter over AC-leddet med udstråling til nakke-skulderbuen (C4)
+  - Positiv crossover-test (horisontal adduktion); ømhed mest udtalt posteriort på leddet
+  - Radiologisk AC-artrose ses hos flertallet over 40–50 år – vurder sammenhæng med symptomer
+  - V: "Foreneligt med AC-ledslidelse."
+- **Artrose i glenohumeralleddet** (diff-gh-artrose) [UDKAST] kilder: lh-rotatorcuff, lh-skuldersmerter, rh-skulder-billed
+  - Både aktiv og passiv bevægelighed nedsat (stivhed) gør artrose eller frossen skulder mere sandsynlig end cuff-skade
+  - Kan ses på røntgen
+  - V: "Glenohumeral artrose overvejes."
+- **Cervikal lidelse / radikulopati** (diff-cervikal) [UDKAST] kilder: lh-skuldersmerter, rh-rotatorcuff
+  - Smerter også i nakke eller skulderbue; udstråling og evt. paræstesier
+  - Forekommer ofte samtidig med rotator cuff-lidelse
+  - V: "Cervikal årsag overvejes."
+- **Indklemning af n. suprascapularis** (diff-suprascapularis) [UDKAST] kilder: lh-skuldersmerter
+  - Idrætsudøvere (fx volleyball, svømning, kast, tennis)
+  - Nedsat kraft i infraspinatus, evt. supraspinatus, og smerter bagtil; evt. atrofi
+  - V: "Indklemning af n. suprascapularis overvejes."
+
+## Behandling
+
+- **beh-generelt** [UDKAST] kilder: lh-skuldersmerter
+  - De fleste skulderlidelser behandles konservativt i almen praksis. Råd om aflastning for at undgå smertefuld aktivitet; sygemelding om nødvendigt. Kontrol og ny undersøgelse efter 1–2 uger, hvis ikke bedre.
+  - Gælder: generelt
+  - P: "Rådgivet om aflastning af smertefuld aktivitet. Kontrol om 1–2 uger ved manglende bedring."
+- **beh-analgetika** [UDKAST] kilder: lh-skuldersmerter, rh-rotatorcuff
+  - Smertestillende afpasses efter behov: paracetamol og/eller NSAID initialt; NSAID i lavest mulige dosis og kortest mulig tid.
+  - Gælder: generelt
+  - P: "Paracetamol, evt. NSAID kortvarigt, efter behov."
+- **beh-traening** [UDKAST] kilder: lh-subacromielt, rh-rotatorcuff, lh-skuldersmerter
+  - Impingement og rotator cuff-lidelse: træning i mindst 3 måneder – holdningskorrektion samt stabiliserende og styrkende øvelser for skulderblad og skulder, som superviseret holdtræning eller vejledt egentræning. Patienten bør bede om en skulderinteresseret fysioterapeut. Langvarig træning har lige så god effekt som operation.
+  - Gælder: diff-impingement, diff-degenerativ-cuff
+  - P: "Henvist til fysioterapeutisk skuldertræning i mindst 3 måneder."
+- **beh-subakromiel** [UDKAST] kilder: lh-subacromielt, lh-skuldersmerter, lh-rotatorcuff
+  - Subakromiel glukokortikoid (med lokalanæstesi) som hjælp til at komme i gang med træning – kun sammen med træning. Kan gentages 2–3 gange med 4–8 ugers mellemrum ved effekt. Ingen effekt på forløbet efter 6 måneder. Ved diabetes: overvej effekten på blodsukkeret.
+  - Gælder: diff-impingement, diff-degenerativ-cuff, diff-bursit
+  - P: "Subakromiel glukokortikoidinjektion som supplement til træning."
+- **beh-ingen-effekt** [UDKAST] kilder: lh-rotatorcuff
+  - Shockwave, laser, ultralydsbehandling og lignende har ingen dokumenteret effekt ved rotator cuff-lidelser.
+  - Gælder: diff-impingement, diff-degenerativ-cuff
+  - P: "Ikke indikation for shockwave, laser eller ultralydsbehandling."
+- **beh-kapsulit** [UDKAST] kilder: lh-kapsulit
+  - Kapsulit: røntgen for at udelukke anden årsag; NSAID/paracetamol; intraartikulær blokade efter behov (kan lindre i 6–12 uger, ændrer ikke forløbet). Armen holdes i bevægelse inden for det smertefrie område. Fysioterapi, udspænding og træning frarådes, så længe der er smerter; udspænding når smerterne er væk.
+  - Gælder: diff-kapsulit
+  - P: "Smertestillende og bevægelse inden for smertegrænsen. Røntgen af skulder."
+- **beh-luksation** [UDKAST] kilder: lh-skulderluksation
+  - Efter reponeret luksation: amslynge 2–3 uger (hospitalets plan), tidlig bevægetræning, derefter skulderstabiliserende øvelser. Råd om at anmelde skaden til ulykkesforsikring.
+  - Gælder: diff-instabilitet
+  - P: "Bevægetræning og senere stabiliserende øvelser. Rådgivet om anmeldelse til ulykkesforsikring."
+- **beh-ac** [UDKAST] kilder: lh-ac-artrose
+  - AC-ledsartrose: aktivitetstilpasning (tunge belastninger med albuerne ind til siden, undgå bænkpres), NSAID evt. som creme, evt. steroidinjektion i leddet. Skulderøvelser hjælper ikke, og fysioterapi anbefales ikke.
+  - Gælder: diff-ac
+  - P: "Rådgivet om aktivitetstilpasning. NSAID efter behov."
+- **beh-roentgen** [UDKAST] kilder: lh-skuldersmerter, rh-skulder-billed, lh-rotatorcuff
+  - Billeddiagnostik er almindeligvis ikke indiceret initialt. Røntgen ved traume (fraktur/luksation), mistanke om rotator cuff-ruptur, mistanke om artrose (inkl. AC-led) eller tumor, og ved vedvarende smerter uden effekt af ikke-kirurgisk behandling. Røntgen før henvisning til ortopædkirurgisk vurdering af rotator cuff-skade.
+  - Gælder: generelt
+  - P: "Røntgen af skulder bestilt."
+- **beh-arbejde** [UDKAST] kilder: lh-skuldersmerter
+  - Ved arbejdsbetinget belastning: undgå ensidigt arbejde, find bedre arbejdsstilling, tag pauser, øvelser efter instruktion.
+  - Gælder: generelt
+  - P: "Rådgivet om arbejdsstilling, pauser og øvelser."
+
+## Henvisning
+
+- **Hospital (skadestue)** (hen-luksation-akut, akut, national) [UDKAST] kilder: lh-skulderluksation
+  - Akut skulderluksation – røntgen og reposition.
+  - P: "Henvist akut til hospital mhp. røntgen og reposition."
+- **Røntgen af skulder** (hen-traume-roentgen, akut, Region Hovedstaden) [UDKAST] kilder: lh-rotatorcuff, rh-skulder-billed
+  - Relevant traume – for at afklare fraktur (og luksation).
+  - P: "Røntgen af skulder efter traume."
+- **Ultralydsscanning af skulder** (hen-ul, subakut, Region Hovedstaden) [UDKAST] kilder: rh-skulder-billed
+  - Konflikt: Lægehåndbogens oversigt (2019): det anses for god praksis at bruge MR i udredningen, medmindre man har særlig rutine i ultralyd. Region Hovedstaden (2024): MR af skulder kan kun henvises af ortopædkirurger.
+  - Mistanke om traumatisk seneruptur (rotator cuff eller lange bicepssene), degenerative forandringer i rotator cuffen eller bicepssenen, subacromial bursitis, impingement. Ikke egnet til intraartikulære forhold. MR kan kun henvises af ortopædkirurger i Region Hovedstaden.
+  - P: "Henvist til ultralydsscanning af skulder."
+- **Ortopædkirurgisk afdeling (traumatisk rotator cuff-ruptur)** (hen-traumatisk-cuff, subakut, Region Hovedstaden) [UDKAST] kilder: rh-rotatorcuff, lh-rotatorcuff
+  - Konflikt: Region Hovedstaden: kan ses an ca. 1 uge, hvis smerter mistænkes at give kraftnedsættelsen; ultralyd bør indgå hurtigt; henvis inden for 6 uger fra traumet ved påvist læsion. Lægehåndbogen: henvis til ultralyd eller ortopædkirurg, hvis førligheden ikke er genvundet 2–4 uger efter traumet. Lægehåndbogen: patienter over 75 år tilbydes meget sjældent sutur af senerne.
+  - Traumatisk gennemgående eller total rotator cuff-ruptur. Diagnosen bør stilles inden for 6 uger og operation udføres inden for 3 måneder efter traumet. Ingen fast aldersgrænse; biologisk alder og genoptræningspotentiale vurderes.
+  - P: "Henvist til ortopædkirurgisk afdeling mhp. traumatisk rotator cuff-ruptur."
+- **Ultralyd eller ortopædkirurg** (hen-cuff-efter-luksation, subakut, national) [UDKAST] kilder: lh-skulderluksation
+  - Over 40 år med nedsat styrke i rotator cuffen 2–4 uger efter skulderluksation.
+  - P: "Henvist mhp. udredning for rotator cuff-skade efter luksation."
+- **Skulderspecialist (ortopædkirurg)** (hen-instabilitet, elektiv, national) [UDKAST] kilder: lh-skulderluksation
+  - 15–40 år: efter mindst 3 måneders genoptræning ved fortsatte instabilitetssymptomer eller smerter ved aktivitet. Flere luksationer.
+  - P: "Henvist til skulderspecialist mhp. instabilitet."
+- **Ortopædkirurgisk afdeling (impingement / ikke-traumatisk cuff-lidelse)** (hen-impingement, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-rotatorcuff, lh-rotatorcuff
+  - Utilstrækkelig bedring af smerter og funktion efter 3–6 måneders effektiv træning hos fysioterapeut, evt. kombineret med subakromiel glukokortikoid. Røntgen af skulder før henvisning. Henvisningen bør indeholde anamnese, fund, funktionsniveau, undersøgelsesresultater og træningseffekt.
+  - P: "Henvist til ortopædkirurgisk vurdering efter forgæves konservativ behandling."
+- **Ortopædkirurg** (hen-kapsulit, elektiv, national) [UDKAST] kilder: lh-kapsulit
+  - Kapsulit uden tilstrækkelig effekt af ikke-kirurgisk behandling efter 6 måneder, uholdbar erhvervsmæssig situation, eller tvivl om diagnosen.
+  - P: "Henvist til ortopædkirurgisk vurdering mhp. kapsulit."
+- **Ortopædkirurg (AC-ledsresektion)** (hen-ac, elektiv, national) [UDKAST] kilder: lh-ac-artrose
+  - Symptomgivende AC-ledsartrose over 6 måneder uden effekt af aktivitetstilpasning, smertestillende og evt. blokade.
+  - P: "Henvist til ortopædkirurg mhp. AC-ledsartrose."
+- **Arbejdsmedicinsk afdeling** (hen-arbejdsmedicin, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-rotatorcuff
+  - Skulderbelastende arbejde (nu eller tidligere): vurdering af arbejdsmæssig sammenhæng og arbejdsfastholdelse. Gerne før evt. operation; samtidig henvisning til ortopædkirurgi/reumatologi.
+  - P: "Henvist til arbejdsmedicinsk afdeling."
+- **Idrætsmedicinsk afdeling** (hen-idraet, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-rotatorcuff
+  - Skulderskade opstået ved idræt eller med betydende idrætsmæssig gene.
+  - P: "Henvist til idrætsmedicinsk afdeling."
+- **Akut indlæggelse (ortopædkirurgi via CVI)** (hen-septisk, akut, Region Hovedstaden) [UDKAST] kilder: rh-monoartrit
+  - Mistanke om septisk artrit.
+  - P: "Henvist akut til CVI mhp. septisk artrit."
+
+## Kilder
+
+- lh-skuldersmerter: Lægehåndbogen 2019, Skuldersmerter (symptomer og tegn), tjekket 2026-11-14
+- lh-subacromielt: Lægehåndbogen 2021, Subacromielt smertesyndrom (impingement), tjekket 2026-11-14
+- lh-rotatorcuff: Lægehåndbogen 2025, Rotatorcuff-skade, tjekket 2026-11-14
+- lh-skulderluksation: Lægehåndbogen 2025, Skulderluksation, tjekket 2026-11-14
+- lh-kapsulit: Lægehåndbogen 2024, Kapsulit, skulder (frossen skulder), tjekket 2026-11-14
+- lh-ac-artrose: Lægehåndbogen 2026, Acromioclaviculærleddet, artrose, tjekket 2026-11-14
+- rh-rotatorcuff: Region Hovedstaden 2025, Forløbsbeskrivelse: Rotatorcuff lidelser, tjekket 2026-11-14
+- rh-skulder-billed: Region Hovedstaden 2024, Forløbsbeskrivelse: Skulder, billeddiagnostik af, tjekket 2026-11-14
+- rh-monoartrit: Region Hovedstaden 2025, Forløbsbeskrivelse: Akut monoartritis, tjekket 2026-11-14

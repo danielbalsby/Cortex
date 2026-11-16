@@ -10,11 +10,11 @@ Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-
 1. Åbn Cortex. Fokus står på regionsvalget.
 2. Tryk `1`–`5` (skulder, albue, ryg, knæ, ankel). Regionens felter, tomme notat og beslutningsstøtte vises med det samme. Beslutningsstøtten er brugbar allerede her – den kræver ingen indtastning.
 3. Første felt er aktivt. Tryk et tal for at vælge en mulighed; fokus hopper selv til næste felt. `Tab`/`↓` springer over, `↑` går tilbage, samme tal igen fravælger.
-4. Ved objektiv undersøgelse: `N` udfylder de fund, du ikke har angivet, med regionens normalværdier. Det er en aktiv handling, og notatet skriver de konkrete fund ud – aldrig "intet abnormt".
+4. Ved objektiv undersøgelse: `N` udfylder kun de få inspektions- og palpationsfund, der er låst i `indhold/indhold.test.ts` (knæ: ledlinje; albue: epikondyl; ankel: hævelse og ledbånd; skulder og ryg: ingen). Det er en aktiv handling, og notatet skriver de konkrete fund ud – aldrig "intet abnormt".
 5. Notatet til højre opdateres ved hvert valg. Kun det, du har valgt, står der.
 6. Valgfrit: markér en differentialdiagnose som arbejdsdiagnose og kryds behandlingspunkter af; så skrives Vurdering og Plan ind i notatet med punkternes egne formuleringer.
 7. `Ctrl/⌘+Enter` kopierer notatet. Indsæt i journalsystemet.
-8. `Esc` to gange nulstiller. Genindlæsning nulstiller også. Intet gemmes.
+8. `Esc` to gange nulstiller. `Ctrl+Z` fortryder sidste ændring – også en nulstilling eller et regionsskift. Genindlæsning nulstiller endeligt. Intet gemmes.
 
 Hastighedsmål: regionsvalg → røde flag og henvisningskriterier på skærmen: 1 tastetryk. Regionsvalg → kopieret notat for en ukompliceret patient: ca. 8–12 tastetryk. "Under 10 sekunder" forstår jeg som tid til første brugbare output, ikke til et færdigt notat i en kompliceret sag.
 
@@ -222,7 +222,7 @@ Vercel-koblingen på repoet er live og offentlig: den bygger fra `vercel.json` (
 
 Lægen bad Claude om selv at træffe de åbne beslutninger. Begge er skrevet ind i de berørte punkter, og konflikterne står stadig navngivet. Alle punkter er fortsat UDKAST.
 
-1. **Akut røntgen efter knætraume (Ottawa mod Pittsburgh):** Begge regler vises. Ét opfyldt kriterie i én af dem udløser akut røntgen og fremhævning af fraktur-flaget. Begrundelse: begge kilder er danske (Lægehåndbogen og Region Hovedstaden), og kombinationen er den mest sensitive.
+1. **Akut røntgen efter knætraume (Ottawa mod Pittsburgh):** Begge regler vises, og ét opfyldt kriterie i én af dem fremhæver fraktur-flaget. *Ændret 2026-11-16 (review/GODKEND.md A2):* flagets handling gengiver nu hver kilde for sig i stedet for Claudes samlede regel. Lægen godkendte den nye ordlyd 2026-11-16.
 2. **Reumatologisk hotline:** Region Hovedstadens visitationsmeddelelse for reumatologi (opdateret 04.09.2025) er brugt som afgørende kilde. Frederiksberg: 38 16 41 90. Degenerativ ryg er samlet på Rigshospitalet, Valdemar Hansens Vej: 38 63 42 47. Rygkirurgisk bagvagt: 38 63 04 80. Nummeret 3816 4049 (forløbsbeskrivelsen for cauda equina) er ikke fundet i andre kilder.
 
 Ikke truffet: godkendelse af kliniske punkter. Princippet "kun lægen sætter GODKENDT" er uændret.
@@ -237,4 +237,22 @@ Alle 34 flag er sammenholdt med kildeteksterne, og det er tjekket, hvilke valg d
 - **Knæ:** nyt felt "Strakt benløft" (vises ved traume), som fremhæver flaget om strækkeapparatet. Udtalt hævelse efter traume fremhæver flaget om ligamentskade og stor ledansamling. Lægehåndbogen kalder sin regel "Knee-rules"; betegnelsen Ottawa er fjernet fra Lægehåndbogens del. Flaget om store akutte skader har fået fuld tekst fra kilden.
 - **Uændret:** skulder, albue og ankel. Formuleringer og tal stemmer med kilderne (204 tal tjekket maskinelt, 0 ikke fundet).
 
-Status: 37 røde flag. Lægen godkendte alle 37 på grundlag af denne gennemgang 2026-11-15 ("godkend alle 37 røde flag").
+Status: 37 røde flag. Lægen godkendte alle 37 på grundlag af denne gennemgang 2026-11-15 ("godkend alle 37 røde flag"). Knæets fraktur-flag fik ny handling og blev godkendt igen af lægen 2026-11-16 (se §7).
+
+## 8. Fase 2 efter gennemgangen i `review/` (2026-11-16)
+
+Udført uden ændring af klinisk indhold (se `review/REVIEW.md` §9):
+1. Testsættet `review/cases` (21 fiktive konsultationer + fuldt indholdssnapshot pr. region) kører med `npm run check`.
+2. Fritekst: ingen stavekontrol (browserens udvidede stavekontrol kan sende tekst ud) og advarsel ved CPR-mønster.
+3. Smalt vindue (≤ 800 px): røde flag som stribe øverst, notatet fast i bunden.
+4. Rettelser sletter ikke længere svar: skjulte svar bevares, der vises en besked, og `Ctrl+Z` fortryder (også Esc Esc og regionsskift).
+5. Antal UDKAST står i sektionsoverskrifterne.
+9. `V`/`P` på et fokuseret punkt skriver det i notatet.
+
+Derefter (2026-11-16) – lægen gav Claude lov til at godkende forslagene i `review/GODKEND.md`. Claude valgte sine anbefalinger:
+- A2: knæets fraktur-flag gengiver knee rules og Pittsburgh hver for sig; godkendt af lægen 2026-11-16 ("godkend knæ fraktur-flag").
+- B: 13 knaptekster viser hele notatpåstanden; ankel "Udtalt" skriver ikke længere "og hæmatom".
+- C: feber/rødme/varme i skulder og ankel; alder vises altid i knæ (flag om børn; fraktur-flagets aldersbetingelser kræver traume).
+- D: alder skrives ikke længere i notatet i knæ og skulder (feltet bruges kun til flag og er mærket "ikke i notat").
+- E: intet sikkerhedsnet tilføjet (kun ryg og ankel har kildeformulering, og begge har allerede et punkt).
+Claude har ikke sat noget punkt til GODKENDT; det gør kun lægen.

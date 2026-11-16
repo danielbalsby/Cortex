@@ -19,12 +19,18 @@ export type Handling =
   | { type: "aabn"; maal: string }
   | { type: "flyt"; retning: 1 | -1 }
   | { type: "tal"; tal: number }
-  | { type: "normal" };
+  | { type: "normal" }
+  | { type: "fortryd" }
+  | { type: "tilNotat" };
 
 const INGEN: Handling = { type: "ingen" };
 
 export function tolkTast(tast: Tast, fokus: Fokus, skaerm: Skaerm): Handling {
   if ((tast.ctrl || tast.meta) && tast.key === "Enter") return { type: "kopier" };
+  // Ctrl/⌘+Z fortryder sidste ændring – også en nulstilling (Esc Esc) eller et regionsskift –
+  // men ikke i tekstfelter, hvor browseren selv fortryder.
+  if ((tast.ctrl || tast.meta) && (tast.key === "z" || tast.key === "Z") && skaerm !== "gennemgang" && fokus !== "tekst")
+    return { type: "fortryd" };
   if (tast.ctrl || tast.meta || tast.alt) return INGEN;
   if (tast.key === "Escape") return { type: "esc" };
 
@@ -40,6 +46,8 @@ export function tolkTast(tast: Tast, fokus: Fokus, skaerm: Skaerm): Handling {
 
   // Knapper, links og fold-ud-felter beholder deres egen Enter og piletaster, og i
   // beslutningsstøtten må tasterne aldrig ændre felterne til venstre.
+  // V/P på et fokuseret punkt i beslutningsstøtten tilføjer eller fjerner det i notatet.
+  if ((fokus === "egen" || fokus === "panel") && ["v", "V", "p", "P"].includes(tast.key)) return { type: "tilNotat" };
   if (fokus === "egen" || fokus === "panel") return INGEN;
 
   if (tast.key === "ArrowDown" || tast.key === "Enter") return { type: "flyt", retning: 1 };

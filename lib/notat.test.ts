@@ -6,7 +6,7 @@ import { knae } from "../indhold/knae";
 import { ryg } from "../indhold/ryg";
 import { skulder } from "../indhold/skulder";
 import type { Svar } from "../indhold/typer";
-import { bygNotat, saetSvar } from "./notat";
+import { bygNotat, saetSvar, skjulteSvar, synligeSvar } from "./notat";
 
 function vaelg(svar: Svar, felt: string, vaerdi: string | string[]): Svar {
   return saetSvar(knae, svar, felt, vaerdi);
@@ -56,19 +56,19 @@ describe("bygNotat med valgte punkter (knæ)", () => {
 });
 
 describe("knæ-reglerne for akut røntgen", () => {
-  it("viser og rydder alder og Ottawa/Pittsburgh-fund efter traume", () => {
+  it("skjuler Ottawa/Pittsburgh-fund ved traume = nej; alder vises altid", () => {
     let svar: Svar = {};
     svar = vaelg(svar, "traume", "ja");
     svar = vaelg(svar, "alder", "over55");
     svar = vaelg(svar, "fibulaoemhed", "ja");
-    expect(bygNotat(knae, svar)).toBe("S: Forudgående traume. Alder over 55 år.\nO: Ømhed på caput fibulae.");
+    expect(bygNotat(knae, svar)).toBe("S: Forudgående traume.\nO: Ømhed på caput fibulae."); // alder står ikke i notatet (D)
     svar = vaelg(svar, "traume", "nej");
-    expect(svar).toEqual({ traume: "nej" });
+    expect(synligeSvar(knae, svar)).toEqual({ traume: "nej", alder: "over55" });
   });
 });
 
 describe("saetSvar (knæ)", () => {
-  it("fjerner svar i traumefelter, når traume ændres til nej", () => {
+  it("skjuler – men sletter ikke – svar i traumefelter, når traume ændres til nej", () => {
     let svar: Svar = {};
     svar = vaelg(svar, "traume", "ja");
     svar = vaelg(svar, "traumemekanisme", "vrid");
@@ -76,12 +76,14 @@ describe("saetSvar (knæ)", () => {
     expect(bygNotat(knae, svar)).toContain("Traume ved vrid.");
 
     svar = vaelg(svar, "traume", "nej");
-    expect(svar).toEqual({ traume: "nej" });
+    expect(synligeSvar(knae, svar)).toEqual({ traume: "nej" });
     expect(bygNotat(knae, svar)).toBe("S: Intet traume.");
+    expect(skjulteSvar(knae, svar).map((s) => `${s.felt.label}: ${s.tekst}`)).toEqual(["Mekanisme: Vrid", "Hørt/følt knæk: Ja"]);
 
-    // Felterne er tomme, når traume igen sættes til ja.
+    // Rettes traume tilbage til ja, er svarene der igen (intet tavst datatab).
     svar = vaelg(svar, "traume", "ja");
-    expect(svar).toEqual({ traume: "ja" });
+    expect(synligeSvar(knae, svar)).toEqual({ traume: "ja", traumemekanisme: "vrid", knaek: "ja" });
+    expect(skjulteSvar(knae, svar)).toEqual([]);
   });
 
   it("fjerner et svar, når værdien er tom", () => {
@@ -127,7 +129,7 @@ describe("bygNotat (skulder)", () => {
       "S: Opstået efter traume. Skulderen var ude af led.\nO: Normal sensibilitet lateralt på skulderen."
     );
     svar = saetSvar(skulder, svar, "debut", "spontan");
-    expect(svar).toEqual({ debut: "spontan" });
+    expect(synligeSvar(skulder, svar)).toEqual({ debut: "spontan" });
   });
 });
 
@@ -149,7 +151,7 @@ describe("bygNotat (lænderyg)", () => {
     svar = saetSvar(ryg, svar, "udstraalingsside", "venstre");
     expect(bygNotat(ryg, svar)).toBe("S: Udstrålende smerter distalt for knæet. Udstråling i venstre ben.");
     svar = saetSvar(ryg, svar, "udbredning", "laend");
-    expect(svar).toEqual({ udbredning: "laend" });
+    expect(synligeSvar(ryg, svar)).toEqual({ udbredning: "laend" });
   });
 });
 
@@ -164,6 +166,6 @@ describe("bygNotat (albue)", () => {
     svar = saetSvar(albue, svar, "ekstensionstest", "nedsat");
     expect(bygNotat(albue, svar)).toBe("S: Opstået efter traume.\nO: Albue-ekstensionstest: nedsat ekstension.");
     svar = saetSvar(albue, svar, "debut", "overbelastning");
-    expect(svar).toEqual({ debut: "overbelastning" });
+    expect(synligeSvar(albue, svar)).toEqual({ debut: "overbelastning" });
   });
 });

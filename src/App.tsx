@@ -4,10 +4,10 @@ import { INDHOLD } from "../indhold";
 import { eksempel } from "../indhold/eksempel";
 import type { Svar } from "../indhold/typer";
 import { kopier } from "../lib/kopier";
-import { bygNotat, saetSvar } from "../lib/notat";
+import { bygNotat, saetSvar, skjulteSvar, synligeSvar } from "../lib/notat";
 import { optael } from "../lib/status";
 import { naboFelt, udfyldNormale, vaelgMedTal } from "../lib/tastatur";
-import { Beslutningsstoette } from "./Beslutningsstoette";
+import { Beslutningsstoette, FlagStribe } from "./Beslutningsstoette";
 import { Felter } from "./Felter";
 import { Gennemgang } from "./Gennemgang";
 import { Notat, type KopiStatus } from "./Notat";
@@ -32,28 +32,64 @@ export function App() {
   const [aktivFelt, setAktivFelt] = useState<string>();
   const [kopiStatus, setKopiStatus] = useState<KopiStatus>("");
   const sidsteEsc = useRef(0);
+  // Tidligere tilstande i den aktuelle region, så Ctrl+Z kan fortryde. Kun i hukommelsen.
+  const [historik, setHistorik] = useState<{ svar: Svar; valgte: string[] }[]>([]);
+  // Den konsultation, der blev ryddet ved Esc Esc eller regionsskift – kan hentes tilbage med Ctrl+Z.
+  const ryddet = useRef<{ region: Aaben; svar: Svar; valgte: string[]; historik: { svar: Svar; valgte: string[] }[] } | null>(null);
 
   const indhold = hentIndhold(region);
   const aktiv = region === "eksempel" ? eksempel : REGIONER.find((item) => item.id === region);
   const status = indhold ? optael(indhold) : undefined;
   const notat = indhold ? bygNotat(indhold, svar, valgte) : "";
+  const synlige = indhold ? synligeSvar(indhold, svar) : svar;
+  const skjulte = indhold ? skjulteSvar(indhold, svar) : [];
 
   // Skift af region rydder altid svarene: et notat hører til én region.
   function vaelgRegion(id: Aaben | undefined) {
     const nyt = hentIndhold(id);
+    if (region && (Object.keys(svar).length > 0 || valgte.length > 0)) ryddet.current = { region, svar, valgte, historik };
     setRegion(id);
     setSvar({});
     setValgte([]);
+    setHistorik([]);
     setKopiStatus("");
     setAktivFelt(nyt ? naboFelt(nyt, {}, undefined, 1) : undefined);
   }
 
+  function husk() {
+    setHistorik((h) => [...h.slice(-49), { svar, valgte }]);
+  }
+
+  function fortryd() {
+    const forrige = historik[historik.length - 1];
+    if (!forrige) {
+      const gammel = ryddet.current;
+      if (!gammel) return;
+      ryddet.current = null;
+      setRegion(gammel.region);
+      setSvar(gammel.svar);
+      setValgte(gammel.valgte);
+      setHistorik(gammel.historik);
+      setKopiStatus("");
+      const genskabt = hentIndhold(gammel.region);
+      setAktivFelt(genskabt ? naboFelt(genskabt, gammel.svar, undefined, 1) : undefined);
+      return;
+    }
+    setHistorik((h) => h.slice(0, -1));
+    setSvar(forrige.svar);
+    setValgte(forrige.valgte);
+    setKopiStatus("");
+  }
+
   function opdaterSvar(naeste: Svar) {
+    if (naeste === svar) return;
+    husk();
     setSvar(naeste);
     setKopiStatus(""); // kvitteringen gælder kun det notat, der blev kopieret
   }
 
   function vaelgPunkt(id: string) {
+    husk();
     setValgte((nu) => (nu.includes(id) ? nu.filter((item) => item !== id) : [...nu, id]));
     setKopiStatus("");
   }
@@ -111,6 +147,15 @@ export function App() {
           if (resultat.rykFrem) setAktivFelt(naboFelt(indhold, resultat.svar, aktivFelt, 1));
           return;
         }
+        case "tilNotat": {
+          // Knappen "+ V"/"+ P" på det punkt, fokus står i.
+          const knap = maal?.closest("li.punkt")?.querySelector<HTMLButtonElement>(":scope > .punktRaekke > .tilNotat");
+          knap?.click();
+          return;
+        }
+        case "fortryd":
+          fortryd();
+          return;
         case "normal":
           if (indhold) opdaterSvar(udfyldNormale(indhold, svar));
           return;
@@ -141,13 +186,27 @@ export function App() {
           ))}
         </nav>
         <span className="hint">
-          <kbd>Esc</kbd> <kbd>Esc</kbd> = ryd
+          <kbd>Esc</kbd> <kbd>Esc</kbd> = ryd · <kbd>Ctrl</kbd> <kbd>Z</kbd> = fortryd
         </span>
       </header>
 
+      {aktiv && indhold && <FlagStribe region={indhold} svar={synlige} />}
       {aktiv && indhold ? (
         <main className="arbejdsflade">
           <section className="panel" aria-label="Indtastning">
+            {skjulte.length > 0 && (
+              <p className="skjultBesked" role="status">
+                {skjulte.length} svar er skjult, fordi feltet ikke vises
+                lige nu: {skjulte.map((s) => `${s.felt.label} (${s.tekst})`).join(", ")}. Det står ikke i notatet og
+                kommer tilbage, hvis feltet vises igen.
+                {historik.length > 0 && (
+                  <button className="fortryd" onClick={fortryd}>
+                    Fortryd <kbd>Ctrl</kbd>
+                    <kbd>Z</kbd>
+                  </button>
+                )}
+              </p>
+            )}
             <Felter
               region={indhold}
               svar={svar}
@@ -158,7 +217,7 @@ export function App() {
           </section>
           <section className="panel" aria-label="Notat og beslutningsstøtte">
             <Notat tekst={notat} status={kopiStatus} onKopier={kopierNotat} />
-            <Beslutningsstoette region={indhold} svar={svar} valgte={valgte} onVaelg={vaelgPunkt} />
+            <Beslutningsstoette region={indhold} svar={synlige} valgte={valgte} onVaelg={vaelgPunkt} />
           </section>
         </main>
       ) : region === "gennemgang" ? (
@@ -192,7 +251,7 @@ export function App() {
         {indhold && (
           <span className="genveje">
             <kbd>1</kbd>–<kbd>9</kbd> vælg · <kbd>↑</kbd>
-            <kbd>↓</kbd> felt · <kbd>⏎</kbd> næste · <kbd>N</kbd> normal · <kbd>Ctrl</kbd>
+            <kbd>↓</kbd> felt · <kbd>⏎</kbd> næste · <kbd>N</kbd> normal · <kbd>V</kbd>/<kbd>P</kbd> på punkt til notat · <kbd>Ctrl</kbd>
             <kbd>⏎</kbd> kopiér
           </span>
         )}

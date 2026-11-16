@@ -1,0 +1,347 @@
+# Indhold: Knæ
+
+## Felter og notatsætninger
+
+- **Side** (side, enkelt)
+  - Højre → "Højresidige knæsmerter."
+  - Venstre → "Venstresidige knæsmerter."
+  - Begge → "Bilaterale knæsmerter."
+- **Debut** (debut, enkelt)
+  - Akut → "Akut debut."
+  - Gradvis → "Gradvist indsættende."
+  - Recidiv → "Recidiverende gener."
+- **Varighed** (varighed, enkelt)
+  - Timer → "Varighed timer."
+  - Dage → "Varighed få dage."
+  - Uger → "Varighed flere uger."
+  - Måneder → "Varighed flere måneder."
+- **Traume** (traume, enkelt)
+  - Nej → "Intet traume."
+  - Ja → "Forudgående traume."
+- **Mekanisme** (traumemekanisme, enkelt, vises hvis traume=ja)
+  - Vrid → "Traume ved vrid."
+  - Fald → "Traume ved fald."
+  - Direkte slag → "Direkte traume mod knæ."
+  - Andet → "Anden traumemekanisme."
+- **Hævelse straks** (haevelse-straks, enkelt, vises hvis traume=ja)
+  - Ja → "Hævelse opstod umiddelbart efter traumet."
+  - Nej → "Ingen umiddelbar hævelse efter traumet."
+- **Hørt/følt knæk** (knaek, enkelt, vises hvis traume=ja)
+  - Ja → "Hørt eller følt et knæk ved traumet."
+  - Nej → "Ingen knæklyd eller -følelse ved traumet."
+- **Alder** (alder, enkelt)
+  - Under 12 → "Alder under 12 år."
+  - 12–50 → "Alder 12–50 år."
+  - 51–55 → "Alder 51–55 år."
+  - Over 55 → "Alder over 55 år."
+- **Belastning** (belastning, enkelt)
+  - Normal → "Kan belaste."
+  - Reduceret → "Reduceret belastningsevne."
+  - Kan ikke støtte → "Kan ikke støtte på benet."
+- **Låsning** (laasning, enkelt)
+  - Nej → "Ingen låsning."
+  - Ja → "Oplever aflåsning."
+- **Feber** (feber, enkelt)
+  - Nej → "Ingen feber."
+  - Ja → "Feber."
+- **Supplerende** (anamnese-tekst, tekst)
+- **Hævelse** (haevelse, enkelt)
+  - Ingen → "Ingen hævelse."
+  - Let → "Let hævelse."
+  - Moderat → "Moderat hævelse."
+  - Udtalt → "Udtalt hævelse."
+- **Rødme** (roedme, enkelt)
+  - Ingen → "Ingen rødme."
+  - Ja → "Rødme."
+- **Varme** (varme, enkelt)
+  - Ingen → "Ingen varmeøgning."
+  - Ja → "Varmeøgning."
+- **Ledlinjeømhed** (ledlinje, enkelt)
+  - Ingen [N] → "Ingen ledlinjeømhed."
+  - Medial → "Medial ledlinjeømhed."
+  - Lateral → "Lateral ledlinjeømhed."
+- **Bevægelighed** (bevaegelighed, enkelt)
+  - Fuld → "Fuld bevægelighed."
+  - Let nedsat → "Let nedsat bevægelighed."
+  - Svært nedsat → "Svært nedsat bevægelighed."
+- **Stabilitet** (stabilitet, enkelt)
+  - Stabil ved ligamenttest → "Stabilt ved klinisk ligamenttest."
+  - Instabilitet → "Klinisk mistanke om instabilitet."
+- **Ømhed patella** (patellaoemhed, enkelt, vises hvis traume=ja)
+  - Ingen → "Ingen direkte ømhed på patella."
+  - Øm → "Direkte ømhed på patella."
+- **Ømhed caput fibulae** (fibulaoemhed, enkelt, vises hvis traume=ja)
+  - Ingen → "Ingen ømhed på caput fibulae."
+  - Øm → "Ømhed på caput fibulae."
+- **Fleksion til 90°** (fleksion90, enkelt, vises hvis traume=ja)
+  - Kan → "Kan flektere knæet til 90 grader."
+  - Kan ikke → "Kan ikke flektere knæet til 90 grader."
+- **4 skridt nu** (skridt, enkelt, vises hvis traume=ja)
+  - Går → "Går fire vægtbærende skridt ved undersøgelsen."
+  - Kan ikke → "Kan ikke gå fire vægtbærende skridt ved undersøgelsen."
+- **Strakt benløft** (benloeft, enkelt, vises hvis traume=ja)
+  - Kan → "Kan løfte strakt ben mod tyngdekraften."
+  - Kan ikke → "Kan ikke løfte strakt ben mod tyngdekraften."
+- **Supplerende** (objektivt-tekst, tekst)
+
+## Røde flag
+
+- **flag-bakteriel-artrit** [GODKENDT 2026-11-15] kilder: lh-artrit-bakteriel, rh-monoartrit
+  - Tekst: Bakteriel artrit: akut monoartrit med hævelse, varme, rødme, smerte og bevægeindskrænkning. Feber og kulderystelser er almindelige, men ikke nødvendigvis til stede. Risikofaktorer: høj alder, hudinfektion, leddestruktion (fx reumatoid artrit), ledalloplastik, nylig ledkirurgi eller ledinjektion, immunsuppression, diabetes, alkoholmisbrug.
+  - Handling: Indlægges akut ved mistanke (Region Hovedstaden: i ortopædkirurgisk regi via CVI).
+  - Fremhæves hvis: varme=ja ELLER roedme=ja ELLER feber=ja
+- **flag-fraktur** [GODKENDT 2026-11-16] kilder: lh-knaesmerter, rh-traumatisk
+  - Konflikt: Lægehåndbogen bruger "Knee-rules" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder, og begge regler vises. Ingen af kilderne kombinerer reglerne. Fremhævningen sker, hvis ét kriterie fra én af reglerne er registreret. Originalstudierne bag reglerne er ikke læst.
+  - Tekst: Akut knæskade: udeluk fraktur, før stabiliteten testes. Lægehåndbogen (knee rules): røntgen ved direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Region Hovedstaden (Pittsburgh): akut røntgen ved alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.
+  - Handling: Lægehåndbogen: røntgen ved ét af knee rules-kriterierne. Region Hovedstaden: akut røntgen ved ét af Pittsburgh-kriterierne. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).
+  - Fremhæves hvis: traume=ja og belastning=ingen ELLER skridt=nej ELLER patellaoemhed=ja ELLER fibulaoemhed=ja ELLER fleksion90=nej ELLER traume=ja og alder=under12 ELLER traume=ja og alder=51til55 ELLER traume=ja og alder=over55
+- **flag-aflaast-knae** [GODKENDT 2026-11-15] kilder: lh-meniskskade, lh-knaesmerter, rh-traumatisk
+  - Konflikt: Lægehåndbogens side om meniskskade skriver "henvises til akut ortopædkirurgisk vurdering" ved aflåst knæ. Lægehåndbogens side om knæsmerter skriver "subakut henvisning ... ved aflåsning". Region Hovedstaden angiver "subakut henvisning til CVI snarest muligt < 1 uge" ved aflåst knæ med strækkemangel.
+  - Tekst: Aflåst knæ: vridtraume med efterfølgende udtalt nedsat bevægelighed, typisk låst mellem ca. 30 og 70 graders fleksion (indeklemt menisklæsion).
+  - Handling: Ortopædkirurgisk vurdering – akut eller subakut, se konflikt.
+  - Fremhæves hvis: laasning=ja og bevaegelighed=svaert
+- **flag-akut-ligamentskade** [GODKENDT 2026-11-15] kilder: lh-korsbaand-forreste, lh-mcl, rh-traumatisk
+  - Tekst: Akut ligamentskade eller stor ledansamling: vridtraume, hvor knæet knækker sammen, evt. med "pop" og hæmartron i løbet af få timer (forreste korsbånd), valgustraume med akut løshed (mediale kollaterale ligament), eller akut stor ledansamling efter traume.
+  - Handling: Henvises akut (Lægehåndbogen: skadestue; Region Hovedstaden: CVI).
+  - Fremhæves hvis: traume=ja og haevelse-straks=ja ELLER traume=ja og knaek=ja ELLER traume=ja og haevelse=udtalt ELLER traume=ja og stabilitet=instabil
+- **flag-straekkeapparat** [GODKENDT 2026-11-15] kilder: rh-traumatisk
+  - Tekst: Strækkeapparat: efter traume kan benet ikke løftes mod tyngdekraften (strakt benløft) – mistanke om ruptur af strækkeapparatet.
+  - Handling: Akut henvisning til CVI.
+  - Fremhæves hvis: benloeft=nej
+- **flag-patellaluksation** [GODKENDT 2026-11-15] kilder: lh-patellaluksation, rh-traumatisk
+  - Tekst: Akut patellaluksation: knæet "gik af led", ofte efter rotation på let flekteret knæ. Patella er som regel reponeret, når patienten ses; da ømhed medialt for patella og oftest hæmartron.
+  - Handling: Henvises akut mhp. røntgen og bandagering (Lægehåndbogen: skadestue; Region Hovedstaden: CVI ved førstegangsluksation).
+  - Fremhæves hvis: (ingen betingelse)
+- **flag-stor-akut-skade** [GODKENDT 2026-11-15] kilder: lh-meniskskade
+  - Tekst: Store og akutte knæskader: neurologisk og vaskulær status skal indgå i vurderingen.
+  - Handling: Undersøg og notér neurologisk og vaskulær status. Ved den akutte vurdering kan smerter og hævelse vanskeliggøre undersøgelsen; revurdering efter ca. 2 uger.
+  - Fremhæves hvis: (ingen betingelse)
+- **flag-septisk-bursit** [GODKENDT 2026-11-15] kilder: lh-bursit, lh-knaesmerter
+  - Tekst: Bursit med stærke smerter, varme, rødme, kraftig hævelse og feber indikerer septisk bursit. Den vigtigste differentialdiagnose til knæbursit er ansamling og infektion i selve knæleddet.
+  - Handling: Henvises ved mistanke om septisk bursit. Akut henvisning ved tegn på involvering af hele knæleddet.
+  - Fremhæves hvis: feber=ja
+- **flag-laeg-haevelse** [GODKENDT 2026-11-15] kilder: lh-baker
+  - Tekst: Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet Bakers cyste. Er cysten ikke tidligere erkendt, omfatter differentialdiagnoserne DVT og infektion.
+  - Handling: Ultralyd kan i tvivlstilfælde stille diagnosen og afkræfte differentialdiagnoser.
+  - Fremhæves hvis: (ingen betingelse)
+- **flag-boern** [GODKENDT 2026-11-15] kilder: lh-knaesmerter
+  - Tekst: Barn med knæsmerter – diagnostiske faldgruber: hoftelidelse (projicerede smerter), osteosarkom og Ewings sarkom, artralgi pga. leukæmi.
+  - Handling: Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.
+  - Fremhæves hvis: alder=under12
+
+## Differentialdiagnoser
+
+- **Gonartrose** (diff-artrose) [UDKAST] kilder: lh-artrose-knae, lh-knaesmerter
+  - Belastningsrelaterede smerter, igangsætningssmerter
+  - Stivhed efter hvile; morgenstivhed sjældent over ½ time
+  - Krepitation, bevægeindskrænkning, knoglefortykkelse, ømme ledspalter
+  - Hvile- og natlige smerter ved udtalt artrose
+  - Klinisk diagnose; kan stilles uden røntgen
+  - V: "Foreneligt med gonartrose."
+- **Meniskskade / meniskdegeneration** (diff-menisk) [UDKAST] kilder: lh-meniskskade, lh-knaesmerter
+  - Ledlinjerelaterede smerter, ofte efter vridtraume; hos 30–50-årige også ved mindre traume
+  - Klik, aflåsninger, knæsvigt
+  - Ledlinjeømhed (hyppigt, men uspecifikt) sammen med rotationssmerter
+  - Hydartron ofte først efter 12–24 timer; recidiverende
+  - Ingen enkelt test stiller diagnosen
+  - V: "Foreneligt med meniskrelaterede gener."
+- **Forreste korsbåndsskade** (diff-acl) [UDKAST] kilder: lh-korsbaand-forreste, lh-knaesmerter
+  - Vridtraume, hvor knæet knækker sammen; evt. "pop"
+  - Hæmartron i løbet af få timer
+  - Ekstensionsdefekt på 10–15 grader ses ofte tidligt
+  - Positiv Lachmans test; stabilitetstest må ofte gentages efter 10–14 døgn
+  - Kronisk skade: knæet "giver efter"
+  - V: "Foreneligt med skade på forreste korsbånd."
+- **Skade på mediale kollaterale ligament** (diff-mcl) [UDKAST] kilder: lh-mcl
+  - Smerter og instabilitetsfølelse efter valgustraume
+  - Ømhed langs ligamentet; ofte ikke hæmartron
+  - Valgusløshed ved test på strakt og 20–30 grader flekteret knæ
+  - Løshed i strakt stilling tyder på kombineret skade (korsbånd, kapsel)
+  - V: "Foreneligt med skade på mediale kollaterale ligament."
+- **Patellofemoralt smertesyndrom** (diff-patellofemoralt) [UDKAST] kilder: lh-patellofemoralt, lh-knaesmerter
+  - Gradvis udvikling; smerter bag, omkring eller under patella
+  - Værst ved trapper og bakker, hugsiddende og ved rejsning efter langvarig sidden
+  - Pseudolåsninger og følelse af knæsvigt
+  - Få eller ingen specifikke objektive fund; eksklusionsdiagnose
+  - V: "Foreneligt med patellofemoralt smertesyndrom."
+- **Patellaluksation (akut eller recidiverende)** (diff-patellaluksation) [UDKAST] kilder: lh-patellaluksation
+  - Opstår ofte efter rotation på let flekteret knæ; "knæet gik af led"
+  - Efter reponering: ømhed medialt for patella, oftest hæmartron, normal stabilitet
+  - Recidiverende: positiv apprehension-test
+  - V: "Foreneligt med patellaluksation."
+- **Tendinopati / overbelastning** (diff-tendinopati) [UDKAST] kilder: lh-knaesmerter
+  - Patellatendinit: smerter og ømhed ved patellas nedre pol; hop- og springidræt
+  - Løberknæ (tractus iliotibialis): laterale knæsmerter efter kort tids løb, lokaliseret ømhed
+  - Anserinustendinit: smerter medialt, lokaliseret ømhed over sene og bursa
+  - Popliteustendinit: bageste knæsmerter, ømhed over popliteussenen
+  - V: "Foreneligt med overbelastningsbetinget tendinopati."
+- **Knæbursit (præpatellar / infrapatellar)** (diff-bursit) [UDKAST] kilder: lh-bursit, lh-knaesmerter
+  - Ofte langvarigt knæliggende arbejde eller enkelttraume
+  - Hævelse, ømhed, varme og rødme foran eller neden for patella
+  - Nedsat fleksion ved akut bursit; generaliseret hydartron er sjældent
+  - Svært at skelne septisk fra aseptisk; aspiration og blodprøver kan hjælpe
+  - V: "Foreneligt med bursit."
+- **Bakers cyste** (diff-baker) [UDKAST] kilder: lh-baker
+  - Stramning og evt. smerter i knæhasen; evt. smerter i læggen
+  - Blød, fluktuerende udfyldning i fossa poplitea; ses bedst med strakt knæ
+  - Associeret med inflammatoriske knælidelser, menisklæsioner og artrose
+  - V: "Foreneligt med Bakers cyste."
+- **Bakteriel artrit** (diff-bakteriel-artrit) [UDKAST] kilder: lh-artrit-bakteriel, rh-monoartrit
+  - Akut hævelse, varme, rødme, smerter og bevægeindskrænkning i ét led
+  - Feber og kulderystelser almindelige, men kan mangle
+  - Infektion et andet sted øger sandsynligheden
+  - Region Hovedstaden: mistanken svækkes ved normal CRP (<10 mg/l), faldende CRP uden antibiotika/glukokortikoid, tidligere lignende anfald (fx kendt urinsyregigt) eller lokalisation til små led
+  - V: "Bakteriel artrit mistænkes."
+- **Artrit (krystalartrit, reaktiv, reumatisk)** (diff-artrit) [UDKAST] kilder: lh-knaesmerter, lh-artrit-bakteriel
+  - Smerter i andre led; reumatisk sygdom hos patienten eller i slægten
+  - Reaktiv artrit: forudgående uretrit, vaginit, halsinfektion og/eller konjunktivit
+  - Blodprøver: SR, CRP, leukocyt- og differentialtælling, reumaserologi
+  - Ledpunktur ved hydartron: bakterier, leukocytter, krystaller
+  - V: "Inflammatorisk ledlidelse overvejes."
+- **Henført smerte fra hofte eller ryg** (diff-henfoert) [UDKAST] kilder: lh-knaesmerter
+  - Hofte: overført smerte til forreste mediale del af låret ned mod knæet
+  - Iskias: L4-affektion giver forreste, L5–S1-affektion bageste knæsmerter
+  - Hos børn kan knæsmerter være projicerede fra hoften
+  - V: "Henført smerte fra hofte eller ryg overvejes."
+- **Osteochondritis dissecans** (diff-ocd) [UDKAST] kilder: lh-knaesmerter
+  - Som regel 12–20 år, ofte meget idrætsaktive
+  - Aflåsningstilfælde, knæsmerter, følelse af knæsvigt, hævelse
+  - Diagnosen stilles ved MR-scanning
+  - V: "Osteochondritis dissecans overvejes."
+- **Osgood-Schlatter / Sinding-Larsen** (diff-apofysit) [UDKAST] kilder: lh-knaesmerter
+  - Osgood-Schlatter i 10–15-årsalderen, Sinding-Larsen nogle år tidligere
+  - Aktivitetsrelaterede smerter; palpationsømhed og ofte hævelse ved tuberositas tibiae eller apex patellae
+  - V: "Foreneligt med traktionsapofysit."
+
+## Behandling
+
+- **beh-aflastning** [UDKAST] kilder: lh-knaesmerter
+  - Aflastning fra uhensigtsmæssige arbejds- og sportsbelastninger. Instruktion i quadricepsøvelser.
+  - Gælder: generelt
+  - P: "Rådgivet om aflastning og instrueret i quadricepsøvelser."
+- **beh-analgetika** [UDKAST] kilder: lh-knaesmerter
+  - Smertestillende: paracetamol er oftest førstevalg, evt. NSAID.
+  - Gælder: generelt
+  - P: "Paracetamol, evt. NSAID, efter behov."
+- **beh-akut-traume** [UDKAST] kilder: lh-knaesmerter, lh-korsbaand-forreste, lh-mcl, lh-meniskskade
+  - Akut knæskade: hvile, afkøling, kompression og elevation (RICE). NSAID kan give smertelindring i akutfasen. Kontrol efter 1–2 uger mhp. ny vurdering af ligamenter og menisker.
+  - Gælder: diff-acl, diff-mcl, diff-menisk, diff-patellaluksation
+  - P: "RICE og evt. NSAID. Kontrol om 1–2 uger mhp. fornyet vurdering af ligamenter og menisker."
+- **beh-lettere-skade** [UDKAST] kilder: rh-traumatisk
+  - Lettere knæskade (fx forstuvning af MCL): afventende holdning i ca. 6 uger, mobilisering efter evne, evt. henvisning til fysioterapeut.
+  - Gælder: diff-mcl, diff-menisk
+  - P: "Afventende holdning ca. 6 uger med mobilisering efter evne."
+- **beh-artrose-basis** [UDKAST] kilder: lh-artrose-knae, rh-knaeartrose
+  - Knæartrose: skriftlig og mundtlig information og undervisning. Superviseret træning og patientuddannelse i 8–12 uger hos praktiserende fysioterapeut eller kiropraktor eller i kommunalt tilbud (fx GLA:D). Vægttab: mindst 5 % ved BMI over 25.
+  - Gælder: diff-artrose
+  - P: "Informeret om knæartrose. Henvist til superviseret træning og patientuddannelse. Vægttab drøftet."
+- **beh-artrose-medicin** [UDKAST] kilder: lh-artrose-knae, rh-knaeartrose
+  - Knæartrose, medicin: paracetamol som førstevalg i perioder med smerter. NSAID giver lidt bedre smertelindring, men er dårligt egnet som langtidsbehandling; stop efter 1 uge uden væsentlig effekt. Opioider så vidt muligt undgås. Glukosamin er ikke effektivt.
+  - Gælder: diff-artrose
+  - P: "Smertestillende efter behov; paracetamol som førstevalg, evt. NSAID i kortere perioder."
+- **beh-artrose-steroid** [UDKAST] kilder: lh-artrose-knae, rh-knaeartrose
+  - Intraartikulær glukokortikoid giver kortvarig lindring (få uger) ved opblussen med inflammatorisk præg. Afstå fra blokade umiddelbart før henvisning mhp. protese (øget infektionsrisiko kan udskyde operation).
+  - Gælder: diff-artrose
+  - P: "Intraartikulær glukokortikoid."
+- **beh-artrose-roentgen** [UDKAST] kilder: lh-artrose-knae
+  - Konflikt: Lægehåndbogens artroseside siger både "Sikre diagnostik ved klinisk undersøgelse og røntgen" og "Røntgen foretages kun ved manglende effekt af behandling ... eller ved mistanke om anden sygdom". Lægehåndbogens menisk-side: god praksis at tilbyde stående røntgen til patienter over 40 år med mistanke om både artrose og meniskpatologi. Region Hovedstaden (non-traumatiske knælidelser): artrose bør indtænkes hos alle over 35 år, og røntgen er her indiceret som primært udredningsværktøj, ikke MR eller artroskopi.
+  - Røntgen ved mistanke om artrose: stående optagelse med let flekteret knæ. Lægehåndbogen (artrose): kun ved manglende effekt af behandling mhp. operationsvurdering eller ved mistanke om anden sygdom. Diagnosen kan stilles klinisk.
+  - Gælder: diff-artrose, diff-menisk
+  - P: "Stående røntgen af knæ bestilt."
+- **beh-ingen-mr-artroskopi** [UDKAST] kilder: rh-non-traumatisk, lh-artrose-knae
+  - MR af knæ ordineres ikke fra almen praksis i Region Hovedstaden. Artroskopi har ingen plads ved knæartrose, og patienter med smerter relateret til artrose eller degenerative menisklæsioner skal generelt ikke artroskoperes.
+  - Gælder: diff-artrose, diff-menisk
+  - P: "Ikke indikation for MR eller artroskopi aktuelt."
+- **beh-menisk-fys** [UDKAST] kilder: lh-meniskskade, rh-non-traumatisk
+  - Menisklæsion uden traume (degenerativ) og traumatisk menisklæsion uden aflåsning eller væsentlige mekaniske symptomer: fysioterapi som initial behandling. Over 40 år: sundhedsfagligt vejledt træning, ofte længere end 3 måneder.
+  - Gælder: diff-menisk
+  - P: "Henvist til fysioterapi som initial behandling."
+- **beh-acl** [UDKAST] kilder: lh-korsbaand-forreste
+  - Forreste korsbåndsskade: fysioterapeutisk vejledt træningsforløb; rekonstruktion vurderes i ortopædkirurgisk regi.
+  - Gælder: diff-acl
+  - P: "Fysioterapeutisk vejledt træning."
+- **beh-mcl** [UDKAST] kilder: lh-mcl
+  - MCL-læsion uden løshed: aflastning og smertebehandling. Med løshed: hængslet bandage i 5–6 uger. Træning kan startes 1–2 uger efter skaden, når de akutte smerter er aftaget.
+  - Gælder: diff-mcl
+  - P: "Aflastning og smertebehandling. Træning når de akutte smerter er aftaget."
+- **beh-pfs** [UDKAST] kilder: lh-patellofemoralt
+  - Patellofemoralt smertesyndrom: aflastning og aktivitetsmodifikation (undgå hugsiddende, spring, løb på hårdt underlag), træning af hofte- og knæmuskulatur, evt. fodindlæg. Paracetamol eller NSAID kan være til nogen nytte tidligt. Kirurgi kun ved påvist korrigerbar årsag.
+  - Gælder: diff-patellofemoralt
+  - P: "Rådgivet om aktivitetsmodifikation og træning af hofte- og knæmuskulatur."
+- **beh-patellaluksation** [UDKAST] kilder: lh-patellaluksation
+  - Akut patellaluksation: reponeres, hvis den ikke er gået på plads; stabiliseres med ortose, elastisk bandage eller tape i 2 uger. Medial quadricepstræning. Råd om forsigtighed ved sport med vridbelastning.
+  - Gælder: diff-patellaluksation
+  - P: "Stabiliserende bandage. Rådgivet om quadricepstræning og forsigtighed ved vridbelastning."
+- **beh-patellatendinopati** [UDKAST] kilder: lh-patellar-tendinopati
+  - Patellar tendinopati: afstå fra smerteprovokerende aktivitet; langsom, tung styrketræning (fysioterapeutvejledt 3 gange om ugen i 3 måneder, mindst 12 uger). NSAID kun i akut fase i 7–10 dage; langtidsbehandling anbefales ikke.
+  - Gælder: diff-tendinopati
+  - P: "Rådgivet om aflastning og tung, langsom styrketræning."
+- **beh-bursit** [UDKAST] kilder: lh-bursit
+  - Bursit: minimér knæliggende aktivitet, brug knæbeskytter; evt. is og kompression. NSAID i akutfasen. Steroidinjektion efter aspiration kan forsøges – ikke ved mistanke om infektion, og nålen må ikke nå knæleddet.
+  - Gælder: diff-bursit
+  - P: "Rådgivet om aflastning og knæbeskyttelse. NSAID efter behov."
+- **beh-baker** [UDKAST] kilder: lh-baker
+  - Bakers cyste: ved mistanke om DVT eller anden alvorlig lidelse iværksættes relevante undersøgelser. Ved vedvarende gener udredes bagvedliggende årsag. NSAID kan måske dæmpe inflammation og ledvæskeproduktion.
+  - Gælder: diff-baker
+  - P: "Bakers cyste; udredning af bagvedliggende årsag ved vedvarende gener."
+
+## Henvisning
+
+- **Akut indlæggelse (ortopædkirurgi via CVI)** (hen-septisk, akut, Region Hovedstaden) [UDKAST] kilder: rh-monoartrit, lh-artrit-bakteriel
+  - Mistanke om bakteriel (septisk) artrit.
+  - P: "Henvist akut til CVI mhp. septisk artrit."
+- **CVI, akut** (hen-akut-traume, akut, Region Hovedstaden) [UDKAST] kilder: rh-traumatisk
+  - Efter knætraume: akut stor ledansamling; akut førstegangs patellaluksation; kan ikke løfte benet mod tyngdekraften (strækkeapparat); mistanke om fraktur eller løshed (side- eller skuffeløshed).
+  - P: "Henvist akut til CVI."
+- **Akut røntgen af knæ** (hen-akut-roentgen, akut, Region Hovedstaden) [UDKAST] kilder: rh-traumatisk
+  - Konflikt: Lægehåndbogen bruger i stedet "Knee-rules" (svarer til Ottawa Knee Rule): direkte patellaømhed, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Begge regler vises i det røde flag om fraktur.
+  - Region Hovedstaden (Pittsburgh Knee Rules): alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.
+  - P: "Akut røntgen af knæ."
+- **CVI, subakut (snarest, < 1 uge)** (hen-aflaast, subakut, Region Hovedstaden) [UDKAST] kilder: rh-traumatisk, lh-meniskskade
+  - Konflikt: Lægehåndbogens side om meniskskade angiver akut ortopædkirurgisk vurdering ved aflåst knæ; Region Hovedstaden angiver subakut (< 1 uge).
+  - Aflåst knæ med strækkemangel og mistanke om indeklemt ledpatologi, fx menisk.
+  - P: "Henvist subakut til CVI mhp. aflåst knæ."
+- **CVI, elektiv** (hen-lettere-traume, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-traumatisk
+  - Lettere knæskade med vedvarende symptomer over ca. 6 uger. Henvisningen bør indeholde skadetidspunkt, mekanisme, subjektive klager, side, lokaliseret ømhed, ledhævelse, strakt benløft, strækkemangel og side-/skuffeløshed.
+  - P: "Henvist elektivt til CVI pga. vedvarende symptomer efter knæskade."
+- **CVI eller praktiserende ortopædkirurg, elektiv** (hen-non-traumatisk, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-non-traumatisk
+  - Non-traumatisk: pludselig opstået strækkedefekt over 1 uge, eller vedvarende/tiltagende uacceptable smerter trods ADL-ændringer, vægttab og superviseret træning i mindst 3–6 måneder. Over 35 år og efter tidligere knætraume skal stående røntgen (let bøjet knæ) foreligge. MR ordineres ikke fra almen praksis.
+  - P: "Henvist elektivt til ortopædkirurgisk vurdering efter gennemført ikke-operativt forløb."
+- **Ortopædkirurgisk afdeling (knæartrose)** (hen-artrose, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-knaeartrose, lh-artrose-knae
+  - Symptomer i mindst 3–6 måneder, gennemført ikke-operativt behandlingsprogram, og røntgen inden for 12 måneder med påvist artrose. Undgå blokade umiddelbart før henvisning. Hospitalerne tilbyder et 3-måneders non-operativt program (holdtræning; vægttabsforløb ved BMI over 30).
+  - P: "Henvist til ortopædkirurgisk afdeling mhp. knæartrose."
+- **Ortopædkirurgisk vurdering (menisk)** (hen-menisk, elektiv, Region Hovedstaden) [UDKAST] kilder: lh-meniskskade, rh-non-traumatisk
+  - Konflikt: Lægehåndbogen: henvisning efter svigt af fysioterapi i mindst 3–4 måneder. Region Hovedstaden (over 40 år): træning ofte længere end 3 måneder; henvis ved fortsatte svært generende symptomer efter mere end 3 måneder.
+  - Traumatisk menisklæsion med vedvarende generende klik og aflåsninger, eller degenerativ læsion efter svigt af fysioterapi. Over 40 år: fortsatte svært generende symptomer efter mere end 3 måneders træning. MR-fund af menisklæsion er ikke i sig selv grund til henvisning uden aflåsning og/eller invaliderende smerter.
+  - P: "Henvist til ortopædkirurgisk vurdering mhp. menisklæsion."
+- **Ortopædkirurgisk vurdering (kronisk instabilitet)** (hen-ligament-kronisk, elektiv, national) [UDKAST] kilder: lh-korsbaand-forreste, lh-mcl
+  - Objektiv løshed af forreste korsbånd ved kronisk skade, eller valgusløshed efter ældre traume (kronisk valgusinstabilitet).
+  - P: "Henvist til ortopædkirurgisk vurdering mhp. kronisk instabilitet."
+- **Ortopædkirurgisk vurdering** (hen-patellaluksation-recidiv, elektiv, national) [UDKAST] kilder: lh-patellaluksation
+  - Gentagen (recidiverende) patellaluksation.
+  - P: "Henvist til ortopædkirurgisk vurdering mhp. recidiverende patellaluksation."
+- **Ortopædkirurgi** (hen-bursit, subakut, national) [UDKAST] kilder: lh-bursit
+  - Bursit med manglende effekt af konservativ behandling eller mistanke om septisk bursit. Akut ved tegn på involvering af hele knæleddet.
+  - P: "Henvist mhp. bursit."
+- **Reumatologisk hotline / reumatolog** (hen-reumatolog, subakut, Region Hovedstaden) [UDKAST] kilder: rh-monoartrit, rh-visitation-reumatologi
+  - Akut monoartrit (ikke septisk mistanke) med betydelige smerter eller funktionsbegrænsning: konference mhp. akut/subakut vurdering, ledpunktur og krystalmikroskopi, evt. glukokortikoidinjektion. Hotline kl. 08–15: Bispebjerg/Frederiksberg Hospital 38 16 41 90 (planområde Midt, Byen, Bornholm); Rigshospitalet, Valdemar Hansens Vej 38 63 42 47 (Nord og Syd).
+  - P: "Konfereret med reumatologisk hotline."
+
+## Kilder
+
+- lh-knaesmerter: Lægehåndbogen 2026, Knæsmerter (symptomer og tegn), tjekket 2026-11-14
+- lh-artrit-bakteriel: Lægehåndbogen 2024, Artrit, bakteriel, tjekket 2026-11-14
+- lh-meniskskade: Lægehåndbogen 2026, Meniskskade i knæet, tjekket 2026-11-14
+- lh-korsbaand-forreste: Lægehåndbogen 2026, Korsbåndskade, forreste, tjekket 2026-11-14
+- lh-mcl: Lægehåndbogen 2026, Kollateralligamentskade, medial, tjekket 2026-11-14
+- lh-artrose-knae: Lægehåndbogen 2025, Artrose, knæ, tjekket 2026-11-14
+- lh-patellofemoralt: Lægehåndbogen 2026, Patellofemoralt syndrom, tjekket 2026-11-14
+- lh-patellaluksation: Lægehåndbogen 2025, Patellaluksation, tjekket 2026-11-14
+- lh-bursit: Lægehåndbogen 2026, Bursit, præpatellar, tjekket 2026-11-14
+- lh-patellar-tendinopati: Lægehåndbogen 2026, Patellar tendinopati, tjekket 2026-11-14
+- rh-traumatisk: Region Hovedstaden 2026, Forløbsbeskrivelse: Idrætsrelaterede traumatiske knæskader hos voksne, tjekket 2026-11-14
+- rh-non-traumatisk: Region Hovedstaden 2026, Forløbsbeskrivelse: Idrætsrelaterede non-traumatiske knæskader hos voksne, tjekket 2026-11-14
+- rh-knaeartrose: Region Hovedstaden 2024, Forløbsbeskrivelse: Knæartrose, tjekket 2026-11-14
+- rh-monoartrit: Region Hovedstaden 2025, Forløbsbeskrivelse: Akut monoartritis, tjekket 2026-11-14
+- rh-visitation-reumatologi: Region Hovedstaden 2025, Visitationsmeddelelse: Reumatologi (hotlines og henvisning efter 1.1.2025), tjekket 2026-11-15
+- lh-baker: Lægehåndbogen 2026, Bakers cyste, tjekket 2026-11-14

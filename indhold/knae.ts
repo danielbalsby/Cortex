@@ -108,7 +108,8 @@ export const knae: Region = {
           id: "alder",
           label: "Alder",
           type: "enkelt",
-          visHvis: [{ felt: "traume", er: "ja" }],
+          kunTilFlag: true, // bruges til røde flag; alderen står i journalen (review/GODKEND.md D)
+          // Vises altid (review/GODKEND.md C3): bruges også til flaget om børn.
           valg: [
             { id: "under12", label: "Under 12", notat: "Alder under 12 år." },
             { id: "12til50", label: "12–50", notat: "Alder 12–50 år." },
@@ -210,7 +211,7 @@ export const knae: Region = {
           label: "Stabilitet",
           type: "enkelt",
           valg: [
-            { id: "stabil", label: "Stabil", notat: "Stabilt ved klinisk ligamenttest." },
+            { id: "stabil", label: "Stabil ved ligamenttest", notat: "Stabilt ved klinisk ligamenttest." },
             { id: "instabil", label: "Instabilitet", notat: "Klinisk mistanke om instabilitet." }
           ]
         },
@@ -285,7 +286,6 @@ export const knae: Region = {
         "traumemekanisme",
         "haevelse-straks",
         "knaek",
-        "alder",
         "belastning",
         "laasning",
         "feber",
@@ -462,7 +462,7 @@ export const knae: Region = {
       tekst:
         "Akut knæskade: udeluk fraktur, før stabiliteten testes. Lægehåndbogen (knee rules): røntgen ved direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Region Hovedstaden (Pittsburgh): akut røntgen ved alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.",
       handling:
-        "Akut røntgen af knæ, hvis blot ét kriterie i én af reglerne er opfyldt. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).",
+        "Lægehåndbogen: røntgen ved ét af knee rules-kriterierne. Region Hovedstaden: akut røntgen ved ét af Pittsburgh-kriterierne. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).",
       // Fremhæves, hvis blot ét kriterie fra Ottawa (Lægehåndbogen) ELLER Pittsburgh
       // (Region Hovedstaden) er registreret. Det afgør ikke konflikten mellem reglerne.
       fremhaevHvis: [
@@ -474,16 +474,26 @@ export const knae: Region = {
         [{ felt: "patellaoemhed", er: "ja" }],
         [{ felt: "fibulaoemhed", er: "ja" }],
         [{ felt: "fleksion90", er: "nej" }],
-        [{ felt: "alder", er: "under12" }],
-        [{ felt: "alder", er: "51til55" }],
-        [{ felt: "alder", er: "over55" }]
+        [
+          { felt: "traume", er: "ja" },
+          { felt: "alder", er: "under12" }
+        ],
+        [
+          { felt: "traume", er: "ja" },
+          { felt: "alder", er: "51til55" }
+        ],
+        [
+          { felt: "traume", er: "ja" },
+          { felt: "alder", er: "over55" }
+        ]
       ],
-      kilder: ["lh-knaesmerter"],
+      kilder: ["lh-knaesmerter", "rh-traumatisk"],
+      // 2026-11-16: handlingen omformuleret efter kilderne (review/GODKEND.md A2) og godkendt af lægen samme dag.
       status: "GODKENDT",
-      godkendtDato: "2026-11-15",
+      godkendtDato: "2026-11-16",
       konflikt: {
         beskrivelse:
-          "Lægehåndbogen bruger \"Knee-rules\" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder. Beslutning (truffet af Claude 2026-11-15 efter lægens anmodning): begge regler vises, og ét opfyldt kriterie i én af dem udløser akut røntgen og fremhævning. Det er den mest sensitive kombination og følger både den nationale og den regionale kilde. Originalstudierne bag reglerne er ikke læst.",
+          "Lægehåndbogen bruger \"Knee-rules\" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder, og begge regler vises. Ingen af kilderne kombinerer reglerne. Fremhævningen sker, hvis ét kriterie fra én af reglerne er registreret. Originalstudierne bag reglerne er ikke læst.",
         kilder: ["lh-knaesmerter", "rh-traumatisk"]
       }
     },
@@ -587,6 +597,8 @@ export const knae: Region = {
         "Barn med knæsmerter – diagnostiske faldgruber: hoftelidelse (projicerede smerter), osteosarkom og Ewings sarkom, artralgi pga. leukæmi.",
       handling:
         "Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.",
+      // 2026-11-16 (review/GODKEND.md C3): under 12 år. 12–17-årige fanges ikke af aldersgrupperne.
+      fremhaevHvis: [[{ felt: "alder", er: "under12" }]],
       kilder: ["lh-knaesmerter"],
       status: "GODKENDT",
       godkendtDato: "2026-11-15"
@@ -965,7 +977,7 @@ export const knae: Region = {
       status: "UDKAST",
       konflikt: {
         beskrivelse:
-          "Lægehåndbogen bruger i stedet \"Knee-rules\" (svarer til Ottawa Knee Rule): direkte patellaømhed, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Beslutning (Claude 2026-11-15 efter lægens anmodning): et opfyldt kriterie i én af reglerne udløser akut røntgen – se rødt flag om fraktur.",
+          "Lægehåndbogen bruger i stedet \"Knee-rules\" (svarer til Ottawa Knee Rule): direkte patellaømhed, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Begge regler vises i det røde flag om fraktur.",
         kilder: ["rh-traumatisk", "lh-knaesmerter"]
       }
     },

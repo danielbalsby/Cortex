@@ -129,6 +129,11 @@ kbd {
   font: inherit;
   color: inherit;
 }
+.kunFlag { display: block; font-size: 0.72rem; color: var(--daempet); }
+.skjultBesked { margin: 0 0 10px; padding: 6px 10px; border: 1px solid #c9b458; border-left-width: 4px; border-radius: 6px; background: #fbf6dc; font-size: 0.88rem; }
+.fortryd { margin-left: 8px; padding: 1px 8px; border: 1px solid var(--tekst); border-radius: 5px; background: var(--flade); font-size: 0.85rem; }
+.felt:has(.cprAdvarsel) { flex-wrap: wrap; }
+.cprAdvarsel { flex-basis: 100%; margin-left: 128px; font-size: 0.85rem; font-weight: 600; color: #7a5a00; }
 .felt input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 /* Notatet bliver stående øverst, mens beslutningsstøtten under det ruller. */
@@ -250,7 +255,23 @@ kbd {
   .gennemgangListe li { break-inside: avoid; }
 }
 
+/* Flagstriben bruges kun i smalle vinduer (fx halv skærm ved siden af journalen). */
+.flagStribe { display: none; }
+
 @media (max-width: 800px) {
-  .arbejdsflade { grid-template-columns: 1fr; }
+  .arbejdsflade { grid-template-columns: 1fr; padding-bottom: 34vh; }
   .panel + .panel { position: static; max-height: none; }
+  .flagStribe {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px;
+    position: sticky; top: 0; z-index: 3;
+    padding: 6px 16px; background: var(--flade); border-bottom: 1px solid var(--kant); font-size: 0.85rem;
+  }
+  .stribeTitel { font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--daempet); }
+  .stribeMatcher { display: flex; flex-wrap: wrap; gap: 4px; }
+  .stribeFlag { padding: 0 8px; border: 1px solid var(--advarsel); border-left-width: 3px; border-radius: 6px; background: #fbeae6; font-weight: 600; }
+  .stribeOevrige { flex-basis: 100%; color: var(--daempet); }
+  /* Notatet ligger fast i bunden, så det altid kan ses og kopieres. */
+  .notat { position: fixed; top: auto; bottom: 0; left: 0; right: 0; margin: 0; z-index: 4; border-top: 2px solid var(--accent); box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08); }
+  .notatTekst { max-height: 22vh; }
+  .top .hint { display: none; }
 }

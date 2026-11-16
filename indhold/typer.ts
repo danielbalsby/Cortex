@@ -38,6 +38,7 @@ export type Felt = {
   valg?: Valg[]; // for "enkelt" og "flere"
   pladsholder?: string; // for "tekst"
   visHvis?: Betingelse[]; // feltet vises kun, når betingelserne passer
+  kunTilFlag?: true; // feltet bruges kun til røde flag og skrives ikke i notatet (fx alder)
 };
 
 export type FeltGruppe = { id: string; titel: string; felter: Felt[] };
