@@ -129,6 +129,8 @@ kbd {
   font: inherit;
   color: inherit;
 }
+.felt:has(.cprAdvarsel) { flex-wrap: wrap; }
+.cprAdvarsel { flex-basis: 100%; margin-left: 128px; font-size: 0.85rem; font-weight: 600; color: #7a5a00; }
 .felt input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 /* Notatet bliver stående øverst, mens beslutningsstøtten under det ruller. */
