@@ -107,6 +107,15 @@ export const albue: Region = {
           ]
         },
         {
+          id: "feber",
+          label: "Feber",
+          type: "enkelt",
+          valg: [
+            { id: "nej", label: "Nej", notat: "Ingen feber." },
+            { id: "ja", label: "Ja", notat: "Feber." }
+          ]
+        },
+        {
           id: "anamnese-tekst",
           label: "Supplerende",
           type: "tekst",
@@ -139,11 +148,21 @@ export const albue: Region = {
         },
         {
           id: "roedme",
-          label: "Rødme/varme",
+          label: "Rødme",
+          type: "enkelt",
+          // 2026-11-16: "Rødme/varme" delt i to felter (lægens afgørelse 4). Ingen normalfund: N sætter dem ikke.
+          valg: [
+            { id: "nej", label: "Ingen", notat: "Ingen rødme." },
+            { id: "ja", label: "Ja", notat: "Rødme." }
+          ]
+        },
+        {
+          id: "varme",
+          label: "Varme",
           type: "enkelt",
           valg: [
-            { id: "nej", label: "Ingen", notat: "Ingen rødme eller varmeøgning." },
-            { id: "ja", label: "Ja", notat: "Rødme og varmeøgning." }
+            { id: "nej", label: "Ingen", notat: "Ingen varmeøgning." },
+            { id: "ja", label: "Ja", notat: "Varmeøgning." }
           ]
         },
         {
@@ -237,7 +256,7 @@ export const albue: Region = {
   notat: [
     {
       overskrift: "S",
-      felter: ["side", "debut", "mekanisme", "lokalisation", "varighed", "paraestesier", "laasning", "disposition", "anamnese-tekst"]
+      felter: ["side", "debut", "mekanisme", "lokalisation", "varighed", "paraestesier", "laasning", "disposition", "feber", "anamnese-tekst"]
     },
     {
       overskrift: "O",
@@ -245,6 +264,7 @@ export const albue: Region = {
         "fejlstilling",
         "haevelse",
         "roedme",
+        "varme",
         "ekstensionstest",
         "bevaegelighed",
         "epikondyl",
@@ -357,10 +377,14 @@ export const albue: Region = {
         "Septisk artrit eller hæmartrose efter traume: varmt, rødt, hævet led, feber eller medtaget almentilstand. Bakteriel infektion kræver akut behandling, ofte med kirurgisk intervention.",
       handling:
         "Hurtig henvisning til sygehus (Region Hovedstaden: ved mistanke om septisk artrit akut indlæggelse i ortopædkirurgisk regi via CVI). Ved mistanke om bakteriel infektion sendes bursa- eller ledvæske til dyrkning.",
-      fremhaevHvis: [[{ felt: "roedme", er: "ja" }, { felt: "haevelse", er: "led" }]],
+      // 2026-11-16 (lægens afgørelse 4): også varme og feber. UDKAST, til lægen godkender.
+      fremhaevHvis: [
+        [{ felt: "roedme", er: "ja" }, { felt: "haevelse", er: "led" }],
+        [{ felt: "varme", er: "ja" }, { felt: "haevelse", er: "led" }],
+        [{ felt: "feber", er: "ja" }]
+      ],
       kilder: ["lh-albuesmerter", "rh-monoartrit"],
-      status: "GODKENDT",
-      godkendtDato: "2026-11-15"
+      status: "UDKAST"
     },
     {
       id: "flag-septisk-bursit",

@@ -18,7 +18,7 @@ Afkrydset (V/P): diff-bursit, hen-bursit
 
 ```
 S: Højresidige albuesmerter. Opstået uden kendt årsag. Smerter bagtil på albuen. Varighed få dage. Reumatoid artrit.
-O: Væskefyldt hævelse over olecranon. Rødme og varmeøgning.
+O: Væskefyldt hævelse over olecranon. Rødme.
 V: Foreneligt med bursitis olecrani.
 P: Henvist til ortopædkirurgisk afdeling mhp. bursitis olecrani.
 ```
@@ -29,7 +29,7 @@ P: Henvist til ortopædkirurgisk afdeling mhp. bursitis olecrani.
 - [ikke vurderet] Fraktur eller luksation efter traume (ofte fald på strakt arm) (flag-fraktur-luksation, GODKENDT)
 - [ikke vurderet] Neurovaskulær påvirkning ved fraktur eller luksation (flag-neurovaskulaer, GODKENDT)
 - [ikke vurderet] Muskel-seneskade efter hyperekstensions- eller hyperfleksionstraume (flag-muskelsene, GODKENDT)
-- [ikke opfyldt af registreret] Septisk artrit eller hæmartrose efter traume (flag-septisk, GODKENDT)
+- [ikke vurderet] Septisk artrit eller hæmartrose efter traume (flag-septisk, UDKAST)
 - [(ingen betingelse)] Diagnostiske faldgruber (flag-faldgruber, GODKENDT)
 
 ## Differentialdiagnoser (11, statisk liste)
