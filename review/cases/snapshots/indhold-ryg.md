@@ -197,7 +197,7 @@
   - P: "Rådgivet om let aktivitet. Henvist til superviseret øvelsesterapi."
 - **beh-ikke-anbefalet** [UDKAST] kilder: lh-laendesmerter
   - Konflikt: Akupunktur: NKR (gengivet i Lægehåndbogen) – tilbyd kun efter nøje overvejelse, da den gavnlige effekt er usikker. NICE (gengivet i Lægehåndbogen, ikke-dansk) – frarådes. NICE-dokumentet er ikke læst direkte.
-  - Anbefales ikke: traktion, TENS, ultralydsbehandling, korset/rygstøtte. Akupunktur: se konflikt.
+  - Anbefales ikke: traktion, TENS, ultralydsbehandling, korset/rygstøtte. Ikke-dansk kilde: Lægehåndbogen bygger her på NICE guideline 2016 (ikke læst direkte); ingen dansk kilde fundet. Akupunktur: se konflikt.
   - Gælder: diff-uspecifik, diff-rod
   - P: "Ikke indikation for traktion, TENS eller korset."
 - **beh-billed** [UDKAST] kilder: lh-laendesmerter, rh-billed, lh-rodaffektion
@@ -230,10 +230,14 @@
   - Konflikt: Forløbsbeskrivelsen for cauda equina (februar 2025) angiver de lokale reumatologiske funktioner med Frederiksberg 3816 4049 for Midt og vagthavende VRR 3863 3863 uden for dagtid. Visitationsmeddelelsen for reumatologi (september 2025, nyest) angiver, at degenerativ ryg er samlet på Rigshospitalet, Valdemar Hansens Vej (38 63 42 47), og Frederiksberg-hotlinen som 38 16 41 90. Nummeret 3816 4049 er ikke fundet i andre kilder. Teksten følger visitationsmeddelelsen (beslutning truffet af Claude 2026-11-15 efter lægens anmodning).
   - Tvivlstilfælde ved mulig cauda equina eller parese, og meget svære smerter i kort tid: drøft i dagtid med reumatologisk funktion. Ryg (degenerativ, hele regionen): Rigshospitalet, Valdemar Hansens Vej, hotline kl. 08–15: 38 63 42 47. Rygkirurgisk bagvagt (Rigshospitalet, Valdemar Hansens Vej): 38 63 04 80.
   - P: "Drøftet med reumatologisk hotline."
-- **Akutmodtagelse / pakkeforløb** (hen-infektion-malignitet, akut, Region Hovedstaden) [UDKAST] kilder: rh-uden-udstraaling, lh-laendesmerter, rh-billed
-  - Konflikt: Region Hovedstaden (lænderygsmerter, 2025): infektion eller malignitet indlægges på lokal akutmodtagelse. Lægehåndbogen (2024): infektion → medicinsk eller rygkirurgisk afdeling; malignitet → pakkeforløb. Region Hovedstadens billeddiagnostiske vejledning: mistanke om cancer/metastaser udredes i pakkeforløb.
-  - Mistanke om infektion eller malignitet.
-  - P: "Henvist mhp. udredning for alvorlig underliggende sygdom."
+- **Akutmodtagelse** (hen-infektion, akut, Region Hovedstaden) [UDKAST] kilder: rh-uden-udstraaling, rh-billed, lh-laendesmerter
+  - Konflikt: Region Hovedstaden (lænderygsmerter uden udstråling, 2025): "Infektion eller malignitet: Indlægges på lokal akutmodtagelse." Lægehåndbogen (lændesmerter, 2024): "Ved mistanke om infektion henvises til medicinsk eller rygkirurgisk afdeling."
+  - Mistanke om infektion (obs. spondylodiscitis): indlægges på lokal akutmodtagelse (Region Hovedstaden). Patienten skal udredes via specialafdeling.
+  - P: "Henvist akut mhp. udredning for infektion."
+- **Pakkeforløb** (hen-malignitet, subakut, Region Hovedstaden) [UDKAST] kilder: rh-billed, lh-laendesmerter
+  - Konflikt: Region Hovedstaden (billeddiagnostik af columna, 2025): "Ved mistanke om cancer/metastaser bør udredning foregå i pakkeforløb." Lægehåndbogen (lændesmerter, 2024): "Ved mistanke om malignitet henvises i pakkeforløb." Men Region Hovedstaden (lænderygsmerter uden udstråling, 2025): "Infektion eller malignitet: Indlægges på lokal akutmodtagelse." Sundhedsstyrelsens pakkeforløbsbeskrivelse kunne ikke åbnes (sst.dk blokeret) og er ikke brugt.
+  - Mistanke om malignitet (cancer/metastaser): udredning i pakkeforløb. Tegn på tværsnitssyndrom eller betydende nyopstået parese: se det røde flag om cauda equina (akut).
+  - P: "Henvist i pakkeforløb mhp. udredning for malignitet."
 - **Rygsektionen, Rigshospitalet (konference) / Akut Modtagelse** (hen-fraktur, akut, Region Hovedstaden) [UDKAST] kilder: rh-uden-udstraaling
   - Mistanke om instabil fraktur: konferer med vagthavende på Rygsektionen. Osteoporotisk eller traumatisk sammenfald med akutte svære smerter: evt. indlæggelse på Akut Modtagelse.
   - P: "Konfereret mhp. mulig columnafraktur."

@@ -96,10 +96,10 @@
   - Tekst: Akut knæskade: udeluk fraktur, før stabiliteten testes. Lægehåndbogen (knee rules): røntgen ved direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Region Hovedstaden (Pittsburgh): akut røntgen ved alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.
   - Handling: Lægehåndbogen: røntgen ved ét af knee rules-kriterierne. Region Hovedstaden: akut røntgen ved ét af Pittsburgh-kriterierne. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).
   - Fremhæves hvis: traume=ja og belastning=ingen ELLER skridt=nej ELLER patellaoemhed=ja ELLER fibulaoemhed=ja ELLER fleksion90=nej ELLER traume=ja og alder=under12 ELLER traume=ja og alder=51til55 ELLER traume=ja og alder=over55
-- **flag-aflaast-knae** [GODKENDT 2026-11-15] kilder: lh-meniskskade, lh-knaesmerter, rh-traumatisk
+- **flag-aflaast-knae** [UDKAST] kilder: lh-meniskskade, lh-knaesmerter, rh-traumatisk
   - Konflikt: Lægehåndbogens side om meniskskade skriver "henvises til akut ortopædkirurgisk vurdering" ved aflåst knæ. Lægehåndbogens side om knæsmerter skriver "subakut henvisning ... ved aflåsning". Region Hovedstaden angiver "subakut henvisning til CVI snarest muligt < 1 uge" ved aflåst knæ med strækkemangel.
   - Tekst: Aflåst knæ: vridtraume med efterfølgende udtalt nedsat bevægelighed, typisk låst mellem ca. 30 og 70 graders fleksion (indeklemt menisklæsion).
-  - Handling: Ortopædkirurgisk vurdering – akut eller subakut, se konflikt.
+  - Handling: Region Hovedstaden: subakut henvisning til CVI snarest muligt (< 1 uge) ved aflåst knæ med strækkemangel og mistanke om indeklemt ledpatologi, fx menisk. Lægehåndbogen angiver akut vurdering – se konflikt.
   - Fremhæves hvis: laasning=ja og bevaegelighed=svaert
 - **flag-akut-ligamentskade** [GODKENDT 2026-11-15] kilder: lh-korsbaand-forreste, lh-mcl, rh-traumatisk
   - Tekst: Akut ligamentskade eller stor ledansamling: vridtraume, hvor knæet knækker sammen, evt. med "pop" og hæmartron i løbet af få timer (forreste korsbånd), valgustraume med akut løshed (mediale kollaterale ligament), eller akut stor ledansamling efter traume.
@@ -248,7 +248,7 @@
   - Intraartikulær glukokortikoid giver kortvarig lindring (få uger) ved opblussen med inflammatorisk præg. Afstå fra blokade umiddelbart før henvisning mhp. protese (øget infektionsrisiko kan udskyde operation).
   - Gælder: diff-artrose
   - P: "Intraartikulær glukokortikoid."
-- **beh-artrose-roentgen** [UDKAST] kilder: lh-artrose-knae
+- **beh-artrose-roentgen** [UDKAST] kilder: lh-artrose-knae, rh-non-traumatisk
   - Konflikt: Lægehåndbogens artroseside siger både "Sikre diagnostik ved klinisk undersøgelse og røntgen" og "Røntgen foretages kun ved manglende effekt af behandling ... eller ved mistanke om anden sygdom". Lægehåndbogens menisk-side: god praksis at tilbyde stående røntgen til patienter over 40 år med mistanke om både artrose og meniskpatologi. Region Hovedstaden (non-traumatiske knælidelser): artrose bør indtænkes hos alle over 35 år, og røntgen er her indiceret som primært udredningsværktøj, ikke MR eller artroskopi.
   - Røntgen ved mistanke om artrose: stående optagelse med let flekteret knæ. Lægehåndbogen (artrose): kun ved manglende effekt af behandling mhp. operationsvurdering eller ved mistanke om anden sygdom. Diagnosen kan stilles klinisk.
   - Gælder: diff-artrose, diff-menisk
