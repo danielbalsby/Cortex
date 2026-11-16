@@ -56,14 +56,14 @@ describe("bygNotat med valgte punkter (knæ)", () => {
 });
 
 describe("knæ-reglerne for akut røntgen", () => {
-  it("viser og rydder alder og Ottawa/Pittsburgh-fund efter traume", () => {
+  it("skjuler Ottawa/Pittsburgh-fund ved traume = nej; alder vises altid", () => {
     let svar: Svar = {};
     svar = vaelg(svar, "traume", "ja");
     svar = vaelg(svar, "alder", "over55");
     svar = vaelg(svar, "fibulaoemhed", "ja");
     expect(bygNotat(knae, svar)).toBe("S: Forudgående traume. Alder over 55 år.\nO: Ømhed på caput fibulae.");
     svar = vaelg(svar, "traume", "nej");
-    expect(synligeSvar(knae, svar)).toEqual({ traume: "nej" });
+    expect(synligeSvar(knae, svar)).toEqual({ traume: "nej", alder: "over55" });
   });
 });
 

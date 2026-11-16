@@ -33,7 +33,7 @@ P: Røntgen af skulder efter traume. Henvist til ultralydsscanning af skulder.
 - [ikke opfyldt af registreret] Brud eller seneruptur efter kraftigt traume eller overbelastning (flag-fraktur, GODKENDT)
 - [ikke opfyldt af registreret] Over 40 år efter skulderluksation (flag-cuff-efter-luksation, GODKENDT)
 - [ikke vurderet] Diagnostiske faldgruber (flag-faldgruber, GODKENDT)
-- [(ingen betingelse)] Septisk artrit (flag-septisk, GODKENDT)
+- [ikke vurderet] Septisk artrit (flag-septisk, GODKENDT)
 
 ## Differentialdiagnoser (10, statisk liste)
 

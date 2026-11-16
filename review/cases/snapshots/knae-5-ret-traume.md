@@ -14,7 +14,7 @@
 ## Notat
 
 ```
-S: Intet traume.
+S: Intet traume. Alder over 55 år.
 ```
 
 ## Røde flag (10, alle vises altid)
@@ -28,7 +28,7 @@ S: Intet traume.
 - [(ingen betingelse)] Store og akutte knæskader (flag-stor-akut-skade, GODKENDT)
 - [ikke vurderet] Bursit med stærke smerter, varme, rødme, kraftig hævelse og feber indi (flag-septisk-bursit, GODKENDT)
 - [(ingen betingelse)] Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet  (flag-laeg-haevelse, GODKENDT)
-- [(ingen betingelse)] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, GODKENDT)
+- [ikke opfyldt af registreret] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, GODKENDT)
 
 ## Differentialdiagnoser (14, statisk liste)
 

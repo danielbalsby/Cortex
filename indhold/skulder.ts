@@ -116,6 +116,15 @@ export const skulder: Region = {
           ]
         },
         {
+          id: "feber",
+          label: "Feber",
+          type: "enkelt",
+          valg: [
+            { id: "nej", label: "Nej", notat: "Ingen feber." },
+            { id: "ja", label: "Ja", notat: "Feber." }
+          ]
+        },
+        {
           id: "anamnese-tekst",
           label: "Supplerende",
           type: "tekst",
@@ -134,6 +143,24 @@ export const skulder: Region = {
           valg: [
             { id: "nej", label: "Ingen", notat: "Ingen fejlstilling." },
             { id: "ja", label: "Ja", notat: "Fejlstilling eller epauletskulder." }
+          ]
+        },
+        {
+          id: "roedme",
+          label: "Rødme",
+          type: "enkelt",
+          valg: [
+            { id: "ingen", label: "Ingen", notat: "Ingen rødme." },
+            { id: "ja", label: "Ja", notat: "Rødme." }
+          ]
+        },
+        {
+          id: "varme",
+          label: "Varme",
+          type: "enkelt",
+          valg: [
+            { id: "ingen", label: "Ingen", notat: "Ingen varmeøgning." },
+            { id: "ja", label: "Ja", notat: "Varmeøgning." }
           ]
         },
         {
@@ -217,11 +244,11 @@ export const skulder: Region = {
   notat: [
     {
       overskrift: "S",
-      felter: ["side", "alder", "debut", "traumetype", "varighed", "nat", "luksationer", "nakke", "arbejde", "anamnese-tekst"]
+      felter: ["side", "alder", "debut", "traumetype", "varighed", "nat", "luksationer", "nakke", "arbejde", "feber", "anamnese-tekst"]
     },
     {
       overskrift: "O",
-      felter: ["fejlstilling", "axillaris", "aktiv", "passiv", "smertebue", "impingement", "kraft", "acled", "objektivt-tekst"]
+      felter: ["fejlstilling", "roedme", "varme", "axillaris", "aktiv", "passiv", "smertebue", "impingement", "kraft", "acled", "objektivt-tekst"]
     }
   ],
 
@@ -372,6 +399,8 @@ export const skulder: Region = {
       tekst:
         "Septisk artrit: varmt, rødt, betydeligt hævet led, feber eller medtaget almentilstand. Disponerende: diabetes, alkohol- eller i.v.-misbrug, immunsuppression, nylig ledinjektion, alloplastik.",
       handling: "Indlægges akut i ortopædkirurgisk regi via CVI.",
+      // 2026-11-16 (review/GODKEND.md C1): fremhæves som knæets flag om bakteriel artrit.
+      fremhaevHvis: [[{ felt: "feber", er: "ja" }], [{ felt: "roedme", er: "ja" }], [{ felt: "varme", er: "ja" }]],
       kilder: ["rh-monoartrit", "lh-skuldersmerter"],
       status: "GODKENDT",
       godkendtDato: "2026-11-15"

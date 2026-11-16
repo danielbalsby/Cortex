@@ -27,7 +27,7 @@ P: Anklen plantarflekteret i skinne indtil vurdering. Henvist samme dag til akut
 - [ikke vurderet] Truet ben (flag-straks, GODKENDT)
 - [ikke vurderet] Fraktur (Ottawa-reglerne) (flag-fraktur, GODKENDT)
 - [ikke vurderet] Syndesmose- eller Maisonneuve-skade (flag-syndesmose, GODKENDT)
-- [(ingen betingelse)] Akut artrit, herunder infektion (flag-artrit, GODKENDT)
+- [ikke vurderet] Akut artrit, herunder infektion (flag-artrit, GODKENDT)
 - [ikke vurderet] Diabetes eller nedsat følesans (flag-neuropati, GODKENDT)
 - [ikke opfyldt af registreret] Stressfraktur (flag-stressfraktur, GODKENDT)
 

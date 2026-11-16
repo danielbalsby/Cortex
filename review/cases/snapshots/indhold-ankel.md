@@ -29,6 +29,9 @@
   - Diabetes → "Diabetes."
   - Nedsat følesans → "Nedsat følesans i foden."
   - Osteoporose → "Osteoporose."
+- **Feber** (feber, enkelt)
+  - Nej → "Ingen feber."
+  - Ja → "Feber."
 - **Supplerende** (anamnese-tekst, tekst)
 - **4 skridt nu** (skridt-nu, enkelt)
   - Går → "Går fire vægtbærende skridt ved undersøgelsen."
@@ -36,6 +39,12 @@
 - **Fejlstilling** (fejlstilling, enkelt)
   - Ingen → "Ingen fejlstilling."
   - Ja → "Fejlstilling."
+- **Rødme** (roedme, enkelt)
+  - Ingen → "Ingen rødme."
+  - Ja → "Rødme."
+- **Varme** (varme, enkelt)
+  - Ingen → "Ingen varmeøgning."
+  - Ja → "Varmeøgning."
 - **Cirk./sens. distalt** (neurovaskulaer, enkelt)
   - Normal cirk. + sens. → "Normal distal cirkulation og sensibilitet."
   - Påvirket → "Påvirket distal cirkulation eller sensibilitet."
@@ -90,7 +99,7 @@
 - **flag-artrit** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter, rh-monoartrit
   - Tekst: Akut artrit, herunder infektion: rødme, varme og udtalt bevægeømhed uden en passende skademekanisme.
   - Handling: Samme dag ved mistanke om ledinfektion (Region Hovedstaden: akut indlæggelse i ortopædkirurgisk regi via CVI).
-  - Fremhæves hvis: (ingen betingelse)
+  - Fremhæves hvis: roedme=ja ELLER varme=ja
 - **flag-neuropati** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter
   - Tekst: Diabetes eller nedsat følesans: Ottawa-reglerne gælder ikke ved upålidelig undersøgelse, fx ved neuropati. Vær tilbageholdende med kulde og kompression ved nedsat cirkulation eller sensibilitet.
   - Handling: Vurder røntgen på klinisk mistanke uanset Ottawa-reglerne.

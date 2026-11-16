@@ -88,6 +88,15 @@ export const ankel: Region = {
           ]
         },
         {
+          id: "feber",
+          label: "Feber",
+          type: "enkelt",
+          valg: [
+            { id: "nej", label: "Nej", notat: "Ingen feber." },
+            { id: "ja", label: "Ja", notat: "Feber." }
+          ]
+        },
+        {
           id: "anamnese-tekst",
           label: "Supplerende",
           type: "tekst",
@@ -115,6 +124,24 @@ export const ankel: Region = {
           valg: [
             { id: "nej", label: "Ingen", notat: "Ingen fejlstilling." },
             { id: "ja", label: "Ja", notat: "Fejlstilling." }
+          ]
+        },
+        {
+          id: "roedme",
+          label: "Rødme",
+          type: "enkelt",
+          valg: [
+            { id: "ingen", label: "Ingen", notat: "Ingen rødme." },
+            { id: "ja", label: "Ja", notat: "Rødme." }
+          ]
+        },
+        {
+          id: "varme",
+          label: "Varme",
+          type: "enkelt",
+          valg: [
+            { id: "ingen", label: "Ingen", notat: "Ingen varmeøgning." },
+            { id: "ja", label: "Ja", notat: "Varmeøgning." }
           ]
         },
         {
@@ -208,13 +235,15 @@ export const ankel: Region = {
   notat: [
     {
       overskrift: "S",
-      felter: ["side", "mekanisme", "varighed", "skridt-straks", "tidligere", "disposition", "anamnese-tekst"]
+      felter: ["side", "mekanisme", "varighed", "skridt-straks", "tidligere", "disposition", "feber", "anamnese-tekst"]
     },
     {
       overskrift: "O",
       felter: [
         "skridt-nu",
         "fejlstilling",
+        "roedme",
+        "varme",
         "neurovaskulaer",
         "haevelse",
         "malleol",
@@ -356,6 +385,8 @@ export const ankel: Region = {
       tekst:
         "Akut artrit, herunder infektion: rødme, varme og udtalt bevægeømhed uden en passende skademekanisme.",
       handling: "Samme dag ved mistanke om ledinfektion (Region Hovedstaden: akut indlæggelse i ortopædkirurgisk regi via CVI).",
+      // 2026-11-16 (review/GODKEND.md C2): rødme eller varme, som flagteksten nævner. Feber fremhæver ikke.
+      fremhaevHvis: [[{ felt: "roedme", er: "ja" }], [{ felt: "varme", er: "ja" }]],
       kilder: ["lh-ankelsmerter", "rh-monoartrit"],
       status: "GODKENDT",
       godkendtDato: "2026-11-15"

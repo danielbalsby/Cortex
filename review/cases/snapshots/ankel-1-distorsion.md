@@ -37,7 +37,7 @@ P: Gradvis beskyttet belastning og bevægelse. Stabiliserende ankelortose.
 - [ikke opfyldt af registreret] Fraktur (Ottawa-reglerne) (flag-fraktur, GODKENDT)
 - [ikke opfyldt af registreret] Akillesseneruptur (flag-akilles, GODKENDT)
 - [ikke opfyldt af registreret] Syndesmose- eller Maisonneuve-skade (flag-syndesmose, GODKENDT)
-- [(ingen betingelse)] Akut artrit, herunder infektion (flag-artrit, GODKENDT)
+- [ikke vurderet] Akut artrit, herunder infektion (flag-artrit, GODKENDT)
 - [ikke vurderet] Diabetes eller nedsat følesans (flag-neuropati, GODKENDT)
 - [ikke opfyldt af registreret] Stressfraktur (flag-stressfraktur, GODKENDT)
 

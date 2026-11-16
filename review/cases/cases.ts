@@ -59,6 +59,18 @@ export const CASES: Case[] = [
     ]
   },
 
+  {
+    id: "skulder-5-septisk-registreret",
+    region: "skulder",
+    titel: "Ældre med feber, rød og varm skulder (nye felter fra C1)",
+    type: "rødt flag",
+    trin: [
+      ["side", "hoejre"], ["alder", "over75"], ["debut", "spontan"], ["varighed", "dage"], ["nat", "hvile"],
+      ["feber", "ja"], ["roedme", "ja"], ["varme", "ja"], ["aktiv", "nedsat"], ["passiv", "nedsat"]
+    ],
+    valgte: ["hen-septisk"]
+  },
+
   // ---------- Albue ----------
   {
     id: "albue-1-lateral-epikondylit",
@@ -191,6 +203,20 @@ export const CASES: Case[] = [
     ]
   },
   {
+    id: "knae-7-barn-under-12",
+    region: "knae",
+    titel: "Barn under 12 år med knæsmerter uden traume (alder vises altid fra C3)",
+    type: "rødt flag",
+    trin: [["side", "hoejre"], ["debut", "gradvis"], ["varighed", "uger"], ["traume", "nej"], ["alder", "under12"]]
+  },
+  {
+    id: "knae-8-aeldre-uden-traume",
+    region: "knae",
+    titel: "Over 55 år uden traume: fraktur-flaget må ikke fremhæves af alder alene",
+    type: "ukompliceret",
+    trin: [["side", "venstre"], ["debut", "gradvis"], ["varighed", "maaneder"], ["traume", "nej"], ["alder", "over55"]]
+  },
+  {
     id: "knae-5-ret-traume",
     region: "knae",
     titel: "Traumefelter udfyldes, traume rettes derefter til nej",
@@ -250,5 +276,13 @@ export const CASES: Case[] = [
       ["side", "hoejre"], ["mekanisme", "andet"], ["varighed", "dage"], ["anamnese-tekst", "Ingen traume"],
       ["haevelse", "udtalt"]
     ]
+  },
+  {
+    id: "ankel-5-artrit-registreret",
+    region: "ankel",
+    titel: "Rød, varm ankel uden traume (nye felter fra C2)",
+    type: "rødt flag",
+    trin: [["side", "hoejre"], ["mekanisme", "andet"], ["varighed", "dage"], ["feber", "ja"], ["roedme", "ja"], ["varme", "ja"]],
+    valgte: ["hen-septisk"]
   }
 ];

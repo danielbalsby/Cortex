@@ -27,7 +27,7 @@ O: Nedsat aktiv bevægelighed. Nedsat passiv bevægelighed.
 - [ikke opfyldt af registreret] Traumatisk rotator cuff-ruptur (tidskritisk) (flag-traumatisk-cuff, GODKENDT)
 - [ikke vurderet] Over 40 år efter skulderluksation (flag-cuff-efter-luksation, GODKENDT)
 - [ikke vurderet] Diagnostiske faldgruber (flag-faldgruber, GODKENDT)
-- [(ingen betingelse)] Septisk artrit (flag-septisk, GODKENDT)
+- [ikke vurderet] Septisk artrit (flag-septisk, GODKENDT)
 
 ## Differentialdiagnoser (10, statisk liste)
 

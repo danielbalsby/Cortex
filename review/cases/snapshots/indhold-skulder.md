@@ -38,10 +38,19 @@
 - **Arbejde over skulderhøjde** (arbejde, enkelt)
   - Nej → "Intet skulderbelastende arbejde."
   - Ja → "Skulderbelastende arbejde eller idræt over skulderhøjde."
+- **Feber** (feber, enkelt)
+  - Nej → "Ingen feber."
+  - Ja → "Feber."
 - **Supplerende** (anamnese-tekst, tekst)
 - **Fejlstilling** (fejlstilling, enkelt)
   - Ingen → "Ingen fejlstilling."
   - Ja → "Fejlstilling eller epauletskulder."
+- **Rødme** (roedme, enkelt)
+  - Ingen → "Ingen rødme."
+  - Ja → "Rødme."
+- **Varme** (varme, enkelt)
+  - Ingen → "Ingen varmeøgning."
+  - Ja → "Varmeøgning."
 - **Sens. lateralt (n. ax.)** (axillaris, enkelt, vises hvis debut=traume)
   - Normal → "Normal sensibilitet lateralt på skulderen."
   - Nedsat → "Nedsat sensibilitet lateralt på skulderen."
@@ -94,7 +103,7 @@
 - **flag-septisk** [GODKENDT 2026-11-15] kilder: rh-monoartrit, lh-skuldersmerter
   - Tekst: Septisk artrit: varmt, rødt, betydeligt hævet led, feber eller medtaget almentilstand. Disponerende: diabetes, alkohol- eller i.v.-misbrug, immunsuppression, nylig ledinjektion, alloplastik.
   - Handling: Indlægges akut i ortopædkirurgisk regi via CVI.
-  - Fremhæves hvis: (ingen betingelse)
+  - Fremhæves hvis: feber=ja ELLER roedme=ja ELLER varme=ja
 
 ## Differentialdiagnoser
 

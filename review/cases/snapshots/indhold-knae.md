@@ -29,7 +29,7 @@
 - **Hørt/følt knæk** (knaek, enkelt, vises hvis traume=ja)
   - Ja → "Hørt eller følt et knæk ved traumet."
   - Nej → "Ingen knæklyd eller -følelse ved traumet."
-- **Alder** (alder, enkelt, vises hvis traume=ja)
+- **Alder** (alder, enkelt)
   - Under 12 → "Alder under 12 år."
   - 12–50 → "Alder 12–50 år."
   - 51–55 → "Alder 51–55 år."
@@ -94,7 +94,7 @@
   - Konflikt: Lægehåndbogen bruger "Knee-rules" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder, og begge regler vises. Ingen af kilderne kombinerer reglerne. Fremhævningen sker, hvis ét kriterie fra én af reglerne er registreret. Originalstudierne bag reglerne er ikke læst.
   - Tekst: Akut knæskade: udeluk fraktur, før stabiliteten testes. Lægehåndbogen (knee rules): røntgen ved direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Region Hovedstaden (Pittsburgh): akut røntgen ved alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.
   - Handling: Lægehåndbogen: røntgen ved ét af knee rules-kriterierne. Region Hovedstaden: akut røntgen ved ét af Pittsburgh-kriterierne. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).
-  - Fremhæves hvis: traume=ja og belastning=ingen ELLER skridt=nej ELLER patellaoemhed=ja ELLER fibulaoemhed=ja ELLER fleksion90=nej ELLER alder=under12 ELLER alder=51til55 ELLER alder=over55
+  - Fremhæves hvis: traume=ja og belastning=ingen ELLER skridt=nej ELLER patellaoemhed=ja ELLER fibulaoemhed=ja ELLER fleksion90=nej ELLER traume=ja og alder=under12 ELLER traume=ja og alder=51til55 ELLER traume=ja og alder=over55
 - **flag-aflaast-knae** [GODKENDT 2026-11-15] kilder: lh-meniskskade, lh-knaesmerter, rh-traumatisk
   - Konflikt: Lægehåndbogens side om meniskskade skriver "henvises til akut ortopædkirurgisk vurdering" ved aflåst knæ. Lægehåndbogens side om knæsmerter skriver "subakut henvisning ... ved aflåsning". Region Hovedstaden angiver "subakut henvisning til CVI snarest muligt < 1 uge" ved aflåst knæ med strækkemangel.
   - Tekst: Aflåst knæ: vridtraume med efterfølgende udtalt nedsat bevægelighed, typisk låst mellem ca. 30 og 70 graders fleksion (indeklemt menisklæsion).
@@ -127,7 +127,7 @@
 - **flag-boern** [GODKENDT 2026-11-15] kilder: lh-knaesmerter
   - Tekst: Barn med knæsmerter – diagnostiske faldgruber: hoftelidelse (projicerede smerter), osteosarkom og Ewings sarkom, artralgi pga. leukæmi.
   - Handling: Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.
-  - Fremhæves hvis: (ingen betingelse)
+  - Fremhæves hvis: alder=under12
 
 ## Differentialdiagnoser
 

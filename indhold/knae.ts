@@ -108,7 +108,7 @@ export const knae: Region = {
           id: "alder",
           label: "Alder",
           type: "enkelt",
-          visHvis: [{ felt: "traume", er: "ja" }],
+          // Vises altid (review/GODKEND.md C3): bruges også til flaget om børn.
           valg: [
             { id: "under12", label: "Under 12", notat: "Alder under 12 år." },
             { id: "12til50", label: "12–50", notat: "Alder 12–50 år." },
@@ -474,9 +474,18 @@ export const knae: Region = {
         [{ felt: "patellaoemhed", er: "ja" }],
         [{ felt: "fibulaoemhed", er: "ja" }],
         [{ felt: "fleksion90", er: "nej" }],
-        [{ felt: "alder", er: "under12" }],
-        [{ felt: "alder", er: "51til55" }],
-        [{ felt: "alder", er: "over55" }]
+        [
+          { felt: "traume", er: "ja" },
+          { felt: "alder", er: "under12" }
+        ],
+        [
+          { felt: "traume", er: "ja" },
+          { felt: "alder", er: "51til55" }
+        ],
+        [
+          { felt: "traume", er: "ja" },
+          { felt: "alder", er: "over55" }
+        ]
       ],
       kilder: ["lh-knaesmerter", "rh-traumatisk"],
       // 2026-11-16: handlingen omformuleret efter kilderne (review/GODKEND.md A2). Den tidligere
@@ -588,6 +597,8 @@ export const knae: Region = {
         "Barn med knæsmerter – diagnostiske faldgruber: hoftelidelse (projicerede smerter), osteosarkom og Ewings sarkom, artralgi pga. leukæmi.",
       handling:
         "Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.",
+      // 2026-11-16 (review/GODKEND.md C3): under 12 år. 12–17-årige fanges ikke af aldersgrupperne.
+      fremhaevHvis: [[{ felt: "alder", er: "under12" }]],
       kilder: ["lh-knaesmerter"],
       status: "GODKENDT",
       godkendtDato: "2026-11-15"
