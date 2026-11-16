@@ -22,6 +22,7 @@ For den valgte region, i ét flow:
 - Ligger adskilt fra kode: én datafil pr. region i `indhold/`. Ingen klinisk logik eller kliniske tekster i komponenter.
 - Hvert klinisk punkt (rødt flag, differentialdiagnose, behandling, henvisning) har kilde med årstal og status `UDKAST` eller `GODKENDT`.
 - **Kun brugeren sætter `GODKENDT`.** Alt, du skriver eller ændrer, er `UDKAST`. Ændrer du den kliniske tekst i et godkendt punkt, går det tilbage til `UDKAST`.
+- **Aldrig `GODKENDT` på en generel tilladelse** (fx "du må godkende"). Kun når lægen nævner det konkrete punkt. Ændres tekst, handling eller betingelse i et godkendt punkt, går det tilbage til `UDKAST` og fjernes fra `indhold/godkendt-fingeraftryk.ts` (testen fejler ellers).
 - Bedste aktuelle evidens gælder. Danske kilder vejer tungest (DSAM, Lægehåndbogen, SST's nationale kliniske retningslinjer, pro.medicin.dk, regionale vejledninger). Udenlandske kilder og alment accepterede beslutningsregler (fx Ottawa) må bruges og mærkes som ikke-danske.
 - Er kilder uenige, navngives konflikten. Den harmoniseres ikke.
 - Opfind aldrig tal, kriterier eller kilder. Uden kilde: tom kildeliste, som vises "KILDE MANGLER".

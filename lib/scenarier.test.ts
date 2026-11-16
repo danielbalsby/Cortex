@@ -47,6 +47,9 @@ const TABEL: Scenarie[] = [
   { navn: "Albue: varm, hævet led → septisk artrit", region: "albue", flag: ["flag-septisk"],
     trin: [["debut", "spontan"], ["haevelse", "led"], ["varme", "ja"]] },
 
+  { navn: "Albue: varme over bursa → septisk bursit (ikke septisk artrit)", region: "albue", flag: ["flag-septisk-bursit"],
+    trin: [["debut", "spontan"], ["haevelse", "bursa"], ["varme", "ja"]] },
+
   { navn: "Ryg hverdag: akutte lændesmerter", region: "ryg", flag: [],
     trin: [["udbredning", "laend"], ["debut", "akut"], ["tidligere", "lignende"], ["cauda", "nej"], ["lasegue", "neg"], ["kraft", "normal"]] },
   { navn: "Ryg tidskritisk: cauda equina", region: "ryg", flag: ["flag-cauda"],

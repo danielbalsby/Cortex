@@ -394,11 +394,12 @@ export const albue: Region = {
       fremhaevHvis: [
         [{ felt: "disposition", er: "protese" }, { felt: "haevelse", er: "bursa" }],
         [{ felt: "disposition", er: "ra" }, { felt: "haevelse", er: "bursa" }],
-        [{ felt: "roedme", er: "ja" }, { felt: "haevelse", er: "bursa" }]
+        [{ felt: "roedme", er: "ja" }, { felt: "haevelse", er: "bursa" }],
+        // 2026-11-16 (lægens afgørelse 4): varme over bursa fremhæver også, efter at "Rødme/varme" er delt. UDKAST.
+        [{ felt: "varme", er: "ja" }, { felt: "haevelse", er: "bursa" }]
       ],
       kilder: ["lh-bursitis-olecrani"],
-      status: "GODKENDT",
-      godkendtDato: "2026-11-15"
+      status: "UDKAST"
     },
     {
       id: "flag-faldgruber",

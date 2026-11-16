@@ -20,14 +20,14 @@ S: Venstresidige knæsmerter. Gradvist indsættende. Varighed flere måneder. In
 
 - [ikke vurderet] Bakteriel artrit (flag-bakteriel-artrit, GODKENDT)
 - [ikke vurderet] Akut knæskade (flag-fraktur, GODKENDT)
-- [ikke vurderet] Aflåst knæ (flag-aflaast-knae, GODKENDT)
+- [ikke vurderet] Aflåst knæ (flag-aflaast-knae, UDKAST)
 - [ikke opfyldt af registreret] Akut ligamentskade eller stor ledansamling (flag-akut-ligamentskade, GODKENDT)
 - [ikke vurderet] Strækkeapparat (flag-straekkeapparat, GODKENDT)
 - [(ingen betingelse)] Akut patellaluksation (flag-patellaluksation, GODKENDT)
 - [(ingen betingelse)] Store og akutte knæskader (flag-stor-akut-skade, GODKENDT)
 - [ikke vurderet] Bursit med stærke smerter, varme, rødme, kraftig hævelse og feber indi (flag-septisk-bursit, GODKENDT)
 - [(ingen betingelse)] Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet  (flag-laeg-haevelse, GODKENDT)
-- [ikke opfyldt af registreret] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, GODKENDT)
+- [ikke opfyldt af registreret] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, UDKAST)
 
 ## Differentialdiagnoser (15, statisk liste)
 

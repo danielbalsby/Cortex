@@ -30,13 +30,13 @@ P: Henvist akut til CVI mhp. septisk artrit.
 - [MATCHER] Bakteriel artrit (flag-bakteriel-artrit, GODKENDT)
 - [MATCHER] Bursit med stærke smerter, varme, rødme, kraftig hævelse og feber indi (flag-septisk-bursit, GODKENDT)
 - [ikke vurderet] Akut knæskade (flag-fraktur, GODKENDT)
-- [ikke opfyldt af registreret] Aflåst knæ (flag-aflaast-knae, GODKENDT)
+- [ikke opfyldt af registreret] Aflåst knæ (flag-aflaast-knae, UDKAST)
 - [ikke opfyldt af registreret] Akut ligamentskade eller stor ledansamling (flag-akut-ligamentskade, GODKENDT)
 - [ikke vurderet] Strækkeapparat (flag-straekkeapparat, GODKENDT)
 - [(ingen betingelse)] Akut patellaluksation (flag-patellaluksation, GODKENDT)
 - [(ingen betingelse)] Store og akutte knæskader (flag-stor-akut-skade, GODKENDT)
 - [(ingen betingelse)] Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet  (flag-laeg-haevelse, GODKENDT)
-- [ikke vurderet] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, GODKENDT)
+- [ikke vurderet] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, UDKAST)
 
 ## Differentialdiagnoser (15, statisk liste)
 

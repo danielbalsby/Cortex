@@ -501,7 +501,7 @@ export const knae: Region = {
       id: "flag-aflaast-knae",
       tekst:
         "Aflåst knæ: vridtraume med efterfølgende udtalt nedsat bevægelighed, typisk låst mellem ca. 30 og 70 graders fleksion (indeklemt menisklæsion).",
-      handling: "Ortopædkirurgisk vurdering – akut eller subakut, se konflikt.",
+      handling: "Region Hovedstaden: subakut henvisning til CVI snarest muligt (< 1 uge) ved aflåst knæ med strækkemangel og mistanke om indeklemt ledpatologi, fx menisk. Lægehåndbogen angiver akut vurdering – se konflikt.",
       fremhaevHvis: [
         [
           { felt: "laasning", er: "ja" },
@@ -509,8 +509,8 @@ export const knae: Region = {
         ]
       ],
       kilder: ["lh-meniskskade", "lh-knaesmerter", "rh-traumatisk"],
-      status: "GODKENDT",
-      godkendtDato: "2026-11-15",
+      // 2026-11-16: handlingen følger Region Hovedstaden efter lægens afgørelse. UDKAST, til lægen har læst kilden og godkender.
+      status: "UDKAST",
       konflikt: {
         beskrivelse:
           "Lægehåndbogens side om meniskskade skriver \"henvises til akut ortopædkirurgisk vurdering\" ved aflåst knæ. Lægehåndbogens side om knæsmerter skriver \"subakut henvisning ... ved aflåsning\". Region Hovedstaden angiver \"subakut henvisning til CVI snarest muligt < 1 uge\" ved aflåst knæ med strækkemangel.",
@@ -600,8 +600,8 @@ export const knae: Region = {
       // 2026-11-16 (review/GODKEND.md C3): under 12 år. 12–17-årige fanges ikke af aldersgrupperne.
       fremhaevHvis: [[{ felt: "alder", er: "under12" }]],
       kilder: ["lh-knaesmerter"],
-      status: "GODKENDT",
-      godkendtDato: "2026-11-15"
+      // 2026-11-16: betingelsen blev ændret på generel tilladelse → UDKAST, til lægen godkender flaget enkeltvis.
+      status: "UDKAST"
     }
   ],
 
@@ -865,7 +865,8 @@ export const knae: Region = {
         "Røntgen ved mistanke om artrose: stående optagelse med let flekteret knæ. Lægehåndbogen (artrose): kun ved manglende effekt af behandling mhp. operationsvurdering eller ved mistanke om anden sygdom. Diagnosen kan stilles klinisk.",
       gaelderFor: ["diff-artrose", "diff-menisk"],
       notat: "Stående røntgen af knæ bestilt.",
-      kilder: ["lh-artrose-knae"],
+      // 2026-11-16: "let flekteret knæ" står i Region Hovedstadens forløb (review/KILDEKONTROL.md).
+      kilder: ["lh-artrose-knae", "rh-non-traumatisk"],
       status: "UDKAST",
       konflikt: {
         beskrivelse:

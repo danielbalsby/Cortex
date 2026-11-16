@@ -412,8 +412,8 @@ export const skulder: Region = {
       // 2026-11-16 (review/GODKEND.md C1): fremhæves som knæets flag om bakteriel artrit.
       fremhaevHvis: [[{ felt: "feber", er: "ja" }], [{ felt: "roedme", er: "ja" }], [{ felt: "varme", er: "ja" }]],
       kilder: ["rh-monoartrit", "lh-skuldersmerter"],
-      status: "GODKENDT",
-      godkendtDato: "2026-11-15"
+      // 2026-11-16: betingelsen blev ændret på generel tilladelse → UDKAST, til lægen godkender flaget enkeltvis.
+      status: "UDKAST"
     }
   ],
 
@@ -451,11 +451,16 @@ export const skulder: Region = {
         "Svære smerter dag og nat uden udløsende årsag; efter et par måneder stivhed",
         "Nedsat aktiv og passiv bevægelighed, særligt udadrotation (kapsulært mønster)",
         "Normal kraft inden for bevægeudslaget; isometrisk test giver ikke væsentlig smerteforværring",
-        "Selvlimiterende over 1–2 år; let at overdiagnosticere"
+        "Selvlimiterende; varer cirka 1–3 år; let at overdiagnosticere"
       ],
       notat: "Foreneligt med kapsulit (frossen skulder).",
       kilder: ["lh-kapsulit", "lh-skuldersmerter"],
-      status: "UDKAST"
+      status: "UDKAST",
+      konflikt: {
+        beskrivelse:
+          "Varighed: Lægehåndbogen, Kapsulit (2024) skriver cirka 1–3 år; Lægehåndbogen, Skuldersmerter (2019) skriver, at kapsulit helbredes spontant i løbet af 1–2 år. Teksten følger den nyeste side.",
+        kilder: ["lh-kapsulit", "lh-skuldersmerter"]
+      }
     },
     {
       id: "diff-traumatisk-cuff",

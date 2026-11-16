@@ -32,7 +32,7 @@ P: Rådgivet om aflastning. Instrueret i excentriske øvelser og udspænding.
 - [ikke vurderet] Neurovaskulær påvirkning ved fraktur eller luksation (flag-neurovaskulaer, GODKENDT)
 - [ikke vurderet] Muskel-seneskade efter hyperekstensions- eller hyperfleksionstraume (flag-muskelsene, GODKENDT)
 - [ikke vurderet] Septisk artrit eller hæmartrose efter traume (flag-septisk, UDKAST)
-- [ikke opfyldt af registreret] Septisk bursitis olecrani hos patient med albueprotese eller reumatoid (flag-septisk-bursit, GODKENDT)
+- [ikke opfyldt af registreret] Septisk bursitis olecrani hos patient med albueprotese eller reumatoid (flag-septisk-bursit, UDKAST)
 - [(ingen betingelse)] Diagnostiske faldgruber (flag-faldgruber, GODKENDT)
 
 ## Differentialdiagnoser (11, statisk liste)

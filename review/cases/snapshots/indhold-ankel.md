@@ -96,7 +96,7 @@
   - Tekst: Syndesmose- eller Maisonneuve-skade: smerter mellem distale tibia og fibula, ofte efter udadrotation. Samtidig medial ankelømhed eller ømhed over proksimale fibula skærper mistanken om en ustabil skade. Negative tests udelukker ikke skaden.
   - Handling: Samme dag ved mistanke om Maisonneuve-skade eller syndesmoseskade med udtalte belastningsproblemer eller samtidig medial skade. Ved mistanke om Maisonneuve-skade røntgen af hele underbenet.
   - Fremhæves hvis: syndesmose=oem ELLER fibula=oem ELLER mekanisme=udadrotation
-- **flag-artrit** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter, rh-monoartrit
+- **flag-artrit** [UDKAST] kilder: lh-ankelsmerter, rh-monoartrit
   - Tekst: Akut artrit, herunder infektion: rødme, varme og udtalt bevægeømhed uden en passende skademekanisme.
   - Handling: Samme dag ved mistanke om ledinfektion (Region Hovedstaden: akut indlæggelse i ortopædkirurgisk regi via CVI).
   - Fremhæves hvis: roedme=ja ELLER varme=ja

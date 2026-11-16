@@ -96,10 +96,10 @@
   - Tekst: Septisk artrit eller hæmartrose efter traume: varmt, rødt, hævet led, feber eller medtaget almentilstand. Bakteriel infektion kræver akut behandling, ofte med kirurgisk intervention.
   - Handling: Hurtig henvisning til sygehus (Region Hovedstaden: ved mistanke om septisk artrit akut indlæggelse i ortopædkirurgisk regi via CVI). Ved mistanke om bakteriel infektion sendes bursa- eller ledvæske til dyrkning.
   - Fremhæves hvis: roedme=ja og haevelse=led ELLER varme=ja og haevelse=led ELLER feber=ja
-- **flag-septisk-bursit** [GODKENDT 2026-11-15] kilder: lh-bursitis-olecrani
+- **flag-septisk-bursit** [UDKAST] kilder: lh-bursitis-olecrani
   - Tekst: Septisk bursitis olecrani hos patient med albueprotese eller reumatoid artrit (ofte kommunikation til leddet), eller hos patient der er almen påvirket eller septisk, eller med sår eller fistel over bursa.
   - Handling: Henvis til ortopædkirurgisk afdeling – behandles som septisk artrit / proteseinfektion af specialist.
-  - Fremhæves hvis: disposition=protese og haevelse=bursa ELLER disposition=ra og haevelse=bursa ELLER roedme=ja og haevelse=bursa
+  - Fremhæves hvis: disposition=protese og haevelse=bursa ELLER disposition=ra og haevelse=bursa ELLER roedme=ja og haevelse=bursa ELLER varme=ja og haevelse=bursa
 - **flag-faldgruber** [GODKENDT 2026-11-15] kilder: lh-albuesmerter, lh-epikondylit
   - Tekst: Diagnostiske faldgruber: fraktur og brusklæsion efter traume; skader i nakke, skulder og håndled kan vise sig som albuesmerter; tumor kan give irritation af nerver.
   - Handling: Undersøg også cervikalcolumna og resten af overekstremiteten; overvej røntgen efter traume.
