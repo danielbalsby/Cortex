@@ -501,7 +501,7 @@ export const knae: Region = {
       id: "flag-aflaast-knae",
       tekst:
         "Aflåst knæ: vridtraume med efterfølgende udtalt nedsat bevægelighed, typisk låst mellem ca. 30 og 70 graders fleksion (indeklemt menisklæsion).",
-      handling: "Ortopædkirurgisk vurdering – akut eller subakut, se konflikt.",
+      handling: "Region Hovedstaden: subakut henvisning til CVI snarest muligt (< 1 uge) ved aflåst knæ med strækkemangel og mistanke om indeklemt ledpatologi, fx menisk. Lægehåndbogen angiver akut vurdering – se konflikt.",
       fremhaevHvis: [
         [
           { felt: "laasning", er: "ja" },
@@ -509,8 +509,8 @@ export const knae: Region = {
         ]
       ],
       kilder: ["lh-meniskskade", "lh-knaesmerter", "rh-traumatisk"],
-      status: "GODKENDT",
-      godkendtDato: "2026-11-15",
+      // 2026-11-16: handlingen følger Region Hovedstaden efter lægens afgørelse. UDKAST, til lægen har læst kilden og godkender.
+      status: "UDKAST",
       konflikt: {
         beskrivelse:
           "Lægehåndbogens side om meniskskade skriver \"henvises til akut ortopædkirurgisk vurdering\" ved aflåst knæ. Lægehåndbogens side om knæsmerter skriver \"subakut henvisning ... ved aflåsning\". Region Hovedstaden angiver \"subakut henvisning til CVI snarest muligt < 1 uge\" ved aflåst knæ med strækkemangel.",
