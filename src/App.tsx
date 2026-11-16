@@ -7,7 +7,7 @@ import { kopier } from "../lib/kopier";
 import { bygNotat, saetSvar, skjulteSvar, synligeSvar } from "../lib/notat";
 import { optael } from "../lib/status";
 import { naboFelt, udfyldNormale, vaelgMedTal } from "../lib/tastatur";
-import { Beslutningsstoette } from "./Beslutningsstoette";
+import { Beslutningsstoette, FlagStribe } from "./Beslutningsstoette";
 import { Felter } from "./Felter";
 import { Gennemgang } from "./Gennemgang";
 import { Notat, type KopiStatus } from "./Notat";
@@ -184,6 +184,7 @@ export function App() {
         </span>
       </header>
 
+      {aktiv && indhold && <FlagStribe region={indhold} svar={synlige} />}
       {aktiv && indhold ? (
         <main className="arbejdsflade">
           <section className="panel" aria-label="Indtastning">

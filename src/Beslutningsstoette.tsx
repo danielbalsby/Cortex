@@ -143,6 +143,36 @@ function FlagMaerke({ status }: { status: FlagStatus }) {
   return null;
 }
 
+/**
+ * Smal stribe med alle røde flag (kun synlig i smalle vinduer, se styles.css):
+ * matchende flag med fuld titel, øvrige med kort titel. Ingen flag udelades.
+ */
+export function FlagStribe({ region, svar }: { region: Region; svar: Svar }) {
+  const { matcher, oevrige } = sorterFlag(region, svar);
+  const titel = (tekst: string) => {
+    const kolon = tekst.indexOf(": ");
+    const t = kolon === -1 ? tekst : tekst.slice(0, kolon);
+    return t.length > 45 ? `${t.slice(0, 44)}…` : t;
+  };
+  return (
+    <aside className="flagStribe" aria-label="Røde flag (oversigt)">
+      <span className="stribeTitel">
+        Røde flag ({region.roedeFlag.length}){matcher.length > 0 && ` · ${matcher.length} matcher dine valg`}
+      </span>
+      {matcher.length > 0 && (
+        <span className="stribeMatcher">
+          {matcher.map(({ flag }) => (
+            <span key={flag.id} className="stribeFlag">
+              ! {titel(flag.tekst)}
+            </span>
+          ))}
+        </span>
+      )}
+      <span className="stribeOevrige">{oevrige.map(({ flag }) => titel(flag.tekst)).join(" · ")}</span>
+    </aside>
+  );
+}
+
 /** Flagets titel er teksten før første kolon; uden kolon er hele teksten titlen. */
 function FlagTitel({ tekst }: { tekst: string }) {
   const kolon = tekst.indexOf(": ");
