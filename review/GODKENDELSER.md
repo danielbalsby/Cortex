@@ -59,3 +59,5 @@ godkendelse?: { dato: string; af: "laegen"; besked: string; aendretSiden?: strin
 *Min anbefaling:* det enklere alternativ – bekræft de 3 flag enkeltvis ("godkend skulder septisk-flag" osv.), så slipper vi for et nyt felt.
 
 **Opdateret 2026-11-16 (senere):** skulder `flag-septisk`, ankel `flag-artrit` og knæ `flag-boern` er sat til UDKAST og fjernet fra fingeraftrykket, fordi deres betingelse blev ændret på generel tilladelse. Der er nu 34 GODKENDT-flag. Tabellen ovenfor viser tilstanden før denne ændring.
+
+**Opdateret igen 2026-11-16:** efter #50 (aflåst knæ) og #51 (albue septisk artrit og septisk bursit) er der nu **31 GODKENDT-flag og 6 UDKAST** – se listen i `docs/TIL-DANIEL.md`.
