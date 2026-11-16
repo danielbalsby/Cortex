@@ -383,10 +383,10 @@ export const ankel: Region = {
     {
       id: "flag-artrit",
       tekst:
-        "Akut artrit, herunder infektion: rødme, varme og udtalt bevægeømhed uden en passende skademekanisme.",
+        "Akut artrit, herunder infektion: rødme, varme og udtalt bevægeømhed uden en passende skademekanisme. Region Hovedstaden: mistanke om septisk artrit bestyrkes ved varmt, rødt, betydeligt hævet led eller ved feber og medtaget almentilstand.",
       handling: "Samme dag ved mistanke om ledinfektion (Region Hovedstaden: akut indlæggelse i ortopædkirurgisk regi via CVI).",
-      // 2026-11-16 (review/GODKEND.md C2): rødme eller varme, som flagteksten nævner. Feber fremhæver ikke.
-      fremhaevHvis: [[{ felt: "roedme", er: "ja" }], [{ felt: "varme", er: "ja" }]],
+      // 2026-11-16 (lægens afgørelse 3): feber er en ekstra mulighed (ELLER), aldrig et krav.
+      fremhaevHvis: [[{ felt: "roedme", er: "ja" }], [{ felt: "varme", er: "ja" }], [{ felt: "feber", er: "ja" }]],
       kilder: ["lh-ankelsmerter", "rh-monoartrit"],
       // 2026-11-16: betingelsen blev ændret på generel tilladelse → UDKAST, til lægen godkender flaget enkeltvis.
       status: "UDKAST"

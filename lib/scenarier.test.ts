@@ -67,6 +67,10 @@ const TABEL: Scenarie[] = [
     trin: [["mekanisme", "inversion"], ["skridt-straks", "ja"], ["skridt-nu", "ja"], ["malleol", "ingen"], ["mellemfod", "ingen"], ["ledbaand", "oem"]] },
   { navn: "Ankel tidskritisk: Ottawa positiv (lateral malleol)", region: "ankel", flag: ["flag-fraktur"],
     trin: [["mekanisme", "inversion"], ["malleol", "lateral"]] },
+  { navn: "Ankel: feber alene → akut artrit", region: "ankel", flag: ["flag-artrit"],
+    trin: [["mekanisme", "andet"], ["feber", "ja"]] },
+  { navn: "Ankel: rødme uden feber → akut artrit (feber er ikke et krav)", region: "ankel", flag: ["flag-artrit"],
+    trin: [["mekanisme", "andet"], ["feber", "nej"], ["roedme", "ja"]] },
   { navn: "Ankel tidskritisk: smæld i læggen", region: "ankel", flag: ["flag-akilles"],
     trin: [["mekanisme", "smaeld"], ["akilles", "positiv"]] }
 ];
