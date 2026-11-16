@@ -60,7 +60,7 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg }: Props) {
     <div className="stoette" key={region.id}>
       <section>
         <h2>
-          Røde flag <span className="antal">({region.roedeFlag.length})</span>
+          Røde flag <span className="antal">({antalTekst(region.roedeFlag)})</span>
         </h2>
         {region.roedeFlag.length === 0 ? (
           <p className="tom">Intet indhold endnu.</p>
@@ -76,7 +76,7 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg }: Props) {
         )}
       </section>
 
-      <Sektion titel="Differentialdiagnoser" antal={region.differentialdiagnoser.length} hint="V = til vurdering i notatet">
+      <Sektion titel="Differentialdiagnoser" antal={antalTekst(region.differentialdiagnoser)} hint="V = til vurdering i notatet">
         {region.differentialdiagnoser.map((diff) => (
           <Punkt
             key={diff.id}
@@ -92,7 +92,7 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg }: Props) {
 
       <Sektion
         titel="Behandling"
-        antal={region.behandling.length}
+        antal={antalTekst(region.behandling)}
         hint={valgteDiagnoser.length ? "Vist for valgt diagnose · P = til plan" : "P = til plan i notatet"}
       >
         {forrest.map(behandlingPunkt)}
@@ -106,7 +106,7 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg }: Props) {
         )}
       </Sektion>
 
-      <Sektion titel="Henvisning" antal={region.henvisning.length} hint="P = til plan i notatet">
+      <Sektion titel="Henvisning" antal={antalTekst(region.henvisning)} hint="P = til plan i notatet">
         {region.henvisning.map((henvisning) => (
           <Punkt
             key={henvisning.id}
@@ -184,10 +184,16 @@ function FlagRest({ tekst }: { tekst: string }) {
   return kolon === -1 ? null : <span>{tekst.slice(kolon + 2)}</span>;
 }
 
-function Sektion({ titel, antal, hint, children }: { titel: string; antal: number; hint?: string; children: ReactNode }) {
+/** "14" eller "14 · 14 udkast": UDKAST er synligt uden at folde ud, som ét neutralt signal. */
+function antalTekst(punkter: { status: string }[]): string {
+  const udkast = punkter.filter((p) => p.status === "UDKAST").length;
+  return udkast > 0 ? `${punkter.length} · ${udkast} udkast` : `${punkter.length}`;
+}
+
+function Sektion({ titel, antal, hint, children }: { titel: string; antal: string; hint?: string; children: ReactNode }) {
   return (
     <section>
-      {antal === 0 ? (
+      {antal === "0" ? (
         <>
           <h2>{titel} <span className="antal">(0)</span></h2>
           <p className="tom">Intet indhold endnu.</p>
