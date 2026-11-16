@@ -57,3 +57,5 @@ godkendelse?: { dato: string; af: "laegen"; besked: string; aendretSiden?: strin
 **I visningen** – kun på gennemgangssiden (tast G), ikke i konsultationen: "✓ godkendt af dig (besked, dato)" og "◐ ændret siden din godkendelse – bekræft". Hovedskærmen forbliver rolig.
 
 *Min anbefaling:* det enklere alternativ – bekræft de 3 flag enkeltvis ("godkend skulder septisk-flag" osv.), så slipper vi for et nyt felt.
+
+**Opdateret 2026-11-16 (senere):** skulder `flag-septisk`, ankel `flag-artrit` og knæ `flag-boern` er sat til UDKAST og fjernet fra fingeraftrykket, fordi deres betingelse blev ændret på generel tilladelse. Der er nu 34 GODKENDT-flag. Tabellen ovenfor viser tilstanden før denne ændring.

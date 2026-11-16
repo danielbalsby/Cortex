@@ -412,8 +412,8 @@ export const skulder: Region = {
       // 2026-11-16 (review/GODKEND.md C1): fremhæves som knæets flag om bakteriel artrit.
       fremhaevHvis: [[{ felt: "feber", er: "ja" }], [{ felt: "roedme", er: "ja" }], [{ felt: "varme", er: "ja" }]],
       kilder: ["rh-monoartrit", "lh-skuldersmerter"],
-      status: "GODKENDT",
-      godkendtDato: "2026-11-15"
+      // 2026-11-16: betingelsen blev ændret på generel tilladelse → UDKAST, til lægen godkender flaget enkeltvis.
+      status: "UDKAST"
     }
   ],
 
