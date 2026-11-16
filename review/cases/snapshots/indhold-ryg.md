@@ -1,0 +1,273 @@
+# Indhold: Lænderyg
+
+## Felter og notatsætninger
+
+- **Udbredning** (udbredning, enkelt)
+  - Kun lænd → "Smerter i lænden uden udstråling."
+  - Til balde/lår → "Smerter i lænden med udstråling til balde eller lår, ikke distalt for knæet."
+  - Under knæet → "Udstrålende smerter distalt for knæet."
+- **Udstråling, side** (udstraalingsside, enkelt, vises hvis udbredning=underknae)
+  - Højre → "Udstråling i højre ben."
+  - Venstre → "Udstråling i venstre ben."
+  - Begge → "Udstråling i begge ben."
+- **Hoste/nys forværrer** (hoste, enkelt, vises hvis udbredning=underknae)
+  - Nej → "Udstrålingen forværres ikke ved hoste eller nys."
+  - Ja → "Udstrålingen forværres ved hoste eller nys."
+- **Debut** (debut, enkelt)
+  - Akut ved løft/vrid → "Akut debut ved løft eller vrid."
+  - Gradvis → "Gradvist indsættende."
+  - Uden kendt årsag → "Opstået uden kendt årsag."
+- **Varighed** (varighed, enkelt)
+  - Dage → "Varighed få dage."
+  - Under 6 uger → "Varighed under 6 uger."
+  - 6–12 uger → "Varighed 6–12 uger."
+  - Over 12 uger → "Varighed over 12 uger."
+- **Tidligere episoder** (tidligere, enkelt)
+  - Første episode → "Første episode med rygsmerter."
+  - Lignende før → "Tidligere lignende episoder."
+  - Anderledes end før → "Ryggener, der opfattes anderledes end tidligere."
+- **Blære/tarm/ridebukse** (cauda, enkelt)
+  - Ingen gener → "Ingen vandladnings- eller afføringsforstyrrelser og ingen føleforstyrrelser i ridebukseområdet."
+  - Gener → "Vandladnings- eller afføringsforstyrrelser eller føleforstyrrelser i ridebukseområdet."
+- **Gangbesvær** (claudicatio, enkelt)
+  - Nej → "Ingen ben- eller baldesmerter, der begrænser gangdistancen."
+  - Ja → "Ben- eller baldesmerter ved gang, der begrænser gangdistancen og lindres ved foroverbøjning."
+- **Røde flag (anamnese)** (roedeflag, flere)
+  - Tidl. kræft → "Tidligere kræftsygdom."
+  - Feber/almen sygdom → "Feber eller generel sygdomsfølelse."
+  - Vægttab → "Vægttab."
+  - Konstante/hvilesmerter → "Konstante, evt. tiltagende smerter og hvilesmerter."
+  - Traume → "Forudgående traume."
+  - Osteoporose/steroid → "Osteoporose eller behandling med steroid."
+  - Stofmisbrug/immunsupp. → "Stofmisbrug eller immunsuppressiv behandling."
+  - Morgenstivhed > 1 t → "Udtalt morgenstivhed over en time."
+- **Gule flag** (guleflag, flere)
+  - Sygemelding/arbejde → "Sygemelding eller arbejdsrelaterede problemer."
+  - Angst/depression → "Emotionelle problemer (angst eller depression)."
+  - Udbredte smerter/træthed → "Generaliserede smerter, træthed eller andre tillægssymptomer."
+- **Supplerende** (anamnese-tekst, tekst)
+- **Almentilstand** (almen, enkelt)
+  - Upåvirket → "Upåvirket almentilstand."
+  - Påvirket → "Påvirket almentilstand."
+- **Gang/holdning** (holdning, enkelt)
+  - Normal → "Normal gang og holdning."
+  - Aflastningsskoliose → "Aflastningsskoliose og smertepræget gang."
+  - Deformitet → "Deformitet i rygsøjlen."
+- **Bevægelighed** (bevaegelighed, enkelt)
+  - Normal → "Normal bevægelighed i lænderyggen."
+  - Nedsat → "Nedsat bevægelighed i lænderyggen."
+- **Lasègue** (lasegue, enkelt)
+  - Negativ → "Negativ Lasègue bilateralt."
+  - Positiv højre → "Positiv Lasègue højre (radikulære smerter distalt for knæet)."
+  - Positiv venstre → "Positiv Lasègue venstre (radikulære smerter distalt for knæet)."
+  - Krydset positiv → "Positiv krydset Lasègue."
+- **Kraft** (kraft, enkelt)
+  - Normal → "Normal kraft i underekstremiteterne."
+  - ↓ L4 → "Nedsat kraft ved knæekstension (L4)."
+  - ↓ L5 → "Nedsat kraft ved dorsalfleksion af fod og storetå / hælgang (L5)."
+  - ↓ S1 → "Nedsat kraft ved plantarfleksion / tågang (S1)."
+  - Betydende parese → "Betydende parese (grad 3 eller mindre)."
+- **Reflekser** (reflekser, enkelt)
+  - Normale → "Normale og symmetriske patellar- og achillesreflekser."
+  - ↓ patellar → "Afsvækket patellarrefleks."
+  - ↓ achilles → "Afsvækket achillesrefleks."
+- **Sensibilitet** (sensibilitet, enkelt)
+  - Normal → "Normal sensibilitet i underekstremiteterne."
+  - ↓ dermatomalt → "Nedsat sensibilitet svarende til et dermatom."
+  - ↓ ridebukseområdet → "Nedsat sensibilitet i ridebukseområdet."
+- **Rektaleksploration** (rektal, enkelt, vises hvis cauda=ja)
+  - Normal → "Rektaleksploration: normal sfinktertonus og knibekraft, normal sensibilitet perianalt."
+  - Nedsat tonus/sens. → "Rektaleksploration: nedsat sfinktertonus, knibekraft eller perianal sensibilitet."
+  - Ikke udført → "Rektaleksploration ikke udført."
+- **Supplerende** (objektivt-tekst, tekst)
+
+## Røde flag
+
+- **flag-cauda** [GODKENDT 2026-11-15] kilder: rh-cauda, lh-rodaffektion, lh-laendesmerter
+  - Tekst: Cauda equina eller betydende nyopstået parese: blæretømningsbesvær, afføringsinkontinens, nedsat sensibilitet i ridebukseområdet, erektil dysfunktion – kan forekomme uden sensomotoriske udfald i benene. Betydelig parese (grad 3 eller mindre) nyopstået inden for 2 uger og/eller progredierende parese. Ved rodinkarceration kan smerterne være forsvundet, så kun paresen er tilbage.
+  - Handling: Indlægges akut via CVI (akutmodtagelsen i planområdet). Rektaleksploration: sfinktertonus, voluntær knibekraft, sensibilitet i ridebukseområdet. Ved mistanke om tværsnitssyndrom på malign eller traumatisk basis: Rigshospitalet, Traumecentret.
+  - Fremhæves hvis: cauda=ja ELLER sensibilitet=ridebukse ELLER rektal=nedsat ELLER kraft=betydende
+- **flag-malignitet** [GODKENDT 2026-11-15] kilder: lh-laendesmerter, rh-uden-udstraaling
+  - Konflikt: Lægehåndbogen (lændesmerter, 2024): ved mistanke om malignitet henvises i pakkeforløb. Region Hovedstaden (lænderygsmerter uden radikulære symptomer, 2025): infektion eller malignitet indlægges på lokal akutmodtagelse. Region Hovedstadens billeddiagnostiske vejledning (2025): ved mistanke om cancer/metastaser bør udredning foregå i pakkeforløb.
+  - Tekst: Mulig malignitet: tidligere kræftsygdom, ryggener der debuterer eller opfattes anderledes end tidligere, konstante og evt. tiltagende smerter eller hvilesmerter, vægttab. Røde flag har lav sensitivitet og specificitet for alvorlig lændepatologi.
+  - Handling: Udredes for underliggende sygdom – se konflikt om henvisningsvej.
+  - Fremhæves hvis: roedeflag=kraeft ELLER roedeflag=vaegttab ELLER roedeflag=konstant ELLER tidligere=anderledes
+- **flag-infektion** [GODKENDT 2026-11-15] kilder: lh-laendesmerter, rh-uden-udstraaling, rh-billed
+  - Konflikt: Lægehåndbogen (2024): ved mistanke om infektion henvises til medicinsk eller rygkirurgisk afdeling. Region Hovedstaden (2025): infektion eller malignitet indlægges på lokal akutmodtagelse.
+  - Tekst: Mulig infektion (spondylodiscitis): feber, generel sygdomsfølelse, stofmisbrug, immunsuppressiv behandling.
+  - Handling: Udredes via specialafdeling – se konflikt om henvisningsvej.
+  - Fremhæves hvis: roedeflag=feber ELLER roedeflag=immun ELLER almen=paavirket
+- **flag-fraktur** [GODKENDT 2026-11-15] kilder: lh-laendesmerter, rh-uden-udstraaling, rh-billed, rh-spondylartrit
+  - Tekst: Mulig fraktur: traume, osteoporose, brug af steroid. Ved spondylartrit med ankylosering kan selv lette traumer give atypiske, instabile columnafrakturer.
+  - Handling: Røntgen ved traume med mistanke om fraktur. Osteoporotiske og traumatiske sammenfald behandles konservativt i primærsektoren; ved akutte svære smerter evt. indlæggelse. Ved mistanke om instabil fraktur konfereres med vagthavende på Rygsektionen, Rigshospitalet.
+  - Fremhæves hvis: roedeflag=traume ELLER roedeflag=osteoporose ELLER holdning=deformitet
+- **flag-udbredte-udfald** [GODKENDT 2026-11-15] kilder: lh-laendesmerter
+  - Tekst: Udbredte og evt. progredierende neurologiske udfald, eller deformitet i rygsøjlen.
+  - Handling: Hurtig henvisning til hospital ved røde flag; akut indlæggelse ved progredierende pareser.
+  - Fremhæves hvis: holdning=deformitet ELLER kraft=betydende
+- **flag-inflammatorisk** [GODKENDT 2026-11-15] kilder: lh-laendesmerter, lh-rygsmerter, rh-spondylartrit
+  - Tekst: Mulig inflammatorisk rygsygdom: udtalt morgenstivhed over en time, høj SR.
+  - Handling: Henvisning til reumatolog ved mistanke om Bechterews sygdom eller anden inflammatorisk ryglidelse. Region Hovedstaden: rygsmerter i over 3 måneder debuteret før 45-årsalderen med ét eller flere SpA-kendetegn kan henvises til reumatologisk hospitalsafdeling eller speciallægepraksis – se spondylartrit under differentialdiagnoser.
+  - Fremhæves hvis: roedeflag=morgenstivhed
+- **flag-indre-organer** [GODKENDT 2026-11-15] kilder: lh-laendesmerter, lh-rygsmerter, lh-rodaffektion
+  - Tekst: Smerter fra indre organer: aortaaneurisme (også dissekerende), pankreatit, ulcus perforans, pyelonefrit, prostatit, nyresten, herpes zoster, endometriose. Torakale smerter er et alarmsymptom.
+  - Handling: Patienten udredes med tanke på mulig underliggende sygdom. Hurtig henvisning til hospital ved røde flag.
+  - Fremhæves hvis: (ingen betingelse)
+- **flag-oevrige-alarm** [GODKENDT 2026-11-15] kilder: lh-rygsmerter
+  - Tekst: Øvrige forhold i anamnesen ved akutte rygsmerter: alder under 20 eller over 55 år, nylig spinalpunktur, nyopståede vandladningsproblemer.
+  - Handling: Indgår i vurderingen af, om der er underliggende sygdom. Ved urinretention: se cauda equina.
+  - Fremhæves hvis: (ingen betingelse)
+
+## Differentialdiagnoser
+
+- **Uspecifikke lænderygsmerter** (diff-uspecifik) [UDKAST] kilder: lh-laendesmerter
+  - Den klart største gruppe (80–90 %)
+  - Smerter i lænderyg, nates og lår; varierende intensitet, ofte bedre i ro; god almentilstand
+  - Akutte: ofte pludseligt efter løft eller vrid; udstråling højst til knæet
+  - God prognose ved grønne flag og fravær af røde og gule flag
+  - V: "Foreneligt med uspecifikke lænderygsmerter."
+- **Lumbal rodaffektion / diskusprolaps** (diff-rod) [UDKAST] kilder: lh-rodaffektion, lh-laendesmerter
+  - Bensmerter i dermatomalt mønster dominerer over lændesmerter; forværres ved hoste/bugpresse
+  - Positiv Lasègue: radikulære smerter distalt for knæet før 60° (L5/S1); omvendt Lasègue ved L4
+  - L4: forside lår/medialt underben, ↓ knæekstension, ↓ patellarrefleks
+  - L5: lateralt underben/storetå, ↓ dorsalfleksion og hælgang
+  - S1: bagside underben/lateral fodrand, ↓ plantarfleksion og tågang, ↓ achillesrefleks
+  - Hyppigst 20–40 år; de fleste bedres gradvist over uger til måneder
+  - V: "Foreneligt med lumbal rodaffektion."
+- **Cauda equina-syndrom** (diff-cauda) [UDKAST] kilder: lh-rodaffektion, rh-cauda
+  - Median prolaps med tryk på flere nerverødder
+  - Nedsat sensibilitet i ridebukseområdet; påvirket blære-, anal- og erektil funktion
+  - Kan forekomme uden sensomotoriske symptomer i benene
+  - V: "Cauda equina-syndrom mistænkes."
+- **Lumbal spinalstenose** (diff-stenose) [UDKAST] kilder: lh-spinalstenose, lh-laendesmerter
+  - Særligt hos ældre
+  - Tiltagende ben- eller baldesmerter ved gang med reduceret gangdistance (neurogen claudicatio)
+  - Lindring ved foroverbøjning
+  - V: "Foreneligt med lumbal spinalstenose."
+- **Vertebralt kompressionsbrud** (diff-sammenfald) [UDKAST] kilder: lh-laendesmerter, rh-uden-udstraaling
+  - Som følge af osteoporose eller metastase
+  - Under 5 % af alle med rygsmerter
+  - V: "Vertebralt kompressionsbrud overvejes."
+- **Spondylartrit / Bechterews sygdom** (diff-spa) [UDKAST] kilder: rh-spondylartrit, lh-laendesmerter
+  - Debut før 45 år; smerter i glutealregion og/eller ryg over 3 måneder; stivhed
+  - Inflammatorisk præg: natlige og morgensmerter, bedring ved aktivitet, ingen lindring i hvile, god effekt af NSAID
+  - Perifer artrit, daktylit, entesopati, psoriasis, inflammatorisk tarmsygdom, uveit, forhøjet CRP, familiær disposition
+  - Lægehåndbogen: udtalt morgenstivhed over en time og høj SR er røde flag
+  - V: "Spondylartrit overvejes."
+- **Malignitet (metastaser, myelomatose, spinal tumor)** (diff-malignitet) [UDKAST] kilder: lh-laendesmerter, lh-rodaffektion
+  - Tidligere kræft, nyt smertemønster, konstante smerter, vægttab
+  - Ved langvarige gener: overvej prostata- og brystkræft
+  - V: "Malign årsag overvejes."
+- **Infektion (spondylodiscitis)** (diff-infektion) [UDKAST] kilder: lh-laendesmerter, rh-billed
+  - Feber, almen sygdomsfølelse, stofmisbrug, immunsuppression
+  - Røntgen er ikke tilstrækkeligt; udredes via specialafdeling
+  - V: "Spinal infektion overvejes."
+- **Spondylolistese** (diff-spondylolistese) [UDKAST] kilder: lh-laendesmerter, rh-billed
+  - Kan give kroniske lænderygsmerter
+  - Røntgen er indiceret ved mistanke
+  - V: "Spondylolistese overvejes."
+- **Anden årsag til ben- og lændesmerter** (diff-andet) [UDKAST] kilder: lh-rodaffektion, lh-laendesmerter
+  - Hofte- og knæartrose, sygdom i hofteled eller bækken
+  - Sygdom i plexus lumbosacralis, n. peroneus-læsion
+  - Dissekerende aortaaneurisme, arteriosklerose og andre karsygdomme
+  - Referred smerte fra indre organer
+  - V: "Anden årsag til smerterne overvejes."
+
+## Behandling
+
+- **beh-aktivitet** [UDKAST] kilder: lh-laendesmerter, rh-uden-udstraaling
+  - Patientuddannelse: tryghedsskabende dialog om den gode prognose. Fortsæt vanlig aktivitet frem for aflastning og sengeleje (sengeleje kun hvis patienten ikke magter at være oppe, højst 2 dage). Sygemelding så kort som mulig med opfølgning efter 1–2 uger, evt. gradueret.
+  - Gælder: generelt
+  - P: "Informeret om den gode prognose. Opfordret til at fortsætte vanlig aktivitet. Opfølgning om 1–2 uger."
+- **beh-medicin-akut** [UDKAST] kilder: lh-laendesmerter
+  - Nyopståede lænderygsmerter: paracetamol og NSAID, hvis der ikke er kontraindikationer. Opioider kun efter nøje overvejelse; svage opioider kun ved kontraindikation for eller manglende effekt af NSAID. Anvend ikke SSRI, TCA eller neuroleptika. Kroniske lændesmerter: medicin bør kun spille en mindre rolle; anvend ikke opioider.
+  - Gælder: diff-uspecifik
+  - P: "Paracetamol og NSAID efter behov."
+- **beh-medicin-rod** [UDKAST] kilder: lh-rodaffektion
+  - Lumbal rodaffektion: paracetamol 1 g × 4 dagligt alene eller med NSAID (fx ibuprofen 400–600 mg × 3 dagligt i perioder på 1–2 uger, hvis det tåles). Opioider kun kortvarigt ved meget stærke smerter. Ved neuropatiske smerter evt. gabapentin eller pregabalin.
+  - Gælder: diff-rod
+  - P: "Paracetamol, evt. med NSAID i 1–2 uger."
+- **beh-manuel-traening** [UDKAST] kilder: lh-laendesmerter
+  - Overvej manuel ledmobilisering og superviseret fysisk træning i tillæg til vanlig behandling ved nyopståede lænderygsmerter (NKR, gengivet i Lægehåndbogen). Træning har ikke bedre effekt end andre tiltag i akutfasen (0–4 uger), men anbefales ved langvarige gener og for at forebygge recidiv.
+  - Gælder: diff-uspecifik
+  - P: "Henvist til fysioterapeut/kiropraktor mhp. træning og evt. manuel behandling."
+- **beh-rod-traening** [UDKAST] kilder: lh-rodaffektion
+  - Lumbal rodaffektion: let aktivitet frem for sengeleje; superviseret øvelsesterapi, evt. retningsspecifikke øvelser eller neuromuskulær træning, og manuel ledmobilisering i tillæg til vanlig behandling. Ikke-kirurgisk behandling bør afprøves før kirurgisk vurdering, medmindre der er vedvarende meget stærke smerter, svære pareser eller cauda equina. Akupunktur har ingen dokumenteret effekt.
+  - Gælder: diff-rod
+  - P: "Rådgivet om let aktivitet. Henvist til superviseret øvelsesterapi."
+- **beh-ikke-anbefalet** [UDKAST] kilder: lh-laendesmerter
+  - Konflikt: Akupunktur: NKR (gengivet i Lægehåndbogen) – tilbyd kun efter nøje overvejelse, da den gavnlige effekt er usikker. NICE (gengivet i Lægehåndbogen, ikke-dansk) – frarådes. NICE-dokumentet er ikke læst direkte.
+  - Anbefales ikke: traktion, TENS, ultralydsbehandling, korset/rygstøtte. Akupunktur: se konflikt.
+  - Gælder: diff-uspecifik, diff-rod
+  - P: "Ikke indikation for traktion, TENS eller korset."
+- **beh-billed** [UDKAST] kilder: lh-laendesmerter, rh-billed, lh-rodaffektion
+  - Ingen rutinemæssig røntgen eller MR ved nyopståede lænderygsmerter eller initialt ved nerverodsaffektion uden røde flag; degenerative fund korrelerer dårligt med symptomer. Røntgen ved traume med frakturmistanke, spondylolistese, skoliose; ikke ved recidiv, hvis der findes røntgen under 5 år gammel. Røntgen er ikke tilstrækkeligt ved mistanke om metastaser, prolaps, spinalstenose eller spondylodiscitis.
+  - Gælder: generelt
+  - P: "Ikke indikation for billeddiagnostik aktuelt."
+- **beh-blodprover** [UDKAST] kilder: lh-laendesmerter
+  - Ved usikkerhed om underliggende sygdom: Hb, leukocytter med differentialtælling, SR, CRP. Ved langvarige eller recidiverende gener: HLA-B27; overvej basisk fosfatase, calcium, fosfat, PSA.
+  - Gælder: generelt
+  - P: "Blodprøver taget mhp. underliggende sygdom."
+- **beh-stenose** [UDKAST] kilder: lh-spinalstenose
+  - Spinalstenose: nedsæt smerteprovokerende aktiviteter og erstat med anden aktivitet; paracetamol, evt. NSAID kortvarigt; medicin mod neuropatiske smerter kun efter nøje overvejelse. Aktive øvelser individuelt eller på hold; kiropraktor i pakkeforløb.
+  - Gælder: diff-stenose
+  - P: "Rådgivet om aktivitetstilpasning og aktive øvelser."
+- **beh-spa** [UDKAST] kilder: rh-spondylartrit
+  - Sandsynliggjort spondylartrit: NSAID og evt. fysioterapi kan iværksættes forud for henvisning til reumatolog.
+  - Gælder: diff-spa
+  - P: "NSAID-behandlingsforsøg forud for henvisning."
+- **beh-langvarig** [UDKAST] kilder: lh-laendesmerter
+  - Langvarige gener: genvurder efter 1–2 uger, identificér gule flag og komorbiditet tidligt. Tilrettelæg arbejdssituationen i samarbejde med arbejdsgiver. Sekundærforebyggende træning. Tværfaglige teams ved varighed over 4–8 uger.
+  - Gælder: generelt
+  - P: "Gule flag drøftet. Plan for arbejdsfastholdelse og træning."
+
+## Henvisning
+
+- **Akut indlæggelse via CVI** (hen-cauda, akut, Region Hovedstaden) [UDKAST] kilder: rh-cauda, lh-rodaffektion
+  - Sikre symptomer og fund på cauda equina, betydelig parese nyopstået inden for 2 uger og/eller progredierende parese (grad 3 eller mindre). Akutmodtagelsen i planområdet; ved tværsnitssyndrom på malign eller traumatisk basis Rigshospitalet, Traumecentret.
+  - P: "Henvist akut via CVI mhp. cauda equina / betydende parese."
+- **Reumatologisk hotline** (hen-hotline, subakut, Region Hovedstaden) [UDKAST] kilder: rh-visitation-reumatologi, rh-cauda
+  - Konflikt: Forløbsbeskrivelsen for cauda equina (februar 2025) angiver de lokale reumatologiske funktioner med Frederiksberg 3816 4049 for Midt og vagthavende VRR 3863 3863 uden for dagtid. Visitationsmeddelelsen for reumatologi (september 2025, nyest) angiver, at degenerativ ryg er samlet på Rigshospitalet, Valdemar Hansens Vej (38 63 42 47), og Frederiksberg-hotlinen som 38 16 41 90. Nummeret 3816 4049 er ikke fundet i andre kilder. Teksten følger visitationsmeddelelsen (beslutning truffet af Claude 2026-11-15 efter lægens anmodning).
+  - Tvivlstilfælde ved mulig cauda equina eller parese, og meget svære smerter i kort tid: drøft i dagtid med reumatologisk funktion. Ryg (degenerativ, hele regionen): Rigshospitalet, Valdemar Hansens Vej, hotline kl. 08–15: 38 63 42 47. Rygkirurgisk bagvagt (Rigshospitalet, Valdemar Hansens Vej): 38 63 04 80.
+  - P: "Drøftet med reumatologisk hotline."
+- **Akutmodtagelse / pakkeforløb** (hen-infektion-malignitet, akut, Region Hovedstaden) [UDKAST] kilder: rh-uden-udstraaling, lh-laendesmerter, rh-billed
+  - Konflikt: Region Hovedstaden (lænderygsmerter, 2025): infektion eller malignitet indlægges på lokal akutmodtagelse. Lægehåndbogen (2024): infektion → medicinsk eller rygkirurgisk afdeling; malignitet → pakkeforløb. Region Hovedstadens billeddiagnostiske vejledning: mistanke om cancer/metastaser udredes i pakkeforløb.
+  - Mistanke om infektion eller malignitet.
+  - P: "Henvist mhp. udredning for alvorlig underliggende sygdom."
+- **Rygsektionen, Rigshospitalet (konference) / Akut Modtagelse** (hen-fraktur, akut, Region Hovedstaden) [UDKAST] kilder: rh-uden-udstraaling
+  - Mistanke om instabil fraktur: konferer med vagthavende på Rygsektionen. Osteoporotisk eller traumatisk sammenfald med akutte svære smerter: evt. indlæggelse på Akut Modtagelse.
+  - P: "Konfereret mhp. mulig columnafraktur."
+- **Fysioterapeut eller kiropraktor** (hen-fys, elektiv, national) [UDKAST] kilder: lh-rodaffektion
+  - Lumbal rodaffektion inden for de første 12 uger: rådgivning om adfærd, fysisk aktivitet, øvelsesterapi og evt. manuel behandling (evt. pakkeforløb).
+  - P: "Henvist til fysioterapeut/kiropraktor."
+- **MR af columna lumbalis (fra almen praksis)** (hen-mr, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-billed
+  - Rodpåvirkning uden tilfredsstillende fremgang efter 8 ugers konservativ behandling; mistanke om diskusprolaps, spinalstenose eller spredning af kendt malign lidelse. Afklar først, om patienten er potentiel operationskandidat (MR skal være under 1 år gammel ved rygkirurgisk vurdering). Dynamisk henvisning "MR henvisning i Region Hovedstaden", sendes som REF 02 til radiologisk afdeling. MR af columna thoracalis kan ikke henvises fra almen praksis.
+  - P: "Henvist til MR af columna lumbalis."
+- **Rygkirurgisk vurdering** (hen-rod-kirurgi, elektiv, national) [UDKAST] kilder: lh-rodaffektion
+  - Konflikt: Lægehåndbogens side om lumbal rodaffektion (2026) angiver tre forskellige tidsrammer: resuméet siger "ikke klar bedring inden for 8 uger", henvisningsafsnittet siger "inden for 12 uger", og kirurgiafsnittet siger "efter 8–12 uger". Region Hovedstaden: efter 8 uger uden fremgang kan MR bestilles fra almen praksis.
+  - Lumbal rodaffektion uden klar bedring på ikke-kirurgisk behandling. Akut kirurgisk vurdering ved svær og/eller progredierende parese og sfinkterforstyrrelser.
+  - P: "Henvist til rygkirurgisk vurdering mhp. lumbal rodaffektion."
+- **Reumatologisk rygfunktion, Rigshospitalet, Valdemar Hansens Vej (elektiv)** (hen-reumatologi, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-uden-udstraaling, rh-visitation-reumatologi
+  - Siden 1.1.2025 sendes alle elektive henvisninger med degenerativ rygsygdom fra hele regionen til visitationen på Rigshospitalet, Valdemar Hansens Vej. Svære uspecifikke lænderygsmerter i mere end 8 uger og under 6 måneder uden tilfredsstillende fremgang. Over 60 år: røntgen af columna lumbalis skal foreligge. Kroniske symptomer (over 6 måneder): kun hvis operation skønnes relevant og ønskes, og der foreligger MR efter symptomdebut og inden for det sidste år.
+  - P: "Henvist elektivt til reumatologisk rygfunktion, Rigshospitalet."
+- **Lokal neurologisk eller rygmedicinsk afdeling** (hen-stenose, elektiv, national) [UDKAST] kilder: lh-spinalstenose
+  - Mistanke om spinalstenose med manglende bedring på konservativ behandling, udtalte gener og behandlingsønske. Akut ved betydelig parese, myelopati eller cauda equina.
+  - P: "Henvist mhp. spinalstenose."
+- **Reumatolog (hospital eller speciallægepraksis)** (hen-spa, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-spondylartrit, rh-visitation-reumatologi
+  - Rygsmerter i mere end 3 måneder, debut før 45 år, og ét eller flere spondylartrit-kendetegn. Henvisningen bør omfatte ryganamnese, familieanamnese, fund, parakliniske fund og NSAID-behandlingsforsøg. Planområde Midt, Byen og Bornholm: Frederiksberg Hospital; Nord og Syd: Rigshospitalet, Valdemar Hansens Vej.
+  - P: "Henvist til reumatolog mhp. spondylartrit."
+- **Rygkirurgisk funktion, Glostrup** (hen-recidiv, subakut, Region Hovedstaden) [UDKAST] kilder: rh-uden-udstraaling
+  - Recidiv inden for 3 måneder efter lumbal prolaps- eller stenoseoperation (ved recidiv efter instrumenteret dese: inden for 2 år).
+  - P: "Henvist til rygkirurgisk funktion mhp. recidiv efter operation."
+
+## Kilder
+
+- lh-laendesmerter: Lægehåndbogen 2024, Lændesmerter – lave rygsmerter, tjekket 2026-11-14
+- lh-rygsmerter: Lægehåndbogen 2025, Rygsmerter, tjekket 2026-11-15
+- lh-rodaffektion: Lægehåndbogen 2026, Lumbal rodaffektion, tjekket 2026-11-14
+- lh-spinalstenose: Lægehåndbogen 2026, Spinalstenose, tjekket 2026-11-14
+- rh-uden-udstraaling: Region Hovedstaden 2025, Forløbsbeskrivelse: Nakke- og lænderygsmerter uden radikulære symptomer, tjekket 2026-11-14
+- rh-cauda: Region Hovedstaden 2025, Forløbsbeskrivelse: Cauda equina og nyopstået parese, tjekket 2026-11-14
+- rh-spondylartrit: Region Hovedstaden 2025, Forløbsbeskrivelse: Spondylartrit, tjekket 2026-11-14
+- rh-billed: Region Hovedstaden 2025, Forløbsbeskrivelse: Columna thoracalis og lumbalis, billeddiagnostik af, tjekket 2026-11-14
+- rh-visitation-reumatologi: Region Hovedstaden 2025, Visitationsmeddelelse: Reumatologi (hotlines og henvisning efter 1.1.2025), tjekket 2026-11-15

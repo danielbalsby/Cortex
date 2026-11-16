@@ -3,25 +3,26 @@
 Branch `review/fable` fra `main` (9c451d5), 2026-11-16. Kun nye filer i `review/`; intet eksisterende er ændret.
 Mærkning: **[KØRT]** verificeret ved at køre koden eller appen · **[KODE]** læst i koden · **[KILDE]** slået op i kilden i dag · **[ANTAGET]** min vurdering.
 
-Leverancer: denne fil · `TJEKLISTE.md` (alle 200 kliniske punkter) · `cases/` (21 fiktive konsultationer med snapshots, kører med Vitest) · `mockups/` (2 skærme + skærmbillede af i dag).
+Leverancer: denne fil · `TJEKLISTE.md` (alle 200 kliniske punkter) · `kildetjek/` (script + rådata) · `cases/` (21 fiktive konsultationer + 5 fulde indholdssnapshots, kører med Vitest) · `mockups/` (2 skærme + skærmbillede af i dag).
 
 ---
 
 ## 1. Samlet dom
 
-Om Cortex slår at skrive notatet selv, er **ikke målt** (testarket `docs/ux-review/test-frase-mod-cortex.md` er ikke kørt). Det, jeg kan sige ud fra kørte cases [KØRT]:
-- **Det sparer:** et ukompliceret notat koster 16–19 tastetryk + 4–5 museklik og giver et komplet, ensartet S/O med konkrete fund og (ved valg) V/P. Røde flag, Ottawa/knee rules og regionale henvisningsveje står klar uden opslag. Ingen data forlader maskinen.
-- **Det koster:** faste sætninger, der ikke lyder som en læge ("Forudgående traume. Traume ved vrid. Alder 12–50 år."), ingen tidsangivelse, ingen nuancer uden fritekst, og V/P kræver mus.
-- **Største problem:** i den situation du beskriver – Cortex i et halvt vindue ved siden af journalen – ligger **notatet og alle røde flag under skærmkanten** (≤ 800 px bredde: notat 747 px, første flag 863 px nede i et 768 px højt vindue). Næststørst: ét klik kan dokumentere undersøgelser, der ikke er udført, og en rettelse kan slette fund uden besked.
-- **Skær ned?** Ja, i ambition, ikke i kode: kernen er notat + røde flag + beslutningsregler + Region H-henvisning. De 163 differentialdiagnoser/behandlinger/henvisninger er UDKAST og ligner i dag godkendte punkter. Byg ikke mere indhold, før de er gennemgået eller bevidst nedprioriteret.
+1. Om Cortex slår at skrive notatet selv, er **ikke målt** – testarket (frase mod Cortex) er ikke kørt.
+2. **Sparer:** et ukompliceret notat koster 16–19 tastetryk + 4–5 museklik [KØRT] og giver et ensartet S/O med konkrete fund. Røde flag, Ottawa/knee rules og Region H's henvisningsveje står klar uden opslag. Intet forlader maskinen.
+3. **Koster:** faste sætninger, der ikke lyder som en læge ("Forudgående traume. Traume ved vrid. Alder 12–50 år."), ingen nuancer uden fritekst, og V/P kræver mus.
+4. **Største problem – hvis du kører Cortex i et vindue under 800 px bredt:** så ligger notatet og alle røde flag under skærmkanten. Ved en halv 1920-skærm (960 px) er der to kolonner, og problemet findes ikke. *Hvor bredt er dit vindue i praksis?*
+5. **Uanset bredde:** 13 knapper dokumenterer mere, end knappen siger, og en rettelse kan slette fund uden besked.
+6. **Skær ned i ambition, ikke i kode:** kernen er notat + røde flag + beslutningsregler + Region H-henvisning. De 163 UDKAST-punkter ligner i dag godkendte. Byg ikke mere indhold, før de er gennemgået.
 
 ## 2. Top 5 – det jeg ville lave først
 
 | # | Hvad | Hvorfor | Indsats |
 |---|---|---|---|
-| 1 | **Smalt vindue:** under 800 px vises røde flag som stribe øverst og notatet fast nederst (mockup 1) | I din brugssituation er flag og notat i dag usynlige uden rulning. Klinisk sikkerhed + kerneflow | M |
+| 1 | **Smalt vindue:** under 800 px vises røde flag som stribe øverst og notatet fast nederst (mockup 1) – *kun hvis dit vindue er under 800 px* | Så er flag og notat i dag usynlige uden rulning. Det er en uenighed med fravalget "Mobil-/tabletlayout" i plan §4: et halvt skærmvindue er ikke mobil | M |
 | 2 | **Ret undervejs uden tavst datatab:** skjul svar i stedet for at slette dem, og vis én linje "4 svar skjult … Fortryd" (mockup 2A) | Knæ: Traume Ja → "4 skridt: Kan ikke" → Traume Nej sletter fundet, og fraktur-flaget mister fremhævningen uden besked [KØRT, case knae-5] | S–M |
-| 3 | **Knapper, der viser hele notatpåstanden** (7 valg, mockup 2B) | Fx "Uømt" skriver "negativ crossover-test", "Udtalt" skriver "og hæmatom". Journalnotatet påstår fund, der ikke er undersøgt. Kræver din godkendelse af ordlyden | S |
+| 3 | **Knapper, der viser hele notatpåstanden** (13 valg, mockup 2B og §5) | Fx "Uømt" skriver "negativ crossover-test", "Udtalt" skriver "og hæmatom". Journalnotatet påstår fund, der ikke er undersøgt. Kræver din godkendelse af ordlyden | S |
 | 4 | **Felter, så flag kan fremhæves:** feber/rødme/varme i skulder og ankel; alder uden traume i knæ | Septisk artrit (skulder, ankel) og barn med knæsmerter kan i dag aldrig fremhæves eller dokumenteres [KØRT, case skulder-3, ankel-4, knae-4]. Kræver godkendelse | M |
 | 5 | **Værn mod patientdata i fritekst:** `spellcheck={false}` på fritekstfelterne + diskret advarsel ved CPR-mønster | Browserens udvidede stavekontrol og udvidelser (fx Grammarly) kan sende fritekst ud, uden om CSP. CPR går i dag ordret i notat og udklipsholder [KØRT, case knae-6] | S |
 
@@ -35,11 +36,11 @@ Uden for koden, men før alt andet: **tag stilling til knæ-flagets handling "ak
 
 | # | Problem | Klikvej | Alvor |
 |---|---|---|---|
-| K1 | Smalt vindue skjuler flag og notat | Vindue ≤ 800 px bredt (fx halv skærm 683×768) → tast 4 (Knæ) → notat starter 747 px nede, første flag 863 px nede. Skærmbillede `mockups/foer-smal-683.png` | Kritisk |
+| K1 | Smalt vindue skjuler flag og notat | Vindue ≤ 800 px bredt (fx halv 1366-skærm, 683×768) → tast 4 (Knæ) → notat starter 747 px nede, første flag 863 px nede. Ved 960 px (halv 1920) er der to kolonner og intet problem [KØRT]. Skærmbillede `mockups/foer-smal-683.png` | Kritisk ved ≤ 800 px, ellers ingen |
 | K2 | Rettelse sletter fund tavst og fjerner fremhævning | Knæ: Traume **Ja** → Mekanisme Fald → Alder Over 55 → Ømhed patella **Øm** → 4 skridt **Kan ikke** (flag "Akut knæskade" = MATCHER) → Traume **Nej** → notat "S: Intet traume.", flaget = "ikke vurderet". Samme mønster i alle felter med `visHvis` (skulder traumetype/axillaris, albue mekanisme/ekstensionstest/caput radii/neurovaskulært, ryg udstrålingsside/hoste/rektal, knæ 8 traumefelter) | Høj |
 | K3 | Septisk artrit kan ikke fremhæves eller dokumenteres i skulder og ankel | Skulder/Ankel: der findes intet felt for feber, rødme eller varme. Flaget står altid neutralt; feber kan kun skrives i fritekst | Høj |
 | K4 | Barn med knæsmerter uden traume | Knæ: Traume Nej → feltet Alder vises ikke → flaget om børn (hoftelidelse, sarkom, leukæmi) kan aldrig fremhæves. Det står nederst som flag nr. 10 | Middel |
-| K5 | Henført smerte ved skulder (hjerte, lunge, galdeveje) mangler | Skulder: Venstre → Spontant → Også i hvile → normal objektiv undersøgelse → ingen flag eller differentialdiagnose nævner kardiel/abdominal årsag. Pancoast står i "faldgruber". Ikke i skulderens hovedkilde (LH Skuldersmerter 2019) [KILDE] | Høj (indhold – kræver kilde) |
+| K5 | Henført smerte ved skulder (hjerte, lever/galde) mangler | Skulder: Venstre → Spontant → Også i hvile → normal objektiv undersøgelse → intet flag eller differentialdiagnose nævner det. Pancoast står i "faldgruber". **Kilden findes allerede i Cortex:** LH Subacromielt smertesyndrom (2021) lister "Andre (hjerte, lungetumor, lever/galde)" som differentialdiagnoser [KILDE] | Høj (indhold – din formulering) |
 | K6 | DVT nævnes kun i Baker-flaget (knæ) og slet ikke i ankel | Ankel: hævet ankel uden traume → intet om DVT | Middel (indhold) |
 | K7 | Polymyalgia rheumatica og proksimal humerusfraktur mangler som differentialdiagnoser i skulder | – (statisk liste) | Middel (indhold) |
 | K8 | Hastegrad i data modsiger den navngivne konflikt | Ryg: henvisning "Akutmodtagelse / pakkeforløb" har `hast: akut`, men malignitet skal efter LH og RH's billedvejledning i pakkeforløb (ikke akut). Konflikten står i teksten; mærket "akut" vælger side | Middel |
@@ -58,10 +59,10 @@ Gennemgået mod opgavens eksempler: cauda equina ✓ (felt + flag + akut henvisn
 
 **Men princippet rammes et andet sted:** indholdet er **skrevet af en model i udviklingen** (`docs/plan.md` §4: "AI bruges kun til at udkaste indhold"). Konsekvenser:
 - 163 af 200 punkter er UDKAST – modeltekst, som ingen læge har godkendt. Efter #42 er status kun synlig ved udfoldning, så i konsultationen ligner de godkendte punkter (statuslinjen nederst viser fx "43 UDKAST").
-- De 37 røde flag er godkendt samlet 2026-11-15 på grundlag af Claudes egen sammenligning (`docs/plan.md` §7). Jeg har i dag sammenholdt hvert flag sætning for sætning med kilden: 36 er tæt på ordret kildetekst; **1 afviger** (knæ fraktur, handlingen er Claudes beslutning).
+- De 37 røde flag er godkendt samlet 2026-11-15 på grundlag af Claudes egen sammenligning (`docs/plan.md` §7). Flagteksterne er **omskrevet, ikke citeret** (0–70 % af 3-ords-fraserne står ordret i kilden). Jeg har i dag læst alle 37 handlingslinjer op mod det relevante kildeafsnit: 36 svarer til kilden, **1 afviger** (knæ fraktur – Claudes beslutning). 11 hele flagtekster er læst uden afvigelse; de øvrige 26 er kun tjekket for ordforråd.
 - Notatsætningerne (valgenes `notat`) er ikke kildebelagt og har ingen status. Det er efter planen (de beskriver observationer), men 7 af dem påstår mere end knappen (§2 nr. 3).
 
-**Kildetjek i dag [KILDE]:** 44 kildesider hentet fra sundhed.dk (alle tilgængelige). 0 af 200 punkter uden kilde. Alle tal og telefonnumre findes i de citerede kilder. Lægehåndbogens opdateringsdatoer passer med årstallene i data. Region H's forløbsbeskrivelser viser ingen dato → ikke verificeret. Ældste kilder: LH Skuldersmerter (09.08.2019) og LH Albuesmerter (08.02.2019) – begge hovedkilder for deres region.
+**Kildetjek i dag [KILDE]** (`review/kildetjek/`): 44 kildesider hentet fra sundhed.dk (alle tilgængelige). 0 af 200 punkter uden kilde. Alle tal med enhed og alle telefonnumre findes i de citerede kilder (19 punkter først efter manuelt opslag pga. anden skrivemåde). Alle 44 opdateringsdatoer passer med årstallene i data. Ældste kilder: LH Skuldersmerter (09.08.2019) og LH Albuesmerter (08.02.2019) – begge hovedkilder for deres region.
 
 Risiko ved modeltekst: plausible, flydende formuleringer, der lyder kildetro, men forskyder vægten (fx "akut" frem for "pakkeforløb", K8). Enkleste værn – som allerede er delvist bygget: **kun citater fra kilden i flag og henvisning; modellen må kun vælge og forkorte, ikke formulere** – og din gennemgang via `TJEKLISTE.md`.
 
@@ -85,12 +86,13 @@ Fuld liste: **`review/TJEKLISTE.md`** (200 punkter: kilde, kildedato, status i C
 
 | Status | Antal | Hvad |
 |---|---|---|
-| Verificeret (tekst står i kilden) | 36 | Røde flag, sætning for sætning |
+| Handlingslinje svarer til kilden | 36 af 37 røde flag | Læst mod kildeafsnittet |
 | **Afviger** | **1** | Knæ `flag-fraktur`: "Akut røntgen af knæ, hvis blot ét kriterie i én af reglerne er opfyldt" – ikke i kilden; Claudes beslutning (plan.md §7) |
-| Ikke verificeret (kun maskinelt: tal ok, ordoverlap målt) | 163 | Differentialdiagnoser, behandling, henvisning (alle UDKAST) |
-| Kildedato ikke verificerbar | 11 kilder | Region H's forløbsbeskrivelser viser ingen dato |
+| Hele flagteksten læst | 11 af 37 | Ingen afvigelser; de 26 øvrige kun ordforrådstjek – flagene er omskrevet, ikke citeret |
+| Ikke verificeret (kun maskinelt) | 163 | Differentialdiagnoser, behandling, henvisning (alle UDKAST) |
+| Tal, telefonnumre, kildedatoer | 200/200, 44/44 | Fundet / passer |
 
-Spørgsmål til dig (kræver kilde; jeg skriver ikke indholdet): K5 henført skuldersmerte · K6 DVT · K7 PMR og proksimal humerusfraktur · malignitet hos voksne med knæsmerter · ældste kilder (LH Skuldersmerter og Albuesmerter, 2019) – findes nyere?
+Spørgsmål til dig (jeg skriver ikke indholdet): K5 henført skuldersmerte (kilde findes: LH Subacromielt) · K6 DVT · K7 PMR og proksimal humerusfraktur · malignitet hos voksne med knæsmerter · ældste kilder (LH Skuldersmerter og Albuesmerter, 2019) – findes nyere?
 
 Prioritér din verifikation: (1) knæ-fraktur-handlingen, (2) de 14 akutte henvisninger, (3) doser (dicloxacillin, paracetamol/NSAID-doser i ryg og ankel), (4) telefonnumre i ryg (fundet i kilderne i dag; én konflikt om Frederiksberg-nummeret er navngivet).
 
@@ -101,7 +103,7 @@ Alvor: K kritisk · H høj · M middel · L lav. Indsats: S ≤ 1 time · M ≤ 
 **Journalnotat**
 | Fund | Alvor | Indsats | Ændring |
 |---|---|---|---|
-| 7 valg dokumenterer mere end knappen (crossover, hæmatom, squeeze, Thompson, 3 nerver + puls, rektal 3 fund) | H | S | Knaptekst = hele påstanden, eller del valget (mockup 2B). Kræver godkendelse |
+| 13 valg dokumenterer mere end knappen: skulder AC-led *Uømt* (+ crossover); albue *Neurovaskulært normal* (puls + 3 nerver), *Isometrisk smertefri* (ekstension + fleksion), *Ulnaris normal* (sensibilitet + kraft); ryg *Cauda: ingen gener* (vandladning + afføring + ridebukse), *Reflekser normale* (patellar + achilles), *Rektal normal* (3 fund); knæ *Stabil* ("klinisk ligamenttest"); ankel *Hævelse udtalt* (+ hæmatom), *Syndesmose uøm* (+ squeeze-test), *Akilles normal* (+ Thompson), *Mellemfod ingen* (naviculare + 5. mt.), *Neurovaskulært normal* (cirkulation + sensibilitet) | H | S | Knaptekst = hele påstanden, eller del valget (mockup 2B). Kræver godkendelse pr. valg |
 | Sætninger, der ikke lyder som en læge: "Forudgående traume. Traume ved vrid." / "Alder 12–50 år." / "Anden skademekanisme." | M | S | Notatskabelon: udelad alder i notatet (bruges kun til flag); udelad "Forudgående traume", når mekanisme er valgt. Kræver godkendelse |
 | Ingen tidsanker ("varighed få dage") | L | – | Fritekst. Ikke værd at bygge |
 | Relevante negative fund kommer kun med, hvis de klikkes; "N" udfylder nu kun 4 fund | – | – | Korrekt efter princippet "kun det, lægen aktivt har valgt". Ingen ændring |
@@ -128,9 +130,9 @@ Alvor: K kritisk · H høj · M middel · L lav. Indsats: S ≤ 1 time · M ≤ 
 |---|---|---|---|
 | Indholdet ligger allerede som data adskilt fra kode med kilde, år og `sidstTjekket` pr. kilde og status pr. punkt; tests fanger brudte referencer | – | – | God struktur. Behold |
 | Ingen dato pr. punkt for, hvornår *punktet* sidst er sammenholdt (kun pr. kilde) | L | S | Ikke nødvendigt for én bruger |
-| Ingen automatisk påmindelse, når en kilde opdateres | L | S | Kør `review/`-scriptet (kildedato vs. `aar`) hver 3. måned; en 10-linjers test kan sammenligne mod en gemt dato. Kræver netværk → manuelt |
+| Ingen automatisk påmindelse, når en kilde opdateres | L | S | Kør `review/kildetjek/kildetjek.py` hver 3. måned: den viser kilder, hvis opdateringsdato ikke længere passer med årstallet i data. Kræver netværk → manuelt |
 | 2 hovedkilder fra 2019 | M | – | Din vurdering (tjekliste) |
-| Testsættet kører ikke med `npm run check` | L | S | Flyt ind i `vite.config.ts` i fase 2 |
+| Testsættet kører ikke med `npm run check` | L | S | Flyt ind i `vite.config.ts` i fase 2. Det indeholder også ét fuldt indholdssnapshot pr. region, så enhver ændring af klinisk tekst, betingelse eller notatsætning gør testen rød (afprøvet) |
 
 ## 6. Interaktioner pr. region
 
@@ -185,12 +187,12 @@ Yderligere forkortelse (fx "Vridtraume for få dage siden med straks hævelse og
 
 | Trin | Indhold | Test | Kræver din godkendelse af klinisk tekst |
 |---|---|---|---|
-| 1 | Testsættet ind i `npm run check` (include `review/cases`) | Alle 21 snapshots grønne | Nej |
+| 1 | Testsættet ind i `npm run check` (include `review/cases`) | 21 case-snapshots + 5 indholdssnapshots grønne | Nej |
 | 2 | `spellcheck={false}` + CPR-mønster-advarsel i fritekst | Ny test i `lib/` for mønstret; case knae-6 viser advarsel (snapshot uændret) | Nej |
 | 3 | Smalt vindue (< 800 px): flagstribe øverst, notat fast nederst | Playwright-måling 683×768: alle matchende flag + notat synlige uden rulning | Nej |
 | 4 | Ret undervejs: skjulte svar bevares (vises ikke, indgår ikke i notat eller flag) + linje "N svar skjult … Fortryd" | Case knae-5 og ryg-4 ændres bevidst (vis forskel) | Nej |
 | 5 | UDKAST-antal i sektionsoverskrifter | Visuel | Nej |
-| 6 | Knaptekster = hele notatpåstanden (7 valg) | Snapshots uændrede (kun knaptekst) | **Ja, pr. valg** |
+| 6 | Knaptekster = hele notatpåstanden (13 valg) | Snapshots uændrede (kun knaptekst) | **Ja, pr. valg** |
 | 7 | Nye felter: feber/rødme/varme (skulder, ankel), alder uden traume (knæ) + fremhævning | Case skulder-3, ankel-4, knae-4 ændres bevidst | **Ja** (felt, notatsætning, betingelse) |
 | 8 | Notatskabelon: udelad alder og "Forudgående traume" | Snapshots ændres bevidst | **Ja** |
 | 9 | V/P med tastatur | Ny test i `src/tast.ts` | Nej |

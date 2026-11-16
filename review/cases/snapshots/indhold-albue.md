@@ -1,0 +1,236 @@
+# Indhold: Albue
+
+## Felter og notatsætninger
+
+- **Side** (side, enkelt)
+  - Højre → "Højresidige albuesmerter."
+  - Venstre → "Venstresidige albuesmerter."
+- **Debut** (debut, enkelt)
+  - Traume → "Opstået efter traume."
+  - Overbelastning → "Opstået efter overbelastning."
+  - Spontant → "Opstået uden kendt årsag."
+- **Mekanisme** (mekanisme, enkelt, vises hvis debut=traume)
+  - Fald på strakt arm → "Fald på strakt arm."
+  - Over-stræk/-bøj → "Kraftig overstrækning eller overbøjning af albuen."
+  - Direkte slag → "Direkte slag mod albuen."
+  - Andet → "Anden skademekanisme."
+- **Lokalisation** (lokalisation, enkelt)
+  - Lateralt → "Smerter lateralt på albuen."
+  - Medialt → "Smerter medialt på albuen."
+  - Bagtil → "Smerter bagtil på albuen."
+  - Fortil → "Smerter fortil på albuen."
+  - Diffust → "Diffuse albuesmerter."
+- **Varighed** (varighed, enkelt)
+  - Dage → "Varighed få dage."
+  - Uger → "Varighed flere uger."
+  - Måneder → "Varighed flere måneder."
+- **Paræstesier** (paraestesier, enkelt)
+  - Nej → "Ingen paræstesier."
+  - 4.–5. finger → "Paræstesier i 4. og 5. finger."
+  - Andet område → "Paræstesier i hånd eller underarm."
+- **Låsning** (laasning, enkelt)
+  - Nej → "Ingen låsning."
+  - Ja → "Låsninger af albuen."
+- **Disposition** (disposition, flere)
+  - Albueprotese → "Albueprotese."
+  - Reumatoid artrit → "Reumatoid artrit."
+- **Supplerende** (anamnese-tekst, tekst)
+- **Fejlstilling** (fejlstilling, enkelt)
+  - Ingen → "Ingen fejlstilling."
+  - Ja → "Fejlstilling af albuen."
+- **Hævelse** (haevelse, enkelt)
+  - Ingen → "Ingen hævelse."
+  - Over olecranon → "Væskefyldt hævelse over olecranon."
+  - Leddet/hæmatom → "Hævelse af leddet eller hæmatom."
+- **Rødme/varme** (roedme, enkelt)
+  - Ingen → "Ingen rødme eller varmeøgning."
+  - Ja → "Rødme og varmeøgning."
+- **Ekstensionstest** (ekstensionstest, enkelt, vises hvis debut=traume)
+  - Fuld bilateralt → "Albue-ekstensionstest: fuld ekstension bilateralt."
+  - Nedsat → "Albue-ekstensionstest: nedsat ekstension."
+- **Bevægelighed** (bevaegelighed, enkelt)
+  - Normal → "Normal bevægelighed i albuen."
+  - Nedsat → "Nedsat bevægelighed i albuen."
+  - Nedsat rotation → "Nedsat og smertefuld pronation og supination."
+- **Ømhed epikondyl** (epikondyl, enkelt)
+  - Ingen [N] → "Ingen ømhed over epikondylerne."
+  - Lateral → "Ømhed over laterale epikondyl."
+  - Medial → "Ømhed over mediale epikondyl."
+- **Isometrisk håndled** (isometrisk, enkelt)
+  - Smertefri → "Smertefri isometrisk ekstension og fleksion af håndleddet."
+  - Smerte ved ekstension → "Smerter ved isometrisk ekstension og radial deviation af håndleddet med strakt albue."
+  - Smerte ved fleksion → "Smerter ved isometrisk fleksion af håndleddet med strakt albue."
+- **Caput radii** (caputradii, enkelt, vises hvis debut=traume)
+  - Uøm → "Caput radii uøm."
+  - Øm → "Palpationsømhed over caput radii."
+- **Neurovaskulært** (neurovaskulaer, enkelt, vises hvis debut=traume)
+  - Normal → "Palpabel radialispuls; normal sensibilitet og motorik svarende til n. ulnaris, medianus og radialis."
+  - Påvirket → "Påvirket distal cirkulation eller nervefunktion."
+- **N. ulnaris** (ulnaris, enkelt)
+  - Normal → "Normal sensibilitet i 4.–5. finger og normal kraft i ulnarisinnerverede muskler."
+  - ↓ sensibilitet → "Nedsat sensibilitet i 4.–5. finger."
+  - ↓ kraft → "Nedsat kraft ved adduktion af 1. finger og abduktion af 5. finger."
+- **Supplerende** (objektivt-tekst, tekst)
+
+## Røde flag
+
+- **flag-fraktur-luksation** [GODKENDT 2026-11-15] kilder: lh-albueskader, lh-caput-radii
+  - Tekst: Fraktur eller luksation efter traume (ofte fald på strakt arm): smerter, hævelse/blødning, nedsat bevægelighed og kraft, evt. fejlstilling. Ved posterior luksation: betydelige smerter, forkortet underarm, olecranon prominerer bagtil. Albue-ekstensionstest: ved bilateral fuld ekstension er fraktur usandsynlig; ved reduceret ekstension røntgen.
+  - Handling: Den akutte behandling kræver henvisning til akutmodtagelsen. Undersøg også skulder og håndled.
+  - Fremhæves hvis: fejlstilling=ja ELLER ekstensionstest=nedsat ELLER caputradii=oem
+- **flag-neurovaskulaer** [GODKENDT 2026-11-15] kilder: lh-albueskader
+  - Tekst: Neurovaskulær påvirkning ved fraktur eller luksation: undersøg a. brachialis (puls ved håndleddet), n. ulnaris, n. medianus og n. radialis (drophånd).
+  - Handling: Akut henvisning til akutmodtagelsen.
+  - Fremhæves hvis: neurovaskulaer=paavirket
+- **flag-muskelsene** [GODKENDT 2026-11-15] kilder: lh-albueskader
+  - Tekst: Muskel-seneskade efter hyperekstensions- eller hyperfleksionstraume: muskeldiskonfiguration og nedsat kraft. Totale læsioner behandles oftest operativt; tidlig diagnose og behandling er nødvendig for at undgå komplikationer.
+  - Handling: Akutmodtagelsen (akut del); ved sen diagnose ortopædkirurgisk ambulatorium.
+  - Fremhæves hvis: mekanisme=hyper
+- **flag-septisk** [GODKENDT 2026-11-15] kilder: lh-albuesmerter, rh-monoartrit
+  - Tekst: Septisk artrit eller hæmartrose efter traume: varmt, rødt, hævet led, feber eller medtaget almentilstand. Bakteriel infektion kræver akut behandling, ofte med kirurgisk intervention.
+  - Handling: Hurtig henvisning til sygehus (Region Hovedstaden: ved mistanke om septisk artrit akut indlæggelse i ortopædkirurgisk regi via CVI). Ved mistanke om bakteriel infektion sendes bursa- eller ledvæske til dyrkning.
+  - Fremhæves hvis: roedme=ja og haevelse=led
+- **flag-septisk-bursit** [GODKENDT 2026-11-15] kilder: lh-bursitis-olecrani
+  - Tekst: Septisk bursitis olecrani hos patient med albueprotese eller reumatoid artrit (ofte kommunikation til leddet), eller hos patient der er almen påvirket eller septisk, eller med sår eller fistel over bursa.
+  - Handling: Henvis til ortopædkirurgisk afdeling – behandles som septisk artrit / proteseinfektion af specialist.
+  - Fremhæves hvis: disposition=protese og haevelse=bursa ELLER disposition=ra og haevelse=bursa ELLER roedme=ja og haevelse=bursa
+- **flag-faldgruber** [GODKENDT 2026-11-15] kilder: lh-albuesmerter, lh-epikondylit
+  - Tekst: Diagnostiske faldgruber: fraktur og brusklæsion efter traume; skader i nakke, skulder og håndled kan vise sig som albuesmerter; tumor kan give irritation af nerver.
+  - Handling: Undersøg også cervikalcolumna og resten af overekstremiteten; overvej røntgen efter traume.
+  - Fremhæves hvis: (ingen betingelse)
+
+## Differentialdiagnoser
+
+- **Lateral epikondylit (tennisalbue)** (diff-lateral-epikondylit) [UDKAST] kilder: lh-epikondylit, lh-albuesmerter
+  - Hyppigste årsag til overbelastningsrelaterede albuesmerter
+  - Smerter lateralt med udstråling mod håndleddet; besvær med at skænke og løfte
+  - Distinkt ømhed fortil på laterale epikondyl; smerter ved isometrisk ekstension og radial deviation af håndleddet med strakt albue og åben hånd
+  - Ingen hævelse; passiv bevægelighed som regel normal
+  - De fleste er gode igen inden for 8–13 måneder
+  - V: "Foreneligt med lateral epikondylit."
+- **Medial epikondylit (golfalbue)** (diff-medial-epikondylit) [UDKAST] kilder: lh-epikondylit, lh-albuesmerter
+  - Overbelastning; smerter medialt, hvor underarmens fleksorer udspringer
+  - Ømhed over mediale epikondyl; smerter ved isometrisk fleksion af håndleddet med strakt albue
+  - V: "Foreneligt med medial epikondylit."
+- **Bursitis olecrani (aseptisk eller septisk)** (diff-bursit) [UDKAST] kilder: lh-bursitis-olecrani, lh-albuesmerter
+  - Hævet, væskefyldt bursa over olecranon
+  - Septisk: ømhed, smerter, rødme, evt. almensymptomer; oftest Staphylococcus aureus
+  - Tendens til recidiv ved tryk mod hårdt underlag; ved kroniske tilfælde 'gryn' i bursa
+  - V: "Foreneligt med bursitis olecrani."
+- **Ulnarisneuropati** (diff-ulnaris) [UDKAST] kilder: lh-ulnarisneuropati, lh-albuesmerter
+  - Paræstesier og nedsat sensibilitet i 4. og 5. finger
+  - Nedsat kraft ved adduktion af 1. finger og abduktion af 5. finger; i udtalte tilfælde klohånd
+  - Ømhed eller positivt Tinels tegn over sulcus n. ulnaris
+  - Symptomerne kan også stamme fra cervikal radikulopati eller thoracic outlet syndrom
+  - V: "Foreneligt med ulnarisneuropati."
+- **Kompression af n. radialis (radialt tunnelsyndrom / supinatorsyndrom)** (diff-radialis) [UDKAST] kilder: lh-albuesmerter, lh-epikondylit
+  - Sjælden; udstrålende smerter til dorsale underarm, ofte også i hvile og om natten
+  - Smerter ved supination mod modstand; evt. nedsat dorsalfleksionskraft over håndled og fingrenes grundled
+  - Fejldiagnosticeres ofte som lateral epikondylit
+  - V: "Kompression af n. radialis overvejes."
+- **Caput radii fraktur** (diff-caput-radii) [UDKAST] kilder: lh-caput-radii
+  - Fald på strakt arm med underarmen i pronation; hyppigste albuefraktur hos voksne (30 %)
+  - Smerter lateralt og ved rotation; hævelse og hæmatom lateralt; palpationsømhed over caput radii
+  - Undersøg også håndleddet (associerede skader, Essex-Lopresti)
+  - V: "Caput radii fraktur mistænkes."
+- **Anden albuefraktur eller albueluksation** (diff-fraktur-luksation) [UDKAST] kilder: lh-albueskader
+  - Distal humerus, capitulum, olecranon, processus coronoideus, collum radii
+  - Luksation: hyppigst posterior; se efter samtidig fraktur af coronoideus, caput/collum radii og olecranon
+  - Hos ældre ofte lav-energi traume, hos yngre høj-energi
+  - V: "Albuefraktur eller luksation mistænkes."
+- **Bruskskade / osteochondritis dissecans / løst legeme** (diff-brusk) [UDKAST] kilder: lh-albuesmerter
+  - Stivhed, klikken, låsninger og laterale smerter, især ved valgusbelastning (kast)
+  - Osteochondritis dissecans: som regel 15–20 år
+  - Kan være svær at skelne fra lateral epikondylit
+  - V: "Intraartikulær bruskskade overvejes."
+- **Biceps tendinose** (diff-biceps-tendinose) [UDKAST] kilder: lh-albuesmerter
+  - Forreste albuesmerter efter gentagne albuefleksioner og supinationer
+  - Ømhed over distale bicepssene; smerter ved fleksion og supination mod modstand; evt. nedsat supinationskraft
+  - V: "Foreneligt med distal biceps tendinose."
+- **Medial ligamentskade (ulnare kollateralligament)** (diff-medial-ligament) [UDKAST] kilder: lh-albuesmerter, lh-epikondylit
+  - Kastere (fx håndbold); vage mediale smerter, værre ved aktivitet
+  - Smerte eller instabilitet ved valguspres og pronation
+  - V: "Medial ligamentskade overvejes."
+- **Henført smerte (cervikal radikulopati, skulder, håndled)** (diff-henfoert) [UDKAST] kilder: lh-epikondylit, lh-albuesmerter
+  - C7-radikulopati er differentialdiagnose til lateral epikondylit
+  - Karpaltunnelsyndrom bør også overvejes
+  - V: "Henført smerte overvejes."
+
+## Behandling
+
+- **beh-generelt** [UDKAST] kilder: lh-albuesmerter
+  - Undgå aktivitet, der giver smerter – specielt den belastning, der udløste dem. Is kan forsøges ved stærkere smerter. NSAID ved tendinit eller artrit er mest effektivt i den akutte fase. Billeddiagnostik er som regel ikke indiceret undtagen efter traume eller ved aflåsninger.
+  - Gælder: generelt
+  - P: "Rådgivet om aflastning af smertegivende aktivitet."
+- **beh-epik-aflastning-traening** [UDKAST] kilder: lh-epikondylit
+  - Epikondylit: aflastning (tilpasning af arbejde; håndledsortose ved stærke akutte smerter), aktive øvelser inden for smertegrænsen, udspænding og styrketræning. Excentrisk træning af håndleddets ekstensorer ved lateral epikondylit kan give smertereduktion og øget styrke (fx progressivt program over 24 uger). Bandage og tape har sparsom dokumentation.
+  - Gælder: diff-lateral-epikondylit, diff-medial-epikondylit
+  - P: "Rådgivet om aflastning. Instrueret i excentriske øvelser og udspænding."
+- **beh-epik-nsaid** [UDKAST] kilder: lh-epikondylit
+  - NSAID kan lindre i den akutte fase, men har ikke bedre effekt end placebo på opheling efter 4 uger. Lokal NSAID-salve kan give lindring ved korttidsbehandling.
+  - Gælder: diff-lateral-epikondylit, diff-medial-epikondylit
+  - P: "NSAID kortvarigt, evt. som salve."
+- **beh-epik-steroid** [UDKAST] kilder: lh-epikondylit
+  - Konflikt: Samme side i Lægehåndbogen: resuméet anbefaler glukokortikoidinjektion ved længerevarende symptomer, mens behandlingsafsnittet gengiver en metaanalyse og et randomiseret studie med dårligere langtidsprognose og mange recidiver, og "maner til forsigtighed".
+  - Glukokortikoidinjektion (med lidokain) tenoperiostealt: bedre korttidseffekt, men dårligere prognose på længere sigt og mange recidiver. Kontrol efter ca. 10 dage. Højst tre injektioner samme sted på et år.
+  - Gælder: diff-lateral-epikondylit, diff-medial-epikondylit
+  - P: "Glukokortikoidinjektion ved epikondyl. Kontrol om ca. 10 dage."
+- **beh-epik-ikke** [UDKAST] kilder: lh-epikondylit
+  - Chokbølgebehandling, elektroterapi, ultralyd og injektion med blodpladekoncentrat har ikke dokumenteret effekt ved epikondylit.
+  - Gælder: diff-lateral-epikondylit, diff-medial-epikondylit
+  - P: "Ikke indikation for chokbølge eller blodpladekoncentrat."
+- **beh-bursit-aseptisk** [UDKAST] kilder: lh-bursitis-olecrani
+  - Aseptisk bursitis olecrani: trykaflastning (albuebeskytter, skift arbejdsstilling), let komprimerende bind, evt. NSAID lokalt eller systemisk. Aspiration og steroidinjektion frarådes pga. risiko for infektion; aspiration kan dog være indiceret for at skelne aseptisk fra septisk. Kræver ikke opfølgning.
+  - Gælder: diff-bursit
+  - P: "Rådgivet om trykaflastning og let kompression. Søg læge ved feber."
+- **beh-bursit-septisk** [UDKAST] kilder: lh-bursitis-olecrani
+  - Septisk bursitis olecrani hos patient, der ikke er almen påvirket eller septisk: tablet dicloxacillin 1 g × 4 dagligt i 10 dage (agens oftest Staphylococcus aureus).
+  - Gælder: diff-bursit
+  - P: "Dicloxacillin 1 g × 4 i 10 dage for septisk bursitis olecrani."
+- **beh-ulnaris** [UDKAST] kilder: lh-ulnarisneuropati
+  - Ulnarisneuropati: aflastning af albue og håndled, særligt ved skrivebordsarbejde; undgå direkte tryk. Behandles ikke medicinsk.
+  - Gælder: diff-ulnaris
+  - P: "Rådgivet om aflastning af albue og håndled."
+- **beh-caput-radii** [UDKAST] kilder: lh-caput-radii
+  - Caput radii fraktur (konservativt behandlet): armslynge 1–2 uger og tidlig bevægetræning inden for smertegrænsen. Informér om, at selv mindre, udislocerede frakturer kan give bevægeindskrænkning; evt. fysioterapeut. Bevægeligheden kan bedres de første 6–9 måneder; forvent 6–12 måneder til restitution. Råd om anmeldelse til ulykkesforsikring.
+  - Gælder: diff-caput-radii
+  - P: "Informeret om flittig bevægetræning. Rådgivet om anmeldelse til ulykkesforsikring."
+- **beh-efterforloeb** [UDKAST] kilder: lh-albueskader
+  - Efterforløb efter albuefraktur, luksation eller opereret muskel-seneskade: ved smerter og let til moderat stivhed kan fys-/ergoterapi forsøges. Træning og tålmodighed – funktion kan vindes langt hen i forløbet.
+  - Gælder: diff-fraktur-luksation, diff-caput-radii
+  - P: "Henvist til fys-/ergoterapi mhp. bevægetræning."
+
+## Henvisning
+
+- **Akutmodtagelsen** (hen-akut-traume, akut, national) [UDKAST] kilder: lh-albueskader, lh-caput-radii
+  - Albuetraume med mistanke om fraktur, luksation eller muskel-seneskade (den akutte del af behandlingen). Røntgen ved reduceret ekstension eller anden frakturmistanke.
+  - P: "Henvist akut til akutmodtagelsen efter albuetraume."
+- **Akut indlæggelse (ortopædkirurgi via CVI)** (hen-septisk, akut, Region Hovedstaden) [UDKAST] kilder: rh-monoartrit, lh-albuesmerter
+  - Mistanke om septisk artrit; hæmartrose efter traume kræver også hurtig henvisning til sygehus.
+  - P: "Henvist akut mhp. septisk artrit."
+- **Ortopædkirurgisk afdeling (bursitis olecrani)** (hen-bursit, subakut, national) [UDKAST] kilder: lh-bursitis-olecrani
+  - Septisk: albueprotese eller reumatoid artrit, almen påvirket eller septisk, sår eller fistel over bursa, eller manglende effekt af antibiotika. Aseptisk: kun ved langvarig (måneder) behandlingsresistent bursit med væsentlige gener – vær opmærksom på komorbiditet og rygning, der øger risikoen for komplikationer.
+  - P: "Henvist til ortopædkirurgisk afdeling mhp. bursitis olecrani."
+- **Ortopædkirurgi** (hen-epikondylit, elektiv, national) [UDKAST] kilder: lh-epikondylit
+  - Epikondylit med fortsat uacceptable gener efter nogle måneder.
+  - P: "Henvist til ortopædkirurgisk vurdering mhp. epikondylit."
+- **Neurolog** (hen-ulnaris, elektiv, national) [UDKAST] kilder: lh-ulnarisneuropati
+  - Vedvarende symptomer, særligt kraftnedsættelse, eller bestående sensibilitetstab eller parese. Operation (neuro- eller ortopædkirurg) med tilbageholdenhed pga. ringe succesrate.
+  - P: "Henvist til neurolog mhp. ulnarisneuropati."
+- **Albuespecialist / ortopædkirurgisk afdeling** (hen-caput-radii-sen, elektiv, national) [UDKAST] kilder: lh-caput-radii
+  - Konflikt: Samme side i Lægehåndbogen: resuméet og henvisningsafsnittet siger "tidligst efter 6 måneder", mens afsnittet om håndtering i almen praksis siger "hvis der er smerter og nedsat bevægelighed efter 9 måneder".
+  - Efter caput radii fraktur: aflåsninger af albuen, eller vedvarende bevægebegrænsning og smerter (mulig artroskopisk løsning af arvæv).
+  - P: "Henvist til ortopædkirurgisk vurdering efter caput radii fraktur."
+- **Ortopædkirurgisk ambulatorium** (hen-komplikationer, elektiv, national) [UDKAST] kilder: lh-albueskader
+  - Sen diagnose af albueskade, eller komplikationer: moderat til svær stivhed, kronisk ustabilt led, aflåsninger og tiltagende smerter.
+  - P: "Henvist til ortopædkirurgisk ambulatorium mhp. komplikationer efter albueskade."
+
+## Kilder
+
+- lh-albuesmerter: Lægehåndbogen 2019, Albuesmerter (symptomer og tegn), tjekket 2026-11-14
+- lh-epikondylit: Lægehåndbogen 2025, Epikondylit, tjekket 2026-11-14
+- lh-bursitis-olecrani: Lægehåndbogen 2023, Bursitis olecrani, tjekket 2026-11-14
+- lh-ulnarisneuropati: Lægehåndbogen 2025, Ulnarisneuropati, tjekket 2026-11-14
+- lh-albueskader: Lægehåndbogen 2021, Albueskader (frakturer, luksationer, muskel-seneskader), tjekket 2026-11-14
+- lh-caput-radii: Lægehåndbogen 2024, Caput radii frakturer, tjekket 2026-11-14
+- rh-monoartrit: Region Hovedstaden 2025, Forløbsbeskrivelse: Akut monoartritis, tjekket 2026-11-14

@@ -1,0 +1,3512 @@
+[
+ {
+  "region": "skulder",
+  "typ": "Rødt flag",
+  "id": "flag-luksation",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-skulderluksation"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.18,
+  "frase_handling": 0.05,
+  "kildedatoer": {
+   "lh-skulderluksation": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Rødt flag",
+  "id": "flag-fraktur",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-skuldersmerter",
+   "rh-skulder-billed"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.64,
+  "frase_handling": 0.22,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019",
+   "rh-skulder-billed": "16.07.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Rødt flag",
+  "id": "flag-traumatisk-cuff",
+  "status": "GODKENDT",
+  "kilder": [
+   "rh-rotatorcuff",
+   "lh-rotatorcuff",
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.28,
+  "frase_handling": 0.12,
+  "kildedatoer": {
+   "rh-rotatorcuff": "01.03.2025",
+   "lh-rotatorcuff": "28.07.2025",
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Rødt flag",
+  "id": "flag-cuff-efter-luksation",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-skulderluksation"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.59,
+  "frase_handling": 0.0,
+  "kildedatoer": {
+   "lh-skulderluksation": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Rødt flag",
+  "id": "flag-faldgruber",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-skuldersmerter",
+   "rh-skulder-billed"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.23,
+  "frase_handling": 0.14,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019",
+   "rh-skulder-billed": "16.07.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Rødt flag",
+  "id": "flag-septisk",
+  "status": "GODKENDT",
+  "kilder": [
+   "rh-monoartrit",
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.17,
+  "frase_handling": 0.6,
+  "kildedatoer": {
+   "rh-monoartrit": "10.04.2025",
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-impingement",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-subacromielt",
+   "lh-skuldersmerter",
+   "rh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.18,
+  "kildedatoer": {
+   "lh-subacromielt": "16.12.2021",
+   "lh-skuldersmerter": "09.08.2019",
+   "rh-rotatorcuff": "01.03.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-bursit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.38,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-kapsulit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-kapsulit",
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.27,
+  "kildedatoer": {
+   "lh-kapsulit": "07.06.2024",
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-traumatisk-cuff",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-rotatorcuff",
+   "lh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.08,
+  "kildedatoer": {
+   "rh-rotatorcuff": "01.03.2025",
+   "lh-rotatorcuff": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-degenerativ-cuff",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rotatorcuff",
+   "rh-rotatorcuff",
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.11,
+  "kildedatoer": {
+   "lh-rotatorcuff": "28.07.2025",
+   "rh-rotatorcuff": "01.03.2025",
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-instabilitet",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skuldersmerter",
+   "lh-skulderluksation"
+  ],
+  "tal_ikke_fundet": [
+   "80 %"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.21,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019",
+   "lh-skulderluksation": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-ac",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ac-artrose",
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.15,
+  "kildedatoer": {
+   "lh-ac-artrose": "14.03.2026",
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-gh-artrose",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rotatorcuff",
+   "lh-skuldersmerter",
+   "rh-skulder-billed"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.29,
+  "kildedatoer": {
+   "lh-rotatorcuff": "28.07.2025",
+   "lh-skuldersmerter": "09.08.2019",
+   "rh-skulder-billed": "16.07.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-cervikal",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skuldersmerter",
+   "rh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.06,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019",
+   "rh-rotatorcuff": "01.03.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Diff.diagnose",
+  "id": "diff-suprascapularis",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.16,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-generelt",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.52,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-analgetika",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skuldersmerter",
+   "rh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.31,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019",
+   "rh-rotatorcuff": "01.03.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-traening",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-subacromielt",
+   "rh-rotatorcuff",
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.15,
+  "kildedatoer": {
+   "lh-subacromielt": "16.12.2021",
+   "rh-rotatorcuff": "01.03.2025",
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-subakromiel",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-subacromielt",
+   "lh-skuldersmerter",
+   "lh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [
+   "4–8 ugers"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.05,
+  "kildedatoer": {
+   "lh-subacromielt": "16.12.2021",
+   "lh-skuldersmerter": "09.08.2019",
+   "lh-rotatorcuff": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-ingen-effekt",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.4,
+  "kildedatoer": {
+   "lh-rotatorcuff": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-kapsulit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-kapsulit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.27,
+  "kildedatoer": {
+   "lh-kapsulit": "07.06.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-luksation",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skulderluksation"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.11,
+  "kildedatoer": {
+   "lh-skulderluksation": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-ac",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ac-artrose"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.25,
+  "kildedatoer": {
+   "lh-ac-artrose": "14.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-roentgen",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skuldersmerter",
+   "rh-skulder-billed",
+   "lh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.13,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019",
+   "rh-skulder-billed": "16.07.2024",
+   "lh-rotatorcuff": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Behandling",
+  "id": "beh-arbejde",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skuldersmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.25,
+  "kildedatoer": {
+   "lh-skuldersmerter": "09.08.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-luksation-akut",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skulderluksation"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.0,
+  "kildedatoer": {
+   "lh-skulderluksation": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-traume-roentgen",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rotatorcuff",
+   "rh-skulder-billed"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.18,
+  "kildedatoer": {
+   "lh-rotatorcuff": "28.07.2025",
+   "rh-skulder-billed": "16.07.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-ul",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-skulder-billed"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.29,
+  "kildedatoer": {
+   "rh-skulder-billed": "16.07.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-traumatisk-cuff",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-rotatorcuff",
+   "lh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.55,
+  "kildedatoer": {
+   "rh-rotatorcuff": "01.03.2025",
+   "lh-rotatorcuff": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-cuff-efter-luksation",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skulderluksation"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.5,
+  "kildedatoer": {
+   "lh-skulderluksation": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-instabilitet",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-skulderluksation"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.12,
+  "kildedatoer": {
+   "lh-skulderluksation": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-impingement",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-rotatorcuff",
+   "lh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.17,
+  "kildedatoer": {
+   "rh-rotatorcuff": "01.03.2025",
+   "lh-rotatorcuff": "28.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-kapsulit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-kapsulit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.38,
+  "kildedatoer": {
+   "lh-kapsulit": "07.06.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-ac",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ac-artrose"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.31,
+  "kildedatoer": {
+   "lh-ac-artrose": "14.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-arbejdsmedicin",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.1,
+  "kildedatoer": {
+   "rh-rotatorcuff": "01.03.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-idraet",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-rotatorcuff"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.0,
+  "kildedatoer": {
+   "rh-rotatorcuff": "01.03.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "skulder",
+  "typ": "Henvisning",
+  "id": "hen-septisk",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-monoartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.14,
+  "kildedatoer": {
+   "rh-monoartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Rødt flag",
+  "id": "flag-fraktur-luksation",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-albueskader",
+   "lh-caput-radii"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.15,
+  "frase_handling": 0.2,
+  "kildedatoer": {
+   "lh-albueskader": "08.03.2021",
+   "lh-caput-radii": "25.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Rødt flag",
+  "id": "flag-neurovaskulaer",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-albueskader"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.21,
+  "frase_handling": 0.0,
+  "kildedatoer": {
+   "lh-albueskader": "08.03.2021"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Rødt flag",
+  "id": "flag-muskelsene",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-albueskader"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.45,
+  "frase_handling": 0.17,
+  "kildedatoer": {
+   "lh-albueskader": "08.03.2021"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Rødt flag",
+  "id": "flag-septisk",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-albuesmerter",
+   "rh-monoartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.19,
+  "frase_handling": 0.26,
+  "kildedatoer": {
+   "lh-albuesmerter": "08.02.2019",
+   "rh-monoartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Rødt flag",
+  "id": "flag-septisk-bursit",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-bursitis-olecrani"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.25,
+  "frase_handling": 0.4,
+  "kildedatoer": {
+   "lh-bursitis-olecrani": "21.08.2023"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Rødt flag",
+  "id": "flag-faldgruber",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-albuesmerter",
+   "lh-epikondylit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.73,
+  "frase_handling": 0.56,
+  "kildedatoer": {
+   "lh-albuesmerter": "08.02.2019",
+   "lh-epikondylit": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-lateral-epikondylit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-epikondylit",
+   "lh-albuesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.31,
+  "kildedatoer": {
+   "lh-epikondylit": "08.04.2025",
+   "lh-albuesmerter": "08.02.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-medial-epikondylit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-epikondylit",
+   "lh-albuesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.24,
+  "kildedatoer": {
+   "lh-epikondylit": "08.04.2025",
+   "lh-albuesmerter": "08.02.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-bursit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-bursitis-olecrani",
+   "lh-albuesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.06,
+  "kildedatoer": {
+   "lh-bursitis-olecrani": "21.08.2023",
+   "lh-albuesmerter": "08.02.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-ulnaris",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ulnarisneuropati",
+   "lh-albuesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.39,
+  "kildedatoer": {
+   "lh-ulnarisneuropati": "31.07.2025",
+   "lh-albuesmerter": "08.02.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-radialis",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-albuesmerter",
+   "lh-epikondylit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.25,
+  "kildedatoer": {
+   "lh-albuesmerter": "08.02.2019",
+   "lh-epikondylit": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-caput-radii",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-caput-radii"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.35,
+  "kildedatoer": {
+   "lh-caput-radii": "25.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-fraktur-luksation",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-albueskader"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.16,
+  "kildedatoer": {
+   "lh-albueskader": "08.03.2021"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-brusk",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-albuesmerter"
+  ],
+  "tal_ikke_fundet": [
+   "15–20 år"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.11,
+  "kildedatoer": {
+   "lh-albuesmerter": "08.02.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-biceps-tendinose",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-albuesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.29,
+  "kildedatoer": {
+   "lh-albuesmerter": "08.02.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-medial-ligament",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-albuesmerter",
+   "lh-epikondylit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.28,
+  "kildedatoer": {
+   "lh-albuesmerter": "08.02.2019",
+   "lh-epikondylit": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Diff.diagnose",
+  "id": "diff-henfoert",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-epikondylit",
+   "lh-albuesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.07,
+  "kildedatoer": {
+   "lh-epikondylit": "08.04.2025",
+   "lh-albuesmerter": "08.02.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-generelt",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-albuesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.45,
+  "kildedatoer": {
+   "lh-albuesmerter": "08.02.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-epik-aflastning-traening",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-epikondylit"
+  ],
+  "tal_ikke_fundet": [
+   "24 uger"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.16,
+  "kildedatoer": {
+   "lh-epikondylit": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-epik-nsaid",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-epikondylit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.62,
+  "kildedatoer": {
+   "lh-epikondylit": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-epik-steroid",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-epikondylit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.12,
+  "kildedatoer": {
+   "lh-epikondylit": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-epik-ikke",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-epikondylit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.55,
+  "kildedatoer": {
+   "lh-epikondylit": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-bursit-aseptisk",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-bursitis-olecrani"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.2,
+  "kildedatoer": {
+   "lh-bursitis-olecrani": "21.08.2023"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-bursit-septisk",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-bursitis-olecrani"
+  ],
+  "tal_ikke_fundet": [
+   "1 g",
+   "4 dagligt"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.25,
+  "kildedatoer": {
+   "lh-bursitis-olecrani": "21.08.2023"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-ulnaris",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ulnarisneuropati"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.31,
+  "kildedatoer": {
+   "lh-ulnarisneuropati": "31.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-caput-radii",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-caput-radii"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.27,
+  "kildedatoer": {
+   "lh-caput-radii": "25.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Behandling",
+  "id": "beh-efterforloeb",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-albueskader"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.26,
+  "kildedatoer": {
+   "lh-albueskader": "08.03.2021"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Henvisning",
+  "id": "hen-akut-traume",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-albueskader",
+   "lh-caput-radii"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.25,
+  "kildedatoer": {
+   "lh-albueskader": "08.03.2021",
+   "lh-caput-radii": "25.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Henvisning",
+  "id": "hen-septisk",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-monoartrit",
+   "lh-albuesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.19,
+  "kildedatoer": {
+   "rh-monoartrit": "10.04.2025",
+   "lh-albuesmerter": "08.02.2019"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Henvisning",
+  "id": "hen-bursit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-bursitis-olecrani"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.33,
+  "kildedatoer": {
+   "lh-bursitis-olecrani": "21.08.2023"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Henvisning",
+  "id": "hen-epikondylit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-epikondylit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.43,
+  "kildedatoer": {
+   "lh-epikondylit": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Henvisning",
+  "id": "hen-ulnaris",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ulnarisneuropati"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.18,
+  "kildedatoer": {
+   "lh-ulnarisneuropati": "31.07.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Henvisning",
+  "id": "hen-caput-radii-sen",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-caput-radii"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.16,
+  "kildedatoer": {
+   "lh-caput-radii": "25.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "albue",
+  "typ": "Henvisning",
+  "id": "hen-komplikationer",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-albueskader"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.53,
+  "kildedatoer": {
+   "lh-albueskader": "08.03.2021"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Rødt flag",
+  "id": "flag-cauda",
+  "status": "GODKENDT",
+  "kilder": [
+   "rh-cauda",
+   "lh-rodaffektion",
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.26,
+  "frase_handling": 0.54,
+  "kildedatoer": {
+   "rh-cauda": "05.02.2025",
+   "lh-rodaffektion": "07.04.2026",
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Rødt flag",
+  "id": "flag-malignitet",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-laendesmerter",
+   "rh-uden-udstraaling"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.18,
+  "frase_handling": 0.0,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "rh-uden-udstraaling": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Rødt flag",
+  "id": "flag-infektion",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-laendesmerter",
+   "rh-uden-udstraaling",
+   "rh-billed"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.0,
+  "frase_handling": 0.17,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "rh-uden-udstraaling": "10.04.2025",
+   "rh-billed": "14.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Rødt flag",
+  "id": "flag-fraktur",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-laendesmerter",
+   "rh-uden-udstraaling",
+   "rh-billed",
+   "rh-spondylartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.0,
+  "frase_handling": 0.5,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "rh-uden-udstraaling": "10.04.2025",
+   "rh-billed": "14.04.2025",
+   "rh-spondylartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Rødt flag",
+  "id": "flag-udbredte-udfald",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.5,
+  "frase_handling": 0.6,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Rødt flag",
+  "id": "flag-inflammatorisk",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-laendesmerter",
+   "lh-rygsmerter",
+   "rh-spondylartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.12,
+  "frase_handling": 0.24,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "lh-rygsmerter": "24.03.2025",
+   "rh-spondylartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Rødt flag",
+  "id": "flag-indre-organer",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-laendesmerter",
+   "lh-rygsmerter",
+   "lh-rodaffektion"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.32,
+  "frase_handling": 0.69,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "lh-rygsmerter": "24.03.2025",
+   "lh-rodaffektion": "07.04.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Rødt flag",
+  "id": "flag-oevrige-alarm",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-rygsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.5,
+  "frase_handling": 0.08,
+  "kildedatoer": {
+   "lh-rygsmerter": "24.03.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-uspecifik",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.33,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-rod",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rodaffektion",
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [
+   "20–40 år"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.07,
+  "kildedatoer": {
+   "lh-rodaffektion": "07.04.2026",
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-cauda",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rodaffektion",
+   "rh-cauda"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.25,
+  "kildedatoer": {
+   "lh-rodaffektion": "07.04.2026",
+   "rh-cauda": "05.02.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-stenose",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-spinalstenose",
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.29,
+  "kildedatoer": {
+   "lh-spinalstenose": "26.03.2026",
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-sammenfald",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter",
+   "rh-uden-udstraaling"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.77,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "rh-uden-udstraaling": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-spa",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-spondylartrit",
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.16,
+  "kildedatoer": {
+   "rh-spondylartrit": "10.04.2025",
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-malignitet",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter",
+   "lh-rodaffektion"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.06,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "lh-rodaffektion": "07.04.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-infektion",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter",
+   "rh-billed"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.08,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "rh-billed": "14.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-spondylolistese",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter",
+   "rh-billed"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.0,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "rh-billed": "14.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Diff.diagnose",
+  "id": "diff-andet",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rodaffektion",
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.1,
+  "kildedatoer": {
+   "lh-rodaffektion": "07.04.2026",
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-aktivitet",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter",
+   "rh-uden-udstraaling"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.34,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "rh-uden-udstraaling": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-medicin-akut",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.24,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-medicin-rod",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rodaffektion"
+  ],
+  "tal_ikke_fundet": [
+   "3 dagligt"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.39,
+  "kildedatoer": {
+   "lh-rodaffektion": "07.04.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-manuel-traening",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.53,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-rod-traening",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rodaffektion"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.4,
+  "kildedatoer": {
+   "lh-rodaffektion": "07.04.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-ikke-anbefalet",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.0,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-billed",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter",
+   "rh-billed",
+   "lh-rodaffektion"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.16,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024",
+   "rh-billed": "14.04.2025",
+   "lh-rodaffektion": "07.04.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-blodprover",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.24,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-stenose",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-spinalstenose"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.07,
+  "kildedatoer": {
+   "lh-spinalstenose": "26.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-spa",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-spondylartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.09,
+  "kildedatoer": {
+   "rh-spondylartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Behandling",
+  "id": "beh-langvarig",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-laendesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.12,
+  "kildedatoer": {
+   "lh-laendesmerter": "15.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-cauda",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-cauda",
+   "lh-rodaffektion"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.51,
+  "kildedatoer": {
+   "rh-cauda": "05.02.2025",
+   "lh-rodaffektion": "07.04.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-hotline",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-visitation-reumatologi",
+   "rh-cauda"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.26,
+  "kildedatoer": {
+   "rh-visitation-reumatologi": "04.09.2025",
+   "rh-cauda": "05.02.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-infektion-malignitet",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-uden-udstraaling",
+   "lh-laendesmerter",
+   "rh-billed"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.2,
+  "kildedatoer": {
+   "rh-uden-udstraaling": "10.04.2025",
+   "lh-laendesmerter": "15.01.2024",
+   "rh-billed": "14.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-fraktur",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-uden-udstraaling"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.4,
+  "kildedatoer": {
+   "rh-uden-udstraaling": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-fys",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rodaffektion"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.41,
+  "kildedatoer": {
+   "lh-rodaffektion": "07.04.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-mr",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-billed"
+  ],
+  "tal_ikke_fundet": [
+   "02 til",
+   "1 år"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.22,
+  "kildedatoer": {
+   "rh-billed": "14.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-rod-kirurgi",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-rodaffektion"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.32,
+  "kildedatoer": {
+   "lh-rodaffektion": "07.04.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-reumatologi",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-uden-udstraaling",
+   "rh-visitation-reumatologi"
+  ],
+  "tal_ikke_fundet": [
+   "1.2025 sendes"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.27,
+  "kildedatoer": {
+   "rh-uden-udstraaling": "10.04.2025",
+   "rh-visitation-reumatologi": "04.09.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-stenose",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-spinalstenose"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.12,
+  "kildedatoer": {
+   "lh-spinalstenose": "26.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-spa",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-spondylartrit",
+   "rh-visitation-reumatologi"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.2,
+  "kildedatoer": {
+   "rh-spondylartrit": "10.04.2025",
+   "rh-visitation-reumatologi": "04.09.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ryg",
+  "typ": "Henvisning",
+  "id": "hen-recidiv",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-uden-udstraaling"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.33,
+  "kildedatoer": {
+   "rh-uden-udstraaling": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-bakteriel-artrit",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-artrit-bakteriel",
+   "rh-monoartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.31,
+  "frase_handling": 0.3,
+  "kildedatoer": {
+   "lh-artrit-bakteriel": "29.01.2024",
+   "rh-monoartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-fraktur",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [
+   "12 eller",
+   "4 vægtbelastede"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.16,
+  "frase_handling": 0.18,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-aflaast-knae",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-meniskskade",
+   "lh-knaesmerter",
+   "rh-traumatisk"
+  ],
+  "tal_ikke_fundet": [
+   "30 og",
+   "70 graders"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.44,
+  "frase_handling": 0.17,
+  "kildedatoer": {
+   "lh-meniskskade": "14.08.2026",
+   "lh-knaesmerter": "12.08.2026",
+   "rh-traumatisk": "10.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-akut-ligamentskade",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-korsbaand-forreste",
+   "lh-mcl",
+   "rh-traumatisk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.21,
+  "frase_handling": 0.0,
+  "kildedatoer": {
+   "lh-korsbaand-forreste": "14.08.2026",
+   "lh-mcl": "12.08.2026",
+   "rh-traumatisk": "10.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-straekkeapparat",
+  "status": "GODKENDT",
+  "kilder": [
+   "rh-traumatisk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.2,
+  "frase_handling": 0.5,
+  "kildedatoer": {
+   "rh-traumatisk": "10.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-patellaluksation",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-patellaluksation",
+   "rh-traumatisk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.22,
+  "frase_handling": 0.0,
+  "kildedatoer": {
+   "lh-patellaluksation": "08.04.2025",
+   "rh-traumatisk": "10.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-stor-akut-skade",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-meniskskade"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.3,
+  "frase_handling": 0.5,
+  "kildedatoer": {
+   "lh-meniskskade": "14.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-septisk-bursit",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-bursit",
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.35,
+  "frase_handling": 0.46,
+  "kildedatoer": {
+   "lh-bursit": "14.09.2026",
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-laeg-haevelse",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-baker"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.39,
+  "frase_handling": 1.0,
+  "kildedatoer": {
+   "lh-baker": "17.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Rødt flag",
+  "id": "flag-boern",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.21,
+  "frase_handling": 0.29,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-artrose",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-artrose-knae",
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.14,
+  "kildedatoer": {
+   "lh-artrose-knae": "31.01.2025",
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-menisk",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-meniskskade",
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.06,
+  "kildedatoer": {
+   "lh-meniskskade": "14.08.2026",
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-acl",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-korsbaand-forreste",
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.4,
+  "kildedatoer": {
+   "lh-korsbaand-forreste": "14.08.2026",
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-mcl",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-mcl"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.29,
+  "kildedatoer": {
+   "lh-mcl": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-patellofemoralt",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-patellofemoralt",
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.22,
+  "kildedatoer": {
+   "lh-patellofemoralt": "17.08.2026",
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-patellaluksation",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-patellaluksation"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.19,
+  "kildedatoer": {
+   "lh-patellaluksation": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-tendinopati",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.35,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-bursit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-bursit",
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.24,
+  "kildedatoer": {
+   "lh-bursit": "14.09.2026",
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-baker",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-baker"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.44,
+  "kildedatoer": {
+   "lh-baker": "17.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-bakteriel-artrit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-artrit-bakteriel",
+   "rh-monoartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.24,
+  "kildedatoer": {
+   "lh-artrit-bakteriel": "29.01.2024",
+   "rh-monoartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-artrit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-knaesmerter",
+   "lh-artrit-bakteriel"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.2,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026",
+   "lh-artrit-bakteriel": "29.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-henfoert",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.23,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-ocd",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [
+   "12–20 år"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.29,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Diff.diagnose",
+  "id": "diff-apofysit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.21,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-aflastning",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.43,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-analgetika",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-knaesmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.6,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-akut-traume",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-knaesmerter",
+   "lh-korsbaand-forreste",
+   "lh-mcl",
+   "lh-meniskskade"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.17,
+  "kildedatoer": {
+   "lh-knaesmerter": "12.08.2026",
+   "lh-korsbaand-forreste": "14.08.2026",
+   "lh-mcl": "12.08.2026",
+   "lh-meniskskade": "14.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-lettere-skade",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-traumatisk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.41,
+  "kildedatoer": {
+   "rh-traumatisk": "10.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-artrose-basis",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-artrose-knae",
+   "rh-knaeartrose"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.18,
+  "kildedatoer": {
+   "lh-artrose-knae": "31.01.2025",
+   "rh-knaeartrose": "03.10.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-artrose-medicin",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-artrose-knae",
+   "rh-knaeartrose"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.35,
+  "kildedatoer": {
+   "lh-artrose-knae": "31.01.2025",
+   "rh-knaeartrose": "03.10.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-artrose-steroid",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-artrose-knae",
+   "rh-knaeartrose"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.08,
+  "kildedatoer": {
+   "lh-artrose-knae": "31.01.2025",
+   "rh-knaeartrose": "03.10.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-artrose-roentgen",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-artrose-knae"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.29,
+  "kildedatoer": {
+   "lh-artrose-knae": "31.01.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-ingen-mr-artroskopi",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-non-traumatisk",
+   "lh-artrose-knae"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.38,
+  "kildedatoer": {
+   "rh-non-traumatisk": "19.02.2026",
+   "lh-artrose-knae": "31.01.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-menisk-fys",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-meniskskade",
+   "rh-non-traumatisk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.35,
+  "kildedatoer": {
+   "lh-meniskskade": "14.08.2026",
+   "rh-non-traumatisk": "19.02.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-acl",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-korsbaand-forreste"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.25,
+  "kildedatoer": {
+   "lh-korsbaand-forreste": "14.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-mcl",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-mcl"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.46,
+  "kildedatoer": {
+   "lh-mcl": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-pfs",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-patellofemoralt"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.16,
+  "kildedatoer": {
+   "lh-patellofemoralt": "17.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-patellaluksation",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-patellaluksation"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.37,
+  "kildedatoer": {
+   "lh-patellaluksation": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-patellatendinopati",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-patellar-tendinopati"
+  ],
+  "tal_ikke_fundet": [
+   "3 måneder"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.27,
+  "kildedatoer": {
+   "lh-patellar-tendinopati": "17.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-bursit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-bursit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.07,
+  "kildedatoer": {
+   "lh-bursit": "14.09.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Behandling",
+  "id": "beh-baker",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-baker"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.46,
+  "kildedatoer": {
+   "lh-baker": "17.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-septisk",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-monoartrit",
+   "lh-artrit-bakteriel"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.12,
+  "kildedatoer": {
+   "rh-monoartrit": "10.04.2025",
+   "lh-artrit-bakteriel": "29.01.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-akut-traume",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-traumatisk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.21,
+  "kildedatoer": {
+   "rh-traumatisk": "10.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-akut-roentgen",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-traumatisk"
+  ],
+  "tal_ikke_fundet": [
+   "12 eller"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.33,
+  "kildedatoer": {
+   "rh-traumatisk": "10.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-aflaast",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-traumatisk",
+   "lh-meniskskade"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.64,
+  "kildedatoer": {
+   "rh-traumatisk": "10.03.2026",
+   "lh-meniskskade": "14.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-lettere-traume",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-traumatisk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.15,
+  "kildedatoer": {
+   "rh-traumatisk": "10.03.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-non-traumatisk",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-non-traumatisk"
+  ],
+  "tal_ikke_fundet": [
+   "1 uge"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.09,
+  "kildedatoer": {
+   "rh-non-traumatisk": "19.02.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-artrose",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-knaeartrose",
+   "lh-artrose-knae"
+  ],
+  "tal_ikke_fundet": [
+   "12 måneder",
+   "3–6 måneder"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.11,
+  "kildedatoer": {
+   "rh-knaeartrose": "03.10.2024",
+   "lh-artrose-knae": "31.01.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-menisk",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-meniskskade",
+   "rh-non-traumatisk"
+  ],
+  "tal_ikke_fundet": [
+   "3 måneders"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.17,
+  "kildedatoer": {
+   "lh-meniskskade": "14.08.2026",
+   "rh-non-traumatisk": "19.02.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-ligament-kronisk",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-korsbaand-forreste",
+   "lh-mcl"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.11,
+  "kildedatoer": {
+   "lh-korsbaand-forreste": "14.08.2026",
+   "lh-mcl": "12.08.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-patellaluksation-recidiv",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-patellaluksation"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.0,
+  "kildedatoer": {
+   "lh-patellaluksation": "08.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-bursit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-bursit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.47,
+  "kildedatoer": {
+   "lh-bursit": "14.09.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "knae",
+  "typ": "Henvisning",
+  "id": "hen-reumatolog",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-monoartrit",
+   "rh-visitation-reumatologi"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.21,
+  "kildedatoer": {
+   "rh-monoartrit": "10.04.2025",
+   "rh-visitation-reumatologi": "04.09.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Rødt flag",
+  "id": "flag-straks",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelfraktur"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.67,
+  "frase_handling": 0.52,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelfraktur": "23.10.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Rødt flag",
+  "id": "flag-fraktur",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelfraktur"
+  ],
+  "tal_ikke_fundet": [
+   "5 år"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.64,
+  "frase_handling": 0.4,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelfraktur": "23.10.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Rødt flag",
+  "id": "flag-akilles",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-akillesseneruptur"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.34,
+  "frase_handling": 0.45,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-akillesseneruptur": "24.09.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Rødt flag",
+  "id": "flag-syndesmose",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelskade-akut"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.66,
+  "frase_handling": 0.68,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelskade-akut": "10.06.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Rødt flag",
+  "id": "flag-artrit",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-ankelsmerter",
+   "rh-monoartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.73,
+  "frase_handling": 0.29,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "rh-monoartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Rødt flag",
+  "id": "flag-neuropati",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.45,
+  "frase_handling": 0.0,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Rødt flag",
+  "id": "flag-stressfraktur",
+  "status": "GODKENDT",
+  "kilder": [
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.45,
+  "frase_handling": 0.56,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-distorsion",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelskade-akut"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.16,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelskade-akut": "10.06.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-fraktur",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelfraktur",
+   "lh-ankelskade-akut"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.43,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelfraktur": "23.10.2026",
+   "lh-ankelskade-akut": "10.06.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-syndesmose",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelskade-akut"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.32,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelskade-akut": "10.06.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-medial",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelskade-akut"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.25,
+  "kildedatoer": {
+   "lh-ankelskade-akut": "10.06.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-akilles",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-akillesseneruptur",
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.38,
+  "kildedatoer": {
+   "lh-akillesseneruptur": "24.09.2025",
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-sene",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelskade-akut"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.45,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelskade-akut": "10.06.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-stressfraktur",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.45,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-brusk",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankel-brusk",
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.13,
+  "kildedatoer": {
+   "lh-ankel-brusk": "28.11.2024",
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-instabilitet",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankel-ustabil"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.29,
+  "kildedatoer": {
+   "lh-ankel-ustabil": "27.10.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Diff.diagnose",
+  "id": "diff-artrit",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter",
+   "rh-monoartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.23,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "rh-monoartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-initial",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.52,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-fraktur-mistanke",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelfraktur"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.37,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelfraktur": "23.10.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-akilles-skinne",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.69,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-distorsion",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.59,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-distorsion-medicin",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelskade-akut"
+  ],
+  "tal_ikke_fundet": [
+   "2 tabletter"
+  ],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.21,
+  "kildedatoer": {
+   "lh-ankelskade-akut": "10.06.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-proprioceptiv",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelskade-akut"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.26,
+  "kildedatoer": {
+   "lh-ankelskade-akut": "10.06.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-instabilitet",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankel-ustabil"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.58,
+  "kildedatoer": {
+   "lh-ankel-ustabil": "27.10.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-overbelastning",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.96,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-brusk",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankel-brusk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.62,
+  "kildedatoer": {
+   "lh-ankel-brusk": "28.11.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-vte",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelfraktur"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.78,
+  "kildedatoer": {
+   "lh-ankelfraktur": "23.10.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Behandling",
+  "id": "beh-opfoelgning",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelskade-akut"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.77,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelskade-akut": "10.06.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Henvisning",
+  "id": "hen-straks",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelfraktur"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.63,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelfraktur": "23.10.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Henvisning",
+  "id": "hen-samme-dag",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter",
+   "lh-ankelfraktur",
+   "lh-akillesseneruptur"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.57,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026",
+   "lh-ankelfraktur": "23.10.2026",
+   "lh-akillesseneruptur": "24.09.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Henvisning",
+  "id": "hen-hurtig",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelsmerter"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.55,
+  "kildedatoer": {
+   "lh-ankelsmerter": "02.11.2026"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Henvisning",
+  "id": "hen-langvarig",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankelskade-akut",
+   "lh-ankel-brusk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.61,
+  "kildedatoer": {
+   "lh-ankelskade-akut": "10.06.2025",
+   "lh-ankel-brusk": "28.11.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Henvisning",
+  "id": "hen-brusk",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankel-brusk"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.23,
+  "kildedatoer": {
+   "lh-ankel-brusk": "28.11.2024"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Henvisning",
+  "id": "hen-instabilitet",
+  "status": "UDKAST",
+  "kilder": [
+   "lh-ankel-ustabil"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.59,
+  "kildedatoer": {
+   "lh-ankel-ustabil": "27.10.2025"
+  },
+  "aar_afviger": []
+ },
+ {
+  "region": "ankel",
+  "typ": "Henvisning",
+  "id": "hen-septisk",
+  "status": "UDKAST",
+  "kilder": [
+   "rh-monoartrit"
+  ],
+  "tal_ikke_fundet": [],
+  "tlf_ikke_fundet": [],
+  "frase_tekst": 0.14,
+  "kildedatoer": {
+   "rh-monoartrit": "10.04.2025"
+  },
+  "aar_afviger": []
+ }
+]

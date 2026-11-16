@@ -83,3 +83,39 @@ it("mindst 3 cases pr. region, heraf mindst ét rødt flag og én ukompliceret",
     expect(cs.some((c) => c.type === "ukompliceret"), r).toBe(true);
   }
 });
+
+// Fuldt indhold pr. region: fanger enhver ændring i flagtekst, handling, betingelse,
+// differentialdiagnose, behandling, henvisning, kilde, status, felt eller notatsætning.
+function indholdsrapport(region: Region): string {
+  const ud: string[] = [`# Indhold: ${region.navn}`, ""];
+  const status = (p: { status: string; godkendtDato?: string; kilder: string[]; konflikt?: { beskrivelse: string } }) =>
+    `[${p.status}${p.godkendtDato ? " " + p.godkendtDato : ""}] kilder: ${p.kilder.join(", ") || "MANGLER"}${p.konflikt ? `\n  - Konflikt: ${p.konflikt.beskrivelse}` : ""}`;
+  ud.push("## Felter og notatsætninger", "");
+  for (const g of region.grupper)
+    for (const f of g.felter) {
+      ud.push(`- **${f.label}** (${f.id}, ${f.type}${f.visHvis ? `, vises hvis ${f.visHvis.map((b) => `${b.felt}=${b.er}`).join(" og ")}` : ""})`);
+      for (const v of f.valg ?? []) ud.push(`  - ${v.label}${v.normal ? " [N]" : ""} → "${v.notat}"`);
+    }
+  ud.push("", "## Røde flag", "");
+  for (const f of region.roedeFlag)
+    ud.push(`- **${f.id}** ${status(f)}`, `  - Tekst: ${f.tekst}`, `  - Handling: ${f.handling}`,
+      `  - Fremhæves hvis: ${(f.fremhaevHvis ?? []).map((g) => g.map((b) => `${b.felt}=${b.er}`).join(" og ")).join(" ELLER ") || "(ingen betingelse)"}`);
+  ud.push("", "## Differentialdiagnoser", "");
+  for (const d of region.differentialdiagnoser) ud.push(`- **${d.navn}** (${d.id}) ${status(d)}`, ...d.kendetegn.map((k) => `  - ${k}`), `  - V: "${d.notat}"`);
+  ud.push("", "## Behandling", "");
+  for (const b of region.behandling) ud.push(`- **${b.id}** ${status(b)}`, `  - ${b.tekst}`, `  - Gælder: ${b.gaelderFor?.join(", ") ?? "generelt"}`, `  - P: "${b.notat}"`);
+  ud.push("", "## Henvisning", "");
+  for (const h of region.henvisning) ud.push(`- **${h.til}** (${h.id}, ${h.hast ?? "–"}, ${h.gyldighed}) ${status(h)}`, `  - ${h.kriterier}`, `  - P: "${h.notat}"`);
+  ud.push("", "## Kilder", "");
+  for (const k of region.kilder) ud.push(`- ${k.id}: ${k.udgiver} ${k.aar}, ${k.titel}, tjekket ${k.sidstTjekket}${k.dansk ? "" : " (ikke-dansk)"}`);
+  return ud.join("\n") + "\n";
+}
+
+describe("fuldt indhold pr. region", () => {
+  for (const id of ["skulder", "albue", "ryg", "knae", "ankel"])
+    it(id, async () => {
+      const region = INDHOLD[id];
+      if (!region) throw new Error(id);
+      await expect(indholdsrapport(region)).toMatchFileSnapshot(`snapshots/indhold-${id}.md`);
+    });
+});
