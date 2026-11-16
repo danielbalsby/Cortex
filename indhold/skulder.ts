@@ -300,6 +300,15 @@ export const skulder: Region = {
       sidstTjekket: "2026-11-14"
     },
     {
+      id: "lh-pmr",
+      udgiver: "Lægehåndbogen",
+      dansk: true,
+      titel: "Polymyalgia reumatica",
+      aar: 2026,
+      url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/reumatologi/tilstande-og-sygdomme/systemiske-inflammationer/polymyalgia-reumatica/",
+      sidstTjekket: "2026-11-16"
+    },
+    {
       id: "lh-ac-artrose",
       udgiver: "Lægehåndbogen",
       dansk: true,
@@ -527,6 +536,39 @@ export const skulder: Region = {
       ],
       notat: "Indklemning af n. suprascapularis overvejes.",
       kilder: ["lh-skuldersmerter"],
+      status: "UDKAST"
+    },
+    // 2026-11-16: manglende indhold fra review (UDKAST til lægens godkendelse).
+    {
+      id: "diff-pmr",
+      navn: "Polymyalgia rheumatica",
+      kendetegn: [
+        "Ses hos personer ældre end 50 år",
+        "Smerter og stivhed i muskulaturen omkring begge skuldre, evt. også hofterne; udtalt morgenstivhed",
+        "Kan ikke løfte armene over vandret – kan det gøres uden besvær, har patienten næppe polymyalgi",
+        "Udelukkelsesdiagnose; forhøjet akutfaserespons indgår i klassifikationskriterierne"
+      ],
+      notat: "Polymyalgia rheumatica overvejes.",
+      kilder: ["lh-pmr"],
+      status: "UDKAST"
+    },
+    {
+      id: "diff-henfoert-organ",
+      navn: "Henført smerte fra indre organer (hjerte, lunge, lever/galde)",
+      kendetegn: ["Nævnt i Lægehåndbogen som differentialdiagnose til subacromielt smertesyndrom: hjerte, lungetumor, lever/galde"],
+      notat: "Henført smerte fra indre organer overvejes.",
+      kilder: ["lh-subacromielt"],
+      status: "UDKAST"
+    },
+    {
+      id: "diff-humerusfraktur",
+      navn: "Proksimal humerusfraktur / tuberculum majus-fraktur",
+      kendetegn: [
+        "Differentialdiagnose til skulderluksation",
+        "Hos ældre særligt vigtigt at udelukke før reposition; diagnosen stilles ved røntgen"
+      ],
+      notat: "Proksimal humerusfraktur overvejes.",
+      kilder: ["lh-skulderluksation"],
       status: "UDKAST"
     }
   ],

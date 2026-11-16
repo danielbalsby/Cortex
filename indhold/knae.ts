@@ -784,6 +784,18 @@ export const knae: Region = {
       notat: "Foreneligt med traktionsapofysit.",
       kilder: ["lh-knaesmerter"],
       status: "UDKAST"
+    },
+    // 2026-11-16: manglende indhold fra review (UDKAST til lægens godkendelse).
+    {
+      id: "diff-ikke-artikulaer",
+      navn: "Ikke-artikulær hævelse (erysipelas, dyb venetrombose, senelidelse)",
+      kendetegn: [
+        "Region Hovedstaden: de vigtigste ikke-artikulære differentialdiagnoser til akut monoartrit er erysipelas, dyb venetrombose og senelidelser",
+        "Akut hævelse og evt. rødme i øvre læg uden kendt Bakers cyste: overvej DVT og infektion"
+      ],
+      notat: "Ikke-artikulær årsag (erysipelas, dyb venetrombose, senelidelse) overvejes.",
+      kilder: ["rh-monoartrit", "lh-baker"],
+      status: "UDKAST"
     }
   ],
 

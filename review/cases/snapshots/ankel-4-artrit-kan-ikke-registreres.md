@@ -27,7 +27,7 @@ O: Udtalt hævelse.
 - [ikke vurderet] Diabetes eller nedsat følesans (flag-neuropati, GODKENDT)
 - [ikke opfyldt af registreret] Stressfraktur (flag-stressfraktur, GODKENDT)
 
-## Differentialdiagnoser (10, statisk liste)
+## Differentialdiagnoser (11, statisk liste)
 
 - Lateral ankeldistorsion (diff-distorsion)
 - Fraktur (malleol, fod eller bagfod) (diff-fraktur)
@@ -39,6 +39,7 @@ O: Udtalt hævelse.
 - Osteokondral skade (bruskskade i anklen) (diff-brusk)
 - Kronisk lateral ankelinstabilitet (diff-instabilitet)
 - Akut artrit, herunder septisk (diff-artrit)
+- Ikke-artikulær hævelse (erysipelas, dyb venetrombose, senelidelse) (diff-ikke-artikulaer)
 
 ## Henvisning (7, statisk liste)
 

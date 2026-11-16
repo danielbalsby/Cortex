@@ -212,6 +212,10 @@
   - Osgood-Schlatter i 10–15-årsalderen, Sinding-Larsen nogle år tidligere
   - Aktivitetsrelaterede smerter; palpationsømhed og ofte hævelse ved tuberositas tibiae eller apex patellae
   - V: "Foreneligt med traktionsapofysit."
+- **Ikke-artikulær hævelse (erysipelas, dyb venetrombose, senelidelse)** (diff-ikke-artikulaer) [UDKAST] kilder: rh-monoartrit, lh-baker
+  - Region Hovedstaden: de vigtigste ikke-artikulære differentialdiagnoser til akut monoartrit er erysipelas, dyb venetrombose og senelidelser
+  - Akut hævelse og evt. rødme i øvre læg uden kendt Bakers cyste: overvej DVT og infektion
+  - V: "Ikke-artikulær årsag (erysipelas, dyb venetrombose, senelidelse) overvejes."
 
 ## Behandling
 

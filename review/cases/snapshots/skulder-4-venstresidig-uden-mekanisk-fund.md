@@ -33,7 +33,7 @@ O: Fuld aktiv bevægelighed. Fuld passiv bevægelighed. Ingen smertebue. Negativ
 - [ikke opfyldt af registreret] Diagnostiske faldgruber (flag-faldgruber, GODKENDT)
 - [ikke vurderet] Septisk artrit (flag-septisk, GODKENDT)
 
-## Differentialdiagnoser (10, statisk liste)
+## Differentialdiagnoser (13, statisk liste)
 
 - Subacromielt smertesyndrom / rotator cuff-tendinopati (impingement) (diff-impingement)
 - Akut bursit (evt. bursitis calcarea) (diff-bursit)
@@ -45,6 +45,9 @@ O: Fuld aktiv bevægelighed. Fuld passiv bevægelighed. Ingen smertebue. Negativ
 - Artrose i glenohumeralleddet (diff-gh-artrose)
 - Cervikal lidelse / radikulopati (diff-cervikal)
 - Indklemning af n. suprascapularis (diff-suprascapularis)
+- Polymyalgia rheumatica (diff-pmr)
+- Henført smerte fra indre organer (hjerte, lunge, lever/galde) (diff-henfoert-organ)
+- Proksimal humerusfraktur / tuberculum majus-fraktur (diff-humerusfraktur)
 
 ## Henvisning (12, statisk liste)
 

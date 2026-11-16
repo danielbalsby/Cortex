@@ -29,7 +29,7 @@ S: Venstresidige knæsmerter. Gradvist indsættende. Varighed flere måneder. In
 - [(ingen betingelse)] Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet  (flag-laeg-haevelse, GODKENDT)
 - [ikke opfyldt af registreret] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, GODKENDT)
 
-## Differentialdiagnoser (14, statisk liste)
+## Differentialdiagnoser (15, statisk liste)
 
 - Gonartrose (diff-artrose)
 - Meniskskade / meniskdegeneration (diff-menisk)
@@ -45,6 +45,7 @@ S: Venstresidige knæsmerter. Gradvist indsættende. Varighed flere måneder. In
 - Henført smerte fra hofte eller ryg (diff-henfoert)
 - Osteochondritis dissecans (diff-ocd)
 - Osgood-Schlatter / Sinding-Larsen (diff-apofysit)
+- Ikke-artikulær hævelse (erysipelas, dyb venetrombose, senelidelse) (diff-ikke-artikulaer)
 
 ## Henvisning (12, statisk liste)
 
