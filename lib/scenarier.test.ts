@@ -42,6 +42,14 @@ const TABEL: Scenarie[] = [
   { navn: "Albue tidskritisk: fald, nedsat ekstension", region: "albue", flag: ["flag-fraktur-luksation"],
     trin: [["debut", "traume"], ["mekanisme", "fald"], ["ekstensionstest", "nedsat"], ["neurovaskulaer", "normal"]] },
 
+  { navn: "Albue: feber → septisk artrit", region: "albue", flag: ["flag-septisk"],
+    trin: [["debut", "spontan"], ["feber", "ja"]] },
+  { navn: "Albue: varm, hævet led → septisk artrit", region: "albue", flag: ["flag-septisk"],
+    trin: [["debut", "spontan"], ["haevelse", "led"], ["varme", "ja"]] },
+
+  { navn: "Albue: varme over bursa → septisk bursit (ikke septisk artrit)", region: "albue", flag: ["flag-septisk-bursit"],
+    trin: [["debut", "spontan"], ["haevelse", "bursa"], ["varme", "ja"]] },
+
   { navn: "Ryg hverdag: akutte lændesmerter", region: "ryg", flag: [],
     trin: [["udbredning", "laend"], ["debut", "akut"], ["tidligere", "lignende"], ["cauda", "nej"], ["lasegue", "neg"], ["kraft", "normal"]] },
   { navn: "Ryg tidskritisk: cauda equina", region: "ryg", flag: ["flag-cauda"],
