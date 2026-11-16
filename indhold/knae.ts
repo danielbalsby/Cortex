@@ -112,7 +112,10 @@ export const knae: Region = {
           // Vises altid (review/GODKEND.md C3): bruges også til flaget om børn.
           valg: [
             { id: "under12", label: "Under 12", notat: "Alder under 12 år." },
-            { id: "12til50", label: "12–50", notat: "Alder 12–50 år." },
+            // 2026-11-16: 12–50 delt i 12–17 og 18–50, så "under 18" kan skelnes (børneflaget).
+            // Pittsburgh-grænserne (under 12, over 50) er uændrede.
+            { id: "12til17", label: "12–17", notat: "Alder 12–17 år." },
+            { id: "18til50", label: "18–50", notat: "Alder 18–50 år." },
             { id: "51til55", label: "51–55", notat: "Alder 51–55 år." },
             { id: "over55", label: "Over 55", notat: "Alder over 55 år." }
           ]
@@ -597,10 +600,9 @@ export const knae: Region = {
         "Barn med knæsmerter – diagnostiske faldgruber: hoftelidelse (projicerede smerter), osteosarkom og Ewings sarkom, artralgi pga. leukæmi.",
       handling:
         "Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.",
-      // 2026-11-16 (review/GODKEND.md C3): under 12 år. 12–17-årige fanges ikke af aldersgrupperne.
-      fremhaevHvis: [[{ felt: "alder", er: "under12" }]],
+      // 2026-11-16 (lægens rettelse): under 12 år eller 12–17 år. UDKAST, til lægen godkender flaget enkeltvis.
+      fremhaevHvis: [[{ felt: "alder", er: "under12" }], [{ felt: "alder", er: "12til17" }]],
       kilder: ["lh-knaesmerter"],
-      // 2026-11-16: betingelsen blev ændret på generel tilladelse → UDKAST, til lægen godkender flaget enkeltvis.
       status: "UDKAST"
     }
   ],

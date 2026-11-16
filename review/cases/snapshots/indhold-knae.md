@@ -31,7 +31,8 @@
   - Nej → "Ingen knæklyd eller -følelse ved traumet."
 - **Alder** (alder, enkelt)
   - Under 12 → "Alder under 12 år."
-  - 12–50 → "Alder 12–50 år."
+  - 12–17 → "Alder 12–17 år."
+  - 18–50 → "Alder 18–50 år."
   - 51–55 → "Alder 51–55 år."
   - Over 55 → "Alder over 55 år."
 - **Belastning** (belastning, enkelt)
@@ -127,7 +128,7 @@
 - **flag-boern** [UDKAST] kilder: lh-knaesmerter
   - Tekst: Barn med knæsmerter – diagnostiske faldgruber: hoftelidelse (projicerede smerter), osteosarkom og Ewings sarkom, artralgi pga. leukæmi.
   - Handling: Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.
-  - Fremhæves hvis: alder=under12
+  - Fremhæves hvis: alder=under12 ELLER alder=12til17
 
 ## Differentialdiagnoser
 
