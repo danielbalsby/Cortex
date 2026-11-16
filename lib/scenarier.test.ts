@@ -63,6 +63,17 @@ const TABEL: Scenarie[] = [
   { navn: "Ryg tidskritisk: cauda equina", region: "ryg", flag: ["flag-cauda"],
     trin: [["udbredning", "underknae"], ["cauda", "ja"], ["sensibilitet", "ridebukse"]] },
 
+  // Lægens test 16.11.2026 (docs/TIL-DANIEL.md), præcis de fund, lægen beskrev:
+  { navn: "Lægens test: albue Feber = Ja → septisk artrit", region: "albue", flag: ["flag-septisk"],
+    trin: [["feber", "ja"]] },
+  { navn: "Lægens test: albue Hævelse over olecranon + Varme = Ja → septisk bursit", region: "albue", flag: ["flag-septisk-bursit"],
+    trin: [["haevelse", "bursa"], ["varme", "ja"]] },
+  { navn: "Lægens test: knæ Traume = Nej + Alder 12–17 → børneflag, ikke fraktur", region: "knae", flag: ["flag-boern"],
+    trin: [["traume", "nej"], ["alder", "12til17"]] },
+  { navn: "Lægens test: ryg tidligere kræft + betydende parese → malignitet, cauda/parese og udbredte udfald", region: "ryg",
+    flag: ["flag-malignitet", "flag-cauda", "flag-udbredte-udfald"],
+    trin: [["roedeflag", "kraeft"], ["kraft", "betydende"]] },
+
   { navn: "Ankel hverdag: distorsion uden knogleømhed", region: "ankel", flag: [],
     trin: [["mekanisme", "inversion"], ["skridt-straks", "ja"], ["skridt-nu", "ja"], ["malleol", "ingen"], ["mellemfod", "ingen"], ["ledbaand", "oem"]] },
   { navn: "Ankel tidskritisk: Ottawa positiv (lateral malleol)", region: "ankel", flag: ["flag-fraktur"],
@@ -95,5 +106,15 @@ describe.each(TABEL)("$navn", (s) => {
     for (const [k, v] of Object.entries(foer)) expect(efter[k]).toEqual(v);
     const m = (svar: Svar) => region.roedeFlag.filter((f) => flagStatus(f, synligeSvar(region, svar)) === "matcher").map((f) => f.id);
     expect(m(efter)).toEqual(m(foer));
+  });
+});
+
+describe("Lægens test 16.11.2026: lænderyg, henvisning", () => {
+  it('"Akutmodtagelse" (akut) og "Pakkeforløb" (subakut) er to særskilte punkter', () => {
+    const h = INDHOLD.ryg!.henvisning;
+    const inf = h.find((p) => p.id === "hen-infektion")!;
+    const mal = h.find((p) => p.id === "hen-malignitet")!;
+    expect([inf.til, inf.hast]).toEqual(["Akutmodtagelse", "akut"]);
+    expect([mal.til, mal.hast]).toEqual(["Pakkeforløb", "subakut"]);
   });
 });
