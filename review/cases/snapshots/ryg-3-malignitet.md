@@ -12,7 +12,7 @@
 - roedeflag = kraeft, vaegttab, konstant
 - almen = upaavirket
 
-Afkrydset (V/P): diff-malignitet, beh-blodprover, hen-infektion-malignitet
+Afkrydset (V/P): diff-malignitet, beh-blodprover, hen-malignitet
 
 ## Notat
 
@@ -20,7 +20,7 @@ Afkrydset (V/P): diff-malignitet, beh-blodprover, hen-infektion-malignitet
 S: Smerter i lænden uden udstråling. Opstået uden kendt årsag. Varighed 6–12 uger. Ryggener, der opfattes anderledes end tidligere. Ingen vandladnings- eller afføringsforstyrrelser og ingen føleforstyrrelser i ridebukseområdet. Tidligere kræftsygdom. Vægttab. Konstante, evt. tiltagende smerter og hvilesmerter.
 O: Upåvirket almentilstand.
 V: Malign årsag overvejes.
-P: Blodprøver taget mhp. underliggende sygdom. Henvist mhp. udredning for alvorlig underliggende sygdom.
+P: Blodprøver taget mhp. underliggende sygdom. Henvist i pakkeforløb mhp. udredning for malignitet.
 ```
 
 ## Røde flag (8, alle vises altid)
@@ -47,11 +47,12 @@ P: Blodprøver taget mhp. underliggende sygdom. Henvist mhp. udredning for alvor
 - Spondylolistese (diff-spondylolistese)
 - Anden årsag til ben- og lændesmerter (diff-andet)
 
-## Henvisning (11, statisk liste)
+## Henvisning (12, statisk liste)
 
 - Akut indlæggelse via CVI · akut (hen-cauda)
 - Reumatologisk hotline · subakut (hen-hotline)
-- [P] Akutmodtagelse / pakkeforløb · akut (hen-infektion-malignitet)
+- Akutmodtagelse · akut (hen-infektion)
+- [P] Pakkeforløb · subakut (hen-malignitet)
 - Rygsektionen, Rigshospitalet (konference) / Akut Modtagelse · akut (hen-fraktur)
 - Fysioterapeut eller kiropraktor · elektiv (hen-fys)
 - MR af columna lumbalis (fra almen praksis) · elektiv (hen-mr)

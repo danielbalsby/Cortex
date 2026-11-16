@@ -142,7 +142,7 @@ export const CASES: Case[] = [
       ["udbredning", "laend"], ["debut", "ukendt"], ["varighed", "6til12"], ["tidligere", "anderledes"], ["cauda", "nej"],
       ["roedeflag", ["kraeft", "vaegttab", "konstant"]], ["almen", "upaavirket"]
     ],
-    valgte: ["diff-malignitet", "beh-blodprover", "hen-infektion-malignitet"]
+    valgte: ["diff-malignitet", "beh-blodprover", "hen-malignitet"]
   },
   {
     id: "ryg-4-ret-undervejs",

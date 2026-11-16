@@ -451,11 +451,16 @@ export const skulder: Region = {
         "Svære smerter dag og nat uden udløsende årsag; efter et par måneder stivhed",
         "Nedsat aktiv og passiv bevægelighed, særligt udadrotation (kapsulært mønster)",
         "Normal kraft inden for bevægeudslaget; isometrisk test giver ikke væsentlig smerteforværring",
-        "Selvlimiterende over 1–2 år; let at overdiagnosticere"
+        "Selvlimiterende; varer cirka 1–3 år; let at overdiagnosticere"
       ],
       notat: "Foreneligt med kapsulit (frossen skulder).",
       kilder: ["lh-kapsulit", "lh-skuldersmerter"],
-      status: "UDKAST"
+      status: "UDKAST",
+      konflikt: {
+        beskrivelse:
+          "Varighed: Lægehåndbogen, Kapsulit (2024) skriver cirka 1–3 år; Lægehåndbogen, Skuldersmerter (2019) skriver, at kapsulit helbredes spontant i løbet af 1–2 år. Teksten følger den nyeste side.",
+        kilder: ["lh-kapsulit", "lh-skuldersmerter"]
+      }
     },
     {
       id: "diff-traumatisk-cuff",
