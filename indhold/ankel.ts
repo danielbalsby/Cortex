@@ -534,6 +534,15 @@ export const ankel: Region = {
       notat: "Akut artrit overvejes.",
       kilder: ["lh-ankelsmerter", "rh-monoartrit"],
       status: "UDKAST"
+    },
+    // 2026-11-16: manglende indhold fra review (UDKAST til lægens godkendelse).
+    {
+      id: "diff-ikke-artikulaer",
+      navn: "Ikke-artikulær hævelse (erysipelas, dyb venetrombose, senelidelse)",
+      kendetegn: ["Region Hovedstaden: de vigtigste ikke-artikulære differentialdiagnoser til akut monoartrit er erysipelas, dyb venetrombose og senelidelser"],
+      notat: "Ikke-artikulær årsag (erysipelas, dyb venetrombose, senelidelse) overvejes.",
+      kilder: ["rh-monoartrit"],
+      status: "UDKAST"
     }
   ],
 

@@ -161,6 +161,9 @@
   - Rødme, varme og udtalt bevægeømhed uden passende skademekanisme
   - Region Hovedstaden: hyppige differentialdiagnoser er urinsyregigt, pyrofosfatartrit, reaktiv artrit og sarkoidose (ofte ankelled og erythema nodosum)
   - V: "Akut artrit overvejes."
+- **Ikke-artikulær hævelse (erysipelas, dyb venetrombose, senelidelse)** (diff-ikke-artikulaer) [UDKAST] kilder: rh-monoartrit
+  - Region Hovedstaden: de vigtigste ikke-artikulære differentialdiagnoser til akut monoartrit er erysipelas, dyb venetrombose og senelidelser
+  - V: "Ikke-artikulær årsag (erysipelas, dyb venetrombose, senelidelse) overvejes."
 
 ## Behandling
 

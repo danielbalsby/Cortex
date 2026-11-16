@@ -157,6 +157,19 @@
   - Idrætsudøvere (fx volleyball, svømning, kast, tennis)
   - Nedsat kraft i infraspinatus, evt. supraspinatus, og smerter bagtil; evt. atrofi
   - V: "Indklemning af n. suprascapularis overvejes."
+- **Polymyalgia rheumatica** (diff-pmr) [UDKAST] kilder: lh-pmr
+  - Ses hos personer ældre end 50 år
+  - Smerter og stivhed i muskulaturen omkring begge skuldre, evt. også hofterne; udtalt morgenstivhed
+  - Kan ikke løfte armene over vandret – kan det gøres uden besvær, har patienten næppe polymyalgi
+  - Udelukkelsesdiagnose; forhøjet akutfaserespons indgår i klassifikationskriterierne
+  - V: "Polymyalgia rheumatica overvejes."
+- **Henført smerte fra indre organer (hjerte, lunge, lever/galde)** (diff-henfoert-organ) [UDKAST] kilder: lh-subacromielt
+  - Nævnt i Lægehåndbogen som differentialdiagnose til subacromielt smertesyndrom: hjerte, lungetumor, lever/galde
+  - V: "Henført smerte fra indre organer overvejes."
+- **Proksimal humerusfraktur / tuberculum majus-fraktur** (diff-humerusfraktur) [UDKAST] kilder: lh-skulderluksation
+  - Differentialdiagnose til skulderluksation
+  - Hos ældre særligt vigtigt at udelukke før reposition; diagnosen stilles ved røntgen
+  - V: "Proksimal humerusfraktur overvejes."
 
 ## Behandling
 
@@ -249,6 +262,7 @@
 - lh-rotatorcuff: Lægehåndbogen 2025, Rotatorcuff-skade, tjekket 2026-11-14
 - lh-skulderluksation: Lægehåndbogen 2025, Skulderluksation, tjekket 2026-11-14
 - lh-kapsulit: Lægehåndbogen 2024, Kapsulit, skulder (frossen skulder), tjekket 2026-11-14
+- lh-pmr: Lægehåndbogen 2026, Polymyalgia reumatica, tjekket 2026-11-16
 - lh-ac-artrose: Lægehåndbogen 2026, Acromioclaviculærleddet, artrose, tjekket 2026-11-14
 - rh-rotatorcuff: Region Hovedstaden 2025, Forløbsbeskrivelse: Rotatorcuff lidelser, tjekket 2026-11-14
 - rh-skulder-billed: Region Hovedstaden 2024, Forløbsbeskrivelse: Skulder, billeddiagnostik af, tjekket 2026-11-14

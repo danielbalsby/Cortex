@@ -34,7 +34,7 @@ P: Henvist akut til CVI mhp. septisk artrit.
 - [ikke vurderet] Over 40 år efter skulderluksation (flag-cuff-efter-luksation, GODKENDT)
 - [ikke vurderet] Diagnostiske faldgruber (flag-faldgruber, GODKENDT)
 
-## Differentialdiagnoser (10, statisk liste)
+## Differentialdiagnoser (13, statisk liste)
 
 - Subacromielt smertesyndrom / rotator cuff-tendinopati (impingement) (diff-impingement)
 - Akut bursit (evt. bursitis calcarea) (diff-bursit)
@@ -46,6 +46,9 @@ P: Henvist akut til CVI mhp. septisk artrit.
 - Artrose i glenohumeralleddet (diff-gh-artrose)
 - Cervikal lidelse / radikulopati (diff-cervikal)
 - Indklemning af n. suprascapularis (diff-suprascapularis)
+- Polymyalgia rheumatica (diff-pmr)
+- Henført smerte fra indre organer (hjerte, lunge, lever/galde) (diff-henfoert-organ)
+- Proksimal humerusfraktur / tuberculum majus-fraktur (diff-humerusfraktur)
 
 ## Henvisning (12, statisk liste)
 
