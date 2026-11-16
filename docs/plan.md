@@ -1,6 +1,10 @@
 # Cortex MSK – plan
 
-Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**. Alle fem regioner er bygget (trin 1–6 og 8–15). Alle 37 røde flag er GODKENDT af lægen 2026-11-15. Differentialdiagnoser, behandling og henvisning er fortsat UDKAST og afventer din gennemgang (trin 7, 9, 11, 13 og 15). Tast G på startskærmen viser alle røde flag og konflikter samlet til gennemgang.
+Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-14**, opdateret 2026-11-16.
+
+**Status 2026-11-16 (virkeligheden):** Alle fem regioner er bygget. Alle 37 røde flag er GODKENDT af lægen (knæets fraktur-flag genbekræftet 2026-11-16 efter ny ordlyd). De 163 differentialdiagnoser, behandlinger og henvisninger er UDKAST; kildekontrollen er i `review/KILDEKONTROL.md` (159 stemmer, 4 afviger). Køreplanen fra UX-gennemgangen (`docs/ux-review/rapport.md`) er gennemført til og med trin 3 og den kompakte højre side; næste skridt afhænger af lægens test "frase mod Cortex" (`docs/ux-review/test-frase-mod-cortex.md`). Åbne spørgsmål til lægen samles i `docs/TIL-DANIEL.md`. Tast G på startskærmen viser alle røde flag og konflikter samlet til gennemgang.
+
+Afsnit 1–4 nedenfor er den oprindelige plan; hvor virkeligheden afviger, står det i afsnit 5–8.
 
 ## 1. Målbillede
 
@@ -16,9 +20,9 @@ Dato: 2026-11-13 · Forudsætter `docs/review.md` · Status: **godkendt 2026-11-
 7. `Ctrl/⌘+Enter` kopierer notatet. Indsæt i journalsystemet.
 8. `Esc` to gange nulstiller. `Ctrl+Z` fortryder sidste ændring – også en nulstilling eller et regionsskift. Genindlæsning nulstiller endeligt. Intet gemmes.
 
-Hastighedsmål: regionsvalg → røde flag og henvisningskriterier på skærmen: 1 tastetryk. Regionsvalg → kopieret notat for en ukompliceret patient: ca. 8–12 tastetryk. "Under 10 sekunder" forstår jeg som tid til første brugbare output, ikke til et færdigt notat i en kompliceret sag.
+Hastighedsmål: regionsvalg → røde flag og henvisningskriterier på skærmen: 1 tastetryk. Regionsvalg → kopieret notat for en ukompliceret patient: ca. 8–12 tastetryk. *Målt 2026-11-16: 16–19 tastetryk + 4–5 museklik for V/P (nu også med V/P-tasten); hvert besvaret felt koster ét tryk (`review/REVIEW.md` §6).* "Under 10 sekunder" forstår jeg som tid til første brugbare output, ikke til et færdigt notat i en kompliceret sag.
 
-### Skærmskitse
+### Skærmskitse (oprindelig – højre side er siden gjort kompakt: flag som én linje, øvrige sektioner sammenfoldet; i vinduer ≤ 800 px står flagene som stribe øverst og notatet fast nederst)
 ```
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │ CORTEX   [1 Skulder] [2 Albue] [3 Ryg] [4 KNÆ] [5 Ankel]      Esc Esc = ryd  │
@@ -142,7 +146,9 @@ Regler for mig, skrevet ind i `CLAUDE.md`:
 src/            appen: App, regioner, komponenter, CSS
 indhold/        typer.ts, knae.ts, skulder.ts, albue.ts, ryg.ts, ankel.ts
 lib/            små hjælpefunktioner (notat, betingelser, kopiér) + tests
-docs/           review.md, plan.md
+docs/           review.md, plan.md, TIL-DANIEL.md (spørgsmål til lægen), ux-review/ (UX-gennemgang og testark)
+review/         gennemgang 2026-11-16: REVIEW.md, TJEKLISTE.md, KILDEKONTROL.md, MANGLER.md, GODKEND.md, cases/ (regressionstest), kildetjek/
+public/         robots.txt (Vercel-udgaven må ikke indekseres)
 arkiv/          alt det gamle (se trin 1)
 cortex.html     den byggede app – den fil, du åbner på klinik-pc'en
 CLAUDE.md
@@ -210,7 +216,7 @@ Appen bygges med Vite til én selvstændig fil, `cortex.html`, der åbnes med do
 
 Afprøvet i trin 1 i Chromium fra en lokalt åbnet fil: regionsvalg med tastatur, nulstilling og kopiering virker, og siden foretager ingen netværkskald. Ikke afprøvet: klinikkens egen browser – det er din 1-minuts-test.
 
-Vercel-koblingen på repoet er live og offentlig: den bygger fra `vercel.json` (`npm run build`, `dist`) og udstiller appen på en offentlig adresse (med `noindex`-header). Appen indeholder ingen patientdata og foretager ingen netværkskald, men det er en offentlig adresse – ikke en lukket løsning. Driftsstedet er stadig klinikkens lokale `cortex.html`.
+Vercel-koblingen på repoet er live og offentlig: den bygger fra `vercel.json` (`npm run build`, `dist`) og udstiller appen på en offentlig adresse. Søgemaskiner frabedes på tre måder: `X-Robots-Tag: noindex` (vercel.json), `<meta name="robots" content="noindex">` (index.html) og `robots.txt` (public/). Adgangsbeskyttelse: se `docs/TIL-DANIEL.md`. Appen indeholder ingen patientdata og foretager ingen netværkskald, men det er en offentlig adresse – ikke en lukket løsning. Driftsstedet er stadig klinikkens lokale `cortex.html`.
 
 ## 6. Hvad jeg ved, udleder og gætter i denne plan
 
