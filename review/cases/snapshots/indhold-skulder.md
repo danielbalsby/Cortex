@@ -65,7 +65,7 @@
   - ↓ indadrot. → "Nedsat kraft ved isometrisk indadrotation (subscapularis)."
   - ↓ flere planer → "Nedsat kraft i flere planer."
 - **AC-led** (acled, enkelt)
-  - Uømt → "AC-leddet uømt, negativ crossover-test."
+  - Uømt, crossover neg. → "AC-leddet uømt, negativ crossover-test."
   - Ømt/crossover + → "Ømhed over AC-leddet og/eller positiv crossover-test."
 - **Supplerende** (objektivt-tekst, tekst)
 

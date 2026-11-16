@@ -95,7 +95,7 @@ export const ryg: Region = {
           valg: [
             {
               id: "nej",
-              label: "Ingen gener",
+              label: "Ingen blære-/tarm-/ridebuksegener",
               notat: "Ingen vandladnings- eller afføringsforstyrrelser og ingen føleforstyrrelser i ridebukseområdet."
             },
             {
@@ -211,7 +211,7 @@ export const ryg: Region = {
           label: "Reflekser",
           type: "enkelt",
           valg: [
-            { id: "normale", label: "Normale", notat: "Normale og symmetriske patellar- og achillesreflekser." },
+            { id: "normale", label: "Patellar + achilles normale", notat: "Normale og symmetriske patellar- og achillesreflekser." },
             { id: "patellar", label: "↓ patellar", notat: "Afsvækket patellarrefleks." },
             { id: "achilles", label: "↓ achilles", notat: "Afsvækket achillesrefleks." }
           ]
@@ -234,7 +234,7 @@ export const ryg: Region = {
           valg: [
             {
               id: "normal",
-              label: "Normal",
+              label: "Normal tonus, kraft, sens.",
               notat: "Rektaleksploration: normal sfinktertonus og knibekraft, normal sensibilitet perianalt."
             },
             {

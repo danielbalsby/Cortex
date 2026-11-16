@@ -27,7 +27,7 @@
   - Lignende før → "Tidligere lignende episoder."
   - Anderledes end før → "Ryggener, der opfattes anderledes end tidligere."
 - **Blære/tarm/ridebukse** (cauda, enkelt)
-  - Ingen gener → "Ingen vandladnings- eller afføringsforstyrrelser og ingen føleforstyrrelser i ridebukseområdet."
+  - Ingen blære-/tarm-/ridebuksegener → "Ingen vandladnings- eller afføringsforstyrrelser og ingen føleforstyrrelser i ridebukseområdet."
   - Gener → "Vandladnings- eller afføringsforstyrrelser eller føleforstyrrelser i ridebukseområdet."
 - **Gangbesvær** (claudicatio, enkelt)
   - Nej → "Ingen ben- eller baldesmerter, der begrænser gangdistancen."
@@ -68,7 +68,7 @@
   - ↓ S1 → "Nedsat kraft ved plantarfleksion / tågang (S1)."
   - Betydende parese → "Betydende parese (grad 3 eller mindre)."
 - **Reflekser** (reflekser, enkelt)
-  - Normale → "Normale og symmetriske patellar- og achillesreflekser."
+  - Patellar + achilles normale → "Normale og symmetriske patellar- og achillesreflekser."
   - ↓ patellar → "Afsvækket patellarrefleks."
   - ↓ achilles → "Afsvækket achillesrefleks."
 - **Sensibilitet** (sensibilitet, enkelt)
@@ -76,7 +76,7 @@
   - ↓ dermatomalt → "Nedsat sensibilitet svarende til et dermatom."
   - ↓ ridebukseområdet → "Nedsat sensibilitet i ridebukseområdet."
 - **Rektaleksploration** (rektal, enkelt, vises hvis cauda=ja)
-  - Normal → "Rektaleksploration: normal sfinktertonus og knibekraft, normal sensibilitet perianalt."
+  - Normal tonus, kraft, sens. → "Rektaleksploration: normal sfinktertonus og knibekraft, normal sensibilitet perianalt."
   - Nedsat tonus/sens. → "Rektaleksploration: nedsat sfinktertonus, knibekraft eller perianal sensibilitet."
   - Ikke udført → "Rektaleksploration ikke udført."
 - **Supplerende** (objektivt-tekst, tekst)

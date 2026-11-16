@@ -57,17 +57,17 @@
   - Lateral → "Ømhed over laterale epikondyl."
   - Medial → "Ømhed over mediale epikondyl."
 - **Isometrisk håndled** (isometrisk, enkelt)
-  - Smertefri → "Smertefri isometrisk ekstension og fleksion af håndleddet."
+  - Smertefri ekst. + fleks. → "Smertefri isometrisk ekstension og fleksion af håndleddet."
   - Smerte ved ekstension → "Smerter ved isometrisk ekstension og radial deviation af håndleddet med strakt albue."
   - Smerte ved fleksion → "Smerter ved isometrisk fleksion af håndleddet med strakt albue."
 - **Caput radii** (caputradii, enkelt, vises hvis debut=traume)
   - Uøm → "Caput radii uøm."
   - Øm → "Palpationsømhed over caput radii."
 - **Neurovaskulært** (neurovaskulaer, enkelt, vises hvis debut=traume)
-  - Normal → "Palpabel radialispuls; normal sensibilitet og motorik svarende til n. ulnaris, medianus og radialis."
+  - Puls + 3 nerver normale → "Palpabel radialispuls; normal sensibilitet og motorik svarende til n. ulnaris, medianus og radialis."
   - Påvirket → "Påvirket distal cirkulation eller nervefunktion."
 - **N. ulnaris** (ulnaris, enkelt)
-  - Normal → "Normal sensibilitet i 4.–5. finger og normal kraft i ulnarisinnerverede muskler."
+  - Normal sens. + kraft → "Normal sensibilitet i 4.–5. finger og normal kraft i ulnarisinnerverede muskler."
   - ↓ sensibilitet → "Nedsat sensibilitet i 4.–5. finger."
   - ↓ kraft → "Nedsat kraft ved adduktion af 1. finger og abduktion af 5. finger."
 - **Supplerende** (objektivt-tekst, tekst)

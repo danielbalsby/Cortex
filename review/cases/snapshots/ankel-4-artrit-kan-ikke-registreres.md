@@ -14,7 +14,7 @@
 
 ```
 S: Højresidige ankelsmerter. Anden skademekanisme. Varighed få dage. Ingen traume.
-O: Udtalt hævelse og hæmatom.
+O: Udtalt hævelse.
 ```
 
 ## Røde flag (7, alle vises altid)

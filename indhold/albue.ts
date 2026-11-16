@@ -181,7 +181,7 @@ export const albue: Region = {
           label: "Isometrisk håndled",
           type: "enkelt",
           valg: [
-            { id: "neg", label: "Smertefri", notat: "Smertefri isometrisk ekstension og fleksion af håndleddet." },
+            { id: "neg", label: "Smertefri ekst. + fleks.", notat: "Smertefri isometrisk ekstension og fleksion af håndleddet." },
             {
               id: "ekstension",
               label: "Smerte ved ekstension",
@@ -208,7 +208,7 @@ export const albue: Region = {
           valg: [
             {
               id: "normal",
-              label: "Normal",
+              label: "Puls + 3 nerver normale",
               notat: "Palpabel radialispuls; normal sensibilitet og motorik svarende til n. ulnaris, medianus og radialis."
             },
             { id: "paavirket", label: "Påvirket", notat: "Påvirket distal cirkulation eller nervefunktion." }
@@ -219,7 +219,7 @@ export const albue: Region = {
           label: "N. ulnaris",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal sensibilitet i 4.–5. finger og normal kraft i ulnarisinnerverede muskler." },
+            { id: "normal", label: "Normal sens. + kraft", notat: "Normal sensibilitet i 4.–5. finger og normal kraft i ulnarisinnerverede muskler." },
             { id: "sens", label: "↓ sensibilitet", notat: "Nedsat sensibilitet i 4.–5. finger." },
             { id: "kraft", label: "↓ kraft", notat: "Nedsat kraft ved adduktion af 1. finger og abduktion af 5. finger." }
           ]

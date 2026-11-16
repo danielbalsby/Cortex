@@ -122,7 +122,7 @@ export const ankel: Region = {
           label: "Cirk./sens. distalt",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Normal distal cirkulation og sensibilitet." },
+            { id: "normal", label: "Normal cirk. + sens.", notat: "Normal distal cirkulation og sensibilitet." },
             { id: "paavirket", label: "Påvirket", notat: "Påvirket distal cirkulation eller sensibilitet." }
           ]
         },
@@ -134,7 +134,7 @@ export const ankel: Region = {
             { id: "ingen", label: "Ingen", notat: "Ingen hævelse.", normal: true },
             { id: "lateral", label: "Lateral", notat: "Hævelse lateralt." },
             { id: "medial", label: "Medial", notat: "Hævelse medialt." },
-            { id: "udtalt", label: "Udtalt", notat: "Udtalt hævelse og hæmatom." }
+            { id: "udtalt", label: "Udtalt", notat: "Udtalt hævelse." }
           ]
         },
         {
@@ -153,7 +153,7 @@ export const ankel: Region = {
           label: "Knogleømhed fod",
           type: "enkelt",
           valg: [
-            { id: "ingen", label: "Ingen", notat: "Ingen knogleømhed over os naviculare eller basis af 5. metatars." },
+            { id: "ingen", label: "Ingen (navic. + 5. mt.)", notat: "Ingen knogleømhed over os naviculare eller basis af 5. metatars." },
             { id: "naviculare", label: "Naviculare", notat: "Knogleømhed over os naviculare." },
             { id: "mt5", label: "Basis 5. mt.", notat: "Knogleømhed over basis af 5. metatars." },
             { id: "begge", label: "Begge", notat: "Knogleømhed over os naviculare og basis af 5. metatars." }
@@ -182,7 +182,7 @@ export const ankel: Region = {
           label: "Syndesmose",
           type: "enkelt",
           valg: [
-            { id: "uoem", label: "Uøm", notat: "Syndesmosen uøm ved palpation og squeeze-test." },
+            { id: "uoem", label: "Uøm, squeeze neg.", notat: "Syndesmosen uøm ved palpation og squeeze-test." },
             { id: "oem", label: "Øm/squeeze +", notat: "Ømhed over syndesmosen eller positiv squeeze-test." }
           ]
         },
@@ -191,7 +191,7 @@ export const ankel: Region = {
           label: "Akillessene",
           type: "enkelt",
           valg: [
-            { id: "normal", label: "Normal", notat: "Akillessenen uden defekt; negativ Simmonds-Thompson-test." },
+            { id: "normal", label: "Intakt, Thompson neg.", notat: "Akillessenen uden defekt; negativ Simmonds-Thompson-test." },
             { id: "positiv", label: "Thompson +/defekt", notat: "Positiv Simmonds-Thompson-test eller palpabel defekt i akillessenen." }
           ]
         },

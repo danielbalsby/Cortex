@@ -65,7 +65,7 @@
   - Let nedsat → "Let nedsat bevægelighed."
   - Svært nedsat → "Svært nedsat bevægelighed."
 - **Stabilitet** (stabilitet, enkelt)
-  - Stabil → "Stabilt ved klinisk ligamenttest."
+  - Stabil ved ligamenttest → "Stabilt ved klinisk ligamenttest."
   - Instabilitet → "Klinisk mistanke om instabilitet."
 - **Ømhed patella** (patellaoemhed, enkelt, vises hvis traume=ja)
   - Ingen → "Ingen direkte ømhed på patella."

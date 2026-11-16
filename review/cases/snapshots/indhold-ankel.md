@@ -37,20 +37,20 @@
   - Ingen → "Ingen fejlstilling."
   - Ja → "Fejlstilling."
 - **Cirk./sens. distalt** (neurovaskulaer, enkelt)
-  - Normal → "Normal distal cirkulation og sensibilitet."
+  - Normal cirk. + sens. → "Normal distal cirkulation og sensibilitet."
   - Påvirket → "Påvirket distal cirkulation eller sensibilitet."
 - **Hævelse** (haevelse, enkelt)
   - Ingen [N] → "Ingen hævelse."
   - Lateral → "Hævelse lateralt."
   - Medial → "Hævelse medialt."
-  - Udtalt → "Udtalt hævelse og hæmatom."
+  - Udtalt → "Udtalt hævelse."
 - **Knogleømhed malleol** (malleol, enkelt)
   - Ingen → "Ingen knogleømhed over malleolerne."
   - Lateral → "Knogleømhed over laterale malleol (bagkant/spids, nederste 6 cm)."
   - Medial → "Knogleømhed over mediale malleol (bagkant/spids, nederste 6 cm)."
   - Begge → "Knogleømhed over begge malleoler (bagkant/spids, nederste 6 cm)."
 - **Knogleømhed fod** (mellemfod, enkelt)
-  - Ingen → "Ingen knogleømhed over os naviculare eller basis af 5. metatars."
+  - Ingen (navic. + 5. mt.) → "Ingen knogleømhed over os naviculare eller basis af 5. metatars."
   - Naviculare → "Knogleømhed over os naviculare."
   - Basis 5. mt. → "Knogleømhed over basis af 5. metatars."
   - Begge → "Knogleømhed over os naviculare og basis af 5. metatars."
@@ -61,10 +61,10 @@
   - Uømme [N] → "Laterale ledbånd uømme."
   - Ømme → "Ømhed over laterale ledbånd."
 - **Syndesmose** (syndesmose, enkelt)
-  - Uøm → "Syndesmosen uøm ved palpation og squeeze-test."
+  - Uøm, squeeze neg. → "Syndesmosen uøm ved palpation og squeeze-test."
   - Øm/squeeze + → "Ømhed over syndesmosen eller positiv squeeze-test."
 - **Akillessene** (akilles, enkelt)
-  - Normal → "Akillessenen uden defekt; negativ Simmonds-Thompson-test."
+  - Intakt, Thompson neg. → "Akillessenen uden defekt; negativ Simmonds-Thompson-test."
   - Thompson +/defekt → "Positiv Simmonds-Thompson-test eller palpabel defekt i akillessenen."
 - **Supplerende** (objektivt-tekst, tekst)
 

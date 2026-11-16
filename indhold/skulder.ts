@@ -200,7 +200,7 @@ export const skulder: Region = {
           label: "AC-led",
           type: "enkelt",
           valg: [
-            { id: "uoemt", label: "Uømt", notat: "AC-leddet uømt, negativ crossover-test." },
+            { id: "uoemt", label: "Uømt, crossover neg.", notat: "AC-leddet uømt, negativ crossover-test." },
             { id: "oemt", label: "Ømt/crossover +", notat: "Ømhed over AC-leddet og/eller positiv crossover-test." }
           ]
         },

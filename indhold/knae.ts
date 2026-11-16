@@ -210,7 +210,7 @@ export const knae: Region = {
           label: "Stabilitet",
           type: "enkelt",
           valg: [
-            { id: "stabil", label: "Stabil", notat: "Stabilt ved klinisk ligamenttest." },
+            { id: "stabil", label: "Stabil ved ligamenttest", notat: "Stabilt ved klinisk ligamenttest." },
             { id: "instabil", label: "Instabilitet", notat: "Klinisk mistanke om instabilitet." }
           ]
         },
