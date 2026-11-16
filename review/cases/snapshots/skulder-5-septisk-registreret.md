@@ -27,7 +27,7 @@ P: Henvist akut til CVI mhp. septisk artrit.
 
 ## Røde flag (6, alle vises altid)
 
-- [MATCHER] Septisk artrit (flag-septisk, GODKENDT)
+- [MATCHER] Septisk artrit (flag-septisk, UDKAST)
 - [ikke vurderet] Akut skulderluksation (flag-luksation, GODKENDT)
 - [ikke opfyldt af registreret] Brud eller seneruptur efter kraftigt traume eller overbelastning (flag-fraktur, GODKENDT)
 - [ikke opfyldt af registreret] Traumatisk rotator cuff-ruptur (tidskritisk) (flag-traumatisk-cuff, GODKENDT)

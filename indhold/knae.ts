@@ -600,8 +600,8 @@ export const knae: Region = {
       // 2026-11-16 (review/GODKEND.md C3): under 12 år. 12–17-årige fanges ikke af aldersgrupperne.
       fremhaevHvis: [[{ felt: "alder", er: "under12" }]],
       kilder: ["lh-knaesmerter"],
-      status: "GODKENDT",
-      godkendtDato: "2026-11-15"
+      // 2026-11-16: betingelsen blev ændret på generel tilladelse → UDKAST, til lægen godkender flaget enkeltvis.
+      status: "UDKAST"
     }
   ],
 
