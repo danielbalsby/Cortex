@@ -26,6 +26,9 @@ export type Handling =
 const INGEN: Handling = { type: "ingen" };
 
 export function tolkTast(tast: Tast, fokus: Fokus, skaerm: Skaerm): Handling {
+  // En holdt tast gentages ikke – kun piletasterne må gentage (bladre). Ellers kan en
+  // holdt Esc nulstille, og et holdt tal vælge og rykke videre i flere felter.
+  if (tast.repeat && tast.key !== "ArrowDown" && tast.key !== "ArrowUp") return INGEN;
   if ((tast.ctrl || tast.meta) && tast.key === "Enter") return { type: "kopier" };
   // Ctrl/⌘+Z fortryder sidste ændring – også en nulstilling (Esc Esc) eller et regionsskift –
   // men ikke i tekstfelter, hvor browseren selv fortryder.
@@ -55,7 +58,6 @@ export function tolkTast(tast: Tast, fokus: Fokus, skaerm: Skaerm): Handling {
 
   if (fokus === "tekst") return INGEN; // almindelig skrivning
   if (/^[1-9]$/.test(tast.key)) return { type: "tal", tal: Number(tast.key) };
-  // Holdt N-tast må ikke gentage: ét tryk = én handling.
-  if (tast.key === "n" || tast.key === "N") return tast.repeat ? INGEN : { type: "normal" };
+  if (tast.key === "n" || tast.key === "N") return { type: "normal" };
   return INGEN;
 }

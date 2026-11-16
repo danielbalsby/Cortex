@@ -10,9 +10,10 @@ type Props = {
   aktivFelt: string | undefined;
   onAktiv: (feltId: string) => void;
   onSvar: (feltId: string, vaerdi: string | string[]) => void;
+  nSat?: readonly string[]; // felter udfyldt af N og ikke rørt siden
 };
 
-export function Felter({ region, svar, aktivFelt, onAktiv, onSvar }: Props) {
+export function Felter({ region, svar, aktivFelt, onAktiv, onSvar, nSat = [] }: Props) {
   return (
     <>
       {region.grupper.map((gruppe) => (
@@ -33,6 +34,7 @@ export function Felter({ region, svar, aktivFelt, onAktiv, onSvar }: Props) {
                 felt={felt}
                 vaerdi={svar[felt.id]}
                 aktiv={felt.id === aktivFelt}
+                afN={nSat.includes(felt.id)}
                 onAktiv={onAktiv}
                 onSvar={onSvar}
               />
@@ -47,12 +49,14 @@ function FeltRaekke({
   felt,
   vaerdi,
   aktiv,
+  afN,
   onAktiv,
   onSvar
 }: {
   felt: Felt;
   vaerdi: string | string[] | undefined;
   aktiv: boolean;
+  afN: boolean;
   onAktiv: Props["onAktiv"];
   onSvar: Props["onSvar"];
 }) {
@@ -126,7 +130,8 @@ function FeltRaekke({
         {(felt.valg ?? []).map((valg, index) => (
           <button
             key={valg.id}
-            className={valgte.includes(valg.id) ? "chip valgt" : "chip"}
+            className={valgte.includes(valg.id) ? (afN ? "chip valgt afN" : "chip valgt") : "chip"}
+            title={afN && valgte.includes(valg.id) ? "Sat med N – ikke bekræftet enkeltvis" : undefined}
             aria-pressed={valgte.includes(valg.id)}
             tabIndex={-1}
             // Fokus bliver på rækken, så tal og piletaster virker efter et museklik.
@@ -135,6 +140,7 @@ function FeltRaekke({
           >
             {aktiv && index < 9 && <kbd>{index + 1}</kbd>}
             {valg.label}
+            {afN && valgte.includes(valg.id) && <span className="nMaerke">N</span>}
           </button>
         ))}
       </span>

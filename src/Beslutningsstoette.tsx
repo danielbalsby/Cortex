@@ -134,12 +134,13 @@ const FLAG_FORKLARING: Record<FlagStatus, string> = {
   matcher: "Matcher dine valg.",
   "ikke-vurderet": "Ikke vurderet: felter, fremhævningen afhænger af, er ikke udfyldt. Flaget er ikke udelukket.",
   "ikke-opfyldt": "Ikke fremhævet af de valg, du har registreret. Det udelukker ikke flaget.",
-  "uden-betingelse": ""
+  "uden-betingelse": "Vurderes klinisk: ingen felter i Cortex kan fremhæve dette flag."
 };
 
 function FlagMaerke({ status }: { status: FlagStatus }) {
   if (status === "matcher") return <span className="match">Matcher</span>;
   if (status === "ikke-vurderet") return <span className="ikkeVurderet">ikke vurderet</span>;
+  if (status === "uden-betingelse") return <span className="ikkeVurderet">vurderes klinisk</span>;
   return null;
 }
 
