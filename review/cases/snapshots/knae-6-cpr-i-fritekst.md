@@ -16,7 +16,7 @@ S: Højresidige knæsmerter. Jens Hansen 010100-0000.
 ## Røde flag (10, alle vises altid)
 
 - [ikke vurderet] Bakteriel artrit (flag-bakteriel-artrit, GODKENDT)
-- [ikke vurderet] Akut knæskade (flag-fraktur, GODKENDT)
+- [ikke vurderet] Akut knæskade (flag-fraktur, UDKAST)
 - [ikke vurderet] Aflåst knæ (flag-aflaast-knae, GODKENDT)
 - [ikke vurderet] Akut ligamentskade eller stor ledansamling (flag-akut-ligamentskade, GODKENDT)
 - [ikke vurderet] Strækkeapparat (flag-straekkeapparat, GODKENDT)

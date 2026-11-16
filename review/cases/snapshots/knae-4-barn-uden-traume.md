@@ -23,7 +23,7 @@ O: Ingen hævelse. Ingen ledlinjeømhed. Fuld bevægelighed.
 ## Røde flag (10, alle vises altid)
 
 - [ikke vurderet] Bakteriel artrit (flag-bakteriel-artrit, GODKENDT)
-- [ikke vurderet] Akut knæskade (flag-fraktur, GODKENDT)
+- [ikke vurderet] Akut knæskade (flag-fraktur, UDKAST)
 - [ikke opfyldt af registreret] Aflåst knæ (flag-aflaast-knae, GODKENDT)
 - [ikke opfyldt af registreret] Akut ligamentskade eller stor ledansamling (flag-akut-ligamentskade, GODKENDT)
 - [ikke vurderet] Strækkeapparat (flag-straekkeapparat, GODKENDT)

@@ -90,10 +90,10 @@
   - Tekst: Bakteriel artrit: akut monoartrit med hævelse, varme, rødme, smerte og bevægeindskrænkning. Feber og kulderystelser er almindelige, men ikke nødvendigvis til stede. Risikofaktorer: høj alder, hudinfektion, leddestruktion (fx reumatoid artrit), ledalloplastik, nylig ledkirurgi eller ledinjektion, immunsuppression, diabetes, alkoholmisbrug.
   - Handling: Indlægges akut ved mistanke (Region Hovedstaden: i ortopædkirurgisk regi via CVI).
   - Fremhæves hvis: varme=ja ELLER roedme=ja ELLER feber=ja
-- **flag-fraktur** [GODKENDT 2026-11-15] kilder: lh-knaesmerter
-  - Konflikt: Lægehåndbogen bruger "Knee-rules" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder. Beslutning (truffet af Claude 2026-11-15 efter lægens anmodning): begge regler vises, og ét opfyldt kriterie i én af dem udløser akut røntgen og fremhævning. Det er den mest sensitive kombination og følger både den nationale og den regionale kilde. Originalstudierne bag reglerne er ikke læst.
+- **flag-fraktur** [UDKAST] kilder: lh-knaesmerter, rh-traumatisk
+  - Konflikt: Lægehåndbogen bruger "Knee-rules" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder, og begge regler vises. Ingen af kilderne kombinerer reglerne. Fremhævningen sker, hvis ét kriterie fra én af reglerne er registreret. Originalstudierne bag reglerne er ikke læst.
   - Tekst: Akut knæskade: udeluk fraktur, før stabiliteten testes. Lægehåndbogen (knee rules): røntgen ved direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Region Hovedstaden (Pittsburgh): akut røntgen ved alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.
-  - Handling: Akut røntgen af knæ, hvis blot ét kriterie i én af reglerne er opfyldt. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).
+  - Handling: Lægehåndbogen: røntgen ved ét af knee rules-kriterierne. Region Hovedstaden: akut røntgen ved ét af Pittsburgh-kriterierne. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).
   - Fremhæves hvis: traume=ja og belastning=ingen ELLER skridt=nej ELLER patellaoemhed=ja ELLER fibulaoemhed=ja ELLER fleksion90=nej ELLER alder=under12 ELLER alder=51til55 ELLER alder=over55
 - **flag-aflaast-knae** [GODKENDT 2026-11-15] kilder: lh-meniskskade, lh-knaesmerter, rh-traumatisk
   - Konflikt: Lægehåndbogens side om meniskskade skriver "henvises til akut ortopædkirurgisk vurdering" ved aflåst knæ. Lægehåndbogens side om knæsmerter skriver "subakut henvisning ... ved aflåsning". Region Hovedstaden angiver "subakut henvisning til CVI snarest muligt < 1 uge" ved aflåst knæ med strækkemangel.
@@ -294,7 +294,7 @@
   - Efter knætraume: akut stor ledansamling; akut førstegangs patellaluksation; kan ikke løfte benet mod tyngdekraften (strækkeapparat); mistanke om fraktur eller løshed (side- eller skuffeløshed).
   - P: "Henvist akut til CVI."
 - **Akut røntgen af knæ** (hen-akut-roentgen, akut, Region Hovedstaden) [UDKAST] kilder: rh-traumatisk
-  - Konflikt: Lægehåndbogen bruger i stedet "Knee-rules" (svarer til Ottawa Knee Rule): direkte patellaømhed, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Beslutning (Claude 2026-11-15 efter lægens anmodning): et opfyldt kriterie i én af reglerne udløser akut røntgen – se rødt flag om fraktur.
+  - Konflikt: Lægehåndbogen bruger i stedet "Knee-rules" (svarer til Ottawa Knee Rule): direkte patellaømhed, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Begge regler vises i det røde flag om fraktur.
   - Region Hovedstaden (Pittsburgh Knee Rules): alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.
   - P: "Akut røntgen af knæ."
 - **CVI, subakut (snarest, < 1 uge)** (hen-aflaast, subakut, Region Hovedstaden) [UDKAST] kilder: rh-traumatisk, lh-meniskskade

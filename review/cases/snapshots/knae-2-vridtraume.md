@@ -36,7 +36,7 @@ P: Henvist akut til CVI.
 
 - [MATCHER] Akut ligamentskade eller stor ledansamling (flag-akut-ligamentskade, GODKENDT)
 - [ikke vurderet] Bakteriel artrit (flag-bakteriel-artrit, GODKENDT)
-- [ikke opfyldt af registreret] Akut knæskade (flag-fraktur, GODKENDT)
+- [ikke opfyldt af registreret] Akut knæskade (flag-fraktur, UDKAST)
 - [ikke vurderet] Aflåst knæ (flag-aflaast-knae, GODKENDT)
 - [ikke opfyldt af registreret] Strækkeapparat (flag-straekkeapparat, GODKENDT)
 - [(ingen betingelse)] Akut patellaluksation (flag-patellaluksation, GODKENDT)
