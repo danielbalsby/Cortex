@@ -90,7 +90,7 @@
   - Tekst: Bakteriel artrit: akut monoartrit med hævelse, varme, rødme, smerte og bevægeindskrænkning. Feber og kulderystelser er almindelige, men ikke nødvendigvis til stede. Risikofaktorer: høj alder, hudinfektion, leddestruktion (fx reumatoid artrit), ledalloplastik, nylig ledkirurgi eller ledinjektion, immunsuppression, diabetes, alkoholmisbrug.
   - Handling: Indlægges akut ved mistanke (Region Hovedstaden: i ortopædkirurgisk regi via CVI).
   - Fremhæves hvis: varme=ja ELLER roedme=ja ELLER feber=ja
-- **flag-fraktur** [UDKAST] kilder: lh-knaesmerter, rh-traumatisk
+- **flag-fraktur** [GODKENDT 2026-11-16] kilder: lh-knaesmerter, rh-traumatisk
   - Konflikt: Lægehåndbogen bruger "Knee-rules" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder, og begge regler vises. Ingen af kilderne kombinerer reglerne. Fremhævningen sker, hvis ét kriterie fra én af reglerne er registreret. Originalstudierne bag reglerne er ikke læst.
   - Tekst: Akut knæskade: udeluk fraktur, før stabiliteten testes. Lægehåndbogen (knee rules): røntgen ved direkte ømhed på patella, ømhed på caput fibulae, kan ikke gå 4 skridt, alder over 55 år, kan ikke flektere over 90 grader. Region Hovedstaden (Pittsburgh): akut røntgen ved alder under 12 eller over 50 år, eller kan ikke gå 4 vægtbelastede skridt.
   - Handling: Lægehåndbogen: røntgen ved ét af knee rules-kriterierne. Region Hovedstaden: akut røntgen ved ét af Pittsburgh-kriterierne. Akut henvisning ved mistanke om brud (Region Hovedstaden: CVI).

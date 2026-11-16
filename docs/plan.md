@@ -222,7 +222,7 @@ Vercel-koblingen på repoet er live og offentlig: den bygger fra `vercel.json` (
 
 Lægen bad Claude om selv at træffe de åbne beslutninger. Begge er skrevet ind i de berørte punkter, og konflikterne står stadig navngivet. Alle punkter er fortsat UDKAST.
 
-1. **Akut røntgen efter knætraume (Ottawa mod Pittsburgh):** Begge regler vises, og ét opfyldt kriterie i én af dem fremhæver fraktur-flaget. *Ændret 2026-11-16 (review/GODKEND.md A2):* flagets handling gengiver nu hver kilde for sig i stedet for Claudes samlede regel; flaget er derfor UDKAST, til lægen godkender det igen.
+1. **Akut røntgen efter knætraume (Ottawa mod Pittsburgh):** Begge regler vises, og ét opfyldt kriterie i én af dem fremhæver fraktur-flaget. *Ændret 2026-11-16 (review/GODKEND.md A2):* flagets handling gengiver nu hver kilde for sig i stedet for Claudes samlede regel. Lægen godkendte den nye ordlyd 2026-11-16.
 2. **Reumatologisk hotline:** Region Hovedstadens visitationsmeddelelse for reumatologi (opdateret 04.09.2025) er brugt som afgørende kilde. Frederiksberg: 38 16 41 90. Degenerativ ryg er samlet på Rigshospitalet, Valdemar Hansens Vej: 38 63 42 47. Rygkirurgisk bagvagt: 38 63 04 80. Nummeret 3816 4049 (forløbsbeskrivelsen for cauda equina) er ikke fundet i andre kilder.
 
 Ikke truffet: godkendelse af kliniske punkter. Princippet "kun lægen sætter GODKENDT" er uændret.
@@ -237,7 +237,7 @@ Alle 34 flag er sammenholdt med kildeteksterne, og det er tjekket, hvilke valg d
 - **Knæ:** nyt felt "Strakt benløft" (vises ved traume), som fremhæver flaget om strækkeapparatet. Udtalt hævelse efter traume fremhæver flaget om ligamentskade og stor ledansamling. Lægehåndbogen kalder sin regel "Knee-rules"; betegnelsen Ottawa er fjernet fra Lægehåndbogens del. Flaget om store akutte skader har fået fuld tekst fra kilden.
 - **Uændret:** skulder, albue og ankel. Formuleringer og tal stemmer med kilderne (204 tal tjekket maskinelt, 0 ikke fundet).
 
-Status: 37 røde flag. Lægen godkendte alle 37 på grundlag af denne gennemgang 2026-11-15 ("godkend alle 37 røde flag"). Knæets fraktur-flag er UDKAST igen fra 2026-11-16 (handlingen omformuleret, se §7).
+Status: 37 røde flag. Lægen godkendte alle 37 på grundlag af denne gennemgang 2026-11-15 ("godkend alle 37 røde flag"). Knæets fraktur-flag fik ny handling og blev godkendt igen af lægen 2026-11-16 (se §7).
 
 ## 8. Fase 2 efter gennemgangen i `review/` (2026-11-16)
 
@@ -250,7 +250,7 @@ Udført uden ændring af klinisk indhold (se `review/REVIEW.md` §9):
 9. `V`/`P` på et fokuseret punkt skriver det i notatet.
 
 Derefter (2026-11-16) – lægen gav Claude lov til at godkende forslagene i `review/GODKEND.md`. Claude valgte sine anbefalinger:
-- A2: knæets fraktur-flag gengiver knee rules og Pittsburgh hver for sig; flaget er UDKAST, til lægen godkender det.
+- A2: knæets fraktur-flag gengiver knee rules og Pittsburgh hver for sig; godkendt af lægen 2026-11-16 ("godkend knæ fraktur-flag").
 - B: 13 knaptekster viser hele notatpåstanden; ankel "Udtalt" skriver ikke længere "og hæmatom".
 - C: feber/rødme/varme i skulder og ankel; alder vises altid i knæ (flag om børn; fraktur-flagets aldersbetingelser kræver traume).
 - D: alder skrives ikke længere i notatet i knæ og skulder (feltet bruges kun til flag og er mærket "ikke i notat").

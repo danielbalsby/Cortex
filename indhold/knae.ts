@@ -488,9 +488,9 @@ export const knae: Region = {
         ]
       ],
       kilder: ["lh-knaesmerter", "rh-traumatisk"],
-      // 2026-11-16: handlingen omformuleret efter kilderne (review/GODKEND.md A2). Den tidligere
-      // modelformulerede regel er fjernet; flaget er derfor UDKAST, til lægen godkender det igen.
-      status: "UDKAST",
+      // 2026-11-16: handlingen omformuleret efter kilderne (review/GODKEND.md A2) og godkendt af lægen samme dag.
+      status: "GODKENDT",
+      godkendtDato: "2026-11-16",
       konflikt: {
         beskrivelse:
           "Lægehåndbogen bruger \"Knee-rules\" (at kriterierne svarer til Ottawa Knee Rule, er Claudes identifikation); Region Hovedstadens forløbsbeskrivelse for traumatiske knæskader bruger Pittsburgh Knee Rules. Begge er danske kilder, og begge regler vises. Ingen af kilderne kombinerer reglerne. Fremhævningen sker, hvis ét kriterie fra én af reglerne er registreret. Originalstudierne bag reglerne er ikke læst.",
