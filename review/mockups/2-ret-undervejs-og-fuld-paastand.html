@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="da"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mockup: ret undervejs</title>
+<style>
+:root{--bg:#f4f5f3;--flade:#fff;--tekst:#1c2321;--daempet:#5d6a66;--kant:#d9dedb;--accent:#1f6f5c;--accent-svag:#e2f0ec;--advarsel:#a3341f;font:15px/1.45 system-ui,"Segoe UI",sans-serif;color:var(--tekst)}
+body{margin:0;background:var(--bg);padding:24px;max-width:900px}
+.kort{background:var(--flade);border:1px solid var(--kant);border-radius:8px;padding:14px 16px;margin-bottom:22px}
+h2{font-size:1rem;margin:0 0 10px}.lbl{display:inline-block;width:150px;color:var(--daempet);font-size:.9rem}
+.felt{padding:4px 6px;border-left:3px solid transparent}.felt.akt{background:var(--accent-svag);border-left-color:var(--accent)}
+.chip{display:inline-block;padding:2px 10px;margin-right:4px;border:1px solid var(--kant);border-radius:999px;background:var(--flade);font-size:.9rem}.chip.v{background:var(--accent-svag);border-color:var(--accent);color:var(--accent);font-weight:600}
+.besked{margin:6px 0 0 156px;padding:6px 10px;border:1px solid #c9b458;border-left-width:4px;background:#fbf6dc;border-radius:6px;font-size:.9rem}
+.besked button{margin-left:8px;border:1px solid var(--tekst);background:#fff;border-radius:5px;padding:1px 8px;font:inherit}
+.foer{color:var(--daempet);font-size:.85rem;margin-top:8px}
+table{border-collapse:collapse;width:100%;font-size:.9rem}td,th{border-bottom:1px solid var(--kant);padding:5px 6px;text-align:left;vertical-align:top}
+</style></head><body>
+<div class="kort"><h2>A. Ret undervejs uden tavst datatab (knæ, case <code>knae-5-ret-traume</code>)</h2>
+<div class="felt akt"><span class="lbl">Traume</span><span class="chip v">1 Nej</span><span class="chip">2 Ja</span></div>
+<div class="besked">⚠ 4 svar er skjult, fordi Traume = Nej: Mekanisme (fald), Alder (over 55), Ømhed patella (øm), 4 skridt nu (kan ikke). <button>Fortryd (Ctrl+Z)</button></div>
+<p class="foer"><b>I dag:</b> de fire svar slettes uden besked, notatet bliver "S: Intet traume.", og flaget "Akut knæskade" går fra MATCHER til "ikke vurderet". Forslaget sletter ikke svarene, men skjuler dem (notatet bruger allerede kun synlige felter) og viser én linje med fortryd.</p></div>
+
+<div class="kort"><h2>B. Knappen viser hele det, notatet skriver</h2>
+<p style="margin-top:0;font-size:.9rem">Eksempler fra indholdsfilerne, hvor ét klik dokumenterer mere, end knappen siger. Forslaget ændrer <i>knappens tekst</i> (eller deler valget op) – notatsætningen er uændret. Kræver din godkendelse pr. valg.</p>
+<table><tr><th>Felt</th><th>Knap i dag</th><th>Notatet skriver</th><th>Problem</th></tr>
+<tr><td>Skulder · AC-led</td><td>Uømt</td><td>AC-leddet uømt, negativ crossover-test.</td><td>Crossover dokumenteres, selv om kun palpation er udført</td></tr>
+<tr><td>Ankel · Hævelse</td><td>Udtalt</td><td>Udtalt hævelse og hæmatom.</td><td>Hæmatom dokumenteres uden at være valgt</td></tr>
+<tr><td>Ankel · Syndesmose</td><td>Uøm</td><td>Syndesmosen uøm ved palpation og squeeze-test.</td><td>Squeeze-test dokumenteres</td></tr>
+<tr><td>Ankel · Akilles</td><td>Normal</td><td>Akillessenen uden defekt; negativ Simmonds-Thompson-test.</td><td>Thompson dokumenteres</td></tr>
+<tr><td>Albue · Neurovaskulært</td><td>Normal</td><td>Palpabel radialispuls; normal sensibilitet og motorik svarende til n. ulnaris, medianus og radialis.</td><td>Puls + 3 nerver i ét klik</td></tr>
+<tr><td>Ryg · Rektal</td><td>Normal</td><td>Rektaleksploration: normal sfinktertonus og knibekraft, normal sensibilitet perianalt.</td><td>Tre fund i ét klik</td></tr>
+<tr><td>Knæ · Stabilitet</td><td>Stabil</td><td>Stabilt ved klinisk ligamenttest.</td><td>Hvilke tests? (ok hvis bevidst)</td></tr>
+</table></div>
+</body></html>
