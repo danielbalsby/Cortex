@@ -21,7 +21,7 @@ S: Højresidige knæsmerter. Gradvist indsættende. Varighed flere uger. Intet t
 - [MATCHER] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, GODKENDT)
 - [ikke vurderet] Bakteriel artrit (flag-bakteriel-artrit, GODKENDT)
 - [ikke vurderet] Akut knæskade (flag-fraktur, GODKENDT)
-- [ikke vurderet] Aflåst knæ (flag-aflaast-knae, GODKENDT)
+- [ikke vurderet] Aflåst knæ (flag-aflaast-knae, UDKAST)
 - [ikke opfyldt af registreret] Akut ligamentskade eller stor ledansamling (flag-akut-ligamentskade, GODKENDT)
 - [ikke vurderet] Strækkeapparat (flag-straekkeapparat, GODKENDT)
 - [(ingen betingelse)] Akut patellaluksation (flag-patellaluksation, GODKENDT)

@@ -24,7 +24,6 @@ export const GODKENDT_AFTRYK: Record<string, { dato: string; aftryk: string }> =
   "ryg/flag-oevrige-alarm": { dato: "2026-11-15", aftryk: "f021bd4c" },
   "knae/flag-bakteriel-artrit": { dato: "2026-11-15", aftryk: "4608e482" },
   "knae/flag-fraktur": { dato: "2026-11-16", aftryk: "ddddefcc" },
-  "knae/flag-aflaast-knae": { dato: "2026-11-15", aftryk: "c20336fd" },
   "knae/flag-akut-ligamentskade": { dato: "2026-11-15", aftryk: "db53ec8e" },
   "knae/flag-straekkeapparat": { dato: "2026-11-15", aftryk: "565e1526" },
   "knae/flag-patellaluksation": { dato: "2026-11-15", aftryk: "ef725aef" },
