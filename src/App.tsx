@@ -147,6 +147,12 @@ export function App() {
           if (resultat.rykFrem) setAktivFelt(naboFelt(indhold, resultat.svar, aktivFelt, 1));
           return;
         }
+        case "tilNotat": {
+          // Knappen "+ V"/"+ P" på det punkt, fokus står i.
+          const knap = maal?.closest("li.punkt")?.querySelector<HTMLButtonElement>(":scope > .punktRaekke > .tilNotat");
+          knap?.click();
+          return;
+        }
         case "fortryd":
           fortryd();
           return;
@@ -245,7 +251,7 @@ export function App() {
         {indhold && (
           <span className="genveje">
             <kbd>1</kbd>–<kbd>9</kbd> vælg · <kbd>↑</kbd>
-            <kbd>↓</kbd> felt · <kbd>⏎</kbd> næste · <kbd>N</kbd> normal · <kbd>Ctrl</kbd>
+            <kbd>↓</kbd> felt · <kbd>⏎</kbd> næste · <kbd>N</kbd> normal · <kbd>V</kbd>/<kbd>P</kbd> på punkt til notat · <kbd>Ctrl</kbd>
             <kbd>⏎</kbd> kopiér
           </span>
         )}

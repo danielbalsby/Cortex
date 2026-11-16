@@ -34,6 +34,13 @@ describe("tolkTast – region åben", () => {
     expect(tolkTast({ key: "z", ctrl: true }, "felt", "gennemgang")).toEqual({ type: "ingen" });
   });
 
+  it("V/P på et fokuseret punkt i beslutningsstøtten skriver det i notatet", () => {
+    expect(tolkTast({ key: "v" }, "egen", "region")).toEqual({ type: "tilNotat" });
+    expect(tolkTast({ key: "P" }, "panel", "region")).toEqual({ type: "tilNotat" });
+    expect(tolkTast({ key: "v" }, "felt", "region")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "p" }, "tekst", "region")).toEqual({ type: "ingen" });
+  });
+
   it("tal skifter ikke region, når en region er åben", () => {
     expect(tolkTast({ key: "4" }, "felt", "region")).toEqual({ type: "tal", tal: 4 });
   });

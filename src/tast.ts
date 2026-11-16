@@ -20,7 +20,8 @@ export type Handling =
   | { type: "flyt"; retning: 1 | -1 }
   | { type: "tal"; tal: number }
   | { type: "normal" }
-  | { type: "fortryd" };
+  | { type: "fortryd" }
+  | { type: "tilNotat" };
 
 const INGEN: Handling = { type: "ingen" };
 
@@ -45,6 +46,8 @@ export function tolkTast(tast: Tast, fokus: Fokus, skaerm: Skaerm): Handling {
 
   // Knapper, links og fold-ud-felter beholder deres egen Enter og piletaster, og i
   // beslutningsstøtten må tasterne aldrig ændre felterne til venstre.
+  // V/P på et fokuseret punkt i beslutningsstøtten tilføjer eller fjerner det i notatet.
+  if ((fokus === "egen" || fokus === "panel") && ["v", "V", "p", "P"].includes(tast.key)) return { type: "tilNotat" };
   if (fokus === "egen" || fokus === "panel") return INGEN;
 
   if (tast.key === "ArrowDown" || tast.key === "Enter") return { type: "flyt", retning: 1 };
