@@ -25,11 +25,11 @@ P: Henvist til ortopædkirurgisk afdeling mhp. bursitis olecrani.
 
 ## Røde flag (6, alle vises altid)
 
-- [MATCHER] Septisk bursitis olecrani hos patient med albueprotese eller reumatoid (flag-septisk-bursit, UDKAST)
+- [MATCHER] Septisk bursitis olecrani hos patient med albueprotese eller reumatoid (flag-septisk-bursit, GODKENDT)
 - [ikke vurderet] Fraktur eller luksation efter traume (ofte fald på strakt arm) (flag-fraktur-luksation, GODKENDT)
 - [ikke vurderet] Neurovaskulær påvirkning ved fraktur eller luksation (flag-neurovaskulaer, GODKENDT)
 - [ikke vurderet] Muskel-seneskade efter hyperekstensions- eller hyperfleksionstraume (flag-muskelsene, GODKENDT)
-- [ikke vurderet] Septisk artrit eller hæmartrose efter traume (flag-septisk, UDKAST)
+- [ikke vurderet] Septisk artrit eller hæmartrose efter traume (flag-septisk, GODKENDT)
 - [(ingen betingelse)] Diagnostiske faldgruber (flag-faldgruber, GODKENDT)
 
 ## Differentialdiagnoser (11, statisk liste)

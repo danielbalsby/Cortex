@@ -100,7 +100,7 @@
   - Tekst: Diagnostiske faldgruber: thoracic outlet syndrom, radikulopati, leukæmi, sarkom, lungetumor (Pancoast). Smerter også i nakke eller skulderbue skal primært give mistanke om cervikal lidelse.
   - Handling: Nakkesmerter med udstråling udredes for cervikal patologi. Røntgen af skulder ved mistanke om tumor eller metastase.
   - Fremhæves hvis: nakke=ja
-- **flag-septisk** [UDKAST] kilder: rh-monoartrit, lh-skuldersmerter
+- **flag-septisk** [GODKENDT 2026-11-16] kilder: rh-monoartrit, lh-skuldersmerter
   - Tekst: Septisk artrit: varmt, rødt, betydeligt hævet led, feber eller medtaget almentilstand. Disponerende: diabetes, alkohol- eller i.v.-misbrug, immunsuppression, nylig ledinjektion, alloplastik.
   - Handling: Indlægges akut i ortopædkirurgisk regi via CVI.
   - Fremhæves hvis: feber=ja ELLER roedme=ja ELLER varme=ja

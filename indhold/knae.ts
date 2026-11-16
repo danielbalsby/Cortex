@@ -512,8 +512,9 @@ export const knae: Region = {
         ]
       ],
       kilder: ["lh-meniskskade", "lh-knaesmerter", "rh-traumatisk"],
-      // 2026-11-16: handlingen følger Region Hovedstaden efter lægens afgørelse. UDKAST, til lægen har læst kilden og godkender.
-      status: "UDKAST",
+      // 2026-11-16: handlingen følger Region Hovedstaden efter lægens afgørelse. Godkendt af lægen enkeltvis 2026-11-16.
+      status: "GODKENDT",
+      godkendtDato: "2026-11-16",
       konflikt: {
         beskrivelse:
           "Lægehåndbogens side om meniskskade skriver \"henvises til akut ortopædkirurgisk vurdering\" ved aflåst knæ. Lægehåndbogens side om knæsmerter skriver \"subakut henvisning ... ved aflåsning\". Region Hovedstaden angiver \"subakut henvisning til CVI snarest muligt < 1 uge\" ved aflåst knæ med strækkemangel.",
@@ -600,10 +601,11 @@ export const knae: Region = {
         "Barn med knæsmerter – diagnostiske faldgruber: hoftelidelse (projicerede smerter), osteosarkom og Ewings sarkom, artralgi pga. leukæmi.",
       handling:
         "Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.",
-      // 2026-11-16 (lægens rettelse): under 12 år eller 12–17 år. UDKAST, til lægen godkender flaget enkeltvis.
+      // 2026-11-16 (lægens rettelse): under 12 år eller 12–17 år. Godkendt af lægen enkeltvis 2026-11-16.
       fremhaevHvis: [[{ felt: "alder", er: "under12" }], [{ felt: "alder", er: "12til17" }]],
       kilder: ["lh-knaesmerter"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-16"
     }
   ],
 

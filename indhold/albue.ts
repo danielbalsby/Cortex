@@ -377,14 +377,15 @@ export const albue: Region = {
         "Septisk artrit eller hæmartrose efter traume: varmt, rødt, hævet led, feber eller medtaget almentilstand. Bakteriel infektion kræver akut behandling, ofte med kirurgisk intervention.",
       handling:
         "Hurtig henvisning til sygehus (Region Hovedstaden: ved mistanke om septisk artrit akut indlæggelse i ortopædkirurgisk regi via CVI). Ved mistanke om bakteriel infektion sendes bursa- eller ledvæske til dyrkning.",
-      // 2026-11-16 (lægens afgørelse 4): også varme og feber. UDKAST, til lægen godkender.
+      // 2026-11-16 (lægens afgørelse 4): også varme og feber. Godkendt af lægen enkeltvis 2026-11-16.
       fremhaevHvis: [
         [{ felt: "roedme", er: "ja" }, { felt: "haevelse", er: "led" }],
         [{ felt: "varme", er: "ja" }, { felt: "haevelse", er: "led" }],
         [{ felt: "feber", er: "ja" }]
       ],
       kilder: ["lh-albuesmerter", "rh-monoartrit"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-16"
     },
     {
       id: "flag-septisk-bursit",
@@ -395,11 +396,12 @@ export const albue: Region = {
         [{ felt: "disposition", er: "protese" }, { felt: "haevelse", er: "bursa" }],
         [{ felt: "disposition", er: "ra" }, { felt: "haevelse", er: "bursa" }],
         [{ felt: "roedme", er: "ja" }, { felt: "haevelse", er: "bursa" }],
-        // 2026-11-16 (lægens afgørelse 4): varme over bursa fremhæver også, efter at "Rødme/varme" er delt. UDKAST.
+        // 2026-11-16 (lægens afgørelse 4): varme over bursa fremhæver også, efter at "Rødme/varme" er delt. Godkendt af lægen enkeltvis 2026-11-16.
         [{ felt: "varme", er: "ja" }, { felt: "haevelse", er: "bursa" }]
       ],
       kilder: ["lh-bursitis-olecrani"],
-      status: "UDKAST"
+      status: "GODKENDT",
+      godkendtDato: "2026-11-16"
     },
     {
       id: "flag-faldgruber",

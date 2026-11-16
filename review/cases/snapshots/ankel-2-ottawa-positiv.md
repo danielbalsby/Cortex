@@ -29,7 +29,7 @@ P: Henvist samme dag til akut vurdering.
 - [ikke vurderet] Truet ben (flag-straks, GODKENDT)
 - [ikke vurderet] Akillesseneruptur (flag-akilles, GODKENDT)
 - [ikke vurderet] Syndesmose- eller Maisonneuve-skade (flag-syndesmose, GODKENDT)
-- [ikke vurderet] Akut artrit, herunder infektion (flag-artrit, UDKAST)
+- [ikke vurderet] Akut artrit, herunder infektion (flag-artrit, GODKENDT)
 - [ikke vurderet] Diabetes eller nedsat følesans (flag-neuropati, GODKENDT)
 - [ikke opfyldt af registreret] Stressfraktur (flag-stressfraktur, GODKENDT)
 
