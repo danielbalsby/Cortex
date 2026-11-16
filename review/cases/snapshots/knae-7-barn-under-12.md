@@ -18,7 +18,7 @@ S: Højresidige knæsmerter. Gradvist indsættende. Varighed flere uger. Intet t
 
 ## Røde flag (10, alle vises altid)
 
-- [MATCHER] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, GODKENDT)
+- [MATCHER] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, UDKAST)
 - [ikke vurderet] Bakteriel artrit (flag-bakteriel-artrit, GODKENDT)
 - [ikke vurderet] Akut knæskade (flag-fraktur, GODKENDT)
 - [ikke vurderet] Aflåst knæ (flag-aflaast-knae, GODKENDT)

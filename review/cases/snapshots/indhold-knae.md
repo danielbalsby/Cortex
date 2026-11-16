@@ -124,7 +124,7 @@
   - Tekst: Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet Bakers cyste. Er cysten ikke tidligere erkendt, omfatter differentialdiagnoserne DVT og infektion.
   - Handling: Ultralyd kan i tvivlstilfælde stille diagnosen og afkræfte differentialdiagnoser.
   - Fremhæves hvis: (ingen betingelse)
-- **flag-boern** [GODKENDT 2026-11-15] kilder: lh-knaesmerter
+- **flag-boern** [UDKAST] kilder: lh-knaesmerter
   - Tekst: Barn med knæsmerter – diagnostiske faldgruber: hoftelidelse (projicerede smerter), osteosarkom og Ewings sarkom, artralgi pga. leukæmi.
   - Handling: Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.
   - Fremhæves hvis: alder=under12
