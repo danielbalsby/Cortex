@@ -97,9 +97,9 @@
   - Handling: Samme dag ved mistanke om Maisonneuve-skade eller syndesmoseskade med udtalte belastningsproblemer eller samtidig medial skade. Ved mistanke om Maisonneuve-skade røntgen af hele underbenet.
   - Fremhæves hvis: syndesmose=oem ELLER fibula=oem ELLER mekanisme=udadrotation
 - **flag-artrit** [UDKAST] kilder: lh-ankelsmerter, rh-monoartrit
-  - Tekst: Akut artrit, herunder infektion: rødme, varme og udtalt bevægeømhed uden en passende skademekanisme.
+  - Tekst: Akut artrit, herunder infektion: rødme, varme og udtalt bevægeømhed uden en passende skademekanisme. Region Hovedstaden: mistanke om septisk artrit bestyrkes ved varmt, rødt, betydeligt hævet led eller ved feber og medtaget almentilstand.
   - Handling: Samme dag ved mistanke om ledinfektion (Region Hovedstaden: akut indlæggelse i ortopædkirurgisk regi via CVI).
-  - Fremhæves hvis: roedme=ja ELLER varme=ja
+  - Fremhæves hvis: roedme=ja ELLER varme=ja ELLER feber=ja
 - **flag-neuropati** [GODKENDT 2026-11-15] kilder: lh-ankelsmerter
   - Tekst: Diabetes eller nedsat følesans: Ottawa-reglerne gælder ikke ved upålidelig undersøgelse, fx ved neuropati. Vær tilbageholdende med kulde og kompression ved nedsat cirkulation eller sensibilitet.
   - Handling: Vurder røntgen på klinisk mistanke uanset Ottawa-reglerne.
