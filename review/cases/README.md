@@ -18,4 +18,4 @@ Desuden ét fuldt indholdssnapshot pr. region (`snapshots/indhold-<region>.md`):
 
 Typer: *ukompliceret*, *rødt flag* (flaget kan registreres), *rødt flag, kan ikke registreres* (flaget vises, men intet felt kan fremhæve det), *ret undervejs* (et styrende felt ændres, og afhængige svar ryddes), *patientdata* (CPR i fritekst).
 
-Testsættet kører ikke med `npm run check`, fordi `vite.config.ts` kun medtager `src`, `lib` og `indhold`. Det kan flyttes ind i den almindelige testkørsel i fase 2.
+Testsættet kører også med `npm run check` (fra fase 2, trin 1).
