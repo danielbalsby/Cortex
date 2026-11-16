@@ -40,11 +40,12 @@ S: Smerter i lænden uden udstråling. Akut debut ved løft eller vrid.
 - Spondylolistese (diff-spondylolistese)
 - Anden årsag til ben- og lændesmerter (diff-andet)
 
-## Henvisning (11, statisk liste)
+## Henvisning (12, statisk liste)
 
 - Akut indlæggelse via CVI · akut (hen-cauda)
 - Reumatologisk hotline · subakut (hen-hotline)
-- Akutmodtagelse / pakkeforløb · akut (hen-infektion-malignitet)
+- Akutmodtagelse · akut (hen-infektion)
+- Pakkeforløb · subakut (hen-malignitet)
 - Rygsektionen, Rigshospitalet (konference) / Akut Modtagelse · akut (hen-fraktur)
 - Fysioterapeut eller kiropraktor · elektiv (hen-fys)
 - MR af columna lumbalis (fra almen praksis) · elektiv (hen-mr)

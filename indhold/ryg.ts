@@ -620,7 +620,7 @@ export const ryg: Region = {
     {
       id: "beh-ikke-anbefalet",
       tekst:
-        "Anbefales ikke: traktion, TENS, ultralydsbehandling, korset/rygstøtte. Akupunktur: se konflikt.",
+        "Anbefales ikke: traktion, TENS, ultralydsbehandling, korset/rygstøtte. Ikke-dansk kilde: Lægehåndbogen bygger her på NICE guideline 2016 (ikke læst direkte); ingen dansk kilde fundet. Akupunktur: se konflikt.",
       gaelderFor: ["diff-uspecifik", "diff-rod"],
       notat: "Ikke indikation for traktion, TENS eller korset.",
       kilder: ["lh-laendesmerter"],
@@ -703,18 +703,36 @@ export const ryg: Region = {
       }
     },
     {
-      id: "hen-infektion-malignitet",
-      til: "Akutmodtagelse / pakkeforløb",
-      kriterier: "Mistanke om infektion eller malignitet.",
+      // 2026-11-16: delt i infektion (akut) og malignitet (pakkeforløb) efter lægens afgørelse.
+      id: "hen-infektion",
+      til: "Akutmodtagelse",
+      kriterier:
+        "Mistanke om infektion (obs. spondylodiscitis): indlægges på lokal akutmodtagelse (Region Hovedstaden). Patienten skal udredes via specialafdeling.",
       hast: "akut",
       gyldighed: "Region Hovedstaden",
-      notat: "Henvist mhp. udredning for alvorlig underliggende sygdom.",
-      kilder: ["rh-uden-udstraaling", "lh-laendesmerter", "rh-billed"],
+      notat: "Henvist akut mhp. udredning for infektion.",
+      kilder: ["rh-uden-udstraaling", "rh-billed", "lh-laendesmerter"],
       status: "UDKAST",
       konflikt: {
         beskrivelse:
-          "Region Hovedstaden (lænderygsmerter, 2025): infektion eller malignitet indlægges på lokal akutmodtagelse. Lægehåndbogen (2024): infektion → medicinsk eller rygkirurgisk afdeling; malignitet → pakkeforløb. Region Hovedstadens billeddiagnostiske vejledning: mistanke om cancer/metastaser udredes i pakkeforløb.",
-        kilder: ["rh-uden-udstraaling", "lh-laendesmerter", "rh-billed"]
+          "Region Hovedstaden (lænderygsmerter uden udstråling, 2025): \"Infektion eller malignitet: Indlægges på lokal akutmodtagelse.\" Lægehåndbogen (lændesmerter, 2024): \"Ved mistanke om infektion henvises til medicinsk eller rygkirurgisk afdeling.\"",
+        kilder: ["rh-uden-udstraaling", "lh-laendesmerter"]
+      }
+    },
+    {
+      id: "hen-malignitet",
+      til: "Pakkeforløb",
+      kriterier:
+        "Mistanke om malignitet (cancer/metastaser): udredning i pakkeforløb. Tegn på tværsnitssyndrom eller betydende nyopstået parese: se det røde flag om cauda equina (akut).",
+      hast: "subakut",
+      gyldighed: "Region Hovedstaden",
+      notat: "Henvist i pakkeforløb mhp. udredning for malignitet.",
+      kilder: ["rh-billed", "lh-laendesmerter"],
+      status: "UDKAST",
+      konflikt: {
+        beskrivelse:
+          "Region Hovedstaden (billeddiagnostik af columna, 2025): \"Ved mistanke om cancer/metastaser bør udredning foregå i pakkeforløb.\" Lægehåndbogen (lændesmerter, 2024): \"Ved mistanke om malignitet henvises i pakkeforløb.\" Men Region Hovedstaden (lænderygsmerter uden udstråling, 2025): \"Infektion eller malignitet: Indlægges på lokal akutmodtagelse.\" Sundhedsstyrelsens pakkeforløbsbeskrivelse kunne ikke åbnes (sst.dk blokeret) og er ikke brugt.",
+        kilder: ["rh-billed", "lh-laendesmerter", "rh-uden-udstraaling"]
       }
     },
     {

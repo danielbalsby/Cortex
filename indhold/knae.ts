@@ -865,7 +865,8 @@ export const knae: Region = {
         "Røntgen ved mistanke om artrose: stående optagelse med let flekteret knæ. Lægehåndbogen (artrose): kun ved manglende effekt af behandling mhp. operationsvurdering eller ved mistanke om anden sygdom. Diagnosen kan stilles klinisk.",
       gaelderFor: ["diff-artrose", "diff-menisk"],
       notat: "Stående røntgen af knæ bestilt.",
-      kilder: ["lh-artrose-knae"],
+      // 2026-11-16: "let flekteret knæ" står i Region Hovedstadens forløb (review/KILDEKONTROL.md).
+      kilder: ["lh-artrose-knae", "rh-non-traumatisk"],
       status: "UDKAST",
       konflikt: {
         beskrivelse:
