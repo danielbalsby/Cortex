@@ -36,7 +36,7 @@ P: Henvist akut til CVI mhp. septisk artrit.
 - [(ingen betingelse)] Akut patellaluksation (flag-patellaluksation, GODKENDT)
 - [(ingen betingelse)] Store og akutte knæskader (flag-stor-akut-skade, GODKENDT)
 - [(ingen betingelse)] Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet  (flag-laeg-haevelse, GODKENDT)
-- [ikke vurderet] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, GODKENDT)
+- [ikke vurderet] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, UDKAST)
 
 ## Differentialdiagnoser (15, statisk liste)
 

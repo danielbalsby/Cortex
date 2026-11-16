@@ -23,7 +23,7 @@ P: Henvist akut til CVI mhp. septisk artrit.
 
 ## Røde flag (7, alle vises altid)
 
-- [MATCHER] Akut artrit, herunder infektion (flag-artrit, GODKENDT)
+- [MATCHER] Akut artrit, herunder infektion (flag-artrit, UDKAST)
 - [ikke vurderet] Truet ben (flag-straks, GODKENDT)
 - [ikke vurderet] Fraktur (Ottawa-reglerne) (flag-fraktur, GODKENDT)
 - [ikke vurderet] Akillesseneruptur (flag-akilles, GODKENDT)

@@ -43,7 +43,7 @@ P: Henvist akut til CVI.
 - [(ingen betingelse)] Store og akutte knæskader (flag-stor-akut-skade, GODKENDT)
 - [ikke vurderet] Bursit med stærke smerter, varme, rødme, kraftig hævelse og feber indi (flag-septisk-bursit, GODKENDT)
 - [(ingen betingelse)] Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet  (flag-laeg-haevelse, GODKENDT)
-- [ikke opfyldt af registreret] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, GODKENDT)
+- [ikke opfyldt af registreret] Barn med knæsmerter – diagnostiske faldgruber (flag-boern, UDKAST)
 
 ## Differentialdiagnoser (15, statisk liste)
 

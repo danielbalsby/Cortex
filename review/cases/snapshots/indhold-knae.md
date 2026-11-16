@@ -124,7 +124,7 @@
   - Tekst: Akut indsættende hævelse og evt. rødme i øvre læg kan være en bristet Bakers cyste. Er cysten ikke tidligere erkendt, omfatter differentialdiagnoserne DVT og infektion.
   - Handling: Ultralyd kan i tvivlstilfælde stille diagnosen og afkræfte differentialdiagnoser.
   - Fremhæves hvis: (ingen betingelse)
-- **flag-boern** [GODKENDT 2026-11-15] kilder: lh-knaesmerter
+- **flag-boern** [UDKAST] kilder: lh-knaesmerter
   - Tekst: Barn med knæsmerter – diagnostiske faldgruber: hoftelidelse (projicerede smerter), osteosarkom og Ewings sarkom, artralgi pga. leukæmi.
   - Handling: Røntgen af hofter bør også rekvireres ved knæsmerter hos børn. MR-scanning ved længerevarende knæsmerter på mistanke om osteochondritis dissecans.
   - Fremhæves hvis: alder=under12
@@ -247,7 +247,7 @@
   - Intraartikulær glukokortikoid giver kortvarig lindring (få uger) ved opblussen med inflammatorisk præg. Afstå fra blokade umiddelbart før henvisning mhp. protese (øget infektionsrisiko kan udskyde operation).
   - Gælder: diff-artrose
   - P: "Intraartikulær glukokortikoid."
-- **beh-artrose-roentgen** [UDKAST] kilder: lh-artrose-knae
+- **beh-artrose-roentgen** [UDKAST] kilder: lh-artrose-knae, rh-non-traumatisk
   - Konflikt: Lægehåndbogens artroseside siger både "Sikre diagnostik ved klinisk undersøgelse og røntgen" og "Røntgen foretages kun ved manglende effekt af behandling ... eller ved mistanke om anden sygdom". Lægehåndbogens menisk-side: god praksis at tilbyde stående røntgen til patienter over 40 år med mistanke om både artrose og meniskpatologi. Region Hovedstaden (non-traumatiske knælidelser): artrose bør indtænkes hos alle over 35 år, og røntgen er her indiceret som primært udredningsværktøj, ikke MR eller artroskopi.
   - Røntgen ved mistanke om artrose: stående optagelse med let flekteret knæ. Lægehåndbogen (artrose): kun ved manglende effekt af behandling mhp. operationsvurdering eller ved mistanke om anden sygdom. Diagnosen kan stilles klinisk.
   - Gælder: diff-artrose, diff-menisk

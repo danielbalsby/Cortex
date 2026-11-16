@@ -100,7 +100,7 @@
   - Tekst: Diagnostiske faldgruber: thoracic outlet syndrom, radikulopati, leukæmi, sarkom, lungetumor (Pancoast). Smerter også i nakke eller skulderbue skal primært give mistanke om cervikal lidelse.
   - Handling: Nakkesmerter med udstråling udredes for cervikal patologi. Røntgen af skulder ved mistanke om tumor eller metastase.
   - Fremhæves hvis: nakke=ja
-- **flag-septisk** [GODKENDT 2026-11-15] kilder: rh-monoartrit, lh-skuldersmerter
+- **flag-septisk** [UDKAST] kilder: rh-monoartrit, lh-skuldersmerter
   - Tekst: Septisk artrit: varmt, rødt, betydeligt hævet led, feber eller medtaget almentilstand. Disponerende: diabetes, alkohol- eller i.v.-misbrug, immunsuppression, nylig ledinjektion, alloplastik.
   - Handling: Indlægges akut i ortopædkirurgisk regi via CVI.
   - Fremhæves hvis: feber=ja ELLER roedme=ja ELLER varme=ja
@@ -120,10 +120,11 @@
   - Kalk kan ses på røntgen; akut bursit helbredes spontant inden 6 uger
   - V: "Foreneligt med akut subacromiel bursit."
 - **Kapsulit (frossen skulder)** (diff-kapsulit) [UDKAST] kilder: lh-kapsulit, lh-skuldersmerter
+  - Konflikt: Varighed: Lægehåndbogen, Kapsulit (2024) skriver cirka 1–3 år; Lægehåndbogen, Skuldersmerter (2019) skriver, at kapsulit helbredes spontant i løbet af 1–2 år. Teksten følger den nyeste side.
   - Svære smerter dag og nat uden udløsende årsag; efter et par måneder stivhed
   - Nedsat aktiv og passiv bevægelighed, særligt udadrotation (kapsulært mønster)
   - Normal kraft inden for bevægeudslaget; isometrisk test giver ikke væsentlig smerteforværring
-  - Selvlimiterende over 1–2 år; let at overdiagnosticere
+  - Selvlimiterende; varer cirka 1–3 år; let at overdiagnosticere
   - V: "Foreneligt med kapsulit (frossen skulder)."
 - **Traumatisk rotator cuff-ruptur** (diff-traumatisk-cuff) [UDKAST] kilder: rh-rotatorcuff, lh-rotatorcuff
   - Relevant traume (fx fald på skulderen); oftere over 40 år
