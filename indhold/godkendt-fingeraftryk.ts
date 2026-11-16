@@ -31,7 +31,6 @@ export const GODKENDT_AFTRYK: Record<string, { dato: string; aftryk: string }> =
   "knae/flag-stor-akut-skade": { dato: "2026-11-15", aftryk: "acf5e308" },
   "knae/flag-septisk-bursit": { dato: "2026-11-15", aftryk: "fe5d7618" },
   "knae/flag-laeg-haevelse": { dato: "2026-11-15", aftryk: "dfa3befb" },
-  "knae/flag-boern": { dato: "2026-11-15", aftryk: "393b060f" },
   "ankel/flag-straks": { dato: "2026-11-15", aftryk: "f925973b" },
   "ankel/flag-fraktur": { dato: "2026-11-15", aftryk: "c1c75bf8" },
   "ankel/flag-akilles": { dato: "2026-11-15", aftryk: "844f31bf" },

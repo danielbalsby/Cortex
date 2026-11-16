@@ -175,7 +175,7 @@ export const CASES: Case[] = [
     type: "rødt flag",
     trin: [
       ["side", "venstre"], ["debut", "akut"], ["varighed", "dage"], ["traume", "ja"], ["traumemekanisme", "vrid"],
-      ["haevelse-straks", "ja"], ["knaek", "ja"], ["alder", "12til50"], ["belastning", "reduceret"],
+      ["haevelse-straks", "ja"], ["knaek", "ja"], ["alder", "18til50"], ["belastning", "reduceret"],
       ["haevelse", "moderat"], ["stabilitet", "instabil"], ["patellaoemhed", "nej"], ["fibulaoemhed", "nej"],
       ["fleksion90", "ja"], ["skridt", "ja"], ["benloeft", "ja"]
     ],
