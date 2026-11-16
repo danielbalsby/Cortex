@@ -33,4 +33,11 @@ export const GODKENDT_AFTRYK: Record<string, { dato: string; aftryk: string }> =
   "ankel/flag-syndesmose": { dato: "2026-11-15", aftryk: "9dd0e88b" },
   "ankel/flag-neuropati": { dato: "2026-11-15", aftryk: "15ce4786" },
   "ankel/flag-stressfraktur": { dato: "2026-11-15", aftryk: "ff3915a8" },
+  // Godkendt af lægen enkeltvis 2026-11-16 (besked, der nævner hvert flag):
+  "skulder/flag-septisk": { dato: "2026-11-16", aftryk: "81d17e9b" },
+  "ankel/flag-artrit": { dato: "2026-11-16", aftryk: "ab3a46c9" },
+  "knae/flag-boern": { dato: "2026-11-16", aftryk: "da23b847" },
+  "knae/flag-aflaast-knae": { dato: "2026-11-16", aftryk: "bda2a64d" },
+  "albue/flag-septisk": { dato: "2026-11-16", aftryk: "9ee870e8" },
+  "albue/flag-septisk-bursit": { dato: "2026-11-16", aftryk: "832a618f" },
 };

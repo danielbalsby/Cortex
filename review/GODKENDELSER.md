@@ -61,3 +61,18 @@ godkendelse?: { dato: string; af: "laegen"; besked: string; aendretSiden?: strin
 **Opdateret 2026-11-16 (senere):** skulder `flag-septisk`, ankel `flag-artrit` og knæ `flag-boern` er sat til UDKAST og fjernet fra fingeraftrykket, fordi deres betingelse blev ændret på generel tilladelse. Der er nu 34 GODKENDT-flag. Tabellen ovenfor viser tilstanden før denne ændring.
 
 **Opdateret igen 2026-11-16:** efter #50 (aflåst knæ) og #51 (albue septisk artrit og septisk bursit) er der nu **31 GODKENDT-flag og 6 UDKAST** – se listen i `docs/TIL-DANIEL.md`.
+
+## Godkendt af Daniel enkeltvis 16.11.2026
+
+Besked fra dig 2026-11-16, der nævner hvert flag for sig ("Jeg har læst kilden til hvert af disse og nævner dem enkeltvis"). Status sat til GODKENDT med `godkendtDato: "2026-11-16"` og fingeraftryk i `indhold/godkendt-fingeraftryk.ts`. Ingen tekst, handling, betingelse eller kilde er ændret i samme omgang.
+
+| Region | Flag | Din formulering | Fingeraftryk |
+|---|---|---|---|
+| skulder | `flag-septisk` | "godkend skulder septisk-flag" | 81d17e9b |
+| ankel | `flag-artrit` | "godkend ankel artrit-flag (teksten efter #56, med feber)" | ab3a46c9 |
+| knae | `flag-boern` | "godkend knæ børneflag" | da23b847 |
+| knae | `flag-aflaast-knae` | "godkend knæ aflåst-flag" | bda2a64d |
+| albue | `flag-septisk` | "godkend albue septisk-flag" | 9ee870e8 |
+| albue | `flag-septisk-bursit` | "godkend albue bursit-flag" | 832a618f |
+
+**Status nu:** alle 37 røde flag er GODKENDT. Ingen er sat til GODKENDT på generel tilladelse.

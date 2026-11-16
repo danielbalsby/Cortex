@@ -388,8 +388,9 @@ export const ankel: Region = {
       // 2026-11-16 (lægens afgørelse 3): feber er en ekstra mulighed (ELLER), aldrig et krav.
       fremhaevHvis: [[{ felt: "roedme", er: "ja" }], [{ felt: "varme", er: "ja" }], [{ felt: "feber", er: "ja" }]],
       kilder: ["lh-ankelsmerter", "rh-monoartrit"],
-      // 2026-11-16: betingelsen blev ændret på generel tilladelse → UDKAST, til lægen godkender flaget enkeltvis.
-      status: "UDKAST"
+      // 2026-11-16: betingelsen blev ændret på generel tilladelse → UDKAST. Godkendt af lægen enkeltvis 2026-11-16.
+      status: "GODKENDT",
+      godkendtDato: "2026-11-16"
     },
     {
       id: "flag-neuropati",

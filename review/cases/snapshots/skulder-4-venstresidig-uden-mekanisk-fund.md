@@ -31,7 +31,7 @@ O: Fuld aktiv bevægelighed. Fuld passiv bevægelighed. Ingen smertebue. Negativ
 - [ikke opfyldt af registreret] Traumatisk rotator cuff-ruptur (tidskritisk) (flag-traumatisk-cuff, GODKENDT)
 - [ikke vurderet] Over 40 år efter skulderluksation (flag-cuff-efter-luksation, GODKENDT)
 - [ikke opfyldt af registreret] Diagnostiske faldgruber (flag-faldgruber, GODKENDT)
-- [ikke vurderet] Septisk artrit (flag-septisk, UDKAST)
+- [ikke vurderet] Septisk artrit (flag-septisk, GODKENDT)
 
 ## Differentialdiagnoser (13, statisk liste)
 
