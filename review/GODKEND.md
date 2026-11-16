@@ -1,5 +1,7 @@
 # Til godkendelse – klinisk tekst og betingelser
 
+> **Besluttet 2026-11-16:** lægen gav Claude lov til at godkende. Gennemført: **A2, B (med B9-alt), C1, C2, C3, D1, D2**; E: intet. Ét commit pr. bogstav på branch `fase2/fable`. Knæets fraktur-flag er nu **UDKAST** og venter på lægens egen godkendelse – Claude sætter ikke GODKENDT. F (manglende indhold) er ikke gjort: det kræver lægens formulering.
+
 Alt her kræver din godkendelse, før jeg ændrer indholdsfilerne. Hvert punkt er færdigt formuleret. Svar fx: **"Godkend A2, B, C, D"** eller "Godkend B undtagen B5". Det, du godkender, implementerer jeg som ét trin pr. bogstav. Snapshots i `review/cases` ændres bevidst, og jeg viser forskellen.
 
 ---
