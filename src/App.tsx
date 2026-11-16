@@ -16,6 +16,8 @@ import { tolkTast, type Fokus, type Skaerm } from "./tast";
 
 const NULSTIL_VINDUE_MS = 1000;
 
+type Tilstand = { svar: Svar; valgte: string[]; nSat: string[] };
+
 // "eksempel" er ikke en klinisk region. Den viser kun, hvordan panelet ser ud (tast 0).
 type Aaben = RegionId | "eksempel" | "gennemgang";
 
@@ -33,9 +35,11 @@ export function App() {
   const [kopiStatus, setKopiStatus] = useState<KopiStatus>("");
   const sidsteEsc = useRef(0);
   // Tidligere tilstande i den aktuelle region, så Ctrl+Z kan fortryde. Kun i hukommelsen.
-  const [historik, setHistorik] = useState<{ svar: Svar; valgte: string[] }[]>([]);
+  const [historik, setHistorik] = useState<Tilstand[]>([]);
+  // Felter, som N har udfyldt, og som lægen ikke har rørt siden. Vises afvigende på knapperne.
+  const [nSat, setNSat] = useState<string[]>([]);
   // Den konsultation, der blev ryddet ved Esc Esc eller regionsskift – kan hentes tilbage med Ctrl+Z.
-  const ryddet = useRef<{ region: Aaben; svar: Svar; valgte: string[]; historik: { svar: Svar; valgte: string[] }[] } | null>(null);
+  const ryddet = useRef<(Tilstand & { region: Aaben; historik: Tilstand[] }) | null>(null);
 
   const indhold = hentIndhold(region);
   const aktiv = region === "eksempel" ? eksempel : REGIONER.find((item) => item.id === region);
@@ -47,17 +51,18 @@ export function App() {
   // Skift af region rydder altid svarene: et notat hører til én region.
   function vaelgRegion(id: Aaben | undefined) {
     const nyt = hentIndhold(id);
-    if (region && (Object.keys(svar).length > 0 || valgte.length > 0)) ryddet.current = { region, svar, valgte, historik };
+    if (region && (Object.keys(svar).length > 0 || valgte.length > 0)) ryddet.current = { region, svar, valgte, nSat, historik };
     setRegion(id);
     setSvar({});
     setValgte([]);
+    setNSat([]);
     setHistorik([]);
     setKopiStatus("");
     setAktivFelt(nyt ? naboFelt(nyt, {}, undefined, 1) : undefined);
   }
 
   function husk() {
-    setHistorik((h) => [...h.slice(-49), { svar, valgte }]);
+    setHistorik((h) => [...h.slice(-49), { svar, valgte, nSat }]);
   }
 
   function fortryd() {
@@ -69,6 +74,7 @@ export function App() {
       setRegion(gammel.region);
       setSvar(gammel.svar);
       setValgte(gammel.valgte);
+      setNSat(gammel.nSat);
       setHistorik(gammel.historik);
       setKopiStatus("");
       const genskabt = hentIndhold(gammel.region);
@@ -78,12 +84,18 @@ export function App() {
     setHistorik((h) => h.slice(0, -1));
     setSvar(forrige.svar);
     setValgte(forrige.valgte);
+    setNSat(forrige.nSat);
     setKopiStatus("");
   }
 
-  function opdaterSvar(naeste: Svar) {
+  function opdaterSvar(naeste: Svar, fraN = false) {
     if (naeste === svar) return;
     husk();
+    // Felter, hvis svar ændres nu: N-satte felter tilføjes; rører lægen et felt, er det ikke længere N-sat.
+    const aendret = [...new Set([...Object.keys(svar), ...Object.keys(naeste)])].filter(
+      (id) => JSON.stringify(svar[id]) !== JSON.stringify(naeste[id])
+    );
+    setNSat((nu) => (fraN ? [...new Set([...nu, ...aendret])] : nu.filter((id) => !aendret.includes(id))));
     setSvar(naeste);
     setKopiStatus(""); // kvitteringen gælder kun det notat, der blev kopieret
   }
@@ -157,7 +169,7 @@ export function App() {
           fortryd();
           return;
         case "normal":
-          if (indhold) opdaterSvar(udfyldNormale(indhold, svar));
+          if (indhold) opdaterSvar(udfyldNormale(indhold, svar), true);
           return;
       }
     }
@@ -208,6 +220,7 @@ export function App() {
               </p>
             )}
             <Felter
+              nSat={nSat}
               region={indhold}
               svar={svar}
               aktivFelt={aktivFelt}

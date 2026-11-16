@@ -129,6 +129,8 @@ kbd {
   font: inherit;
   color: inherit;
 }
+.chip.valgt.afN { border-style: dashed; background: var(--flade); font-weight: 400; }
+.nMaerke { margin-left: 5px; padding: 0 4px; border: 1px solid currentColor; border-radius: 3px; font-size: 0.7rem; font-weight: 700; }
 .kunFlag { display: block; font-size: 0.72rem; color: var(--daempet); }
 .skjultBesked { margin: 0 0 10px; padding: 6px 10px; border: 1px solid #c9b458; border-left-width: 4px; border-radius: 6px; background: #fbf6dc; font-size: 0.88rem; }
 .fortryd { margin-left: 8px; padding: 1px 8px; border: 1px solid var(--tekst); border-radius: 5px; background: var(--flade); font-size: 0.85rem; }
