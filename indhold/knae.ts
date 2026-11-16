@@ -108,6 +108,7 @@ export const knae: Region = {
           id: "alder",
           label: "Alder",
           type: "enkelt",
+          kunTilFlag: true, // bruges til røde flag; alderen står i journalen (review/GODKEND.md D)
           // Vises altid (review/GODKEND.md C3): bruges også til flaget om børn.
           valg: [
             { id: "under12", label: "Under 12", notat: "Alder under 12 år." },
@@ -285,7 +286,6 @@ export const knae: Region = {
         "traumemekanisme",
         "haevelse-straks",
         "knaek",
-        "alder",
         "belastning",
         "laasning",
         "feber",

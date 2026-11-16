@@ -26,7 +26,7 @@ Afkrydset (V/P): diff-acl, hen-akut-traume
 ## Notat
 
 ```
-S: Venstresidige knæsmerter. Akut debut. Varighed få dage. Forudgående traume. Traume ved vrid. Hævelse opstod umiddelbart efter traumet. Hørt eller følt et knæk ved traumet. Alder 12–50 år. Reduceret belastningsevne.
+S: Venstresidige knæsmerter. Akut debut. Varighed få dage. Forudgående traume. Traume ved vrid. Hævelse opstod umiddelbart efter traumet. Hørt eller følt et knæk ved traumet. Reduceret belastningsevne.
 O: Moderat hævelse. Klinisk mistanke om instabilitet. Ingen direkte ømhed på patella. Ingen ømhed på caput fibulae. Kan flektere knæet til 90 grader. Går fire vægtbærende skridt ved undersøgelsen. Kan løfte strakt ben mod tyngdekraften.
 V: Foreneligt med skade på forreste korsbånd.
 P: Henvist akut til CVI.

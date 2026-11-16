@@ -20,7 +20,7 @@
 ## Notat
 
 ```
-S: Venstresidige skuldersmerter. Alder 40–75 år. Spontant opståede gener. Varighed få dage. Hvilesmerter og natlige smerter. Ingen nakkesmerter eller udstråling.
+S: Venstresidige skuldersmerter. Spontant opståede gener. Varighed få dage. Hvilesmerter og natlige smerter. Ingen nakkesmerter eller udstråling.
 O: Fuld aktiv bevægelighed. Fuld passiv bevægelighed. Ingen smertebue. Negativ Hawkins' og Neer's test. Normal kraft i rotator cuffen. AC-leddet uømt, negativ crossover-test.
 ```
 

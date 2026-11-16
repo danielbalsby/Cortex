@@ -38,6 +38,7 @@ export const skulder: Region = {
           id: "alder",
           label: "Alder",
           type: "enkelt",
+          kunTilFlag: true, // bruges til røde flag; alderen står i journalen (review/GODKEND.md D)
           valg: [
             { id: "under40", label: "Under 40", notat: "Alder under 40 år." },
             { id: "40til75", label: "40–75", notat: "Alder 40–75 år." },
@@ -244,7 +245,7 @@ export const skulder: Region = {
   notat: [
     {
       overskrift: "S",
-      felter: ["side", "alder", "debut", "traumetype", "varighed", "nat", "luksationer", "nakke", "arbejde", "feber", "anamnese-tekst"]
+      felter: ["side", "debut", "traumetype", "varighed", "nat", "luksationer", "nakke", "arbejde", "feber", "anamnese-tekst"]
     },
     {
       overskrift: "O",

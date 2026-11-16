@@ -16,7 +16,7 @@
 ## Notat
 
 ```
-S: Højresidige skuldersmerter. Alder over 75 år. Spontant opståede gener. Varighed få dage. Hvilesmerter og natlige smerter. Feber siden i går.
+S: Højresidige skuldersmerter. Spontant opståede gener. Varighed få dage. Hvilesmerter og natlige smerter. Feber siden i går.
 O: Nedsat aktiv bevægelighed. Nedsat passiv bevægelighed.
 ```
 

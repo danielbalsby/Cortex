@@ -13,7 +13,7 @@
 ## Notat
 
 ```
-S: Højresidige knæsmerter. Gradvist indsættende. Varighed flere uger. Intet traume. Alder under 12 år.
+S: Højresidige knæsmerter. Gradvist indsættende. Varighed flere uger. Intet traume.
 ```
 
 ## Røde flag (10, alle vises altid)

@@ -61,7 +61,7 @@ describe("knæ-reglerne for akut røntgen", () => {
     svar = vaelg(svar, "traume", "ja");
     svar = vaelg(svar, "alder", "over55");
     svar = vaelg(svar, "fibulaoemhed", "ja");
-    expect(bygNotat(knae, svar)).toBe("S: Forudgående traume. Alder over 55 år.\nO: Ømhed på caput fibulae.");
+    expect(bygNotat(knae, svar)).toBe("S: Forudgående traume.\nO: Ømhed på caput fibulae."); // alder står ikke i notatet (D)
     svar = vaelg(svar, "traume", "nej");
     expect(synligeSvar(knae, svar)).toEqual({ traume: "nej", alder: "over55" });
   });

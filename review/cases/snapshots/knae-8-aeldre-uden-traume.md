@@ -13,7 +13,7 @@
 ## Notat
 
 ```
-S: Venstresidige knæsmerter. Gradvist indsættende. Varighed flere måneder. Intet traume. Alder over 55 år.
+S: Venstresidige knæsmerter. Gradvist indsættende. Varighed flere måneder. Intet traume.
 ```
 
 ## Røde flag (10, alle vises altid)

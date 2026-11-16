@@ -120,6 +120,7 @@ function FeltRaekke({
     >
       <span className="feltLabel" id={labelId}>
         {felt.label}
+        {felt.kunTilFlag && <span className="kunFlag">ikke i notat</span>}
       </span>
       <span className="valg">
         {(felt.valg ?? []).map((valg, index) => (

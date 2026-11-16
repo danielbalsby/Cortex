@@ -20,7 +20,7 @@ Afkrydset (V/P): diff-traumatisk-cuff, hen-traume-roentgen, hen-ul
 ## Notat
 
 ```
-S: Venstresidige skuldersmerter. Alder 40–75 år. Opstået efter traume. Fald på arm eller skulder. Varighed få dage.
+S: Venstresidige skuldersmerter. Opstået efter traume. Fald på arm eller skulder. Varighed få dage.
 O: Ingen fejlstilling. Normal sensibilitet lateralt på skulderen. Nedsat aktiv bevægelighed. Fuld passiv bevægelighed. Nedsat kraft ved isometrisk udadrotation (infraspinatus).
 V: Traumatisk rotator cuff-ruptur mistænkes.
 P: Røntgen af skulder efter traume. Henvist til ultralydsscanning af skulder.

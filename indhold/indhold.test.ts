@@ -67,10 +67,15 @@ describe.each(regioner)("indhold: $navn", (region) => {
     for (const felt of felter) tjekBetingelser(felt.visHvis, `visHvis i "${felt.id}"`);
   });
 
-  it("har en notatskabelon, hvor hvert felt indgår præcis én gang", () => {
+  it("har en notatskabelon, hvor hvert felt indgår præcis én gang (undtagen felter kun til flag)", () => {
     const iNotat = region.notat.flatMap((afsnit) => afsnit.felter);
     unikke(iNotat, "notatskabelonen");
-    expect([...iNotat].sort()).toEqual([...feltIder].sort());
+    const skalINotat = felter.filter((felt) => !felt.kunTilFlag).map((felt) => felt.id);
+    expect([...iNotat].sort()).toEqual([...skalINotat].sort());
+    for (const felt of felter.filter((item) => item.kunTilFlag)) {
+      const brugt = region.roedeFlag.some((flag) => (flag.fremhaevHvis ?? []).flat().some((b) => b.felt === felt.id));
+      expect(brugt, `"${felt.id}" er kun til flag, men fremhæver intet flag`).toBe(true);
+    }
   });
 
   it("har kilder med årstal, adresse og tjekdato", () => {

@@ -249,4 +249,10 @@ Udført uden ændring af klinisk indhold (se `review/REVIEW.md` §9):
 5. Antal UDKAST står i sektionsoverskrifterne.
 9. `V`/`P` på et fokuseret punkt skriver det i notatet.
 
-Afventer lægens godkendelse af konkret ordlyd: trin 6, 7, 8 og 10 samt knæ-frakturflagets handling – se `review/GODKEND.md`.
+Derefter (2026-11-16) – lægen gav Claude lov til at godkende forslagene i `review/GODKEND.md`. Claude valgte sine anbefalinger:
+- A2: knæets fraktur-flag gengiver knee rules og Pittsburgh hver for sig; flaget er UDKAST, til lægen godkender det.
+- B: 13 knaptekster viser hele notatpåstanden; ankel "Udtalt" skriver ikke længere "og hæmatom".
+- C: feber/rødme/varme i skulder og ankel; alder vises altid i knæ (flag om børn; fraktur-flagets aldersbetingelser kræver traume).
+- D: alder skrives ikke længere i notatet i knæ og skulder (feltet bruges kun til flag og er mærket "ikke i notat").
+- E: intet sikkerhedsnet tilføjet (kun ryg og ankel har kildeformulering, og begge har allerede et punkt).
+Claude har ikke sat noget punkt til GODKENDT; det gør kun lægen.

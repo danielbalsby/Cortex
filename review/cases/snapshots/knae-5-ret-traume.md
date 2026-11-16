@@ -14,7 +14,7 @@
 ## Notat
 
 ```
-S: Intet traume. Alder over 55 år.
+S: Intet traume.
 ```
 
 ## Røde flag (10, alle vises altid)

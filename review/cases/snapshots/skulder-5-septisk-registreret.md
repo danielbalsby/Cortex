@@ -20,7 +20,7 @@ Afkrydset (V/P): hen-septisk
 ## Notat
 
 ```
-S: Højresidige skuldersmerter. Alder over 75 år. Spontant opståede gener. Varighed få dage. Hvilesmerter og natlige smerter. Feber.
+S: Højresidige skuldersmerter. Spontant opståede gener. Varighed få dage. Hvilesmerter og natlige smerter. Feber.
 O: Rødme. Varmeøgning. Nedsat aktiv bevægelighed. Nedsat passiv bevægelighed.
 P: Henvist akut til CVI mhp. septisk artrit.
 ```
