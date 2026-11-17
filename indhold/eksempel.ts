@@ -72,6 +72,7 @@ export const eksempel: Region = {
       navn: "EKSEMPEL: godkendt punkt",
       kendetegn: ["EKSEMPEL: kendetegn 1", "EKSEMPEL: kendetegn 2"],
       notat: "Eksempel på vurdering.",
+      foreneligHvis: [[{ felt: "eksempelfelt", er: "ja" }]],
       kilder: ["eks-dansk"],
       status: "GODKENDT",
       godkendtDato: "2026-11-14"
@@ -90,6 +91,7 @@ export const eksempel: Region = {
       id: "eks-behandling-konflikt",
       tekst: "EKSEMPEL: behandling, hvor to kilder er uenige",
       gaelderFor: ["eks-diff-godkendt"],
+      forslagVed: ["eks-diff-godkendt"],
       notat: "Eksempel på plan.",
       kilder: ["eks-dansk"],
       status: "UDKAST",
@@ -106,6 +108,8 @@ export const eksempel: Region = {
       kriterier: "EKSEMPEL: kriterier for henvisning",
       hast: "subakut",
       gyldighed: "Region Hovedstaden",
+      forslagVed: ["eks-diff-godkendt"],
+      foreslaaHvis: [[{ felt: "eksempelfelt", er: "ja" }]],
       notat: "Eksempel på henvisning.",
       kilder: ["eks-dansk"],
       status: "UDKAST"

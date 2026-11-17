@@ -21,7 +21,9 @@ export type Handling =
   | { type: "tal"; tal: number }
   | { type: "normal" }
   | { type: "fortryd" }
-  | { type: "tilNotat" };
+  | { type: "tilNotat" }
+  | { type: "tagForslag" }
+  | { type: "tilDiagnoser" };
 
 const INGEN: Handling = { type: "ingen" };
 
@@ -51,6 +53,9 @@ export function tolkTast(tast: Tast, fokus: Fokus, skaerm: Skaerm): Handling {
   // beslutningsstøtten må tasterne aldrig ændre felterne til venstre.
   // V/P på et fokuseret punkt i beslutningsstøtten tilføjer eller fjerner det i notatet.
   if ((fokus === "egen" || fokus === "panel") && ["v", "V", "p", "P"].includes(tast.key)) return { type: "tilNotat" };
+  // A tager "Forslag til plan" med i P (ét tryk, én fortryd); D flytter fokus til de forenelige diagnoser.
+  if (fokus !== "tekst" && (tast.key === "a" || tast.key === "A")) return { type: "tagForslag" };
+  if (fokus !== "tekst" && (tast.key === "d" || tast.key === "D")) return { type: "tilDiagnoser" };
   if (fokus === "egen" || fokus === "panel") return INGEN;
 
   if (tast.key === "ArrowDown" || tast.key === "Enter") return { type: "flyt", retning: 1 };

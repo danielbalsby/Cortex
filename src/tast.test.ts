@@ -89,3 +89,21 @@ describe("tolkTast – overalt", () => {
     expect(tolkTast({ key: "4" }, "felt", "gennemgang")).toEqual({ type: "ingen" });
   });
 });
+
+describe("tolkTast – forslag", () => {
+  it("A tager planforslag med, D går til forenelige diagnoser – fra felter, panel og knapper", () => {
+    for (const fokus of ["felt", "panel", "egen"] as const) {
+      expect(tolkTast({ key: "a" }, fokus, "region")).toEqual({ type: "tagForslag" });
+      expect(tolkTast({ key: "A" }, fokus, "region")).toEqual({ type: "tagForslag" });
+      expect(tolkTast({ key: "d" }, fokus, "region")).toEqual({ type: "tilDiagnoser" });
+    }
+  });
+
+  it("ikke i tekstfelter, ikke på startskærm eller i gennemgang, og ikke som holdt tast", () => {
+    expect(tolkTast({ key: "a" }, "tekst", "region")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "d" }, "tekst", "region")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "a" }, "felt", "start")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "a" }, "felt", "gennemgang")).toEqual({ type: "ingen" });
+    expect(tolkTast({ key: "a", repeat: true }, "felt", "region")).toEqual({ type: "ingen" });
+  });
+});

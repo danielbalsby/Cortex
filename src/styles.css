@@ -277,3 +277,14 @@ kbd {
   .notatTekst { max-height: 22vh; }
   .top .hint { display: none; }
 }
+
+/* Forslag: forenelige diagnoser og planforslag. Accentfarve (ikke advarselsrød) – det er forslag, ikke alarmer. */
+.forslag { border: 1px solid var(--accent); border-radius: 6px; padding: 0.4rem 0.6rem 0.5rem; margin: 0.6rem 0; background: var(--flade); }
+.forslag h2 { margin-top: 0.1rem; }
+.forslag .gruppeTitel { color: var(--accent); }
+.punkt.forenelig { border-color: var(--accent); }
+.passerMed { color: var(--daempet); font-weight: 400; font-size: 0.85rem; }
+.planForslag { list-style: none; margin: 0.3rem 0; }
+.planForslag ul { margin: 0.2rem 0 0.3rem 1.1rem; padding: 0; font-size: 0.9rem; }
+.tagForslag { background: var(--accent); color: #fff; border: 0; border-radius: 4px; padding: 0.3rem 0.7rem; font: inherit; font-weight: 600; cursor: pointer; }
+.tagForslag kbd { margin-left: 0.3rem; }

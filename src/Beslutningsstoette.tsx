@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import type { Kilde, Kildebelagt, Region, Svar } from "../indhold/typer";
 import { sorterFlag, type FlagStatus } from "../lib/flag";
+import { foreneligeDiagnoser, planForslag } from "../lib/forslag";
 
 // Viser regionens kliniske punkter præcis som de står i indholdsfilen.
 // Komponenten indeholder ingen klinisk tekst og drager ingen konklusioner.
@@ -12,9 +13,10 @@ type Props = {
   svar: Svar;
   valgte: readonly string[];
   onVaelg: (id: string) => void;
+  onTagForslag: (ids: string[]) => void;
 };
 
-export function Beslutningsstoette({ region, svar, valgte, onVaelg }: Props) {
+export function Beslutningsstoette({ region, svar, valgte, onVaelg, onTagForslag }: Props) {
   const kilder = new Map(region.kilder.map((kilde) => [kilde.id, kilde]));
   const diagnoseNavn = new Map(region.differentialdiagnoser.map((diff) => [diff.id, diff.navn]));
   const valgteDiagnoser = region.differentialdiagnoser.filter((diff) => valgte.includes(diff.id)).map((diff) => diff.id);
@@ -56,6 +58,33 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg }: Props) {
     </Punkt>
   );
 
+  const forenelige = foreneligeDiagnoser(region, svar);
+  const plan = planForslag(region, svar, valgte);
+  const punktNavn = (id: string) => {
+    const beh = region.behandling.find((b) => b.id === id);
+    if (beh) return beh.tekst;
+    const hen = region.henvisning.find((h) => h.id === id);
+    return hen ? `${hen.til}${hen.hast ? ` · ${hen.hast}` : ""}` : id;
+  };
+  const henvisningPunkt = (henvisning: Region["henvisning"][number]) => (
+    <Punkt
+      key={henvisning.id}
+      punkt={henvisning}
+      kilder={kilder}
+      titel={
+        <strong>
+          {henvisning.til}
+          {henvisning.hast && <span className="hast"> · {henvisning.hast}</span>}
+        </strong>
+      }
+      valg={{ label: "P", valgt: valgte.includes(henvisning.id), onVaelg: () => onVaelg(henvisning.id) }}
+    >
+      <span>{henvisning.kriterier}</span>
+      <span className="kendetegn">Gælder: {henvisning.gyldighed}</span>
+    </Punkt>
+  );
+  const visForslag = forenelige.length > 0 || plan.forslag.length > 0 || plan.vurder.length > 0;
+
   return (
     <div className="stoette" key={region.id}>
       <section>
@@ -75,6 +104,61 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg }: Props) {
           </ul>
         )}
       </section>
+
+      {visForslag && (
+        <section className="forslag" aria-label="Forslag">
+          <h2>
+            Forslag <span className="gruppeHint">Cortex foreslår – lægen vurderer og har ansvaret</span>
+          </h2>
+          <ul className="punkter">
+            {forenelige.length > 0 && (
+              <li className="gruppeTitel">
+                Forenelig med dine fund ({forenelige.length}) <span className="gruppeHint"><kbd>D</kbd> gå hertil · <kbd>V</kbd> til vurdering</span>
+              </li>
+            )}
+            {forenelige.map((f) => {
+              const diff = region.differentialdiagnoser.find((d) => d.id === f.id)!;
+              return (
+                <Punkt
+                  key={f.id}
+                  punkt={diff}
+                  kilder={kilder}
+                  klasse="forenelig"
+                  titel={
+                    <span className="laangTitel">
+                      <strong>{f.navn}</strong> <span className="passerMed">· {f.passerMed.join(", ")}</span>
+                    </span>
+                  }
+                  valg={{ label: "V", valgt: valgte.includes(f.id), onVaelg: () => onVaelg(f.id) }}
+                >
+                  {diff.kendetegn.length > 0 && <span className="kendetegn">{diff.kendetegn.join(" · ")}</span>}
+                  <span className="flagStatus">
+                    Fremhævet, fordi dine fund passer med kildens beskrivelse. Det er et forslag, ikke en diagnose; andre
+                    diagnoser er ikke udelukket.
+                  </span>
+                </Punkt>
+              );
+            })}
+            {plan.forslag.length > 0 && (
+              <li className="planForslag">
+                <span className="gruppeTitel">Forslag til plan for valgt diagnose</span>
+                <ul>
+                  {plan.forslag.map((id) => (
+                    <li key={id}>{punktNavn(id)}</li>
+                  ))}
+                </ul>
+                <button className="tagForslag" onClick={() => onTagForslag(plan.forslag)}>
+                  Tag med i P <kbd>A</kbd>
+                </button>
+              </li>
+            )}
+            {plan.vurder.length > 0 && (
+              <li className="gruppeTitel">Henvisning til valgt diagnose – vurder kriterierne</li>
+            )}
+            {plan.vurder.map((id) => henvisningPunkt(region.henvisning.find((h) => h.id === id)!))}
+          </ul>
+        </section>
+      )}
 
       <Sektion titel="Differentialdiagnoser" antal={antalTekst(region.differentialdiagnoser)} hint="V = til vurdering i notatet">
         {region.differentialdiagnoser.map((diff) => (
@@ -107,23 +191,7 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg }: Props) {
       </Sektion>
 
       <Sektion titel="Henvisning" antal={antalTekst(region.henvisning)} hint="P = til plan i notatet">
-        {region.henvisning.map((henvisning) => (
-          <Punkt
-            key={henvisning.id}
-            punkt={henvisning}
-            kilder={kilder}
-            titel={
-              <strong>
-                {henvisning.til}
-                {henvisning.hast && <span className="hast"> · {henvisning.hast}</span>}
-              </strong>
-            }
-            valg={{ label: "P", valgt: valgte.includes(henvisning.id), onVaelg: () => onVaelg(henvisning.id) }}
-          >
-            <span>{henvisning.kriterier}</span>
-            <span className="kendetegn">Gælder: {henvisning.gyldighed}</span>
-          </Punkt>
-        ))}
+        {region.henvisning.map(henvisningPunkt)}
       </Sektion>
     </div>
   );
