@@ -10,7 +10,7 @@ import { udfyldNormale } from "./tastatur";
 // Lægen godkender tabellen; ændres betingelserne i indhold/knae.ts, fejler testen med scenariets navn.
 
 const svar = (trin: [string, string][]): Svar =>
-  synligeSvar(knae, trin.reduce<Svar>((s, [felt, v]) => saetSvar(knae, s, felt, v), {}));
+  synligeSvar(knae, trin.reduce<Svar>((s, [felt, v]) => saetSvar(knae, s, felt, felt === "smertested" ? [v] : v), {}));
 const forenelige = (trin: [string, string][]) => foreneligeDiagnoser(knae, svar(trin)).map((d) => d.id).sort();
 
 const TABEL: { navn: string; trin: [string, string][]; diagnoser: string[] }[] = [
@@ -26,7 +26,14 @@ const TABEL: { navn: string; trin: [string, string][]; diagnoser: string[] }[] =
   { navn: "feber alene", trin: [["feber", "ja"]], diagnoser: ["diff-bakteriel-artrit"] },
   { navn: "rødme og varme uden hævelse", trin: [["roedme", "ja"], ["varme", "ja"]], diagnoser: ["diff-bursit"] },
   { navn: "rødme, varme og moderat hævelse", trin: [["roedme", "ja"], ["varme", "ja"], ["haevelse", "moderat"]], diagnoser: ["diff-bakteriel-artrit", "diff-bursit"] },
-  { navn: "barn under 12", trin: [["alder", "under12"]], diagnoser: ["diff-henfoert"] }
+  { navn: "barn under 12", trin: [["alder", "under12"]], diagnoser: ["diff-henfoert"] },
+  { navn: "smerter fortil, intet traume", trin: [["smertested", "fortil"], ["traume", "nej"]], diagnoser: ["diff-patellofemoralt", "diff-tendinopati"] },
+  { navn: "smerter fortil efter traume", trin: [["smertested", "fortil"], ["traume", "ja"]], diagnoser: ["diff-patellofemoralt"] },
+  { navn: "13-årig, smerter fortil, intet traume", trin: [["smertested", "fortil"], ["traume", "nej"], ["alder", "12til17"]], diagnoser: ["diff-apofysit", "diff-henfoert", "diff-patellofemoralt", "diff-tendinopati"] },
+  { navn: "smerter i knæhasen", trin: [["smertested", "bagtil"]], diagnoser: ["diff-baker"] },
+  { navn: "smerter lateralt, intet traume", trin: [["smertested", "lateralt"], ["traume", "nej"]], diagnoser: ["diff-tendinopati"] },
+  { navn: "smerter medialt alene", trin: [["smertested", "medialt"]], diagnoser: [] },
+  { navn: "smerter fortil med rødme", trin: [["smertested", "fortil"], ["roedme", "ja"]], diagnoser: ["diff-bursit", "diff-patellofemoralt"] }
 ];
 
 describe.each(TABEL)("knæ, forenelige diagnoser: $navn", ({ trin, diagnoser }) => {

@@ -62,6 +62,19 @@ export const knae: Region = {
           ]
         },
         {
+          // 2026-11-17 (lægens valg A): smertested, så diagnoser, LH Knæsmerter sorterer efter lokalisation
+          // ("Forreste knæsmerter" / "Laterale, mediale og bagerste knæsmerter"), kan fremhæves.
+          id: "smertested",
+          label: "Smertested",
+          type: "flere",
+          valg: [
+            { id: "fortil", label: "Fortil/patella", notat: "Smerter fortil i knæet." },
+            { id: "medialt", label: "Medialt", notat: "Smerter medialt i knæet." },
+            { id: "lateralt", label: "Lateralt", notat: "Smerter lateralt i knæet." },
+            { id: "bagtil", label: "Knæhase", notat: "Smerter i knæhasen." }
+          ]
+        },
+        {
           id: "traume",
           label: "Traume",
           type: "enkelt",
@@ -285,6 +298,7 @@ export const knae: Region = {
         "side",
         "debut",
         "varighed",
+        "smertested",
         "traume",
         "traumemekanisme",
         "haevelse-straks",
@@ -705,6 +719,12 @@ export const knae: Region = {
         "Få eller ingen specifikke objektive fund; eksklusionsdiagnose"
       ],
       notat: "Foreneligt med patellofemoralt smertesyndrom.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Knæsmerter (opd. 12.08.2026), "Forreste knæsmerter": "Patellofemoralt smertesyndrom … Forreste knæsmerter, stivhed, låsningstendens".
+      // LH Patellofemoralt syndrom (opd. 17.08.2026): "Lokalisation I reglen bagved, rundt om eller under patella".
+      foreneligHvis: [
+        [{ felt: "smertested", er: "fortil" }]
+      ],
       kilder: ["lh-patellofemoralt", "lh-knaesmerter"],
       status: "UDKAST"
     },
@@ -731,9 +751,14 @@ export const knae: Region = {
       ],
       notat: "Foreneligt med overbelastningsbetinget tendinopati.",
       // Forenelig med (læst 2026-11-17):
-      // LH Knæsmerter (opd. 12.08.2026): "Laterale ledlinje: … Langdistanceknæ, Popliteustendinit". Øvrige tendinopatier (patellar, anserinus) kræver smertelokalisation, som ikke kan registreres.
+      // LH Knæsmerter (opd. 12.08.2026): "Laterale ledlinje: … Langdistanceknæ, Popliteustendinit". Anserinustendinit (medialt) er ikke koblet: kilden nævner både traume og uvant belastning.
+      // Smertested (læst 2026-11-17):
+      // LH Knæsmerter (opd. 12.08.2026): patellatendinit under "Forreste knæsmerter" ("smerter lokaliseret til patellas nedre pol"); "Tractus iliotibialis friktionssyndrom … laterale knæsmerter"; "Popliteustendinit … bagerste knæsmerter"; ved intet traume "tænk … Tendinit".
       foreneligHvis: [
-        [{ felt: "ledlinje", er: "lateral" }]
+        [{ felt: "ledlinje", er: "lateral" }],
+        [{ felt: "smertested", er: "fortil" }, { felt: "traume", er: "nej" }],
+        [{ felt: "smertested", er: "lateralt" }, { felt: "traume", er: "nej" }],
+        [{ felt: "smertested", er: "bagtil" }, { felt: "traume", er: "nej" }]
       ],
       kilder: ["lh-knaesmerter"],
       status: "UDKAST"
@@ -750,8 +775,11 @@ export const knae: Region = {
       notat: "Foreneligt med bursit.",
       // Forenelig med (læst 2026-11-17):
       // LH Knæsmerter (opd. 12.08.2026), Knæbursit: "Hævelse, ømhed, varme og rødme foran eller nedenfor patella". Lokalisationen kan ikke registreres; "Den vigtigste differentialdiagnose er ansamling og infektion i selve knæleddet".
+      // Smertested (læst 2026-11-17): LH Knæsmerter: "Hævelse, ømhed, varme og rødme foran eller nedenfor patella".
       foreneligHvis: [
-        [{ felt: "roedme", er: "ja" }, { felt: "varme", er: "ja" }]
+        [{ felt: "roedme", er: "ja" }, { felt: "varme", er: "ja" }],
+        [{ felt: "smertested", er: "fortil" }, { felt: "roedme", er: "ja" }],
+        [{ felt: "smertested", er: "fortil" }, { felt: "varme", er: "ja" }]
       ],
       kilder: ["lh-bursit", "lh-knaesmerter"],
       status: "UDKAST"
@@ -765,6 +793,12 @@ export const knae: Region = {
         "Associeret med inflammatoriske knælidelser, menisklæsioner og artrose"
       ],
       notat: "Foreneligt med Bakers cyste.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Bakers cyste (opd. 17.08.2026): "Stramning og evt. smerter i knæhasen".
+      // LH Knæsmerter (opd. 12.08.2026): "Ruptur af cysten kan give pludselige stærke smerter i knæhasen, som kan minde om DVT".
+      foreneligHvis: [
+        [{ felt: "smertested", er: "bagtil" }]
+      ],
       kilder: ["lh-baker"],
       status: "UDKAST"
     },
@@ -845,6 +879,13 @@ export const knae: Region = {
         "Aktivitetsrelaterede smerter; palpationsømhed og ofte hævelse ved tuberositas tibiae eller apex patellae"
       ],
       notat: "Foreneligt med traktionsapofysit.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Knæsmerter (opd. 12.08.2026), "Forreste knæsmerter": "Osgood-Schlatters sygdom optræder i 10-15 års alderen, Sinding-Larsens sygdom nogle år tidligere"; "Aktivitetsrelaterede smerter i de angivne områder" (tuberositas tibiae / apex patellae).
+      // Aldersfelterne passer ikke præcist: 16–17 år kommer med i 12–17, og under 10 år i under 12.
+      foreneligHvis: [
+        [{ felt: "smertested", er: "fortil" }, { felt: "alder", er: "under12" }],
+        [{ felt: "smertested", er: "fortil" }, { felt: "alder", er: "12til17" }]
+      ],
       kilder: ["lh-knaesmerter"],
       status: "UDKAST"
     },

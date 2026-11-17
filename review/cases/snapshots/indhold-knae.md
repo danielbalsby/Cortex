@@ -15,6 +15,11 @@
   - Dage → "Varighed få dage."
   - Uger → "Varighed flere uger."
   - Måneder → "Varighed flere måneder."
+- **Smertested** (smertested, flere)
+  - Fortil/patella → "Smerter fortil i knæet."
+  - Medialt → "Smerter medialt i knæet."
+  - Lateralt → "Smerter lateralt i knæet."
+  - Knæhase → "Smerter i knæhasen."
 - **Traume** (traume, enkelt)
   - Nej → "Intet traume."
   - Ja → "Forudgående traume."
