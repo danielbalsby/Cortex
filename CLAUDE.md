@@ -16,7 +16,7 @@ For den valgte region, i ét flow:
 - Fra regionsvalg til brugbart output: under 10 sekunder. Alt skal kunne betjenes med tastatur.
 - Det enkleste, der virker, slår det mest komplette. Foreslå ikke nye frameworks, database eller backend, medmindre det løser et konkret problem bedre end det, der findes.
 - Slet ingen filer eller mapper. Det, der ikke længere hører til, flyttes til `arkiv/` og listes for brugeren.
-- Notatet indeholder kun det, lægen aktivt har valgt. Tomt input giver tomt notat. Ingen forudfyldte værdier.
+- Notatet indeholder det, lægen har valgt eller accepteret. Cortex må gerne foreslå (diagnose, plan, henvisning); forslag er tydeligt markeret som forslag og kommer i notatet, når lægen accepterer dem – gerne med ét tryk for flere ad gangen. Tomt input giver tomt notat. Det er altid lægens vurdering og ansvar.
 
 ## Klinisk indhold
 - Ligger adskilt fra kode: én datafil pr. region i `indhold/`. Ingen klinisk logik eller kliniske tekster i komponenter.
@@ -28,7 +28,7 @@ For den valgte region, i ét flow:
 - Opfind aldrig tal, kriterier eller kilder. Uden kilde: tom kildeliste, som vises "KILDE MANGLER".
 - En kilde må kun anføres, hvis den er åbnet og læst i sessionen; notér datoen for tjekket.
 - Røde flag vises altid. Betingelser må kun fremhæve et flag, aldrig skjule eller afkræfte det. Skriv aldrig "ingen røde flag".
-- Ingen fritekst-ræsonnement uden kilde, ingen diagnosescore, ingen automatiske kliniske beslutninger.
+- Cortex må gerne være klog: fremhæve diagnoser, der er forenelige med de registrerede fund, og foreslå plan og henvisning ud fra kildebelagte betingelser. Det er beslutningsstøtte, ikke beslutninger: forslag er kildebelagte og vises som forslag, og ingen diagnose skjules. Ingen fritekst-ræsonnement uden kilde, og opfind ikke sandsynligheder eller tal, som kilderne ikke giver.
 
 ## Teknik
 - React + TypeScript, bygget med Vite til **én selvstændig HTML-fil** (`cortex.html` i roden), som åbnes med dobbeltklik på klinikkens pc. Ingen installation, intet netværk.

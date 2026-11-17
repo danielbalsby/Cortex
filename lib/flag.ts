@@ -1,4 +1,4 @@
-import type { Region, RoedtFlag, Svar } from "../indhold/typer";
+import type { Betingelse, Region, RoedtFlag, Svar } from "../indhold/typer";
 import { passer } from "./notat";
 
 /**
@@ -15,7 +15,12 @@ import { passer } from "./notat";
 export type FlagStatus = "matcher" | "ikke-vurderet" | "ikke-opfyldt" | "uden-betingelse";
 
 export function flagStatus(flag: RoedtFlag, svar: Svar): FlagStatus {
-  const grupper = (flag.fremhaevHvis ?? []).filter((gruppe) => gruppe.length > 0);
+  return betingelsesStatus(flag.fremhaevHvis, svar);
+}
+
+/** Samme vurdering for enhver liste af ELLER-grupper (røde flag, forenelige diagnoser, henvisningsforslag). */
+export function betingelsesStatus(betingelser: Betingelse[][] | undefined, svar: Svar): FlagStatus {
+  const grupper = (betingelser ?? []).filter((gruppe) => gruppe.length > 0);
   if (grupper.length === 0) return "uden-betingelse";
   if (grupper.some((gruppe) => passer(gruppe, svar))) return "matcher";
   const aaben = grupper.some((gruppe) =>

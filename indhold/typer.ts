@@ -59,12 +59,18 @@ export type Differentialdiagnose = Kildebelagt & {
   navn: string;
   kendetegn: string[];
   notat: string; // sætning til V, hvis lægen vælger den
+  // Fund, diagnosen er forenelig med (ELLER mellem grupper, OG inden for en gruppe), som kilden beskriver dem.
+  // Kun til fremhævning ("Forenelig med dine fund"): ingen score, ingen rangering, intet skjules eller udelukkes.
+  foreneligHvis?: Betingelse[][];
 };
 
 export type Behandling = Kildebelagt & {
   id: string;
   tekst: string;
   gaelderFor?: string[]; // differentialdiagnose-id'er; udeladt = generelt
+  // Diagnoser, hvor punktet er med i "Forslag til plan" (ét tryk tager forslagene med i P).
+  // Smallere end gaelderFor: kun det, kilden angiver som første tiltag.
+  forslagVed?: string[];
   notat: string; // sætning til P, hvis lægen krydser den af
 };
 
@@ -74,6 +80,11 @@ export type Henvisning = Kildebelagt & {
   kriterier: string;
   hast?: "akut" | "subakut" | "elektiv";
   gyldighed: "national" | "Region Hovedstaden";
+  gaelderFor?: string[]; // differentialdiagnose-id'er, henvisningen hører til; udeladt = generelt
+  // Diagnoser, hvor henvisningen foreslås – men kun når foreslaaHvis passer med lægens fund.
+  // Uden foreslaaHvis foreslås henvisningen aldrig automatisk; den vises med sine kriterier.
+  forslagVed?: string[];
+  foreslaaHvis?: Betingelse[][];
   notat: string; // sætning til P, hvis lægen krydser den af
 };
 

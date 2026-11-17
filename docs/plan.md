@@ -262,3 +262,17 @@ Derefter (2026-11-16) – lægen gav Claude lov til at godkende forslagene i `re
 - D: alder skrives ikke længere i notatet i knæ og skulder (feltet bruges kun til flag og er mærket "ikke i notat").
 - E: intet sikkerhedsnet tilføjet (kun ryg og ankel har kildeformulering, og begge har allerede et punkt).
 Claude har ikke sat noget punkt til GODKENDT; det gør kun lægen.
+
+## 9. Fase 3: forslag til diagnose og plan (lægens beslutning 2026-11-17)
+
+Lægen ønsker mere automatisk beslutningsstøtte: Cortex fremhæver de differentialdiagnoser, der er forenelige med fundene, og foreslår plan og henvisning til den diagnose, lægen vælger. Forslag er forslag; lægen vurderer og har det fulde ansvar. Forslag kommer i notatet med ét tryk (`A`), ikke automatisk. Reglerne i `CLAUDE.md` er blødt op tilsvarende.
+
+1. **Motor (uden klinisk indhold)** – udført 2026-11-17:
+   - `foreneligHvis` på differentialdiagnoser.
+   - `forslagVed` på behandling; `gaelderFor`, `forslagVed` og `foreslaaHvis` på henvisning.
+   - `lib/forslag.ts` med tests.
+   - Boksen "Forslag" under de røde flag.
+   - Tasterne `D` (gå til forenelige diagnoser) og `A` (tag planforslag med i P, én fortryd).
+   - Ingen score og ingen rangering: indholdsfilens rækkefølge.
+2. **Knæ som pilot** – betingelser og planforslag, kildebelagt, alt UDKAST, kladde-PR til lægen.
+3. **Lægen tester knæ i konsultationen.** Er det brugbart, gentages trin 2 for skulder, albue, lænderyg og ankel (én region pr. session).

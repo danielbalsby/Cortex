@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { INDHOLD } from "../indhold";
 import { eksempel } from "../indhold/eksempel";
 import type { Svar } from "../indhold/typer";
+import { planForslag } from "../lib/forslag";
 import { kopier } from "../lib/kopier";
 import { bygNotat, saetSvar, skjulteSvar, synligeSvar } from "../lib/notat";
 import { optael } from "../lib/status";
@@ -106,6 +107,15 @@ export function App() {
     setKopiStatus("");
   }
 
+  // Ét tryk tager alle planforslag med i P – som ét trin, så Ctrl+Z fortryder dem samlet.
+  function tagForslag(ids: string[]) {
+    const nye = ids.filter((id) => !valgte.includes(id));
+    if (nye.length === 0) return;
+    husk();
+    setValgte([...valgte, ...nye]);
+    setKopiStatus("");
+  }
+
   async function kopierNotat() {
     if (!notat) return;
     setKopiStatus((await kopier(notat)) ? "ok" : "fejl");
@@ -167,6 +177,12 @@ export function App() {
         }
         case "fortryd":
           fortryd();
+          return;
+        case "tagForslag":
+          if (indhold) tagForslag(planForslag(indhold, synlige, valgte).forslag);
+          return;
+        case "tilDiagnoser":
+          document.querySelector<HTMLButtonElement>(".forslag .forenelig .tilNotat")?.focus();
           return;
         case "normal":
           if (indhold) opdaterSvar(udfyldNormale(indhold, svar), true);
@@ -230,7 +246,7 @@ export function App() {
           </section>
           <section className="panel" aria-label="Notat og beslutningsstøtte">
             <Notat tekst={notat} status={kopiStatus} onKopier={kopierNotat} />
-            <Beslutningsstoette region={indhold} svar={synlige} valgte={valgte} onVaelg={vaelgPunkt} />
+            <Beslutningsstoette region={indhold} svar={synlige} valgte={valgte} onVaelg={vaelgPunkt} onTagForslag={tagForslag} />
           </section>
         </main>
       ) : region === "gennemgang" ? (
@@ -264,7 +280,7 @@ export function App() {
         {indhold && (
           <span className="genveje">
             <kbd>1</kbd>–<kbd>9</kbd> vælg · <kbd>↑</kbd>
-            <kbd>↓</kbd> felt · <kbd>⏎</kbd> næste · <kbd>N</kbd> normal · <kbd>V</kbd>/<kbd>P</kbd> på punkt til notat · <kbd>Ctrl</kbd>
+            <kbd>↓</kbd> felt · <kbd>⏎</kbd> næste · <kbd>N</kbd> normal · <kbd>V</kbd>/<kbd>P</kbd> på punkt til notat · <kbd>D</kbd> diagnoseforslag · <kbd>A</kbd> tag planforslag · <kbd>Ctrl</kbd>
             <kbd>⏎</kbd> kopiér
           </span>
         )}
