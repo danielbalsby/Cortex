@@ -108,7 +108,8 @@ kbd {
 .gruppeHint { margin-left: 12px; font-weight: 400; letter-spacing: 0; text-transform: none; }
 .kopier kbd { margin-left: 4px; background: transparent; border-color: rgba(255, 255, 255, 0.5); color: inherit; }
 .kopier:disabled kbd { border-color: var(--kant); }
-.genveje { white-space: nowrap; }
+.genveje { text-align: right; }
+.genveje kbd { white-space: nowrap; }
 .feltLabel { flex: 0 0 118px; color: var(--daempet); font-size: 0.9rem; }
 .valg { display: flex; flex-wrap: wrap; gap: 5px; }
 .chip {
