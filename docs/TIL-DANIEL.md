@@ -1,6 +1,6 @@
 # Til Daniel
 
-Status efter dine afgørelser 2026-11-16 (anden runde). Claude bygger ikke mere, før dit testresultat fra `docs/ux-review/test-frase-mod-cortex.md` foreligger. Halten hos børn og alloplastik står fortsat kun på listen (`review/MANGLER.md`). Vercel-henvisningerne er ikke rørt.
+Status 2026-11-17. Du har besluttet at starte fase 3 (forslag) før dit testresultat fra `docs/ux-review/test-frase-mod-cortex.md`; testen er stadig relevant for notatdelen. Halten hos børn og alloplastik står fortsat kun på listen (`review/MANGLER.md`). Vercel-henvisningerne er ikke rørt.
 
 ## Fase 3: forslag til diagnose og plan (2026-11-17)
 
@@ -14,7 +14,7 @@ Din beslutning: forslag med ét tryk, reglerne i `CLAUDE.md` er blødt op, og kn
   - demo på tast 0
 - [#61](https://github.com/danielbalsby/Cortex/pull/61): forslaget viser præcis den sætning, der skrives i P. Tastehjælpen giver ikke længere vandret scroll i smalle vinduer.
 
-**Kladde til dig:** PR "KLADDE: knæ – forenelige diagnoser og planforslag". Alt er UDKAST, og ingen godkendte flag er rørt. Kilderne er genhentet 2026-11-17 og er identiske med 15.11.
+**Kladde til dig:** [#62](https://github.com/danielbalsby/Cortex/pull/62), knæ – forenelige diagnoser og planforslag. Alt er UDKAST, og ingen godkendte flag er rørt. Kilderne er genhentet 2026-11-17 og er identiske med 15.11.
 
 | Diagnose | Fremhæves ved (ELLER) | Kilde |
 |---|---|---|
