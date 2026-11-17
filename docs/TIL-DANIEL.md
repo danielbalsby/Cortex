@@ -14,7 +14,7 @@ Din beslutning: forslag med ét tryk, reglerne i `CLAUDE.md` er blødt op, og kn
   - demo på tast 0
 - [#61](https://github.com/danielbalsby/Cortex/pull/61): forslaget viser præcis den sætning, der skrives i P. Tastehjælpen giver ikke længere vandret scroll i smalle vinduer.
 
-**Kladde til dig:** [#62](https://github.com/danielbalsby/Cortex/pull/62), knæ – forenelige diagnoser og planforslag. Alt er UDKAST, og ingen godkendte flag er rørt. Kilderne er genhentet 2026-11-17 og er identiske med 15.11.
+**Merget 2026-11-17 (din "merge"):** [#62](https://github.com/danielbalsby/Cortex/pull/62), knæ – forenelige diagnoser og planforslag. Alt er UDKAST, og ingen godkendte flag er rørt. Kilderne er genhentet 2026-11-17 og er identiske med 15.11.
 
 | Diagnose | Fremhæves ved (ELLER) | Kilde |
 |---|---|---|
