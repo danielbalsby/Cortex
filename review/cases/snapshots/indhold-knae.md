@@ -29,11 +29,11 @@
   - Direkte slag → "Direkte traume mod knæ."
   - Andet → "Anden traumemekanisme."
 - **Hævelse straks** (haevelse-straks, enkelt, vises hvis traume=ja)
-  - Ja → "Hævelse opstod umiddelbart efter traumet."
   - Nej → "Ingen umiddelbar hævelse efter traumet."
+  - Ja → "Hævelse opstod umiddelbart efter traumet."
 - **Hørt/følt knæk** (knaek, enkelt, vises hvis traume=ja)
-  - Ja → "Hørt eller følt et knæk ved traumet."
   - Nej → "Ingen knæklyd eller -følelse ved traumet."
+  - Ja → "Hørt eller følt et knæk ved traumet."
 - **Alder** (alder, enkelt)
   - Under 12 → "Alder under 12 år."
   - 12–17 → "Alder 12–17 år."

@@ -101,8 +101,8 @@ export const knae: Region = {
           type: "enkelt",
           visHvis: [{ felt: "traume", er: "ja" }],
           valg: [
-            { id: "ja", label: "Ja", notat: "Hævelse opstod umiddelbart efter traumet." },
-            { id: "nej", label: "Nej", notat: "Ingen umiddelbar hævelse efter traumet." }
+            { id: "nej", label: "Nej", notat: "Ingen umiddelbar hævelse efter traumet." },
+            { id: "ja", label: "Ja", notat: "Hævelse opstod umiddelbart efter traumet." }
           ]
         },
         {
@@ -111,8 +111,8 @@ export const knae: Region = {
           type: "enkelt",
           visHvis: [{ felt: "traume", er: "ja" }],
           valg: [
-            { id: "ja", label: "Ja", notat: "Hørt eller følt et knæk ved traumet." },
-            { id: "nej", label: "Nej", notat: "Ingen knæklyd eller -følelse ved traumet." }
+            { id: "nej", label: "Nej", notat: "Ingen knæklyd eller -følelse ved traumet." },
+            { id: "ja", label: "Ja", notat: "Hørt eller følt et knæk ved traumet." }
           ]
         },
         {
