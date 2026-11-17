@@ -44,14 +44,28 @@ Din beslutning: forslag med ét tryk, reglerne i `CLAUDE.md` er blødt op, og kn
 - "Akut stor ledansamling" er oversat til Udtalt.
 - Ledlinjeømhed alene fremhæver både artrose og menisk. Det er bevidst: kilden nævner begge.
 
-**Spørgsmål 1 – nyt felt "Smertested" i knæ (forfra/patella · medialt · lateralt · knæhase)?**
-- *A:* ja. Så kan patellofemoralt smertesyndrom, patellar tendinopati, Osgood-Schlatter, bursit og Bakers cyste også fremhæves. Det koster ét tryk i konsultationen.
-- *B:* nej, behold felterne som nu.
-- *Anbefaling:* A. Smertestedet er det, LH Knæsmerter selv sorterer differentialdiagnoserne efter.
+**Dine svar 2026-11-17:** "ja og merge".
+- #62 er merget. Alt er fortsat UDKAST.
+- Feltet "Smertested" er lavet som kladde (se nedenfor).
 
-**Spørgsmål 2 – kladden:** merge knæ-kladden, når du har kigget tabellen igennem? *Anbefaling: ja.* Alt forbliver UDKAST, til du godkender enkeltvis.
+**Kladde til dig: knæ – Smertested** (Fortil/patella · Medialt · Lateralt · Knæhase). Det er et flervalgsfelt efter Varighed og skrives i S.
 
-Test på 1 minut: åbn `cortex.html` fra kladden, tryk 4 og vælg Gradvis, Måneder, Traume Nej, Over 55, Ledlinje Medial. Tryk så **D**, **V** og **A**. Skærmbillede: `review/skaermbilleder-2026-11-17/knae-forslag.png`.
+Nye fremhævninger (LH Knæsmerter 2026, LH Patellofemoralt syndrom 2026, LH Bakers cyste 2026):
+
+| Diagnose | Fremhæves også ved |
+|---|---|
+| Patellofemoralt smertesyndrom | smerter fortil |
+| Tendinopati | smerter fortil, lateralt eller i knæhasen, alle uden traume |
+| Osgood-Schlatter / Sinding-Larsen | smerter fortil + under 12 eller 12–17 |
+| Bakers cyste | smerter i knæhasen |
+| Bursit | smerter fortil + rødme eller varme |
+
+Bemærkninger:
+- **Ingen kobling ved "Medialt"** (anserinus, menisk, artrose). Ledlinjeømhed dækker allerede menisk og artrose.
+- **Aldersfelterne passer ikke præcist til Osgood-Schlatter** (10–15 år): 16–17 år og under 10 år kommer med.
+- **Tastetryk:** feltet er flervalg og koster derfor 2 tryk (tal + Enter).
+
+Test på 1 minut: tryk 4 og vælg Gradvis, Måneder, Smertested Fortil/patella (1, Enter), Traume Nej og Alder 12–17. Patellofemoralt smertesyndrom, tendinopati, henført smerte og Osgood-Schlatter skal stå som forenelige. Tryk så **D**, **V** og **A**. Skærmbilleder: `review/skaermbilleder-2026-11-17/`.
 
 ## Status
 
