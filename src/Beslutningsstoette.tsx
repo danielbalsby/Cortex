@@ -60,12 +60,9 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg, onTagForslag
 
   const forenelige = foreneligeDiagnoser(region, svar);
   const plan = planForslag(region, svar, valgte);
-  const punktNavn = (id: string) => {
-    const beh = region.behandling.find((b) => b.id === id);
-    if (beh) return beh.tekst;
-    const hen = region.henvisning.find((h) => h.id === id);
-    return hen ? `${hen.til}${hen.hast ? ` · ${hen.hast}` : ""}` : id;
-  };
+  // Forslaget vises med den sætning, der kommer i P, så lægen ser præcis, hvad ét tryk skriver.
+  const notatSaetning = (id: string) =>
+    [...region.behandling, ...region.henvisning].find((punkt) => punkt.id === id)?.notat ?? id;
   const henvisningPunkt = (henvisning: Region["henvisning"][number]) => (
     <Punkt
       key={henvisning.id}
@@ -141,10 +138,10 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg, onTagForslag
             })}
             {plan.forslag.length > 0 && (
               <li className="planForslag">
-                <span className="gruppeTitel">Forslag til plan for valgt diagnose</span>
+                <span className="gruppeTitel">Forslag til plan for valgt diagnose – skrives i P</span>
                 <ul>
                   {plan.forslag.map((id) => (
-                    <li key={id}>{punktNavn(id)}</li>
+                    <li key={id}>{notatSaetning(id)}</li>
                   ))}
                 </ul>
                 <button className="tagForslag" onClick={() => onTagForslag(plan.forslag)}>
