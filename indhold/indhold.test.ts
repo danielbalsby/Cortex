@@ -124,6 +124,13 @@ describe.each(regioner)("indhold: $navn", (region) => {
         expect(fremhaevende.has(`${felt.id}=${valg.id}`), `"${valg.label}" fremhæver intet rødt flag`).toBe(true);
       }
     }
+    // Fast rækkefølge: "Nej" (eller "Ingen") står altid før "Ja" – samme tast betyder det samme i alle felter.
+    for (const felt of felter) {
+      const labels = (felt.valg ?? []).map((valg) => valg.label);
+      const ja = labels.indexOf("Ja");
+      const nej = labels.findIndex((label) => label === "Nej" || label === "Ingen");
+      if (ja !== -1 && nej !== -1) expect(nej, `"${felt.label}": Nej skal stå før Ja`).toBeLessThan(ja);
+    }
     const diffIder = region.differentialdiagnoser.map((diff) => diff.id);
     for (const behandling of region.behandling) {
       for (const id of behandling.gaelderFor ?? []) {
