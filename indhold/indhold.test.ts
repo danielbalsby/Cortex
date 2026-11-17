@@ -130,6 +130,23 @@ describe.each(regioner)("indhold: $navn", (region) => {
         expect(diffIder, `"${behandling.id}" gælder for ukendt diagnose "${id}"`).toContain(id);
       }
     }
+    // Forslag: betingelser skal pege på eksisterende felter og valg; forslag skal pege på eksisterende diagnoser.
+    for (const diff of region.differentialdiagnoser) {
+      for (const gruppe of diff.foreneligHvis ?? []) tjekBetingelser(gruppe, `foreneligHvis i "${diff.id}"`);
+    }
+    for (const behandling of region.behandling) {
+      for (const id of behandling.forslagVed ?? []) {
+        expect(behandling.gaelderFor ?? [], `"${behandling.id}" foreslås ved "${id}", men gælder ikke for den`).toContain(id);
+      }
+    }
+    for (const henvisning of region.henvisning) {
+      for (const id of [...(henvisning.gaelderFor ?? []), ...(henvisning.forslagVed ?? [])]) {
+        expect(diffIder, `"${henvisning.id}" henviser til ukendt diagnose "${id}"`).toContain(id);
+      }
+      for (const gruppe of henvisning.foreslaaHvis ?? []) tjekBetingelser(gruppe, `foreslaaHvis i "${henvisning.id}"`);
+      if (henvisning.forslagVed?.length)
+        expect(henvisning.foreslaaHvis?.length ?? 0, `"${henvisning.id}" har forslagVed uden foreslaaHvis`).toBeGreaterThan(0);
+    }
   });
 });
 

@@ -2,6 +2,57 @@
 
 Status efter dine afgørelser 2026-11-16 (anden runde). Claude bygger ikke mere, før dit testresultat fra `docs/ux-review/test-frase-mod-cortex.md` foreligger. Halten hos børn og alloplastik står fortsat kun på listen (`review/MANGLER.md`). Vercel-henvisningerne er ikke rørt.
 
+## Fase 3: forslag til diagnose og plan (2026-11-17)
+
+Din beslutning: forslag med ét tryk, reglerne i `CLAUDE.md` er blødt op, og knæ er pilot.
+
+**Merget (uden klinisk indhold):**
+- [#60](https://github.com/danielbalsby/Cortex/pull/60): motoren. Den består af:
+  - boksen "Forslag" under de røde flag
+  - `D` går til forenelige diagnoser, `V` vælger en diagnose, og `A` tager planforslag med i P
+  - Ctrl+Z fortryder A samlet
+  - demo på tast 0
+- [#61](https://github.com/danielbalsby/Cortex/pull/61): forslaget viser præcis den sætning, der skrives i P. Tastehjælpen giver ikke længere vandret scroll i smalle vinduer.
+
+**Kladde til dig:** PR "KLADDE: knæ – forenelige diagnoser og planforslag". Alt er UDKAST, og ingen godkendte flag er rørt. Kilderne er genhentet 2026-11-17 og er identiske med 15.11.
+
+| Diagnose | Fremhæves ved (ELLER) | Kilde |
+|---|---|---|
+| Gonartrose | intet traume + over 55 · medial ledlinjeømhed · lateral ledlinjeømhed | LH Knæsmerter 2026, LH Artrose knæ 2025 |
+| Menisk | medial eller lateral ledlinjeømhed · låsning | LH Meniskskade 2026, LH Knæsmerter 2026 |
+| Forreste korsbånd | hørt/følt knæk · hævelse straks · traume + instabilitet | LH Knæsmerter 2026, LH Korsbånd 2026 |
+| MCL | traume + instabilitet | LH Kollateralligament medial 2026 |
+| Bursit | rødme + varme | LH Knæsmerter 2026 |
+| Bakteriel artrit | feber · varme + rødme + moderat/udtalt hævelse | Region H Akut monoartritis 2025, LH 2024 |
+| Henført smerte | under 12 · 12–17 | LH Knæsmerter 2026 |
+| Osteochondritis dissecans | 12–17 + låsning | LH Knæsmerter 2026 |
+| Tendinopati | lateral ledlinjeømhed (løberknæ, popliteus) | LH Knæsmerter 2026 |
+
+**Ikke fremhævet (vurderes klinisk):** patellofemoralt smertesyndrom, patellaluksation, Bakers cyste, artrit (krystal/reaktiv/reumatisk), Osgood-Schlatter og ikke-artikulær hævelse. Kendetegnene kan ikke registreres med de nuværende felter.
+
+**Planforslag** (ét tryk på A, kun når diagnosen er valgt):
+- **Gonartrose:** information/træning/vægttab og analgetika.
+- **Menisk:** fysioterapi. Ved låsning + svært nedsat bevægelighed kommer også subakut henvisning til CVI.
+- **Forreste korsbånd og MCL:** træning eller aflastning. Akut henvisning til CVI foreslås kun ved traume + udtalt hævelse, manglende strakt benløft eller instabilitet (Region H 2026).
+- **Bakteriel artrit:** akut indlæggelse ved feber eller ved et varmt, rødt, hævet led.
+- **Henvisninger med tidskriterier** (fx artrose efter 3–6 måneder) foreslås aldrig automatisk. De står under "vurder kriterierne".
+
+**Mine fortolkninger, som du bør se på:**
+- "Ældre" (artrose) er sat til over 55. Kilden angiver ingen grænse.
+- 18–20 år ved OCD kan ikke registreres og er udeladt.
+- "Betydeligt hævet" er oversat til Moderat eller Udtalt.
+- "Akut stor ledansamling" er oversat til Udtalt.
+- Ledlinjeømhed alene fremhæver både artrose og menisk. Det er bevidst: kilden nævner begge.
+
+**Spørgsmål 1 – nyt felt "Smertested" i knæ (forfra/patella · medialt · lateralt · knæhase)?**
+- *A:* ja. Så kan patellofemoralt smertesyndrom, patellar tendinopati, Osgood-Schlatter, bursit og Bakers cyste også fremhæves. Det koster ét tryk i konsultationen.
+- *B:* nej, behold felterne som nu.
+- *Anbefaling:* A. Smertestedet er det, LH Knæsmerter selv sorterer differentialdiagnoserne efter.
+
+**Spørgsmål 2 – kladden:** merge knæ-kladden, når du har kigget tabellen igennem? *Anbefaling: ja.* Alt forbliver UDKAST, til du godkender enkeltvis.
+
+Test på 1 minut: åbn `cortex.html` fra kladden, tryk 4 og vælg Gradvis, Måneder, Traume Nej, Over 55, Ledlinje Medial. Tryk så **D**, **V** og **A**. Skærmbillede: `review/skaermbilleder-2026-11-17/knae-forslag.png`.
+
 ## Status
 
 **Merget:**

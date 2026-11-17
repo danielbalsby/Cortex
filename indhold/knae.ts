@@ -621,6 +621,15 @@ export const knae: Region = {
         "Klinisk diagnose; kan stilles uden røntgen"
       ],
       notat: "Foreneligt med gonartrose.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Knæsmerter (opd. 12.08.2026), "Sygehistorie": intet traume → "tænk … Artrose"; "Knæsmerter hos ældre kan ofte være på degenerativ/artrose baggrund"; "Mediale ledlinje: … Medial artrose".
+      // LH Artrose, knæ (opd. 31.01.2025), Resumé: "objektive fund med hævelse, nedsat bevægelighed og ledlinje ømhed".
+      // Aldersgrænsen "ældre" er ikke angivet i kilden; kun "Over 55" er brugt (51–55 er udeladt).
+      foreneligHvis: [
+        [{ felt: "traume", er: "nej" }, { felt: "alder", er: "over55" }],
+        [{ felt: "ledlinje", er: "medial" }],
+        [{ felt: "ledlinje", er: "lateral" }]
+      ],
       kilder: ["lh-artrose-knae", "lh-knaesmerter"],
       status: "UDKAST"
     },
@@ -635,6 +644,14 @@ export const knae: Region = {
         "Ingen enkelt test stiller diagnosen"
       ],
       notat: "Foreneligt med meniskrelaterede gener.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Meniskskade i knæet (opd. 14.08.2026), Resumé: "ledlinjerelaterede smerter … mekaniske symptomer som klik og aflåsninger. Objektivt: Ledlinjeømhed".
+      // LH Knæsmerter (opd. 12.08.2026): "Mediale ledlinje: Skade af mediale menisk"; "Laterale ledlinje: Lateral meniskskade"; "Låser knæet sig? … Meniskskader".
+      foreneligHvis: [
+        [{ felt: "ledlinje", er: "medial" }],
+        [{ felt: "ledlinje", er: "lateral" }],
+        [{ felt: "laasning", er: "ja" }]
+      ],
       kilder: ["lh-meniskskade", "lh-knaesmerter"],
       status: "UDKAST"
     },
@@ -649,6 +666,14 @@ export const knae: Region = {
         "Kronisk skade: knæet \"giver efter\""
       ],
       notat: "Foreneligt med skade på forreste korsbånd.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Knæsmerter (opd. 12.08.2026): "Følte eller hørte du et smæld? Forekommer ofte ved forreste korsbåndskade"; "Ved forreste korsbåndskade sker det [hævelsen] indenfor få timer"; ligamentskader: "Instabilitet kan ofte påvises".
+      // LH Korsbåndskade, forreste (opd. 14.08.2026): "der fornemmes et \"pop\" fra knæet"; "Moderat hæmartron udviklet i løbet af få timer".
+      foreneligHvis: [
+        [{ felt: "knaek", er: "ja" }],
+        [{ felt: "haevelse-straks", er: "ja" }],
+        [{ felt: "traume", er: "ja" }, { felt: "stabilitet", er: "instabil" }]
+      ],
       kilder: ["lh-korsbaand-forreste", "lh-knaesmerter"],
       status: "UDKAST"
     },
@@ -662,6 +687,11 @@ export const knae: Region = {
         "Løshed i strakt stilling tyder på kombineret skade (korsbånd, kapsel)"
       ],
       notat: "Foreneligt med skade på mediale kollaterale ligament.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Kollateralligamentskade, medial (opd. 12.08.2026), Diagnostiske kriterier: "Relevant traume og objektiv sideinstabilitet på medialsiden af knæet". Feltet Stabilitet skelner ikke side.
+      foreneligHvis: [
+        [{ felt: "traume", er: "ja" }, { felt: "stabilitet", er: "instabil" }]
+      ],
       kilder: ["lh-mcl"],
       status: "UDKAST"
     },
@@ -700,6 +730,11 @@ export const knae: Region = {
         "Popliteustendinit: bageste knæsmerter, ømhed over popliteussenen"
       ],
       notat: "Foreneligt med overbelastningsbetinget tendinopati.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Knæsmerter (opd. 12.08.2026): "Laterale ledlinje: … Langdistanceknæ, Popliteustendinit". Øvrige tendinopatier (patellar, anserinus) kræver smertelokalisation, som ikke kan registreres.
+      foreneligHvis: [
+        [{ felt: "ledlinje", er: "lateral" }]
+      ],
       kilder: ["lh-knaesmerter"],
       status: "UDKAST"
     },
@@ -713,6 +748,11 @@ export const knae: Region = {
         "Svært at skelne septisk fra aseptisk; aspiration og blodprøver kan hjælpe"
       ],
       notat: "Foreneligt med bursit.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Knæsmerter (opd. 12.08.2026), Knæbursit: "Hævelse, ømhed, varme og rødme foran eller nedenfor patella". Lokalisationen kan ikke registreres; "Den vigtigste differentialdiagnose er ansamling og infektion i selve knæleddet".
+      foreneligHvis: [
+        [{ felt: "roedme", er: "ja" }, { felt: "varme", er: "ja" }]
+      ],
       kilder: ["lh-bursit", "lh-knaesmerter"],
       status: "UDKAST"
     },
@@ -738,6 +778,14 @@ export const knae: Region = {
         "Region Hovedstaden: mistanken svækkes ved normal CRP (<10 mg/l), faldende CRP uden antibiotika/glukokortikoid, tidligere lignende anfald (fx kendt urinsyregigt) eller lokalisation til små led"
       ],
       notat: "Bakteriel artrit mistænkes.",
+      // Forenelig med (læst 2026-11-17):
+      // Region Hovedstaden, Akut monoartritis (opd. 10.04.2025): "Mistanke bestyrkes klinisk ved varmt, rødt, betydeligt hævet led eller ved feber og medtaget almen tilstand". "Betydeligt hævet" er oversat til Moderat/Udtalt.
+      // LH Artrit, bakteriel (opd. 29.01.2024): "akut hævelse, varme, rødme, smerter og bevægeindskrænkning i et led. Feber og/eller kulderystelser er almindelige".
+      foreneligHvis: [
+        [{ felt: "feber", er: "ja" }],
+        [{ felt: "varme", er: "ja" }, { felt: "roedme", er: "ja" }, { felt: "haevelse", er: "moderat" }],
+        [{ felt: "varme", er: "ja" }, { felt: "roedme", er: "ja" }, { felt: "haevelse", er: "udtalt" }]
+      ],
       kilder: ["lh-artrit-bakteriel", "rh-monoartrit"],
       status: "UDKAST"
     },
@@ -763,6 +811,12 @@ export const knae: Region = {
         "Hos børn kan knæsmerter være projicerede fra hoften"
       ],
       notat: "Henført smerte fra hofte eller ryg overvejes.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Knæsmerter (opd. 12.08.2026): "Knæsmerter hos børn kan være projicerede smerter fra hoften". "Børn" = under 18 som i børneflaget (lægens valg).
+      foreneligHvis: [
+        [{ felt: "alder", er: "under12" }],
+        [{ felt: "alder", er: "12til17" }]
+      ],
       kilder: ["lh-knaesmerter"],
       status: "UDKAST"
     },
@@ -775,6 +829,11 @@ export const knae: Region = {
         "Diagnosen stilles ved MR-scanning"
       ],
       notat: "Osteochondritis dissecans overvejes.",
+      // Forenelig med (læst 2026-11-17):
+      // LH Knæsmerter (opd. 12.08.2026), Osteochondritis dissecans: "Patienterne er som regel mellem 12 og 20 år"; "Patienten oplever aflåsningstilfælde". 18–20 år kan ikke skilles ud (feltet har 18–50) og er udeladt.
+      foreneligHvis: [
+        [{ felt: "alder", er: "12til17" }, { felt: "laasning", er: "ja" }]
+      ],
       kilder: ["lh-knaesmerter"],
       status: "UDKAST"
     },
@@ -841,6 +900,7 @@ export const knae: Region = {
       tekst:
         "Knæartrose: skriftlig og mundtlig information og undervisning. Superviseret træning og patientuddannelse i 8–12 uger hos praktiserende fysioterapeut eller kiropraktor eller i kommunalt tilbud (fx GLA:D). Vægttab: mindst 5 % ved BMI over 25.",
       gaelderFor: ["diff-artrose"],
+      forslagVed: ["diff-artrose"],
       notat: "Informeret om knæartrose. Henvist til superviseret træning og patientuddannelse. Vægttab drøftet.",
       kilder: ["lh-artrose-knae", "rh-knaeartrose"],
       status: "UDKAST"
@@ -850,6 +910,7 @@ export const knae: Region = {
       tekst:
         "Knæartrose, medicin: paracetamol som førstevalg i perioder med smerter. NSAID giver lidt bedre smertelindring, men er dårligt egnet som langtidsbehandling; stop efter 1 uge uden væsentlig effekt. Opioider så vidt muligt undgås. Glukosamin er ikke effektivt.",
       gaelderFor: ["diff-artrose"],
+      forslagVed: ["diff-artrose"],
       notat: "Smertestillende efter behov; paracetamol som førstevalg, evt. NSAID i kortere perioder.",
       kilder: ["lh-artrose-knae", "rh-knaeartrose"],
       status: "UDKAST"
@@ -892,6 +953,7 @@ export const knae: Region = {
       tekst:
         "Menisklæsion uden traume (degenerativ) og traumatisk menisklæsion uden aflåsning eller væsentlige mekaniske symptomer: fysioterapi som initial behandling. Over 40 år: sundhedsfagligt vejledt træning, ofte længere end 3 måneder.",
       gaelderFor: ["diff-menisk"],
+      forslagVed: ["diff-menisk"],
       notat: "Henvist til fysioterapi som initial behandling.",
       kilder: ["lh-meniskskade", "rh-non-traumatisk"],
       status: "UDKAST"
@@ -900,6 +962,7 @@ export const knae: Region = {
       id: "beh-acl",
       tekst: "Forreste korsbåndsskade: fysioterapeutisk vejledt træningsforløb; rekonstruktion vurderes i ortopædkirurgisk regi.",
       gaelderFor: ["diff-acl"],
+      forslagVed: ["diff-acl"],
       notat: "Fysioterapeutisk vejledt træning.",
       kilder: ["lh-korsbaand-forreste"],
       status: "UDKAST"
@@ -909,6 +972,7 @@ export const knae: Region = {
       tekst:
         "MCL-læsion uden løshed: aflastning og smertebehandling. Med løshed: hængslet bandage i 5–6 uger. Træning kan startes 1–2 uger efter skaden, når de akutte smerter er aftaget.",
       gaelderFor: ["diff-mcl"],
+      forslagVed: ["diff-mcl"],
       notat: "Aflastning og smertebehandling. Træning når de akutte smerter er aftaget.",
       kilder: ["lh-mcl"],
       status: "UDKAST"
@@ -918,6 +982,7 @@ export const knae: Region = {
       tekst:
         "Patellofemoralt smertesyndrom: aflastning og aktivitetsmodifikation (undgå hugsiddende, spring, løb på hårdt underlag), træning af hofte- og knæmuskulatur, evt. fodindlæg. Paracetamol eller NSAID kan være til nogen nytte tidligt. Kirurgi kun ved påvist korrigerbar årsag.",
       gaelderFor: ["diff-patellofemoralt"],
+      forslagVed: ["diff-patellofemoralt"],
       notat: "Rådgivet om aktivitetsmodifikation og træning af hofte- og knæmuskulatur.",
       kilder: ["lh-patellofemoralt"],
       status: "UDKAST"
@@ -927,6 +992,7 @@ export const knae: Region = {
       tekst:
         "Akut patellaluksation: reponeres, hvis den ikke er gået på plads; stabiliseres med ortose, elastisk bandage eller tape i 2 uger. Medial quadricepstræning. Råd om forsigtighed ved sport med vridbelastning.",
       gaelderFor: ["diff-patellaluksation"],
+      forslagVed: ["diff-patellaluksation"],
       notat: "Stabiliserende bandage. Rådgivet om quadricepstræning og forsigtighed ved vridbelastning.",
       kilder: ["lh-patellaluksation"],
       status: "UDKAST"
@@ -936,6 +1002,7 @@ export const knae: Region = {
       tekst:
         "Patellar tendinopati: afstå fra smerteprovokerende aktivitet; langsom, tung styrketræning (fysioterapeutvejledt 3 gange om ugen i 3 måneder, mindst 12 uger). NSAID kun i akut fase i 7–10 dage; langtidsbehandling anbefales ikke.",
       gaelderFor: ["diff-tendinopati"],
+      forslagVed: ["diff-tendinopati"],
       notat: "Rådgivet om aflastning og tung, langsom styrketræning.",
       kilder: ["lh-patellar-tendinopati"],
       status: "UDKAST"
@@ -945,6 +1012,7 @@ export const knae: Region = {
       tekst:
         "Bursit: minimér knæliggende aktivitet, brug knæbeskytter; evt. is og kompression. NSAID i akutfasen. Steroidinjektion efter aspiration kan forsøges – ikke ved mistanke om infektion, og nålen må ikke nå knæleddet.",
       gaelderFor: ["diff-bursit"],
+      forslagVed: ["diff-bursit"],
       notat: "Rådgivet om aflastning og knæbeskyttelse. NSAID efter behov.",
       kilder: ["lh-bursit"],
       status: "UDKAST"
@@ -954,6 +1022,7 @@ export const knae: Region = {
       tekst:
         "Bakers cyste: ved mistanke om DVT eller anden alvorlig lidelse iværksættes relevante undersøgelser. Ved vedvarende gener udredes bagvedliggende årsag. NSAID kan måske dæmpe inflammation og ledvæskeproduktion.",
       gaelderFor: ["diff-baker"],
+      forslagVed: ["diff-baker"],
       notat: "Bakers cyste; udredning af bagvedliggende årsag ved vedvarende gener.",
       kilder: ["lh-baker"],
       status: "UDKAST"
@@ -967,6 +1036,13 @@ export const knae: Region = {
       kriterier: "Mistanke om bakteriel (septisk) artrit.",
       hast: "akut",
       gyldighed: "Region Hovedstaden",
+      // Forslag (læst 2026-11-17): LH Artrit, bakteriel (2024): "Ved mistanke om bakteriel artritis skal patienten indlægges akut"; betingelsen er Region Hovedstadens (Akut monoartritis 2025).
+      forslagVed: ["diff-bakteriel-artrit"],
+      foreslaaHvis: [
+        [{ felt: "feber", er: "ja" }],
+        [{ felt: "varme", er: "ja" }, { felt: "roedme", er: "ja" }, { felt: "haevelse", er: "moderat" }],
+        [{ felt: "varme", er: "ja" }, { felt: "roedme", er: "ja" }, { felt: "haevelse", er: "udtalt" }]
+      ],
       notat: "Henvist akut til CVI mhp. septisk artrit.",
       kilder: ["rh-monoartrit", "lh-artrit-bakteriel"],
       status: "UDKAST"
@@ -978,6 +1054,13 @@ export const knae: Region = {
         "Efter knætraume: akut stor ledansamling; akut førstegangs patellaluksation; kan ikke løfte benet mod tyngdekraften (strækkeapparat); mistanke om fraktur eller løshed (side- eller skuffeløshed).",
       hast: "akut",
       gyldighed: "Region Hovedstaden",
+      // Forslag (læst 2026-11-17): Region Hovedstaden, Idrætsrelaterede traumatiske knæskader (opd. 10.03.2026), "1. Akut henvisning til CVI": "akut stor ledansamling" (= Udtalt hævelse), "benet ikke kan løftes mod tyngdekraften", "løshed (sideløshed / skuffeløshed)".
+      forslagVed: ["diff-acl", "diff-mcl", "diff-menisk", "diff-patellaluksation"],
+      foreslaaHvis: [
+        [{ felt: "traume", er: "ja" }, { felt: "haevelse", er: "udtalt" }],
+        [{ felt: "traume", er: "ja" }, { felt: "benloeft", er: "nej" }],
+        [{ felt: "traume", er: "ja" }, { felt: "stabilitet", er: "instabil" }]
+      ],
       notat: "Henvist akut til CVI.",
       kilder: ["rh-traumatisk"],
       status: "UDKAST"
@@ -1004,6 +1087,11 @@ export const knae: Region = {
       kriterier: "Aflåst knæ med strækkemangel og mistanke om indeklemt ledpatologi, fx menisk.",
       hast: "subakut",
       gyldighed: "Region Hovedstaden",
+      // Forslag (læst 2026-11-17): Region Hovedstaden (2026), "2. Subakut henvisning": "Aflåst knæ med strækkemangel". Samme betingelse som det godkendte flag om aflåst knæ.
+      forslagVed: ["diff-menisk"],
+      foreslaaHvis: [
+        [{ felt: "laasning", er: "ja" }, { felt: "bevaegelighed", er: "svaert" }]
+      ],
       notat: "Henvist subakut til CVI mhp. aflåst knæ.",
       kilder: ["rh-traumatisk", "lh-meniskskade"],
       status: "UDKAST",
@@ -1020,6 +1108,7 @@ export const knae: Region = {
         "Lettere knæskade med vedvarende symptomer over ca. 6 uger. Henvisningen bør indeholde skadetidspunkt, mekanisme, subjektive klager, side, lokaliseret ømhed, ledhævelse, strakt benløft, strækkemangel og side-/skuffeløshed.",
       hast: "elektiv",
       gyldighed: "Region Hovedstaden",
+      gaelderFor: ["diff-mcl", "diff-menisk"],
       notat: "Henvist elektivt til CVI pga. vedvarende symptomer efter knæskade.",
       kilder: ["rh-traumatisk"],
       status: "UDKAST"
@@ -1031,6 +1120,7 @@ export const knae: Region = {
         "Non-traumatisk: pludselig opstået strækkedefekt over 1 uge, eller vedvarende/tiltagende uacceptable smerter trods ADL-ændringer, vægttab og superviseret træning i mindst 3–6 måneder. Over 35 år og efter tidligere knætraume skal stående røntgen (let bøjet knæ) foreligge. MR ordineres ikke fra almen praksis.",
       hast: "elektiv",
       gyldighed: "Region Hovedstaden",
+      gaelderFor: ["diff-artrose", "diff-menisk"],
       notat: "Henvist elektivt til ortopædkirurgisk vurdering efter gennemført ikke-operativt forløb.",
       kilder: ["rh-non-traumatisk"],
       status: "UDKAST"
@@ -1042,6 +1132,7 @@ export const knae: Region = {
         "Symptomer i mindst 3–6 måneder, gennemført ikke-operativt behandlingsprogram, og røntgen inden for 12 måneder med påvist artrose. Undgå blokade umiddelbart før henvisning. Hospitalerne tilbyder et 3-måneders non-operativt program (holdtræning; vægttabsforløb ved BMI over 30).",
       hast: "elektiv",
       gyldighed: "Region Hovedstaden",
+      gaelderFor: ["diff-artrose"],
       notat: "Henvist til ortopædkirurgisk afdeling mhp. knæartrose.",
       kilder: ["rh-knaeartrose", "lh-artrose-knae"],
       status: "UDKAST"
@@ -1053,6 +1144,7 @@ export const knae: Region = {
         "Traumatisk menisklæsion med vedvarende generende klik og aflåsninger, eller degenerativ læsion efter svigt af fysioterapi. Over 40 år: fortsatte svært generende symptomer efter mere end 3 måneders træning. MR-fund af menisklæsion er ikke i sig selv grund til henvisning uden aflåsning og/eller invaliderende smerter.",
       hast: "elektiv",
       gyldighed: "Region Hovedstaden",
+      gaelderFor: ["diff-menisk"],
       notat: "Henvist til ortopædkirurgisk vurdering mhp. menisklæsion.",
       kilder: ["lh-meniskskade", "rh-non-traumatisk"],
       status: "UDKAST",
@@ -1069,6 +1161,7 @@ export const knae: Region = {
         "Objektiv løshed af forreste korsbånd ved kronisk skade, eller valgusløshed efter ældre traume (kronisk valgusinstabilitet).",
       hast: "elektiv",
       gyldighed: "national",
+      gaelderFor: ["diff-acl", "diff-mcl"],
       notat: "Henvist til ortopædkirurgisk vurdering mhp. kronisk instabilitet.",
       kilder: ["lh-korsbaand-forreste", "lh-mcl"],
       status: "UDKAST"
@@ -1079,6 +1172,7 @@ export const knae: Region = {
       kriterier: "Gentagen (recidiverende) patellaluksation.",
       hast: "elektiv",
       gyldighed: "national",
+      gaelderFor: ["diff-patellaluksation"],
       notat: "Henvist til ortopædkirurgisk vurdering mhp. recidiverende patellaluksation.",
       kilder: ["lh-patellaluksation"],
       status: "UDKAST"
@@ -1090,6 +1184,7 @@ export const knae: Region = {
         "Bursit med manglende effekt af konservativ behandling eller mistanke om septisk bursit. Akut ved tegn på involvering af hele knæleddet.",
       hast: "subakut",
       gyldighed: "national",
+      gaelderFor: ["diff-bursit"],
       notat: "Henvist mhp. bursit.",
       kilder: ["lh-bursit"],
       status: "UDKAST"
@@ -1101,6 +1196,7 @@ export const knae: Region = {
         "Akut monoartrit (ikke septisk mistanke) med betydelige smerter eller funktionsbegrænsning: konference mhp. akut/subakut vurdering, ledpunktur og krystalmikroskopi, evt. glukokortikoidinjektion. Hotline kl. 08–15: Bispebjerg/Frederiksberg Hospital 38 16 41 90 (planområde Midt, Byen, Bornholm); Rigshospitalet, Valdemar Hansens Vej 38 63 42 47 (Nord og Syd).",
       hast: "subakut",
       gyldighed: "Region Hovedstaden",
+      gaelderFor: ["diff-artrit"],
       notat: "Konfereret med reumatologisk hotline.",
       kilder: ["rh-monoartrit", "rh-visitation-reumatologi"],
       status: "UDKAST"
