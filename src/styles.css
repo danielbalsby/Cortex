@@ -178,7 +178,7 @@ kbd {
 .stoette section { margin-top: 10px; }
 .stoette h2 { margin: 0 0 6px; }
 .antal { font-weight: 400; letter-spacing: 0; }
-.punkter { margin: 0; padding: 0; list-style: none; display: grid; gap: 2px; }
+.punkter { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
 
 /* Sektioner uden røde flag er sammenfoldet; overskrift og antal er altid synlige. */
 .sektion > summary { cursor: pointer; list-style: none; display: block; padding: 3px 0; border-bottom: 1px solid var(--kant); }
@@ -203,8 +203,9 @@ kbd {
 .punktDetaljer[open] > summary::before { content: "▾"; }
 .titelLinje { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .punktDetaljer[open] .titelLinje { white-space: normal; overflow: visible; }
-.flag .titelLinje { white-space: normal; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-.flag .punktDetaljer[open] .titelLinje { display: block; }
+/* Røde flag: én linje hver; kun flag, der matcher dine valg, står med fed. Fuld tekst ved udfoldning. */
+.flag .flagTitel { font-weight: 500; }
+.flag.fremhaevet .flagTitel { font-weight: 700; }
 .punktTekst { display: flex; flex-direction: column; gap: 3px; padding: 2px 0 2px 16px; }
 .tilNotat {
   flex: 0 0 auto;
