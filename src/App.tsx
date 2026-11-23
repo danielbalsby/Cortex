@@ -6,7 +6,6 @@ import type { Svar } from "../indhold/typer";
 import { planForslag } from "../lib/forslag";
 import { kopier } from "../lib/kopier";
 import { bygNotat, saetSvar, skjulteSvar, synligeSvar } from "../lib/notat";
-import { optael } from "../lib/status";
 import { naboFelt, udfyldNormale, vaelgMedTal } from "../lib/tastatur";
 import { Beslutningsstoette, FlagStribe } from "./Beslutningsstoette";
 import { Felter } from "./Felter";
@@ -44,7 +43,6 @@ export function App() {
 
   const indhold = hentIndhold(region);
   const aktiv = region === "eksempel" ? eksempel : REGIONER.find((item) => item.id === region);
-  const status = indhold ? optael(indhold) : undefined;
   const notat = indhold ? bygNotat(indhold, svar, valgte) : "";
   const synlige = indhold ? synligeSvar(indhold, svar) : svar;
   const skjulte = indhold ? skjulteSvar(indhold, svar) : [];
@@ -268,15 +266,8 @@ export function App() {
       )}
 
       <footer className="bund">
-        {indhold && status ? (
-          <span>
-            {indhold.navn}: {status.punkter} punkter · {status.udkast} UDKAST · {status.kildeMangler} kilde mangler
-            {status.konflikter > 0 && ` · ${status.konflikter} konflikt`}
-            {status.aeldsteTjek && ` · ældste kildetjek ${status.aeldsteTjek}`}
-          </span>
-        ) : (
-          <span>Ingen patientdata gemmes eller sendes. Genindlæsning rydder alt.</span>
-        )}
+        {/* Indholdsstatistik (punkter, UDKAST, kildetjek) hører til gennemgangen (G), ikke til konsultationen. */}
+        {!indhold && <span>Ingen patientdata gemmes eller sendes. Genindlæsning rydder alt.</span>}
         {indhold && (
           <span className="genveje">
             <kbd>1</kbd>–<kbd>9</kbd> vælg · <kbd>↑</kbd>

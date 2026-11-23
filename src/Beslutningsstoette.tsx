@@ -250,10 +250,11 @@ function FlagRest({ tekst }: { tekst: string }) {
   return kolon === -1 ? null : <span>{tekst.slice(kolon + 2)}</span>;
 }
 
-/** "14" eller "14 · 14 udkast": UDKAST er synligt uden at folde ud, som ét neutralt signal. */
+/** "14", "14 · alle udkast" eller "14 · 3 udkast": UDKAST er synligt uden at folde ud, som ét neutralt signal. */
 function antalTekst(punkter: { status: string }[]): string {
   const udkast = punkter.filter((p) => p.status === "UDKAST").length;
-  return udkast > 0 ? `${punkter.length} · ${udkast} udkast` : `${punkter.length}`;
+  if (udkast === 0) return `${punkter.length}`;
+  return udkast === punkter.length ? `${punkter.length} · alle udkast` : `${punkter.length} · ${udkast} udkast`;
 }
 
 function Sektion({ titel, antal, hint, children }: { titel: string; antal: string; hint?: string; children: ReactNode }) {

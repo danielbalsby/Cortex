@@ -33,7 +33,12 @@ export function Gennemgang() {
         return (
           <section key={region.id} className="gennemgangRegion">
             <h2>
-              {region.navn} <span className="gruppeHint">{region.roedeFlag.length} røde flag · {regionKonflikter.length} konflikter</span>
+              {region.navn}{" "}
+              <span className="gruppeHint">
+                {region.roedeFlag.length} røde flag · {regionKonflikter.length} konflikter · {optael(region).punkter} punkter ·{" "}
+                {optael(region).udkast} UDKAST · {optael(region).kildeMangler} kilde mangler
+                {optael(region).aeldsteTjek && ` · ældste kildetjek ${optael(region).aeldsteTjek}`}
+              </span>
             </h2>
 
             <h3>Røde flag</h3>
