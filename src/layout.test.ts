@@ -17,10 +17,11 @@ describe("layout: punkter i beslutningsstøtten er aldrig bredere end panelet", 
   it("listen må krympe (grid-kolonne minmax(0, 1fr))", () => {
     expect(regel(".punkter")).toContain("grid-template-columns: minmax(0, 1fr)");
   });
-  it("titlen må krympe og afkortes med …", () => {
+  // Siden den rolige skærm (2026-11-24) brydes titler om i stedet for at blive afkortet med "…".
+  it("titlen må krympe og brydes om (også lange ord)", () => {
     expect(regel(".punktDetaljer")).toContain("min-width: 0");
     const titel = regel(".titelLinje");
-    for (const del of ["min-width: 0", "overflow: hidden", "text-overflow: ellipsis", "white-space: nowrap"]) {
+    for (const del of ["min-width: 0", "overflow-wrap: anywhere"]) {
       expect(titel).toContain(del);
     }
   });

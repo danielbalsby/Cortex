@@ -2,6 +2,16 @@
 
 Status 2026-11-17. Du har besluttet at starte fase 3 (forslag) før dit testresultat fra `docs/ux-review/test-frase-mod-cortex.md`; testen er stadig relevant for notatdelen. Halten hos børn og alloplastik står fortsat kun på listen (`review/MANGLER.md`). Vercel-henvisningerne er ikke rørt.
 
+## Rolig konsultationsskærm (2026-11-24)
+
+Højre side tager nu udgangspunkt i dine valg (progressive disclosure). Intet klinisk indhold er ændret, og intet punkt er fjernet.
+- **Røde flag:** alle vises altid, nu som en rolig liste uden kasser. Et flag, der matcher, står øverst med rød baggrund og viser sin handling uden udfoldning.
+- **Diagnose:** valgte diagnoser og forenelige forslag står fremme. Alle 15 ligger under "+ Alle differentialdiagnoser".
+- **Plan:** vises først, når du har valgt en diagnose. Så står planforslaget (A) og den behandling og henvisning, der hører til diagnosen, fremme. Resten ligger under "+ Øvrig behandling" og "+ Øvrige henvisninger". Et punkt, du har valgt til notatet, ligger aldrig sammenfoldet (test i `lib/visning.test.ts`).
+- **Korte titler uden "…":** behandling vises med den sætning, der kommer i P. Flag vises med teksten før kolon eller første sætning. Kildens fulde tekst, kilder og status vises ved udfoldning.
+- **Mindre støj:** "+V/+P" er diskrete, indtil du peger på rækken (tasterne V/P virker som før). UDKAST står én gang pr. sektion i stedet for på hver linje.
+- Før/efter: `docs/ux-review/rolig/foer-efter.png`.
+
 ## Fysioterapi-henvisning og "+P" uden for skærmen (2026-11-24)
 
 - **"+P" uden for skærmen:** skyldtes en ældre `cortex.html`. Fejlen blev rettet i #65 (listen må ikke blive bredere end panelet). Målt 2026-11-24 i alle fem regioner ved 1366, 1024, 820 og 700 px: ingen knap uden for panelet. Ny test (`src/layout.test.ts`) fejler, hvis rettelsen fjernes. **Brug den nyeste `cortex.html` fra main.**
