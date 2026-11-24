@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import type { Kilde, Kildebelagt, Region, Svar } from "../indhold/typer";
 import { sorterFlag, type FlagStatus } from "../lib/flag";
 import { foreneligeDiagnoser, planForslag } from "../lib/forslag";
+import { lrTekst, rangering, type Bidrag, type Rangeret } from "../lib/rangering";
 import { kortTitel, planVisning } from "../lib/visning";
 
 // Viser regionens kliniske punkter præcis som de står i indholdsfilen.
@@ -49,13 +50,25 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg, onTagForslag
     );
   };
 
-  const forenelige = foreneligeDiagnoser(region, svar).filter((f) => !valgte.includes(f.id));
+  // Rangering efter kildernes likelihood ratios (højst tre); øvrige forenelige diagnoser følger i filens rækkefølge.
+  const rangerede = rangering(region, svar)
+    .filter((r) => !valgte.includes(r.id))
+    .slice(0, 3);
+  const forenelige = foreneligeDiagnoser(region, svar).filter(
+    (f) => !valgte.includes(f.id) && !rangerede.some((r) => r.id === f.id)
+  );
   const plan = planForslag(region, svar, valgte);
   // Forslaget vises med den sætning, der kommer i P, så lægen ser præcis, hvad ét tryk skriver.
   const notatSaetning = (id: string) =>
     [...region.behandling, ...region.henvisning].find((punkt) => punkt.id === id)?.notat ?? id;
 
-  const diagnosePunkt = (diff: Region["differentialdiagnoser"][number], passerMed?: string[], klasse = "") => (
+  const bidragTekst = (b: Bidrag) => `${b.fund} (${lrTekst(b.lr)})`;
+  const diagnosePunkt = (
+    diff: Region["differentialdiagnoser"][number],
+    passerMed?: string[],
+    klasse = "",
+    rang?: Rangeret
+  ) => (
     <Punkt
       key={diff.id}
       punkt={diff}
@@ -65,11 +78,34 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg, onTagForslag
         <span className="ombryd">
           <span className="navn">{diff.navn}</span>
           {passerMed && <span className="passerMed"> · {passerMed.join(", ")}</span>}
+          {rang && (
+            <span className="passerMed">
+              {" "}
+              · for: {rang.for.map(bidragTekst).join(", ")}
+              {rang.imod.length > 0 && ` · imod: ${rang.imod.map(bidragTekst).join(", ")}`}
+            </span>
+          )}
         </span>
       }
       valg={{ label: "V", valgt: valgte.includes(diff.id), onVaelg: () => onVaelg(diff.id) }}
     >
       {diff.kendetegn.length > 0 && <span className="kendetegn">{diff.kendetegn.join(" · ")}</span>}
+      {rang &&
+        [...rang.for, ...rang.imod].map((b) => (
+          <span key={b.fund} className="kendetegn">
+            {bidragTekst(b)}
+            {b.population && ` · ${b.population}`} ·{" "}
+            {b.kilder.map((id) => (
+              <KildeLink key={id} kilde={kilder.get(id)} id={id} />
+            ))}
+          </span>
+        ))}
+      {rang && (
+        <span className="flagStatus">
+          Forslag: rangeret efter kildernes likelihood ratios for dine fund – ikke en sandsynlighed. Forekomsten i
+          almen praksis indgår ikke, og fund fra forskellige tests antages uafhængige. Andre diagnoser er ikke udelukket.
+        </span>
+      )}
       {passerMed && (
         <span className="flagStatus">
           Forslag: fremhævet, fordi dine fund passer med kildens beskrivelse. Andre diagnoser er ikke udelukket.
@@ -140,6 +176,10 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg, onTagForslag
         </h2>
         <ul className="punkter">
           {region.differentialdiagnoser.filter((d) => valgte.includes(d.id)).map((d) => diagnosePunkt(d, undefined, "valgtDiagnose"))}
+          {rangerede.length > 0 && <li className="gruppeTitel">Forslag · fundene taler mest for</li>}
+          {rangerede.map((r) =>
+            diagnosePunkt(region.differentialdiagnoser.find((d) => d.id === r.id)!, undefined, "forenelig rangeret", r)
+          )}
           {forenelige.length > 0 && (
             <li className="gruppeTitel">
               Forslag · forenelig med dine fund
@@ -148,7 +188,7 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg, onTagForslag
           {forenelige.map((f) =>
             diagnosePunkt(region.differentialdiagnoser.find((d) => d.id === f.id)!, f.passerMed, "forenelig")
           )}
-          {!harDiagnose && forenelige.length === 0 && (
+          {!harDiagnose && forenelige.length === 0 && rangerede.length === 0 && (
             <li className="tom">Vælg fund til venstre, eller vælg en diagnose på listen.</li>
           )}
           <Fold titel="Alle differentialdiagnoser" antal={region.differentialdiagnoser.length}>

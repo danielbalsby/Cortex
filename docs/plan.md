@@ -194,7 +194,7 @@ Udført som beskrevet, med én afvigelse: også `app/`, `next-env.d.ts` og `vite
 |---|---|
 | Backend, database, login, lagring | Løser intet problem her og ville bryde "intet gemmes" |
 | AI/LLM-kald i selve appen | Ville sende data ud og give ræsonnement uden kilde. AI bruges kun til at udkaste indhold i udviklingen |
-| Automatisk diagnoseforslag og score ("2 af 3 fund") | Ukildebelagt ræsonnement. Differentialdiagnoser vises som kildebelagt liste; du vælger |
+| Automatisk diagnoseforslag og score ("2 af 3 fund") | Ukildebelagt ræsonnement. Differentialdiagnoser vises som kildebelagt liste; du vælger. *Ændret 2026-11-24 (§10): rangering efter kildebelagte likelihood ratios – stadig ingen egne vægte og ingen procenter* |
 | "Ingen røde flag"-melding | Falsk tryghed. Betingelser må kun fremhæve |
 | Generering af henvisningstekster (fys, røntgen, ortopædkirurgi) | Uden for de to mål. Kan tilføjes senere som ekstra notatskabelon, hvis du savner det efter brug af knæ |
 | Den generiske workflow-motor, registry og kørselsvalidering | Erstattes af typer + én test |
@@ -276,3 +276,14 @@ Lægen ønsker mere automatisk beslutningsstøtte: Cortex fremhæver de differen
    - Ingen score og ingen rangering: indholdsfilens rækkefølge.
 2. **Knæ som pilot** – betingelser og planforslag, kildebelagt, alt UDKAST, kladde-PR til lægen.
 3. **Lægen tester knæ i konsultationen.** Er det brugbart, gentages trin 2 for skulder, albue, lænderyg og ankel (én region pr. session).
+
+## 10. Fase 4: rangering efter fundenes styrke (lægens beslutning 2026-11-24)
+
+Lægen ønsker hjælp til at vælge den mest sandsynlige diagnose og plan. Valgt løsning (beslutningskort 2026-11-24): **rangering efter kildebelagte likelihood ratios**, ikke sandsynlighed i procent, fordi prætest-sandsynligheder fra dansk almen praksis stort set mangler. Ingen LLM i appen (data forlader ikke pc'en).
+
+1. **Fælles motor (uden klinisk indhold)** – udført 2026-11-24:
+   - `fund` på differentialdiagnoser: `{ hvis, lr, kilder, klynge?, population? }`. LR er kildens tal; en test fejler ved LR uden kilde.
+   - `lib/rangering.ts`: produkt af de LR'er, der passer med fundene; i samme `klynge` tæller kun det stærkeste fund (overlappende tests ganges ikke). Kun diagnoser med samlet LR > 1 rangeres; ligestilling = filens rækkefølge.
+   - Panelet: "Forslag · fundene taler mest for" (højst 3) med "for/imod"-fund og LR; udfoldet vises kilde, population og forbeholdet (ikke en sandsynlighed, forekomst indgår ikke, uafhængighed antaget). Derefter de øvrige forenelige diagnoser som før. Intet skjules.
+   - Plan: uændret – lægen vælger diagnosen (V), og planforslaget følger (`A`).
+2. **Pr. region (én PR pr. region):** nye testfelter, hvor der findes kildebelagte LR (fx knæ: Lachman, pivot shift, Thessaly/McMurray; skulder: painful arc, drop arm; ankel: Ottawa), og `fund` på diagnoserne. Alt UDKAST. Knæ først.

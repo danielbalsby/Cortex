@@ -82,6 +82,8 @@ export const eksempel: Region = {
       navn: "EKSEMPEL: udkast med udenlandsk kilde",
       kendetegn: ["EKSEMPEL: kendetegn"],
       notat: "Eksempel på vurdering.",
+      // EKSEMPEL: opdigtet LR, kun til test af rangeringen.
+      fund: [{ hvis: [{ felt: "eksempelfelt", er: "ja" }], lr: 5, kilder: ["eks-udenlandsk"], population: "EKSEMPEL: population" }],
       kilder: ["eks-udenlandsk"],
       status: "UDKAST"
     }
