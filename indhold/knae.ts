@@ -212,6 +212,25 @@ export const knae: Region = {
             { id: "lateral", label: "Lateral", notat: "Lateral ledlinjeømhed." }
           ]
         },
+        // Menisktests (2026-11-24, til rangering efter likelihood ratio).
+        {
+          id: "mcmurray",
+          label: "McMurray",
+          type: "enkelt",
+          valg: [
+            { id: "neg", label: "Negativ", notat: "McMurrays test negativ." },
+            { id: "pos", label: "Positiv", notat: "McMurrays test positiv." }
+          ]
+        },
+        {
+          id: "thessaly",
+          label: "Thessaly",
+          type: "enkelt",
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Thessalys test negativ." },
+            { id: "pos", label: "Positiv", notat: "Thessalys test positiv." }
+          ]
+        },
         {
           id: "bevaegelighed",
           label: "Bevægelighed",
@@ -358,6 +377,8 @@ export const knae: Region = {
         "roedme",
         "varme",
         "ledlinje",
+        "mcmurray",
+        "thessaly",
         "bevaegelighed",
         "stabilitet",
         "lachman",
@@ -411,6 +432,24 @@ export const knae: Region = {
       titel: "Wagemakers HP m.fl. Assessing medial collateral ligament knee lesions in general practice (kun resumé læst)",
       aar: 2008,
       url: "https://doi.org/10.1016/j.amjmed.2008.05.041",
+      sidstTjekket: "2026-11-24"
+    },
+    {
+      id: "smith-2015-menisk",
+      udgiver: "Evid Based Med (BMJ)",
+      dansk: false,
+      titel: "Smith BE m.fl. Special tests for assessing meniscal tears within the knee: a systematic review and meta-analysis (kun resumé læst)",
+      aar: 2015,
+      url: "https://doi.org/10.1136/ebmed-2014-110160",
+      sidstTjekket: "2026-11-24"
+    },
+    {
+      id: "blyth-2015-menisk",
+      udgiver: "Health Technol Assess (NIHR)",
+      dansk: false,
+      titel: "Blyth M m.fl. Diagnostic accuracy of the Thessaly test, standardised clinical history and other clinical examination tests for meniscal tears (kun resumé læst)",
+      aar: 2015,
+      url: "https://doi.org/10.3310/hta19620",
       sidstTjekket: "2026-11-24"
     },
     {
@@ -761,7 +800,6 @@ export const knae: Region = {
       ],
       kilder: ["lh-meniskskade", "lh-knaesmerter"],
       // Likelihood ratio (læst 2026-11-24, kun resumé): klyngen vridtraume + mediale smerter + medial ledlinjeømhed.
-      // Enkelttests (McMurray, Thessaly) har ingen LR her: de fundne kilder angiver kun sensitivitet/specificitet.
       fund: [
         {
           hvis: [
@@ -771,10 +809,26 @@ export const knae: Region = {
           ],
           lr: 8.9,
           kilder: ["decary-2018-menisk"],
-          klynge: "menisk-klynge",
+          klynge: "menisk",
           population: "ortopædklinikker og almen praksis, Canada: 279 med knælidelse; traumatisk menisklæsion mod andre knælidelser; undersøgt af fysioterapeut"
-        }
+        },
+        // Enkelttests (lægens beslutning 2026-11-24: LR må beregnes fra kildens sens./spec. og mærkes).
+        // Smith 2015: McMurray sens. 0,61 / spec. 0,84; ledlinjeømhed 0,83 / 0,83; Thessaly 20° 0,75 / 0,87.
+        // Blyth 2015 (almen praksis-klinikere): Thessaly sens. 0,66 / spec. 0,39. Se konflikt.
+        // Alle menisk-fund er i samme klynge: testene måler det samme, så kun det stærkeste tæller.
+        { hvis: [{ felt: "ledlinje", er: "medial" }], lr: 4.9, kilder: ["smith-2015-menisk"], klynge: "menisk", population: "metaanalyse, 9 studier (n=1234), voksne, overvejende dårlig metodisk kvalitet; setting ikke angivet i resuméet. LR beregnet af Claude fra kildens sens./spec." },
+        { hvis: [{ felt: "ledlinje", er: "lateral" }], lr: 4.9, kilder: ["smith-2015-menisk"], klynge: "menisk", population: "metaanalyse, 9 studier (n=1234), voksne, overvejende dårlig metodisk kvalitet; setting ikke angivet i resuméet. LR beregnet af Claude fra kildens sens./spec." },
+        { hvis: [{ felt: "ledlinje", er: "ingen" }], lr: 0.2, kilder: ["smith-2015-menisk"], klynge: "menisk", population: "metaanalyse, 9 studier (n=1234), voksne, overvejende dårlig metodisk kvalitet; setting ikke angivet i resuméet. LR beregnet af Claude fra kildens sens./spec." },
+        { hvis: [{ felt: "mcmurray", er: "pos" }], lr: 3.8, kilder: ["smith-2015-menisk"], klynge: "menisk", population: "metaanalyse, 9 studier (n=1234), voksne, overvejende dårlig metodisk kvalitet; setting ikke angivet i resuméet. LR beregnet af Claude fra kildens sens./spec." },
+        { hvis: [{ felt: "mcmurray", er: "neg" }], lr: 0.46, kilder: ["smith-2015-menisk"], klynge: "menisk", population: "metaanalyse, 9 studier (n=1234), voksne, overvejende dårlig metodisk kvalitet; setting ikke angivet i resuméet. LR beregnet af Claude fra kildens sens./spec." },
+        { hvis: [{ felt: "thessaly", er: "pos" }], lr: 1.1, kilder: ["blyth-2015-menisk"], klynge: "menisk", population: "sekundærsektor (Glasgow), designet til at efterligne almen praksis; testet af almen praksis-kliniker. LR beregnet af Claude fra kildens sens./spec." },
+        { hvis: [{ felt: "thessaly", er: "neg" }], lr: 0.87, kilder: ["blyth-2015-menisk"], klynge: "menisk", population: "sekundærsektor (Glasgow), designet til at efterligne almen praksis; testet af almen praksis-kliniker. LR beregnet af Claude fra kildens sens./spec." }
       ],
+      konflikt: {
+        beskrivelse:
+          "Thessaly: Smith 2015 (metaanalyse) angiver sens. 0,75 / spec. 0,87 (beregnet LR+ 5,8 / LR− 0,29); Blyth 2015 (almen praksis-klinikere) sens. 0,66 / spec. 0,39 (beregnet LR+ 1,1 / LR− 0,87) og konkluderer, at ingen af testene er gode nok til rutinebrug. Rangeringen bruger Blyth, fordi populationen ligger tættest på almen praksis. Lægehåndbogen (Meniskskade, opd. 14.08.2026, efter NKR menisk) anbefaler Thessaly som supplement og fraråder McMurray eller Apley som eneste test; den angiver ingen tal.",
+        kilder: ["smith-2015-menisk", "blyth-2015-menisk", "lh-meniskskade"]
+      },
       status: "UDKAST"
     },
     {

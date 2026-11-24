@@ -37,6 +37,9 @@ const TABEL: { navn: string; trin: [string, string][]; forventet: string[] }[] =
     trin: [...traume, ["traumemekanisme", "vrid"], ["smertested", "medialt"], ["ledlinje", "medial"], ["pivotshift", "pos"]],
     forventet: ["diff-acl", "diff-menisk"]
   },
+  { navn: "medial ledlinjeømhed alene (beregnet LR 4,9)", trin: [["ledlinje", "medial"]], forventet: ["diff-menisk"] },
+  { navn: "ingen ledlinjeømhed taler imod menisk og rangerer intet", trin: [["ledlinje", "ingen"], ["mcmurray", "pos"]], forventet: [] },
+  { navn: "McMurray uden traume", trin: [["traume", "nej"], ["mcmurray", "pos"]], forventet: ["diff-menisk"] },
   { navn: "uden traume vises ligamenttests ikke og tæller ikke", trin: [["traume", "nej"], ["lachman", "pos"]], forventet: [] }
 ];
 
@@ -50,6 +53,21 @@ describe("knæ: rangering efter likelihood ratio", () => {
     expect(acl?.id).toBe("diff-acl");
     expect(acl?.samlet).toBeCloseTo(13.99);
     expect(acl?.for).toHaveLength(1);
+  });
+
+  it("menisktests i samme klynge: McMurray + Thessaly + ledlinje tæller kun den stærkeste", () => {
+    const [menisk] = rangering(knae, svar([["ledlinje", "medial"], ["mcmurray", "pos"], ["thessaly", "pos"]]));
+    expect(menisk?.id).toBe("diff-menisk");
+    expect(menisk?.samlet).toBeCloseTo(4.9);
+  });
+
+  it("beregnede LR'er er mærket som beregnet", () => {
+    const beregnet = new Set(["smith-2015-menisk", "blyth-2015-menisk"]);
+    for (const diff of knae.differentialdiagnoser) {
+      for (const f of diff.fund ?? []) {
+        if (f.kilder.some((id) => beregnet.has(id))) expect(f.population).toContain("LR beregnet af Claude");
+      }
+    }
   });
 
   it("knæk (anamnese) og test ganges som uafhængige klynger", () => {
