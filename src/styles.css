@@ -175,73 +175,96 @@ kbd {
 
 .start .lille { margin-top: 18px; font-size: 0.85rem; }
 
-.stoette section { margin-top: 10px; }
-.stoette h2 { margin: 0 0 6px; }
-.antal { font-weight: 400; letter-spacing: 0; }
-.punkter { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+/* Beslutningsstøtten: rolig liste uden kasser. Farve bruges kun, hvor den betyder noget:
+   rød = rødt flag, grøn = dit valg/forslag. Detaljer, kilder og status ved udfoldning. */
+.stoette section { margin-top: 18px; }
+.stoette h2 { display: flex; align-items: baseline; gap: 8px; margin: 0 0 6px; }
+.antal { font-weight: 400; letter-spacing: 0; color: var(--daempet); }
+.udkast { margin-left: auto; padding: 0 6px; border: 1px dashed #b3bcb8; border-radius: 4px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; text-transform: none; color: var(--daempet); }
+.matchAntal { color: var(--advarsel); font-weight: 700; letter-spacing: 0.04em; }
+.forDiagnose { color: var(--tekst); letter-spacing: 0.02em; text-transform: none; font-size: 0.85rem; font-weight: 600; }
+.punkter { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; }
+.stoette .tom { padding: 2px 0 4px; font-size: 0.9rem; }
 
-/* Sektioner uden røde flag er sammenfoldet; overskrift og antal er altid synlige. */
-.sektion > summary { cursor: pointer; list-style: none; display: block; padding: 3px 0; border-bottom: 1px solid var(--kant); }
-.sektion > summary::-webkit-details-marker { display: none; }
-.sektion > summary h2 { margin: 0; }
-.sektion > summary h2::before { content: "▸ "; }
-.sektion[open] > summary h2::before { content: "▾ "; }
-.sektion[open] > summary { margin-bottom: 6px; }
-.sektion > summary:focus-visible, .punktDetaljer > summary:focus-visible, .oevrige summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-
-/* Ét punkt = én linje (titel); resten vises ved udfoldning. Neutral ramme; rød kun til røde flag. */
-.punkt { padding: 0 8px; line-height: 1.3; border: 1px solid var(--kant); border-left-width: 3px; border-radius: 6px; }
-.punkt.flag { border-left-color: var(--advarsel); }
-.punkt.fremhaevet { background: #fbeae6; border-color: var(--advarsel); }
+/* Ét punkt = én (evt. ombrudt) linje; ingen ramme. Svag baggrund ved hover/fokus. */
+.punkt { padding: 0 6px; line-height: 1.35; border-radius: 6px; }
+.punkt:hover, .punkt:focus-within { background: #f3f5f4; }
 .punktRaekke { display: flex; align-items: flex-start; gap: 8px; }
 .punktDetaljer { flex: 1; min-width: 0; }
 .punktDetaljer > summary {
-  display: flex; align-items: baseline; gap: 8px; cursor: pointer; list-style: none; padding: 3px 0;
+  display: flex; align-items: baseline; gap: 8px; cursor: pointer; list-style: none; padding: 4px 0;
 }
 .punktDetaljer > summary::-webkit-details-marker { display: none; }
-.punktDetaljer > summary::before { content: "▸"; color: var(--daempet); flex: 0 0 auto; }
-.punktDetaljer[open] > summary::before { content: "▾"; }
-.titelLinje { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.punktDetaljer[open] .titelLinje { white-space: normal; overflow: visible; }
-/* Røde flag: én linje hver; kun flag, der matcher dine valg, står med fed. Fuld tekst ved udfoldning. */
-.flag .flagTitel { font-weight: 500; }
-.flag.fremhaevet .flagTitel { font-weight: 700; }
-.punktTekst { display: flex; flex-direction: column; gap: 3px; padding: 2px 0 2px 16px; }
+.punktDetaljer > summary::before { content: "›"; width: 0.6em; color: #a7b0ad; flex: 0 0 auto; transition: transform 0.1s; }
+.punktDetaljer[open] > summary::before { transform: rotate(90deg); }
+/* Titler brydes om i stedet for at blive afkortet med "…". min-width: 0 holder knappen inde i panelet. */
+.titelLinje { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.navn { font-weight: 500; }
+.punktTekst { display: flex; flex-direction: column; gap: 4px; padding: 2px 0 2px 14px; font-size: 0.92rem; }
+.punktDetaljer[open] { padding-bottom: 6px; }
+
+/* +V/+P: diskret, indtil rækken peges på eller har fokus; tydelig, når punktet er valgt. Tasterne V/P virker altid. */
 .tilNotat {
   flex: 0 0 auto;
-  margin-top: 2px;
-  padding: 1px 9px;
-  border: 1px solid var(--kant);
+  margin-top: 3px;
+  padding: 0 8px;
+  border: 1px solid transparent;
   border-radius: 6px;
-  background: var(--flade);
-  font-size: 0.8rem;
+  background: transparent;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: var(--daempet);
+  color: #a7b0ad;
 }
-.tilNotat:hover { border-color: var(--accent); color: var(--accent); }
-.tilNotat.valgt { background: var(--accent); border-color: var(--accent); color: #fff; }
-.punkt.valgtPunkt { box-shadow: inset 0 0 0 1px var(--accent); }
-.oevrige { list-style: none; }
-.oevrige summary { cursor: pointer; color: var(--daempet); font-size: 0.9rem; padding: 4px 0; }
-.oevrige .punkter { margin-top: 6px; }
-.gruppeTitel { margin: 4px 0 0; line-height: 1.2; font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--daempet); }
-.gruppeTitel.fremhaevetTitel { color: var(--advarsel); font-weight: 700; }
-.handling { color: var(--tekst); }
-.kendetegn, .hast { color: var(--daempet); font-size: 0.9rem; font-weight: 400; }
-.match { flex: 0 0 auto; color: var(--advarsel); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-.ikkeVurderet { flex: 0 0 auto; color: var(--daempet); font-size: 0.75rem; font-style: italic; }
-.flagStatus { color: var(--daempet); font-size: 0.85rem; }
+.punkt:hover .tilNotat, .punkt:focus-within .tilNotat, .tilNotat:focus-visible { border-color: var(--kant); background: var(--flade); color: var(--daempet); }
+.tilNotat:not(.valgt):hover { border-color: var(--accent); color: var(--accent); }
+.tilNotat.valgt, .punkt:hover .tilNotat.valgt, .punkt:focus-within .tilNotat.valgt, .tilNotat.valgt:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.punkt.valgtPunkt { background: var(--accent-svag); }
+
+/* Røde flag: altid alle synlige. Én tynd rød linje for hele listen; kun flag, der matcher, får farve og fed. */
+.flagListe { border-left: 2px solid #e3b7ad; padding-left: 4px; }
+.flagTitel { font-weight: 400; }
+.flagListe .punktDetaljer > summary { padding: 2px 0; }
+.flag.fremhaevet { background: #fbeae6; }
+.flag.fremhaevet .flagTitel { font-weight: 700; color: var(--advarsel); }
+.match { flex: 0 0 auto; color: var(--advarsel); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.ikkeVurderet { flex: 0 0 auto; color: #98a29f; font-size: 0.72rem; }
+.flagStatus { color: var(--daempet); font-size: 0.82rem; }
 .flagStatus:empty { display: none; }
-.punktMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 4px 0 2px 16px; font-size: 0.8rem; }
+.handling { color: var(--tekst); font-weight: 500; }
+.under { padding: 0 0 6px 14px; font-size: 0.9rem; }
+
+.oevrige { list-style: none; margin-top: 4px; }
+.oevrige > details > summary { cursor: pointer; color: var(--daempet); font-size: 0.88rem; padding: 4px 6px; list-style: none; border-radius: 6px; }
+.oevrige > details > summary::-webkit-details-marker { display: none; }
+.oevrige > details > summary::before { content: "+ "; }
+.oevrige > details[open] > summary::before { content: "− "; }
+.oevrige > details > summary:hover { background: #f3f5f4; color: var(--tekst); }
+.oevrige .punkter { margin-top: 2px; }
+.punktDetaljer > summary:focus-visible, .oevrige summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.gruppeTitel { margin: 8px 0 2px; padding-left: 6px; line-height: 1.2; font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--daempet); }
+.kendetegn, .hast { color: var(--daempet); font-size: 0.88rem; font-weight: 400; }
+.hast.akut { color: var(--advarsel); }
+.punktMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 4px 0 2px 14px; font-size: 0.8rem; }
 .kilde { color: var(--accent); }
 .ikkeDansk { color: var(--daempet); }
 .maerke { padding: 0 6px; border-radius: 4px; font-weight: 700; letter-spacing: 0.04em; }
 .maerke.kladde { border: 1px dashed #9aa5a1; color: var(--daempet); }
 .maerke.ok { background: var(--accent-svag); color: var(--accent); }
 .maerke.mangler { border: 1px solid var(--tekst); color: var(--tekst); }
-.konflikt { margin: 4px 0 2px 16px; font-size: 0.85rem; }
+.konflikt { margin: 4px 0 2px 14px; font-size: 0.85rem; }
 .konflikt strong { color: var(--tekst); }
 .konflikt p { margin: 4px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Forslag: grøn (accent), ikke rød – det er forslag, ikke alarmer. */
+.forslag .gruppeTitel { color: var(--accent); }
+.passerMed { color: var(--daempet); font-weight: 400; font-size: 0.85rem; }
+.punkt.forenelig .navn { color: var(--accent); }
+.punkt.forenelig .tilNotat { border-color: var(--kant); background: var(--flade); color: var(--daempet); }
+.planForslag { list-style: none; margin: 4px 0 6px; padding: 8px 10px; border-radius: 6px; background: var(--accent-svag); }
+.planForslag .gruppeTitel { margin: 0 0 4px; padding: 0; }
+.planForslag ul { margin: 0 0 8px 1.1rem; padding: 0; font-size: 0.92rem; }
+.tagForslag { background: var(--accent); color: #fff; border: 0; border-radius: 5px; padding: 0.25rem 0.7rem; font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
+.tagForslag kbd { margin-left: 0.3rem; background: transparent; border-color: rgba(255, 255, 255, 0.5); color: #fff; }
 
 .gennemgang { flex: 1; max-width: 960px; margin: 0 auto; padding: 16px; }
 .gennemgang h1 { margin: 4px 0 6px; font-size: 1.4rem; }
@@ -279,14 +302,3 @@ kbd {
   .notatTekst { max-height: 22vh; }
   .top .hint { display: none; }
 }
-
-/* Forslag: forenelige diagnoser og planforslag. Accentfarve (ikke advarselsrød) – det er forslag, ikke alarmer. */
-.forslag { border: 1px solid var(--accent); border-radius: 6px; padding: 0.4rem 0.6rem 0.5rem; margin: 0.6rem 0; background: var(--flade); }
-.forslag h2 { margin-top: 0.1rem; }
-.forslag .gruppeTitel { color: var(--accent); }
-.punkt.forenelig { border-color: var(--accent); }
-.passerMed { color: var(--daempet); font-weight: 400; font-size: 0.85rem; }
-.planForslag { list-style: none; margin: 0.3rem 0; }
-.planForslag ul { margin: 0.2rem 0 0.3rem 1.1rem; padding: 0; font-size: 0.9rem; }
-.tagForslag { background: var(--accent); color: #fff; border: 0; border-radius: 4px; padding: 0.3rem 0.7rem; font: inherit; font-weight: 600; cursor: pointer; }
-.tagForslag kbd { margin-left: 0.3rem; }

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import type { Kilde, Kildebelagt, Region, Svar } from "../indhold/typer";
 import { sorterFlag, type FlagStatus } from "../lib/flag";
 import { foreneligeDiagnoser, planForslag } from "../lib/forslag";
+import { kortTitel, planVisning } from "../lib/visning";
 
 // Viser regionens kliniske punkter præcis som de står i indholdsfilen.
 // Komponenten indeholder ingen klinisk tekst og drager ingen konklusioner.
@@ -19,60 +20,90 @@ type Props = {
 export function Beslutningsstoette({ region, svar, valgte, onVaelg, onTagForslag }: Props) {
   const kilder = new Map(region.kilder.map((kilde) => [kilde.id, kilde]));
   const diagnoseNavn = new Map(region.differentialdiagnoser.map((diff) => [diff.id, diff.navn]));
-  const valgteDiagnoser = region.differentialdiagnoser.filter((diff) => valgte.includes(diff.id)).map((diff) => diff.id);
 
-  // Når en diagnose er valgt, vises behandling for den (og generel behandling) først.
-  // Resten ligger sammenfoldet – intet skjules helt.
-  const relevant = (gaelderFor: string[] | undefined) =>
-    valgteDiagnoser.length === 0 || !gaelderFor?.length || gaelderFor.some((id) => valgteDiagnoser.includes(id));
-  const forrest = region.behandling.filter((beh) => relevant(beh.gaelderFor) || valgte.includes(beh.id));
-  const oevrige = region.behandling.filter((beh) => !forrest.includes(beh));
+  // Progressive disclosure: skærmen tager udgangspunkt i lægens valg. Uden valgt diagnose vises
+  // røde flag og diagnoser; behandling og henvisning ligger sammenfoldet. Med valgt diagnose vises
+  // det, der hører til den – resten ligger sammenfoldet. Intet skjules helt (se lib/visning.ts).
+  const visning = planVisning(region, valgte);
+  const valgteDiagnoser = visning.diagnoser;
+  const harDiagnose = valgteDiagnoser.length > 0;
 
+  const { matcher, oevrige: oevrigeFlag } = sorterFlag(region, svar);
+  const flagPunkt = ({ flag, status }: (typeof matcher)[number]) => {
+    const { titel, rest } = kortTitel(flag.tekst);
+    return (
+      <Punkt
+        key={flag.id}
+        punkt={flag}
+        kilder={kilder}
+        klasse={status === "matcher" ? "flag fremhaevet" : "flag"}
+        titel={<span className="flagTitel">{titel}</span>}
+        markering={<FlagMaerke status={status} />}
+        // Et flag, der matcher dine valg, viser sin handling uden udfoldning.
+        under={status === "matcher" ? <span className="handling">→ {flag.handling}</span> : undefined}
+      >
+        {rest && <span>{rest}</span>}
+        {status !== "matcher" && <span className="handling">→ {flag.handling}</span>}
+        <span className="flagStatus">{FLAG_FORKLARING[status]}</span>
+      </Punkt>
+    );
+  };
+
+  const forenelige = foreneligeDiagnoser(region, svar).filter((f) => !valgte.includes(f.id));
+  const plan = planForslag(region, svar, valgte);
+  // Forslaget vises med den sætning, der kommer i P, så lægen ser præcis, hvad ét tryk skriver.
+  const notatSaetning = (id: string) =>
+    [...region.behandling, ...region.henvisning].find((punkt) => punkt.id === id)?.notat ?? id;
+
+  const diagnosePunkt = (diff: Region["differentialdiagnoser"][number], passerMed?: string[], klasse = "") => (
+    <Punkt
+      key={diff.id}
+      punkt={diff}
+      kilder={kilder}
+      klasse={klasse}
+      titel={
+        <span className="ombryd">
+          <span className="navn">{diff.navn}</span>
+          {passerMed && <span className="passerMed"> · {passerMed.join(", ")}</span>}
+        </span>
+      }
+      valg={{ label: "V", valgt: valgte.includes(diff.id), onVaelg: () => onVaelg(diff.id) }}
+    >
+      {diff.kendetegn.length > 0 && <span className="kendetegn">{diff.kendetegn.join(" · ")}</span>}
+      {passerMed && (
+        <span className="flagStatus">
+          Forslag: fremhævet, fordi dine fund passer med kildens beskrivelse. Andre diagnoser er ikke udelukket.
+        </span>
+      )}
+    </Punkt>
+  );
+
+  // Behandling: titlen er den sætning, der skrives i P (kort og præcis); kildens fulde tekst ved udfoldning.
   const behandlingPunkt = (beh: Region["behandling"][number]) => (
     <Punkt
       key={beh.id}
       punkt={beh}
       kilder={kilder}
-      titel={<span className="laangTitel">{beh.tekst}</span>}
+      titel={<span className="ombryd">{beh.notat}</span>}
       valg={{ label: "P", valgt: valgte.includes(beh.id), onVaelg: () => onVaelg(beh.id) }}
     >
+      <span>{beh.tekst}</span>
       {beh.gaelderFor && beh.gaelderFor.length > 0 && (
         <span className="kendetegn">Gælder: {beh.gaelderFor.map((id) => diagnoseNavn.get(id) ?? id).join(", ")}</span>
       )}
     </Punkt>
   );
 
-  const { matcher, oevrige: oevrigeFlag } = sorterFlag(region, svar);
-  const flagPunkt = ({ flag, status }: (typeof matcher)[number]) => (
-    <Punkt
-      key={flag.id}
-      punkt={flag}
-      kilder={kilder}
-      klasse={status === "matcher" ? "flag fremhaevet" : "flag"}
-      titel={<FlagTitel tekst={flag.tekst} />}
-      markering={<FlagMaerke status={status} />}
-    >
-      <FlagRest tekst={flag.tekst} />
-      <span className="handling">→ {flag.handling}</span>
-      <span className="flagStatus">{FLAG_FORKLARING[status]}</span>
-    </Punkt>
-  );
-
-  const forenelige = foreneligeDiagnoser(region, svar);
-  const plan = planForslag(region, svar, valgte);
-  // Forslaget vises med den sætning, der kommer i P, så lægen ser præcis, hvad ét tryk skriver.
-  const notatSaetning = (id: string) =>
-    [...region.behandling, ...region.henvisning].find((punkt) => punkt.id === id)?.notat ?? id;
   const henvisningPunkt = (henvisning: Region["henvisning"][number]) => (
     <Punkt
       key={henvisning.id}
       punkt={henvisning}
       kilder={kilder}
       titel={
-        <strong>
-          {henvisning.til}
-          {henvisning.hast && <span className="hast"> · {henvisning.hast}</span>}
-        </strong>
+        <span className="ombryd">
+          <span className="navn">{henvisning.til}</span>
+          {henvisning.hast && <span className={`hast ${henvisning.hast}`}> · {henvisning.hast}</span>}
+        </span>
       }
       valg={{ label: "P", valgt: valgte.includes(henvisning.id), onVaelg: () => onVaelg(henvisning.id) }}
     >
@@ -80,117 +111,113 @@ export function Beslutningsstoette({ region, svar, valgte, onVaelg, onTagForslag
       <span className="kendetegn">Gælder: {henvisning.gyldighed}</span>
     </Punkt>
   );
-  const visForslag = forenelige.length > 0 || plan.forslag.length > 0 || plan.vurder.length > 0;
+
+  // Planforslag vises én gang (som sætninger med ét tryk); de står derfor ikke også i listen nedenunder.
+  const behandlingFremme = visning.behandling.naer.filter((b) => !plan.forslag.includes(b.id));
+  const henvisningFremme = visning.henvisning.naer.filter((h) => !plan.forslag.includes(h.id));
+  const valgtNavn = valgteDiagnoser.map((id) => diagnoseNavn.get(id)).join(" + ");
 
   return (
     <div className="stoette" key={region.id}>
-      <section>
+      <section className="flagSektion">
         <h2>
-          Røde flag <span className="antal">({antalTekst(region.roedeFlag)})</span>
+          Røde flag <span className="antal">{region.roedeFlag.length}</span>
+          {matcher.length > 0 && <span className="matchAntal">{matcher.length} matcher dine valg</span>}
         </h2>
         {region.roedeFlag.length === 0 ? (
           <p className="tom">Intet indhold endnu.</p>
         ) : (
-          <ul className="punkter">
-            {matcher.length > 0 && <li className="gruppeTitel fremhaevetTitel">Matcher dine valg ({matcher.length})</li>}
+          <ul className="punkter flagListe">
             {matcher.map(flagPunkt)}
-            {matcher.length > 0 && oevrigeFlag.length > 0 && (
-              <li className="gruppeTitel">Øvrige flag ({oevrigeFlag.length})</li>
-            )}
             {oevrigeFlag.map(flagPunkt)}
           </ul>
         )}
       </section>
 
-      {visForslag && (
-        <section className="forslag" aria-label="Forslag">
-          <h2>
-            Forslag <span className="gruppeHint">Cortex foreslår – lægen vurderer og har ansvaret</span>
-          </h2>
-          <ul className="punkter">
-            {forenelige.length > 0 && (
-              <li className="gruppeTitel">
-                Forenelig med dine fund ({forenelige.length}) <span className="gruppeHint"><kbd>D</kbd> gå hertil · <kbd>V</kbd> til vurdering</span>
-              </li>
-            )}
-            {forenelige.map((f) => {
-              const diff = region.differentialdiagnoser.find((d) => d.id === f.id)!;
-              return (
-                <Punkt
-                  key={f.id}
-                  punkt={diff}
-                  kilder={kilder}
-                  klasse="forenelig"
-                  titel={
-                    <span className="laangTitel">
-                      <strong>{f.navn}</strong> <span className="passerMed">· {f.passerMed.join(", ")}</span>
-                    </span>
-                  }
-                  valg={{ label: "V", valgt: valgte.includes(f.id), onVaelg: () => onVaelg(f.id) }}
-                >
-                  {diff.kendetegn.length > 0 && <span className="kendetegn">{diff.kendetegn.join(" · ")}</span>}
-                  <span className="flagStatus">
-                    Fremhævet, fordi dine fund passer med kildens beskrivelse. Det er et forslag, ikke en diagnose; andre
-                    diagnoser er ikke udelukket.
-                  </span>
-                </Punkt>
-              );
-            })}
-            {plan.forslag.length > 0 && (
-              <li className="planForslag">
-                <span className="gruppeTitel">Forslag til plan for valgt diagnose – skrives i P</span>
-                <ul>
-                  {plan.forslag.map((id) => (
-                    <li key={id}>{notatSaetning(id)}</li>
-                  ))}
-                </ul>
-                <button className="tagForslag" onClick={() => onTagForslag(plan.forslag)}>
-                  Tag med i P <kbd>A</kbd>
-                </button>
-              </li>
-            )}
-            {plan.vurder.length > 0 && (
-              <li className="gruppeTitel">Henvisning til valgt diagnose – vurder kriterierne</li>
-            )}
-            {plan.vurder.map((id) => henvisningPunkt(region.henvisning.find((h) => h.id === id)!))}
-          </ul>
-        </section>
-      )}
+      <section className="forslag" aria-label="Diagnose">
+        <h2>
+          Diagnose <UdkastMaerke punkter={region.differentialdiagnoser} />
+        </h2>
+        <ul className="punkter">
+          {region.differentialdiagnoser.filter((d) => valgte.includes(d.id)).map((d) => diagnosePunkt(d, undefined, "valgtDiagnose"))}
+          {forenelige.length > 0 && (
+            <li className="gruppeTitel">
+              Forslag · forenelig med dine fund
+            </li>
+          )}
+          {forenelige.map((f) =>
+            diagnosePunkt(region.differentialdiagnoser.find((d) => d.id === f.id)!, f.passerMed, "forenelig")
+          )}
+          {!harDiagnose && forenelige.length === 0 && (
+            <li className="tom">Vælg fund til venstre, eller vælg en diagnose på listen.</li>
+          )}
+          <Fold titel="Alle differentialdiagnoser" antal={region.differentialdiagnoser.length}>
+            {region.differentialdiagnoser.map((d) => diagnosePunkt(d))}
+          </Fold>
+        </ul>
+      </section>
 
-      <Sektion titel="Differentialdiagnoser" antal={antalTekst(region.differentialdiagnoser)} hint="V = til vurdering i notatet">
-        {region.differentialdiagnoser.map((diff) => (
-          <Punkt
-            key={diff.id}
-            punkt={diff}
-            kilder={kilder}
-            titel={<strong>{diff.navn}</strong>}
-            valg={{ label: "V", valgt: valgte.includes(diff.id), onVaelg: () => onVaelg(diff.id) }}
-          >
-            {diff.kendetegn.length > 0 && <span className="kendetegn">{diff.kendetegn.join(" · ")}</span>}
-          </Punkt>
-        ))}
-      </Sektion>
-
-      <Sektion
-        titel="Behandling"
-        antal={antalTekst(region.behandling)}
-        hint={valgteDiagnoser.length ? "Vist for valgt diagnose · P = til plan" : "P = til plan i notatet"}
-      >
-        {forrest.map(behandlingPunkt)}
-        {oevrige.length > 0 && (
-          <li className="oevrige">
-            <details>
-              <summary>Øvrig behandling ({oevrige.length})</summary>
-              <ul className="punkter">{oevrige.map(behandlingPunkt)}</ul>
-            </details>
-          </li>
-        )}
-      </Sektion>
-
-      <Sektion titel="Henvisning" antal={antalTekst(region.henvisning)} hint="P = til plan i notatet">
-        {region.henvisning.map(henvisningPunkt)}
-      </Sektion>
+      <section className="planSektion" aria-label="Plan">
+        <h2>
+          Plan{harDiagnose && <span className="forDiagnose"> · {valgtNavn}</span>}{" "}
+          <UdkastMaerke punkter={[...region.behandling, ...region.henvisning]} />
+        </h2>
+        <ul className="punkter">
+          {!harDiagnose && (
+            <li className="tom">Vælg en diagnose (V) – så vises den behandling og henvisning, der hører til.</li>
+          )}
+          {plan.forslag.length > 0 && (
+            <li className="planForslag">
+              <span className="gruppeTitel">Forslag · skrives i P med ét tryk</span>
+              <ul>
+                {plan.forslag.map((id) => (
+                  <li key={id}>{notatSaetning(id)}</li>
+                ))}
+              </ul>
+              <button className="tagForslag" onClick={() => onTagForslag(plan.forslag)}>
+                Tag med i P <kbd>A</kbd>
+              </button>
+            </li>
+          )}
+          {behandlingFremme.length > 0 && <li className="gruppeTitel">Behandling</li>}
+          {behandlingFremme.map(behandlingPunkt)}
+          {henvisningFremme.length > 0 && <li className="gruppeTitel">Henvisning</li>}
+          {henvisningFremme.map(henvisningPunkt)}
+          <Fold titel={harDiagnose ? "Øvrig behandling" : "Al behandling"} antal={visning.behandling.oevrige.length}>
+            {visning.behandling.oevrige.map(behandlingPunkt)}
+          </Fold>
+          <Fold titel={harDiagnose ? "Øvrige henvisninger" : "Alle henvisninger"} antal={visning.henvisning.oevrige.length}>
+            {visning.henvisning.oevrige.map(henvisningPunkt)}
+          </Fold>
+        </ul>
+      </section>
     </div>
+  );
+}
+
+/** Sammenfoldet liste. Alt, der ikke står fremme, ligger her og kan foldes ud; tom liste vises ikke. */
+function Fold({ titel, antal, children }: { titel: string; antal: number; children: ReactNode }) {
+  if (antal === 0) return null;
+  return (
+    <li className="oevrige">
+      <details>
+        <summary>
+          {titel} <span className="antal">{antal}</span>
+        </summary>
+        <ul className="punkter stille">{children}</ul>
+      </details>
+    </li>
+  );
+}
+
+/** Ét neutralt signal pr. sektion i stedet for et mærke på hver linje. Pr. punkt ses status ved udfoldning. */
+function UdkastMaerke({ punkter }: { punkter: { status: string }[] }) {
+  const udkast = punkter.filter((p) => p.status === "UDKAST").length;
+  if (udkast === 0) return null;
+  return (
+    <span className="udkast" title="Ikke godkendt af dig. Status pr. punkt ses, når punktet foldes ud.">
+      {udkast === punkter.length ? "udkast" : `${udkast} udkast`}
+    </span>
   );
 }
 
@@ -216,8 +243,7 @@ function FlagMaerke({ status }: { status: FlagStatus }) {
 export function FlagStribe({ region, svar }: { region: Region; svar: Svar }) {
   const { matcher, oevrige } = sorterFlag(region, svar);
   const titel = (tekst: string) => {
-    const kolon = tekst.indexOf(": ");
-    const t = kolon === -1 ? tekst : tekst.slice(0, kolon);
+    const t = kortTitel(tekst).titel.replace(/:$/, "");
     return t.length > 45 ? `${t.slice(0, 44)}…` : t;
   };
   return (
@@ -239,46 +265,9 @@ export function FlagStribe({ region, svar }: { region: Region; svar: Svar }) {
   );
 }
 
-/** Flagets titel er teksten før første kolon; uden kolon er hele teksten titlen. */
-function FlagTitel({ tekst }: { tekst: string }) {
-  const kolon = tekst.indexOf(": ");
-  return <strong className="flagTitel">{kolon === -1 ? tekst : tekst.slice(0, kolon + 1)}</strong>;
-}
 
-function FlagRest({ tekst }: { tekst: string }) {
-  const kolon = tekst.indexOf(": ");
-  return kolon === -1 ? null : <span>{tekst.slice(kolon + 2)}</span>;
-}
 
-/** "14", "14 · alle udkast" eller "14 · 3 udkast": UDKAST er synligt uden at folde ud, som ét neutralt signal. */
-function antalTekst(punkter: { status: string }[]): string {
-  const udkast = punkter.filter((p) => p.status === "UDKAST").length;
-  if (udkast === 0) return `${punkter.length}`;
-  return udkast === punkter.length ? `${punkter.length} · alle udkast` : `${punkter.length} · ${udkast} udkast`;
-}
 
-function Sektion({ titel, antal, hint, children }: { titel: string; antal: string; hint?: string; children: ReactNode }) {
-  return (
-    <section>
-      {antal === "0" ? (
-        <>
-          <h2>{titel} <span className="antal">(0)</span></h2>
-          <p className="tom">Intet indhold endnu.</p>
-        </>
-      ) : (
-        <details className="sektion">
-          <summary>
-            <h2>
-              {titel} <span className="antal">({antal})</span>
-              {hint && <span className="gruppeHint">{hint}</span>}
-            </h2>
-          </summary>
-          <ul className="punkter">{children}</ul>
-        </details>
-      )}
-    </section>
-  );
-}
 
 /**
  * Ét kildebelagt punkt. Sammenfoldet vises kun titlen (og evt. markering);
@@ -292,6 +281,7 @@ function Punkt({
   titel,
   markering,
   valg,
+  under,
   children
 }: {
   punkt: Kildebelagt;
@@ -300,6 +290,7 @@ function Punkt({
   titel: ReactNode;
   markering?: ReactNode;
   valg?: { label: string; valgt: boolean; onVaelg: () => void };
+  under?: ReactNode; // vises altid under titlen (kun til flag, der matcher)
   children: ReactNode;
 }) {
   const godkendt = punkt.status === "GODKENDT";
@@ -345,6 +336,7 @@ function Punkt({
           </button>
         )}
       </div>
+      {under && <div className="under">{under}</div>}
     </li>
   );
 }
