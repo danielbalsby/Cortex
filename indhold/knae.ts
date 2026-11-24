@@ -231,6 +231,48 @@ export const knae: Region = {
             { id: "instabil", label: "Instabilitet", notat: "Klinisk mistanke om instabilitet." }
           ]
         },
+        // Ligamenttests (2026-11-24, til rangering efter likelihood ratio). Vises ved traume som de øvrige traumefelter.
+        {
+          id: "lachman",
+          label: "Lachman",
+          type: "enkelt",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Lachmans test negativ." },
+            { id: "pos", label: "Positiv", notat: "Lachmans test positiv." }
+          ]
+        },
+        {
+          id: "skuffe",
+          label: "Forreste skuffe",
+          type: "enkelt",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Forreste skuffetest negativ." },
+            { id: "pos", label: "Positiv", notat: "Forreste skuffetest positiv." }
+          ]
+        },
+        {
+          id: "pivotshift",
+          label: "Pivot shift",
+          type: "enkelt",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Pivot shift negativ." },
+            { id: "pos", label: "Positiv", notat: "Pivot shift positiv." }
+          ]
+        },
+        {
+          id: "valgus30",
+          label: "Valgusstress 30°",
+          type: "flere",
+          visHvis: [{ felt: "traume", er: "ja" }],
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Valgusstress i 30 graders fleksion uden smerte og løshed." },
+            { id: "smerte", label: "Smerte", notat: "Smerte ved valgusstress i 30 graders fleksion." },
+            { id: "loeshed", label: "Løshed", notat: "Løshed ved valgusstress i 30 graders fleksion." }
+          ]
+        },
         {
           id: "patellaoemhed",
           label: "Ømhed patella",
@@ -318,6 +360,10 @@ export const knae: Region = {
         "ledlinje",
         "bevaegelighed",
         "stabilitet",
+        "lachman",
+        "skuffe",
+        "pivotshift",
+        "valgus30",
         "patellaoemhed",
         "fibulaoemhed",
         "fleksion90",
@@ -329,6 +375,53 @@ export const knae: Region = {
   ],
 
   kilder: [
+    // Kilder til likelihood ratios (rangering). Alle ikke-danske; Lægehåndbogen og NKR angiver ingen LR-tal
+    // (LH Meniskskade, opd. 14.08.2026, læst 2026-11-24: "Deres diagnostiske kvaliteter er ikke optimale").
+    {
+      id: "huang-2022-acl",
+      udgiver: "Medicine (Baltimore)",
+      dansk: false,
+      titel: "Huang Z m.fl. Value of clinical tests in diagnosing anterior cruciate ligament injuries: systematic review and meta-analysis (fuldtekst læst)",
+      aar: 2022,
+      url: "https://doi.org/10.1097/MD.0000000000029263",
+      sidstTjekket: "2026-11-24"
+    },
+    {
+      id: "decary-2018-acl",
+      udgiver: "PLoS One",
+      dansk: false,
+      titel: "Décary S m.fl. Clinical diagnosis of partial or complete ACL tears using patients' history elements and physical examination tests (fuldtekst læst)",
+      aar: 2018,
+      url: "https://doi.org/10.1371/journal.pone.0198797",
+      sidstTjekket: "2026-11-24"
+    },
+    {
+      id: "wagemakers-2010-acl",
+      udgiver: "Arch Phys Med Rehabil",
+      dansk: false,
+      titel: "Wagemakers HP m.fl. Diagnostic accuracy of history taking and physical examination for assessing ACL lesions of the knee in primary care (kun resumé læst)",
+      aar: 2010,
+      url: "https://doi.org/10.1016/j.apmr.2010.06.012",
+      sidstTjekket: "2026-11-24"
+    },
+    {
+      id: "wagemakers-2008-mcl",
+      udgiver: "Am J Med",
+      dansk: false,
+      titel: "Wagemakers HP m.fl. Assessing medial collateral ligament knee lesions in general practice (kun resumé læst)",
+      aar: 2008,
+      url: "https://doi.org/10.1016/j.amjmed.2008.05.041",
+      sidstTjekket: "2026-11-24"
+    },
+    {
+      id: "decary-2018-menisk",
+      udgiver: "PM&R",
+      dansk: false,
+      titel: "Décary S m.fl. Diagnostic validity of combining history elements and physical examination tests for traumatic and degenerative symptomatic meniscal tears (kun resumé læst)",
+      aar: 2018,
+      url: "https://doi.org/10.1016/j.pmrj.2017.10.009",
+      sidstTjekket: "2026-11-24"
+    },
     {
       id: "lh-knaesmerter",
       udgiver: "Lægehåndbogen",
@@ -667,6 +760,21 @@ export const knae: Region = {
         [{ felt: "laasning", er: "ja" }]
       ],
       kilder: ["lh-meniskskade", "lh-knaesmerter"],
+      // Likelihood ratio (læst 2026-11-24, kun resumé): klyngen vridtraume + mediale smerter + medial ledlinjeømhed.
+      // Enkelttests (McMurray, Thessaly) har ingen LR her: de fundne kilder angiver kun sensitivitet/specificitet.
+      fund: [
+        {
+          hvis: [
+            { felt: "traumemekanisme", er: "vrid" },
+            { felt: "smertested", er: "medialt" },
+            { felt: "ledlinje", er: "medial" }
+          ],
+          lr: 8.9,
+          kilder: ["decary-2018-menisk"],
+          klynge: "menisk-klynge",
+          population: "ortopædklinikker og almen praksis, Canada: 279 med knælidelse; traumatisk menisklæsion mod andre knælidelser; undersøgt af fysioterapeut"
+        }
+      ],
       status: "UDKAST"
     },
     {
@@ -689,6 +797,27 @@ export const knae: Region = {
         [{ felt: "traume", er: "ja" }, { felt: "stabilitet", er: "instabil" }]
       ],
       kilder: ["lh-korsbaand-forreste", "lh-knaesmerter"],
+      // Likelihood ratios (læst 2026-11-24). Tests i klyngen "acl-test" måler det samme: kun den stærkeste tæller.
+      fund: [
+        {
+          hvis: [{ felt: "knaek", er: "ja" }],
+          lr: 2.3,
+          kilder: ["wagemakers-2010-acl"],
+          klynge: "acl-anamnese",
+          population: "almen praksis, Holland: 134 voksne med knætraume inden for 5 uger (\"popping sensation\")"
+        },
+        { hvis: [{ felt: "lachman", er: "pos" }], lr: 5.65, kilder: ["huang-2022-acl"], klynge: "acl-test", population: "sekundærsektor: overvejende hospitals- og ortopædpatienter (metaanalyse, 18 studier)" },
+        { hvis: [{ felt: "lachman", er: "neg" }], lr: 0.28, kilder: ["huang-2022-acl"], klynge: "acl-test", population: "sekundærsektor: overvejende hospitals- og ortopædpatienter (metaanalyse, 18 studier)" },
+        { hvis: [{ felt: "skuffe", er: "pos" }], lr: 3.57, kilder: ["huang-2022-acl"], klynge: "acl-test", population: "sekundærsektor: overvejende hospitals- og ortopædpatienter (metaanalyse, 18 studier)" },
+        { hvis: [{ felt: "skuffe", er: "neg" }], lr: 0.44, kilder: ["huang-2022-acl"], klynge: "acl-test", population: "sekundærsektor: overvejende hospitals- og ortopædpatienter (metaanalyse, 18 studier)" },
+        { hvis: [{ felt: "pivotshift", er: "pos" }], lr: 13.99, kilder: ["huang-2022-acl"], klynge: "acl-test", population: "sekundærsektor: overvejende hospitals- og ortopædpatienter (metaanalyse, 18 studier)" },
+        { hvis: [{ felt: "pivotshift", er: "neg" }], lr: 0.44, kilder: ["huang-2022-acl"], klynge: "acl-test", population: "sekundærsektor: overvejende hospitals- og ortopædpatienter (metaanalyse, 18 studier)" }
+      ],
+      konflikt: {
+        beskrivelse:
+          "Kilderne er uenige om testenes styrke. Huang 2022 (metaanalyse): Lachman LR+ 5,65 / LR− 0,28, pivot shift LR+ 13,99 / LR− 0,44. Décary 2018 (ortopædklinikker og almen praksis, Canada; 95 % af korsbåndsskaderne fra ortopædklinik, de fleste > 3 mdr. efter traumet): Lachman LR+ 38,4 / LR− 0,19, pivot shift LR+ 37,5 / LR− 0,24, og \"popping\" LR+ 7,6 mod Wagemakers 2010 (almen praksis, akut traume) LR+ 2,3. Rangeringen bruger Huang for tests og Wagemakers for knæk; Décarys tal er ikke brugt, fordi sammenligningsgruppen også rummer knæ uden traume.",
+        kilder: ["huang-2022-acl", "decary-2018-acl", "wagemakers-2010-acl"]
+      },
       status: "UDKAST"
     },
     {
@@ -707,6 +836,23 @@ export const knae: Region = {
         [{ felt: "traume", er: "ja" }, { felt: "stabilitet", er: "instabil" }]
       ],
       kilder: ["lh-mcl"],
+      // Likelihood ratios (læst 2026-11-24, kun resumé). "Trauma by external force to leg" er af Claude oversat til "Direkte slag".
+      fund: [
+        {
+          hvis: [{ felt: "traumemekanisme", er: "slag" }],
+          lr: 2.0,
+          kilder: ["wagemakers-2008-mcl"],
+          klynge: "mcl-anamnese",
+          population: "almen praksis, Holland: 134 voksne med knætraume inden for 5 uger"
+        },
+        {
+          hvis: [{ felt: "valgus30", er: "smerte" }],
+          lr: 2.3,
+          kilder: ["wagemakers-2008-mcl"],
+          klynge: "mcl-test",
+          population: "almen praksis, Holland: 134 voksne med knætraume inden for 5 uger"
+        }
+      ],
       status: "UDKAST"
     },
     {
