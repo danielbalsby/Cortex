@@ -13,7 +13,8 @@
 - aktiv = fuld
 - passiv = fuld
 - smertebue = neg
-- impingement = neg
+- hawkins = neg
+- neer = neg
 - kraft = normal
 - acled = uoemt
 
@@ -21,7 +22,7 @@
 
 ```
 S: Venstresidige skuldersmerter. Spontant opståede gener. Varighed få dage. Hvilesmerter og natlige smerter. Ingen nakkesmerter eller udstråling.
-O: Fuld aktiv bevægelighed. Fuld passiv bevægelighed. Ingen smertebue. Negativ Hawkins' og Neer's test. Normal kraft i rotator cuffen. AC-leddet uømt, negativ crossover-test.
+O: Fuld aktiv bevægelighed. Fuld passiv bevægelighed. Ingen smertebue. Hawkins-Kennedys test negativ. Neers test negativ. Normal kraft i rotator cuffen. AC-leddet uømt, negativ crossover-test.
 ```
 
 ## Røde flag (6, alle vises altid)

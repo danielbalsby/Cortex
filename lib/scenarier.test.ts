@@ -37,7 +37,7 @@ const TABEL: Scenarie[] = [
     trin: [["traume", "nej"], ["alder", "over55"]] },
 
   { navn: "Skulder hverdag: impingement", region: "skulder", flag: [],
-    trin: [["debut", "overbelastning"], ["varighed", "uger"], ["smertebue", "pos"], ["impingement", "pos"], ["kraft", "normal"]] },
+    trin: [["debut", "overbelastning"], ["varighed", "uger"], ["smertebue", "pos"], ["hawkins", "pos"], ["kraft", "normal"]] },
   { navn: "Skulder tidskritisk: traume og nedsat udadrotationskraft", region: "skulder", flag: ["flag-traumatisk-cuff"],
     trin: [["alder", "40til75"], ["debut", "traume"], ["traumetype", "fald"], ["kraft", "udad"]] },
   { navn: "Skulder tidskritisk: luksation over 40 år", region: "skulder", flag: ["flag-luksation", "flag-cuff-efter-luksation"],
