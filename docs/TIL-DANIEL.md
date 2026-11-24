@@ -147,6 +147,9 @@ Tidligere kræft + betydende parese fremhæver tre flag (tabeltesten):
 
 ## Åbne for dig
 
+- **Knæ, LR-rangering (2026-11-24):** Menisktests (McMurray, Thessaly), varusstress og patella-apprehension har ingen LR i Cortex, fordi de læste kilder kun angiver sensitivitet og specificitet (eller ingen samlede tal). **Besvaret 2026-11-24: ja, mærket "beregnet".** McMurray, Thessaly og ledlinjeømhed har nu beregnede LR'er; varus og apprehension mangler stadig brugbare sens./spec.-tal.
+- **Knæ, Thessaly:** Blyth 2015 (HTA, almen praksis-klinikere) fandt sens. 0,66 / spec. 0,39, altså næsten uden diagnostisk værdi; NKR (via LH Meniskskade) anbefaler Thessaly som supplement. Navngivet her; ikke harmoniseret.
+
 - **Ctrl+Enter-kopiering på klinik-pc'en.** Kan ikke testes herfra.
 - **Dit testresultat** (`docs/ux-review/test-frase-mod-cortex.md`) afgør, om notatdelen bygges videre.
 - **Vercel:** skriv, når projektet er afbrudt. Så fjerner jeg henvisningerne.

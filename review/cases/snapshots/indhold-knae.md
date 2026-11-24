@@ -66,6 +66,12 @@
   - Ingen [N] → "Ingen ledlinjeømhed."
   - Medial → "Medial ledlinjeømhed."
   - Lateral → "Lateral ledlinjeømhed."
+- **McMurray** (mcmurray, enkelt)
+  - Negativ → "McMurrays test negativ."
+  - Positiv → "McMurrays test positiv."
+- **Thessaly** (thessaly, enkelt)
+  - Negativ → "Thessalys test negativ."
+  - Positiv → "Thessalys test positiv."
 - **Bevægelighed** (bevaegelighed, enkelt)
   - Fuld → "Fuld bevægelighed."
   - Let nedsat → "Let nedsat bevægelighed."
@@ -73,6 +79,19 @@
 - **Stabilitet** (stabilitet, enkelt)
   - Stabil ved ligamenttest → "Stabilt ved klinisk ligamenttest."
   - Instabilitet → "Klinisk mistanke om instabilitet."
+- **Lachman** (lachman, enkelt, vises hvis traume=ja)
+  - Negativ → "Lachmans test negativ."
+  - Positiv → "Lachmans test positiv."
+- **Forreste skuffe** (skuffe, enkelt, vises hvis traume=ja)
+  - Negativ → "Forreste skuffetest negativ."
+  - Positiv → "Forreste skuffetest positiv."
+- **Pivot shift** (pivotshift, enkelt, vises hvis traume=ja)
+  - Negativ → "Pivot shift negativ."
+  - Positiv → "Pivot shift positiv."
+- **Valgusstress 30°** (valgus30, flere, vises hvis traume=ja)
+  - Negativ → "Valgusstress i 30 graders fleksion uden smerte og løshed."
+  - Smerte → "Smerte ved valgusstress i 30 graders fleksion."
+  - Løshed → "Løshed ved valgusstress i 30 graders fleksion."
 - **Ømhed patella** (patellaoemhed, enkelt, vises hvis traume=ja)
   - Ingen → "Ingen direkte ømhed på patella."
   - Øm → "Direkte ømhed på patella."
@@ -145,6 +164,7 @@
   - Klinisk diagnose; kan stilles uden røntgen
   - V: "Foreneligt med gonartrose."
 - **Meniskskade / meniskdegeneration** (diff-menisk) [UDKAST] kilder: lh-meniskskade, lh-knaesmerter
+  - Konflikt: Thessaly: Smith 2015 (metaanalyse) angiver sens. 0,75 / spec. 0,87 (beregnet LR+ 5,8 / LR− 0,29); Blyth 2015 (almen praksis-klinikere) sens. 0,66 / spec. 0,39 (beregnet LR+ 1,1 / LR− 0,87) og konkluderer, at ingen af testene er gode nok til rutinebrug. Rangeringen bruger Blyth, fordi populationen ligger tættest på almen praksis. Lægehåndbogen (Meniskskade, opd. 14.08.2026, efter NKR menisk) anbefaler Thessaly som supplement og fraråder McMurray eller Apley som eneste test; den angiver ingen tal.
   - Ledlinjerelaterede smerter, ofte efter vridtraume; hos 30–50-årige også ved mindre traume
   - Klik, aflåsninger, knæsvigt
   - Ledlinjeømhed (hyppigt, men uspecifikt) sammen med rotationssmerter
@@ -152,6 +172,7 @@
   - Ingen enkelt test stiller diagnosen
   - V: "Foreneligt med meniskrelaterede gener."
 - **Forreste korsbåndsskade** (diff-acl) [UDKAST] kilder: lh-korsbaand-forreste, lh-knaesmerter
+  - Konflikt: Kilderne er uenige om testenes styrke. Huang 2022 (metaanalyse): Lachman LR+ 5,65 / LR− 0,28, pivot shift LR+ 13,99 / LR− 0,44. Décary 2018 (ortopædklinikker og almen praksis, Canada; 95 % af korsbåndsskaderne fra ortopædklinik, de fleste > 3 mdr. efter traumet): Lachman LR+ 38,4 / LR− 0,19, pivot shift LR+ 37,5 / LR− 0,24, og "popping" LR+ 7,6 mod Wagemakers 2010 (almen praksis, akut traume) LR+ 2,3. Rangeringen bruger Huang for tests og Wagemakers for knæk; Décarys tal er ikke brugt, fordi sammenligningsgruppen også rummer knæ uden traume.
   - Vridtraume, hvor knæet knækker sammen; evt. "pop"
   - Hæmartron i løbet af få timer
   - Ekstensionsdefekt på 10–15 grader ses ofte tidligt
@@ -342,6 +363,13 @@
 
 ## Kilder
 
+- huang-2022-acl: Medicine (Baltimore) 2022, Huang Z m.fl. Value of clinical tests in diagnosing anterior cruciate ligament injuries: systematic review and meta-analysis (fuldtekst læst), tjekket 2026-11-24 (ikke-dansk)
+- decary-2018-acl: PLoS One 2018, Décary S m.fl. Clinical diagnosis of partial or complete ACL tears using patients' history elements and physical examination tests (fuldtekst læst), tjekket 2026-11-24 (ikke-dansk)
+- wagemakers-2010-acl: Arch Phys Med Rehabil 2010, Wagemakers HP m.fl. Diagnostic accuracy of history taking and physical examination for assessing ACL lesions of the knee in primary care (kun resumé læst), tjekket 2026-11-24 (ikke-dansk)
+- wagemakers-2008-mcl: Am J Med 2008, Wagemakers HP m.fl. Assessing medial collateral ligament knee lesions in general practice (kun resumé læst), tjekket 2026-11-24 (ikke-dansk)
+- smith-2015-menisk: Evid Based Med (BMJ) 2015, Smith BE m.fl. Special tests for assessing meniscal tears within the knee: a systematic review and meta-analysis (kun resumé læst), tjekket 2026-11-24 (ikke-dansk)
+- blyth-2015-menisk: Health Technol Assess (NIHR) 2015, Blyth M m.fl. Diagnostic accuracy of the Thessaly test, standardised clinical history and other clinical examination tests for meniscal tears (kun resumé læst), tjekket 2026-11-24 (ikke-dansk)
+- decary-2018-menisk: PM&R 2018, Décary S m.fl. Diagnostic validity of combining history elements and physical examination tests for traumatic and degenerative symptomatic meniscal tears (kun resumé læst), tjekket 2026-11-24 (ikke-dansk)
 - lh-knaesmerter: Lægehåndbogen 2026, Knæsmerter (symptomer og tegn), tjekket 2026-11-24
 - lh-artrit-bakteriel: Lægehåndbogen 2024, Artrit, bakteriel, tjekket 2026-11-14
 - lh-meniskskade: Lægehåndbogen 2026, Meniskskade i knæet, tjekket 2026-11-24
