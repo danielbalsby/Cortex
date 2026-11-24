@@ -49,8 +49,9 @@ P: Rådgivet om aflastning. Instrueret i excentriske øvelser og udspænding.
 - Medial ligamentskade (ulnare kollateralligament) (diff-medial-ligament)
 - Henført smerte (cervikal radikulopati, skulder, håndled) (diff-henfoert)
 
-## Henvisning (7, statisk liste)
+## Henvisning (8, statisk liste)
 
+- Fysioterapi · elektiv (hen-fys)
 - Akutmodtagelsen · akut (hen-akut-traume)
 - Akut indlæggelse (ortopædkirurgi via CVI) · akut (hen-septisk)
 - Ortopædkirurgisk afdeling (bursitis olecrani) · subakut (hen-bursit)

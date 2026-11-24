@@ -286,7 +286,7 @@ export const ryg: Region = {
       titel: "Lændesmerter – lave rygsmerter",
       aar: 2024,
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/fysmed-og-rehab/tilstande-og-sygdomme/ryg-nakke-og-bryst/laendesmerter-lave-rygsmerter/",
-      sidstTjekket: "2026-11-14"
+      sidstTjekket: "2026-11-24"
     },
     {
       id: "lh-rygsmerter",
@@ -676,6 +676,19 @@ export const ryg: Region = {
 
   henvisning: [
     {
+      // Fysioterapi står først i alle regioner: den hyppigste MSK-henvisning (lægens ønske 2026-11-24).
+      id: "hen-fys",
+      til: "Fysioterapi (eller kiropraktor)",
+      kriterier:
+        "Lumbal rodaffektion inden for de første 12 uger: rådgivning om adfærd, fysisk aktivitet, øvelsesterapi og evt. manuel behandling (evt. pakkeforløb). Nyopståede lænderygsmerter: overvej superviseret fysisk træning i tillæg til vanlig behandling (NKR 2016); unødvendigt i akutfasen. Langvarige gener: vejledt træning over tid anbefales og forebygger recidiv.",
+      hast: "elektiv",
+      gyldighed: "national",
+      gaelderFor: ["diff-rod", "diff-uspecifik"],
+      notat: "Henvist til fysioterapeut/kiropraktor.",
+      kilder: ["lh-rodaffektion", "lh-laendesmerter"],
+      status: "UDKAST"
+    },
+    {
       id: "hen-cauda",
       til: "Akut indlæggelse via CVI",
       kriterier:
@@ -744,17 +757,6 @@ export const ryg: Region = {
       gyldighed: "Region Hovedstaden",
       notat: "Konfereret mhp. mulig columnafraktur.",
       kilder: ["rh-uden-udstraaling"],
-      status: "UDKAST"
-    },
-    {
-      id: "hen-fys",
-      til: "Fysioterapeut eller kiropraktor",
-      kriterier:
-        "Lumbal rodaffektion inden for de første 12 uger: rådgivning om adfærd, fysisk aktivitet, øvelsesterapi og evt. manuel behandling (evt. pakkeforløb).",
-      hast: "elektiv",
-      gyldighed: "national",
-      notat: "Henvist til fysioterapeut/kiropraktor.",
-      kilder: ["lh-rodaffektion"],
       status: "UDKAST"
     },
     {

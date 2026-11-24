@@ -51,8 +51,9 @@ P: Røntgen af skulder efter traume. Henvist til ultralydsscanning af skulder.
 - Henført smerte fra indre organer (hjerte, lunge, lever/galde) (diff-henfoert-organ)
 - Proksimal humerusfraktur / tuberculum majus-fraktur (diff-humerusfraktur)
 
-## Henvisning (12, statisk liste)
+## Henvisning (13, statisk liste)
 
+- Fysioterapi · elektiv (hen-fys)
 - Hospital (skadestue) · akut (hen-luksation-akut)
 - [P] Røntgen af skulder · akut (hen-traume-roentgen)
 - [P] Ultralydsscanning af skulder · subakut (hen-ul)

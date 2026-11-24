@@ -336,7 +336,7 @@ export const knae: Region = {
       titel: "Knæsmerter (symptomer og tegn)",
       aar: 2026,
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/fysmed-og-rehab/symptomer-og-tegn/knaesmerter/",
-      sidstTjekket: "2026-11-14"
+      sidstTjekket: "2026-11-24"
     },
     {
       id: "lh-artrit-bakteriel",
@@ -354,7 +354,7 @@ export const knae: Region = {
       titel: "Meniskskade i knæet",
       aar: 2026,
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/ortopaedi/tilstande-og-sygdomme/knae/meniskskade-i-knaeet/",
-      sidstTjekket: "2026-11-14"
+      sidstTjekket: "2026-11-24"
     },
     {
       id: "lh-korsbaand-forreste",
@@ -381,7 +381,7 @@ export const knae: Region = {
       titel: "Artrose, knæ",
       aar: 2025,
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/ortopaedi/tilstande-og-sygdomme/knae/artrose-knae/",
-      sidstTjekket: "2026-11-14"
+      sidstTjekket: "2026-11-24"
     },
     {
       id: "lh-patellofemoralt",
@@ -1071,6 +1071,19 @@ export const knae: Region = {
   ],
 
   henvisning: [
+    {
+      // Fysioterapi står først i alle regioner: den hyppigste MSK-henvisning (lægens ønske 2026-11-24).
+      id: "hen-fys",
+      til: "Fysioterapi",
+      kriterier:
+        "Menisklæsion uden aflåsning eller væsentlige mekaniske symptomer (traumatisk eller degenerativ): fysioterapi som initial behandling; revurdér effekten efter 3–4 måneder. Knæartrose: hjemme- og selvtræning bør starte med et superviseret forløb; træning vejledt af fysioterapeut kan øge effekten.",
+      hast: "elektiv",
+      gyldighed: "national",
+      gaelderFor: ["diff-menisk", "diff-artrose"],
+      notat: "Henvist til fysioterapi.",
+      kilder: ["lh-meniskskade", "lh-artrose-knae"],
+      status: "UDKAST"
+    },
     {
       id: "hen-septisk",
       til: "Akut indlæggelse (ortopædkirurgi via CVI)",

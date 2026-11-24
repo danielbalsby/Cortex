@@ -297,6 +297,9 @@
 
 ## Henvisning
 
+- **Fysioterapi** (hen-fys, elektiv, national) [UDKAST] kilder: lh-meniskskade, lh-artrose-knae
+  - Menisklæsion uden aflåsning eller væsentlige mekaniske symptomer (traumatisk eller degenerativ): fysioterapi som initial behandling; revurdér effekten efter 3–4 måneder. Knæartrose: hjemme- og selvtræning bør starte med et superviseret forløb; træning vejledt af fysioterapeut kan øge effekten.
+  - P: "Henvist til fysioterapi."
 - **Akut indlæggelse (ortopædkirurgi via CVI)** (hen-septisk, akut, Region Hovedstaden) [UDKAST] kilder: rh-monoartrit, lh-artrit-bakteriel
   - Mistanke om bakteriel (septisk) artrit.
   - P: "Henvist akut til CVI mhp. septisk artrit."
@@ -339,12 +342,12 @@
 
 ## Kilder
 
-- lh-knaesmerter: Lægehåndbogen 2026, Knæsmerter (symptomer og tegn), tjekket 2026-11-14
+- lh-knaesmerter: Lægehåndbogen 2026, Knæsmerter (symptomer og tegn), tjekket 2026-11-24
 - lh-artrit-bakteriel: Lægehåndbogen 2024, Artrit, bakteriel, tjekket 2026-11-14
-- lh-meniskskade: Lægehåndbogen 2026, Meniskskade i knæet, tjekket 2026-11-14
+- lh-meniskskade: Lægehåndbogen 2026, Meniskskade i knæet, tjekket 2026-11-24
 - lh-korsbaand-forreste: Lægehåndbogen 2026, Korsbåndskade, forreste, tjekket 2026-11-14
 - lh-mcl: Lægehåndbogen 2026, Kollateralligamentskade, medial, tjekket 2026-11-14
-- lh-artrose-knae: Lægehåndbogen 2025, Artrose, knæ, tjekket 2026-11-14
+- lh-artrose-knae: Lægehåndbogen 2025, Artrose, knæ, tjekket 2026-11-24
 - lh-patellofemoralt: Lægehåndbogen 2026, Patellofemoralt syndrom, tjekket 2026-11-14
 - lh-patellaluksation: Lægehåndbogen 2025, Patellaluksation, tjekket 2026-11-14
 - lh-bursit: Lægehåndbogen 2026, Bursit, præpatellar, tjekket 2026-11-14

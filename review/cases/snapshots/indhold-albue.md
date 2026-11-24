@@ -208,6 +208,9 @@
 
 ## Henvisning
 
+- **Fysioterapi** (hen-fys, elektiv, national) [UDKAST] kilder: lh-epikondylit
+  - Epikondylit: aktive øvelser begrænset af smerterne, udspænding og styrketræning (ved lateral epikondylit fx excentrisk træning af håndleddets ekstensorer); evt. fysioterapi. I ét RCT var fysioterapi med albuemanipulation og øvelser bedre end "vente og se" de første seks uger.
+  - P: "Henvist til fysioterapi mhp. øvelser og styrketræning."
 - **Akutmodtagelsen** (hen-akut-traume, akut, national) [UDKAST] kilder: lh-albueskader, lh-caput-radii
   - Albuetraume med mistanke om fraktur, luksation eller muskel-seneskade (den akutte del af behandlingen). Røntgen ved reduceret ekstension eller anden frakturmistanke.
   - P: "Henvist akut til akutmodtagelsen efter albuetraume."
@@ -234,7 +237,7 @@
 ## Kilder
 
 - lh-albuesmerter: Lægehåndbogen 2019, Albuesmerter (symptomer og tegn), tjekket 2026-11-14
-- lh-epikondylit: Lægehåndbogen 2025, Epikondylit, tjekket 2026-11-14
+- lh-epikondylit: Lægehåndbogen 2025, Epikondylit, tjekket 2026-11-24
 - lh-bursitis-olecrani: Lægehåndbogen 2023, Bursitis olecrani, tjekket 2026-11-14
 - lh-ulnarisneuropati: Lægehåndbogen 2025, Ulnarisneuropati, tjekket 2026-11-14
 - lh-albueskader: Lægehåndbogen 2021, Albueskader (frakturer, luksationer, muskel-seneskader), tjekket 2026-11-14

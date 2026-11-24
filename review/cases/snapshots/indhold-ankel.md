@@ -215,6 +215,9 @@
 
 ## Henvisning
 
+- **Fysioterapi** (hen-fys, elektiv, national) [UDKAST] kilder: lh-ankel-ustabil
+  - Kronisk lateral ankelinstabilitet: struktureret genoptræningsforløb med balance- og proprioceptionsøvelser, styrketræning af peronealmuskulaturen og neuromuskulær kontrol- og reaktionstræning. Kirurgi først ved persisterende instabilitet trods 3–6 måneders struktureret fysioterapi.
+  - P: "Henvist til fysioterapi mhp. struktureret genoptræning af anklen."
 - **Akut vurdering / indlæggelse straks** (hen-straks, akut, national) [UDKAST] kilder: lh-ankelsmerter, lh-ankelfraktur
   - Åben skade med mistanke om dyb skade, fejlstilling med truet hud, kredsløbs- eller nervepåvirkning, mistanke om kompartmentsyndrom.
   - P: "Henvist straks til akut vurdering."
@@ -240,9 +243,9 @@
 ## Kilder
 
 - lh-ankelsmerter: Lægehåndbogen 2026, Ankelsmerter (symptomer og tegn), tjekket 2026-11-14
-- lh-ankelskade-akut: Lægehåndbogen 2025, Ankelskade, akut, tjekket 2026-11-14
+- lh-ankelskade-akut: Lægehåndbogen 2025, Ankelskade, akut, tjekket 2026-11-24
 - lh-ankelfraktur: Lægehåndbogen 2026, Ankel, frakturer, tjekket 2026-11-14
 - lh-akillesseneruptur: Lægehåndbogen 2025, Akillesseneruptur, tjekket 2026-11-14
-- lh-ankel-ustabil: Lægehåndbogen 2025, Kronisk lateral ankelinstabilitet, tjekket 2026-11-14
+- lh-ankel-ustabil: Lægehåndbogen 2025, Kronisk lateral ankelinstabilitet, tjekket 2026-11-24
 - lh-ankel-brusk: Lægehåndbogen 2024, Ankel, bruskskader, tjekket 2026-11-14
 - rh-monoartrit: Region Hovedstaden 2025, Forløbsbeskrivelse: Akut monoartritis, tjekket 2026-11-14

@@ -270,7 +270,7 @@ export const skulder: Region = {
       titel: "Subacromielt smertesyndrom (impingement)",
       aar: 2021,
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/fysmed-og-rehab/tilstande-og-sygdomme/skulder-og-overarm/subacromielt-smertesyndrom/",
-      sidstTjekket: "2026-11-14"
+      sidstTjekket: "2026-11-24"
     },
     {
       id: "lh-rotatorcuff",
@@ -667,6 +667,19 @@ export const skulder: Region = {
   ],
 
   henvisning: [
+    {
+      // Fysioterapi står først i alle regioner: den hyppigste MSK-henvisning (lægens ønske 2026-11-24).
+      id: "hen-fys",
+      til: "Fysioterapi",
+      kriterier:
+        "Subakromielt smertesyndrom (impingement): henvis til fysioterapeutisk træning – formaliseret superviseret holdtræning eller vejledt egentræning – i mindst 3 måneder og gerne mere. Steroidinjektion kun samtidig med træning. Kirurgi først efter formaliseret træning uden effekt.",
+      hast: "elektiv",
+      gyldighed: "national",
+      gaelderFor: ["diff-impingement"],
+      notat: "Henvist til fysioterapeutisk skuldertræning i mindst 3 måneder.",
+      kilder: ["lh-subacromielt"],
+      status: "UDKAST"
+    },
     {
       id: "hen-luksation-akut",
       til: "Hospital (skadestue)",

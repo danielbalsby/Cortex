@@ -60,8 +60,9 @@ P: Henvist til fysioterapi som initial behandling.
 - Osgood-Schlatter / Sinding-Larsen (diff-apofysit)
 - Ikke-artikulær hævelse (erysipelas, dyb venetrombose, senelidelse) (diff-ikke-artikulaer)
 
-## Henvisning (12, statisk liste)
+## Henvisning (13, statisk liste)
 
+- Fysioterapi · elektiv (hen-fys)
 - Akut indlæggelse (ortopædkirurgi via CVI) · akut (hen-septisk)
 - CVI, akut · akut (hen-akut-traume)
 - Akut røntgen af knæ · akut (hen-akut-roentgen)

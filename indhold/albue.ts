@@ -294,7 +294,7 @@ export const albue: Region = {
       titel: "Epikondylit",
       aar: 2025,
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/fysmed-og-rehab/tilstande-og-sygdomme/albue-og-underarm/epikondylit/",
-      sidstTjekket: "2026-11-14"
+      sidstTjekket: "2026-11-24"
     },
     {
       id: "lh-bursitis-olecrani",
@@ -641,6 +641,19 @@ export const albue: Region = {
   ],
 
   henvisning: [
+    {
+      // Fysioterapi står først i alle regioner: den hyppigste MSK-henvisning (lægens ønske 2026-11-24).
+      id: "hen-fys",
+      til: "Fysioterapi",
+      kriterier:
+        "Epikondylit: aktive øvelser begrænset af smerterne, udspænding og styrketræning (ved lateral epikondylit fx excentrisk træning af håndleddets ekstensorer); evt. fysioterapi. I ét RCT var fysioterapi med albuemanipulation og øvelser bedre end \"vente og se\" de første seks uger.",
+      hast: "elektiv",
+      gyldighed: "national",
+      gaelderFor: ["diff-lateral-epikondylit", "diff-medial-epikondylit"],
+      notat: "Henvist til fysioterapi mhp. øvelser og styrketræning.",
+      kilder: ["lh-epikondylit"],
+      status: "UDKAST"
+    },
     {
       id: "hen-akut-traume",
       til: "Akutmodtagelsen",

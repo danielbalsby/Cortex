@@ -170,3 +170,13 @@ describe("kilder på tværs af regioner", () => {
     }
   });
 });
+
+// Fysioterapi er den hyppigste MSK-henvisning og står derfor først i alle regioner (lægens ønske 2026-11-24).
+describe.each(Object.values(INDHOLD).filter((region): region is Region => Boolean(region)))("fysioterapi: $navn", (region) => {
+  it("har fysioterapi som første henvisning med kilde", () => {
+    const foerste = region.henvisning[0];
+    expect(foerste?.id).toBe("hen-fys");
+    expect(foerste?.til.startsWith("Fysioterapi")).toBe(true);
+    expect(foerste?.kilder.length).toBeGreaterThan(0);
+  });
+});

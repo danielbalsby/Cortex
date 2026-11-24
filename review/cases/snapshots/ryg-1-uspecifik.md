@@ -54,12 +54,12 @@ P: Informeret om den gode prognose. Opfordret til at fortsætte vanlig aktivitet
 
 ## Henvisning (12, statisk liste)
 
+- Fysioterapi (eller kiropraktor) · elektiv (hen-fys)
 - Akut indlæggelse via CVI · akut (hen-cauda)
 - Reumatologisk hotline · subakut (hen-hotline)
 - Akutmodtagelse · akut (hen-infektion)
 - Pakkeforløb · subakut (hen-malignitet)
 - Rygsektionen, Rigshospitalet (konference) / Akut Modtagelse · akut (hen-fraktur)
-- Fysioterapeut eller kiropraktor · elektiv (hen-fys)
 - MR af columna lumbalis (fra almen praksis) · elektiv (hen-mr)
 - Rygkirurgisk vurdering · elektiv (hen-rod-kirurgi)
 - Reumatologisk rygfunktion, Rigshospitalet, Valdemar Hansens Vej (elektiv) · elektiv (hen-reumatologi)
