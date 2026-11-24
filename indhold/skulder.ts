@@ -601,6 +601,8 @@ export const skulder: Region = {
       tekst:
         "Impingement og rotator cuff-lidelse: træning i mindst 3 måneder – holdningskorrektion samt stabiliserende og styrkende øvelser for skulderblad og skulder, som superviseret holdtræning eller vejledt egentræning. Patienten bør bede om en skulderinteresseret fysioterapeut. Langvarig træning har lige så god effekt som operation.",
       gaelderFor: ["diff-impingement", "diff-degenerativ-cuff"],
+      // Forslag (læst 2026-11-24, lægens ønske samme dag): LH Subakromielt smertesyndrom (2021): "De bør henvises til fysioterapeutisk træning".
+      forslagVed: ["diff-impingement"],
       notat: "Henvist til fysioterapeutisk skuldertræning i mindst 3 måneder.",
       kilder: ["lh-subacromielt", "rh-rotatorcuff", "lh-skuldersmerter"],
       status: "UDKAST"

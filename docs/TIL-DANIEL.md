@@ -7,7 +7,7 @@ Status 2026-11-17. Du har besluttet at starte fase 3 (forslag) før dit testresu
 - **"+P" uden for skærmen:** skyldtes en ældre `cortex.html`. Fejlen blev rettet i #65 (listen må ikke blive bredere end panelet). Målt 2026-11-24 i alle fem regioner ved 1366, 1024, 820 og 700 px: ingen knap uden for panelet. Ny test (`src/layout.test.ts`) fejler, hvis rettelsen fjernes. **Brug den nyeste `cortex.html` fra main.**
 - **Fysioterapi** står nu som første henvisning i alle fem regioner (`hen-fys`), alt UDKAST. Kilder genlæst 2026-11-24: LH Subakromielt smertesyndrom 2021, LH Epikondylit 2025, LH Meniskskade 2026, LH Artrose knæ 2025, LH Kronisk lateral ankelinstabilitet 2025, LH Lændesmerter 2024 (+ LH Lumbal rodaffektion som før).
 - **Ikke med:** regler for tilskud/egenbetaling (sundhed.dk's borgerside kunne ikke læses maskinelt). Vederlagsfri fysioterapi er kun for svært fysisk handicap og progressiv sygdom (Region H's side, 2017) og er derfor ikke lagt ind. Direkte adgang uden henvisning er kun et forsøg i Region Sjælland (31.3.2025–31.12.2026) og gælder ikke dine patienter.
-- **Ikke automatisk foreslået:** fysioterapi vises under "vurder kriterierne", når en diagnose den gælder er valgt. Den kommer ikke i "Tag med i P".
+- **Forslag (dit "ja" 2026-11-24):** ved valgt impingement foreslås fysioterapeutisk skuldertræning nu i "Tag med i P" (LH 2021: "De bør henvises til fysioterapeutisk træning"). Ved menisk var fysioterapi allerede med i forslaget (LH Meniskskade 2026). Fysioterapi-henvisningen selv står under "vurder kriterierne", så den ikke kommer dobbelt i P.
 
 ## Fase 3: forslag til diagnose og plan (2026-11-17)
 
