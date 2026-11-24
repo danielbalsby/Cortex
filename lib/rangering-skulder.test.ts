@@ -27,9 +27,9 @@ const TABEL: { navn: string; trin: [string, string][]; forventet: string[] }[] =
   },
   { navn: "ER lag uden traume: kun degenerativ ruptur", trin: [["debut", "spontan"], ["erlag", "pos"]], forventet: ["diff-degenerativ-cuff"] },
   {
-    navn: "ER lag + positiv smertebue: ruptur (2,8) før impingement (1,57)",
+    navn: "ER lag + positiv smertebue: impingement (3,7) før ruptur (2,8)",
     trin: [["debut", "overbelastning"], ["smertebue", "pos"], ["erlag", "pos"]],
-    forventet: ["diff-degenerativ-cuff", "diff-impingement"]
+    forventet: ["diff-impingement", "diff-degenerativ-cuff"]
   },
   { navn: "negative impingementtests rangerer intet", trin: [["smertebue", "neg"], ["hawkins", "neg"], ["neer", "neg"]], forventet: [] },
   { navn: "positiv relocation", trin: [["apprehension", "pos"], ["relocation", "pos"]], forventet: ["diff-instabilitet"] },
@@ -45,7 +45,7 @@ describe("skulder: rangering efter likelihood ratio", () => {
   it("impingementtests i samme klynge: smertebue + Hawkins + Neer tæller kun den stærkeste", () => {
     const [imp] = rangering(skulder, svar([["smertebue", "pos"], ["hawkins", "pos"], ["neer", "pos"]]));
     expect(imp?.id).toBe("diff-impingement");
-    expect(imp?.samlet).toBeCloseTo(1.64);
+    expect(imp?.samlet).toBeCloseTo(3.7);
     expect(imp?.for).toHaveLength(1);
   });
 

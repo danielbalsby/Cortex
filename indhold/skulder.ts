@@ -533,10 +533,10 @@ export const skulder: Region = {
       ],
       notat: "Foreneligt med subacromielt smertesyndrom.",
       kilder: ["lh-subacromielt", "lh-skuldersmerter", "rh-rotatorcuff"],
-      // Likelihood ratios (læst 2026-11-24, Zhao 2024 tabel 3). Testene måler det samme: kun den stærkeste i klyngen tæller.
+      // Likelihood ratios (læst 2026-11-24): smertebue fra Hermans 2013 (lægens valg), Hawkins og Neer fra Zhao 2024 tabel 3. Testene måler det samme: kun den stærkeste i klyngen tæller.
       fund: [
-        { hvis: [{ felt: "smertebue", er: "pos" }], lr: 1.57, kilder: ["zhao-2024-skulder"], klynge: "sis-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: subakromielt smertesyndrom" },
-        { hvis: [{ felt: "smertebue", er: "neg" }], lr: 0.63, kilder: ["zhao-2024-skulder"], klynge: "sis-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: subakromielt smertesyndrom" },
+        { hvis: [{ felt: "smertebue", er: "pos" }], lr: 3.7, kilder: ["hermans-2013-cuff"], klynge: "sis-test", population: "henviste patienter undersøgt af specialister, ikke almen praksis (systematisk review, kun studier af høj kvalitet; 30–203 skuldre pr. studie, prævalens 33–81 %); målsygdom: rotator cuff-sygdom" },
+        { hvis: [{ felt: "smertebue", er: "neg" }], lr: 0.36, kilder: ["hermans-2013-cuff"], klynge: "sis-test", population: "henviste patienter undersøgt af specialister, ikke almen praksis (systematisk review, kun studier af høj kvalitet; 30–203 skuldre pr. studie, prævalens 33–81 %); målsygdom: rotator cuff-sygdom" },
         { hvis: [{ felt: "hawkins", er: "pos" }], lr: 1.64, kilder: ["zhao-2024-skulder"], klynge: "sis-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: subakromielt smertesyndrom" },
         { hvis: [{ felt: "hawkins", er: "neg" }], lr: 0.53, kilder: ["zhao-2024-skulder"], klynge: "sis-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: subakromielt smertesyndrom" },
         { hvis: [{ felt: "neer", er: "pos" }], lr: 1.54, kilder: ["zhao-2024-skulder"], klynge: "sis-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: subakromielt smertesyndrom" },
@@ -544,7 +544,7 @@ export const skulder: Region = {
       ],
       konflikt: {
         beskrivelse:
-          "Smertebue: Zhao 2024 (metaanalyse, 6 studier, subakromielt smertesyndrom) LR+ 1,57 / LR− 0,63; Hermans 2013 (JAMA, kun studier af høj kvalitet, rotator cuff-sygdom; kun resumé læst) LR+ 3,7 / LR− 0,36. Ingen af dem er fra almen praksis. Rangeringen bruger Zhao (nyeste og største, samme opgørelse som Hawkins og Neer). Lægehåndbogen (Subacromielt smertesyndrom, 2021) kalder smertebuen hovedkriteriet; den angiver ingen tal.",
+          "Smertebue: Zhao 2024 (metaanalyse, 6 studier, subakromielt smertesyndrom) LR+ 1,57 / LR− 0,63; Hermans 2013 (JAMA, kun studier af høj kvalitet, rotator cuff-sygdom; kun resumé læst) LR+ 3,7 / LR− 0,36. Ingen af dem er fra almen praksis. Rangeringen bruger Hermans for smertebuen (lægens valg 2026-11-24: færre, men bedre studier) og Zhao for Hawkins og Neer. Lægehåndbogen (Subacromielt smertesyndrom, 2021) kalder smertebuen hovedkriteriet; den angiver ingen tal.",
         kilder: ["zhao-2024-skulder", "hermans-2013-cuff", "lh-subacromielt"]
       },
       status: "UDKAST"

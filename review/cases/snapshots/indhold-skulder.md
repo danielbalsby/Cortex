@@ -129,7 +129,7 @@
 ## Differentialdiagnoser
 
 - **Subacromielt smertesyndrom / rotator cuff-tendinopati (impingement)** (diff-impingement) [UDKAST] kilder: lh-subacromielt, lh-skuldersmerter, rh-rotatorcuff
-  - Konflikt: Smertebue: Zhao 2024 (metaanalyse, 6 studier, subakromielt smertesyndrom) LR+ 1,57 / LR− 0,63; Hermans 2013 (JAMA, kun studier af høj kvalitet, rotator cuff-sygdom; kun resumé læst) LR+ 3,7 / LR− 0,36. Ingen af dem er fra almen praksis. Rangeringen bruger Zhao (nyeste og største, samme opgørelse som Hawkins og Neer). Lægehåndbogen (Subacromielt smertesyndrom, 2021) kalder smertebuen hovedkriteriet; den angiver ingen tal.
+  - Konflikt: Smertebue: Zhao 2024 (metaanalyse, 6 studier, subakromielt smertesyndrom) LR+ 1,57 / LR− 0,63; Hermans 2013 (JAMA, kun studier af høj kvalitet, rotator cuff-sygdom; kun resumé læst) LR+ 3,7 / LR− 0,36. Ingen af dem er fra almen praksis. Rangeringen bruger Hermans for smertebuen (lægens valg 2026-11-24: færre, men bedre studier) og Zhao for Hawkins og Neer. Lægehåndbogen (Subacromielt smertesyndrom, 2021) kalder smertebuen hovedkriteriet; den angiver ingen tal.
   - Hyppigste årsag; oftest supraspinatus
   - Positiv smertebue (hovedkriterium); positiv Hawkins/Neer
   - Oftest normal passiv bevægelighed og normal kraft, evt. efter smertelindring
