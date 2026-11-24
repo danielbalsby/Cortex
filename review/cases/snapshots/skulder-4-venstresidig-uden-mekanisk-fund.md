@@ -49,8 +49,9 @@ O: Fuld aktiv bevægelighed. Fuld passiv bevægelighed. Ingen smertebue. Negativ
 - Henført smerte fra indre organer (hjerte, lunge, lever/galde) (diff-henfoert-organ)
 - Proksimal humerusfraktur / tuberculum majus-fraktur (diff-humerusfraktur)
 
-## Henvisning (12, statisk liste)
+## Henvisning (13, statisk liste)
 
+- Fysioterapi · elektiv (hen-fys)
 - Hospital (skadestue) · akut (hen-luksation-akut)
 - Røntgen af skulder · akut (hen-traume-roentgen)
 - Ultralydsscanning af skulder · subakut (hen-ul)

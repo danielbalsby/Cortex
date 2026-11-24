@@ -217,6 +217,9 @@
 
 ## Henvisning
 
+- **Fysioterapi** (hen-fys, elektiv, national) [UDKAST] kilder: lh-subacromielt
+  - Subakromielt smertesyndrom (impingement): henvis til fysioterapeutisk træning – formaliseret superviseret holdtræning eller vejledt egentræning – i mindst 3 måneder og gerne mere. Steroidinjektion kun samtidig med træning. Kirurgi først efter formaliseret træning uden effekt.
+  - P: "Henvist til fysioterapeutisk skuldertræning i mindst 3 måneder."
 - **Hospital (skadestue)** (hen-luksation-akut, akut, national) [UDKAST] kilder: lh-skulderluksation
   - Akut skulderluksation – røntgen og reposition.
   - P: "Henvist akut til hospital mhp. røntgen og reposition."
@@ -259,7 +262,7 @@
 ## Kilder
 
 - lh-skuldersmerter: Lægehåndbogen 2019, Skuldersmerter (symptomer og tegn), tjekket 2026-11-14
-- lh-subacromielt: Lægehåndbogen 2021, Subacromielt smertesyndrom (impingement), tjekket 2026-11-14
+- lh-subacromielt: Lægehåndbogen 2021, Subacromielt smertesyndrom (impingement), tjekket 2026-11-24
 - lh-rotatorcuff: Lægehåndbogen 2025, Rotatorcuff-skade, tjekket 2026-11-14
 - lh-skulderluksation: Lægehåndbogen 2025, Skulderluksation, tjekket 2026-11-14
 - lh-kapsulit: Lægehåndbogen 2024, Kapsulit, skulder (frossen skulder), tjekket 2026-11-14

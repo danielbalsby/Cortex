@@ -274,7 +274,7 @@ export const ankel: Region = {
       titel: "Ankelskade, akut",
       aar: 2025,
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/ortopaedi/tilstande-og-sygdomme/laeg-ankel-og-fod/ankelskade-akut/",
-      sidstTjekket: "2026-11-14"
+      sidstTjekket: "2026-11-24"
     },
     {
       id: "lh-ankelfraktur",
@@ -301,7 +301,7 @@ export const ankel: Region = {
       titel: "Kronisk lateral ankelinstabilitet",
       aar: 2025,
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/ortopaedi/tilstande-og-sygdomme/laeg-ankel-og-fod/ankel-ustabil/",
-      sidstTjekket: "2026-11-14"
+      sidstTjekket: "2026-11-24"
     },
     {
       id: "lh-ankel-brusk",
@@ -651,6 +651,19 @@ export const ankel: Region = {
   ],
 
   henvisning: [
+    {
+      // Fysioterapi står først i alle regioner: den hyppigste MSK-henvisning (lægens ønske 2026-11-24).
+      id: "hen-fys",
+      til: "Fysioterapi",
+      kriterier:
+        "Kronisk lateral ankelinstabilitet: struktureret genoptræningsforløb med balance- og proprioceptionsøvelser, styrketræning af peronealmuskulaturen og neuromuskulær kontrol- og reaktionstræning. Kirurgi først ved persisterende instabilitet trods 3–6 måneders struktureret fysioterapi.",
+      hast: "elektiv",
+      gyldighed: "national",
+      gaelderFor: ["diff-instabilitet"],
+      notat: "Henvist til fysioterapi mhp. struktureret genoptræning af anklen.",
+      kilder: ["lh-ankel-ustabil"],
+      status: "UDKAST"
+    },
     {
       id: "hen-straks",
       til: "Akut vurdering / indlæggelse straks",

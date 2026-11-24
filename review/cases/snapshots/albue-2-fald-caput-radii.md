@@ -49,8 +49,9 @@ P: Henvist akut til akutmodtagelsen efter albuetraume.
 - Medial ligamentskade (ulnare kollateralligament) (diff-medial-ligament)
 - Henført smerte (cervikal radikulopati, skulder, håndled) (diff-henfoert)
 
-## Henvisning (7, statisk liste)
+## Henvisning (8, statisk liste)
 
+- Fysioterapi · elektiv (hen-fys)
 - [P] Akutmodtagelsen · akut (hen-akut-traume)
 - Akut indlæggelse (ortopædkirurgi via CVI) · akut (hen-septisk)
 - Ortopædkirurgisk afdeling (bursitis olecrani) · subakut (hen-bursit)

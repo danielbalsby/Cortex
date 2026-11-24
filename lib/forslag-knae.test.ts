@@ -52,7 +52,7 @@ describe("knæ: forslag til plan for valgt diagnose", () => {
   it("gonartrose: information/træning og analgetika; henvisninger kun til vurdering", () => {
     expect(planForslag(knae, svar([["traume", "nej"], ["alder", "over55"]]), ["diff-artrose"])).toEqual({
       forslag: ["beh-artrose-basis", "beh-artrose-medicin"],
-      vurder: ["hen-non-traumatisk", "hen-artrose"]
+      vurder: ["hen-fys", "hen-non-traumatisk", "hen-artrose"]
     });
   });
 

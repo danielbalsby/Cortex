@@ -46,8 +46,9 @@ P: Henvist til ortopædkirurgisk afdeling mhp. bursitis olecrani.
 - Medial ligamentskade (ulnare kollateralligament) (diff-medial-ligament)
 - Henført smerte (cervikal radikulopati, skulder, håndled) (diff-henfoert)
 
-## Henvisning (7, statisk liste)
+## Henvisning (8, statisk liste)
 
+- Fysioterapi · elektiv (hen-fys)
 - Akutmodtagelsen · akut (hen-akut-traume)
 - Akut indlæggelse (ortopædkirurgi via CVI) · akut (hen-septisk)
 - [P] Ortopædkirurgisk afdeling (bursitis olecrani) · subakut (hen-bursit)

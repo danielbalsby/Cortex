@@ -270,7 +270,7 @@ export const skulder: Region = {
       titel: "Subacromielt smertesyndrom (impingement)",
       aar: 2021,
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/fysmed-og-rehab/tilstande-og-sygdomme/skulder-og-overarm/subacromielt-smertesyndrom/",
-      sidstTjekket: "2026-11-14"
+      sidstTjekket: "2026-11-24"
     },
     {
       id: "lh-rotatorcuff",
@@ -601,6 +601,8 @@ export const skulder: Region = {
       tekst:
         "Impingement og rotator cuff-lidelse: træning i mindst 3 måneder – holdningskorrektion samt stabiliserende og styrkende øvelser for skulderblad og skulder, som superviseret holdtræning eller vejledt egentræning. Patienten bør bede om en skulderinteresseret fysioterapeut. Langvarig træning har lige så god effekt som operation.",
       gaelderFor: ["diff-impingement", "diff-degenerativ-cuff"],
+      // Forslag (læst 2026-11-24, lægens ønske samme dag): LH Subakromielt smertesyndrom (2021): "De bør henvises til fysioterapeutisk træning".
+      forslagVed: ["diff-impingement"],
       notat: "Henvist til fysioterapeutisk skuldertræning i mindst 3 måneder.",
       kilder: ["lh-subacromielt", "rh-rotatorcuff", "lh-skuldersmerter"],
       status: "UDKAST"
@@ -667,6 +669,19 @@ export const skulder: Region = {
   ],
 
   henvisning: [
+    {
+      // Fysioterapi står først i alle regioner: den hyppigste MSK-henvisning (lægens ønske 2026-11-24).
+      id: "hen-fys",
+      til: "Fysioterapi",
+      kriterier:
+        "Subakromielt smertesyndrom (impingement): henvis til fysioterapeutisk træning – formaliseret superviseret holdtræning eller vejledt egentræning – i mindst 3 måneder og gerne mere. Steroidinjektion kun samtidig med træning. Kirurgi først efter formaliseret træning uden effekt.",
+      hast: "elektiv",
+      gyldighed: "national",
+      gaelderFor: ["diff-impingement"],
+      notat: "Henvist til fysioterapeutisk skuldertræning i mindst 3 måneder.",
+      kilder: ["lh-subacromielt"],
+      status: "UDKAST"
+    },
     {
       id: "hen-luksation-akut",
       til: "Hospital (skadestue)",

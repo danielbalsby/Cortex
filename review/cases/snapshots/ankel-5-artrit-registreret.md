@@ -45,8 +45,9 @@ P: Henvist akut til CVI mhp. septisk artrit.
 - Akut artrit, herunder septisk (diff-artrit)
 - Ikke-artikulær hævelse (erysipelas, dyb venetrombose, senelidelse) (diff-ikke-artikulaer)
 
-## Henvisning (7, statisk liste)
+## Henvisning (8, statisk liste)
 
+- Fysioterapi · elektiv (hen-fys)
 - Akut vurdering / indlæggelse straks · akut (hen-straks)
 - Røntgen eller akutmodtagelse samme dag · akut (hen-samme-dag)
 - Billeddiagnostik eller ortopædkirurgisk vurdering (hurtigt) · subakut (hen-hurtig)

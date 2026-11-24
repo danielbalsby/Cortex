@@ -223,6 +223,9 @@
 
 ## Henvisning
 
+- **Fysioterapi (eller kiropraktor)** (hen-fys, elektiv, national) [UDKAST] kilder: lh-rodaffektion, lh-laendesmerter
+  - Lumbal rodaffektion inden for de første 12 uger: rådgivning om adfærd, fysisk aktivitet, øvelsesterapi og evt. manuel behandling (evt. pakkeforløb). Nyopståede lænderygsmerter: overvej superviseret fysisk træning i tillæg til vanlig behandling (NKR 2016); unødvendigt i akutfasen. Langvarige gener: vejledt træning over tid anbefales og forebygger recidiv.
+  - P: "Henvist til fysioterapeut/kiropraktor."
 - **Akut indlæggelse via CVI** (hen-cauda, akut, Region Hovedstaden) [UDKAST] kilder: rh-cauda, lh-rodaffektion
   - Sikre symptomer og fund på cauda equina, betydelig parese nyopstået inden for 2 uger og/eller progredierende parese (grad 3 eller mindre). Akutmodtagelsen i planområdet; ved tværsnitssyndrom på malign eller traumatisk basis Rigshospitalet, Traumecentret.
   - P: "Henvist akut via CVI mhp. cauda equina / betydende parese."
@@ -241,9 +244,6 @@
 - **Rygsektionen, Rigshospitalet (konference) / Akut Modtagelse** (hen-fraktur, akut, Region Hovedstaden) [UDKAST] kilder: rh-uden-udstraaling
   - Mistanke om instabil fraktur: konferer med vagthavende på Rygsektionen. Osteoporotisk eller traumatisk sammenfald med akutte svære smerter: evt. indlæggelse på Akut Modtagelse.
   - P: "Konfereret mhp. mulig columnafraktur."
-- **Fysioterapeut eller kiropraktor** (hen-fys, elektiv, national) [UDKAST] kilder: lh-rodaffektion
-  - Lumbal rodaffektion inden for de første 12 uger: rådgivning om adfærd, fysisk aktivitet, øvelsesterapi og evt. manuel behandling (evt. pakkeforløb).
-  - P: "Henvist til fysioterapeut/kiropraktor."
 - **MR af columna lumbalis (fra almen praksis)** (hen-mr, elektiv, Region Hovedstaden) [UDKAST] kilder: rh-billed
   - Rodpåvirkning uden tilfredsstillende fremgang efter 8 ugers konservativ behandling; mistanke om diskusprolaps, spinalstenose eller spredning af kendt malign lidelse. Afklar først, om patienten er potentiel operationskandidat (MR skal være under 1 år gammel ved rygkirurgisk vurdering). Dynamisk henvisning "MR henvisning i Region Hovedstaden", sendes som REF 02 til radiologisk afdeling. MR af columna thoracalis kan ikke henvises fra almen praksis.
   - P: "Henvist til MR af columna lumbalis."
@@ -266,7 +266,7 @@
 
 ## Kilder
 
-- lh-laendesmerter: Lægehåndbogen 2024, Lændesmerter – lave rygsmerter, tjekket 2026-11-14
+- lh-laendesmerter: Lægehåndbogen 2024, Lændesmerter – lave rygsmerter, tjekket 2026-11-24
 - lh-rygsmerter: Lægehåndbogen 2025, Rygsmerter, tjekket 2026-11-15
 - lh-rodaffektion: Lægehåndbogen 2026, Lumbal rodaffektion, tjekket 2026-11-14
 - lh-spinalstenose: Lægehåndbogen 2026, Spinalstenose, tjekket 2026-11-14

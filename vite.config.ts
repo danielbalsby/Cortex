@@ -7,6 +7,8 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
   plugins: [react(), viteSingleFile()],
   test: {
+    // styles.css læses som tekst i src/layout.test.ts (layout-regressionstest).
+    css: { include: [/styles\.css/] },
     include: ["src/**/*.test.ts", "lib/**/*.test.ts", "indhold/**/*.test.ts", "review/cases/**/*.test.ts"]
   }
 });
