@@ -140,6 +140,15 @@ describe.each(regioner)("indhold: $navn", (region) => {
     // Forslag: betingelser skal pege på eksisterende felter og valg; forslag skal pege på eksisterende diagnoser.
     for (const diff of region.differentialdiagnoser) {
       for (const gruppe of diff.foreneligHvis ?? []) tjekBetingelser(gruppe, `foreneligHvis i "${diff.id}"`);
+      // Rangering: en LR er kildens tal. Ingen LR uden kilde, og fundet skal kunne registreres.
+      for (const [i, fund] of (diff.fund ?? []).entries()) {
+        const hvor = `fund ${i + 1} i "${diff.id}"`;
+        expect(fund.hvis.length, `${hvor} har ingen betingelse`).toBeGreaterThan(0);
+        tjekBetingelser(fund.hvis, hvor);
+        expect(fund.lr > 0 && fund.lr !== 1, `${hvor}: LR skal være > 0 og ≠ 1`).toBe(true);
+        expect(fund.kilder.length, `${hvor} har LR uden kilde`).toBeGreaterThan(0);
+        for (const id of fund.kilder) expect(kildeIder, `${hvor} henviser til ukendt kilde "${id}"`).toContain(id);
+      }
     }
     for (const behandling of region.behandling) {
       for (const id of behandling.forslagVed ?? []) {

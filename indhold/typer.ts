@@ -54,6 +54,21 @@ export type RoedtFlag = Kildebelagt & {
   fremhaevHvis?: Betingelse[][];
 };
 
+/**
+ * Et fund med kildens likelihood ratio for én diagnose. LR er kildens tal, aldrig et skøn:
+ * uden kilde intet fund (testen fejler). Bruges kun til rangering ("fundene taler mest for"),
+ * aldrig til at skjule eller udelukke en diagnose.
+ */
+export type Fundvaegt = {
+  hvis: Betingelse[]; // fundet (alle betingelser skal passe)
+  lr: number; // LR+ når fundet er til stede, LR− når det er fraværende/negativt – som kilden angiver det
+  kilder: string[]; // mindst én; kilden, LR'en er taget fra
+  // Fund, der måler det samme (fx flere menisktests): kun det stærkeste i klyngen tæller,
+  // så overlappende tests ikke ganges sammen.
+  klynge?: string;
+  population?: string; // kildens population, fx "ortopædisk ambulatorium" – LR afhænger af den
+};
+
 export type Differentialdiagnose = Kildebelagt & {
   id: string;
   navn: string;
@@ -62,6 +77,8 @@ export type Differentialdiagnose = Kildebelagt & {
   // Fund, diagnosen er forenelig med (ELLER mellem grupper, OG inden for en gruppe), som kilden beskriver dem.
   // Kun til fremhævning ("Forenelig med dine fund"): ingen score, ingen rangering, intet skjules eller udelukkes.
   foreneligHvis?: Betingelse[][];
+  // Kildebelagte likelihood ratios for fund (lib/rangering.ts). Udeladt = diagnosen rangeres ikke.
+  fund?: Fundvaegt[];
 };
 
 export type Behandling = Kildebelagt & {
