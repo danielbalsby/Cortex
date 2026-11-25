@@ -202,13 +202,32 @@ export const skulder: Region = {
             { id: "pos", label: "Positiv", notat: "Positiv smertebue." }
           ]
         },
+        // 2026-11-24: Hawkins/Neer delt i to felter og flere tests tilføjet til rangering efter likelihood ratio.
         {
-          id: "impingement",
-          label: "Hawkins/Neer",
+          id: "hawkins",
+          label: "Hawkins-Kennedy",
           type: "enkelt",
           valg: [
-            { id: "neg", label: "Negative", notat: "Negativ Hawkins' og Neer's test." },
-            { id: "pos", label: "Positive", notat: "Positiv Hawkins' og/eller Neer's test." }
+            { id: "neg", label: "Negativ", notat: "Hawkins-Kennedys test negativ." },
+            { id: "pos", label: "Positiv", notat: "Hawkins-Kennedys test positiv." }
+          ]
+        },
+        {
+          id: "neer",
+          label: "Neer",
+          type: "enkelt",
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Neers test negativ." },
+            { id: "pos", label: "Positiv", notat: "Neers test positiv." }
+          ]
+        },
+        {
+          id: "jobe",
+          label: "Jobe/empty can",
+          type: "enkelt",
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Jobes test (empty can) negativ." },
+            { id: "pos", label: "Positiv", notat: "Jobes test (empty can) positiv." }
           ]
         },
         {
@@ -221,6 +240,52 @@ export const skulder: Region = {
             { id: "udad", label: "↓ udadrot.", notat: "Nedsat kraft ved isometrisk udadrotation (infraspinatus)." },
             { id: "indad", label: "↓ indadrot.", notat: "Nedsat kraft ved isometrisk indadrotation (subscapularis)." },
             { id: "flere", label: "↓ flere planer", notat: "Nedsat kraft i flere planer." }
+          ]
+        },
+        {
+          id: "erlag",
+          label: "ER lag (arm ved siden)",
+          type: "enkelt",
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Intet udadrotations-lag (ER lag sign negativ)." },
+            { id: "pos", label: "Positiv", notat: "Udadrotations-lag (ER lag sign positiv)." }
+          ]
+        },
+        {
+          id: "droparm",
+          label: "Drop arm",
+          type: "enkelt",
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Drop arm-test negativ." },
+            { id: "pos", label: "Positiv", notat: "Drop arm-test positiv." }
+          ]
+        },
+        {
+          id: "bellypress",
+          label: "Belly press",
+          type: "enkelt",
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Belly press-test negativ." },
+            { id: "pos", label: "Positiv", notat: "Belly press-test positiv." }
+          ]
+        },
+        {
+          id: "apprehension",
+          label: "Apprehension",
+          type: "enkelt",
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Apprehension-test negativ." },
+            { id: "pos", label: "Positiv", notat: "Apprehension-test positiv." }
+          ]
+        },
+        {
+          id: "relocation",
+          label: "Relocation",
+          type: "enkelt",
+          visHvis: [{ felt: "apprehension", er: "pos" }],
+          valg: [
+            { id: "neg", label: "Uændret", notat: "Relokationstest negativ (apprehension uændret)." },
+            { id: "pos", label: "Lindrer", notat: "Relokationstest positiv (apprehension forsvinder)." }
           ]
         },
         {
@@ -249,7 +314,7 @@ export const skulder: Region = {
     },
     {
       overskrift: "O",
-      felter: ["fejlstilling", "roedme", "varme", "axillaris", "aktiv", "passiv", "smertebue", "impingement", "kraft", "acled", "objektivt-tekst"]
+      felter: ["fejlstilling", "roedme", "varme", "axillaris", "aktiv", "passiv", "smertebue", "hawkins", "neer", "jobe", "kraft", "erlag", "droparm", "bellypress", "apprehension", "relocation", "acled", "objektivt-tekst"]
     }
   ],
 
@@ -335,7 +400,44 @@ export const skulder: Region = {
       url: "https://www.sundhed.dk/sundhedsfaglig/information-til-praksis/hovedstaden/almen-praksis/patientbehandling/patientforloeb/forloebsbeskrivelser-icpc/a-alment-og-uspecificeret/skanning-billeddiagnostik/skulder-billeddiagnostik-af/",
       sidstTjekket: "2026-11-14"
     },
-    RH_MONOARTRIT
+    RH_MONOARTRIT,
+    // Likelihood ratios til rangering (læst 2026-11-24). Ikke-danske; ingen af dem fra almen praksis.
+    {
+      id: "zhao-2024-skulder",
+      udgiver: "BMC Musculoskelet Disord",
+      dansk: false,
+      titel: "Zhao Q m.fl. Evidence-based approach to the shoulder examination for subacromial bursitis and rotator cuff tears: a systematic review and meta-analysis (fuld tekst læst, tabel 2 og 3)",
+      aar: 2024,
+      url: "https://doi.org/10.1186/s12891-024-08144-z",
+      sidstTjekket: "2026-11-24"
+    },
+    {
+      id: "hermans-2013-cuff",
+      udgiver: "JAMA (Rational Clinical Examination)",
+      dansk: false,
+      titel: "Hermans J m.fl. Does this patient with shoulder pain have rotator cuff disease? (kun resumé læst)",
+      aar: 2013,
+      url: "https://doi.org/10.1001/jama.2013.276187",
+      sidstTjekket: "2026-11-24"
+    },
+    {
+      id: "luime-2004-instabilitet",
+      udgiver: "JAMA (Rational Clinical Examination)",
+      dansk: false,
+      titel: "Luime JJ m.fl. Does this patient have an instability of the shoulder or a labrum lesion? (kun resumé læst)",
+      aar: 2004,
+      url: "https://doi.org/10.1001/jama.292.16.1989",
+      sidstTjekket: "2026-11-24"
+    },
+    {
+      id: "laedermann-2021-subscapularis",
+      udgiver: "Orthop J Sports Med",
+      dansk: false,
+      titel: "Lädermann A m.fl. Diagnostic Accuracy of Clinical Tests for Subscapularis Tears: A Systematic Review and Meta-analysis (fuld tekst læst)",
+      aar: 2021,
+      url: "https://doi.org/10.1177/23259671211042011",
+      sidstTjekket: "2026-11-24"
+    }
   ],
 
   roedeFlag: [
@@ -431,6 +533,20 @@ export const skulder: Region = {
       ],
       notat: "Foreneligt med subacromielt smertesyndrom.",
       kilder: ["lh-subacromielt", "lh-skuldersmerter", "rh-rotatorcuff"],
+      // Likelihood ratios (læst 2026-11-24): smertebue fra Hermans 2013 (lægens valg), Hawkins og Neer fra Zhao 2024 tabel 3. Testene måler det samme: kun den stærkeste i klyngen tæller.
+      fund: [
+        { hvis: [{ felt: "smertebue", er: "pos" }], lr: 3.7, kilder: ["hermans-2013-cuff"], klynge: "sis-test", population: "henviste patienter undersøgt af specialister, ikke almen praksis (systematisk review, kun studier af høj kvalitet; 30–203 skuldre pr. studie, prævalens 33–81 %); målsygdom: rotator cuff-sygdom" },
+        { hvis: [{ felt: "smertebue", er: "neg" }], lr: 0.36, kilder: ["hermans-2013-cuff"], klynge: "sis-test", population: "henviste patienter undersøgt af specialister, ikke almen praksis (systematisk review, kun studier af høj kvalitet; 30–203 skuldre pr. studie, prævalens 33–81 %); målsygdom: rotator cuff-sygdom" },
+        { hvis: [{ felt: "hawkins", er: "pos" }], lr: 1.64, kilder: ["zhao-2024-skulder"], klynge: "sis-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: subakromielt smertesyndrom" },
+        { hvis: [{ felt: "hawkins", er: "neg" }], lr: 0.53, kilder: ["zhao-2024-skulder"], klynge: "sis-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: subakromielt smertesyndrom" },
+        { hvis: [{ felt: "neer", er: "pos" }], lr: 1.54, kilder: ["zhao-2024-skulder"], klynge: "sis-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: subakromielt smertesyndrom" },
+        { hvis: [{ felt: "neer", er: "neg" }], lr: 0.47, kilder: ["zhao-2024-skulder"], klynge: "sis-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: subakromielt smertesyndrom" }
+      ],
+      konflikt: {
+        beskrivelse:
+          "Smertebue: Zhao 2024 (metaanalyse, 6 studier, subakromielt smertesyndrom) LR+ 1,57 / LR− 0,63; Hermans 2013 (JAMA, kun studier af høj kvalitet, rotator cuff-sygdom; kun resumé læst) LR+ 3,7 / LR− 0,36. Ingen af dem er fra almen praksis. Rangeringen bruger Hermans for smertebuen (lægens valg 2026-11-24: færre, men bedre studier) og Zhao for Hawkins og Neer. Lægehåndbogen (Subacromielt smertesyndrom, 2021) kalder smertebuen hovedkriteriet; den angiver ingen tal.",
+        kilder: ["zhao-2024-skulder", "hermans-2013-cuff", "lh-subacromielt"]
+      },
       status: "UDKAST"
     },
     {
@@ -473,6 +589,21 @@ export const skulder: Region = {
       ],
       notat: "Traumatisk rotator cuff-ruptur mistænkes.",
       kilder: ["rh-rotatorcuff", "lh-rotatorcuff"],
+      // Likelihood ratios (læst 2026-11-24, Zhao 2024 tabel 2, rotator cuff-ruptur). Testene skelner ikke traumatisk fra degenerativ;
+      // her tæller de kun ved debut efter traume (kendetegnet "relevant traume", Region H og LH).
+      fund: [
+        { hvis: [{ felt: "debut", er: "traume" }, { felt: "erlag", er: "pos" }], lr: 2.8, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "debut", er: "traume" }, { felt: "erlag", er: "neg" }], lr: 0.78, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "debut", er: "traume" }, { felt: "jobe", er: "pos" }], lr: 1.58, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "debut", er: "traume" }, { felt: "jobe", er: "neg" }], lr: 0.52, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "debut", er: "traume" }, { felt: "hawkins", er: "pos" }], lr: 1.44, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "debut", er: "traume" }, { felt: "hawkins", er: "neg" }], lr: 0.56, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" }
+      ],
+      konflikt: {
+        beskrivelse:
+          "Kilderne er uenige om testenes styrke, og ingen af dem er fra almen praksis. Zhao 2024 (metaanalyse, 20 studier, rotator cuff-ruptur): ER lag ved 0° LR+ 2,80 / LR− 0,78, ER lag ved 90° LR+ 6,91, drop arm ikke signifikant (LR+ 1,97 / LR− 1,24). Hermans 2013 (JAMA, kun studier af høj kvalitet; kun resumé læst): ER lag LR 7,2 og IR lag LR 5,6 for fuldtykkelsesruptur, drop arm LR 3,3 for rotator cuff-sygdom; abduktionsvinklen for ER lag fremgår ikke af resuméet. Rangeringen bruger Zhao (ER lag med armen ved siden, Jobe, Hawkins). Drop arm og belly press har ingen LR i Cortex: drop arm pga. konflikten, belly press fordi Lädermann 2021 kun angiver samlet specificitet (> 0,90) i teksten.",
+        kilder: ["zhao-2024-skulder", "hermans-2013-cuff", "laedermann-2021-subscapularis"]
+      },
       status: "UDKAST"
     },
     {
@@ -485,6 +616,20 @@ export const skulder: Region = {
       ],
       notat: "Foreneligt med degenerativ rotator cuff-lidelse.",
       kilder: ["lh-rotatorcuff", "rh-rotatorcuff", "lh-skuldersmerter"],
+      // Likelihood ratios (læst 2026-11-24, Zhao 2024 tabel 2, rotator cuff-ruptur). Samme tal som traumatisk ruptur; ved traume står traumatisk først (filens rækkefølge).
+      fund: [
+        { hvis: [{ felt: "erlag", er: "pos" }], lr: 2.8, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "erlag", er: "neg" }], lr: 0.78, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "jobe", er: "pos" }], lr: 1.58, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "jobe", er: "neg" }], lr: 0.52, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "hawkins", er: "pos" }], lr: 1.44, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" },
+        { hvis: [{ felt: "hawkins", er: "neg" }], lr: 0.56, kilder: ["zhao-2024-skulder"], klynge: "cuff-test", population: "specialiserede skulder- og ortopædklinikker, ikke almen praksis (metaanalyse, 20 studier, n=3438, lav evidenskvalitet); målsygdom: rotator cuff-ruptur" }
+      ],
+      konflikt: {
+        beskrivelse:
+          "Kilderne er uenige om testenes styrke, og ingen af dem er fra almen praksis. Zhao 2024 (metaanalyse, 20 studier, rotator cuff-ruptur): ER lag ved 0° LR+ 2,80 / LR− 0,78, ER lag ved 90° LR+ 6,91, drop arm ikke signifikant (LR+ 1,97 / LR− 1,24). Hermans 2013 (JAMA, kun studier af høj kvalitet; kun resumé læst): ER lag LR 7,2 og IR lag LR 5,6 for fuldtykkelsesruptur, drop arm LR 3,3 for rotator cuff-sygdom; abduktionsvinklen for ER lag fremgår ikke af resuméet. Rangeringen bruger Zhao (ER lag med armen ved siden, Jobe, Hawkins). Drop arm og belly press har ingen LR i Cortex: drop arm pga. konflikten, belly press fordi Lädermann 2021 kun angiver samlet specificitet (> 0,90) i teksten.",
+        kilder: ["zhao-2024-skulder", "hermans-2013-cuff", "laedermann-2021-subscapularis"]
+      },
       status: "UDKAST"
     },
     {
@@ -497,6 +642,10 @@ export const skulder: Region = {
       ],
       notat: "Foreneligt med glenohumeral instabilitet.",
       kilder: ["lh-skuldersmerter", "lh-skulderluksation"],
+      // Likelihood ratio (læst 2026-11-24, kun resumé). Apprehension alene har ingen LR: Luime 2004 kalder den "less useful" uden tal i resuméet.
+      fund: [
+        { hvis: [{ felt: "relocation", er: "pos" }], lr: 6.5, kilder: ["luime-2004-instabilitet"], klynge: "instabilitet-test", population: "ortopædisk praksis, udvalgte populationer, enkeltstudie (systematisk review; ingen studier fra almen praksis)" }
+      ],
       status: "UDKAST"
     },
     {

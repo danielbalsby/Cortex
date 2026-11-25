@@ -64,15 +64,36 @@
 - **Smertebue** (smertebue, enkelt)
   - Negativ → "Ingen smertebue."
   - Positiv → "Positiv smertebue."
-- **Hawkins/Neer** (impingement, enkelt)
-  - Negative → "Negativ Hawkins' og Neer's test."
-  - Positive → "Positiv Hawkins' og/eller Neer's test."
+- **Hawkins-Kennedy** (hawkins, enkelt)
+  - Negativ → "Hawkins-Kennedys test negativ."
+  - Positiv → "Hawkins-Kennedys test positiv."
+- **Neer** (neer, enkelt)
+  - Negativ → "Neers test negativ."
+  - Positiv → "Neers test positiv."
+- **Jobe/empty can** (jobe, enkelt)
+  - Negativ → "Jobes test (empty can) negativ."
+  - Positiv → "Jobes test (empty can) positiv."
 - **Kraft rotator cuff** (kraft, enkelt)
   - Normal → "Normal kraft i rotator cuffen."
   - ↓ abduktion → "Nedsat kraft ved isometrisk abduktion (supraspinatus)."
   - ↓ udadrot. → "Nedsat kraft ved isometrisk udadrotation (infraspinatus)."
   - ↓ indadrot. → "Nedsat kraft ved isometrisk indadrotation (subscapularis)."
   - ↓ flere planer → "Nedsat kraft i flere planer."
+- **ER lag (arm ved siden)** (erlag, enkelt)
+  - Negativ → "Intet udadrotations-lag (ER lag sign negativ)."
+  - Positiv → "Udadrotations-lag (ER lag sign positiv)."
+- **Drop arm** (droparm, enkelt)
+  - Negativ → "Drop arm-test negativ."
+  - Positiv → "Drop arm-test positiv."
+- **Belly press** (bellypress, enkelt)
+  - Negativ → "Belly press-test negativ."
+  - Positiv → "Belly press-test positiv."
+- **Apprehension** (apprehension, enkelt)
+  - Negativ → "Apprehension-test negativ."
+  - Positiv → "Apprehension-test positiv."
+- **Relocation** (relocation, enkelt, vises hvis apprehension=pos)
+  - Uændret → "Relokationstest negativ (apprehension uændret)."
+  - Lindrer → "Relokationstest positiv (apprehension forsvinder)."
 - **AC-led** (acled, enkelt)
   - Uømt, crossover neg. → "AC-leddet uømt, negativ crossover-test."
   - Ømt/crossover + → "Ømhed over AC-leddet og/eller positiv crossover-test."
@@ -108,6 +129,7 @@
 ## Differentialdiagnoser
 
 - **Subacromielt smertesyndrom / rotator cuff-tendinopati (impingement)** (diff-impingement) [UDKAST] kilder: lh-subacromielt, lh-skuldersmerter, rh-rotatorcuff
+  - Konflikt: Smertebue: Zhao 2024 (metaanalyse, 6 studier, subakromielt smertesyndrom) LR+ 1,57 / LR− 0,63; Hermans 2013 (JAMA, kun studier af høj kvalitet, rotator cuff-sygdom; kun resumé læst) LR+ 3,7 / LR− 0,36. Ingen af dem er fra almen praksis. Rangeringen bruger Hermans for smertebuen (lægens valg 2026-11-24: færre, men bedre studier) og Zhao for Hawkins og Neer. Lægehåndbogen (Subacromielt smertesyndrom, 2021) kalder smertebuen hovedkriteriet; den angiver ingen tal.
   - Hyppigste årsag; oftest supraspinatus
   - Positiv smertebue (hovedkriterium); positiv Hawkins/Neer
   - Oftest normal passiv bevægelighed og normal kraft, evt. efter smertelindring
@@ -127,11 +149,13 @@
   - Selvlimiterende; varer cirka 1–3 år; let at overdiagnosticere
   - V: "Foreneligt med kapsulit (frossen skulder)."
 - **Traumatisk rotator cuff-ruptur** (diff-traumatisk-cuff) [UDKAST] kilder: rh-rotatorcuff, lh-rotatorcuff
+  - Konflikt: Kilderne er uenige om testenes styrke, og ingen af dem er fra almen praksis. Zhao 2024 (metaanalyse, 20 studier, rotator cuff-ruptur): ER lag ved 0° LR+ 2,80 / LR− 0,78, ER lag ved 90° LR+ 6,91, drop arm ikke signifikant (LR+ 1,97 / LR− 1,24). Hermans 2013 (JAMA, kun studier af høj kvalitet; kun resumé læst): ER lag LR 7,2 og IR lag LR 5,6 for fuldtykkelsesruptur, drop arm LR 3,3 for rotator cuff-sygdom; abduktionsvinklen for ER lag fremgår ikke af resuméet. Rangeringen bruger Zhao (ER lag med armen ved siden, Jobe, Hawkins). Drop arm og belly press har ingen LR i Cortex: drop arm pga. konflikten, belly press fordi Lädermann 2021 kun angiver samlet specificitet (> 0,90) i teksten.
   - Relevant traume (fx fald på skulderen); oftere over 40 år
   - Nedsat kraft svarende til den skadede sene; aktiv bevægelighed nedsat, passiv normal
   - Smerter kan give falsk kraftnedsættelse: se an ca. 1 uge og gentag kraftundersøgelsen
   - V: "Traumatisk rotator cuff-ruptur mistænkes."
 - **Degenerativ (ikke-traumatisk) rotator cuff-skade** (diff-degenerativ-cuff) [UDKAST] kilder: lh-rotatorcuff, rh-rotatorcuff, lh-skuldersmerter
+  - Konflikt: Kilderne er uenige om testenes styrke, og ingen af dem er fra almen praksis. Zhao 2024 (metaanalyse, 20 studier, rotator cuff-ruptur): ER lag ved 0° LR+ 2,80 / LR− 0,78, ER lag ved 90° LR+ 6,91, drop arm ikke signifikant (LR+ 1,97 / LR− 1,24). Hermans 2013 (JAMA, kun studier af høj kvalitet; kun resumé læst): ER lag LR 7,2 og IR lag LR 5,6 for fuldtykkelsesruptur, drop arm LR 3,3 for rotator cuff-sygdom; abduktionsvinklen for ER lag fremgår ikke af resuméet. Rangeringen bruger Zhao (ER lag med armen ved siden, Jobe, Hawkins). Drop arm og belly press har ingen LR i Cortex: drop arm pga. konflikten, belly press fordi Lädermann 2021 kun angiver samlet specificitet (> 0,90) i teksten.
   - Gradvis debut, ofte over 40 år, gentagne belastninger eller tidligere injektioner
   - Smerter med udstråling til overarmen ved abduktion og fleksion; positive impingementtests
   - Evt. nedsat kraft og atrofi af supra-/infraspinatus (prominerende spina scapulae)
@@ -271,3 +295,7 @@
 - rh-rotatorcuff: Region Hovedstaden 2025, Forløbsbeskrivelse: Rotatorcuff lidelser, tjekket 2026-11-14
 - rh-skulder-billed: Region Hovedstaden 2024, Forløbsbeskrivelse: Skulder, billeddiagnostik af, tjekket 2026-11-14
 - rh-monoartrit: Region Hovedstaden 2025, Forløbsbeskrivelse: Akut monoartritis, tjekket 2026-11-14
+- zhao-2024-skulder: BMC Musculoskelet Disord 2024, Zhao Q m.fl. Evidence-based approach to the shoulder examination for subacromial bursitis and rotator cuff tears: a systematic review and meta-analysis (fuld tekst læst, tabel 2 og 3), tjekket 2026-11-24 (ikke-dansk)
+- hermans-2013-cuff: JAMA (Rational Clinical Examination) 2013, Hermans J m.fl. Does this patient with shoulder pain have rotator cuff disease? (kun resumé læst), tjekket 2026-11-24 (ikke-dansk)
+- luime-2004-instabilitet: JAMA (Rational Clinical Examination) 2004, Luime JJ m.fl. Does this patient have an instability of the shoulder or a labrum lesion? (kun resumé læst), tjekket 2026-11-24 (ikke-dansk)
+- laedermann-2021-subscapularis: Orthop J Sports Med 2021, Lädermann A m.fl. Diagnostic Accuracy of Clinical Tests for Subscapularis Tears: A Systematic Review and Meta-analysis (fuld tekst læst), tjekket 2026-11-24 (ikke-dansk)

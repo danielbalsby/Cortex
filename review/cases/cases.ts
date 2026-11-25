@@ -22,7 +22,7 @@ export const CASES: Case[] = [
       ["side", "hoejre"], ["alder", "40til75"], ["debut", "overbelastning"], ["varighed", "uger"],
       ["nat", "liggende"], ["luksationer", "nej"], ["nakke", "nej"], ["arbejde", "ja"],
       ["fejlstilling", "nej"], ["aktiv", "fuld"], ["passiv", "fuld"], ["smertebue", "pos"],
-      ["impingement", "pos"], ["kraft", "normal"], ["acled", "uoemt"]
+      ["hawkins", "pos"], ["neer", "pos"], ["kraft", "normal"], ["acled", "uoemt"]
     ],
     valgte: ["diff-impingement", "beh-traening", "beh-analgetika"]
   },
@@ -54,7 +54,7 @@ export const CASES: Case[] = [
     type: "rødt flag, kan ikke registreres",
     trin: [
       ["side", "venstre"], ["alder", "40til75"], ["debut", "spontan"], ["varighed", "dage"], ["nat", "hvile"],
-      ["nakke", "nej"], ["aktiv", "fuld"], ["passiv", "fuld"], ["smertebue", "neg"], ["impingement", "neg"],
+      ["nakke", "nej"], ["aktiv", "fuld"], ["passiv", "fuld"], ["smertebue", "neg"], ["hawkins", "neg"], ["neer", "neg"],
       ["kraft", "normal"], ["acled", "uoemt"]
     ]
   },

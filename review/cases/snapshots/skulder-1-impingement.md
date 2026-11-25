@@ -16,7 +16,8 @@
 - aktiv = fuld
 - passiv = fuld
 - smertebue = pos
-- impingement = pos
+- hawkins = pos
+- neer = pos
 - kraft = normal
 - acled = uoemt
 
@@ -26,7 +27,7 @@ Afkrydset (V/P): diff-impingement, beh-traening, beh-analgetika
 
 ```
 S: Højresidige skuldersmerter. Opstået efter overbelastning. Varighed flere uger. Natlige smerter ved liggen på skulderen. Ingen tidligere skulderluksation. Ingen nakkesmerter eller udstråling. Skulderbelastende arbejde eller idræt over skulderhøjde.
-O: Ingen fejlstilling. Fuld aktiv bevægelighed. Fuld passiv bevægelighed. Positiv smertebue. Positiv Hawkins' og/eller Neer's test. Normal kraft i rotator cuffen. AC-leddet uømt, negativ crossover-test.
+O: Ingen fejlstilling. Fuld aktiv bevægelighed. Fuld passiv bevægelighed. Positiv smertebue. Hawkins-Kennedys test positiv. Neers test positiv. Normal kraft i rotator cuffen. AC-leddet uømt, negativ crossover-test.
 V: Foreneligt med subacromielt smertesyndrom.
 P: Paracetamol, evt. NSAID kortvarigt, efter behov. Henvist til fysioterapeutisk skuldertræning i mindst 3 måneder.
 ```
