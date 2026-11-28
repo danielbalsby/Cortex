@@ -69,6 +69,9 @@
 - **Laterale ledbånd** (ledbaand, enkelt)
   - Uømme [N] → "Laterale ledbånd uømme."
   - Ømme → "Ømhed over laterale ledbånd."
+- **Forreste skuffe** (forskuffe, enkelt, vises hvis mekanisme=inversion)
+  - Negativ → "Forreste skuffetest negativ (ingen øget laksitet sammenlignet med raske side)."
+  - Positiv → "Forreste skuffetest positiv (øget laksitet sammenlignet med raske side)."
 - **Syndesmose** (syndesmose, enkelt)
   - Uøm, squeeze neg. → "Syndesmosen uøm ved palpation og squeeze-test."
   - Øm/squeeze + → "Ømhed over syndesmosen eller positiv squeeze-test."
@@ -112,6 +115,7 @@
 ## Differentialdiagnoser
 
 - **Lateral ankeldistorsion** (diff-distorsion) [UDKAST] kilder: lh-ankelsmerter, lh-ankelskade-akut
+  - Konflikt: Lægehåndbogen (Akutte ankelsmerter, 2026; Ankelskade, akut, 2025): skuffetest og talar tilt har begrænset værdi i den helt akutte fase og kan som regel vente; ny undersøgelse efter 3–5 dage giver en mere korrekt vurdering. Netterström-Wedin 2022 (metaanalyse, ikke almen praksis) finder for forreste skuffe LR+ 3,97 (95 % KI 1,50–10,47) / LR− 0,54 og anfører, at undersøgelsen er mest præcis efter 2–7 dage frem for < 48 timer. Kilderne er enige om timingen; LR'en er puljet på tværs af tidspunkter og er mest pålidelig ved den forsinkede undersøgelse. En negativ test udelukker ikke ligamentskade.
   - Typisk inversionstraume; ømhed foran og under laterale malleol
   - Lig. talofibulare anterius rumperer oftest først, derefter lig. calcaneofibulare
   - Grad I: partiel ruptur · Grad II: total ruptur af ATFL · Grad III: total ruptur af ATFL og CFL
@@ -249,3 +253,4 @@
 - lh-ankel-ustabil: Lægehåndbogen 2025, Kronisk lateral ankelinstabilitet, tjekket 2026-11-24
 - lh-ankel-brusk: Lægehåndbogen 2024, Ankel, bruskskader, tjekket 2026-11-14
 - rh-monoartrit: Region Hovedstaden 2025, Forløbsbeskrivelse: Akut monoartritis, tjekket 2026-11-14
+- netterstrom-wedin-2022-ankel: Sports Health 2022, Netterström-Wedin F m.fl. Diagnostic Accuracy of Clinical Tests Assessing Ligamentous Injury of the Talocrural and Subtalar Joints: A Systematic Review With Meta-Analysis (fuld tekst læst), tjekket 2026-11-28 (ikke-dansk)
