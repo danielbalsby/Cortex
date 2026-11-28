@@ -204,6 +204,17 @@ export const ankel: Region = {
             { id: "oem", label: "Ømme", notat: "Ømhed over laterale ledbånd." }
           ]
         },
+        // 2026-11-28: forreste skuffe tilføjet til rangering efter likelihood ratio (Netterström-Wedin 2022). Vises ved indadvrid.
+        {
+          id: "forskuffe",
+          label: "Forreste skuffe",
+          type: "enkelt",
+          visHvis: [{ felt: "mekanisme", er: "inversion" }],
+          valg: [
+            { id: "neg", label: "Negativ", notat: "Forreste skuffetest negativ (ingen øget laksitet sammenlignet med raske side)." },
+            { id: "pos", label: "Positiv", notat: "Forreste skuffetest positiv (øget laksitet sammenlignet med raske side)." }
+          ]
+        },
         {
           id: "syndesmose",
           label: "Syndesmose",
@@ -250,6 +261,7 @@ export const ankel: Region = {
         "mellemfod",
         "fibula",
         "ledbaand",
+        "forskuffe",
         "syndesmose",
         "akilles",
         "objektivt-tekst"
@@ -312,7 +324,17 @@ export const ankel: Region = {
       url: "https://www.sundhed.dk/sundhedsfaglig/laegehaandbogen/ortopaedi/tilstande-og-sygdomme/laeg-ankel-og-fod/ankel-bruskskader/",
       sidstTjekket: "2026-11-14"
     },
-    RH_MONOARTRIT
+    RH_MONOARTRIT,
+    // Likelihood ratio til rangering (læst 2026-11-28). Ikke-dansk; ikke fra almen praksis.
+    {
+      id: "netterstrom-wedin-2022-ankel",
+      udgiver: "Sports Health",
+      dansk: false,
+      titel: "Netterström-Wedin F m.fl. Diagnostic Accuracy of Clinical Tests Assessing Ligamentous Injury of the Talocrural and Subtalar Joints: A Systematic Review With Meta-Analysis (fuld tekst læst)",
+      aar: 2022,
+      url: "https://doi.org/10.1177/19417381211029953",
+      sidstTjekket: "2026-11-28"
+    }
   ],
 
   roedeFlag: [
@@ -428,6 +450,16 @@ export const ankel: Region = {
       ],
       notat: "Foreneligt med lateral ankeldistorsion.",
       kilder: ["lh-ankelsmerter", "lh-ankelskade-akut"],
+      // Likelihood ratio (læst 2026-11-28, Netterström-Wedin 2022, puljet bivariat metaanalyse). Ligamentpalpation har kun spændvidder (sens. 95–100 %, spec. 0–32 %) og ingen LR.
+      fund: [
+        { hvis: [{ felt: "forskuffe", er: "pos" }], lr: 3.97, kilder: ["netterstrom-wedin-2022-ankel"], klynge: "lateral-ligament", population: "akutmodtagelser og ortopædiske/idrætsmedicinske ambulatorier, overvejende sportsaktive, ikke almen praksis (metaanalyse, 6 studier, 885 observationer; referencestandard artrografi eller ultralyd; stor heterogenitet); målsygdom: enhver lateral ligamentskade" },
+        { hvis: [{ felt: "forskuffe", er: "neg" }], lr: 0.54, kilder: ["netterstrom-wedin-2022-ankel"], klynge: "lateral-ligament", population: "akutmodtagelser og ortopædiske/idrætsmedicinske ambulatorier, overvejende sportsaktive, ikke almen praksis (metaanalyse, 6 studier, 885 observationer; referencestandard artrografi eller ultralyd; stor heterogenitet); målsygdom: enhver lateral ligamentskade" }
+      ],
+      konflikt: {
+        beskrivelse:
+          "Lægehåndbogen (Akutte ankelsmerter, 2026; Ankelskade, akut, 2025): skuffetest og talar tilt har begrænset værdi i den helt akutte fase og kan som regel vente; ny undersøgelse efter 3–5 dage giver en mere korrekt vurdering. Netterström-Wedin 2022 (metaanalyse, ikke almen praksis) finder for forreste skuffe LR+ 3,97 (95 % KI 1,50–10,47) / LR− 0,54 og anfører, at undersøgelsen er mest præcis efter 2–7 dage frem for < 48 timer. Kilderne er enige om timingen; LR'en er puljet på tværs af tidspunkter og er mest pålidelig ved den forsinkede undersøgelse. En negativ test udelukker ikke ligamentskade.",
+        kilder: ["lh-ankelsmerter", "lh-ankelskade-akut", "netterstrom-wedin-2022-ankel"]
+      },
       status: "UDKAST"
     },
     {
